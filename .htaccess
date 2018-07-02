@@ -1,0 +1,11 @@
+#php config
+php_value max_execution_time 28800
+php_value session.auto_start 1
+php_value file_uploads 1
+
+# This file is - if you set up MINI correctly - not needed.
+# But, for fallback reasons (if you don't route your vhost to /public), it will stay here.
+
+RewriteEngine on
+RewriteRule ^(.*) public/$1 [L]
+

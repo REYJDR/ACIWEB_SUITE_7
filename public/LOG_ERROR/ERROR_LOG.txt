@@ -1,0 +1,159 @@
+
+2018-05-28 03:55:40pm-(SAGE COMPANY 1) MYSQL ERROR Illegal mix of collations (latin1_general_ci,IMPLICIT) and (latin1_swedish_ci,IMPLICIT) for operation '='
+/ Query SELECT 
+sum(PurOrdr_Detail_Exp.Quantity) as TOTAL_COMPRADO
+FROM PurOrdr_Header_Exp
+INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO
+AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
+WHERE PurOrdr_Header_Exp.CustomerSO =  "REQ-3"
+AND PurOrdr_Header_Exp.ID_compania =  "1"
+AND PurOrdr_Detail_Exp.ID_compania =  "1"
+AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""
+2018-05-28 03:55:41pm-(SAGE COMPANY 1) MYSQL ERROR Illegal mix of collations (latin1_general_ci,IMPLICIT) and (latin1_swedish_ci,IMPLICIT) for operation '='
+/ Query SELECT 
+sum(PurOrdr_Detail_Exp.Quantity) as TOTAL_COMPRADO
+FROM PurOrdr_Header_Exp
+INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO
+AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
+WHERE PurOrdr_Header_Exp.CustomerSO =  "REQ-1"
+AND PurOrdr_Header_Exp.ID_compania =  "1"
+AND PurOrdr_Detail_Exp.ID_compania =  "1"
+AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""
+2018-05-28 03:55:46pm-(SAGE COMPANY 1) MYSQL ERROR Illegal mix of collations (latin1_general_ci,IMPLICIT) and (latin1_swedish_ci,IMPLICIT) for operation '='
+/ Query SELECT 
+sum(PurOrdr_Detail_Exp.Quantity) as TOTAL_COMPRADO
+FROM PurOrdr_Header_Exp
+INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO
+AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
+WHERE PurOrdr_Header_Exp.CustomerSO =  "REQ-3"
+AND PurOrdr_Header_Exp.ID_compania =  "1"
+AND PurOrdr_Detail_Exp.ID_compania =  "1"
+AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""
+2018-05-28 03:55:56pm-(SAGE COMPANY 1) MYSQL ERROR Illegal mix of collations (latin1_general_ci,IMPLICIT) and (latin1_swedish_ci,IMPLICIT) for operation '='
+/ Query SELECT 
+sum(PurOrdr_Detail_Exp.Quantity) as TOTAL_COMPRADO
+FROM PurOrdr_Header_Exp
+INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO
+AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
+WHERE PurOrdr_Header_Exp.CustomerSO =  "REQ-3"
+AND PurOrdr_Header_Exp.ID_compania =  "1"
+AND PurOrdr_Detail_Exp.ID_compania =  "1"
+AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""
+2018-05-28 03:59:11pm-(SAGE COMPANY 1) MYSQL ERROR Illegal mix of collations (latin1_general_ci,IMPLICIT) and (latin1_swedish_ci,IMPLICIT) for operation '='
+/ Query SELECT 
+sum(PurOrdr_Detail_Exp.Quantity) as TOTAL_COMPRADO
+FROM PurOrdr_Header_Exp
+INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO
+AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
+WHERE PurOrdr_Header_Exp.CustomerSO =  "REQ-1"
+AND PurOrdr_Header_Exp.ID_compania =  "1"
+AND PurOrdr_Detail_Exp.ID_compania =  "1"
+AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""
+2018-05-28 03:59:13pm-(SAGE COMPANY 1) MYSQL ERROR Illegal mix of collations (latin1_general_ci,IMPLICIT) and (latin1_swedish_ci,IMPLICIT) for operation '='
+/ Query SELECT 
+sum(PurOrdr_Detail_Exp.Quantity) as TOTAL_COMPRADO
+FROM PurOrdr_Header_Exp
+INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO
+AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
+WHERE PurOrdr_Header_Exp.CustomerSO =  "REQ-1"
+AND PurOrdr_Header_Exp.ID_compania =  "1"
+AND PurOrdr_Detail_Exp.ID_compania =  "1"
+AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""
+2018-05-28 03:59:29pm-(SAGE COMPANY 1) MYSQL ERROR Illegal mix of collations (latin1_general_ci,IMPLICIT) and (latin1_swedish_ci,IMPLICIT) for operation '='
+/ Query SELECT 
+sum(PurOrdr_Detail_Exp.Quantity) as TOTAL_COMPRADO
+FROM PurOrdr_Header_Exp
+INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO
+AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
+WHERE PurOrdr_Header_Exp.CustomerSO =  "REQ-1"
+AND PurOrdr_Header_Exp.ID_compania =  "1"
+AND PurOrdr_Detail_Exp.ID_compania =  "1"
+AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""
+2018-05-28 03:59:45pm-(SAGE COMPANY 1) MYSQL ERROR Illegal mix of collations (latin1_general_ci,IMPLICIT) and (latin1_swedish_ci,IMPLICIT) for operation '='
+/ Query SELECT 
+sum(PurOrdr_Detail_Exp.Quantity) as TOTAL_COMPRADO
+FROM PurOrdr_Header_Exp
+INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO
+AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
+WHERE PurOrdr_Header_Exp.CustomerSO =  "REQ-3"
+AND PurOrdr_Header_Exp.ID_compania =  "1"
+AND PurOrdr_Detail_Exp.ID_compania =  "1"
+AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""
+2018-05-28 03:59:46pm-(SAGE COMPANY 1) MYSQL ERROR Illegal mix of collations (latin1_general_ci,IMPLICIT) and (latin1_swedish_ci,IMPLICIT) for operation '='
+/ Query SELECT 
+sum(PurOrdr_Detail_Exp.Quantity) as TOTAL_COMPRADO
+FROM PurOrdr_Header_Exp
+INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO
+AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
+WHERE PurOrdr_Header_Exp.CustomerSO =  "REQ-1"
+AND PurOrdr_Header_Exp.ID_compania =  "1"
+AND PurOrdr_Detail_Exp.ID_compania =  "1"
+AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""
+2018-05-28 03:59:52pm-(SAGE COMPANY 1) MYSQL ERROR Illegal mix of collations (latin1_general_ci,IMPLICIT) and (latin1_swedish_ci,IMPLICIT) for operation '='
+/ Query SELECT 
+sum(PurOrdr_Detail_Exp.Quantity) as TOTAL_COMPRADO
+FROM PurOrdr_Header_Exp
+INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO
+AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
+WHERE PurOrdr_Header_Exp.CustomerSO =  "REQ-3"
+AND PurOrdr_Header_Exp.ID_compania =  "1"
+AND PurOrdr_Detail_Exp.ID_compania =  "1"
+AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""
+2018-05-28 04:00:04pm-(SAGE COMPANY 1) MYSQL ERROR Illegal mix of collations (latin1_general_ci,IMPLICIT) and (latin1_swedish_ci,IMPLICIT) for operation '='
+/ Query SELECT 
+sum(PurOrdr_Detail_Exp.Quantity) as TOTAL_COMPRADO
+FROM PurOrdr_Header_Exp
+INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO
+AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
+WHERE PurOrdr_Header_Exp.CustomerSO =  "REQ-3"
+AND PurOrdr_Header_Exp.ID_compania =  "1"
+AND PurOrdr_Detail_Exp.ID_compania =  "1"
+AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""
+2018-05-28 04:01:55pm-(SAGE COMPANY 1) MYSQL ERROR Illegal mix of collations (latin1_general_ci,IMPLICIT) and (latin1_swedish_ci,IMPLICIT) for operation '='
+/ Query SELECT 
+sum(PurOrdr_Detail_Exp.Quantity) as TOTAL_COMPRADO
+FROM PurOrdr_Header_Exp
+INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO
+AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
+WHERE PurOrdr_Header_Exp.CustomerSO =  "REQ-3"
+AND PurOrdr_Header_Exp.ID_compania =  "1"
+AND PurOrdr_Detail_Exp.ID_compania =  "1"
+AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""
+2018-05-28 04:05:16pm-(SAGE COMPANY 1) MYSQL ERROR Illegal mix of collations (latin1_general_ci,IMPLICIT) and (latin1_swedish_ci,IMPLICIT) for operation '='
+/ Query SELECT 
+sum(PurOrdr_Detail_Exp.Quantity) as TOTAL_COMPRADO
+FROM PurOrdr_Header_Exp
+INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO
+AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
+WHERE PurOrdr_Header_Exp.CustomerSO =  "REQ-3"
+AND PurOrdr_Header_Exp.ID_compania =  "1"
+AND PurOrdr_Detail_Exp.ID_compania =  "1"
+AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""
+2018-05-28 04:05:17pm-(SAGE COMPANY 1) MYSQL ERROR Illegal mix of collations (latin1_general_ci,IMPLICIT) and (latin1_swedish_ci,IMPLICIT) for operation '='
+/ Query SELECT 
+sum(PurOrdr_Detail_Exp.Quantity) as TOTAL_COMPRADO
+FROM PurOrdr_Header_Exp
+INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO
+AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
+WHERE PurOrdr_Header_Exp.CustomerSO =  "REQ-1"
+AND PurOrdr_Header_Exp.ID_compania =  "1"
+AND PurOrdr_Detail_Exp.ID_compania =  "1"
+AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""
+2018-05-28 10:49:30pm-(SAGE COMPANY 1) MYSQL ERROR Duplicate entry 'REQ-4-BEATTY@REQ-4@BEATTY@1' for key 'PRIMARY'
+/ Query INSERT INTO REQ_DETAIL (`ProductID`,`DESCRIPCION`,`CANTIDAD`,`UNIDAD`,`JOB`,`PHASE`,`NO_REQ`,`ITEM_UNIQUE_NO`,`ID_compania`) VALUES ('BEATTY','BEATTY-Beatty Bldg Law Maintenance','-','-','-','','REQ-4','BEATTY@REQ-4@BEATTY@1','1');
+2018-06-29 12:37:58pm-(SAGE COMPANY 1) MYSQL ERROR Duplicate entry 'ACI-16-1-1' for key 'PRIMARY'
+/ Query INSERT INTO INVOICE_GEN_DETAIL (`SalesOrderNumber`,`ItemOrd`,`ItemID`,`Despachado`,`TotalLinea`,`UnitPrice`,`ID_compania`) VALUES ('ACI-16','1','ADMIN-01000','1.00000','2.5','2.50','1');
