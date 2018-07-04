@@ -16,7 +16,7 @@ public function inv_list(){
             // load views
             require APP . 'view/_templates/header.php';
             require APP . 'view/_templates/panel.php';
-            require APP . 'view/modules/inventory/invList.php';
+            require APP . 'view/modules/inventory/invlist.php';
             require APP . 'view/_templates/footer.php';
 
 
