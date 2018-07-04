@@ -135,7 +135,7 @@ $.ajax({
 
        json = JSON.parse(res);
 
-       console.log(res);
+       console.log('Json: '+ json );
 
        document.getElementById(id_desc_field).innerHTML  = json.Description;
        document.getElementById(id_unit_field).value  = json.UnitMeasure;
