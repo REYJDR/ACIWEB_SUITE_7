@@ -121,6 +121,9 @@ var id_stock_field = 'stock'+line;
 var id_total_field = 'total'+line;
 var listID =  document.getElementById('listID').value;
 
+
+console.log('Datos:'+datos);
+
 $.ajax({
 
       type: "GET",
