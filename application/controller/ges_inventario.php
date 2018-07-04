@@ -13,7 +13,6 @@ public function inv_list(){
 
         if($res=='0'){
         
-            echo 'lang:'.$this->model->lang;
             // load views
             require APP . 'view/_templates/header.php';
             require APP . 'view/_templates/panel.php';
