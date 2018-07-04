@@ -104,6 +104,10 @@ while(i <= cantLineas){
       set_selectItemStyle(); 
       }
      });
+
+     $('#table_req').append(listitem); //limpio la tabla 
+     
+
 }
 
 
