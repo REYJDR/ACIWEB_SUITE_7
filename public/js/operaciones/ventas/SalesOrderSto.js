@@ -105,7 +105,6 @@ while(i <= cantLineas){
       }
      });
 
-     $('#table_req').append(listitem); //limpio la tabla 
      
 
 }
