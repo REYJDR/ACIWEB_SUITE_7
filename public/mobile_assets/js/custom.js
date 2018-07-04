@@ -125,7 +125,7 @@ $.ajax({
        json = JSON.parse(res);
        document.getElementById(id_desc_field).value  = json.Description;
        document.getElementById(id_unit_field).value  = json.UnitMeasure;  
-       Price = json.Price1;
+       document.getElementById(id_price_field).value  = json.Price1;
        stock_val = json.QtyOnHand;
 
 
@@ -152,7 +152,7 @@ setTimeout(function(){
 
     }else{
 
-     document.getElementById(id_price_field).value  = Price;
+     //document.getElementById(id_price_field).value  = Price;
 
     }
 
