@@ -113,19 +113,12 @@ function SetDesc(itemId, line){
 var datos= "url=bridge_query/get_ProductsInfo/"+itemId;
 
 var id_desc_field = 'desc'+line;
-
 var id_unit_field = 'unit'+line;
-
 var id_price_field = 'unitprice'+line;
-
 var id_taxable_field = 'taxable'+line;
-
 var id_qty_field = 'qty'+line;
-
 var id_stock_field = 'stock'+line;
-
 var id_total_field = 'total'+line;
-
 var listID =  document.getElementById('listID').value;
 
 $.ajax({
@@ -143,11 +136,9 @@ $.ajax({
        json = JSON.parse(res);
 
        document.getElementById(id_desc_field).innerHTML  = json.Description;
-
        document.getElementById(id_unit_field).value  = json.UnitMeasure;
-
        document.getElementById(id_stock_field).value  = json.QtyOnHand;
-
+       document.getElementById(id_price_field).value  = json.Price1;
        if(json.TaxType == 1){
 
         document.getElementById(id_taxable_field).value  = 'SI';
@@ -172,7 +163,7 @@ setTimeout(function(){
 
     }else{
 
-     document.getElementById(id_price_field).innerHTML  = '';
+   //  document.getElementById(id_price_field).innerHTML  = '';
 
     }
 
