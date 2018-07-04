@@ -1424,7 +1424,7 @@ public function getItems(){
     $clause= '';
   }
   
-  $sql = 'SELECT Products_Exp.ProductID as ProductID , 
+  echo $sql = 'SELECT Products_Exp.ProductID as ProductID , 
                  Products_Exp.Description  as Description 
             FROM Products_Exp 
             INNER JOIN STOCK_ITEMS_LOCATION ON STOCK_ITEMS_LOCATION.itemID = Products_Exp.ProductID 
