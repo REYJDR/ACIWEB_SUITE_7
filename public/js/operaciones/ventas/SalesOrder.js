@@ -135,6 +135,8 @@ $.ajax({
 
        json = JSON.parse(res);
 
+       console.log(res);
+
        document.getElementById(id_desc_field).innerHTML  = json.Description;
        document.getElementById(id_unit_field).value  = json.UnitMeasure;
        document.getElementById(id_stock_field).value  = json.QtyOnHand;
