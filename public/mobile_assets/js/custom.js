@@ -5,6 +5,7 @@ var id_qty_field = 'qty';
 var id_total_field = 'total';
 var taxable_val = '';
 var stock_val = '';
+var Price = '';
 var id_price_field = 'unitprice';
 
 //variable globales
@@ -109,7 +110,7 @@ function SetDesc(itemId){
 
 var listID =  document.getElementById('listID').value;
 var datos= "url=bridge_query/get_ProductsInfo/"+itemId;
-var Price = '';
+
 
 stock_val='';
 
@@ -124,7 +125,7 @@ $.ajax({
        json = JSON.parse(res);
        document.getElementById(id_desc_field).value  = json.Description;
        document.getElementById(id_unit_field).value  = json.UnitMeasure;  
-       Price =      json.Price1;
+       Price = json.Price1;
        stock_val = json.QtyOnHand;
 
 
