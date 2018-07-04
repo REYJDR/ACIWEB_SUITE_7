@@ -1,5 +1,4 @@
 <?php
-echo 'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'_ref.php';
 require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'_ref.php';
 ?>
 
