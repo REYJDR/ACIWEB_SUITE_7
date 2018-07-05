@@ -108,6 +108,7 @@ function addItemList(){
 
 function SetDesc(itemId){
 
+  console.log(itemId);
 var listID =  document.getElementById('listID').value;
 var datos= "bridge_query/get_ProductsInfo/";
 
@@ -121,6 +122,8 @@ $.ajax({
       url: link,
       data: {url:datos, item: itemId },
       success: function(res){
+
+        console.log(res);
 
        json = JSON.parse(res);
        document.getElementById(id_desc_field).value  = json.Description;
