@@ -10,8 +10,8 @@ $( "#process" ).click(function( event ) {
   
    throw new Error(e.message);
    MSG_ERROR(e.message,0);
-  }
-});*/
+  }*/
+});
 
 
 $('#ERROR').hide();
