@@ -3,15 +3,15 @@ $(window).load(function(){
 //RUN PROCESS EVENT HANDLER
 $( "#process" ).click(function( event ) {
 
-  send_order();
- /* try {
+
+  try {
     send_order();
   } catch (e) {
-  
+   MSG_ERROR(e.message,0);
    throw new Error(e.message);
+
   }
 });
-*/
 
 $('#ERROR').hide();
 
