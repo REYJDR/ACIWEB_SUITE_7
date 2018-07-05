@@ -36,7 +36,7 @@ function set_listprice(ID){
 
   URL = document.getElementById('URL').value;
   
-  var datos= "url=bridge_query/get_Cust_info/"+ID;
+  var datos= "bridge_query/get_Cust_info";
   
   var link= URL+"index.php";
   
@@ -44,7 +44,7 @@ function set_listprice(ID){
   
         type: "GET",
         url: link,
-        data: datos,
+        data:{url:datos,id : ID},
         success: function(res){
           res = JSON.parse(res);
           document.getElementById('listID').value = res.Custom_field4;
