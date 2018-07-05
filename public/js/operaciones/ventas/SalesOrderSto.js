@@ -14,6 +14,7 @@ $( "#process" ).click(function( event ) {
 });
 
 
+
 $('#ERROR').hide();
 
 
@@ -805,8 +806,10 @@ while (i <= cantLineas){
 
                        default: 
                       
-                       lote  = document.getElementById(lote).value;
-                       loc   = document.getElementById(loc).value;
+                       if (STOCK_VIEW == 1){
+                        lote  = document.getElementById(lote).value;
+                        loc   = document.getElementById(loc).value;
+                      }
                        val   = theTbl.rows[i].cells[0].innerHTML;
 
                           if(val==''){                              
