@@ -485,7 +485,7 @@ var r = confirm('Desea procesar la orden?');
         $.ajax({
          type: "GET",
          url:  link,
-         data:  {url: 'bridge_query/set_sales_order_detail_new/'+OS_NO , Data : JSON.stringify(LineArray)}, 
+         data:  {url: 'ges_ventas/set_sales_order_detail_new/'+OS_NO , Data : JSON.stringify(LineArray)}, 
          success: function(res){
          
               if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
