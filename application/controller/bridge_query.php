@@ -52,7 +52,7 @@ foreach ($lote_ven as $value) {
 public function get_ProductsInfo($itemid){
 $this->SESSION();
 
-echo $sql= 'SELECT 
+$sql= 'SELECT 
 A.ProductID,
 A.Description,
 A.UnitMeasure,
@@ -68,7 +68,7 @@ AND  A.ProductID ="'.$itemid.'"';
 
 $res = $this->model->Query($sql);
 
-var_dump($res);
+
 
 foreach ($res as  $value) {
     echo $value;
@@ -1391,7 +1391,7 @@ if($itemFilter){
 
 $sql = 'SELECT ProductID , Description 
           FROM Products_Exp 
-          WHERE id_compania="'.$this->model->id_compania.'" '.$clause;
+          WHERE isActive="1" and id_compania="'.$this->model->id_compania.'" '.$clause;
 
 $Codigos = $this->model->Query($sql);
 
