@@ -883,21 +883,24 @@ public function SetSOfromStock($SalesOrderNumber){
   
         $factor = '';
 
-          //INIT SET LOTE 
-            $values2 = array(
-              'ItemOrd' => $key+1,
-              'ID_compania'=>$id_compania,
-              'SalesOrderNumber'=>$SalesOrderNumber,
-              'Item_id'=>'',
-              'Description'=>$Description,
-              'Quantity'=>'0',
-              'Unit_Price'=>'0',
-              'Net_line'=>'0',
-              'Taxable'=>'1');
-            
-          $this->model->insert('SalesOrder_Detail_Imp',$values2);//set lote line
-          //END SET LOTE /////////////
+          //SI TIENE MODULO DE UBICACIONES
+          if($mod_stoc_CK == 'checked' ){ 
 
+                  //INIT SET LOTE 
+                    $values2 = array(
+                      'ItemOrd' => $key+1,
+                      'ID_compania'=>$id_compania,
+                      'SalesOrderNumber'=>$SalesOrderNumber,
+                      'Item_id'=>'',
+                      'Description'=>$Description,
+                      'Quantity'=>'0',
+                      'Unit_Price'=>'0',
+                      'Net_line'=>'0',
+                      'Taxable'=>'1');
+                    
+                  $this->model->insert('SalesOrder_Detail_Imp',$values2);//set lote line
+                  //END SET LOTE /////////////
+                } 
         }else{
            
           //SI EL ITEM YA EXISTE EN LA ORDEN DE DEBE AGRUPAR 
@@ -927,21 +930,24 @@ public function SetSOfromStock($SalesOrderNumber){
                           where ID="'.$ID.'";';
 
           $this->model->Query($query);
-        
-          $values2 = array(
-          'ItemOrd' => $key,
-          'ID_compania'=>$id_compania,
-          'SalesOrderNumber'=>$SalesOrderNumber,
-          'Item_id'=>'',
-          'Description'=>$Description,
-          'Quantity'=>'0',
-          'Unit_Price'=>'0',
-          'Net_line'=>'0',
-          'Taxable'=>'1');
+
+            //SI TIENE MODULO DE UBICACIONES
+            if($mod_stoc_CK == 'checked' ){ 
+                
+                  $values2 = array(
+                  'ItemOrd' => $key,
+                  'ID_compania'=>$id_compania,
+                  'SalesOrderNumber'=>$SalesOrderNumber,
+                  'Item_id'=>'',
+                  'Description'=>$Description,
+                  'Quantity'=>'0',
+                  'Unit_Price'=>'0',
+                  'Net_line'=>'0',
+                  'Taxable'=>'1');
 
 
-          $this->model->insert('SalesOrder_Detail_Imp',$values2);//set lote line
-          
+                  $this->model->insert('SalesOrder_Detail_Imp',$values2);//set lote line
+            }
         }
 
      }else{
@@ -969,20 +975,23 @@ public function SetSOfromStock($SalesOrderNumber){
   
         $this->model->insert('SalesOrder_Detail_Imp',$values1); //set item line
   
-          //INIT SET LOTE 
-            $values2 = array(
-              'ItemOrd' => $key+1,
-              'ID_compania'=>$id_compania,
-              'SalesOrderNumber'=>$SalesOrderNumber,
-              'Item_id'=>'',
-              'Description'=>$Description,
-              'Quantity'=>'0',
-              'Unit_Price'=>'0',
-              'Net_line'=>'0',
-              'Taxable'=>'1');
-            
-          $this->model->insert('SalesOrder_Detail_Imp',$values2);//set lote line
-          //END SET LOTE /////////////
+          //SI TIENE MODULO DE UBICACIONES
+          if($mod_stoc_CK == 'checked' ){ 
+              //INIT SET LOTE 
+                $values2 = array(
+                  'ItemOrd' => $key+1,
+                  'ID_compania'=>$id_compania,
+                  'SalesOrderNumber'=>$SalesOrderNumber,
+                  'Item_id'=>'',
+                  'Description'=>$Description,
+                  'Quantity'=>'0',
+                  'Unit_Price'=>'0',
+                  'Net_line'=>'0',
+                  'Taxable'=>'1');
+                
+              $this->model->insert('SalesOrder_Detail_Imp',$values2);//set lote line
+              //END SET LOTE /////////////
+            }
         }else{
 
             //SI EL ITEM YA EXISTE EN LA ORDEN DE DEBE AGRUPAR 
@@ -1006,20 +1015,22 @@ public function SetSOfromStock($SalesOrderNumber){
 
             $this->model->Query($query);
 
-            $values2 = array(
-            'ItemOrd' => $key,
-            'ID_compania'=>$id_compania,
-            'SalesOrderNumber'=>$SalesOrderNumber,
-            'Item_id'=>'',
-            'Description'=>$Description,
-            'Quantity'=>'0',
-            'Unit_Price'=>'0',
-            'Net_line'=>'0',
-            'Taxable'=>'1');
+          //SI TIENE MODULO DE UBICACIONES
+          if($mod_stoc_CK == 'checked' ){ 
+              $values2 = array(
+              'ItemOrd' => $key,
+              'ID_compania'=>$id_compania,
+              'SalesOrderNumber'=>$SalesOrderNumber,
+              'Item_id'=>'',
+              'Description'=>$Description,
+              'Quantity'=>'0',
+              'Unit_Price'=>'0',
+              'Net_line'=>'0',
+              'Taxable'=>'1');
 
 
-            $this->model->insert('SalesOrder_Detail_Imp',$values2);//set lote line
-
+              $this->model->insert('SalesOrder_Detail_Imp',$values2);//set lote line
+              }
         }
      }
 
