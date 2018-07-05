@@ -68,6 +68,7 @@ AND  A.ProductID ="'.$itemid.'"';
 
 $res = $this->model->Query($sql);
 
+var_dump($res);
 
 foreach ($res as  $value) {
     echo $value;
