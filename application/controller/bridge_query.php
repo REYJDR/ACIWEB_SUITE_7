@@ -52,7 +52,7 @@ foreach ($lote_ven as $value) {
 public function get_ProductsInfo($itemid){
 $this->SESSION();
 
-$sql= 'SELECT 
+echo $sql= 'SELECT 
 A.ProductID,
 A.Description,
 A.UnitMeasure,
