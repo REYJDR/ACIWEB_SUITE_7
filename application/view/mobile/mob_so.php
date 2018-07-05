@@ -8,6 +8,9 @@ $(window).load(function(){
 
 var TaxID=$("#taxid option:selected").html();
 var Taxval=$("#taxid option:selected").val();
+
+console.log(Taxval+''+TaxID);
+
 set_taxid(Taxval,1);
 
 
