@@ -794,7 +794,7 @@ public function set_sales_order_header(){
             'Quantity'=>$qty,
             'Unit_Price'=>$unit_price,
             'Net_line'=>$Price,
-             'PK_CHICO'=>$chi,
+            'PK_CHICO'=>$chi,
             'PK_GRANDE'=>$gra,
             'Taxable'=>$this->model->Query_value('Products_Exp','TaxType','Where ProductID="'.$itemid.'" and ID_compania="'.$id_compania.'";') );
   

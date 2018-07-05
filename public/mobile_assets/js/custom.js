@@ -291,9 +291,13 @@ function sumar_total(){
 
                      taxableID = theTbl.rows[i].cells[8].innerHTML;
 
+                     console.log('TAXABLE:'+taxableID);
+
                       if( taxableID =='SI'){
   
                       itbms_sum = Number(theTbl.rows[i].cells[j].innerHTML) * Number(tax_value);
+                      console.log('ITBMS:'+itbms_sum);
+                      
                       itbms.push(itbms_sum);
   
                       }
