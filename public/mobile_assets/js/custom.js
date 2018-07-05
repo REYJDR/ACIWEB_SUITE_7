@@ -575,7 +575,7 @@ function set_items(){
   
                               qty       = theTbl.rows[i].cells[3].innerHTML;
                               UnitPrice = Number(theTbl.rows[i].cells[4].innerHTML) / Number(theTbl.rows[i].cells[3].innerHTML);
-                              total     = theTbl.rows[i].cells[8].innerHTML;
+                              total     = Number(theTbl.rows[i].cells[4].innerHTML) ;
   
                               chic  = theTbl.rows[i].cells[5].innerHTML;
                               gran  = theTbl.rows[i].cells[6].innerHTML;
