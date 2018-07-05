@@ -24,6 +24,15 @@ if ($pice_mod_ck == 1) {
   echo '<input type="hidden" id="editable" value="" />'; 
 }
 
+if($mod_stoc_CK != 'checked' ){ 
+
+$display='style="display:none"';
+
+}else{
+
+$display=' ';
+	
+}
 ?>
 
 <!--ADD JS FILE-->
@@ -225,9 +234,11 @@ if ($pice_mod_ck == 1) {
 						<th width="10%" ><?php echo $TblItem;?></th>
 						<th width="15%" class="text-center"><?php echo $TblDes;?></th>
 						<th width="15%" class="text-center"><?php echo $TblNote;?></th>
-						<th width="5%"  class="text-center"><?php echo $TblLote?></th>
-						<th width="5%"  class="text-center"><?php echo $TblLoc;?></th>
-						<th width="5%"  class="text-center"><?php echo $TblQty;?></th>
+
+						<th <?php echo $display; ?> width="5%"  class="text-center"><?php echo $TblLote?></th>
+						<th <?php echo $display; ?> width="5%"  class="text-center"><?php echo $TblLoc;?></th>
+						<th <?php echo $display; ?> width="5%"  class="text-center"><?php echo $TblQty;?></th>
+
 						<th width="5%"  class="text-center"><?php echo $TblUnitP;?></th>
 						<th width="5%"  style="<?php echo $display;?>" class="text-center"><?php echo $TblTotal;?></th>
 						</tr>

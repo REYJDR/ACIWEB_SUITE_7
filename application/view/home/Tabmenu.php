@@ -43,10 +43,10 @@
 </div>
 
 <div id="menu2" class="tabcontent">	
-    <!--INI MENU SALES-->
+    <!--INI MENU SALES-->&&  
     <div class='col-lg-12'>
     <?php if($mod_sales_CK == 'checked'){?>
-        <?php if($mod_invt_CK == 'checked' && $mod_stoc_CK){ ?>
+        <?php if($mod_invt_CK == 'checked' ){ ?>
             <div class='col-lg-3'>
             <button  onclick="window.location='<?PHP ECHO URL; ?>index.php?url=ges_ventas/SalesOrderSto'" class="dashBottom" >
              <?php echo $SUBMENU_sales1; ?>
