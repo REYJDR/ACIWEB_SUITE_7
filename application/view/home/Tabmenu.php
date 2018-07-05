@@ -43,7 +43,7 @@
 </div>
 
 <div id="menu2" class="tabcontent">	
-    <!--INI MENU SALES-->&&  
+    <!--INI MENU SALES-->
     <div class='col-lg-12'>
     <?php if($mod_sales_CK == 'checked'){?>
         <?php if($mod_invt_CK == 'checked' ){ ?>
