@@ -9,6 +9,7 @@ $( "#process" ).click(function( event ) {
   } catch (e) {
   
    throw new Error(e.message);
+   MSG_ERROR(e.message,0);
   }
 });
 
