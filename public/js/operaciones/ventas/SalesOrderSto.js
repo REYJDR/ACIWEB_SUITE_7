@@ -792,9 +792,12 @@ while (i <= cantLineas){
                             qty       = theTbl.rows[i].cells[5].innerHTML;
                             UnitPrice = theTbl.rows[i].cells[6].innerHTML;
                             total     = theTbl.rows[i].cells[7].innerHTML;
+                           
+                            if (STOCK_VIEW == 1){
+                              lote  = document.getElementById(lote).value;
+                              loc   = document.getElementById(loc).value;
+                            }
 
-                            lote  = document.getElementById(lote).value;
-                            loc   = document.getElementById(loc).value;
 
                             cell += desc+'@'+nota+'@'+UnitMeasure+'@'+itemId+'@'+UnitPrice+'@'+qty+'@'+total+'@'+lote+'@'+loc;//agrego el registo de las demas columnas
                             console.log(cell);
