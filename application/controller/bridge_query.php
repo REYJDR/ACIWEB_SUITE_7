@@ -293,7 +293,9 @@ echo '</tbody></table>';
 
 }
 //modificacion rey 23/11
-public function get_Cust_info($custid){
+public function get_Cust_info(){
+
+$custid= $_REQUEST['id'];
 
 $query = 'SELECT * FROM Customers_Exp WHERE ID="'.$custid.'";';
 

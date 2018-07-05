@@ -405,21 +405,21 @@ for(var i=0; i<itbms.length; i++){
 
 function set_listprice(ID){
 
-var datos= "url=bridge_query/get_Cust_info/"+ID;
-
-var link= URL+"index.php";
-
-  $.ajax({
-
-      type: "GET",
-      url: link,
-      data: datos,
-      success: function(res){
-        res = JSON.parse(res);
-        document.getElementById('listID').value = res.Custom_field4;
-        }
-
-   });
+  var datos= "bridge_query/get_Cust_info";
+  
+  var link= URL+"index.php";
+  
+    $.ajax({
+  
+        type: "GET",
+        url: link,
+        data: {url: datos, id : ID},
+        success: function(res){
+          res = JSON.parse(res);
+          document.getElementById('listID').value = res.Custom_field4;
+          }
+  
+     });
 
 
 var datos= "url=ges_ventas/GetPayTerm/"+ID;
