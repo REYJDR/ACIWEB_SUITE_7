@@ -49,8 +49,10 @@ foreach ($lote_ven as $value) {
 
 }
 
-public function get_ProductsInfo($itemid){
+public function get_ProductsInfo(){
 $this->SESSION();
+
+$ITEM= $_REQUEST['item'];
 
 $sql= 'SELECT 
 A.ProductID,
@@ -64,7 +66,7 @@ FROM Products_Exp as A
 WHERE 
 A.IsActive="1" 
 AND  A.id_compania="'.$this->model->id_compania.'" 
-AND  A.ProductID ="'.$itemid.'"';
+AND  A.ProductID ="'.$ITEM.'"';
 
 $res = $this->model->Query($sql);
 
