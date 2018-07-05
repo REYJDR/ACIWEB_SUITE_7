@@ -117,7 +117,7 @@ while(i <= cantLineas){
 
 function SetDesc(itemId, line){
 
-var datos= "url=bridge_query/get_ProductsInfo";
+var datos= "bridge_query/get_ProductsInfo";
 
 var id_desc_field = 'desc'+line;
 var id_unit_field = 'unit'+line;
