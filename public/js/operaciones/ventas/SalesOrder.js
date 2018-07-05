@@ -109,7 +109,7 @@ while(i <= cantLineas){
 
 function SetDesc(itemId, line){
 
-var datos= "url=bridge_query/get_ProductsInfo/"+itemId;
+var datos= "url=bridge_query/get_ProductsInfo";
 
 var id_desc_field = 'desc'+line;
 var id_unit_field = 'unit'+line;
@@ -129,7 +129,7 @@ $.ajax({
 
       url: link,
 
-      data: datos,
+      data: {url: datos, item: itemId},
 
       success: function(res){
 

@@ -52,7 +52,7 @@ foreach ($lote_ven as $value) {
 public function get_ProductsInfo(){
 $this->SESSION();
 
-$ITEM= $_REQUEST['item'];
+$ITEM = $_REQUEST['item'];
 
 $sql= 'SELECT 
 A.ProductID,
@@ -69,7 +69,6 @@ AND  A.id_compania="'.$this->model->id_compania.'"
 AND  A.ProductID ="'.$ITEM.'"';
 
 $res = $this->model->Query($sql);
-
 
 
 foreach ($res as  $value) {
