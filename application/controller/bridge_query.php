@@ -370,36 +370,39 @@ if (!$chk_cur_val){
 
            $this->model->insert('SalesOrder_Detail_Imp',$values1); //set item line
 
-            if ($venc!=''){
+            //SI TIENE MODULO DE UBICACIONES
+          if($mod_stoc_CK == 'checked' ){ 
 
-              $caduc =   'Vence :'.$venc.' ';
+                if ($venc!=''){
 
-            }else{
+                  $caduc =   'Vence :'.$venc.' ';
 
-              $caduc = '';
+                }else{
 
-            }
+                  $caduc = '';
 
-
-          $Description = 'Lote :'.$lote.' '.$caduc.' Cant.:'.$qty;
-
-         
-
-          $values2 = array(
-          'ItemOrd' => $index,
-          'ID_compania'=>$id_compania,
-          'SalesOrderNumber'=>$SalesOrderNumber,
-          'Item_id'=>'',
-          'Description'=>$Description,
-          'Quantity'=>'0',
-          'Unit_Price'=>'0',
-          'Net_line'=>'0',
-          'Taxable'=>'1');
+                }
 
 
-          $this->model->insert('SalesOrder_Detail_Imp',$values2);//set lote line
+              $Description = 'Lote :'.$lote.' '.$caduc.' Cant.:'.$qty;
+
+            
+
+              $values2 = array(
+              'ItemOrd' => $index,
+              'ID_compania'=>$id_compania,
+              'SalesOrderNumber'=>$SalesOrderNumber,
+              'Item_id'=>'',
+              'Description'=>$Description,
+              'Quantity'=>'0',
+              'Unit_Price'=>'0',
+              'Net_line'=>'0',
+              'Taxable'=>'1');
 
 
+              $this->model->insert('SalesOrder_Detail_Imp',$values2);//set lote line
+
+          }
 
     }else{
 
@@ -418,9 +421,10 @@ if (!$chk_cur_val){
 
 
           $query= 'UPDATE SalesOrder_Detail_Imp SET Quantity="'.$now_qty.'" , Net_line="'.$net_line.'" where ID="'.$ID.'";';
-
-          
           $this->model->Query($query);
+
+       //SI TIENE MODULO DE UBICACIONES
+       if($mod_stoc_CK == 'checked' ){ 
 
           if ($venc!=''){
 
@@ -447,7 +451,7 @@ if (!$chk_cur_val){
 
 
           $this->model->insert('SalesOrder_Detail_Imp',$values2);//set lote line
-
+          }
 
     }
 
@@ -466,36 +470,37 @@ if (!$chk_cur_val){
 
        $this->model->insert('SalesOrder_Detail_Imp',$values1); //set item line
 
-        if ($venc!=''){
 
-          $caduc =   'Vence :'.$venc.' ';
+       //SI TIENE MODULO DE UBICACIONES
+       if($mod_stoc_CK == 'checked' ){ 
 
-        }else{
+              if ($venc!=''){
 
-          $caduc = '';
+                $caduc =   'Vence :'.$venc.' ';
+
+              }else{
+
+                $caduc = '';
+
+              }
+
+
+            $Description = 'Lote :'.$lote.' '.$caduc.' Cant.:'.$qty;
+
+
+            $values2 = array(
+            'ItemOrd' => $index,
+            'ID_compania'=>$id_compania,
+            'SalesOrderNumber'=>$SalesOrderNumber,
+            'Item_id'=>'',
+            'Description'=>$Description,
+            'Quantity'=>'0',
+            'Unit_Price'=>'0',
+            'Net_line'=>'0',
+            'Taxable'=>'1');
+            $this->model->insert('SalesOrder_Detail_Imp',$values2);//set lote line
 
         }
-
-
-      $Description = 'Lote :'.$lote.' '.$caduc.' Cant.:'.$qty;
-
-     
-
-      $values2 = array(
-      'ItemOrd' => $index,
-      'ID_compania'=>$id_compania,
-      'SalesOrderNumber'=>$SalesOrderNumber,
-      'Item_id'=>'',
-      'Description'=>$Description,
-      'Quantity'=>'0',
-      'Unit_Price'=>'0',
-      'Net_line'=>'0',
-      'Taxable'=>'1');
-
-
-      $this->model->insert('SalesOrder_Detail_Imp',$values2);//set lote line
-
-
 
 }
 
