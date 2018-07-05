@@ -42,6 +42,8 @@ var table = $("#table_ord_tb").DataTable({
 URL = document.getElementById('URL').value;
 NO_LINES  = document.getElementById('FAC_NO_LINES').value;
 ANMT_VIEW = document.getElementById('ANMT_VIEW').value;
+STOCK_VIEW = document.getElementById('STOCK_VIEW').value;
+
 link = URL+"index.php";
 chk = '';
 cantLineas = NO_LINES; //Setea la cantidad de lineas disponibles en la tabla de solicitud de items
@@ -58,6 +60,8 @@ function init(chk)
 if(editable==''){ bg_color =' background-color:#D8D8D8;';   }else{  bg_color = '';  }
 
 if(ANMT_VIEW == 0){ display ='display:none;';   }else{  display = '';  }
+if(STOCK_VIEW == 0){ displayStock ='display:none;';   }else{  displayStock = '';  }
+
 
 $.ajax({
       type: "GET",
@@ -89,9 +93,9 @@ while(i <= cantLineas){
       '<td width="15%" class="rowtable_req" onkeyup="checkArroba(this.id);" contenteditable id="desc'+i+'"  ></td>'+
       '<td width="15%" class="rowtable_req" onkeyup="checkArroba(this.id);" contenteditable id="nota'+i+'"  ></td>'+
       '<input type="hidden"   id="unit'+i+'" />'+
-      '<td width="3%"  class="rowtable_req numb" id="Tblote'+i+'"  ></td>'+
+      '<td width="3%" style="'+displayStock+'"  class="rowtable_req numb" id="Tblote'+i+'"  ></td>'+
       '<input type="hidden"  id="taxable'+i+'" />'+
-      '<td width="3%"  class="rowtable_req numb" id="Tbloc'+i+'"   ></td>'+
+      '<td width="3%" style="'+displayStock+'"  class="rowtable_req numb" id="Tbloc'+i+'"   ></td>'+
       '<input type="hidden"  id="stock'+i+'" />'+
       '<td width="5%"  class="rowtable_req  numb" onfocusout="checkMax('+i+');" contenteditable id="qty'+i+'"></td>'+
       '<td width="5%"  style="'+bg_color+'"  class="rowtable_req  numb" '+editable+' onfocusout="calculate('+i+');" id="unitprice'+i+'" ></td>'+

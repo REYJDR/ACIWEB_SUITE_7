@@ -27,11 +27,13 @@ if ($pice_mod_ck == 1) {
 if($mod_stoc_CK != 'checked' ){ 
 
 $display='style="display:none"';
+echo '<input type="hidden" id="STOCK_VIEW" value="0" />'; 
 
 }else{
 
 $display=' ';
-	
+echo '<input type="hidden" id="STOCK_VIEW" value="1" />'; 
+
 }
 ?>
 
