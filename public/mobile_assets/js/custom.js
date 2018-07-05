@@ -90,7 +90,7 @@ function addItemList(){
     
             
             
-            var itemline =  '<select class="selectItems col-lg-12" id="selItem" onchange="SetDesc(this.value)" >'+
+            var itemline =  '<select class="selectItems col-lg-12" id="selItem" onchange="SetDesc(this.value,1)" >'+
             
                                 '<option  val="0" selected disabled>Seleccionar item</option>'
             
@@ -109,7 +109,7 @@ function addItemList(){
 function SetDesc(itemId){
 
 var listID =  document.getElementById('listID').value;
-var datos= "url=bridge_query/get_ProductsInfo/"+itemId;
+var datos= "bridge_query/get_ProductsInfo/";
 
 
 stock_val='';
@@ -119,7 +119,7 @@ $.ajax({
 
       type: "GET",
       url: link,
-      data: datos,
+      data: {url:datos, item: itemId },
       success: function(res){
 
        json = JSON.parse(res);
