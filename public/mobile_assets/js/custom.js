@@ -404,6 +404,7 @@ var arrLen = '';
 //////LIMPIO ARRAYS
 LineArray = [];
 FaltaArray = [];
+HeaderInfo = [];  
 //////////////////////////
 
 //////////////////////////////
@@ -450,31 +451,31 @@ var r = confirm('Desea procesar la orden?');
 
     //INI REGISTRO DE CABECERA
 
-    //METODO EN BRIDGE_QUERY
-    var datos= "url=bridge_query/set_sales_order_header/"+CustomerID+
-                                                      '/'+Subtotal+
-                                                      '/'+TaxID+
-                                                      '/'+total+
-                                                      '//'+nopo+
-                                                      '/'+termino_pago+
-                                                      '/'+tipo_licitacion+
-                                                      '/'+observaciones+
-                                                      '/'+entrega+
-                                                      '/'+Ordertax+
-                                                      '/'+fecha_entrega+
-                                                      '/'+LugDesp+
-                                                      '/';
+            //INI REGISTRO DE CABECERA
+            HeaderInfo[0] =  CustomerID+
+                            '@'+Subtotal+
+                            '@'+TaxID+
+                            '@'+total+
+                            '@'+nopo+
+                            '@'+termino_pago+
+                            '@'+tipo_licitacion+
+                            '@'+observaciones+
+                            '@'+entrega+
+                            '@'+Ordertax+
+                            '@'+fecha_entrega+
+                            '@'+LugDesp;
 
-      return  $.ajax({
-            type: "GET",
-            url: link,
-            data: datos,
-            success: function(res){
-            console.log(res);
-            OS_NO = res;
-        }
 
-      });
+        return  $.ajax({
+                  type: "GET",
+                  url: link,
+                  data: {url: 'ges_ventas/set_sales_order_header', Data : JSON.stringify(HeaderInfo)},
+                  success: function(res){
+                  console.log(res);
+                  OS_NO = res;
+                  }
+                  });
+
 
      }//FIN REGISTRO DE CABECERA
 
