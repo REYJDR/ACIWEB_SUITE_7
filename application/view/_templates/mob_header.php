@@ -13,7 +13,7 @@
                 <a href="#" data-panel="left" class="open-panel"><img src="i<?php echo URL; ?>mobile_assets/mages/icons/white/menu.png" alt="" title="" /></a>
           </div>	-->		
       <div class="navbar_right">
-       <a href="#" data-panel="right" class="open-panel"><img src="<?php echo URL; ?>moile_assets/images/icons/white/user.png" alt="" title="" /></a>
+       <a href="#" data-panel="right" class="open-panel"><img src="<?php echo URL; ?>mobile_assets/images/icons/white/user.png" alt="" title="" /></a>
       </div>
       
   </div>
