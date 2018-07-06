@@ -139,18 +139,17 @@ if ($amnt_view_ck==0){
 
                                   foreach ($tax  as $datos) {
 
-                                    
+                                
                                     $tax  = json_decode($datos);
 
-                                    $st = $tax->{'taxid'};
-
-                                    if (strpos($st, 'ITBMS') != false) {
+                                    if ($tax ->{'rate'} == '7') {
                                      
-                                      $selected = '';
+                                      
+                                      $selected = 'selected';   
 
                                     }else{
 
-                                      $selected = 'selected';                                      
+                                      $selected = '';                                 
 
                                     }
 
