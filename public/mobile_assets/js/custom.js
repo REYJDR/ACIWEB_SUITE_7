@@ -260,6 +260,28 @@ function addItem(){
   
 }
 
+function set_taxid(rate,opt){
+  
+  var rate = rate/100;
+  
+  if(opt==1){
+  
+      document.getElementById('saletaxid').value =  rate;
+  
+    }else{
+  
+       r = confirm('Esta seleccion implica cambios en el calculo del total, desea proceder con este cambio?');
+  
+       if(r==true){
+  
+        document.getElementById('saletaxid').value =  rate;
+  
+        sumar_total();
+  
+       }
+    }
+  }
+
 function sumar_total(){
   
   var theTbl = document.getElementById('ItemAdded'); //objeto de la tabla que contiene los datos de items
