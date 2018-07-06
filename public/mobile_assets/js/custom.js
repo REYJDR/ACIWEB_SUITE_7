@@ -10,8 +10,8 @@ var id_price_field = 'unitprice';
 
 //variable globales
 
-$('#tab2').hide(); 
-$('#tab3').hide(); 
+$('#tabItem').hide(); 
+
 
 
 function logout(URL){
