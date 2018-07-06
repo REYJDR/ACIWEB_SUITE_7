@@ -139,17 +139,21 @@ if ($amnt_view_ck==0){
 
                                   foreach ($tax  as $datos) {
 
+                                    
                                     $tax  = json_decode($datos);
 
-                                    if($tax->{'taxid'}=='ITBMS'){
+                                    $st = $tax->{'taxid'};
 
-                                      $selected = 'selected';
-
-                                    }else{   
-
+                                    if (strpos($st, 'ITBMS') != false) {
+                                     
                                       $selected = '';
 
+                                    }else{
+
+                                      $selected = 'selected';                                      
+
                                     }
+
 
                                   echo '<option value="'.$tax ->{'rate'}.'" '.$selected.'>'.$tax->{'taxid'}.'</option>';
 
@@ -161,6 +165,16 @@ if ($amnt_view_ck==0){
                                   </a>
                                 </div>
                               <!--TAX ID-->
+                              <script>
+
+                                  var TaxID=$("#taxid option:selected").html();
+                                  var Taxval=$("#taxid option:selected").val();
+
+                                  console.log('TAX'+Taxval+'/'+TaxID);
+
+                                  set_taxid(Taxval,1);
+
+                              </script>
 
                               <!--Termino de pago -->
                               <div class="form_row">
@@ -330,13 +344,3 @@ if ($amnt_view_ck==0){
   </div>
 </div>
 
-<script>
-$(window).load(function(){
-var TaxID=$("#taxid option:selected").html();
-var Taxval=$("#taxid option:selected").val();
-
-console.log('TAX'+Taxval+'/'+TaxID);
-
-set_taxid(Taxval,1);
-});
-</script>
