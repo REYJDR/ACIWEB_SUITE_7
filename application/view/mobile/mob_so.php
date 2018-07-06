@@ -1,21 +1,4 @@
-<script>
 
-
-// ********************************************************
-// * Aciones cuando la pagina ya esta cargada
-// ********************************************************
-$(window).load(function(){
-
-var TaxID=$("#taxid option:selected").html();
-var Taxval=$("#taxid option:selected").val();
-
-console.log('TAX'+Taxval+'/'+TaxID);
-
-set_taxid(Taxval,1);
-
-});
-
-</script>
 
 
 
@@ -346,3 +329,14 @@ if ($amnt_view_ck==0){
     </div>
   </div>
 </div>
+
+<script>
+
+var TaxID=$("#taxid option:selected").html();
+var Taxval=$("#taxid option:selected").val();
+
+console.log('TAX'+Taxval+'/'+TaxID);
+
+set_taxid(Taxval,1);
+
+</script>
