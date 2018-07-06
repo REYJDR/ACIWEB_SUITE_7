@@ -10,8 +10,8 @@ var id_price_field = 'unitprice';
 
 //variable globales
 
-
-
+$('#tab2').hide(); 
+$('#tab3').hide(); 
 
 
 function logout(URL){
@@ -69,7 +69,7 @@ function set_listprice(ID){
    // init(2); 
    
    addItemList();
-   
+
    var e = document.getElementById("taxid");
    var Taxval = e.options[e.selectedIndex].value;
    var TaxID = e.options[e.selectedIndex].text;

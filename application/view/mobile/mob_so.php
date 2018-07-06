@@ -42,9 +42,9 @@ if ($amnt_view_ck==0){
 
 
      <div class="buttons-row">
-                    <a href="#tab1" class="tab-link active button">Datos generales</a>
-                    <a href="#tab2" class="tab-link button">Items</a>
-                    <a href="#tab3" class="tab-link button">Resumen</a>
+                    <a id='tab1' href="#tab1" class="tab-link active button">Datos generales</a>
+                    <a id='tab2' href="#tab2" class="tab-link button">Items</a>
+                    <a id='tab3' href="#tab3" class="tab-link button">Resumen</a>
               </div>
               
               <div class="tabs-animated-wrap">
