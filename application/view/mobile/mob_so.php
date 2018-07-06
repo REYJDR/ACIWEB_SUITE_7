@@ -142,9 +142,8 @@ if ($amnt_view_ck==0){
                                 
                                     $tax  = json_decode($datos);
 
-                                    if ($tax ->{'rate'} == '7') {
+                                    if ($tax ->{'rate'} == '10') {
                                      
-                                      
                                       $selected = 'selected';   
 
                                     }else{
@@ -157,6 +156,8 @@ if ($amnt_view_ck==0){
                                   echo '<option value="'.$tax ->{'rate'}.'" '.$selected.'>'.$tax->{'taxid'}.'</option>';
 
                                   }
+
+
 
                                   ?>
 
