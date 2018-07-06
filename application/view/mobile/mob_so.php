@@ -111,8 +111,7 @@ if ($amnt_view_ck==0){
                                   
                                                           $datos  = json_decode($datos);
                                   
-                                                          
-                                                            echo '<option value="'.$datos->{'ShipAddress'}.'">'.$datos->{'ShipAddress'}.'</option>';
+                                                          echo '<option value="'.$datos->{'ShipAddress'}.'">'.$datos->{'ShipAddress'}.'</option>';
                                   
                                                       }
                                   
@@ -143,7 +142,7 @@ if ($amnt_view_ck==0){
                                 
                                     $tax  = json_decode($datos);
 
-                                    if ($tax ->{'rate'} == '10') {
+                                    if ($tax ->{'rate'} == '7') {
                                      
                                       $selected = 'selected';   
 
@@ -168,8 +167,10 @@ if ($amnt_view_ck==0){
                               <!--TAX ID-->
                               <script>
 
-                                  var TaxID=$("#taxid option:selected").html();
-                                  var Taxval=$("#taxid option:selected").val();
+                                  var e = document.getElementById("taxid");
+                                  var Taxval = e.options[e.selectedIndex].value;
+                                  var TaxID = e.options[e.selectedIndex].text;
+
 
                                   console.log('TAX'+Taxval+'/'+TaxID);
 
