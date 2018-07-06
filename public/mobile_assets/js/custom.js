@@ -10,7 +10,6 @@ var id_price_field = 'unitprice';
 
 //variable globales
 
-$('#tabItem').hide(); 
 
 
 
