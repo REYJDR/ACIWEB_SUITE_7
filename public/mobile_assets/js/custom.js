@@ -69,6 +69,15 @@ function set_listprice(ID){
    // init(2); 
    
    addItemList();
+   
+   var e = document.getElementById("taxid");
+   var Taxval = e.options[e.selectedIndex].value;
+   var TaxID = e.options[e.selectedIndex].text;
+
+
+   console.log('TAX'+Taxval+'/'+TaxID);
+
+   set_taxid(Taxval,1);
   
 }
 

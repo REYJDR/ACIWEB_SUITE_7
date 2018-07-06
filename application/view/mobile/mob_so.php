@@ -165,18 +165,7 @@ if ($amnt_view_ck==0){
                                   </a>
                                 </div>
                               <!--TAX ID-->
-                              <script>
-
-                                  var e = document.getElementById("taxid");
-                                  var Taxval = e.options[e.selectedIndex].value;
-                                  var TaxID = e.options[e.selectedIndex].text;
-
-
-                                  console.log('TAX'+Taxval+'/'+TaxID);
-
-                                  set_taxid(Taxval,1);
-
-                              </script>
+  
 
                               <!--Termino de pago -->
                               <div class="form_row">
