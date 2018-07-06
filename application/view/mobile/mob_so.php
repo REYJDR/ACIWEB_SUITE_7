@@ -331,12 +331,12 @@ if ($amnt_view_ck==0){
 </div>
 
 <script>
-
+$(window).load(function(){
 var TaxID=$("#taxid option:selected").html();
 var Taxval=$("#taxid option:selected").val();
 
 console.log('TAX'+Taxval+'/'+TaxID);
 
 set_taxid(Taxval,1);
-
+});
 </script>
