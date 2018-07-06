@@ -9,7 +9,7 @@ $(window).load(function(){
 var TaxID=$("#taxid option:selected").html();
 var Taxval=$("#taxid option:selected").val();
 
-console.log(Taxval+''+TaxID);
+console.log('TAX'+Taxval+'/'+TaxID);
 
 set_taxid(Taxval,1);
 
@@ -265,9 +265,20 @@ if ($amnt_view_ck==0){
                                 </div>
 
                                 <!--UnitPrice item-->
+                                <?PHP
+                                if($price_mod = 'checked'){
+
+                                  $readonly = '';
+
+                                }else{
+
+                                  $readonly = 'readonly';
+                                }
+                                
+                                ?>
                                 <div class="form_row">
                                       <label>Precio Unitario</label>
-                                      <input type="text" class="form_input" id="unitprice"  name="unitprice" readonly/>
+                                      <input type="text" class="form_input" id="unitprice"  name="unitprice" <?php echo $readonly;  ?> />
                                 </div>
                                  <!--UnitPrice item-->
 
