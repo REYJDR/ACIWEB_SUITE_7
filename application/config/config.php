@@ -20,6 +20,8 @@ if (ENVIRONMENT == 'development' || ENVIRONMENT == 'dev') {
 }
 
 
+
+
 /**
  * Configuration for: URL
  * Here we auto-detect your applications URL and the potential sub-folder. Works perfectly on most servers and in local
