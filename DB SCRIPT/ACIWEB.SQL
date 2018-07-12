@@ -1240,6 +1240,7 @@ CREATE TABLE `SAX_USER` (
   `Recover_key` varchar(1000) COLLATE utf8_spanish_ci NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+
 --
 -- Dumping data for table `SAX_USER`
 --
