@@ -1882,7 +1882,6 @@ filter_reset_button_text: false}
 
 public function get_InvReqPaymnt($job_id,$PO){
 
- $cta_reten = $this->model->getGLReten();
 
 $res = $this->model->Query_value( 'Purchase_Header_Exp A',
                                   'SUM(B.NetLine) AS Total',
@@ -1891,7 +1890,6 @@ $res = $this->model->Query_value( 'Purchase_Header_Exp A',
                                           B.ID_compania="'.$this->model->id_compania.'"  AND
                                           A.ApplyToPurOrderNumber = "'.$PO.'" AND 
                                           A.ApplyToPurchaseOrder= "1" AND 
-                                          B.GL_AccountID <> "'.$cta_reten.'" AND 
                                           B.JobID="'.$job_id.'" group by A.PurchaseID;');
 return $res;
 }
@@ -2132,7 +2130,7 @@ $data = json_decode($_REQUEST['Data']);
                               <td  class="numb">'.number_format($total_pay,2).'</td>
                               <td  class="numb">'.number_format($balance_due,2).'</td>
                               <td  class="numb" >'.number_format($total_reten,2).'</td>
-                              <td  class="numb">'.number_format($total_advPay,2).'</td>
+                              <td  class="numb"></td>
                               <td ><input class="inputPage" type="numb" oninput="check_pay('.$y.');" id="total'.$i.'" name="total'.$i.'" readonly/></td>
                               </tr>';
 
