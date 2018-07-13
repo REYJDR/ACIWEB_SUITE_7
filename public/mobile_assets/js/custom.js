@@ -82,6 +82,11 @@ function set_listprice(ID){
 
 function addItemList(){
 
+//////////////////////////////
+validacion();
+if(CHK_VALIDATION == true){ CHK_VALIDATION = false;  return;  }
+/////////////////////////////
+
   URL = document.getElementById('URL').value;
   link = URL+"index.php";
 
