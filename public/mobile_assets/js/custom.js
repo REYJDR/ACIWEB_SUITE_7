@@ -429,6 +429,8 @@ function validacion(){
 
   TAX = document.getElementById('taxid').value;
   
+  console.log(TAX);
+  
   if (TAX == ''){
    MSG_ERROR('Se debe seleccionar el tipo de tax',0);
    CHK_VALIDATION = true;
