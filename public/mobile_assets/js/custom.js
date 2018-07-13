@@ -415,8 +415,16 @@ FaltaArray = [];
 function validacion(){
 
   CUSTOMER = document.getElementById('customer').value;
+  
   if (CUSTOMER == ''){
    MSG_ERROR('Se debe seleccionar un cliente',0);
+   CHK_VALIDATION = true;
+  }
+
+  TAX = document.getElementById('taxid').value;
+  
+  if (TAX == ''){
+   MSG_ERROR('Se debe seleccionar el tipo de tax',0);
    CHK_VALIDATION = true;
   }
 

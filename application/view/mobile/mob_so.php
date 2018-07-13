@@ -1,8 +1,3 @@
-
-
-
-
-
 <?php $amnt_view_ck = $this->model->Query_value('SAX_USER','amountSO','where SAX_USER.onoff="1" and SAX_USER.id="'.$this->model->active_user_id.'"');
 
 echo '<input type="hidden" id="ANMT_VIEW" value="'.$amnt_view_ck.'" />'; 
@@ -43,7 +38,6 @@ if ($amnt_view_ck==0){
 
      <div class="buttons-row">
                     <a  href="#tab1" class="tab-link active button">Datos generales</a>
-                  
                     <a  href="#tab2" class="tab-link button">Items</a>
                     <a  href="#tab3" class="tab-link button">Resumen</a>
                  
