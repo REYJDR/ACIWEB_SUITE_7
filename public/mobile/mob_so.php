@@ -100,7 +100,7 @@ if ($amnt_view_ck==0){
 
 
      <div class="buttons-row">
-                    <a href="#tab1"  class="tab-link active button">Datos generales</a>
+                    <a href="#tab1" class="tab-link active button">Datos generales</a>
                     <a href="#tab2" class="tab-link button">Items</a>
                     <a href="#tab3" class="tab-link button">Resumen</a>
               </div>
