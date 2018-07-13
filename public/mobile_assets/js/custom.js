@@ -82,7 +82,7 @@ function set_listprice(ID){
 
 function addItemList(){
 
-//////////////////////////////
+  //////////////////////////////
 validacion();
 if(CHK_VALIDATION == true){ CHK_VALIDATION = false;  return;  }
 /////////////////////////////
