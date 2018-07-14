@@ -427,11 +427,10 @@ function validacion(){
    CHK_VALIDATION = true;
   }
 
-  TAX = $("#taxid option:selected").val();
-  
-  console.log(TAX);
+  TAX = document.getElementById('saletaxid').value;
 
-  if (TAX == 0){
+
+  if (TAX == ''){
    MSG_ERROR('Se debe seleccionar el tipo de tax',0);
    CHK_VALIDATION = true;
   }
