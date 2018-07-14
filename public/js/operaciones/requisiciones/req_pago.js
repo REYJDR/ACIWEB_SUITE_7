@@ -225,7 +225,7 @@ function searchReq(){
     }else{
   
     datos= [];
-    datos[0] = JOBID+'@'+dateFrom+'@'+dateTo;
+    datos[0] = '@'+JOBID+'@'+dateFrom+'@'+dateTo;
     console.log(datos);
     
     $.ajax({

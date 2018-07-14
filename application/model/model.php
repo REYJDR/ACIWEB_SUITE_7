@@ -1340,6 +1340,19 @@ public function desencriptar($cadena){
 }
 
 
+public function getGLReten(){
+    
+$this->verify_session();
+
+
+$res = $this->Query_value( 'CTA_GL_CONF',
+                           'GL_RETEN',
+                           'WHERE  ID_compania="'.$this->id_compania.'" ');
+    
+  return $res;
+}
+
+
 ////////////////////////////////////////////////////
 //envia correo, metodo general
 public function send_mail($address,$subject,$title,$body){
@@ -1419,6 +1432,7 @@ public function send_mail($address,$subject,$title,$body){
     }
     
 }
+
 
 }
 ?>

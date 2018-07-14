@@ -159,6 +159,8 @@ $config_11_val3 = 'Cta. MG/ITBMS';
 $config_11_val4 = 'Cta. MG/Contra partida:';
 $config_11_val5 = 'Cta. CXC/AR:';
 $config_11_val6 = 'Cta. Devoluciones/NC';
+$config_11_val7 = 'Cta. Retenciones';
+
 //Ctas GL
 
 //modulos

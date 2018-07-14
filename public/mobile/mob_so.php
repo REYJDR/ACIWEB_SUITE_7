@@ -186,7 +186,7 @@ if ($amnt_view_ck==0){
                                   <div class="item-content">
                                     <div class="item-inner">
                                     <label>TAX ID</label>
-                                    <div class="item-after">Seleccionar tax id</div>
+                                    <div class="item-after" >Seleccionar tax id</div>
                                     </div>
                                   </div>
                                   <select  id="taxid" name="taxid" class="select col-lg-12" onchange="set_taxid(this.value,2);" required>

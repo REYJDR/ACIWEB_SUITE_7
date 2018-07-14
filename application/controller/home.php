@@ -242,7 +242,13 @@ public function getUserlist(){
 	     
 
 	     $id="'".$user->{'id'}."'";
-	     
+       
+       if ($user->{'id'}=='1'){
+         $disable = 'disabled';
+       }else{
+        $disable = '';
+
+       }
 
        echo '<tr>
        <td>'.$user->{'name'}.'</td>
@@ -250,7 +256,7 @@ public function getUserlist(){
        <td>'.$user->{'email'}.'</td>
        <td>'.$user->{'role'}.'</td>
        <td>'.$user->{'last_login'}.'</ttdh>
-       <td><a  href="'.URL.'index.php?url=home/edit_account/'.$user->{'id'}.'" ><input type="button" id="modal_button" name="modal_button"  class="btn btn-danger btn-sm btn-icon icon-left" value="Editar" ></td>
+       <td><a  href="'.URL.'index.php?url=home/edit_account/'.$user->{'id'}.'" ><input type="button" id="modal_button" name="modal_button"  class="btn btn-danger btn-sm btn-icon icon-left" value="Editar" '.$disable.'></td>
        </tr>';
 	 // data-toggle="modal" data-target="#myModal";
 

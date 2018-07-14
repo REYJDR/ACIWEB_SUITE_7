@@ -427,6 +427,7 @@
 							<tr><th><strong><?php echo $config_11_val4; ?></strong></th><td><input type="text"  class="inputPage col-lg-12 numb"  name="Glacct"  id="Glacct"   onkeyup="check_num(this.value,'Glacct');"  value="<?php echo $CTA_GLACCT; ?>" /></td></tr>           
 							<tr><th><strong><?php echo $config_11_val5; ?></strong></th><td><input type="text"  class="inputPage col-lg-12 numb"  name="ARACNT"  id="ARACNT"  onkeyup="check_num(this.value,'ARACNT');"  value="<?php echo $CTA_ARACNT; ?>"/></td></tr>        
 							<tr><th><strong><?php echo $config_11_val6; ?></strong></th><td><input type="text"  class="inputPage col-lg-12 numb"  name="ctadev"  id="ctadev"  onkeyup="check_num(this.value,'ctadev');"  value="<?php echo $CTA_DEV; ?>" /></td></tr>                   
+							<tr><th><strong><?php echo $config_11_val7; ?></strong></th><td><input type="text"  class="inputPage col-lg-12 numb"  name="GL_RETEN"  id="GL_RETEN"  onkeyup="check_num(this.value,'GL_RETEN');"  value="<?php echo $GL_RETEN; ?>" /></td></tr>                   
 									
 						</tbody>
 						</table> 

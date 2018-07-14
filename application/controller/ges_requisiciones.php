@@ -1865,21 +1865,37 @@ filter_reset_button_text: false}
 }
 
 
+
 public function get_InvReqPaymnt($job_id,$PO){
 
 
-
-$res = $this->model->Query_value('Purchase_Header_Exp A',
-                               'SUM(B.NetLine) AS Total',
-                               'INNER JOIN Purchase_Detail_Exp  B ON A.PurchaseID = B.PurchaseID
-                                WHERE A.ID_compania="'.$this->model->id_compania.'" AND  
-                                      B.ID_compania="'.$this->model->id_compania.'"  AND
-                                      A.ApplyToPurOrderNumber = "'.$PO.'" AND 
-                                      A.ApplyToPurchaseOrder= "1" AND 
-                                      B.JobID="'.$job_id.'" group by A.PurchaseID;');
+$res = $this->model->Query_value( 'Purchase_Header_Exp A',
+                                  'SUM(B.NetLine) AS Total',
+                                  'INNER JOIN Purchase_Detail_Exp  B ON A.PurchaseID = B.PurchaseID
+                                    WHERE A.ID_compania="'.$this->model->id_compania.'" AND  
+                                          B.ID_compania="'.$this->model->id_compania.'"  AND
+                                          A.ApplyToPurOrderNumber = "'.$PO.'" AND 
+                                          A.ApplyToPurchaseOrder= "1" AND 
+                                          B.JobID="'.$job_id.'" group by A.PurchaseID;');
 return $res;
 }
   
+public function get_InvReqReten($job_id,$PO){
+  
+  $cta_reten = $this->model->getGLReten();
+  
+  $res = $this->model->Query_value( 'Purchase_Header_Exp A',
+                                    'SUM(B.NetLine) AS Total',
+                                    'INNER JOIN Purchase_Detail_Exp  B ON A.PurchaseID = B.PurchaseID
+                                      WHERE A.ID_compania="'.$this->model->id_compania.'" AND  
+                                            B.ID_compania="'.$this->model->id_compania.'"  AND
+                                            A.ApplyToPurOrderNumber = "'.$PO.'" AND 
+                                            A.ApplyToPurchaseOrder= "1" AND 
+                                            B.GL_AccountID ="'.$cta_reten.'" AND 
+                                            B.JobID="'.$job_id.'" group by A.PurchaseID;');
+  return $res;
+}
+    
   
 public function get_OcReqPaymnt($sort,$limit,$clause){
       
@@ -1904,10 +1920,9 @@ public function get_OcReqPaymnt($sort,$limit,$clause){
 public function get_ReqPayed($job_id,$PO){
 
 
-
 $res = $this->model->Query_value('Purchase_Header_Exp A',
                                'SUM(B.NetLine) AS Total',
-                               'INNER JOIN Vendor_Payment_Detail_Exp  B ON A.PurchaseNumber = B.ApplyToInvNumber
+                               'INNER JOIN Vendor_Payment_Detail_Exp B ON A.PurchaseNumber = B.ApplyToInvNumber
                                 WHERE A.ID_compania="'.$this->model->id_compania.'" AND  
                                       B.ID_compania="'.$this->model->id_compania.'"  AND
                                       A.ApplyToPurOrderNumber = "'.$PO.'" AND 
@@ -1917,6 +1932,16 @@ $res = $this->model->Query_value('Purchase_Header_Exp A',
 return $res;
 }
 
+public function get_AdvancedPay($job_id){
+  
+  
+  $res = $this->model->Query_value('Vendor_Payment_Detail_Exp',
+                                    'SUM(NetLine) AS Total',
+                                    'WHERE ID_compania="'.$this->model->id_compania.'"  AND
+                                           ApplyTo = "0" AND
+                                           JobID="'.$job_id.'" group by JobID;');
+  return $res;
+  }
 
 public function set_rep_header($JobID='',$nota=''){
 
@@ -2017,9 +2042,10 @@ public function PmntReq(){
   
   $this->model->verify_session();
 
+
 $data = json_decode($_REQUEST['Data']);
 
- list($job_id,$dateFrom,$dateTo) = explode('@',$data[0]);
+ list($none,$job_id,$dateFrom,$dateTo) = explode('@',$data[0]);
   
  
   $id_compania = $this->model->id_compania ;
@@ -2064,23 +2090,22 @@ $data = json_decode($_REQUEST['Data']);
 
 
                 //Totalizing payed amounts for each PO
-
                 $total_pur = $this->get_InvReqPaymnt($job_id,$value->{'PurchaseOrderNumber'});
 
-                if(!$total_pur){ $total_pur=number_format(0,2); } else { $total_pur=number_format($total_pur,2);}
                 
+                $total_reten =$this->get_InvReqReten($job_id,$value->{'PurchaseOrderNumber'});
+
 
                 //Totalizing requested amount for each PO
-
-
                 $total_pay = $this->get_ReqPayed($job_id,$value->{'PurchaseOrderNumber'});
 
-                if(!$total_pay){ $total_pay=number_format(0,2); } else { $total_pay=number_format($total_pay,2);}
+                
+                
 
-                $balance_due = number_format($value->{'Total'},2) - number_format($total_pur,2);
+                $balance_due = $total_pur - $total_pay ;                
+
 
                 //Bulding Data table
-
                 $y = "'".$i."'";
 
                 $table .= ' <tr>
@@ -2089,17 +2114,19 @@ $data = json_decode($_REQUEST['Data']);
                               <td  >'.$date.'</td>
                               <td  >'.$value->{'VendorName'}.'</td>
                               <td  class="numb" name="totalPO'.$i.'" id="totalPO'.$i.'">'.number_format($value->{'Total'},2).'</td>
-                              <td  class="numb" name="totalPur'.$i.'" id="totalPur'.$i.'">'.$total_pur.'</td>
-                              <td  class="numb">'.$total_pay.'</td>
-                              <td >'.number_format($balance_due,2).'</td>
-                              <td ></td>
-                              <td ></td>
+                              <td  class="numb" name="totalPur'.$i.'" id="totalPur'.$i.'">'.number_format($total_pur,2).'</td>
+                              <td  class="numb">'.number_format($total_pay,2).'</td>
+                              <td  class="numb">'.number_format($balance_due,2).'</td>
+                              <td  class="numb" >'.number_format($total_reten,2).'</td>
+                              <td  class="numb"></td>
                               <td ><input class="inputPage" type="numb" oninput="check_pay('.$y.');" id="total'.$i.'" name="total'.$i.'" readonly/></td>
                               </tr>';
 
                           $i++;
 
-            }
+            } 
+
+            $total_advPay = $this->get_AdvancedPay($job_id);
         
 echo $table;
 }

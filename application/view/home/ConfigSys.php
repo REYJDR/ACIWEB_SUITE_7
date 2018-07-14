@@ -354,6 +354,7 @@ $cta_gl_tax = $_POST['cta_gl_tax'];
 $cta_gl_acct = $_POST['Glacct'];
 $cta_gl_aract = $_POST['ARACNT'];
 $cta_gl_devnc = $_POST['ctadev'];
+$cta_gl_reten = $_POST['GL_RETEN'];
 
 $chk_cur_val =  $this->model->Query_value('CTA_GL_CONF','ID','where ID_compania="'.$this->model->id_compania .'"');
 
@@ -363,7 +364,8 @@ $values =  array( 'ID_compania' => $this->model->id_compania ,
 	              'CTA_TAX' => $cta_gl_tax,
 	              'GLACCT' => $cta_gl_acct,
 	              'CTA_CXC' => $cta_gl_aract,
-	              'CTA_DEV' => $cta_gl_devnc
+				  'CTA_DEV' => $cta_gl_devnc,
+				  'GL_RETEN' => $cta_gl_reten
 	              );
 
 if($chk_cur_val!=''){
@@ -450,6 +452,8 @@ $CTA_TAX = $this->model->Query_value('CTA_GL_CONF','CTA_TAX','WHERE ID_compania=
 $CTA_GLACCT = $this->model->Query_value('CTA_GL_CONF','GLACCT','WHERE ID_compania="'.$this->model->id_compania.'"');
 $CTA_ARACNT = $this->model->Query_value('CTA_GL_CONF','CTA_CXC','WHERE ID_compania="'.$this->model->id_compania.'"');
 $CTA_DEV = $this->model->Query_value('CTA_GL_CONF','CTA_DEV','WHERE ID_compania="'.$this->model->id_compania.'"');
+$GL_RETEN = $this->model->Query_value('CTA_GL_CONF','GL_RETEN','WHERE ID_compania="'.$this->model->id_compania.'"');
+
 //RECUPERO INFO DE MODULOS
 $SQL = 'SELECT * FROM MOD_MENU_CONF';
 

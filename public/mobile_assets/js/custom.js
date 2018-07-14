@@ -82,6 +82,8 @@ function set_listprice(ID){
 
 function addItemList(){
 
+
+
   URL = document.getElementById('URL').value;
   link = URL+"index.php";
 
@@ -214,6 +216,10 @@ function findprice(itemId, listID, id_price_field){
 
 function addItem(){
 
+//////////////////////////////
+validacion();
+if(CHK_VALIDATION == true){ CHK_VALIDATION = false;  return;  }
+/////////////////////////////
 
   URL = document.getElementById('URL').value;
 
@@ -415,8 +421,17 @@ FaltaArray = [];
 function validacion(){
 
   CUSTOMER = document.getElementById('customer').value;
+  
   if (CUSTOMER == ''){
    MSG_ERROR('Se debe seleccionar un cliente',0);
+   CHK_VALIDATION = true;
+  }
+
+  TAX = document.getElementById('saletaxid').value;
+
+
+  if (TAX == ''){
+   MSG_ERROR('Se debe seleccionar el tipo de tax',0);
    CHK_VALIDATION = true;
   }
 
