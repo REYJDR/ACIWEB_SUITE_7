@@ -1831,20 +1831,6 @@ filter_reset_button_text: false}
                           $PO_NO = trim ($value->{'PurchaseOrderNumber'});
                           $PO_NO = "'".$PO_NO."'";
 
-                          //crear metodo para totalizar el pagado y el requerido por OC, luego el total sobre el proyecto completo.
-                          //Verificar si la REP va contener una o varias OC.
-                          //crear subtabla para mostrar detalle de OC.
-                          //crear boton de requesicion para crear la requisicion.
-                          //Traducir cabecera de la tabla. DONE
-                          //Adecuar tabla de DB a ultima version de sage connect.
-                          //Crear tablas de requisiciones de pago.
-
-                          //Totalizing payed amounts for each PO
-
-                          
-
-                          //Totalizing requested amount for each PO
-
 
 
                            $table .= ' <tr>
@@ -2028,12 +2014,14 @@ echo $res;
 }
 
 public function PmntReq(){
+  
+  $this->model->verify_session();
 
 $data = json_decode($_REQUEST['Data']);
 
  list($job_id,$dateFrom,$dateTo) = explode('@',$data[0]);
   
-  $this->model->verify_session();
+ 
   $id_compania = $this->model->id_compania ;
 
   $sql = '';
