@@ -90,7 +90,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
  </fieldset>                     
 	<!--end Table-->
-  </form>
+  
 
 	  <div class="separador col-lg-12"></div>
 	  
@@ -125,7 +125,9 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
         </fieldset>
       </div>
       <!--end Cash Advance Table-->
+      </form>
 
+      
 			<!--fin contenido-->
 			<div class="separador col-lg-12"> </div>
       
