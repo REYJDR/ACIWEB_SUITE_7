@@ -61,7 +61,6 @@ $POreq_amt = 'Ing. Factura/Compras';
 $POpaid = 'Cheques/Pagos';
 $POdue = 'Balance Adeudado';
 $POret = 'Retenciones';
-$POadv = 'Cheques/Adelantos';
 $POreq = 'Req. de Pago';
 
 $BTN2 = 'Procesar';
@@ -122,6 +121,21 @@ $REP_detail_Tbl2Hdr2 = 'Proyecto';
 $REP_detail_Tbl2Hdr3 = 'Fase';
 $REP_detail_Tbl2Hdr4 = 'C. Costo';
 $REP_detail_Tbl2Hdr5 = 'Monto a Pagar';
+
+$REP_detail_Tbl3Hdr1 = 'ID Factura';
+$REP_detail_Tbl3Hdr2 = 'Proveedor';
+$REP_detail_Tbl3Hdr3 = 'Fecha';
+$REP_detail_Tbl3Hdr4 = 'Total Factura';
+
+$REP_detail_Tbl4Hdr1 = 'Id. Cheque';
+$REP_detail_Tbl4Hdr2 = 'Proveedor';
+$REP_detail_Tbl4Hdr3 = 'Fecha';
+$REP_detail_Tbl4Hdr4 = 'Memo';
+$REP_detail_Tbl4Hdr5 = 'Descripcion';
+$REP_detail_Tbl4Hdr6 = 'Total Cheque';
+
+$REP_TitleTbl3 = 'Facturas Relacionadas';
+$REP_TitleTbl4 = 'Cheques Adelantados'; 
 
 $REP_Modal_title = 'Razón de Cierre';
 $REP_Modal_reason = 'Indique la razón del cierre de la requisición';

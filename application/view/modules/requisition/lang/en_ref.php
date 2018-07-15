@@ -60,7 +60,6 @@ $POreq_amt = 'Amt. Requested';
 $POpaid = 'Total Paid';
 $POdue = 'Balance due';
 $POret = 'Total Retentions';
-$POadv = 'Cash Advance';
 $POreq = 'Related Req.';
 
 $BTN2 = 'Execute';
@@ -120,6 +119,21 @@ $REP_detail_Tbl2Hdr2 = 'Job';
 $REP_detail_Tbl2Hdr3 = 'Phase';
 $REP_detail_Tbl2Hdr4 = 'C. Cost';
 $REP_detail_Tbl2Hdr5 = 'Payed Amount';
+
+$REP_detail_Tbl3Hdr1 = 'Bill ID.';
+$REP_detail_Tbl3Hdr2 = 'Vendor';
+$REP_detail_Tbl3Hdr3 = 'Date';
+$REP_detail_Tbl3Hdr4 = 'Total';
+
+$REP_detail_Tbl4Hdr1 = 'Check Id.';
+$REP_detail_Tbl4Hdr2 = 'Vendor';
+$REP_detail_Tbl4Hdr3 = 'Date';
+$REP_detail_Tbl4Hdr4 = 'Memo';
+$REP_detail_Tbl4Hdr5 = 'Description';
+$REP_detail_Tbl4Hdr6 = 'Total';
+
+$REP_TitleTbl3 = 'Related Bills';
+$REP_TitleTbl4 = 'Cash Advance'; 
 
 $REP_Modal_title = 'Cancel Reason';
 $REP_Modal_reason = 'Reason for cancellation:';

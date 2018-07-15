@@ -81,7 +81,6 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
           <th width="10%"><?PHP echo $POpaid; ?></th>
           <th width="10%"><?PHP echo $POdue; ?></th>
           <th width="10%"><?PHP echo $POret; ?></th>
-          <th width="10%"><?PHP echo $POadv; ?></th>
           <th width="10%"><?PHP echo $POreq; ?></th>
         </tr>
       </thead>
@@ -102,10 +101,30 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
       <!--top Detail Table-->
       <div class="separador col-lg-12"></div>
-      <div class="col-lg-12" > 
+      <div class="col-lg-4" > 
         <div id="table2"></div>
       </div>
       <!--end Detail Table-->
+
+      <!--top Bill Table-->
+      <div class="separador col-lg-12"></div>
+      <div class="col-lg-6" > 
+        <fieldset>
+          <legend><?php echo $REP_TitleTbl3; ?></legend>
+        <div id="tableFact"></div>
+        </fieldset>
+      </div>
+      <!--end Bill Table-->
+
+      <!--top Cash Advance Table-->
+      <div class="separador col-lg-12"></div>
+      <div class="col-lg-6" >
+        <fieldset> 
+          <legend><?php echo $REP_TitleTbl4; ?></legend>
+        <div id="tableAdv"></div>
+        </fieldset>
+      </div>
+      <!--end Cash Advance Table-->
 
 			<!--fin contenido-->
 			<div class="separador col-lg-12"> </div>

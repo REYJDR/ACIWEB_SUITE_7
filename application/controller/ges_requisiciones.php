@@ -2118,7 +2118,6 @@ $data = json_decode($_REQUEST['Data']);
                               <td  class="numb">'.number_format($total_pay,2).'</td>
                               <td  class="numb">'.number_format($balance_due,2).'</td>
                               <td  class="numb" >'.number_format($total_reten,2).'</td>
-                              <td  class="numb"></td>
                               <td ><input class="inputPage" type="numb" oninput="check_pay('.$y.');" id="total'.$i.'" name="total'.$i.'" readonly/></td>
                               </tr>';
 
@@ -2419,6 +2418,112 @@ $clause = ' NO_REP = "'.$id.'"
 
 
 $this->model->update($table,$columns,$clause);
+
+}
+
+
+public function get_bill_notRelated($JobID){
+
+  $this->model->verify_session();
+
+  require_once APP.'view/modules/requisition/lang/'.$this->model->lang.'_ref.php';
+
+     $query ='SELECT 
+              A.PurchaseNumber,
+              A.VendorName,
+              A.Date,
+              SUM(B.NetLine) AS Total
+              FROM Purchase_Header_Exp A
+              INNER JOIN Purchase_Detail_Exp B ON A.PurchaseID = B.PurchaseID
+              WHERE B.JobID = "'.$JobID.'" AND ApplyToPurchaseOrder = 0 AND
+              A.ID_compania ="'.$this->model->id_compania.'" AND B.ID_compania ="'.$this->model->id_compania.'"
+              group by A.PurchaseID 
+              Order by A.Date DESC limit 100;';
+
+    $bills = $this->model->Query($query);
+
+echo '<table id="table_fact" class="display nowrap table table-striped table-bordered" cellspacing="0" >
+      <thead>
+        <tr>
+          <th width="5%">'.$REP_detail_Tbl3Hdr1.'</th>
+          <th width="10%">'.$REP_detail_Tbl3Hdr2.'</th>
+          <th width="5%">'.$REP_detail_Tbl3Hdr3.'</th>
+          <th width="5%">'.$REP_detail_Tbl3Hdr4.'</th>
+        </tr>
+      </thead><tbody>';   
+
+
+foreach ($bills as $datos) {
+
+$datos = json_decode($datos);
+
+
+  echo  "<tr >
+            <td>".$datos->{'PurchaseNumber'}."</td>
+            <td>".$datos->{'VendorName'}."</td>
+            <td>".$datos->{'Date'}."</td>
+            <td class='numb'>".number_format($datos->{'Total'},2,'.',',')."</td>
+        </tr>";
+
+  } 
+
+  echo '</tbody></table>';
+
+}
+
+
+public function get_cash_adv($JobID){
+
+  $this->model->verify_session();
+
+  require_once APP.'view/modules/requisition/lang/'.$this->model->lang.'_ref.php';
+
+     $query ='SELECT 
+              A.CheckNumber,
+              A.VendorName,
+              A.Date,
+              A.Memo,
+              B.Description,
+              SUM(B.NetLine) AS Total
+              FROM Vendor_Payment_Header_Exp A
+              INNER JOIN Vendor_Payment_Detail_Exp B ON A.TransactionID = B.TransactionID
+              WHERE B.JobID = "'.$JobID.'" AND ApplyTo = 0 AND 
+              A.ID_compania ="'.$this->model->id_compania.'" AND B.ID_compania ="'.$this->model->id_compania.'"
+              group by A.TransactionID 
+              Order by A.Date DESC limit 100;';
+
+    $cash = $this->model->Query($query);
+
+    echo '<table id="table_cash" class="display nowrap table table-striped table-bordered" cellspacing="0" >
+          <thead>
+            <tr>
+              <th width="5%">'.$REP_detail_Tbl4Hdr1.'</th>
+              <th width="10%">'.$REP_detail_Tbl4Hdr2.'</th>
+              <th width="5%">'.$REP_detail_Tbl4Hdr3.'</th>
+              <th width="5%">'.$REP_detail_Tbl4Hdr4.'</th>
+              <th width="10%">'.$REP_detail_Tbl4Hdr5.'</th>
+              <th width="5%">'.$REP_detail_Tbl4Hdr6.'</th>
+            </tr>
+          </thead><tbody>';   
+
+
+foreach ($cash as $datos) {
+
+  $datos = json_decode($datos);
+
+
+    echo  "<tr >
+              <td>".$datos->{'CheckNumber'}."</td>
+              <td>".$datos->{'VendorName'}."</td>
+              <td>".$datos->{'Date'}."</td>
+              <td>".$datos->{'Memo'}."</td>
+              <td>".$datos->{'Description'}."</td>
+              <td class='numb'>".number_format($datos->{'Total'},2,'.',',')."</td>
+          </tr>";
+
+  } 
+
+  echo '</tbody></table>';
 
 }
 

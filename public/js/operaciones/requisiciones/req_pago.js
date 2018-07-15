@@ -246,11 +246,37 @@ function searchReq(){
           
         }else {
           $('#resTable').html(res);  
+
+          $.ajax({
+                type: "GET",
+                url: link,
+                data: {url: 'ges_requisiciones/get_bill_notRelated/'+JOBID},
+                success: function(res){
+
+                $('#tableFact').html(res);  
+                          
+            }
+          });
+
+          $.ajax({
+                type: "GET",
+                url: link,
+                data: {url: 'ges_requisiciones/get_cash_adv/'+JOBID},
+                success: function(res){
+
+                $('#tableAdv').html(res);  
+                          
+            }
+          });
+
         }
                     
-
     }
   });
+
+
+    
+
   }
 }
 
