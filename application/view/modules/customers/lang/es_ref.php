@@ -17,4 +17,14 @@ $InputPL_5 = 'Archivo de carga';
 $Advice1 = 'El archivo debe ser en formato (.xls)';
 //END prices list
 
+//INI Customer
+$TitleCus     = 'Customers';
+
+$InputCust_1 = 'Nombre Cliente';
+$InputCust_2 = 'Descripción';
+
+
+$BTN_Process = 'Procesar';
+//END Customer
+
 ?>
