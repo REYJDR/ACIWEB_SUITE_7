@@ -18,12 +18,36 @@ $Advice1 = 'El archivo debe ser en formato (.xls)';
 //END prices list
 
 //INI Customer
-$TitleCus     = 'Clientes';
+$TitleCus     = 'Customers';
 
-$InputCust_1 = 'Cust. Name';
-$InputCust_2 = 'Description';
+$InputCust_1 = 'Cust. ID';
+$InputCust_2 = 'Customer Name';
+$InputCust_3 = 'Telephone';
+$InputCust_4 = 'Contact';
+$InputCust_5 = 'Country';
+$InputCust_6 = 'State';
+$InputCust_7 = 'City';
+$InputCust_8 = 'Zip';
+$InputCust_9 = 'Email';
+$InputCust_10 = 'Price Level';
+$InputCust_11 = 'Balance Due';
+$InputCust_12 = 'Credit Limit';
+$InputCust_13 = 'Account Id.';
+$InputCust_14 = 'Sales Rep.';
+$InputCust_15 = 'Billing Address';
+$InputCust_16 = 'Shipping Address';
 
-$BTN_Process = 'Procesar';
+$TableCust_th1 = 'Cust. ID';
+$TableCust_th2 = 'Customer Name';
+$TableCust_th3 = 'Telephone';
+$TableCust_th4 = 'Contact';
+$TableCust_th5 = 'Country';
+$TableCust_th6 = 'Email';
+
+$BTN_add = 'Add';
+$BTN_del = 'Delete';
+$BTN_mod = 'Modify';
+
 //END Customer
 
 ?>

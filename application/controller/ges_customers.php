@@ -123,6 +123,20 @@ public function CheckError(){
 
 }
 
+public function getCustomerList($sort,$limit,$clause){
+
+    $query ='SELECT * FROM Customers_Exp '.$clause.' '.$sort.' limit '.$limit.';';
+
+
+    $res = $this->Query($query);
+
+
+    return $res;
+
+}
+
+
+//END
 }
 
 ?>

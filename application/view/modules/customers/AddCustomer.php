@@ -22,29 +22,29 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 			<!--ini contenido-->
 			<div  class="col-lg-8">
 			<fieldset >
-		
+			<input type="hidden"  class="inputPage" id="control" name="control" value='1'/>
 			<div class="separador col-lg-12"></div> <!--SEPERADOR-->
 
-				<!--INPUT NUEVO PRICE ID-->
-				<div  class="col-lg-8" id="nvo_lp">
+				<!--INPUT CUSTOMER-->
+				<div  class="col-lg-12" id="nvo_lp">
 				<fieldset class="fieldsetform">
 				<table class='table_form'>
 					<tbody>
 						<tr>
 							<th><strong><?PHP echo $InputCust_1; ?></strong></th>
-							<td><input type="text"  class="inputPage" id="cus_name" name="cus_name" /></td>		
+							<td><input type="text"  class="inputPage" id="cus_id" name="cus_id" required /></td>		
 							<th><strong><?PHP echo $InputCust_2; ?></strong></th>
-							<td><input type="text"  class="inputPage" id="cus_desc" name="cus_desc" /></td>				
+							<td><input type="text"  class="inputPage" id="cus_name" name="cus_name" required /></td>				
 						</tr>
 						<tr>
 							<th><strong><?PHP echo $InputCust_3; ?></strong></th>
-							<td><input type="text"  class="inputPage" id="cus_cel" name="cus_cel" /></td>		
+							<td><input type="text"  class="inputPage" id="cus_cel" name="cus_cel" required /></td>		
 							<th><strong><?PHP echo $InputCust_4; ?></strong></th>
-							<td><input type="text"  class="inputPage" id="cus_contact" name="cus_contact" /></td>				
+							<td><input type="text"  class="inputPage" id="cus_contact" name="cus_contact" required /></td>				
 						</tr>
 						<tr>
 							<th><strong><?PHP echo $InputCust_5; ?></strong></th>
-							<td><input type="text"  class="inputPage" id="cus_country" name="cus_country" /></td>		
+							<td><input type="text"  class="inputPage" id="cus_country" name="cus_country" required /></td>		
 							<th><strong><?PHP echo $InputCust_6; ?></strong></th>
 							<td><input type="text"  class="inputPage" id="cus_state" name="cus_state" /></td>				
 						</tr>
@@ -56,33 +56,33 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						</tr>
 						<tr>
 							<th><strong><?PHP echo $InputCust_9; ?></strong></th>
-							<td><input type="text"  class="inputPage" id="cus_email" name="cus_email" /></td>		
+							<td><input type="email"  class="inputPage" id="cus_email" name="cus_email" required /></td>		
 							<th><strong><?PHP echo $InputCust_10; ?></strong></th>
 							<td><input type="text"  class="inputPage" id="cus_pl" name="cus_pl" /></td>				
 						</tr>
 						<tr>
 							<th><strong><?PHP echo $InputCust_11; ?></strong></th>
-							<td><input type="text"  class="inputPage" id="cus_bal" name="cus_bal" /></td>		
+							<td><input type="number" class="form-control numb" id="cus_bal" name="cus_bal" /></td>		
 							<th><strong><?PHP echo $InputCust_12; ?></strong></th>
-							<td><input type="text"  class="inputPage" id="cus_creditlimit" name="cus_creditlimit" /></td>				
+							<td><input type="number" class="form-control numb" id="cus_creditlimit" name="cus_creditlimit" /></td>				
 						</tr>
 						<tr>
-							<th><strong><?PHP echo $InputCust_12; ?></strong></th>
-							<td><input type="text"  class="inputPage" id="cus_salesId" name="cus_salesId" /></td>		
 							<th><strong><?PHP echo $InputCust_13; ?></strong></th>
-							<td><input type="text"  class="inputPage" id="cus_SalesName" name="cus_SalesName" /></td>				
+							<td><input type="text"  class="inputPage" id="cus_salesId" name="cus_salesId" required /></td>		
+							<th><strong><?PHP echo $InputCust_14; ?></strong></th>
+							<td><input type="text"  class="inputPage" id="cus_SalesName" name="cus_SalesName" required /></td>				
 						</tr>
 						<tr>
-							<th><strong><?PHP echo $InputCust_14; ?></strong></th>
-							<td><input type="text"  class="inputPage" id="cus_addres1" name="cus_addres1" /></td>		
 							<th><strong><?PHP echo $InputCust_15; ?></strong></th>
+							<td><input type="text"  class="inputPage" id="cus_addres1" name="cus_addres1" required /></td>		
+							<th><strong><?PHP echo $InputCust_16; ?></strong></th>
 							<td><input type="text"  class="inputPage" id="cus_addres2" name="cus_addres2" /></td>				
 						</tr>
 					</tbody>
 				</table>
 				</fieldset>
 				</div>
-				<!--INPUT NUEVO PRICE ID-->
+				<!--INPUT CUSTOMER-->
 
 				
 			    <div class="separador col-lg-12"></div> <!--SEPERADOR-->
@@ -92,7 +92,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 				<div class='col-lg-2'></div>
 				<div class='col-lg-2'>
 					<div class="container-login100-form-btn">
-					<input type="submit"  value="Cargar"  class="accept-form-btn" name="submit"  value="<?PHP echo $BTN_add; ?>" />			
+					<input type="submit" class="accept-form-btn" name="submit"  value="<?PHP echo $BTN_add; ?>" />			
 					</div>
 				</div>
 				<div class="separador col-lg-12"> </div>
@@ -109,46 +109,95 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 			<div class='col-lg-9'>
 			<fieldset class="fieldsetform">
 				<!--Table-->
-				<table id="table_PriceList" class="table table-striped responsive table-bordered" cellspacing="0" >
+				<table id="table_customer" class="table table-striped responsive table-bordered" cellspacing="0" >
 				<thead>
 				<tr>
-					<th width="20%">Id. Lista de Precios</th>
-					<th width="10%">Fecha</th>
-					<th width="30%">Descripcion</th> 
-					<th width="5%"></th>
+					<th width="5%"><?PHP echo $TableCust_th1; ?></th>
+					<th width="10%"><?PHP echo $TableCust_th2; ?></th>
+					<th width="20%"><?PHP echo $TableCust_th3; ?></th> 
+					<th width="5%"><?PHP echo $TableCust_th4; ?></th>
+					<th width="5%"><?PHP echo $TableCust_th5; ?></th>
+					<th width="5%"><?PHP echo $TableCust_th6; ?></th>
+					<th width="20%"></th>
 				</tr>
 				</thead>
 			<tbody>
 
 			<?php
-				$clause.= 'WHERE PRI_LIST_ID.ID_compania="'.$this->model->id_compania.'" '; 
+				
+				//ADD CUSTOMER
+
+				if ($isset($_POST['submit'])) {
+					
+					
+					/*if ($_POST['submit'] == '') {
+						# code...
+					}elseif ($_POST['submit'] == '') {
+						# code...
+					}elseif ($_POST['submit'] == '') {
+						# code...
+					}elseif ($_POST['submit'] == '') {
+						# code...
+					}elseif ($_POST['submit'] == '') {
+						# code...
+					}elseif ($_POST['submit'] == '') {
+						# code...
+					}elseif ($_POST['submit'] == '') {
+						# code...
+					}elseif ($_POST['submit'] == '') {
+						# code...
+					}*/
+
+						
+						$Values = array( 
+									    'CustomerID' => $_POST['cus_id'],
+									    'Customer_Bill_Name'  => $_POST['cus_name'],
+									    'Phone_Number'=> $_POST['cus_cel'],
+									    'Contact'  => $_POST['cus_contact'],
+									    'Country'=> $_POST['cus_country'],
+									    'State'=> $_POST['cus_state'],
+									    'City'=> $_POST['submit'],
+									    'Zip'=> $_POST['submit'],
+									    'Email'=> $_POST['submit'],
+									    'PriceLevel'=> $_POST['submit'],
+									    'Balance'=> $_POST['submit'],
+									    'CreditLimit'=> $_POST['submit'],
+									    'SalesRepID'=> $_POST['submit'],
+									    'SalesRepName'=> $_POST['submit'],
+									    'AddressLine1'=> $_POST['submit'],
+									    'AddressLine2'=> $_POST['submit'],
+									    'IsActive'=> 1,
+									    'ID_compania' => $this->model->id_compania);
+
+				}
 
 
-				$PL = $this->model->get_Price_list('asc','10000',$clause);
+				$clause.= 'WHERE ID_compania="'.$this->model->id_compania.'" '; 
 
-				foreach ($PL as $value) {
+
+				$cus = $this->getCustomerList('asc','10000',$clause);
+
+				foreach ($cus as $value) {
 
 				$value = json_decode($value);
 
-				$date1 = strtotime($value->{'LAST_CHANGE'});
-				//$date1 = $date;
-				$date = date('m/d/Y',$date1);
-				//$date1 = date('mdY',$date1);
+				$cus_ID = $value->{'ID'};
+				$cus_ID = "'".$cus_ID."'";
 
-				$PL_ID = trim ($value->{'IDPRICE'});
-				$PL_ID = "'".$PL_ID."'";
-				$PL_Desc = "'".$value->{'DESCRIPTION'}."'";
-				$date1 = "'".$date1."'";
 
 				$table .= ' <tr>
-					<td><a href="javascript:void(0)" onclick="get_PL('.$PL_ID.')"><strong>'.$value->{'IDPRICE'}.'</strong></a></td>
-					<td class="numb">'.$date.'</td>
-					<td>'.$value->{'DESCRIPTION'}.'</td>
-					<td><a  href="javascript:void(0)" onclick="del_PL('.$PL_ID.')"><input type="button" id="modal_button" name="modal_button"  class="btn btn-danger btn-sm btn-icon icon-left" value="Eliminar" /></td>
-					</tr>';
+								<td><a href="javascript:void(0)" onclick="get_cus('.$cus_ID.')"><strong>'.$value->{'CustomerID'}.'</strong></a></td>
+								<td>'.$value->{'Customer_Bill_Name'}.'</td>
+								<td>'.$value->{'Phone_Number'}.'</td>
+								<td>'.$value->{'Contact'}.'</td>
+								<td>'.$value->{'Country'}.'</td>
+								<td>'.$value->{'Email'}.'</td>
+								<td><a  href="javascript:void(0)" onclick="del_cus('.$cus_ID.')"><input type="button" id="modal_del" name="modal_del" class="btn btn-danger btn-sm btn-icon icon-left" value="'.$BTN_del.'" /></a><a  href="javascript:void(0)" onclick="set_cus_info('.$cus_ID.')"><input id="modal_del" name="modal_del" data-toggle="modal" data-target="#cust_mod" type="button" class="btn btn-danger btn-sm btn-icon icon-left"  value="'.$BTN_mod.'" /></a></td>
+							</tr>';
 
 				}
-			echo $table;
+			
+				echo $table;
 			?>
             </tbody></table>
 
@@ -171,7 +220,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 	</div>
 
 <!-- Modal : VENTANA EMERGENTE QUE PERMITE MODIFICAR UN ITEM ESPECIFICO-->
-<div id="myModal" class="modal fade" role="dialog">
+<div id="cust_mod" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
 
     <!-- Modal content-->
