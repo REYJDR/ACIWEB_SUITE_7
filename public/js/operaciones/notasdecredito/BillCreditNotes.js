@@ -150,6 +150,7 @@ function set_listprice(ID){
     
        });
 
+      }
 
 
 function SetDesc(itemId, line){
