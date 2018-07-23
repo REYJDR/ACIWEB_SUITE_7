@@ -155,7 +155,7 @@ function set_listprice(ID){
 
 function SetDesc(itemId, line){
 
-var link = "bridge_query/get_ProductsInfo/";
+var url = "bridge_query/get_ProductsInfo/";
 
   var id_desc_field = 'desc'+line;
   var id_unit_field = 'unit'+line;
@@ -171,7 +171,7 @@ $.ajax({
 
       type: "GET",
       url: link,
-      data: {url: datos, item: itemId},
+      data: {url: url, item: itemId},
       success: function(res){
 
       console.log(res);
