@@ -1433,6 +1433,6 @@ public function send_mail($address,$subject,$title,$body){
     
 }
 
-
+//END
 }
 ?>

@@ -19,6 +19,8 @@ $Advice1 = 'El archivo debe ser en formato (.xls)';
 
 //INI Customer
 $TitleCus     = 'Customers';
+$Cus_CHKBOX_1 = 'Create Customer';
+$Cus_CHKBOX_2 = 'Upload Customer List';
 
 $InputCust_1 = 'Cust. ID';
 $InputCust_2 = 'Customer Name';
@@ -36,6 +38,9 @@ $InputCust_13 = 'Account Id.';
 $InputCust_14 = 'Sales Rep.';
 $InputCust_15 = 'Billing Address';
 $InputCust_16 = 'Shipping Address';
+$InputCust_17 = 'Upload File';
+$InputCust_18 = 'Select a customer list file to upload';
+
 
 $TableCust_th1 = 'Cust. ID';
 $TableCust_th2 = 'Customer Name';
@@ -47,6 +52,30 @@ $TableCust_th6 = 'Email';
 $BTN_add = 'Add';
 $BTN_del = 'Delete';
 $BTN_mod = 'Modify';
+$BTN_close = 'Close';
+
+//modal Modify
+
+$MODAL_head = 'Modify Customer';
+
+$ModalInput_1 = 'Cust. ID';
+$ModalInput_2 = 'Customer Name';
+$ModalInput_3 = 'Telephone';
+$ModalInput_4 = 'Contact';
+$ModalInput_5 = 'Country';
+$ModalInput_6 = 'State';
+$ModalInput_7 = 'City';
+$ModalInput_8 = 'Zip';
+$ModalInput_9 = 'Email';
+$ModalInput_10 = 'Price Level';
+$ModalInput_11 = 'Balance Due';
+$ModalInput_12 = 'Credit Limit';
+$ModalInput_13 = 'Account Id.';
+$ModalInput_14 = 'Sales Rep.';
+$ModalInput_15 = 'Billing Address';
+$ModalInput_16 = 'Shipping Address';
+
+
 
 //END Customer
 

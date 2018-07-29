@@ -125,7 +125,7 @@ public function CheckError(){
 
 public function getCustomerList($sort,$limit,$clause){
 
-    $query ='SELECT * FROM Customers_Exp '.$clause.' '.$sort.' limit '.$limit.';';
+    $query ='SELECT * FROM Customers_Exp WHERE  '.$sort.' limit '.$limit.';';
 
 
     $res = $this->Query($query);
@@ -135,6 +135,53 @@ public function getCustomerList($sort,$limit,$clause){
 
 }
 
+
+public function mod_cus(){
+
+$this->model->verify_session();
+
+
+$data = json_decode($_REQUEST['Data']);
+
+  list($none,$cus_ID,$cus_name,$cus_tlf,$cus_contact,$cus_country,$cus_state,$cus_city,$cus_zip,$cus_email,$cus_pl,$cus_balance,$cus_CL,$cus_acct,$cus_salesRep,$cus_BA,$cus_SA) = explode('@',$data[0]);
+
+
+  $Values = array(
+                      'Customer_Bill_Name'  => $cus_name,
+                      'Phone_Number'=> $cus_tlf,
+                      'Contact'  => $cus_country,
+                      'Country'=> $cus_contact,
+                      'State'=> $cus_state,
+                      'City'=> $cus_city,
+                      'Zip'=> $cus_zip,
+                      'Email'=> $cus_email,
+                      'PriceLevel'=> $cus_pl,
+                      'Balance'=> $cus_balance,
+                      'CreditLimit'=> $cus_CL,
+                      'SalesRepID'=> $cus_acct,
+                      'SalesRepName'=> $cus_salesRep,
+                      'AddressLine1'=> $cus_BA,
+                      'AddressLine2'=> $cus_SA);
+
+  $clause = 'WHERE CustomerID ="'.$cus_ID.'" AND  ID_compania="'.$this->model->id_compania.'";';
+
+  $update = $this->model->update('Customers_Exp',$Values,$clause);
+
+  echo '1';
+}
+
+
+public function del_cus($cus_ID){
+
+  $this->model->verify_session();
+
+  $clause = 'WHERE CustomerID="'.$cus_ID.'" AND  ID_compania="'.$this->model->id_compania.'";';
+
+  $this->model->delete('Customers_Exp',$clause);
+
+  echo '1';
+
+}
 
 //END
 }
