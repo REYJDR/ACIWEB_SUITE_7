@@ -216,7 +216,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 									    'AddressLine2'=> $_POST['cus_addres2'],
 									    'IsActive'=> 1,
 									    'ID_compania' => $this->model->id_compania);
-						
+
 
 						$Valid = $this->model->Query_value('Customers_Exp','CustomerID','where ID_compania="'.$this->model->id_compania.'" AND CustomerID ="'.$_POST['cus_id'].'" ORDER BY CustomerID DESC LIMIT 1');
 
@@ -276,7 +276,11 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 				$cus_SA = "'".$value->{'AddressLine2'}."'";
 
 
-
+				/*
+				Agregar el activate/deactivate
+				crear tabla de detalle
+				mapear en el menu
+				*/
 				$table .= ' <tr>
 								<td><a href="javascript:void(0)" onclick="get_cus('.$cus_secID.')"><strong>'.$value->{'CustomerID'}.'</strong></a></td>
 								<td>'.$value->{'Customer_Bill_Name'}.'</td>

@@ -64,6 +64,30 @@ $this->cus_name = $customer_name;
 	
 }
 
+//******************************************************************************
+//Pagina que mostrara los precios de un cliente especifico y permitira modificar y anadirlos.
+
+
+public function AddCustomer(){
+
+ $res = $this->model->verify_session();
+
+        if($res=='0'){
+        
+
+            // load views
+            require APP . 'view/_templates/header.php';
+            require APP . 'view/_templates/panel.php';
+            require APP . 'view/modules/customers/AddCustomer.php';
+            require APP . 'view/_templates/footer.php';
+
+
+        }
+          
+
+
+  
+}
 
 public function del_PL_detail($id_PL){
   

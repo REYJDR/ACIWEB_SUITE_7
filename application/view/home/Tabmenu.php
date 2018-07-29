@@ -36,6 +36,11 @@
             <?php echo $SUBMENU_cust1; ?>
             </button>
         </div>
+        <div class='col-lg-3'>
+            <button  onclick="window.location='<?PHP ECHO URL; ?>index.php?url=ges_customers/AddCustomer'" class="dashBottom" >
+            <?php echo $SUBMENU_cust2; ?>
+            </button>
+        </div>
     <?php } ?>
     <!--END MENU CUSTOMERS-->
 

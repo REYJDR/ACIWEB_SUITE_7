@@ -42,6 +42,7 @@ $SUBMENU_rep7 = 'Requisiciones de Pagos';
 $SUBMENU_rep6 = 'Otros';
 
 $SUBMENU_cust1 = 'Lista de precios';
+$SUBMENU_cust2 = 'Manage Customers';
 //END MENU
 
 //INI MENU CONFIG
