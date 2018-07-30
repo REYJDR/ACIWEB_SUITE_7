@@ -93,7 +93,7 @@ while (i <= theTbl.rows.length-1){
 						         "<td class='numb' contenteditable onfocusout='calculate("+n+");' id='desp"+n+"'></td>"+
 						         "<td class='numb'  id='unitprice"+n+"'>"+price +"</td>"+
 						         "<td class='numb'  id='total"+n+"'></td>"+
-						         "<td class='numb' ><i onclick='del_tr(this)' style='color:red;' class='fa fa- fa-trash-o' ></i></td>"+
+						         "<td class='numb' ><i onclick='del_tr(this)' style='color:red;' class='fas fa-trash' ></i></td>"+
 						     "</tr>";
                     }
 
