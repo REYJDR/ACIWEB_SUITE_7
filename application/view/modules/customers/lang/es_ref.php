@@ -54,6 +54,7 @@ $BTN_add = 'Crear';
 $BTN_del = 'Eliminar';
 $BTN_mod = 'Modificar';
 $BTN_close = 'Cerrar';
+$DIV_close = 'Cerrar';
 
 	//modal Modify
 
@@ -76,6 +77,26 @@ $ModalInput_14 = 'Rep. Venta';
 $ModalInput_15 = 'Direccion Fiscal';
 $ModalInput_16 = 'Direccion Fisica';
 
+	//customer detail
+$TableDetail_title = 'Detalle del Cliente';
+
+$TableDet_th1 = 'Cus. ID';
+$TableDet_th2 = 'Nombre de Cliente';
+$TableDet_th3 = 'Telefono';
+$TableDet_th4 = 'Contacto';
+$TableDet_th5 = 'Pais';
+$TableDet_th6 = 'Estado';
+$TableDet_th7 = 'Ciudad';
+$TableDet_th8 = 'Zip';
+$TableDet_th9 = 'Correo';
+$TableDet_th10 = 'Nivel de Precio';
+$TableDet_th11 = 'Balance';
+$TableDet_th12 = 'Limite de Credito';
+$TableDet_th13 = 'Id. Cuenta';
+$TableDet_th14 = 'Rep. Venta';
+$TableDet_th15 = 'Direccion Fiscal';
+$TableDet_th16 = 'Direccion Fisica';
+$TableDet_th17 = 'Estado';
 
 //END Customer
 

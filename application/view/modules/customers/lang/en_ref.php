@@ -53,6 +53,7 @@ $BTN_add = 'Add';
 $BTN_del = 'Delete';
 $BTN_mod = 'Modify';
 $BTN_close = 'Close';
+$DIV_close = 'Close';
 
 //modal Modify
 
@@ -75,7 +76,25 @@ $ModalInput_14 = 'Sales Rep.';
 $ModalInput_15 = 'Billing Address';
 $ModalInput_16 = 'Shipping Address';
 
+$TableDetail_title = 'Customer Details';
 
+$TableDet_th1 = 'Cust. ID';
+$TableDet_th2 = 'Customer Name';
+$TableDet_th3 = 'Telephone';
+$TableDet_th4 = 'Contact';
+$TableDet_th5 = 'Country';
+$TableDet_th6 = 'State';
+$TableDet_th7 = 'City';
+$TableDet_th8 = 'Zip';
+$TableDet_th9 = 'Email';
+$TableDet_th10 = 'Price Level';
+$TableDet_th11 = 'Balance Due';
+$TableDet_th12 = 'Credit Limit';
+$TableDet_th13 = 'Account Id.';
+$TableDet_th14 = 'Sales Rep.';
+$TableDet_th15 = 'Billing Address';
+$TableDet_th16 = 'Shipping Address';
+$TableDet_th17 = 'Status';
 
 //END Customer
 

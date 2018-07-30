@@ -226,11 +226,21 @@ var lang = get_lang();
     function del_cus(cus_ID){
 
 
+    if (lang = 'es') {
+
+        var r = confirm('Esta Seguro de eliminar el cliente '+cus_ID+'?');
+               
+    }else{
+
+        var r = confirm('Are you sure to delete customer: '+cus_ID+'?');
+    }
+
+    if (r == true) { 
 
          $.ajax({
               type: "GET",
               url: link,
-              data: {url: 'ges_customers/del_cus', Data : JSON.stringify(datos) },
+              data: {url: 'ges_customers/del_cus/'+cus_ID },
               success: function(res){
 
                 if (res == '1') {
@@ -246,5 +256,22 @@ var lang = get_lang();
                 }             
             }
           });
+    }
+    }
+
+    function get_cus_detail(cus_ID){
+
+
+
+          $.ajax({
+              type: "GET",
+              url: link,
+              data: {url: 'ges_customers/get_cus_detail/'+cus_ID },
+              success: function(res){
+
+                  $('#table_det').html(res);  
+
+                }
+              });
 
     }

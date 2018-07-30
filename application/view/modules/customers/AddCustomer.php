@@ -22,7 +22,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 			<!--ini contenido-->
 			<div  class="col-lg-8">
 			<fieldset >
-			<input type="hidden"  class="inputPage" id="control" name="control" value='1'/>
+			<!--<input type="hidden"  class="inputPage" id="control" name="control" value='1'/>-->
 
 
 			<!--CHECKBOXES-->
@@ -31,11 +31,11 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 			<table class='table_form'>
 				<tbody>
 				    <tr>
-				    	<td><input type="checkbox" id="chk_cus1" name="chk_cus1" value="1" onclick="set_div(this.value)" checked /></td>					
+				    	<td><input type="checkbox" id="chk_cus" name="chk_cus" value="1" onclick="set_div(this.value)" checked /></td>					
 						<th><strong><?PHP echo $Cus_CHKBOX_1; ?></strong></th>
 					</tr>
 					<tr>
-					   <td><input type="checkbox" id="chk_cus2" name="chk_cus2" value="2" onclick="set_div(this.value)" /></td>					
+					   <td><input type="checkbox" id="chk_cus" name="chk_cus" value="2" onclick="set_div(this.value)" /></td>					
 						<th><strong><?PHP echo $Cus_CHKBOX_2; ?></strong></th>
 					</tr>
 
@@ -82,7 +82,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 							<td><input type="email"  class="inputPage" id="cus_email" name="cus_email" required /></td>		
 							<th><strong><?PHP echo $InputCust_10; ?></strong></th>
 							<td>
-								<select  id="cus_PL" name="cus_PL" class="select col-lg-12" >
+								<select  id="cus_PL" name="cus_PL" class="select col-lg-2" >
 									<option value="0" selected>0</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
@@ -93,9 +93,9 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						</tr>
 						<tr>
 							<th><strong><?PHP echo $InputCust_11; ?></strong></th>
-							<td><input type="number" class="form-control numb" id="cus_bal" name="cus_bal" /></td>		
+							<td><input type="number" class="inputPage" id="cus_bal" name="cus_bal" /></td>		
 							<th><strong><?PHP echo $InputCust_12; ?></strong></th>
-							<td><input type="number" class="form-control numb" id="cus_creditlimit" name="cus_creditlimit" /></td>				
+							<td><input type="number" class="inputPage" id="cus_creditlimit" name="cus_creditlimit" /></td>				
 						</tr>
 						<tr>
 							<th><strong><?PHP echo $InputCust_13; ?></strong></th>
@@ -175,7 +175,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 				
 				//ADD CUSTOMER
 
-				if ($isset($_POST['submit'])) {
+				if (isset($_POST['submit'])) {
 					
 					
 					/*if ($_POST['submit'] == '') {
@@ -282,7 +282,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 				mapear en el menu
 				*/
 				$table .= ' <tr>
-								<td><a href="javascript:void(0)" onclick="get_cus('.$cus_secID.')"><strong>'.$value->{'CustomerID'}.'</strong></a></td>
+								<td><a href="javascript:void(0)" onclick="get_cus_detail('.$cus_secID.')"><strong>'.$value->{'CustomerID'}.'</strong></a></td>
 								<td>'.$value->{'Customer_Bill_Name'}.'</td>
 								<td>'.$value->{'Phone_Number'}.'</td>
 								<td>'.$value->{'Contact'}.'</td>
@@ -298,8 +298,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
             </tbody></table>
 
             <div class="separador col-lg-12"></div>
-            <div class="col-lg-12" > 
-            <div id="table3"></div>
+            <div class="col-lg-6" > 
+            <div id="table_det"></div>
             </div>
 			<!--Table-->
 
