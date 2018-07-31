@@ -125,7 +125,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						<tbody>
 							<tr>
 								<th><strong><?PHP echo $InputCust_17; ?></strong></th>
-								<td><input type="file" class="form-control" id="cus_file" name="cus_file" required="<?PHP echo $InputCust_18; ?>" />	
+								<td><input type="file" class="form-control" id="cus_file" name="cus_file" placeholder="<?PHP echo $InputCust_18; ?>" />	
 						            <p class="help-block"><?PHP echo $Advice1; ?></p>
 								</td>			
 							</tr>
