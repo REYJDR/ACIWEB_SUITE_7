@@ -943,6 +943,7 @@ function check_num(value,id)
 {
 $('#ERROR').hide();
 
+
 var slice = value.slice(-1);
 
 var patt = new RegExp("-");
@@ -972,7 +973,7 @@ function checkTblnum(value,id)
 {
 $('#ERROR').hide();
 
-
+console.log(value);
 var slice = value.slice(-1);
 
 var patt = new RegExp("-");
