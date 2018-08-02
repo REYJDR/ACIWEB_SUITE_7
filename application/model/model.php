@@ -256,7 +256,7 @@ public function read_db_error(){
 
     $R_ERRORS = str_replace(',', '  ', $R_ERRORS);
 
-    if($R_ERRORS){
+    if($R_ERRORS!=''){
 
         $ARRAY['E'] =  $R_ERRORS;
         $R_ERRORS = json_encode($ARRAY);
