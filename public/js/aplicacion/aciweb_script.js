@@ -944,10 +944,10 @@ function check_num(value,id)
 $('#ERROR').hide();
 
 var ID_LABLE = id;
-var val = value.slice(-1);
+//var val = value.slice(-1);
 
 var patt = new RegExp("-");
-var sing = patt.test( val );
+var sing = patt.test(value );
 
 
 if (isNaN(val)) 
@@ -974,10 +974,10 @@ function checkTblnum(value,id)
 $('#ERROR').hide();
 
 var ID_LABLE = id;
-var val = value.slice(-1);
+//var val = value.slice(-1);
 
 var patt = new RegExp("-");
-var sing = patt.test( val );
+var sing = patt.test( value );
 
 
 if (isNaN(val)) 
