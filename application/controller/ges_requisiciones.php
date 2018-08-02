@@ -1383,7 +1383,7 @@ if($ORDER_detail->{'st_closed'}=='0' && $status_gen !='FINALIZADO'){
 
 if($this->model->rol_campo=='1'){ 
 echo '<div style="float:right;" class="col-md-2">
-<a href="'.URL.'index.php?url=ges_requisiciones/req_reception/'.$ORDER->{'NO_REQ'}.'"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
+<a href="'.URL.'index.php?url=ges_requisiciones/req_reception/'.$ORDER->{'NO_REQ'}.'"  class="btn-bar">
    <img  class="icon" src="img/Box Down.png" />
   <span>Registrar entradas</span>
 </a>
@@ -1393,7 +1393,7 @@ echo '<div style="float:right;" class="col-md-2">
 if($this->model->rol_compras=='1' && $status_gen !='FINALIZADO'){ 
 
 echo '<div style="float:right;" class="col-md-2">
-        <a title="Cerrar Rerquisición" data-toggle="modal" data-target="#CerrarModal" href="javascript:void(0)"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
+        <a title="Cerrar Rerquisición" data-toggle="modal" data-target="#CerrarModal" href="javascript:void(0)"  class="btn-bar">
           <img  class="icon" src="img/Stop.png" />
           <span>Cerrar Requisición</span>
         </a>
@@ -1406,7 +1406,7 @@ if($this->model->rol_compras=='1'){
   if($status_gen =='POR COTIZAR'){
 
     echo '<div style="float:right;" class="col-md-2">
-    <a href="'.URL.'index.php?url=ges_requisiciones/set_req_quota/'.$ORDER->{'NO_REQ'}.'/'.$id_compania.'"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
+    <a href="'.URL.'index.php?url=ges_requisiciones/set_req_quota/'.$ORDER->{'NO_REQ'}.'/'.$id_compania.'"  class="btn-bar">
        <img  class="icon" src="img/Search.png" />
       <span>Iniciar Cotización</span>
     </a>
