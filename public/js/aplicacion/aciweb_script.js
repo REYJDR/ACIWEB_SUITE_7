@@ -937,7 +937,7 @@ var datos ='url=bridge_query/set_location/'+ALMACEN+'/'+locationAL;
  }
 
 // ********************************************************
-// * checa si el valor introducido es numerico , permite "-"
+// * INPUTS checa si el valor introducido es numerico , permite "-"
 // ********************************************************
 function check_num(value,id)
 {
@@ -962,19 +962,39 @@ if (isNaN(val))
       }
 
 }
-  
 
-
-  if (val.length > 18) 
-  {
-    document.getElementById( ID_LABLE ).value  = value.slice(0,-1);
-    MSG_ERROR("La entrada de CANTIDAD no debe ser mayor a 18 digitos",0);
-    
-    return false;
-  }
 
 }
 
+// ********************************************************
+// * CAMPOS TABLAS  checa si el valor introducido es numerico , permite "-"
+// ********************************************************
+function checkTblnum(value,id)
+{
+$('#ERROR').hide();
+
+var ID_LABLE = id;
+var val = value.slice(-1);
+
+var patt = new RegExp("-");
+var sing = patt.test( val );
+
+
+if (isNaN(val)) 
+{
+
+  if(sing==false) {
+    
+        document.getElementById( ID_LABLE ).innerHTML = value.slice(0,-1);
+        MSG_ERROR("La entrada debe ser valores numericos", 0 );
+        
+        return false;
+      }
+
+}
+
+
+}
 
 
 
