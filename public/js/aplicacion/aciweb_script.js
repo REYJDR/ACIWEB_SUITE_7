@@ -979,7 +979,7 @@ var sing = patt.test( x );
 
 
 
-if (isNaN(value)) 
+if (isNaN(x)) 
 {
 
   if(sing==false) {
