@@ -121,8 +121,31 @@ function MSG_ERROR_RELEASE(){
 }
 
 
-//CHECA ENTRADA DE CARACTER ESPECIAL (@)
-function checkChar(ID){
+//CHECA ENTRADA DE CARACTER ESPECIAL (@) para campos de tablas
+function checkTblChar(ID){
+  
+  
+  var x=document.getElementById(ID).innerHTML;
+  
+  
+  console.log('ID:'+ID+' - '+x);
+  
+  var patt = new RegExp("@");
+  var val = patt.test( x );
+  
+  console.log(val);
+  
+    if (val== true) 
+    {
+  
+      document.getElementById(ID).innerHTML = x.slice(0,-1);
+      MSG_ERROR("No se permite el caracter especial '@' ",0);
+      return false;
+    }
+  }
+
+//CHECA ENTRADA DE CARACTER ESPECIAL (@) para campos imput
+function checkInpChar(ID){
 
 
 var x=document.getElementById(ID).value;
@@ -138,7 +161,7 @@ console.log(val);
   if (val== true) 
   {
 
-    document.getElementById(ID).innerHTML = x.slice(0,-1);
+    document.getElementById(ID).value = x.slice(0,-1);
     MSG_ERROR("No se permite el caracter especial '@' ",0);
     return false;
   }

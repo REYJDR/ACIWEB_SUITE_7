@@ -180,7 +180,7 @@ while(i <= cantLineas){
       }     
 
      var line_table_req = '<tr>'+reglon+
-     '<td width="30%" class="rowtable_req"      id="DESC'+i+'" onkeyup="checkChar(this.id); checkLong(this.id,40);  " contenteditable></td>'+
+     '<td width="30%" class="rowtable_req"      id="DESC'+i+'" onkeyup="checkTblChar(this.id); checkLong(this.id,40);  " contenteditable></td>'+
      '<td width="15%" class="rowtable_req numb" id="QTY'+i+'"  onfocusout="check_num(this.id); checkLong(this.id,18);" contenteditable></td>'+
      '<td width="15%" class="rowtable_req"      id="UNI'+i+'"  onkeyup="checkLong(this.id,4);" contenteditable></td>'+
      '<td width="15%" class="rowtable_req"       ><select class="selectItems" id="PHS'+i+'" ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
