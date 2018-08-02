@@ -614,6 +614,8 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
                    //leer columnas de jobs
                  switch (j){
 
+                 
+
                       case 5:
                           cell += '@'+document.getElementById('JOBID').value+
                           '@'+document.getElementById('JOBID').options[document.getElementById('JOBID').selectedIndex].text+
@@ -621,7 +623,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
                           '@'+document.getElementById(phsid).options[document.getElementById(phsid).selectedIndex].text+
                           '@'+document.getElementById(costid).value+
                           '@'+document.getElementById(costid).options[document.getElementById(costid).selectedIndex].text;
-                          console.log(cell);
+                          
                          
                           //SI LA CELDA NO CONTIENE VALOR 
                           /* if(document.getElementById(phsid).value == '-'){
@@ -634,9 +636,9 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
 
                       default: 
 
-                            val= theTbl.rows[i].cells[j].innerHTML;
+                              val= theTbl.rows[i].cells[j].innerHTML;
 
-                             // cell += '@'+val;//agrego el registo de las demas columnas
+                              cell += '@'+val;//agrego el registo de las demas columnas
 
                               //SI LA CELDA NO CONTIENE VALOR 
                               if(j!=4 || j!=5 ){
@@ -658,6 +660,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
 
        }//FIN BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
 
+       console.log(cell);
 
        if (theTbl.rows[i].cells[1].innerHTML!=''){
 
