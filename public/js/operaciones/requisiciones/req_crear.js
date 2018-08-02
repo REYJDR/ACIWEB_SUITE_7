@@ -182,7 +182,7 @@ while(i <= cantLineas){
      var line_table_req = '<tr>'+reglon+
      '<td width="30%" class="rowtable_req"      id="DESC'+i+'" onkeyup="checkChar('+i+');" contenteditable></td>'+
      '<td width="15%" class="rowtable_req numb" id="QTY'+i+'"  onfocusout="checkInp('+i+');" contenteditable></td>'+
-     '<td width="15%" class="rowtable_req"      id="UNI'+i+'"  onkeyup="checkuni('+i+');" contenteditable></td>'+
+     '<td width="15%" class="rowtable_req"      id="UNI'+i+'"  onkeyup="checkuni(UNI'+i+');" contenteditable></td>'+
      '<td width="15%" class="rowtable_req"       ><select class="selectItems" id="PHS'+i+'" ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
      '<td width="15%" class="rowtable_req"       ><select class="selectItems" id="COST'+i+'"  ><option  value="-" selected>-</option>'+COST+'</select></td>'+
      '</tr>' ;
@@ -333,20 +333,6 @@ var x=document.getElementById(QTYID).innerHTML;
 
 
 
-function checkuni(line)
-{
-
-var UNIID = 'UNI'+line;
-var x=document.getElementById(UNIID).innerHTML;
-
- if (x.length > 15) 
- {
-   document.getElementById(UNIID).innerHTML = x.slice(0,-1);
-   alert("La entrada de UNIDAD no debe ser mayor a 15 caracteres");
-   
-   return false;
- }
-}
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////

@@ -961,10 +961,11 @@ if (isNaN(val))
 
 }
 
+
+
+
 //ver foto de perfil antes de subirla
 function readURL(input) {
-
-
 
 document.getElementById('trash_img').value = 0;
 
@@ -1002,6 +1003,23 @@ if (slash == true){
   }
 
 
+}
+
+// ********************************************************
+// * checa si el valor introducido no es @
+// ********************************************************
+function checkuni(ID)
+{
+
+var x=document.getElementById(ID).innerHTML;
+
+ if (x.length > 4) 
+ {
+   document.getElementById(UNIID).innerHTML = x.slice(0,-1);
+   alert("La entrada de UNIDAD no debe ser mayor a 4 caracteres");
+   
+   return false;
+ }
 }
 
 // ********************************************************
