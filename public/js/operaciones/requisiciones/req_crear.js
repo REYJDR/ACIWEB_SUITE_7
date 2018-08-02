@@ -303,7 +303,7 @@ if (r == true) {
                               console.log(res);
                            
 
-                              if(isJson(res)){ //si es un objeto, que supone es JSON
+                              if(isJson(res) & res!=1 ){ //si es un objeto, que supone es JSON
                              
                                 error = JSON.parse(res);
                                 MSG_ERROR(error.E,0);
@@ -333,7 +333,7 @@ if (r == true) {
               
             console.log('RES:'+res);
 
-            if(isJson(res)){ //si es un objeto, que supone es JSON
+            if(isJson(res) & res!=1 ){ //si es un objeto, que supone es JSON
             
                  error = JSON.parse(res);
                  spin_hide();
@@ -343,8 +343,8 @@ if (r == true) {
             }else{
                       
                 if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
-                        Console.log(link+' '+Req_NO);
-                  send_mail(link,Req_NO);
+                    Console.log(link+' '+Req_NO);
+                    send_mail(link,Req_NO);
               
                 }
             }
