@@ -943,7 +943,7 @@ function check_num(value,id)
 {
 $('#ERROR').hide();
 
-//var val = value.slice(-1);
+var slice = value.slice(-1);
 
 var patt = new RegExp("-");
 var sing = patt.test(value );
@@ -954,7 +954,7 @@ if (isNaN(value))
 
   if(sing==false) {
     
-        document.getElementById( id ).value  = value.slice(0,-1);
+        document.getElementById( id ).value  = slice;
         MSG_ERROR("La entrada debe ser valores numericos", 0 );
         
         return false;
@@ -973,7 +973,7 @@ function checkTblnum(value,id)
 $('#ERROR').hide();
 
 
-//var val = value.slice(-1);
+var slice = value.slice(-1);
 
 var patt = new RegExp("-");
 var sing = patt.test( value );
@@ -984,7 +984,7 @@ if (isNaN(value))
 
   if(sing==false) {
     
-        document.getElementById( id ).innerHTML = value.slice(0,-1);
+        document.getElementById( id ).innerHTML = slice;
         MSG_ERROR("La entrada debe ser valores numericos", 0 );
         
         return false;
