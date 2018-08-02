@@ -258,7 +258,7 @@ public function read_db_error(){
 
     $ARRAY['E'] =  $R_ERRORS;
 
-    $R_ERRORS = json_encode($ARRAY['E']);
+    $R_ERRORS = json_encode($ARRAY);
 
    echo $R_ERRORS ;
    return $R_ERRORS ;
