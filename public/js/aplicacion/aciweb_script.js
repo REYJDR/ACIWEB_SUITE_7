@@ -125,7 +125,7 @@ function MSG_ERROR_RELEASE(){
 function checkChar(ID){
 
 
-var x=document.getElementById(ID).innerHTML;
+var x=document.getElementById(ID).value;
 
 
 console.log('ID:'+ID+' - '+x);
