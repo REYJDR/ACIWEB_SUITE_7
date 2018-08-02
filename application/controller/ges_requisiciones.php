@@ -1189,7 +1189,7 @@ echo '<br/><br/>
           <span STYLE="color:red" aria-hidden="true">&times; </span> Cerrar
           </button>
 <fieldset class="fieldsetform" >
-<h3>Detalle de Requisición</h3>
+<h4>Detalle de Requisición</h4>
 <table  class="display nowrap table table-striped table-bordered" cellspacing="0"  ><tbody>';
 
   foreach ($ORDER_detail as $datos) {
