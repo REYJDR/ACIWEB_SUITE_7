@@ -950,7 +950,7 @@ var patt = new RegExp("-");
 var sing = patt.test(value );
 
 
-if (isNaN(val)) 
+if (isNaN(value)) 
 {
 
   if(sing==false) {
@@ -980,7 +980,7 @@ var patt = new RegExp("-");
 var sing = patt.test( value );
 
 
-if (isNaN(val)) 
+if (isNaN(value)) 
 {
 
   if(sing==false) {
