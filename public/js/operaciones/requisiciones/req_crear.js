@@ -445,7 +445,7 @@ if (r == true) {
                      success: function(res){
 
                               console.log(res);
-                              error = JSON.parse(res.toString());
+                              error = $.parseJSON(res);
 
                               if(error){
                       
@@ -474,7 +474,7 @@ if (r == true) {
         success: function(res){
               
             console.log('RES:'+res);
-            error = JSON.parse(res.toString());
+            error = $.parseJSON(res);
 
             if(error){
     
