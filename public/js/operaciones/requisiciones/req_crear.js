@@ -614,7 +614,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
                    //leer columnas de jobs
                  switch (j){
 
-                 
+                  $ITEMID, $DESC, $QTY, $UNIT, $JOB_ID, $PROY_DESC, $PHASE_ID,  $COST_ID
 
                       case 5:
                           cell += '@'+document.getElementById('JOBID').value+
@@ -624,7 +624,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
                           '@'+document.getElementById(costid).value+
                           '@'+document.getElementById(costid).options[document.getElementById(costid).selectedIndex].text;
                           
-                         
+                          console.log(cell);
                           //SI LA CELDA NO CONTIENE VALOR 
                           /* if(document.getElementById(phsid).value == '-'){
                               
@@ -650,7 +650,8 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
 
                               }
 
-
+                            
+                            
                             break;
                            }
                     //fin leer columnas de jobs
@@ -660,7 +661,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
 
        }//FIN BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
 
-       console.log(cell);
+       
 
        if (theTbl.rows[i].cells[1].innerHTML!=''){
 
