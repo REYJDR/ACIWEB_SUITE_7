@@ -135,7 +135,7 @@ console.log(val);
   {
 
     document.getElementById(ID).innerHTML = x.slice(0,-1);
-    alert("No se permite el caracter especial '/' ");
+    MSG_ERROR("No se permite el caracter especial '/' ",0);
     return false;
   }
 }
@@ -149,7 +149,7 @@ var x=document.getElementById(ID).innerHTML;
   if (isNaN(x)) 
   {
     document.getElementById(ID).innerHTML = '';
-    alert("La entrada en este campo debe ser numerico");
+    MSG_ERROR("La entrada en este campo debe ser numerico",0);
     
     return false;
   }else{
@@ -951,7 +951,7 @@ if (isNaN(val))
   
 
 
-  if (val.length > 10) 
+  if (val.length > 18) 
   {
     document.getElementById( ID_LABLE ).value  = value.slice(0,-1);
     MSG_ERROR("La entrada de CANTIDAD no debe ser mayor a 18 digitos",0);
@@ -1006,17 +1006,17 @@ if (slash == true){
 }
 
 // ********************************************************
-// * checa si el valor introducido no es @
+// * checa si el valor introducido es de cierta longitud
 // ********************************************************
-function checkuni(ID)
+function checkLong(ID,long)
 {
 
 var x=document.getElementById(ID).innerHTML;
 
- if (x.length > 4) 
+ if (x.length > long) 
  {
    document.getElementById(UNIID).innerHTML = x.slice(0,-1);
-   alert("La entrada de UNIDAD no debe ser mayor a 4 caracteres");
+   alert("La entrada no debe ser de longitud mayor a "+long+" caracteres");
    
    return false;
  }

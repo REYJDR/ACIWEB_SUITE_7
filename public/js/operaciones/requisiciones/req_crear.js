@@ -181,8 +181,8 @@ while(i <= cantLineas){
 
      var line_table_req = '<tr>'+reglon+
      '<td width="30%" class="rowtable_req"      id="DESC'+i+'" onkeyup="checkChar('+i+');" contenteditable></td>'+
-     '<td width="15%" class="rowtable_req numb" id="QTY'+i+'"  onfocusout="checkInp('+i+');" contenteditable></td>'+
-     '<td width="15%" class="rowtable_req"      id="UNI'+i+'"  onkeyup="checkuni(UNI'+i+');" contenteditable></td>'+
+     '<td width="15%" class="rowtable_req numb" id="QTY'+i+'"  onfocusout="check_num('+i+'); checkLong(QTY'+i+',18);" contenteditable></td>'+
+     '<td width="15%" class="rowtable_req"      id="UNI'+i+'"  onkeyup="checkLong(UNI'+i+',4);" contenteditable></td>'+
      '<td width="15%" class="rowtable_req"       ><select class="selectItems" id="PHS'+i+'" ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
      '<td width="15%" class="rowtable_req"       ><select class="selectItems" id="COST'+i+'"  ><option  value="-" selected>-</option>'+COST+'</select></td>'+
      '</tr>' ;
@@ -297,36 +297,6 @@ if (comilla == true){
    return false;
  }
 
-
-
-}
-
-function checkInp(line)
-{
-
-
-var QTYID = 'QTY'+line;
-
-console.log(QTYID);
-
-var x=document.getElementById(QTYID).innerHTML;
-
- if (isNaN(x)) 
- {
-   document.getElementById(QTYID).innerHTML = '';
-   alert("La entrada de CANTIDAD debe ser solo en valores numericos");
-   
-   return false;
- }
-
-
- if (x.length > 18) 
- {
-   document.getElementById(QTYID).innerHTML  = x.slice(0,-1);
-   alert("La entrada de CANTIDAD no debe ser mayor a 18 digitos");
-   
-   return false;
- }
 
 
 }
