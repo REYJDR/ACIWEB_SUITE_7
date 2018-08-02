@@ -1108,3 +1108,12 @@ function openCity(evt, cityName) {
   evt.currentTarget.className += " active";
 }
 
+//verifica si es json
+function isJson(str) {
+  try {
+      JSON.parse(str);
+  } catch (e) {
+      return false;
+  }
+  return true;
+}
