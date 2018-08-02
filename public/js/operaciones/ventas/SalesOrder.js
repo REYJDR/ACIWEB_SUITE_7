@@ -406,7 +406,6 @@ for(var i=0; i<itbms.length; i++){
 function set_listprice(ID){
 
   var datos= "bridge_query/get_Cust_info";
-  
   var link= URL+"index.php";
   
     $.ajax({
@@ -415,8 +414,8 @@ function set_listprice(ID){
         url: link,
         data: {url: datos, id : ID},
         success: function(res){
-          res = JSON.parse(res);
-          document.getElementById('listID').value = res.Custom_field4;
+            res = JSON.parse(res);
+            document.getElementById('listID').value = res.Custom_field4;
           }
   
      });

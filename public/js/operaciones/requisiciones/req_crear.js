@@ -445,11 +445,11 @@ if (r == true) {
                      success: function(res){
 
                               console.log(res);
-                              json = res.toString();
-                              error = JSON.parse(json);
+                           
 
-                              if(error){
-                      
+                              if(res.constructor === {}.constructor){ //si es un objeto, que supone es JSON
+                             
+                                error = JSON.parse(json);
                                 MSG_ERROR(error.E,0);
 
                               }else{
@@ -475,12 +475,11 @@ if (r == true) {
         success: function(res){
               
             console.log('RES:'+res);
-            json = res.toString();
-            error = JSON.parse(json);
-
-            if(error){
-    
-              MSG_ERROR(error.E,0);
+            
+            if(res.constructor === {}.constructor){ //si es un objeto, que supone es JSON
+              
+                 error = JSON.parse(json);
+                 MSG_ERROR(error.E,0);
 
             }else{
                       
