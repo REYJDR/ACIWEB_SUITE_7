@@ -180,9 +180,9 @@ while(i <= cantLineas){
       }     
 
      var line_table_req = '<tr>'+reglon+
-     '<td width="30%" class="rowtable_req"      id="DESC'+i+'" onkeyup="checkChar(DESC'+i+'); checkLong(DESC'+i+',255);  " contenteditable></td>'+
-     '<td width="15%" class="rowtable_req numb" id="QTY'+i+'"  onfocusout="check_num(QTY'+i+'); checkLong(QTY'+i+',18);" contenteditable></td>'+
-     '<td width="15%" class="rowtable_req"      id="UNI'+i+'"  onkeyup="checkLong(UNI'+i+',4);" contenteditable></td>'+
+     '<td width="30%" class="rowtable_req"      id="DESC'+i+'" onkeyup="checkChar(this.id); checkLong(this.id,255);  " contenteditable></td>'+
+     '<td width="15%" class="rowtable_req numb" id="QTY'+i+'"  onfocusout="check_num(this.id); checkLong(this.id,18);" contenteditable></td>'+
+     '<td width="15%" class="rowtable_req"      id="UNI'+i+'"  onkeyup="checkLong(this.id,4);" contenteditable></td>'+
      '<td width="15%" class="rowtable_req"       ><select class="selectItems" id="PHS'+i+'" ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
      '<td width="15%" class="rowtable_req"       ><select class="selectItems" id="COST'+i+'"  ><option  value="-" selected>-</option>'+COST+'</select></td>'+
      '</tr>' ;
@@ -254,52 +254,6 @@ if (x.length > 1024)
 }
 
 
-function checkChar(line){
-
-var DESCID = 'DESC'+line;
-var x=document.getElementById(DESCID).innerHTML;
-
-var patt = new RegExp("@");
-var val = patt.test( x );
-
-console.log(val);
-
- if (val== true) 
- {
-
-   document.getElementById(DESCID).innerHTML = x.slice(0,-1);
-
-  alert("No se permite carecteres especiales en este campo");
-   
-   return false;
- }
-
-
-
-var patt_comilla = new RegExp("'");
-var comilla = patt_comilla.test( x );
-
-if (comilla == true){
-
-   document.getElementById(DESCID).innerHTML = x.slice(0,-1);
-
-   alert("No se permite carecteres especiales en este campo");
-   
-   return false;
- }
-
-
- if (x.length > 255) 
- {
-   document.getElementById(DESCID).innerHTML =  x.slice(0,-1);
-   alert("El campo de Descripcion admite un maximo de 255 caracteres");
-   
-   return false;
- }
-
-
-
-}
 
 
 
