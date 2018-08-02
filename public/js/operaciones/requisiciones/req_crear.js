@@ -616,6 +616,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
 
              
                       case 5:
+
                           cell += '@'+document.getElementById('JOBID').value+
                           '@'+document.getElementById('JOBID').options[document.getElementById('JOBID').selectedIndex].text+
                           '@'+document.getElementById(phsid).value+
@@ -630,17 +631,18 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
                               FaltaArray[j] = i+1;
                           }
                           */
-                             break;            
+                            break;            
 
 
                       default: 
 
-                              val= theTbl.rows[i].cells[j].innerHTML;
 
-                              cell += '@'+val;//agrego el registo de las demas columnas
 
                               //SI LA CELDA NO CONTIENE VALOR 
                               if(j!=4 || j!=5 ){
+
+                                val= theTbl.rows[i].cells[j].innerHTML;
+                                cell += '@'+val;//agrego el registo de las demas columnas
 
                                 if(val==''){
                                     
