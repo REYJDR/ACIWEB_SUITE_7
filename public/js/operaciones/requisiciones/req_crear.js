@@ -618,8 +618,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
                           cell += '@'+document.getElementById('JOBID').value+
                           '@'+document.getElementById('JOBID').options[document.getElementById('JOBID').selectedIndex].text+
                           '@'+document.getElementById(phsid).value+
-                          '@'+document.getElementById(phsid).options[document.getElementById(phsid).selectedIndex].text+
-                          '@'+document.getElementById(costid).options[document.getElementById(costid).selectedIndex].text;
+                          '@'+document.getElementById(costid).value+
                           console.log(cell);
                          
                           //SI LA CELDA NO CONTIENE VALOR 

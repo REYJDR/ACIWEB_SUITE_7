@@ -408,7 +408,7 @@ $data = json_decode($_GET['Data']);
 foreach ($data as $value) {
 
 
-  list($null,$ITEMID, $DESC, $QTY, $UNIT, $JOB_ID, $PROY_DESC, $PHASE_ID, $PHASE_DESC ) = explode('@', $value );
+  list($null,$ITEMID, $DESC, $QTY, $UNIT, $JOB_ID, $PROY_DESC, $PHASE_ID,  $COST_ID) = explode('@', $value );
    
 
   $value_to_set  = array( 
@@ -417,7 +417,8 @@ foreach ($data as $value) {
     'CANTIDAD' => $QTY,  
     'UNIDAD' => $UNIT,  
     'JOB' => $JOB_ID,  
-    'PHASE' => $PHASE_ID,    
+    'PHASE' => $PHASE_ID,
+    'CCOST' => $COST_ID,     
     'NO_REQ' => $NO_REQ, 
     'ITEM_UNIQUE_NO' => $ITEMID.'@'.$NO_REQ.'@'.$ITEMID.'@'.$this->model->id_compania,
     'ID_compania' => $this->model->id_compania
