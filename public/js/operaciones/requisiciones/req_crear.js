@@ -447,7 +447,7 @@ if (r == true) {
                               console.log(res);
                            
 
-                              if(res.constructor === {}.constructor){ //si es un objeto, que supone es JSON
+                              if(isJson(res)){ //si es un objeto, que supone es JSON
                              
                                 error = JSON.parse(json);
                                 MSG_ERROR(error.E,0);
@@ -477,8 +477,8 @@ if (r == true) {
               
             console.log('RES:'+res);
 
-            if(res.constructor === {}.constructor){ //si es un objeto, que supone es JSON
-              console.log('NOP');
+            if(isJson(res)){ //si es un objeto, que supone es JSON
+            
                  error = JSON.parse(json);
                  spin_hide();
                  MSG_ERROR(error.E,0);
