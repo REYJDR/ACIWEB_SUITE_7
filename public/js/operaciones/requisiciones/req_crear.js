@@ -451,6 +451,7 @@ if (r == true) {
                              
                                 error = JSON.parse(json);
                                 MSG_ERROR(error.E,0);
+                                spin_hide();
 
                               }else{
 
@@ -475,11 +476,12 @@ if (r == true) {
         success: function(res){
               
             console.log('RES:'+res);
-            
+
             if(res.constructor === {}.constructor){ //si es un objeto, que supone es JSON
               
                  error = JSON.parse(json);
                  MSG_ERROR(error.E,0);
+                 spin_hide();
 
             }else{
                       
