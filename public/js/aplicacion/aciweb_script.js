@@ -126,6 +126,9 @@ function checkChar(ID){
 
 
 var x=document.getElementById(ID).innerHTML;
+
+console.log(x);
+
 var patt = new RegExp("@");
 var val = patt.test( x );
 
