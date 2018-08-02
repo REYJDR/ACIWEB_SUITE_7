@@ -225,14 +225,14 @@ public function GetOrdrDetail($id){
     <div class="separador class="col-lg-12" ></div>
 
     <div style="float:right;" class="col-md-2">
-    <a href="'.URL.'index.php?url=ges_ventas/ges_print_OrdEmpaque/'.$id.'"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
+    <a href="'.URL.'index.php?url=ges_ventas/ges_print_OrdEmpaque/'.$id.'"  class="accept-form-btn">
       <i class="fas fa-print"></i>    
       <span>Imprimir</span>
     </a>
     </div>
 
     <div style="float:right;" class="col-md-2">
-    <a href="'.URL.'index.php?url=ges_invoice/GenInvoice/'.$id.'"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
+    <a href="'.URL.'index.php?url=ges_invoice/GenInvoice/'.$id.'"  class="accept-form-btn">
       <i class="fas fa-file-alt"></i>
       <span>A Factura</span>
     </a>
