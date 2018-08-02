@@ -449,7 +449,7 @@ if (r == true) {
 
                               if(isJson(res)){ //si es un objeto, que supone es JSON
                              
-                                error = JSON.parse(json);
+                                error = JSON.parse(res);
                                 MSG_ERROR(error.E,0);
                                 spin_hide();
 
@@ -479,7 +479,7 @@ if (r == true) {
 
             if(isJson(res)){ //si es un objeto, que supone es JSON
             
-                 error = JSON.parse(json);
+                 error = JSON.parse(res);
                  spin_hide();
                  MSG_ERROR(error.E,0);
                  
