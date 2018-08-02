@@ -969,15 +969,14 @@ if (isNaN(value))
 // ********************************************************
 // * CAMPOS TABLAS  checa si el valor introducido es numerico , permite "-"
 // ********************************************************
-function checkTblnum(value,id)
+function checkTblnum(ID)
 {
 $('#ERROR').hide();
 
-console.log(value);
-var slice = value.slice(-1);
-
+var x=document.getElementById(ID).innerHTML;
 var patt = new RegExp("-");
-var sing = patt.test( value );
+var sing = patt.test( x );
+
 
 
 if (isNaN(value)) 
@@ -985,7 +984,7 @@ if (isNaN(value))
 
   if(sing==false) {
     
-        document.getElementById( id ).innerHTML = slice;
+        document.getElementById(ID).innerHTML = x.slice(0,-1);
         MSG_ERROR("La entrada debe ser valores numericos", 0 );
         
         return false;
