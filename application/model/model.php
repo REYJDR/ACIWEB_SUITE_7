@@ -252,7 +252,7 @@ public function read_db_error(){
     
     $R_ERRORS = $json_a->{'ERROR'}; 
 
-    file_put_contents("LOG_ERROR/TEMP_LOG.json",''); //LIMPIO EL ARCHIVO
+   // file_put_contents("LOG_ERROR/TEMP_LOG.json",''); //LIMPIO EL ARCHIVO
 
     $R_ERRORS = str_replace(',', '  ', $R_ERRORS);
 
@@ -260,8 +260,8 @@ public function read_db_error(){
 
     $R_ERRORS = json_encode($ARRAY);
 
-   echo $R_ERRORS ;
-   return $R_ERRORS ;
+    echo $R_ERRORS ;
+    return $R_ERRORS ;
 
 }
 
