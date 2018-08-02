@@ -1190,6 +1190,7 @@ echo '<br/><br/>
           </button>
 <fieldset class="fieldsetform" >
 <h4>Detalle de Requisición</h4>
+<div class="separador col-lg-12"></div>
 <table  class="display nowrap table table-striped table-bordered" cellspacing="0"  ><tbody>';
 
   foreach ($ORDER_detail as $datos) {
