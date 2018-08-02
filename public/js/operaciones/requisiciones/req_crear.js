@@ -180,7 +180,7 @@ while(i <= cantLineas){
       }     
 
      var line_table_req = '<tr>'+reglon+
-     '<td width="30%" class="rowtable_req"      id="DESC'+i+'" onkeyup="checkChar(this.id); checkLong(this.id,255);  " contenteditable></td>'+
+     '<td width="30%" class="rowtable_req"      id="DESC'+i+'" onkeyup="checkChar(this.id); checkLong(this.id,40);  " contenteditable></td>'+
      '<td width="15%" class="rowtable_req numb" id="QTY'+i+'"  onfocusout="check_num(this.id); checkLong(this.id,18);" contenteditable></td>'+
      '<td width="15%" class="rowtable_req"      id="UNI'+i+'"  onkeyup="checkLong(this.id,4);" contenteditable></td>'+
      '<td width="15%" class="rowtable_req"       ><select class="selectItems" id="PHS'+i+'" ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
@@ -197,61 +197,7 @@ while(i <= cantLineas){
 
 }
 
-function checkNOTA(){
 
-
-var x=document.getElementById('nota').value;
-
-var patt_slash = new RegExp("/");
-var slash = patt_slash.test( x );
-
-if (slash == true){
-
-   document.getElementById('nota').value = x.slice(0,-1);
-
-   alert("No se permite carecteres especiales en este campo");
-   
-   return false;
- }
-
-
-
-
-var patt_comilla = new RegExp("'");
-var comilla = patt_comilla.test( x );
-
-if (comilla  == true){
-
-   document.getElementById('nota').value = x.slice(0,-1);
-
-   alert("No se permite carecteres especiales en este campo");
-   
-   return false;
- }
-
-
-var patt_dat = new RegExp("#");
-var dat = patt_dat.test( x );
-
-if (dat == true){
-
-   document.getElementById('nota').value = x.slice(0,-1);
-
-   alert("No se permite carecteres especiales en este campo");
-   
-   return false;
- }
-
-if (x.length > 1024) 
- {
-   document.getElementById('nota').value =  x.slice(0,-1);
-   alert("El campo de Nota admite un maximo de 1024 caracteres");
-   
-   return false;
- }
-
-
-}
 
 
 
