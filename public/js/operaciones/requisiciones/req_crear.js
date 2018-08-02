@@ -343,7 +343,7 @@ if (r == true) {
             }else{
                       
                 if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
-                        
+                        Console.log(link+' '+Req_NO);
                   send_mail(link,Req_NO);
               
                 }
@@ -438,7 +438,7 @@ function send_mail(link,Req_NO){
 function msg(link,Req_NO){
 
 spin_hide();
-  alert("La orden se ha enviado con exito");
+  MSG_CORRECT("La orden se ha enviado con exito",0);
 
  var R = confirm('Desea imprimir la orden de venta?');
 
