@@ -355,6 +355,7 @@ var x=document.getElementById(UNIID).innerHTML;
 var falta = 1;
 LineArray = [];
 FaltaArray  = [];
+HeaderInfo = [];  
 URL = document.getElementById('URL').value;
 
 
@@ -431,12 +432,16 @@ if (r == true) {
          var JOBID = document.getElementById('JOBID').value;
          var nota  = document.getElementById('nota').value;  
 
-         var datos= "url=ges_requisiciones/set_req_header/"+JOBID+"/"+nota; //LINK DEL METODO EN BRIDGE_QUERY
+            //INI REGISTRO DE CABECERA
+          HeaderInfo[0] =  JOBID+'@'+nota;
+
+         var data= JSON.stringify(HeaderInfo);
+         var url = "ges_requisiciones/set_req_header/";
 
          return   $.ajax({
                      type: "GET",
                      url: link,
-                     data: datos,
+                     data: {url:url,data:data},
                      success: function(res){
                                   
                                   Req_NO = res;
@@ -581,8 +586,6 @@ spin_hide();
 
 
 
-
-
 //FUNCION PARA GUARDAR ITEMS EN ARRAY 
 function set_items(){
 
@@ -611,19 +614,20 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
                    //leer columnas de jobs
                  switch (j){
 
-                      case 4:
+                      case 5:
                           cell += '@'+document.getElementById('JOBID').value+
                           '@'+document.getElementById('JOBID').options[document.getElementById('JOBID').selectedIndex].text+
                           '@'+document.getElementById(phsid).value+
                           '@'+document.getElementById(phsid).options[document.getElementById(phsid).selectedIndex].text+
                           '@'+document.getElementById(costid).options[document.getElementById(costid).selectedIndex].text;
                           console.log(cell);
-               //SI LA CELDA NO CONTIENE VALOR 
-                               /* if(document.getElementById(phsid).value == '-'){
-                                    
-                                   FaltaArray[j] = i+1;
-                                }
-*/
+                         
+                          //SI LA CELDA NO CONTIENE VALOR 
+                          /* if(document.getElementById(phsid).value == '-'){
+                              
+                              FaltaArray[j] = i+1;
+                          }
+                          */
                              break;            
 
 
@@ -631,10 +635,10 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
 
                             val= theTbl.rows[i].cells[j].innerHTML;
 
-                            cell += '@'+val;//agrego el registo de las demas columnas
+                             // cell += '@'+val;//agrego el registo de las demas columnas
 
                               //SI LA CELDA NO CONTIENE VALOR 
-                              if(j!=4){
+                              if(j!=4 || j!=5 ){
 
                                 if(val==''){
                                     
