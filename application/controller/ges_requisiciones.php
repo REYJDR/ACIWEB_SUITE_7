@@ -1631,12 +1631,7 @@ public function CheckError(){
 
   if ($CHK_ERROR!=''){ 
 
-   die("<script>$(window).load(  
-        function(){   
-          $('#ErrorModal').modal('show');
-          $('#ErrorMsg').html('".$CHK_ERROR."');
-         }
-       );</script>"); 
+   die($CHK_ERROR); 
 
   }
 

@@ -443,12 +443,21 @@ if (r == true) {
                      url: link,
                      data: {url:url,Data:data},
                      success: function(res){
-                                  
+
+                              console.log(res);
+                              error = JSON.parse(res);
+
+                              if(error){
+                      
+                                MSG_ERROR(error.E,0);
+
+                              }else{
+
                                   Req_NO = res;
-
-                                  console.log(res);
-
+                                
                                   $('#req_no_jobid').html(res);
+
+                              }
                  
                         }
              });
@@ -464,14 +473,21 @@ if (r == true) {
         data:  {url: 'ges_requisiciones/set_req_items/'+Req_NO.trim() , Data : JSON.stringify(LineArray)}, 
         success: function(res){
               
-               console.log('RES:'+res);
-               
-         if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
-                 
-           send_mail(link,Req_NO);
-       
-         }
+            console.log('RES:'+res);
+            error = JSON.parse(res);
 
+            if(error){
+    
+              MSG_ERROR(error.E,0);
+
+            }else{
+                      
+                if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
+                        
+                  send_mail(link,Req_NO);
+              
+                }
+            }
           }
        });       
 
@@ -641,7 +657,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
 
 
                       default: 
-                      
+
                               //SI LA CELDA NO CONTIENE VALOR 
                               if(j!=4 || j!=5 ){
 

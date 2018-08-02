@@ -256,7 +256,11 @@ public function read_db_error(){
 
     $R_ERRORS = str_replace(',', '  ', $R_ERRORS);
 
-   echo $R_ERRORS;
+    $ARRAY['E'] =  $R_ERRORS;
+
+    $R_ERRORS = json_encode($ARRAY['E']);
+
+   echo $R_ERRORS ;
    return $R_ERRORS ;
 
 }
