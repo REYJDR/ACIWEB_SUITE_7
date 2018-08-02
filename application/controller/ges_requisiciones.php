@@ -373,8 +373,12 @@ echo $codes;
 
 
 //REQUISICIONES//////////////////////////////////////////////////////////////////////////////////////////////////////////
-public function set_req_header($JobID,$nota){
+public function set_req_header(){
 $this->model->verify_session();
+
+$data = json_decode($_GET['Data']);
+
+list($null,$jobID, $nota ) = explode('@',$data );
 
 $Req_NO = $this->model->Get_Req_No();
 

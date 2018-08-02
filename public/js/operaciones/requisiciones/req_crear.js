@@ -441,7 +441,7 @@ if (r == true) {
          return   $.ajax({
                      type: "GET",
                      url: link,
-                     data: {url:url,data:data},
+                     data: {url:url,Data:data},
                      success: function(res){
                                   
                                   Req_NO = res;
