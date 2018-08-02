@@ -617,7 +617,13 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
              
                       case 5:
 
-                          cell += '@'+document.getElementById('JOBID').value+
+                          cell += 
+                          
+                          '@'+theTbl.rows[i].cells[0].innerHTML+
+                          '@'+theTbl.rows[i].cells[1].innerHTML+
+                          '@'+theTbl.rows[i].cells[2].innerHTML+
+                          '@'+theTbl.rows[i].cells[3].innerHTML+                          
+                          '@'+document.getElementById('JOBID').value+
                           '@'+document.getElementById('JOBID').options[document.getElementById('JOBID').selectedIndex].text+
                           '@'+document.getElementById(phsid).value+
                           '@'+document.getElementById(phsid).options[document.getElementById(phsid).selectedIndex].text+
@@ -635,14 +641,11 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
 
 
                       default: 
-
-
-
+                      
                               //SI LA CELDA NO CONTIENE VALOR 
                               if(j!=4 || j!=5 ){
 
                                 val= theTbl.rows[i].cells[j].innerHTML;
-                                cell += '@'+val;//agrego el registo de las demas columnas
 
                                 if(val==''){
                                     
