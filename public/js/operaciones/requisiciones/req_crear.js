@@ -478,10 +478,11 @@ if (r == true) {
             console.log('RES:'+res);
 
             if(res.constructor === {}.constructor){ //si es un objeto, que supone es JSON
-              
+              console.log('NOP');
                  error = JSON.parse(json);
-                 MSG_ERROR(error.E,0);
                  spin_hide();
+                 MSG_ERROR(error.E,0);
+                 
 
             }else{
                       
