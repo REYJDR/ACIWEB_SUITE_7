@@ -343,7 +343,7 @@ if (r == true) {
             }else{
                       
                 if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
-                    Console.log(link+' '+Req_NO);
+                    console.log(link+' '+Req_NO);
                     send_mail(link,Req_NO);
               
                 }
