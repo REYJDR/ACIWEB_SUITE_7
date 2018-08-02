@@ -126,7 +126,7 @@ function checkChar(ID){
 
 
 var x=document.getElementById(ID).innerHTML;
-var patt = new RegExp("/");
+var patt = new RegExp("@");
 var val = patt.test( x );
 
 console.log(val);
@@ -135,7 +135,7 @@ console.log(val);
   {
 
     document.getElementById(ID).innerHTML = x.slice(0,-1);
-    MSG_ERROR("No se permite el caracter especial '/' ",0);
+    MSG_ERROR("No se permite el caracter especial '@' ",0);
     return false;
   }
 }
