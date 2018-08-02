@@ -1015,7 +1015,7 @@ var x=document.getElementById(ID).innerHTML;
 
  if (x.length > long) 
  {
-   document.getElementById(UNIID).innerHTML = x.slice(0,-1);
+   document.getElementById(ID).innerHTML = x.slice(0,-1);
    alert("La entrada no debe ser de longitud mayor a "+long+" caracteres");
    
    return false;
