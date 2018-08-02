@@ -1625,7 +1625,6 @@ $this->model->update($table,$columns,$clause);
 
 public function CheckError(){
 
-
   $CHK_ERROR =  $this->model->read_db_error();
   
   if ($CHK_ERROR!=''){ 

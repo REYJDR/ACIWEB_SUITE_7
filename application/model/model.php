@@ -266,10 +266,8 @@ public function read_db_error(){
         $R_ERRORS = '';
     }
 
-    
 
-
-    echo $R_ERRORS ;
+   // echo $R_ERRORS ;
     return $R_ERRORS ;
 
 }
