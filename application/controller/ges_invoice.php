@@ -195,7 +195,7 @@ public function GetOrdrDetail($id){
 
     $ORDER= $this->model->Query($query);
 
-    echo '<table id="example-12" class="table table-striped table-bordered" cellspacing="0"  >
+    echo '<fieldset><table id="example-12" class="table table-striped table-bordered" cellspacing="0"  >
           <thead>
             <tr>
               <th>Codigo</th>
@@ -220,7 +220,9 @@ public function GetOrdrDetail($id){
 
       }
 
-    echo '</tbody></table>
+    echo '</tbody></table></fieldset>
+
+    <div class="separador class="col-lg-12" ></div>
 
     <div style="float:right;" class="col-md-2">
     <a href="'.URL.'index.php?url=ges_ventas/ges_print_OrdEmpaque/'.$id.'"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
@@ -235,8 +237,8 @@ public function GetOrdrDetail($id){
       <span>A Factura</span>
     </a>
     </div>
-
-    </fieldset>';
+    <div class="separador class="col-lg-12" ></div>
+    ';
 }
 
 
