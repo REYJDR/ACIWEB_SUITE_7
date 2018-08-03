@@ -4,9 +4,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 
 <!--ADD JS FILE-->
-<script  src="<?php echo URL; ?>js/operaciones/invoice/BillGen.js" ></script>
-
-
+<script  src="<?php echo URL; ?>js/operaciones/XXXXXX/XXXXXX.js" ></script>
 
 
 <div class="limiter">
@@ -18,7 +16,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						<?PHP echo $Title; ?>
 			</span>
 			<!--INI DIV ERRO-->
-			<div id="ERROR" class="alert"></div>
+			<div id="ERROR" ></div>
 			<!--INI DIV ERROR-->
 			
 			<!--ini contenido-->

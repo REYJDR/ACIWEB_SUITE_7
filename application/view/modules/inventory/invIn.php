@@ -18,7 +18,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						<?PHP echo $Title; ?>
 			</span>
 			<!--INI DIV ERRO-->
-			<div id="ERROR" class="alert"></div>
+			<div id="ERROR" ></div>
 			<!--INI DIV ERROR-->
 			
 			<!--ini contenido-->
