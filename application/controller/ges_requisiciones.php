@@ -624,8 +624,9 @@ var table = $("#table_info").dataTable({
 </script>';
 
 echo '<br/><br/><fieldset class="fieldsetform" >
-<div class="separador col-lg-12" ></div>
+
 <h4>Detalle de Requisición</h4>
+<div class="separador col-lg-12" ></div>
 <table  class="display nowrap table table-striped table-bordered" cellspacing="0"  ><tbody>';
 
   foreach ($ORDER_detail as $datos) {
