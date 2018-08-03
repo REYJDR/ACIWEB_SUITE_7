@@ -97,6 +97,9 @@
     <div class='col-lg-12'>
     <?php   if($mod_invt_CK == 'checked' and $INF_INV==1 ){?>
         <div class='col-lg-3'>
+        <button onclick="window.location='<?PHP ECHO URL; ?>index.php?url=ges_inventario/InvIn'" class="dashBottom" ><?php echo $SUBMENU_inv4; ?></button>				
+        </div>
+        <div class='col-lg-3'>
         <button onclick="window.location='<?PHP ECHO URL; ?>index.php?url=ges_inventario/inv_list'" class="dashBottom" ><?php echo $SUBMENU_inv1; ?></button>				
         </div>
         <div class='col-lg-3'>
@@ -105,6 +108,7 @@
         <div class='col-lg-3'>
         <button onclick="window.location='<?PHP ECHO URL; ?>index.php?url=ges_inventario/InvOut'" class="dashBottom" ><?php echo $SUBMENU_inv3; ?></button>				
         </div>
+
 
     <?php } ?>
 

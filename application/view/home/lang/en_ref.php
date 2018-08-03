@@ -30,6 +30,7 @@ $SUBMENU_req4  = 'Requisiciones creadas';
 $SUBMENU_inv1 = 'Productos';
 $SUBMENU_inv2 = 'Consignaciones';
 $SUBMENU_inv3 = 'Salida de mercancia';
+$SUBMENU_inv4 = 'Entrada de mercancia';
 
 $SUBMENU_stock1 = 'Almacenes';
 
