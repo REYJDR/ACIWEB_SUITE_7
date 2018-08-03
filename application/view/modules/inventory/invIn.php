@@ -4,7 +4,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 
 <!--ADD JS FILE-->
-<script  src="<?php echo URL; ?>js/operaciones/inventario/invIn.js" ></script>
+<script  src="<?php echo URL; ?>js/operaciones/inventory/invIn.js" ></script>
 
 
 
