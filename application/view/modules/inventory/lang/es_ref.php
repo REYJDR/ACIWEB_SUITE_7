@@ -13,7 +13,6 @@ $Tblcol9 = 'Detalle';
 //  END INV lIST
 
 // INI INV INFO
-
 $Title2 = '';
 $invInfo1 ="Item ID";
 $invInfo2 ="Descripcion";
@@ -25,6 +24,22 @@ $invInfo7 ="Ult. Cost. Uni.";
 $invInfo8 ="Cta GL";
 $invInfo9 ="UPC SKU";
 // END INV INFO
+
+// INI INV IN
+$Title_invIn = 'Entrada de mercancia';
+$invIn1 ="Entrada Individual";
+$invIn2 ="Cargar lista";
+$invIn3 ="Informacion General";
+$invIn4 ="Almacen";
+$invIn5 ="Ubicacion";
+$invIn6 ="Ubicacion en almacen";
+$invIn7 ="Tipo de impuesto";
+$invIn8 ="Activo/No activo";
+$invIn9 ="Carga de mercancia por layout";
+$invIn10 = "Entrada masiva";
+$invIn11 = "Asociacion de proyecto";
+$BTN_InvIN_Proc = 'Procesar';
+// END INV IN
 
 
 // INI INV LOCATION
@@ -57,6 +72,10 @@ $SO_Notes    = 'Observaciones';
 
 $TblItem  = 'Item ID';
 $TblDes   = 'Descripcion';
+$TblUnitMeasure = "Und. Medida";
+$TblUPCSKU = 'UPC SKU';
+$TblGlAcct = 'Cuenta GL';
+$TblTaxTyp = 'Gravable';
 $TblNote  = 'Nota';
 $TblSmall = 'Chico';
 $TblBig   = 'Grande';

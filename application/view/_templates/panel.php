@@ -110,24 +110,12 @@ foreach ($res as $value) {
 
   <!--INI MENU CONFIG-->
   <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
-            <img class='icon profile'  src="<?php echo  $user_avatar; ?>" /> <?php echo $this->model->active_user_name; ?><span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-        <li><a tabindex="0" title="Ir al perfil de usuario"  href="<?PHP ECHO URL; ?>index.php?url=home/edit_account/<?php echo $this->model->active_user_id; ?>"><img class='icon' src="img/Contact.png" /><?php echo $SUBMENU_conf1; ?></a></li>
 
-        <?php if($this->model->active_user_role=='admin'){?>
-        
-        <li><a tabindex="0" title="Administrar Usuarios" href="<?PHP ECHO URL; ?>index.php?url=home/accounts" ><img class='icon' src="img/Users.png" /><?php echo $SUBMENU_conf2; ?></a></li>
-        <li><a tabindex="0" title="Configuracion"  href="<?PHP ECHO URL; ?>index.php?url=home/config_sys" ><img  class='icon' src="img/Cog.png" /><?php echo $SUBMENU_conf3; ?></a></li>
-        
-        <?php } ?>
-                 
-        <li><a  title="Salir del sistema" href="<?PHP ECHO URL; ?>index.php?url=login/login_out/" ><img  class='icon' src="img/Shut.png" /><?php echo $SUBMENU_conf4; ?></a></li>
-        </ul>
-       </li>
+       <li> <a tabindex="0" title="Ir al perfil de usuario"  href="<?PHP ECHO URL; ?>index.php?url=home/edit_account/<?php echo $this->model->active_user_id; ?>">
+       <img class='icon profile'  src="<?php echo  $user_avatar; ?>" /> <?php echo $this->model->active_user_name; ?> </a> </li>
+   
   </ul>
+ 
   <!--END MENU CONFIG-->
 
 </ul>

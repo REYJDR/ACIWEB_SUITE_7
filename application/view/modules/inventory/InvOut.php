@@ -201,15 +201,7 @@ if ($pice_mod_ck == 1) {
 					</table>
 					</fieldset>	
 					</div>
-					<!--ini btn authorization-->
-					<?php 
-					if($pice_mod_ck!=1){ ?>
-					<div class="col-lg-1"> </div>
-					<div  class="col-lg-3">
-						<input data-toggle="modal" data-target="#AuthLogin" type='button' class="close-form-btn"  value="<?PHP echo $BTN_AuthChange; ?>" />
-					</div>
-					<?php }  ?>
-					<!--fin btn authorization-->
+
 					
 
 				</div>
