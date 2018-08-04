@@ -1101,7 +1101,7 @@ $this->model->verify_session();
       order by LAST_CHANGE '.$sort.' limit '.$limit ; 
     }
     
-    
+    echo $query; die();
     
     return $filter =  $this->model->Query($query);
 
