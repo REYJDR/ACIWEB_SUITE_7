@@ -321,7 +321,7 @@ UnitPrice = 0;
 total = qty * UnitPrice;
 
 //document.getElementById(totalID).innerHTML = parseFloat(total).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]; 
-document.getElementById(totalID).innerHTML = parseFloat(total).toFixed(5); 
+document.getElementById(totalID).innerHTML = parseFloat(total).toFixed(2); 
 
 document.getElementById(qtyID).innerHTML =   parseFloat(qty).toFixed(5);
 
