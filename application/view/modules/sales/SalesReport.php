@@ -139,6 +139,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					$lastname = $value->{'lastname'};
 					}
 					
+					
 					 $OrdPedi = $this->model->Query_value('INVOICE_GEN_HEADER','SalesOrderNumber','WHERE InvoiceNumber="'.$filter->{'InvoiceNumber'}.'"');
 					 $OrdPediID ="'".$OrdPedi."'"; 
 					
