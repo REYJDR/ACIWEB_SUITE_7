@@ -38,6 +38,7 @@ $invIn8 ="Activo/No activo";
 $invIn9 ="Carga de mercancia por layout";
 $invIn10 = "Entrada masiva";
 $invIn11 = "Asociacion de proyecto";
+$invIn12 = "Ajuste de materiales";
 $BTN_InvIN_Proc = 'Procesar';
 // END INV IN
 
@@ -79,7 +80,7 @@ $TblTaxTyp = 'Gravable';
 $TblNote  = 'Nota';
 $TblSmall = 'Chico';
 $TblBig   = 'Grande';
-$TblLote = 'No. Lote';
+$TblLote = 'Almacen';
 $TblLoc  = 'Ubicacion';
 $TblQty   = 'Cant.';
 $TblUnitP = 'Precio';

@@ -1,15 +1,13 @@
-
-
 // ********************************************************
 // * Aciones cuando la pagina ya esta cargada
 // ********************************************************
 $(window).load(function(){
 
 
-$('.loader').hide();
-document.getElementById("allDocument").style.visibility = "visible";
+  $('.loader').hide();
+  document.getElementById("allDocument").style.visibility = "visible";
 
- 
+  
   
   //selectc con buscador 
   $(".select").select2({
@@ -18,56 +16,52 @@ document.getElementById("allDocument").style.visibility = "visible";
   allowClear: true,
   maximumSelectionSize: 1
 
-  
   });  
 
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
 
+  // Get the element with id="defaultOpen" and click on it
+  document.getElementById("defaultOpen").click();
 });
 
 
 // ********************************************************
 // * Aciones cuando la pagina incia|
 // ********************************************************
-
-// Keypress event doesn't get fired when assigned to element in Opera
-$(document).keypress(function(e){
-
-     return e.which != 13;
-});  
-
-
-
 document.addEventListener('DOMContentLoaded', function() {
 
-var LineArray = []; //array para los items de la cotizacion
-   
-$('.loader').show();
+  var LineArray = []; //array para los items de la cotizacion
+    
+  $('.loader').show();
 
 
-$("#pass_12").focus(function(){
-//Elimina el valor de pass2 si se situa el foco a pass1 en el model de Edit user
-   var passField = "";
+  $("#pass_12").focus(function(){
+  //Elimina el valor de pass2 si se situa el foco a pass1 en el model de Edit user
+    var passField = "";
 
-  $('#pass2').val(passField);
+    $('#pass2').val(passField);
 
-   });
-
-
-$('#pass_22').focusout(function(){
-  var pass = $('#pass_12').val();
-  var pass2 = $('#pass_22').val();
-    if(pass != pass2){
-      alert('Password no coninciden');
-      }
+    });
 
 
-     });
+  $('#pass_22').focusout(function(){
+    var pass = $('#pass_12').val();
+    var pass2 = $('#pass_22').val();
+      if(pass != pass2){
+        MSG_ERROR('Password no coninciden',0);
+        }
+
+
+      });
 
 
 
 }, false);
+
+$(document).keypress(function(e){
+  return e.which != 13;
+});  
+
+
 //FUNCION DE ERROR 
 function MSG_ERROR(MSG,VAL){
 
@@ -83,10 +77,7 @@ function MSG_ERROR(MSG,VAL){
     $('#ERROR').html(MSG+'<br>');
   }
 
-  
-  
   $("html, body").animate({ scrollTop: 0 }, "slow");
-  
 
   //return false;
 }
@@ -107,109 +98,72 @@ function MSG_CORRECT(MSG,VAL){
   }
 
   
-  
   $("html, body").animate({ scrollTop: 0 }, "slow");
   
 
   //return false;
 }
 
+//FUNCION DE ADVERTENCIA
+function MSG_ADVICE(MSG){
+  
+    $('#ERROR').show();
+    $('#ERROR').addClass( "alert alert-warning" ); 
+  
+
+    $('#ERROR').html(MSG+'<br>');
+
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+    
+  
+    //return false;
+}
+
+//LIMPIA CAMPO ERROR
 function MSG_ERROR_RELEASE(){
 
  $('#ERROR').html('');
-
+ $('#ERROR').hide();
 }
 
 
-//CHECA ENTRADA DE CARACTER ESPECIAL (@) para campos de tablas
-function checkTblChar(ID){
-  
-  
-  var x=document.getElementById(ID).innerHTML;
-  var patt = new RegExp("@");
-  var val = patt.test( x );
-  
-    if (val== true) 
-    {
-  
-      document.getElementById(ID).innerHTML = x.slice(0,-1);
-      MSG_ERROR("No se permite el caracter especial '@' ",0);
-      return false;
-    }
-  }
-
-//CHECA ENTRADA DE CARACTER ESPECIAL (@) para campos imput
-function checkInpChar(ID){
-
-
-var x=document.getElementById(ID).value;
-var patt = new RegExp("@");
-var val = patt.test( x );
-
-  if (val== true) 
-  {
-    document.getElementById(ID).value = x.slice(0,-1);
-    MSG_ERROR("No se permite el caracter especial '@' ",0);
-    return false;
-  }
-}
-
-//CHECA SOLO ENTRADA DE NUMEROS
-function checkQtyInput(ID)
-{
-
-var x=document.getElementById(ID).innerHTML;
-
-  if (isNaN(x)) 
-  {
-    document.getElementById(ID).innerHTML = '';
-    MSG_ERROR("La entrada en este campo debe ser numerico",0);
-    
-    return false;
-  }else{
-
-    return 0;
-  }
-}
-
-//FUNCION DE SPIN MOSTRAR Y APAGAR
+//INI FUNCION DE SPIN MOSTRAR Y APAGAR
 function spin_show(){
 
-
-        //TERMINA SPIN/////////////////////////////////////////////////////
-        $('html,body').scrollTop(0);
-        document.getElementById("allDocument").style.visibility = "hidden";
-        $('.loader').show();
-        ////////////////////////////////////////////////////////////////////
+    //TERMINA SPIN/////////////////////////////////////////////////////
+    $('html,body').scrollTop(0);
+    document.getElementById("allDocument").style.visibility = "hidden";
+    $('.loader').show();
+    ////////////////////////////////////////////////////////////////////
 
 
 }
-
 
 function spin_hide(){
 
-
-        //TERMINA SPIN/////////////////////////////////////////////////////
-        $('.loader').hide();
-        document.getElementById("allDocument").style.visibility = "visible";
-        ////////////////////////////////////////////////////////////////////
+    //TERMINA SPIN/////////////////////////////////////////////////////
+    $('.loader').hide();
+    document.getElementById("allDocument").style.visibility = "visible";
+    ////////////////////////////////////////////////////////////////////
 
   
 }
+//FIN FUNCION DE SPIN MOSTRAR Y APAGAR
 
-
+//DA SALIDA DEL SISTEMA
 function goOut(){
 
-var URL = $('#URL').val();
+  var URL = $('#URL').val();
 
-r = confirm("Desea salir de sistema?");
+  r = confirm("Desea salir de sistema?");
 
-if(r==true){
-  window.open(URL+"index.php?url=login/login_out/",'_self');
-  
+  if(r==true){
+    window.open(URL+"index.php?url=login/login_out/",'_self');
+    
+  }
 }
-}
 
+//DEVUELVE AL DASHBOARD
 function goHome(){
   
   var URL = $('#URL').val();
@@ -218,224 +172,7 @@ function goHome(){
     
 }
 
-
-function agregar_pro(id,item,uni,maxqty,comp){
-
-
-  var element = id+id;
-  var idqty = id+"qty";
-
-  
-  //var qty = document.getElementById(idqty).value;
-
-  if(!document.getElementById(element)){
-
-
-    var arrayItem =LineArray.length;
-
-
-
-     var line = '<tr id="'+element+'"><td class="text-center hidden-xs"><a href="#" onclick="javascript:  erase_item('+arrayItem+'); del_tr(this);"><i style="color:red;" class="fa fa-minus"></i></a>&nbsp&nbsp'+id+'</td><td>'+item+'</td><td class="text-center hidden-xs">'+uni+'</td><td class="text-right text-primary text-bold"><input onchange="javascript: changeline('+arrayItem+','+"'"+idqty+"'"+','+"'"+document.getElementById('no_order').value+"'"+','+"'"+uni+"'"+','+"'"+id+"'"+','+"'"+comp+"'"+');" type="number" id="'+idqty+'" name="'+idqty+'" min="1" max='+maxqty+' value="1"/></td></tr>';
-
-
- 
-
-
-    $( "#invoice" ).append( line );
-
-
-
-      LineArray[LineArray.length] = "option=2&codigo_item="+id+"&uni="+uni+"&id_order="+document.getElementById('no_order').value+"&qty="+document.getElementById(idqty).value+"&id_company="+comp;
-
-     // alert(LineArray);
-
-    }else{
-
-    alert("El Item ya ha sido agragado");
-    }
-
-}
-
-
-function changeline(line,idqty,order,uni,iditem,comp){
-
-var idqty = document.getElementById(idqty).value;
-
-
-LineArray[line] = "option=2&codigo_item="+iditem+"&uni="+uni+"&id_order="+order+"&qty="+idqty +"&id_company="+comp;
-
-}
      
-
-function del_tr(remtr)
-  {
-      while((remtr.nodeName.toLowerCase())!='tr')
-          remtr = remtr.parentNode;
-
-      remtr.parentNode.removeChild(remtr);
-  }
-function del_id(id)
-  {
-          del_tr(document.getElementById(id));
-  }
-
-
-function erase_item(line){
-
-
-  LineArray[line]='';
-
-  //alert(LineArray);
-
-}
-
-function send_order(){
-
-
-var r = confirm("Desea procesar la orden?");
-
-
- if (r == true) {
-
-
-       var date=document.getElementById('date').innerHTML;
-
-       SalesOrderNumber=document.getElementById('no_order').value;
-
-       var user_id=document.getElementById('user').value;
-
-       var job_id=document.getElementById('jobid').value;
-
-       var datos =  "option=1&id_job="+job_id+"&id_order="+SalesOrderNumber+"&user_id="+user_id;
-
-       // alert(datos);
-
-     if(job_id==''){
-
-       alert("Debe indicar el JOB asociado a esta Orden de Salida");
-
-     }else{
-
-       if(LineArray!=''){
-
-       //Envio detalles de la orden
-        send_data(datos);
-
-
-           $.each(LineArray, function(index,value) {
-
-
-           send_data(value);//envio cada item de la cotizacion
-
-
-           });
-
-           var r = confirm("Desea imprimir la orden?");
-
-          if (r == true) {
-
-
-             printer(SalesOrderNumber);
-
-
-
-           }else{
-
-             msg(1);
-
-           }
-
-
-
-
- }else{
-
-   alert("Su lista de orden esta vacia, no será procesada");
-
-
-    }
-
- }
-
-}
-
-}
-function msg(r){
-
-  if(r==1){ alert("La orden se ha enviado con exito");  
-
- location.reload(true); 
-}else{  
- 
- location.reload(true); 
-   }
-
-
-
-location.reload(true);
-
-}
-
-function send_data(data){
-
-//alert(data);
-
-   $.ajax({
-          type: 'POST',
-          url: 'form_query.php',
-          data: data,
-          dataType: 'html',
-          success: function(res) {
-
-            // alert(res);
-
-            $("#prueba").html(res);
-
-            }
-        });
-
- }
-
-function printer(order){
-
-
-var datos= "id_item="+order+"&option=5";
-
-$.ajax({
-type: "POST",
-url: "form_query.php",
-data: datos,
-success: function(res){
-
-
-   print_data(res);
-
-   }
-});
-
-
-
-function print_data(data){
-//alert(data);
-
-  
-
-var logo = '<div style="background-color:white; width:100%; "><img src="images/logo.png" width="120px" /></div>';
-var mywindow = window.open("", "","width=700, height=900, scrollbars=yes");
-
-mywindow.document.write('<html><head><link rel="stylesheet" href="css/style_print.css"><title>Orden de salida de materiales</title></head><body style="background:white;" >');
-mywindow.document.write('<div  style="margin-left:50px; margin-right:50px; " >');
-mywindow.document.write(logo);
-mywindow.document.write(data);
-mywindow.document.write('</div></body></html>');
-mywindow.document.close(); // necessary for IE >= 10
-mywindow.focus(); // necessary for IE >= 10
-//mywindow.print();
-//mywindow.close();
-msg(2);
-   }
- }
-
 function show_sales(URL,id){
 
 
@@ -460,9 +197,9 @@ function show_sales(URL,id){
         }, 2000);
 
 
- }
+}
 
- function  show_invadj(URL,id,resp){
+function show_invadj(URL,id,resp){
 
 
      var datos= "url=bridge_query/get_invadj_info/"+id+'/'+resp;
@@ -487,7 +224,7 @@ function show_sales(URL,id){
 
 
 
- }
+}
 
 function show_invoice(URL,id){
 
@@ -515,13 +252,12 @@ function show_invoice(URL,id){
 
 
 
- }
-
+}
 
 function show_con(URL,id){
 
 
-     var datos= "url=bridge_query/get_con_info/"+id;
+  var datos= "url=bridge_query/get_con_info/"+id;
 
   console.log(datos);
       
@@ -542,11 +278,9 @@ function show_con(URL,id){
         scrollTop: $("#info").offset().top
         }, 2000);
 
+}
 
-
-
- }
- function show_fact(URL,id){
+function show_fact(URL,id){
 
 
   var datos= "url=bridge_query/get_fact_by_id/"+id;
@@ -573,9 +307,9 @@ function show_con(URL,id){
 
 
 
- }
+}
 
- function items(url,id){
+function items(url,id){
 
 
      var datos= "url=bridge_query/get_items_by_invoice/"+id;
@@ -596,56 +330,13 @@ function show_con(URL,id){
             });
 
 
- }
+}
 
-
-
-
-
-function printer_sales(order){
-
-
-var datos= "id_item="+order+"&option=12";
-
-$.ajax({
-type: "POST",
-url: "form_query.php",
-data: datos,
-success: function(res){
-
-
-   print_data_sales(res);
-
-   }
-});
-
-
-
-function print_data_sales(data){
-//alert(data);
-
-
-var logo = '<div style="background-color:white; width:100%; "><img src="images/logo.png" width="120px" /></div>';
-var mywindow = window.open("", "","width=700, height=900, scrollbars=yes");
-
-mywindow.document.write('<html><head><link rel="stylesheet" href="css/style_print.css" /><title>Orden de venta</title></head><body style="background:white;" >');
-mywindow.document.write('<div  style="margin-left:50px; margin-right:50px;" >');
-mywindow.document.write(logo);
-mywindow.document.write(data);
-mywindow.document.write('</div></body></html>');
-mywindow.document.close(); // necessary for IE >= 10
-mywindow.focus(); // necessary for IE >= 10
-mywindow.print();
-mywindow.close();
-msg(2);
-   }
- }
 
 // ********************************************************
 // * formato de fechas
 // ********************************************************
-
-    function formatDate(date) {
+function formatDate(date) {
         var d = new Date(date);
             month = '' + (d.getMonth() + 1);
             day = '' + d.getDate();
@@ -655,15 +346,14 @@ msg(2);
         if (day.length < 2) day = '0' + day;
 
         return [year, month, day].join('-');
-    }
+}
 
 // ********************************************************
 // * CHECA ERRORES DE BASE DE DATOS
 // ********************************************************
-
 function  CHECK_DB_ERROR(){
 
-$err = 0;
+ $err = 0;
     //VERIFICA ERRORES DEL QUERY
      $.getJSON( "/public/LOG_ERROR/TEMP_LOG.json", function(data) {
         
@@ -685,100 +375,68 @@ $err = 0;
       });
   });
 
-return $err;
+ return $err;
 }
 
 // ********************************************************
 // * USER MANAGMENT function
 // ********************************************************
-
 function ValidateEmail(email) {
+
    var expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
     return expr.test(email);
-    };
-  //Valido el match de los password
-  $(document).ready(function(){
-  $('#pass_2').focusout(function(){
-    var pass = $('#pass_1').val();
-    var pass2 = $('#pass_2').val();
-      if(pass != pass2){
-      alert('Password no coninciden');
-      }
+
+}
+
+//Valido el match de los password
+$(document).ready(function(){
+
+    $('#pass_2').focusout(function(){
+      var pass = $('#pass_1').val();
+      var pass2 = $('#pass_2').val();
+        if(pass != pass2){
+        MSG_ERROR('Password no coninciden',0);
+        }
 
   });
 
   //Valido si la sintaxis de la direccion de correo es valido
-   $('#mail').focusout(function(){
-    if (!ValidateEmail($("#mail").val())) {
-      alert("La direccion de correo no es correcta.");
-      }
-
-       });
+  $('#mail').focusout(function(){
+      if (!ValidateEmail($("#mail").val())) {
+        MSG_ERROR("La direccion de correo no es correcta.",0);
+        }
     });
-
-function edit(id){
-
-var datos = 'option=1&id='+id;
-
-var link = url+'/application/model/jquery.php';
-
-$.ajax({
-type: 'POST',
-url:'index.php',
-data: datos,
-success: function(dat){
- alert(dat);
-
-var user_info = JSON.parse(dat);
-
-
-   document.getElementById("name2").value = user_info.name;
-   document.getElementById("lastname2").value =user_info.lastname ;
-   document.getElementById("email2").value = user_info.email;  
-   document.getElementById("priv").value = user_info.role ;  
-   document.getElementById("pass_12").value = user_info.pass ;  
-   document.getElementById("pass_22").value = user_info.pass ;  
-   document.getElementById("id_user").value = user_info.id;
-   
-
-}
-
-
 });
 
-}
 
-
+//ELIMINAR USUARIO 
 function erase_user(URL){
 
-var id=document.getElementById("user_2").value;
-var name = document.getElementById("name2").value;
-var lastname =  document.getElementById("lastname2").value;
+  var id=document.getElementById("user_2").value;
+  var name = document.getElementById("name2").value;
+  var lastname =  document.getElementById("lastname2").value;
 
-var datos = 'url=bridge_query/erase_account/'+id;
+  var datos = 'url=bridge_query/erase_account/'+id;
 
-var r = confirm('Este seguro de eliminar definitivamente la cuenta del usuario '+name+' '+lastname+' ?');
+  var r = confirm('Este seguro de eliminar definitivamente la cuenta del usuario '+name+' '+lastname+' ?');
 
-if(r==true){
+    if(r==true){
 
-$.ajax({
-type: 'GET',
-url:  URL+'index.php',
-data: datos,
-success: function(dat){
+    $.ajax({
+      type: 'GET',
+      url:  URL+'index.php',
+      data: datos,
+      success: function(dat){
 
- alert('La cuenta se ha eliminado exitosamente.'); 
+        MSG_CORRECT('La cuenta se ha eliminado exitosamente.',0); 
 
-history.go(-1); 
-return true;
+          history.go(-1); 
+          return true;
 
-}
-
-
-});
+      }  });
 
 
-}
+    }
   
 }
 
@@ -786,17 +444,14 @@ return true;
 // ********************************************************
 // * location management
 // ********************************************************
-
 function FILTER(URL){
 
-var stock = $('#item_by_stock').val();
+  var stock = $('#item_by_stock').val();
+  var data = 'url=bridge_query/get_item_filter_by_stock/'+stock;
 
+  $('.loader').show();
 
-var data = 'url=bridge_query/get_item_filter_by_stock/'+stock;
-
-$('.loader').show();
-
-document.getElementById("allDocument").style.visibility = "hidden";
+  document.getElementById("allDocument").style.visibility = "hidden";
 
     $.ajax({
     type:"GET",
@@ -804,9 +459,7 @@ document.getElementById("allDocument").style.visibility = "hidden";
     data: data,
     success: function(dat){
 
-
       $('#items_by_stock').html(dat);
-
       $('.loader').hide();
       document.getElementById("allDocument").style.visibility = "visible";
 
@@ -845,246 +498,254 @@ function view_items(URL,ruta){
 
 
 }
-
-
   
 function crear_almacen(){
 
-
-$("#crear_alm_imp").show();
-$("#bodega").hide();
+  $("#crear_alm_imp").show();
+  $("#bodega").hide();
 
 }
 
 function save_alm(URL){
 
-var name = document.getElementById('almacen').value;
+  var name = document.getElementById('almacen').value;
 
-url = URL;
-
-
-if(name!=''){
-
-    var data = 'url=bridge_query/set_almacen/'+name.toUpperCase();
-
-    
-
-     $.ajax({
-       type: 'GET',
-       url: url+'index.php',
-       data: data,
-       success: function(res) {
-
-    alert(res);
-
-    location.reload(true); 
-
-          }
-     });
-
-  }else{
+  url = URL;
 
 
-  alert('El campo no debe estar vacio');
+  if(name!=''){
 
-  }
+      var data = 'url=bridge_query/set_almacen/'+name.toUpperCase();
+
+      $.ajax({
+        type: 'GET',
+        url: url+'index.php',
+        data: data,
+        success: function(res) {
+
+      alert(res);
+
+      location.reload(true); 
+
+            }
+      });
+
+    }else{
 
 
-$("#crear_alm_imp").hide();
-$("#bodega").show();
+    MSG_ERROR('El campo no debe estar vacio',0);
+
+    }
+
+
+  $("#crear_alm_imp").hide();
+  $("#bodega").show();
 
 }
-
 
 function set_location(URL){
 
 
-if(document.getElementById("stock").value==''){
+ if(document.getElementById("stock").value==''){
 
 
-alert('Debe seleccionar al menos el almacen');
+  MSG_ERROR('Debe seleccionar al menos el almacen',0);
 
 
 
-} else {  
+  } else {  
 
-ALMACEN = document.getElementById("stock").value;
+    ALMACEN = document.getElementById("stock").value;
 
-if(document.getElementById("stock_estand").value=='') { MUEBLE = '0'; } else {MUEBLE = mueble_ID; }
-if(document.getElementById("stock_column").value=='') { COLUMNA = '0'; } else {COLUMNA=colum_ID; }
-if(document.getElementById("stock_row").value==''){ FILA = '0'; } else { FILA=ROW_ID; }
+    if(document.getElementById("stock_estand").value=='') { MUEBLE = '0'; } else {MUEBLE = mueble_ID; }
+    if(document.getElementById("stock_column").value=='') { COLUMNA = '0'; } else {COLUMNA=colum_ID; }
+    if(document.getElementById("stock_row").value==''){ FILA = '0'; } else { FILA=ROW_ID; }
 
-var locationAL = 'A'+ALMACEN+'M'+MUEBLE+'C'+COLUMNA+'F'+FILA;
+    var locationAL = 'A'+ALMACEN+'M'+MUEBLE+'C'+COLUMNA+'F'+FILA;
 
-var datos ='url=bridge_query/set_location/'+ALMACEN+'/'+locationAL;
+    var datos ='url=bridge_query/set_location/'+ALMACEN+'/'+locationAL;
 
- $.ajax({
-       type: 'GET',
-       url: URL+'index.php',
-       data: datos,
-       dataType: 'html',
-       success: function(res) {
+    $.ajax({
+          type: 'GET',
+          url: URL+'index.php',
+          data: datos,
+          dataType: 'html',
+          success: function(res) {
 
-    alert(res);
+        alert(res);
 
-    location.reload(true); 
+        location.reload(true); 
 
-          }
-     });
+              }
+        });
+
+    }
 
   }
 
- }
+  // ********************************************************
+  // * INPUTS checa si el valor introducido es numerico , permite "-"
+  // ********************************************************
+  function check_num(value,id)
+  {
+  $('#ERROR').hide();
+
+
+  var slice = value.slice(-1);
+
+  var patt = new RegExp("-");
+  var sing = patt.test(value );
+
+
+  if (isNaN(value)) 
+  {
+
+    if(sing==false) {
+      
+          document.getElementById( id ).value  = slice;
+          MSG_ERROR("La entrada debe ser valores numericos", 0 );
+          
+          return false;
+        }
+
+  }
+
+
+}
+
+
 
 // ********************************************************
-// * INPUTS checa si el valor introducido es numerico , permite "-"
+// * validaciones de campos 
 // ********************************************************
-function check_num(value,id)
-{
-$('#ERROR').hide();
+  //SOLO VALORES NUMERICOS EN CAMPOS DE TABLAS
+  function checkTblnum(ID){
+
+    MSG_ERROR_RELEASE();
+
+    var x=document.getElementById(ID).innerHTML;
+    var patt = new RegExp("-");
+    var sing = patt.test( x );
 
 
-var slice = value.slice(-1);
+    if (isNaN(x)) 
+    {
 
-var patt = new RegExp("-");
-var sing = patt.test(value );
-
-
-if (isNaN(value)) 
-{
-
-  if(sing==false) {
-    
-        document.getElementById( id ).value  = slice;
-        MSG_ERROR("La entrada debe ser valores numericos", 0 );
+      if(sing==false) {
         
-        return false;
-      }
+            document.getElementById(ID).innerHTML = x.slice(0,-1);
+            MSG_ERROR("La entrada debe ser valores numericos", 0 );
+            
+            return false;
+          }
 
-}
-
-
-}
-
-// ********************************************************
-// * CAMPOS TABLAS  checa si el valor introducido es numerico , permite "-"
-// ********************************************************
-function checkTblnum(ID)
-{
-$('#ERROR').hide();
-
-var x=document.getElementById(ID).innerHTML;
-var patt = new RegExp("-");
-var sing = patt.test( x );
+    }
 
 
+  }
 
-if (isNaN(x)) 
-{
-
-  if(sing==false) {
+  //NO PERMITE @ EN CAMPOS DE TABLAS
+  function checkTblChar(ID){
+    
+    MSG_ERROR_RELEASE();
+    
+    var x=document.getElementById(ID).innerHTML;
+    var patt = new RegExp("@");
+    var val = patt.test( x );
+    
+      if (val== true) 
+      {
     
         document.getElementById(ID).innerHTML = x.slice(0,-1);
-        MSG_ERROR("La entrada debe ser valores numericos", 0 );
-        
+        MSG_ERROR("No se permite el caracter especial '@' ",0);
         return false;
       }
+  }
 
-}
+  //NO PERMITE @ EN CAMPOS INPUTS
+  function checkInpChar(ID){
+    
+    MSG_ERROR_RELEASE();
+    var x=document.getElementById(ID).value;
+    var patt = new RegExp("@");
+    var val = patt.test( x );
+
+    if (val== true) 
+    {
+      document.getElementById(ID).value = x.slice(0,-1);
+      MSG_ERROR("No se permite el caracter especial '@' ",0);
+      return false;
+    }
+  }
+
+  //SOLO VALORES NUMERICOS EN CAMPOS INPUTS
+  function checkInpnum(ID){
+
+    MSG_ERROR_RELEASE();
+    var x=document.getElementById(ID).innerHTML;
+
+    if (isNaN(x)) 
+    {
+      document.getElementById(ID).innerHTML = '';
+      MSG_ERROR("La entrada en este campo debe ser numerico",0);
+      
+      return false;
+    }else{
+
+      return 0;
+    }
+  }
+
+  //VALIDA LONGITUD EN CAMPOS DE TABLAS
+  function checkLong(ID,long){
+    MSG_ERROR_RELEASE();
+    var x=document.getElementById(ID).innerHTML;
+
+    if (x.length > long) 
+    {
+      document.getElementById(ID).innerHTML = x.slice(0,-1);
+      alert("La entrada no debe ser de longitud mayor a "+long+" caracteres");
+      
+      return false;
+    }
+  }
+// ********************************************************
+// * validaciones de campos 
+// ********************************************************
 
 
-}
-
-
-
-//ver foto de perfil antes de subirla
+// ********************************************************
+// *PERMITE VER UNA FOTO ANTES DE CARGARLA AL SERVIDOR
+// ********************************************************
 function readURL(input) {
-
-document.getElementById('trash_img').value = 0;
-
-            if (input.files && input.files[0] ) {
-             
-             var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#blah').attr('src', e.target.result);
-                    $("#blah").css("display", "block");
-
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            } 
-}
-
-
-// ********************************************************
-// * checa si el valor introducido no es /
-// ********************************************************
-function checkNOTA(id){
-
-var x=document.getElementById(id).value;
-
-var patt_slash = new RegExp("/");
-var slash = patt_slash.test( x );
-
-if (slash == true){
-
-    document.getElementById(id).value = x.slice(0,-1);
-
-    alert("No se permite carecteres especiales en este campo");
-    
-    return false;
-  }
-
-
+  
+   document.getElementById('trash_img').value = 0;
+  
+      if (input.files && input.files[0] ) {
+        
+        var reader = new FileReader();
+          reader.onload = function (e) {
+              $('#blah').attr('src', e.target.result);
+              $("#blah").css("display", "block");
+  
+          }
+  
+          reader.readAsDataURL(input.files[0]);
+      } 
 }
 
 // ********************************************************
-// * checa si el valor introducido es de cierta longitud
+// *SETEA ESTILO PARA SELECTS 
 // ********************************************************
-function checkLong(ID,long)
-{
-
-var x=document.getElementById(ID).innerHTML;
-
- if (x.length > long) 
- {
-   document.getElementById(ID).innerHTML = x.slice(0,-1);
-   alert("La entrada no debe ser de longitud mayor a "+long+" caracteres");
-   
-   return false;
- }
-}
-
-// ********************************************************
-// * checa si el valor introducido no es @
-// ********************************************************
-function checkArroba(id){
-
-var x=document.getElementById(id).innerHTML;
-
-var patt_slash = new RegExp("@");
-var slash = patt_slash.test( x );
-
-if (slash == true){
-
-    document.getElementById(id).innerHTML = x.slice(0,-1);
-
-    alert("No se permite carecteres especiales en este campo");
-    
-    return false;
-  }
-
-}
-
-
 function set_selectItemStyle(){
 
   //selectc con buscador 
   $(".selectItems").select2({
-  placeholder: '',
-  allowClear: true,
-  maximumSelectionSize: 1,
-  dropdownCssClass : 'bigdrop'
+
+    placeholder: '',
+    allowClear: true,
+    maximumSelectionSize: 1,
+    dropdownCssClass : 'bigdrop'
 
   }); 
 
@@ -1095,16 +756,17 @@ function set_selectLoteStyle(line){
 
     //selectc con buscador 
     $(".selectLote"+line).select2({
-    placeholder: '',
-    allowClear: true,
-    maximumSelectionSize: 1,
-    dropdownCssClass : 'bigdrop'
-  
+
+      placeholder: '',
+      allowClear: true,
+      maximumSelectionSize: 1,
+      dropdownCssClass : 'bigdrop'
+    
     }); 
   
-  }
+}
 
-  function set_selectLocStyle(line){
+function set_selectLocStyle(line){
    
       //selectc con buscador 
       $(".selectLoc"+line).select2({
@@ -1115,9 +777,11 @@ function set_selectLoteStyle(line){
     
       }); 
     
-    }
+}
 
-
+// ********************************************************
+// *OBTIENE LENGUAJE DEL SISTEMA
+// ********************************************************
 function get_lang(){
 
   //retorna el lenguaje de sistema para determinar las notificaciones
@@ -1139,13 +803,19 @@ function get_lang(){
 
 }
 
+// ********************************************************
+// *LIMPIA UN DIV PR ID
+// ********************************************************
 function CLOSE_DIV(id){
 
-  $('#'+id).html('');
+   $('#'+id).html('');
 
 }
 
-function openCity(evt, cityName) {
+// ********************************************************
+// *TEST PARA MOVIL - PWA
+// ********************************************************
+function openCity(evt, cityName){
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
@@ -1159,11 +829,14 @@ function openCity(evt, cityName) {
   evt.currentTarget.className += " active";
 }
 
-//verifica si es json
-function isJson(str) {
+// ********************************************************
+// *VALIDA STRING JSON
+// ********************************************************
+function isJson(str){
+  
   try {
       JSON.parse(str);
-  } catch (e) {
+  }catch (e){
       return false;
   }
   return true;

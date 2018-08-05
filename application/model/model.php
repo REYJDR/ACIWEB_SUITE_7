@@ -19,6 +19,7 @@ class Model
      public  $sage_connected = null;
      public  $role_compras = null;
      public  $role_campo = null;
+     public  $layout_lines= null;
       
 
     function __construct($db,$dbname)
@@ -33,6 +34,8 @@ class Model
         }
 
          $this->sage_connected =   $this->ConexionSage();
+
+         
     }
     
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -273,13 +276,9 @@ public function read_db_error(){
 }
 
 
-
-
-
 /**
 * delete
 */
-
 public function delete($table,$clause){
 
 
@@ -351,6 +350,7 @@ $_SESSION['PASS'] = $pass;
 $_SESSION['ROLE1'] = $rol_compras;
 $_SESSION['ROLE2'] = $rol_campo;
 $_SESSION['COMPANY'] = $company;
+
 
 if($temp_url!=''){
 
@@ -477,6 +477,7 @@ private function set_login_parameters(){
         $this->lang        = $this->Query_value('company_info','lang','');
         $this->rol_compras = $_SESSION['ROLE1'];
         $this->rol_campo   = $_SESSION['ROLE2'];
+        $this->layout_lines = $this->Query_value('FAC_DET_CONF','NO_LINES','where ID_compania="'.$this->id_compania.'"');
         //$active_user_pass = $_SESSION['PASS'] ;
 
         

@@ -61,7 +61,9 @@ A.UnitMeasure,
 A.QtyOnHand,
 A.Price1,
 A.LastUnitCost,
-A.TaxType
+A.TaxType,
+A.UPC_SKU,
+A.GL_Sales_Acct
 FROM Products_Exp as A
 WHERE 
 A.IsActive="1" 

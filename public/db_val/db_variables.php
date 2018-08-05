@@ -1,14 +1,14 @@
 <?php define('DB_TYPE', 'mysql');
 
-	define('DB_HOST', 'daoutel.net');
+define('DB_HOST', 'aciweb-pa.com');
 
-	define('DB_NAME', 'daoutqw3_ACIWEB_dev');
+define('DB_NAME', 'ACIWEB_test');
 
-	define('DB_USER', 'daoutqw3');
+define('DB_USER', 'aciweb_root');
 
-	define('DB_PASS', 'J3F%?bcy3wg%');
+define('DB_PASS', 'admin123$');
 
-	define('UTC', '-7:00');
+define('UTC', '-7:00');
 
-	define('DB_CHARSET', 'utf8');
+define('DB_CHARSET', 'utf8');
  ?>

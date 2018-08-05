@@ -1,7 +1,10 @@
 <?php
 require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'_ref.php';
+
+
 ?>
 
+<input type="hidden" id="FAC_NO_LINES" value="<?php echo $this->model->layout_lines; ?>" /> 
 
 <!--ADD JS FILE-->
 <script  src="<?php echo URL; ?>js/operaciones/inventory/invIn.js" ></script>
@@ -105,7 +108,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 									<div class="separador col-lg-12"> </div>
 									<table class='table_form'>
 										<tbody>
-										<tr><th><strong><?PHP echo $invIn4; ?></strong></th><td><select id="up_stock" class="form-control"  onchange="locat(this.value);"></select></td></tr>
+										<tr><th><strong><?PHP echo $invIn4; ?></strong></th><td><select id="up_stock" class="form-control"  onchange="locat(this.value,0);"></select></td></tr>
 										<tr><th><strong><?PHP echo $invIn5; ?></strong></th><td><select id="up_route" class="form-control" ></select></td></tr>
 										</tbody>
 									</table>
@@ -148,7 +151,6 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 							
 							<!--INI HEADER ENTRADA MASIVA-->			
 							<div class="col-lg-8"> 
-							<fieldset class="fieldsetform">
 								<div  class="col-lg-6">
 								<fieldset class="fieldsetformb">
 								<table class='table_form note'>
@@ -160,6 +162,11 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 										<option value="-" selected>-</option>
 										</select>
 										</td>
+									</tr>
+									<tr>
+									   <th><strong><?PHP echo $invIn12; ?></strong></th>
+									   <th><input type="checkbox" id="adjust" name="adjust" /></th></tr>
+									   
 									</tr>
 									</tbody>
 								</table>
@@ -178,10 +185,10 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 									<tr>
 										<th width="10%" ><?php echo $TblItem;?></th>
 										<th width="15%" class="text-center"><?php echo $TblDes;?></th>
-										<th width="5%" class="text-center"><?php echo $TblUnitMeasure;?></th>		
+										<th width="5%"  class="text-center"><?php echo $TblUnitMeasure;?></th>		
 										<th width="15%" class="text-center"><?php echo $TblUPCSKU;?></th>		
-										<th width="5%" class="text-center"><?php echo $TblGlAcct;?></th>
-										<th width="5%" class="text-center"><?php echo $TblTaxTyp;?></th>		
+										<th width="5%"  class="text-center"><?php echo $TblGlAcct;?></th>
+										<th width="5%"  class="text-center"><?php echo $TblTaxTyp;?></th>		
 										<th width="5%"  class="text-center"><?php echo $TblLote?></th>
 										<th width="5%"  class="text-center"><?php echo $TblLoc;?></th>
 										<th width="5%"  class="text-center"><?php echo $TblQty;?></th>
@@ -189,7 +196,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 										<th width="5%"  class="text-center"><?php echo $TblTotal;?></th>
 										</tr>
 								</thead>
-									<tbody id="table_req" ></tbody>
+									<tbody id="items" ></tbody>
 								</table>
 								</fieldset>
 								

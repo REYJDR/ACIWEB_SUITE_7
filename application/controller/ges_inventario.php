@@ -5,6 +5,8 @@ class ges_inventario extends Controller
 
 public $ProductID;
 
+//******************************************************************************
+//LISTA DE PRODUCTOS
 public function inv_list(){
  
 
@@ -27,6 +29,8 @@ public function inv_list(){
 	
 }
 
+//******************************************************************************
+//DETALLES DE PRODUCTO
 public function inv_info($itemid){
  
  $this->ProductID = $itemid;
@@ -52,7 +56,6 @@ public function inv_info($itemid){
 
 //******************************************************************************
 //SALIDA DE INVENTARIO POR AJUSTES
-
 public function InvOut(){
     
     
@@ -69,9 +72,10 @@ public function InvOut(){
     
             }
                
-    }
+}
+
 //******************************************************************************
-//ENTRADA DE INVENTARIO POR AJUSTES
+//ENTRADA DE INVENTARIO
 public function invIn(){
        
         $res = $this->model->verify_session();
@@ -88,6 +92,8 @@ public function invIn(){
            
 }
 
+//******************************************************************************
+//UBICACIONES 
 public function location(){
     
     
@@ -109,8 +115,8 @@ public function location(){
 
 
 ////////////////////////////////////////////////////////////////////////////////////
-//*
 //* OPERATION METHODS
+////////////////////////////////////////////////////////////////////////////////////
 
 public function getStockList(){
 
@@ -118,7 +124,7 @@ public function getStockList(){
     $table = '';
 
 
-   echo  $query="select * from STOCKS where onoff='1' and 
+    $query="select * from STOCKS where onoff='1' and 
     ID_compania='".$this->model->id_compania."' or
     ID_compania='0' ;";
 
@@ -138,7 +144,7 @@ public function getStockInfo($id){
   
     $this->model->verify_session();
     
-   echo $query="select * from STOCKS where onoff='1' and id='".$id."';";
+    $query="select * from STOCKS where onoff='1' and id='".$id."';";
     $res = $this->model->Query($query); 
 
    $table = '<fieldset class="fieldsetform">
@@ -280,54 +286,79 @@ public function getLocByItem($lote='',$line=''){
         echo '</select>';
 }
 
+public function getStockByItemID(){
+
+    $itemid = $_GET['itemID'];
+    $list = '';
+    $this->model->verify_session();
+        
+      $query = 'SELECT 
+        A.id as ID,
+        B.name AS Stock,
+        C.location as Location
+        FROM STOCK_ITEMS_LOCATION as A
+        INNER JOIN STOCKS B ON B.id = A.stock 
+        INNER JOIN STOCK_LOCATION C ON C.id = A.location
+        where  A.itemID="'.$itemid.'" and A.ID_compania ="'.$this->model->id_compania.'"';
+        
+        
+        $res = $this->model->Query($query); 
+
+        foreach ( $res as $data){
+        $value = json_decode($data);
+    
+        $list .= '<option value="'.$value->{'ID'}.'">'.$value->{'Stock'}.' ( '.$value->{'Location'}.')</option>';
+    
+        }
+
+}
+
 public function addStock(){
 
-$this->model->verify_session();
+    $this->model->verify_session();
 
-$values = array('name'    => $_REQUEST['name'], 
-                'address' => $_REQUEST['desc'], 
-                'description' => $_REQUEST['address'], 
-                'capacity' => $_REQUEST['capa'], 
-                'ID_compania' => $this->model->id_compania );
+    $values = array('name'    => $_REQUEST['name'], 
+                    'address' => $_REQUEST['desc'], 
+                    'description' => $_REQUEST['address'], 
+                    'capacity' => $_REQUEST['capa'], 
+                    'ID_compania' => $this->model->id_compania );
 
-$this->model->insert('STOCKS',$values );
-$err = $this->CheckError();
+    $this->model->insert('STOCKS',$values );
+    $err = $this->CheckError();
 
-    if($err){
-    
-    echo $err;
+        if($err){
+        
+        echo $err;
 
-    }else{
-     
-    echo 0;
+        }else{
+        
+        echo 0;
 
-    }
+        }
 
 }
 
 
 public function addLoc($id){
     
-$this->model->verify_session();
+    $this->model->verify_session();
 
-$values = array('location'    => $_REQUEST['name'], 
-                'description' => $_REQUEST['desc'], 
-                'stock' => $id,  
-                'ID_compania' => $this->model->id_compania );
-    
-$this->model->insert('STOCK_LOCATION',$values);
+    $values = array('location'    => $_REQUEST['name'], 
+                    'description' => $_REQUEST['desc'], 
+                    'stock' => $id,  
+                    'ID_compania' => $this->model->id_compania );
+        
+    $this->model->insert('STOCK_LOCATION',$values);
 
-$err = $this->CheckError();
+    $err = $this->CheckError();
 
-    if($err){
-        echo $err;
-    }else{
-        echo 0;    
-    }
+        if($err){
+            echo $err;
+        }else{
+            echo 0;    
+        }
     
 }
-
-
 
 
 public function getItemLoteSt(){
@@ -402,74 +433,73 @@ public function getItemLoteSt(){
         echo $table_lote;
 }
 
-
 public function SET_NO_LOTE($item,$no_lote,$qty,$fecha){
     
     
-    $this->model->verify_session();
-    
-    
-    //Verifico No_lote si existe
-    $lote = $this->model->Query_value('ITEMS_NO_LOTES','no_lote','Where no_lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
-    
-    if($lote==''){ 
-    
-    
-    //Actualizo la cantidad en el lote default
-    $now_qty = $this->model->Query_value('STOCK_ITEMS_LOCATION','sum(qty)','Where lote="'.$item.'0000" and ID_compania="'.$this->model->id_compania.'"');
-    
-    $qty_to_up = $now_qty - $qty;
-    
-    
-    $query= 'UPDATE STOCK_ITEMS_LOCATION SET qty="'.$qty_to_up.'" where lote="'.$item.'0000" and location="1" and stock="1" and ID_compania="'.$this->model->id_compania.'"';
-    $res = $this->model->Query($query);
-    
-    
-    
-    
-    //Agrego nuevo lote
-    $value  = array(
-      'ProductID' => $item ,
-      'no_lote' => $no_lote ,
-      'fecha_ven' => $fecha,
-      'REG_KEY' => uniqid(),
-      'ID_compania' => $this->model->id_compania );
-    
-    
-    $res = $this->model->insert('ITEMS_NO_LOTES',$value);
-    if($this->CheckError()){
-
-        echo $this->CheckError();
-        die();
-
-    } 
-    
-    //Agrego ubicacion de nuevo lote por default
-    $value  = array(
-      'itemID' => $item ,
-      'lote' => $no_lote ,
-      'qty' => $qty ,
-      'stock' => '1',
-      'location' => '1',
-      'ID_compania' => $this->model->id_compania );
-    
-    $res = $this->model->insert('STOCK_ITEMS_LOCATION',$value);
-
-    if($this->CheckError()){
+        $this->model->verify_session();
         
-        echo $this->CheckError();
-        die();
         
-     } 
-    
-    
-}else{
+        //Verifico No_lote si existe
+        $lote = $this->model->Query_value('ITEMS_NO_LOTES','no_lote','Where no_lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
+        
+        if($lote==''){ 
+        
+        
+        //Actualizo la cantidad en el lote default
+        $now_qty = $this->model->Query_value('STOCK_ITEMS_LOCATION','sum(qty)','Where lote="'.$item.'0000" and ID_compania="'.$this->model->id_compania.'"');
+        
+        $qty_to_up = $now_qty - $qty;
+        
+        
+        $query= 'UPDATE STOCK_ITEMS_LOCATION SET qty="'.$qty_to_up.'" where lote="'.$item.'0000" and location="1" and stock="1" and ID_compania="'.$this->model->id_compania.'"';
+        $res = $this->model->Query($query);
+        
+        
+        
+        
+        //Agrego nuevo lote
+        $value  = array(
+        'ProductID' => $item ,
+        'no_lote' => $no_lote ,
+        'fecha_ven' => $fecha,
+        'REG_KEY' => uniqid(),
+        'ID_compania' => $this->model->id_compania );
+        
+        
+        $res = $this->model->insert('ITEMS_NO_LOTES',$value);
+        if($this->CheckError()){
+
+            echo $this->CheckError();
+            die();
+
+        } 
+        
+        //Agrego ubicacion de nuevo lote por default
+        $value  = array(
+        'itemID' => $item ,
+        'lote' => $no_lote ,
+        'qty' => $qty ,
+        'stock' => '1',
+        'location' => '1',
+        'ID_compania' => $this->model->id_compania );
+        
+        $res = $this->model->insert('STOCK_ITEMS_LOCATION',$value);
+
+        if($this->CheckError()){
+            
+            echo $this->CheckError();
+            die();
+            
+        } 
+        
+        
+    }else{
 
 
-echo 'El No de Lote ya existe, por favor elija otro nombre';
+    echo 'El No de Lote ya existe, por favor elija otro nombre';
 
 
-}
+    }
 
 }
     
@@ -477,38 +507,37 @@ echo 'El No de Lote ya existe, por favor elija otro nombre';
 public function erase_lote($no_lote,$qty){
 
 
-$this->model->verify_session();
+    $this->model->verify_session();
 
 
-$item = $this->model->Query_value('ITEMS_NO_LOTES','ProductID','Where no_lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
+    $item = $this->model->Query_value('ITEMS_NO_LOTES','ProductID','Where no_lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
 
 
-//Actualizo la cantidad en el lote default
-$now_qty = $this->model->Query_value('STOCK_ITEMS_LOCATION','qty','Where lote="'.$item.'0000" and stock="1" and location="1" and ID_compania="'.$this->model->id_compania.'";');
+    //Actualizo la cantidad en el lote default
+    $now_qty = $this->model->Query_value('STOCK_ITEMS_LOCATION','qty','Where lote="'.$item.'0000" and stock="1" and location="1" and ID_compania="'.$this->model->id_compania.'";');
 
-$qty_to_up = $now_qty + $qty;
+    $qty_to_up = $now_qty + $qty;
 
-$query= 'UPDATE STOCK_ITEMS_LOCATION SET qty="'.$qty_to_up.'" where lote="'.$item.'0000" and location="1" and stock="1" and ID_compania="'.$this->model->id_compania.'"';
-$res = $this->model->Query($query);
+    $query= 'UPDATE STOCK_ITEMS_LOCATION SET qty="'.$qty_to_up.'" where lote="'.$item.'0000" and location="1" and stock="1" and ID_compania="'.$this->model->id_compania.'"';
+    $res = $this->model->Query($query);
 
 
-$this->model->Query('DELETE FROM ITEMS_NO_LOTES WHERE no_lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
-$this->model->Query('DELETE FROM STOCK_ITEMS_LOCATION WHERE lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
+    $this->model->Query('DELETE FROM ITEMS_NO_LOTES WHERE no_lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
+    $this->model->Query('DELETE FROM STOCK_ITEMS_LOCATION WHERE lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
 
-if($this->CheckError()){
-    
-    echo $this->CheckError();
-    die();
-    
- } 
+    if($this->CheckError()){
+        
+        echo $this->CheckError();
+        die();
+        
+    } 
 }
-
 
 public function getLocationByItem(){
 
-$this->model->verify_session();
+    $this->model->verify_session();
 
-$STATUS_LOC = $this->model->lote_loc_by_itemID($this->ProductID);
+    $STATUS_LOC = $this->model->lote_loc_by_itemID($this->ProductID);
 
             foreach ($STATUS_LOC as $STATUS_LOC) { 
 
@@ -578,12 +607,12 @@ $STATUS_LOC = $this->model->lote_loc_by_itemID($this->ProductID);
     }
 }
 
-public function  get_almacen_selectlist(){
+public function get_almacen_selectlist(){
     
    $query_almacen= 'SELECT STOCKS.id, STOCKS.name  
-    FROM STOCKS
-    inner join STOCK_LOCATION on STOCK_LOCATION.stock = STOCKS.id
-    where STOCKS.onoff="1" GROUP BY STOCKS.name ';
+                        FROM STOCKS
+                        inner join STOCK_LOCATION on STOCK_LOCATION.stock = STOCKS.id
+                        where STOCKS.onoff="1" GROUP BY STOCKS.name ';
     
     $select = '<option selected disabled>Seleccionar Almacen</option>';
     $res = $this->model->Query($query_almacen);
@@ -597,9 +626,9 @@ public function  get_almacen_selectlist(){
     echo $select;
     
     return $select;
-    }
+}
 
-public function  get_routes_by_almacenid($almacen){
+public function get_routes_by_almacenid($almacen){
     
        $query= 'SELECT id , location 
                 FROM STOCK_LOCATION 
@@ -620,8 +649,8 @@ public function get_lote_qty($lote,$itemid){
 
     $res = $this->model->Query_value('STOCK_ITEMS_LOCATION','Floor(qty)','where stock="1" and location="1" and lote="'.$lote.'" and itemID="'.$itemid.'" and ID_compania ="'.$this->model->id_compania.'";');
 
-echo $res;
-return $res;
+    echo $res;
+    return $res;
 }
 
 public function getItemQtyOnHand($itemid){
@@ -630,8 +659,8 @@ public function getItemQtyOnHand($itemid){
 
     $res = $this->model->Query_value('STOCK_ITEMS_LOCATION','SUM(qty)','where  itemID="'.$itemid.'" and ID_compania ="'.$this->model->id_compania.'";');
 
-echo $res;
-return $res;
+    echo $res;
+    return $res;
 }
 
 public function get_any_lote_qty($idLoc=''){
@@ -640,171 +669,140 @@ public function get_any_lote_qty($idLoc=''){
 
     $res = $this->model->Query_value('STOCK_ITEMS_LOCATION','Floor(qty)','where id="'.$idLoc.'" and ID_compania ="'.$this->model->id_compania.'";');
 
-echo $res;
-return $res;
+    echo $res;
+    return $res;
 }
-
-
 
 public function set_lote_location($ruta_selected,$almacen_selected,$item_id,$lote,$qty){
-$this->model->verify_session();
+    $this->model->verify_session();
 
-//UBICO LA CANTIDAD ACTUAL EN STATUS_LOCATION
-$CURRENT_QTY = $this->get_lote_qty($lote,$item_id);
+    //UBICO LA CANTIDAD ACTUAL EN STATUS_LOCATION
+    $CURRENT_QTY = $this->get_lote_qty($lote,$item_id);
 
-//ACTUALIZO LA CANTIDAD EN LA UBICCION DEFAULT
-$QTY_TO_SET = $CURRENT_QTY - $qty;
+    //ACTUALIZO LA CANTIDAD EN LA UBICCION DEFAULT
+    $QTY_TO_SET = $CURRENT_QTY - $qty;
 
-$query= 'UPDATE STOCK_ITEMS_LOCATION  SET qty="'.$QTY_TO_SET.'" where itemID="'.$item_id.'" and stock="1" and location="1" and onoff="1" and ID_compania ="'.$this->model->id_compania.'"';
+    $query= 'UPDATE STOCK_ITEMS_LOCATION  SET qty="'.$QTY_TO_SET.'" where itemID="'.$item_id.'" and stock="1" and location="1" and onoff="1" and ID_compania ="'.$this->model->id_compania.'"';
 
-$res = $this->model->Query($query);
-
-
-
-$id_verify = $this->model->Query_value('STOCK_ITEMS_LOCATION ','id','where lote="'.$lote.'" and stock="'.$almacen_selected.'" and location="'.$ruta_selected.'" and ID_compania ="'.$this->model->id_compania.'";');
-
-if(!$id_verify){ 
-
-//agregar nueva location
-$val_to_insert = array(
-    'lote' => $lote, 
-    'stock' => $almacen_selected, 
-    'qty' => $qty, 
-    'location' => $ruta_selected,
-    'itemID' => $item_id,
-    'ID_compania' => $this->model->id_compania);
-
-$res = $this->model->insert('STOCK_ITEMS_LOCATION',$val_to_insert);
-
-
-//registro de traslado Default a una nueva ubicacion
-$value_traslate = array(
-    'id_almacen_ini' => '1',
-    'route_ini' => '1' ,
-    'id_almacen_des' => $almacen_selected,
-    'route_des' => $ruta_selected,
-    'lote' => $lote,
-    'qty' => $qty ,
-    'ProductID' => $item_id ,
-    'id_user' => $this->model->active_user_id
-    );
-
-$this->model->insert('reg_traslado',$value_traslate);
-
-
-}else{
-
-$old_qty = $this->model->Query_value('STOCK_ITEMS_LOCATION','qty','where id="'.$id_verify.'";');
-
-$qty_to_up = $old_qty  + $qty;
-
-$query= 'UPDATE STOCK_ITEMS_LOCATION SET qty="'.$qty_to_up.'"  where id="'.$id_verify.'";';
-$this->model->Query($query);
-
-
-//registro de traslado Default a una nueva ubicacion
-$id_route_reg = $this->model->Query_value('STOCK_LOCATION ','route','where id="'.$id_verify.'";');
-$id_alma_reg = $this->model->Query_value('STOCK_LOCATION','id_almacen','where id="'.$id_route_reg.'";');
-
-
-$value_traslate = array(
-    'id_almacen_ini' => $id_alma_reg,
-    'route_ini' => $id_route_reg,
-    'id_almacen_des' => $almacen_selected,
-    'route_des' => $ruta_selected,
-    'lote' => $lote,
-    'qty' => $qty ,
-    'ProductID' => $item_id ,
-    'id_user' => $this->model->active_user_id
-    );
-
-$this->model->insert('reg_traslado',$value_traslate);
+    $res = $this->model->Query($query);
 
 
 
-}
+    $id_verify = $this->model->Query_value('STOCK_ITEMS_LOCATION ','id','where lote="'.$lote.'" and stock="'.$almacen_selected.'" and location="'.$ruta_selected.'" and ID_compania ="'.$this->model->id_compania.'";');
 
-//$this->clear_lotacion_register();
-
-}
-
-
-
-public function update_lote_location($OrigenROUTE,$OrigenALMACEN,$status_location_id,$ruta,$almacen,$lote,$qty){
-    
-$this->model->verify_session();
-
-//ID DE UBICACIONES DE ORIGEN
-$ruta_src = $this->model->Query_value('STOCK_LOCATION','id',' where location="'.$OrigenROUTE.'"');
-$almacen_src = $this->model->Query_value('STOCK_LOCATION','stock',' where id="'.$ruta_src.'"');
-
-//ID DEL USER QUE REALIZA EL TRASLADO
-$id_user_active = $this->model->active_user_id;
-
-//QTY ACTUAL
-$CURRENT_QTY = $this->model->Query_value('STOCK_ITEMS_LOCATION','qty','where id="'.$status_location_id.'";');
-
-$NEW_QTY = $CURRENT_QTY - $qty;
-
-//ACTUALIZA LA CANTIDAD RESTANTE EN LA UBICACION ACTUAL
-$query= 'UPDATE STOCK_ITEMS_LOCATION SET qty="'.$NEW_QTY.'" where id="'.$status_location_id.'";';
-$this->model->Query($query);
-
-
-//ID DEL PRODUCT
-$ProductID = $this->model->Query_value('STOCK_ITEMS_LOCATION','itemID','where id="'.$status_location_id.'";');
-
-
-    //VERIFICO SI EXISTE UN LOTE IGUAL EN LA UBICACION DESTINO
-    $id_verify = $this->model->Query_value('STOCK_ITEMS_LOCATION','id','where lote="'.$lote.'" and stock="'.$almacen.'" and location="'.$ruta.'" and  ID_compania ="'.$this->model->id_compania.'"');
-
-    if(!$id_verify){ //SI NO EXISTE CREO LA NUEVA UBICACION PARA EL LOTE 
+    if(!$id_verify){ 
 
     //agregar nueva location
     $val_to_insert = array(
-    'lote' => $lote, 
-    'stock' => $almacen, 
-    'qty' => $qty, 
-    'location' => $ruta,
-    'itemID' => $ProductID,
-    'ID_compania' => $this->model->id_compania);
+        'lote' => $lote, 
+        'stock' => $almacen_selected, 
+        'qty' => $qty, 
+        'location' => $ruta_selected,
+        'itemID' => $item_id,
+        'ID_compania' => $this->model->id_compania);
 
     $res = $this->model->insert('STOCK_ITEMS_LOCATION',$val_to_insert);
 
 
-
     //registro de traslado Default a una nueva ubicacion
     $value_traslate = array(
-    'id_almacen_ini' => $almacen_src,
-    'route_ini' => $ruta_src,
-    'id_almacen_des' => $almacen,
-    'route_des' => $ruta,
-    'lote' => $lote,
-    'qty' => $qty ,
-    'ProductID' => $ProductID,
-    'id_user' => $this->model->active_user_id,
-    'ID_compania' => $this->model->id_compania
+        'id_almacen_ini' => '1',
+        'route_ini' => '1' ,
+        'id_almacen_des' => $almacen_selected,
+        'route_des' => $ruta_selected,
+        'lote' => $lote,
+        'qty' => $qty ,
+        'ProductID' => $item_id ,
+        'id_user' => $this->model->active_user_id
         );
 
     $this->model->insert('reg_traslado',$value_traslate);
 
 
-}else{//SI EXISTE LE SUMO LA NUEVA CANTIDAD
+    }else{
 
-    //consulta qty actual en lla ubicacion destino apra ese lote
     $old_qty = $this->model->Query_value('STOCK_ITEMS_LOCATION','qty','where id="'.$id_verify.'";');
 
-    $qty_to_up = $old_qty  + $qty; //se suma
+    $qty_to_up = $old_qty  + $qty;
 
-    //se actualiza
-    $query= 'UPDATE STOCK_ITEMS_LOCATION  SET qty="'.$qty_to_up.'"  where id="'.$id_verify.'";';
+    $query= 'UPDATE STOCK_ITEMS_LOCATION SET qty="'.$qty_to_up.'"  where id="'.$id_verify.'";';
     $this->model->Query($query);
 
 
-    //registro de traslado
+    //registro de traslado Default a una nueva ubicacion
+    $id_route_reg = $this->model->Query_value('STOCK_LOCATION ','route','where id="'.$id_verify.'";');
+    $id_alma_reg = $this->model->Query_value('STOCK_LOCATION','id_almacen','where id="'.$id_route_reg.'";');
+
+
     $value_traslate = array(
+        'id_almacen_ini' => $id_alma_reg,
+        'route_ini' => $id_route_reg,
+        'id_almacen_des' => $almacen_selected,
+        'route_des' => $ruta_selected,
+        'lote' => $lote,
+        'qty' => $qty ,
+        'ProductID' => $item_id ,
+        'id_user' => $this->model->active_user_id
+        );
+
+    $this->model->insert('reg_traslado',$value_traslate);
+
+
+
+ }
+
+ //$this->clear_lotacion_register();
+
+}
+
+
+public function update_lote_location($OrigenROUTE,$OrigenALMACEN,$status_location_id,$ruta,$almacen,$lote,$qty){
+    
+    $this->model->verify_session();
+
+    //ID DE UBICACIONES DE ORIGEN
+    $ruta_src = $this->model->Query_value('STOCK_LOCATION','id',' where location="'.$OrigenROUTE.'"');
+    $almacen_src = $this->model->Query_value('STOCK_LOCATION','stock',' where id="'.$ruta_src.'"');
+
+    //ID DEL USER QUE REALIZA EL TRASLADO
+    $id_user_active = $this->model->active_user_id;
+
+    //QTY ACTUAL
+    $CURRENT_QTY = $this->model->Query_value('STOCK_ITEMS_LOCATION','qty','where id="'.$status_location_id.'";');
+
+    $NEW_QTY = $CURRENT_QTY - $qty;
+
+    //ACTUALIZA LA CANTIDAD RESTANTE EN LA UBICACION ACTUAL
+    $query= 'UPDATE STOCK_ITEMS_LOCATION SET qty="'.$NEW_QTY.'" where id="'.$status_location_id.'";';
+    $this->model->Query($query);
+
+
+    //ID DEL PRODUCT
+    $ProductID = $this->model->Query_value('STOCK_ITEMS_LOCATION','itemID','where id="'.$status_location_id.'";');
+
+
+        //VERIFICO SI EXISTE UN LOTE IGUAL EN LA UBICACION DESTINO
+        $id_verify = $this->model->Query_value('STOCK_ITEMS_LOCATION','id','where lote="'.$lote.'" and stock="'.$almacen.'" and location="'.$ruta.'" and  ID_compania ="'.$this->model->id_compania.'"');
+
+        if(!$id_verify){ //SI NO EXISTE CREO LA NUEVA UBICACION PARA EL LOTE 
+
+        //agregar nueva location
+        $val_to_insert = array(
+        'lote' => $lote, 
+        'stock' => $almacen, 
+        'qty' => $qty, 
+        'location' => $ruta,
+        'itemID' => $ProductID,
+        'ID_compania' => $this->model->id_compania);
+
+        $res = $this->model->insert('STOCK_ITEMS_LOCATION',$val_to_insert);
+
+
+
+        //registro de traslado Default a una nueva ubicacion
+        $value_traslate = array(
         'id_almacen_ini' => $almacen_src,
-        'route_ini' => $ruta_src ,
+        'route_ini' => $ruta_src,
         'id_almacen_des' => $almacen,
         'route_des' => $ruta,
         'lote' => $lote,
@@ -812,12 +810,40 @@ $ProductID = $this->model->Query_value('STOCK_ITEMS_LOCATION','itemID','where id
         'ProductID' => $ProductID,
         'id_user' => $this->model->active_user_id,
         'ID_compania' => $this->model->id_compania
-        );
+            );
+
+        $this->model->insert('reg_traslado',$value_traslate);
 
 
-    $this->model->insert('reg_traslado',$value_traslate);
+    }else{//SI EXISTE LE SUMO LA NUEVA CANTIDAD
 
-    }
+        //consulta qty actual en lla ubicacion destino apra ese lote
+        $old_qty = $this->model->Query_value('STOCK_ITEMS_LOCATION','qty','where id="'.$id_verify.'";');
+
+        $qty_to_up = $old_qty  + $qty; //se suma
+
+        //se actualiza
+        $query= 'UPDATE STOCK_ITEMS_LOCATION  SET qty="'.$qty_to_up.'"  where id="'.$id_verify.'";';
+        $this->model->Query($query);
+
+
+        //registro de traslado
+        $value_traslate = array(
+            'id_almacen_ini' => $almacen_src,
+            'route_ini' => $ruta_src ,
+            'id_almacen_des' => $almacen,
+            'route_des' => $ruta,
+            'lote' => $lote,
+            'qty' => $qty ,
+            'ProductID' => $ProductID,
+            'id_user' => $this->model->active_user_id,
+            'ID_compania' => $this->model->id_compania
+            );
+
+
+        $this->model->insert('reg_traslado',$value_traslate);
+
+        }
 
 
 }
@@ -837,5 +863,5 @@ public function CheckError(){
 }
 
 
-}
+}//CIERRE DE CLASE
 ?>
