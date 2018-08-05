@@ -310,7 +310,7 @@ public function getStockByItemID(){
         $list .= '<option value="'.$value->{'ID'}.'">'.$value->{'Stock'}.' ( '.$value->{'Location'}.')</option>';
     
         }
-
+   echo $list ;
 }
 
 public function addStock(){

@@ -211,8 +211,7 @@ function init(chk){
                    success: function(res){
                   
                        listitem = res;
-                       console.log('done item list');
-           
+                       
                    }
                   });
 
@@ -251,6 +250,7 @@ function builtTbl(chk){
             if(chk==1){ 
 
                 reglon = '<td  width="10%" onkeyup="" contenteditable ></td>';  
+                display ='';
 
             }else{
 
@@ -260,6 +260,7 @@ function builtTbl(chk){
                                 +listitem+
                             '</select>'+
                         '</td>';  
+                display = 'display:"none";';
             }        
 
             var line_table_req = '<tr>'+reglon+
@@ -269,7 +270,7 @@ function builtTbl(chk){
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblChar(this.id)"  id="gl'+i+'" ></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkQtyInput(this.id)"  id="tax'+i+'" ></td>'+
                 '<td width="5%"  class="rowtable_req  numb" ><select id="SelStock'+i+'" class="form-control" onchange="locat(this.value,'+i+');">'+stocks+'</select></td>'+
-                '<td width="3%"  class="rowtable_req  numb" ><select id="SelRoute'+i+'" class="form-control" ></select></td>'+
+                '<td width="3%"  class="rowtable_req  numb" '+display+'><select id="SelRoute'+i+'" class="form-control" ></select></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkQtyInput(this.id)" onfocusout="recalcular('+i+');" contenteditable id="qty'+i+'"></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkQtyInput(this.id)" onfocusout="calculate( '+i+');" contenteditable id="unitprice'+i+'" ></td>'+
                 '<td width="5%"  class="rowtable_req  numb" id="total'+i+'" ></td></tr>' ;
@@ -308,6 +309,8 @@ function SetDesc(itemId, line){
                     url: link,
                     data: {url : url, itemID: itemId },
                     success: function(res){
+
+                        console.log(res);
             
                         $("#SelStock"+line).html(res);
                 
