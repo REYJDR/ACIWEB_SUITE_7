@@ -763,13 +763,17 @@ function proceed(){
     
                             default: 
 
+                            if (j!=6 || j!=7){
+                                
+                                val= theTbl.rows[i].cells[j].innerHTML;
+                                
+                                                            if(val==''){                              
+                                                                FaltaArray[j] = i ;
+                                                            }
 
-                            
-                            val= theTbl.rows[i].cells[j].innerHTML;
-    
-                                if(val==''){                              
-                                    FaltaArray[j] = i ;
-                                }
+
+                            }
+
                             break;
                                }
                     }      

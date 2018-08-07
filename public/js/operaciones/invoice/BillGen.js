@@ -8,8 +8,13 @@ $('#ERROR').hide();
 URL = document.getElementById('URL').value;
 link = URL+"index.php";
 
+
 //set_listprice();
 SetSoToAdd();
+
+var theTblToIn = document.getElementById('invoice'); 
+
+document.getElementById('NO_LINES').value = theTblToIn ;
 
 });
 
@@ -56,12 +61,10 @@ function ShowModal(ref){
 function AddLineToDetail(){
 
 var theTbl = document.getElementById('DetailFusion'); //objeto de la tabla que contiene los datos de items
-var theTblToIn = document.getElementById('invoice'); 
 var line = '';
-var nextLine = theTblToIn.rows.length+2;
 var i=1;
 var n=0;
-var x = theTblToIn.rows.length;
+var x = document.getElementById('NO_LINES').value; 
 var aciRef = $("#aciref").val();
 //BLUCLE PARA LEER LINEA POR LINEA LA TABLA 
 

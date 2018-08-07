@@ -67,25 +67,24 @@ $taxval = $taxval/100;
 
     <!-- Modal content-->
     <div class="modal-content">
-      <div class="modal-header">
-
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-        <h3 >Detalle de Orden de Venta a fusionar</h3>
-
-      </div>
+			<div class="page100-form-title">
+				<span >Detalle de Orden de Venta a fusionar</span>
+			</div>
       <div class="col-lg-12 modal-body">
       <!--ini Modal  body-->  
        <input type="text" id='aciref' class="inputPage  col-lg-2" disabled/><br>
        <div id='ModalDetail' ></div>
       <!--fin Modal  body-->
       </div>
-      <div class="modal-footer">
-
-        <button type="button" onclick="javascript:AddLineToDetail();" data-dismiss="modal" class="btn btn-primary" >fusionar</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-
-      </div>
+			<div class="modal-footer">
+		    <div class="col-lg-8" ></div>  
+			<div class="col-lg-2" >
+			<button type="button" onclick="javascript:AddLineToDetail();" data-dismiss="modal" class="btn btn-primary" >fusionar</button>
+			</div>
+			<div class="col-lg-2" >
+			<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+			</div>    
+		</div> 
     </div>
   </div>
 </div>
