@@ -56,10 +56,12 @@ function ShowModal(ref){
 function AddLineToDetail(){
 
 var theTbl = document.getElementById('DetailFusion'); //objeto de la tabla que contiene los datos de items
+var theTblToIn = document.getElementById('invoice'); 
 var line = '';
+var nextLine = theTblToIn.rows.length;
 var i=1;
 var n=0;
-var x = document.getElementById('NO_LINES').value; 
+var x = theTblToIn.rows.length;
 var aciRef = $("#aciref").val();
 //BLUCLE PARA LEER LINEA POR LINEA LA TABLA 
 
