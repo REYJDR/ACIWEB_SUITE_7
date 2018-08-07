@@ -58,7 +58,7 @@ function AddLineToDetail(){
 var theTbl = document.getElementById('DetailFusion'); //objeto de la tabla que contiene los datos de items
 var theTblToIn = document.getElementById('invoice'); 
 var line = '';
-var nextLine = theTblToIn.rows.length;
+var nextLine = theTblToIn.rows.length+1;
 var i=1;
 var n=0;
 var x = theTblToIn.rows.length;
