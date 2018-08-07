@@ -39,6 +39,8 @@ $invIn9 ="Carga de mercancia por layout";
 $invIn10 = "Entrada masiva";
 $invIn11 = "Asociacion de proyecto";
 $invIn12 = "Ajuste de materiales";
+$invIn13 = "Metodo de ingreso";
+
 $BTN_InvIN_Proc = 'Procesar';
 // END INV IN
 
@@ -80,11 +82,15 @@ $TblTaxTyp = 'Gravable';
 $TblNote  = 'Nota';
 $TblSmall = 'Chico';
 $TblBig   = 'Grande';
-$TblLote = 'Almacen';
-$TblLoc  = 'Ubicacion';
+$TblLote  = 'Lote';
+$Tblfecha   = 'Fecha Ven.';
+$Tblstock   = 'Almacen';
+$Tblloc   = 'Ubicacion';
 $TblQty   = 'Cant.';
 $TblUnitP = 'Precio';
 $TblTotal = 'Total';
+
+$TblTotalIn = 'Total costo de ingreso';
 
 $SubTotal = 'Sub - Total';
 $Tax      = 'ITBMS';

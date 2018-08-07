@@ -26,35 +26,35 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 			
 				<!--ini contenido-->
 
-					<div  class="col-lg-8">
-					<fieldset >
-					
+
 
 					<!--CHECKBOXES-->
 					<div  class="col-lg-4">
-					<fieldset class="fieldsetform">
-					<table class='table_form'>
-						<tbody>
-							<tr>
-								<td><input type="checkbox" id="chk_lp" name="chk_lp" value="1" onclick="set_div(this.value)" checked /></td>					
-								<th><strong><?PHP echo $invIn1; ?></strong></th>
-							</tr>
-							</tr>
-							<td><input type="checkbox" id="chk_lp" name="chk_lp" value="3" onclick="set_div(this.value)" /></td>					
-								<th><strong><?PHP echo $invIn10; ?></strong></th>
-							</tr>
-							<tr>
-							<td><input type="checkbox" id="chk_lp" name="chk_lp" value="2" onclick="set_div(this.value)" /></td>					
-								<th><strong><?PHP echo $invIn2; ?></strong></th>
+					<fieldset class="fieldsetform">	
+					<h4><?PHP echo $invIn13; ?></h4>
+					<div class="separador col-lg-12"> </div>
+						<fieldset>
+						<table class='table_form'>
+							<tbody>
+								<tr>
+									<td><input type="checkbox" class='chkGrp' id="chk_lp" name="chk_lp" value="1" onclick="set_div(this.value)" checked /></td>					
+									<th><strong><?PHP echo $invIn1; ?></strong></th>
+								</tr>
+								</tr>
+								<td><input type="checkbox" class='chkGrp' id="chk_lp" name="chk_lp" value="3" onclick="set_div(this.value)" /></td>					
+									<th><strong><?PHP echo $invIn10; ?></strong></th>
+								</tr>
+								<tr>
+								<td><input type="checkbox" class='chkGrp' id="chk_lp" name="chk_lp" value="2" onclick="set_div(this.value)" /></td>					
+									<th><strong><?PHP echo $invIn2; ?></strong></th>
 
-						</tbody>
-					</table>
-					</fieldset>
+							</tbody>
+						</table>
+						</fieldset>
+						</fieldset>
 					</div>
 					<!--CHECKBOXES-->
-					<div class="separador col-lg-12"> </div>
-					</fieldset>
-					</div>
+
 
 					<div class="separador col-lg-12"> </div>
 
@@ -189,8 +189,10 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 										<th width="15%" class="text-center"><?php echo $TblUPCSKU;?></th>		
 										<th width="5%"  class="text-center"><?php echo $TblGlAcct;?></th>
 										<th width="5%"  class="text-center"><?php echo $TblTaxTyp;?></th>		
+										<th width="5%"  class="text-center"><?php echo $Tblstock?></th>										
+										<th width="5%"  class="text-center"><?php echo $Tblloc;?></th>
 										<th width="5%"  class="text-center"><?php echo $TblLote?></th>
-										<th width="5%"  class="text-center"><?php echo $TblLoc;?></th>
+										<th width="5%"  class="text-center"><?php echo $Tblfecha?></th>
 										<th width="5%"  class="text-center"><?php echo $TblQty;?></th>
 										<th width="5%"  class="text-center"><?php echo $TblUnitP;?></th>
 										<th width="5%"  class="text-center"><?php echo $TblTotal;?></th>
@@ -203,8 +205,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 								<!--totales-->
 								<div  class="separador col-lg-12" ></div>
-								<div  class="col-lg-8" ></div>
-								<div  class="col-lg-4" style="<?php echo $display;?>">
+								<div  class="col-lg-10" ></div>
+								<div  class="col-lg-2" style="<?php echo $display;?>">
 									<fieldset class="fieldsetform">
 										<table class='table_form' >
 											<tbody>
