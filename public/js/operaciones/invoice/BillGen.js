@@ -14,7 +14,7 @@ SetSoToAdd();
 
 var theTblToIn = document.getElementById('invoice'); 
 
-document.getElementById('NO_LINES').value = theTblToIn.rows.length ;
+document.getElementById('NO_LINES').value = theTblToIn.rows.length;
 
 });
 

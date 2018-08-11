@@ -696,7 +696,7 @@ while (i <= cantLineas){
                             gran  = theTbl.rows[i].cells[4].innerHTML;
 
                             cell += desc+'@'+nota+'@'+UnitMeasure+'@'+itemId+'@'+UnitPrice+'@'+qty+'@'+total+'@'+chic+'@'+gran;//agrego el registo de las demas columnas
-
+console.log(cell);
                           break;
 
                        default: 
