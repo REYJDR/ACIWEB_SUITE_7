@@ -613,11 +613,13 @@ echo  "<tr>
   }
 
 echo '</tbody></table><div style="float:right;" class="col-md-2">
-<a href="'.URL.'index.php?url=ges_ventas/PrintSalesOrder/'.$ORDER_detail->{'SalesOrderNumber'}.'"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
+<a href="'.URL.'index.php?url=ges_ventas/PrintSalesOrder/2/'.$ORDER_detail->{'SalesOrderNumber'}.'"  class="btn-bar">
    <img  class="icon" src="img/Printer.png" />
   <span>Imprimir</span>
 </a>
-</div></fieldset>';
+</div>
+<div class="separador col-lg-12"></div>
+</fieldset>';
 
 
 }
@@ -671,7 +673,6 @@ public function CheckError(){
 
 
 ///////////////////////////////SALESS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 public function set_sales_order_header(){
   
   $this->model->verify_session();

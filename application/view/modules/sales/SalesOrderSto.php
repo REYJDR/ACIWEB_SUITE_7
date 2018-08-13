@@ -136,7 +136,7 @@ echo '<input type="hidden" id="STOCK_VIEW" value="1" />';
 					<table class='table_form'>
 						<tbody>
 							<tr>
-								<th><strong><?PHP echo $SO_PO; ?></strong></th><td><input  class="inputPage col-lg-12" id="nopo" onkeyup="checkNOTA(this.id);" name="nopo"/></td>
+								<th><strong><?PHP echo $SO_PO; ?></strong></th><td><input  class="inputPage col-lg-12" id="nopo" onkeyup="checkInpChar(this.id);" name="nopo"/></td>
 							</tr>
 						</tbody>
 					</table>
@@ -149,8 +149,8 @@ echo '<input type="hidden" id="STOCK_VIEW" value="1" />';
 					<fieldset class="fieldsetform">
 						<table class='table_form' >
 							<tbody>
-					        	<tr><th><strong><?PHP echo $SO_PayTer; ?></strong></th><td><input  class="inputPage col-lg-12" id="termino_pago" onkeyup="checkNOTA(this.id);" name="termino_pago" readonly /></td></tr>
-						    	<tr><th><strong><?PHP echo $SO_Lic; ?></strong></th><td><input class="inputPage col-lg-12" id="tipo_licitacion" onkeyup="checkNOTA(this.id);" name="tipo_licitacion"/></td></tr>
+					        	<tr><th><strong><?PHP echo $SO_PayTer; ?></strong></th><td><input  class="inputPage col-lg-12" id="termino_pago" onkeyup="checkInpChar(this.id);" name="termino_pago" readonly /></td></tr>
+						    	<tr><th><strong><?PHP echo $SO_Lic; ?></strong></th><td><input class="inputPage col-lg-12" id="tipo_licitacion" onkeyup="checkInpChar(this.id);" name="tipo_licitacion"/></td></tr>
 								<tr>
 								<th><strong><?PHP echo $SO_Tax; ?></strong></th><td> 
 									<select  id="taxid" name="taxid" class="select col-lg-12" onchange="set_taxid(this.value,2);" required>
@@ -178,8 +178,8 @@ echo '<input type="hidden" id="STOCK_VIEW" value="1" />';
 					<fieldset class="fieldsetform">
 						<table class='table_form' >
 							<tbody>
-					        	<tr><th><strong><?PHP echo $SO_DeliDate; ?></strong></th><td><input  class="inputPage col-lg-12" id="fecha_entrega" onkeyup="checkNOTA(this.id);" name="fecha_entrega" /></td></tr>
-						        <tr><th><strong><?PHP echo $SO_Delito; ?></strong></th><td><input class="inputPage  col-lg-12" id="entrega" onkeyup="checkNOTA(this.id);" name="entrega" /></td></tr>
+					        	<tr><th><strong><?PHP echo $SO_DeliDate; ?></strong></th><td><input  class="inputPage col-lg-12" id="fecha_entrega" onkeyup="checkInpChar(this.id);" name="fecha_entrega" /></td></tr>
+						        <tr><th><strong><?PHP echo $SO_Delito; ?></strong></th><td><input class="inputPage  col-lg-12" id="entrega" onkeyup="checkInpChar(this.id);" name="entrega" /></td></tr>
 								<tr><th><strong><?PHP echo $SO_DispFrom; ?></strong></th>
 								<td>
 									<select  id="lugar_despacho" name="lugar_despacho" class="select col-lg-12"  required>
@@ -207,7 +207,7 @@ echo '<input type="hidden" id="STOCK_VIEW" value="1" />';
 					<table class='table_form note'>
 						<tbody>
 						<tr><th><strong><?PHP echo $SO_Notes; ?></strong></th>
-						<td><textarea class="textareaPage col-lg-12" onkeyup="checkArroba(this.id);"  rows="2" id="observaciones" name="observaciones"></textarea></td></tr>
+						<td><textarea class="textareaPage col-lg-12" onkeyup="checkInpChar(this.id);"  rows="2" id="observaciones" name="observaciones"></textarea></td></tr>
 						</tbody>
 					</table>
 					</fieldset>	

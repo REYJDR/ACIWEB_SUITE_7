@@ -86,14 +86,14 @@ while(i <= cantLineas){
        }        
 
       var line_table_req = '<tr>'+reglon+
-      '<td width="15%" class="rowtable_req" onkeyup="checkArroba(this.id);" contenteditable id="desc'+i+'"  ></td>'+
-      '<td width="15%" class="rowtable_req" onkeyup="checkArroba(this.id);" contenteditable id="nota'+i+'"  ></td>'+
+      '<td width="15%" class="rowtable_req" onkeypress="MSG_ERROR_RELEASE();" onkeyup="checkTblChar(this.id);" contenteditable id="desc'+i+'"  ></td>'+
+      '<td width="15%" class="rowtable_req" onkeypress="MSG_ERROR_RELEASE();" onkeyup="checkTblChar(this.id);" contenteditable id="nota'+i+'"  ></td>'+
       '<input type="hidden"   id="unit'+i+'" />'+
-      '<td width="3%"  class="rowtable_req numb" onkeyup="checkArroba(this.id);" contenteditable ></td>'+
+      '<td width="3%"  class="rowtable_req numb" onkeypress="MSG_ERROR_RELEASE();" onkeyup="checkTblChar(this.id); checkTblnum(this.id);" id="chico'+i+'" contenteditable ></td>'+
       '<input type="hidden"  id="taxable'+i+'" />'+
-      '<td width="3%"  class="rowtable_req numb" onkeyup="checkArroba(this.id);" contenteditable ></td>'+
+      '<td width="3%"  class="rowtable_req numb" onkeypress="MSG_ERROR_RELEASE();" onkeyup="checkTblChar(this.id); checkTblnum(this.id);" id="grande'+i+'" contenteditable ></td>'+
       '<input type="hidden"  id="stock'+i+'" />'+
-      '<td width="5%"  class="rowtable_req  numb" onfocusout="recalcular('+i+');" contenteditable id="qty'+i+'"></td>'+
+      '<td width="5%"  class="rowtable_req  numb"  onfocusout="recalcular('+i+');" contenteditable id="qty'+i+'"></td>'+
       '<td width="5%"  style="'+bg_color+'"  class="rowtable_req  numb" '+editable+' onfocusout="calculate('+i+');" id="unitprice'+i+'" ></td>'+
       '<td width="5%"  style="'+display+'" class="rowtable_req  numb" id="total'+i+'" ></td></tr>' ;
        i++
@@ -695,8 +695,10 @@ while (i <= cantLineas){
                             chic  = theTbl.rows[i].cells[3].innerHTML;
                             gran  = theTbl.rows[i].cells[4].innerHTML;
 
-                            cell += desc+'@'+nota+'@'+UnitMeasure+'@'+itemId+'@'+UnitPrice+'@'+qty+'@'+total+'@'+chic+'@'+gran;//agrego el registo de las demas columnas
-console.log(cell);
+                            var line = desc+'@'+nota+'@'+UnitMeasure+'@'+itemId+'@'+UnitPrice+'@'+qty+'@'+total+'@'+chic+'@'+gran;                           
+
+                            cell += replaceNbsps(line);
+                            
                           break;
 
                        default: 

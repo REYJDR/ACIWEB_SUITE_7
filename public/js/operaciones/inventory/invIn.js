@@ -198,7 +198,7 @@ function jobs(){
 }
 
 // ******************************************************************************************
-// * INICIALIZA TBL ENTRADA MASIVA  (CHK = 1-ENTRADA NUEVO ITEM / 2- aJUSTE DE ITEM EXISTENTE 
+// * INICIALIZA TBL ENTRADA MASIVA  (CHK = 1-ENTRADA NUEVO ITEM / 2- AJUSTE DE ITEM EXISTENTE 
 // ******************************************************************************************
 function init(chk){
  

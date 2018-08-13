@@ -621,8 +621,6 @@ function set_location(URL){
   //SOLO VALORES NUMERICOS EN CAMPOS DE TABLAS
   function checkTblnum(ID){
 
-    MSG_ERROR_RELEASE();
-
     var x=document.getElementById(ID).innerHTML;
     var patt = new RegExp("-");
     var sing = patt.test( x );
@@ -647,7 +645,6 @@ function set_location(URL){
   //SOLO VALORES NUMERICOS POSITIVOS EN CAMPOS DE TABLAS
   function checkTblPositive(ID){
     
-        MSG_ERROR_RELEASE();
     
         var x=document.getElementById(ID).innerHTML;
         var patt = new RegExp("-");
@@ -673,7 +670,6 @@ function set_location(URL){
   //NO PERMITE @ EN CAMPOS DE TABLAS
   function checkTblChar(ID){
     
-    MSG_ERROR_RELEASE();
     
     var x=document.getElementById(ID).innerHTML;
     var patt = new RegExp("@");
@@ -681,9 +677,9 @@ function set_location(URL){
     
       if (val== true) 
       {
-    
-        document.getElementById(ID).innerHTML = x.slice(0,-1);
         MSG_ERROR("No se permite el caracter especial '@' ",0);
+        document.getElementById(ID).innerHTML = x.slice(0,-1);
+
         return false;
       }
   }
@@ -691,15 +687,16 @@ function set_location(URL){
   //NO PERMITE @ EN CAMPOS INPUTS
   function checkInpChar(ID){
     
-    MSG_ERROR_RELEASE();
     var x=document.getElementById(ID).value;
     var patt = new RegExp("@");
     var val = patt.test( x );
 
     if (val== true) 
     {
+     
       document.getElementById(ID).value = x.slice(0,-1);
       MSG_ERROR("No se permite el caracter especial '@' ",0);
+
       return false;
     }
   }
@@ -707,7 +704,7 @@ function set_location(URL){
   //SOLO VALORES NUMERICOS EN CAMPOS INPUTS
   function checkInpnum(ID){
 
-    MSG_ERROR_RELEASE();
+
     var x=document.getElementById(ID).innerHTML;
 
     if (isNaN(x)) 
@@ -724,7 +721,7 @@ function set_location(URL){
 
   //VALIDA LONGITUD EN CAMPOS DE TABLAS
   function checkLong(ID,long){
-    MSG_ERROR_RELEASE();
+ 
     var x=document.getElementById(ID).innerHTML;
 
     if (x.length > long) 
@@ -866,4 +863,13 @@ function isJson(str){
       return false;
   }
   return true;
+}
+
+// ********************************************************
+// *REEMPLAZA ESPACION &NSBP; HTML EN JAVASCRIP
+// ********************************************************
+function replaceNbsps(str) {
+  var nStr = str.replace(/&nbsp/g, " ")
+  console.log(nStr);
+  return nStr ;
 }
