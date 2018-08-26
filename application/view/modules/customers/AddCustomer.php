@@ -161,12 +161,12 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 				<thead>
 				<tr>
 					<th width="5%"><?PHP echo $TableCust_th1; ?></th>
-					<th width="10%"><?PHP echo $TableCust_th2; ?></th>
-					<th width="20%"><?PHP echo $TableCust_th3; ?></th> 
-					<th width="5%"><?PHP echo $TableCust_th4; ?></th>
-					<th width="5%"><?PHP echo $TableCust_th5; ?></th>
-					<th width="5%"><?PHP echo $TableCust_th6; ?></th>
-					<th width="20%"></th>
+					<th width="20%"><?PHP echo $TableCust_th2; ?></th>
+					<th width="10%"><?PHP echo $TableCust_th3; ?></th> 
+					<th width="10%"><?PHP echo $TableCust_th4; ?></th>
+					<th width="10%"><?PHP echo $TableCust_th5; ?></th>
+					<th width="10%"><?PHP echo $TableCust_th6; ?></th>
+					<th width="10%"></th>
 				</tr>
 				</thead>
 			<tbody>
@@ -288,7 +288,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 								<td>'.$value->{'Contact'}.'</td>
 								<td>'.$value->{'Country'}.'</td>
 								<td>'.$value->{'Email'}.'</td>
-								<td><a  href="javascript:void(0)" onclick="del_cus('.$cus_secID.')"><input type="button" id="modal_del" name="modal_del" class="btn btn-danger btn-sm btn-icon icon-left" value="'.$BTN_del.'" /></a><a  href="javascript:void(0)" onclick="set_cus_info('.$cus_ID.','.$cus_name.','.$cus_tlf.','.$cus_contact.','.$cus_country.','.$cus_state.','.$cus_city.','.$cus_zip.','.$cus_email.','.$cus_pl.','.$cus_balance.','.$cus_CL.','.$cus_acct.','.$cus_salesRep.','.$cus_BA.','.$cus_SA.')"><input id="modal_mod" name="modal_mod" data-toggle="modal" data-target="#cust_mod" type="button" class="btn btn-danger btn-sm btn-icon icon-left"  value="'.$BTN_mod.'" /></a></td>
+								<td><a  href="javascript:void(0)" onclick="del_cus('.$cus_secID.')"><input type="button" id="modal_del" name="modal_del" class="btn btn-danger btn-sm btn-icon icon-left" value="'.$BTN_del.'" /></a><a  href="javascript:void(0)" onclick="set_cus_info('.$cus_ID.','.$cus_name.','.$cus_tlf.','.$cus_contact.','.$cus_country.','.$cus_state.','.$cus_city.','.$cus_zip.','.$cus_email.','.$cus_pl.','.$cus_balance.','.$cus_CL.','.$cus_acct.','.$cus_salesRep.','.$cus_BA.','.$cus_SA.')"><input id="modal_mod" name="modal_mod" data-toggle="modal" data-target="#cust_mod" type="button" class="btn btn-warning btn-sm btn-icon icon-left"  value="'.$BTN_mod.'" /></a></td>
 							</tr>';
 
 				}

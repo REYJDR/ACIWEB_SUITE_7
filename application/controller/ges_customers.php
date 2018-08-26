@@ -149,7 +149,7 @@ public function CheckError(){
 
 public function getCustomerList($sort,$limit,$clause){
 
-    $query ='SELECT * FROM Customers_Exp WHERE ID_compania="'.$this->model->id_compania.'" '.$sort.' limit '.$limit.';';
+    $query ='SELECT * FROM Customers_Exp '.$clause.' Order by CustomerID '.$sort.' limit '.$limit.';';
 
 
     $res = $this->model->Query($query);
@@ -199,7 +199,7 @@ public function del_cus($cus_ID){
 
   $this->model->verify_session();
 
-  $clause = 'WHERE CustomerID="'.$cus_ID.'" AND  ID_compania="'.$this->model->id_compania.'";';
+  echo $clause = ' WHERE CustomerID="'.$cus_ID.'" AND  ID_compania="'.$this->model->id_compania.'";';
 
   $this->model->delete('Customers_Exp',$clause);
 

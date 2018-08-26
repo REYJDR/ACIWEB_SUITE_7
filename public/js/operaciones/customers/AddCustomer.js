@@ -110,7 +110,8 @@ document.addEventListener('DOMContentLoaded', function() {
 //VARIABLES GLOBALES
 
 var lang = get_lang();
-
+var URL = document.getElementById('URL').value;
+var link= URL+"index.php";
 
     function set_div(val){
     
@@ -193,10 +194,12 @@ var lang = get_lang();
           if (lang = 'es') {
 
              MSG_CORRECT('El cliente ha sido modificado exitosamente.',0); 
+             //location.reload(true);
 
           }else{
 
-             MSG_CORRECT('Customer is modified successfully!.',0); 
+             MSG_CORRECT('Customer is modified successfully!.',0);
+             //location.reload(true); 
           }              
         }             
     }
@@ -247,11 +250,13 @@ var lang = get_lang();
 
                   if (lang = 'es') {
 
-                     MSG_CORRECT('El cliente ha sido borrado exitosamente.',0); 
+                     MSG_CORRECT('El cliente ha sido borrado exitosamente.',0);
+                     //location.reload(true); 
 
                   }else{
 
-                     MSG_CORRECT('Customer has been successfully deleted!.',0); 
+                     MSG_CORRECT('Customer has been successfully deleted!.',0);
+                     //location.reload(true); 
                   }              
                 }             
             }
