@@ -1466,6 +1466,49 @@ public function send_mail($address,$subject,$title,$body){
     
 }
 
+////////////////////////////////////////////////////
+//Estimar Costos de un proyecto, metodo general
+public function getJob_avalaible_amnt($JobID,$PhaseID=0,$CCOID=0){
 
+  $this->verify_session();
+
+    $clause = 'WHERE  ID_compania="'.$this->id_compania.'" AND JobID="'.$JobID.'"  ';
+
+    if ($PhaseID != 0) {
+
+      $clause .= 'AND PhaseID="'.$PhaseID.'" ';
+
+        if ($CCOID != 0) {
+
+        $clause .= 'AND CostCodeID="'.$CCOID.'" ';
+        
+        }
+
+    }
+
+    $Budget = $this->Query_value( 'Job_Estimates_Exp','Expenses',$clause);
+
+    $sql_expenses = 'SELECT SUM(B.NetLine) AS Total 
+                     FROM INV_EVENT_LOG 
+                     '.$clause.';';
+
+
+    $Expenses_value = $this->model->Query($sql_expenses);
+
+        foreach ($Expenses as $datos) {
+
+        $datos = json_decode($datos);
+
+        $Expenses_total = $datos->{'Total'};
+        
+
+        } 
+
+    $Total_available = $Budget - $Expenses_total;
+
+    return $Total_available;
+
+}
+//END
 }
 ?>
