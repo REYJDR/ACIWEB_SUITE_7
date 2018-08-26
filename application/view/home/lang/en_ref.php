@@ -131,6 +131,7 @@ $config_10_title = 'Interfaz con Sage';
 $config_8_val1  = 'Tipo de interfaz';  
 $config_8_val2  = 'SageConnect';
 $config_8_val3  = 'P3 To P3';
+$config_8_val4  = 'Standalone';
 //INTERFAZ SAGE
 
 //BASE DE DATOS

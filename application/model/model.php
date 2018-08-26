@@ -375,6 +375,7 @@ if($temp_url!=''){
 
                                 $Comp_Info = json_decode($Comp_Info);
                                 $Sage_Conn = $Comp_Info->{'Sage_Conn'};
+                                
                             }    
                             
                                 if ($Sage_Conn == 0) {
@@ -493,6 +494,26 @@ $date  = strtotime($dateIn.' '.UTC);
 $dateOut = date("Y-m-d H:i:s",  $date);
 
 return $dateOut;
+}
+
+
+public function CheckStandalone(){
+
+
+    $Sage_Conn = $this->Query_value('company_info','Sage_Conn',' limit 1');
+
+
+    if ($Sage_Conn == 9) {
+
+      return true;
+
+    }else{
+
+
+        return false;
+    }
+
+
 }
 
 public function CompanyConnected(){

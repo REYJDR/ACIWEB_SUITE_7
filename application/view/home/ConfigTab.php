@@ -550,6 +550,7 @@
 						<option <?php if ($Sage_Conn == null){echo 'selected disable';} ?>></option>
 						<option value="0" <?php if ($Sage_Conn == 0){echo 'selected';} ?>><?php echo $config_8_val2; ?></option>
 						<option value="1" <?php if ($Sage_Conn == 1){echo 'selected';} ?>><?php echo $config_8_val3; ?></option>
+						<option value="9" <?php if ($Sage_Conn == 9){echo 'selected';} ?>><?php echo $config_8_val4; ?></option>
 					</select>
 					</td></tr>
 				</tbody>

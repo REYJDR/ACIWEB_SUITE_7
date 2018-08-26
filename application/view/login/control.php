@@ -4,8 +4,20 @@ if(isset($_POST['flag']))
 	//inicio variables de session
 	$user = $_POST['user'];
 	$pass = md5($_POST['pass']);
-	$company = $_POST['company'];
-    $login = $this->model->login_in($user,$pass,'',$company); 
+
+	$isStandalone = $this->model->CheckStandalone();
+	
+	if(!$isStandalone){ 
+
+	  $company = $_POST['company']; 
+
+    }else{
+
+	  $company = '0'; 
+	  
+	}
+	
+	$login = $this->model->login_in($user,$pass,'',$company); 
 }
 ?>
 
@@ -31,6 +43,11 @@ if(isset($_POST['flag']))
 						<span class="focus-input100"></span>
 					</div>
 
+				<?php 
+
+				$isStandalone = $this->model->CheckStandalone();
+
+				if(!$isStandalone){ ?>
 
 					<div class="separador col-lg-12" ></div>
 					<fieldset>
@@ -46,6 +63,9 @@ if(isset($_POST['flag']))
 					</select>  
 					<div class="separador col-lg-12" ></div>
 					</fieldset>
+
+				<?php } ?>
+
 
 					<div class="text-right p-t-13 p-b-23">
 						<span class="txt1">
