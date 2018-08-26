@@ -17,7 +17,6 @@
 // ********************************************************
 $(window).load(function(){
     
-    
 
     $('#prod_ind').hide();
     $('#prod_masive').hide();
@@ -52,9 +51,15 @@ $(window).load(function(){
         $('#ERROR').hide();
 
         //setea por defaul el valor 1 para mostrar el div de crear nueva lista de precios 
-        set_div(1);
+       
+        function setDiv() {
+            return set_div(1);
+        } 
+        $.when(setDiv()).done(function(){ 
 
-        
+            jobs();
+        });
+            
 
     });
 
@@ -112,33 +117,34 @@ document.addEventListener('DOMContentLoaded', function() {
 // ******************************************************************************************
 function set_div(val){
     
+
     //OCULTA/MUESTRA EL DIV SEGUN SELECION DEL CHECKBOX PARA CREAR UN NUEVO IDPRICE O UTILIZAR UN IDPRICE EXISTENTE
     if(val=='1'){
-
-        $('#prod_ind').show();
-        $('#prod_masive').hide();
-        $('#prod_layout').hide();      
-        Type = 1;
-
-    }
-    if(val=='2'){
-
-        $('#prod_ind').hide();
-        $('#prod_masive').hide();
-        $('#prod_layout').show(); 
-        Type = 2;
         
-
-    }
-    if(val=='3'){
+                $('#prod_ind').show();
+                $('#prod_masive').hide();
+                $('#prod_layout').hide();      
+                Type = 1;
         
-        $('#prod_ind').hide();
-        $('#prod_layout').hide();
-        $('#prod_masive').show();
-        init(1);//construye tabla
-        Type = 3;
-    }
-    
+            }
+            if(val=='2'){
+        
+                $('#prod_ind').hide();
+                $('#prod_masive').hide();
+                $('#prod_layout').show(); 
+                Type = 2;
+                
+        
+            }
+            if(val=='3'){
+                
+                $('#prod_ind').hide();
+                $('#prod_layout').hide();
+                $('#prod_masive').show();
+                init(1);//construye tabla
+                Type = 3;
+            }
+
 }
 
 // ******************************************************************************************
@@ -175,27 +181,29 @@ function locat(id,line=0){
 }
 
 // ******************************************************************************************
-// * OBTIENE JOBS 
+// * OBTIENE JOBS para estimacion de presupuesto
 // ******************************************************************************************
 function jobs(){   
 
-    var datos= "url=ges_requisiciones/get_JobList";
+    
+    var datos= "url=ges_inventario/getJobList";
     var link= $('#URL').val()+"index.php";
 
-        $.ajax({
+    $.ajax({
             type: "GET",
             url: link,
             data: datos,
             success: function(res){
-
+                console.log('consulta'+res);
             JOBS = res;
-
             $('#JOBID').append(JOBS);
+            $('#JOBID2').append(JOBS);
                     
         }
     });
     
 }
+
 
 // ******************************************************************************************
 // * INICIALIZA TBL ENTRADA MASIVA  (CHK = 1-ENTRADA NUEVO ITEM / 2- AJUSTE DE ITEM EXISTENTE 

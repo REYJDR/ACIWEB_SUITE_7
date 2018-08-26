@@ -848,6 +848,59 @@ public function update_lote_location($OrigenROUTE,$OrigenALMACEN,$status_locatio
 
 }
 
+public function getJobList(){
+
+    $this->model->verify_session();
+
+    $res = $this->model->Query('SELECT A.JobID, B.Description 
+                                FROM Job_Estimates_Exp A
+                                INNER JOIN  Jobs_Exp B on A.JobID = B.JobID
+                                where A.ID_compania ="'.$this->model->id_compania.'" and 
+                                    B.ID_compania ="'.$this->model->id_compania.'" Group by JobID');
+
+        foreach ($res as $value) {
+        $value = json_decode($value);
+        echo '<option value="'.$value->{'JobID'}.'">'.$value->{'JobID'}.'-'.$value->{'Description'}.'</option>';
+        }
+
+}
+
+public function getPhaseList($jobid=0){
+    
+        $this->model->verify_session();
+    
+        $res = $this->model->Query('SELECT A.PhaseID, B.Description 
+                                    FROM Job_Estimates_Exp A
+                                    INNER JOIN  Job_Phases_Exp B on A.PhaseID = B.PhaseID
+                                    where A.ID_compania ="'.$this->model->id_compania.'" and 
+                                          B.ID_compania ="'.$this->model->id_compania.'" and 
+                                          A.JobID ="'.$jobid.'" Group by A.PhaseID');
+
+            foreach ($res as $value) {
+            $value = json_decode($value);
+            echo '<option value="'.$value->{'PhaseID'}.'">'.$value->{'PhaseID'}.'-'.$value->{'Description'}.'</option>';
+            }
+    
+}
+
+public function getCostList($jobid=0,$phaseID=0){
+    
+        $this->model->verify_session();
+    
+        $res = $this->model->Query('SELECT A.CostCodeID, B.Description 
+                                    FROM Job_Estimates_Exp A
+                                    INNER JOIN  Job_Cost_Codes_Exp B on A.CostCodeID = B.CostCodeID
+                                    where A.ID_compania ="'.$this->model->id_compania.'" and 
+                                          B.ID_compania ="'.$this->model->id_compania.'" and 
+                                          A.JobID ="'.$jobid.'" and A.phaseID ="'.$phaseID.'" Group by A.CostCodeID');
+    
+            foreach ($res as $value) {
+            $value = json_decode($value);
+            echo '<option value="'.$value->{'CostCodeID'}.'">'.$value->{'CostCodeID'}.'-'.$value->{'Description'}.'</option>';
+            }
+    
+}
+
 //dejar de ultimo
 public function CheckError(){
     

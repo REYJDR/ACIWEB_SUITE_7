@@ -200,7 +200,7 @@ public function update($table,$columns,$clause){
 
 function Query_value($table,$columns,$clause){
 
-$query = 'SELECT '.$columns.' FROM '.$table.' '.$clause.';';
+ $query = 'SELECT '.$columns.' FROM '.$table.' '.$clause.';';
 
 
 
