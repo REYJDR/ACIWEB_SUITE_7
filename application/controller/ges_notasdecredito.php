@@ -895,7 +895,7 @@ public function GetNCNumber($ID){
   
   //$NCNO = substr($NCNO, 6);
 
-
+  $NCNO = (int) filter_var($NCNO, FILTER_SANITIZE_NUMBER_INT);
   return $NCNO.'-N'.$conse;
 }
 
