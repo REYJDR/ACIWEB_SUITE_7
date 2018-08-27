@@ -37,9 +37,15 @@ $invIn7 ="Tipo de impuesto";
 $invIn8 ="Activo/No activo";
 $invIn9 ="Carga de mercancia por layout";
 $invIn10 = "Entrada en lote";
-$invIn11 = "Asociacion de proyecto";
+$invIn11 = "Proyecto";
 $invIn12 = "Ajuste de materiales";
 $invIn13 = "Metodo de ingreso";
+$invIn14 = "Fase";
+$invIn15 = "Centro de Costo";
+$invIn16 = "Estimacion de presupuesto";
+$invIn17 = "Presupuesto";
+
+
 
 $BTN_InvIN_Proc = 'Procesar';
 // END INV IN

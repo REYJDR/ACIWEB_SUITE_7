@@ -200,7 +200,7 @@ public function update($table,$columns,$clause){
 
 function Query_value($table,$columns,$clause){
 
-$query = 'SELECT '.$columns.' FROM '.$table.' '.$clause.';';
+ $query = 'SELECT '.$columns.' FROM '.$table.' '.$clause.';';
 
 
 
@@ -1466,6 +1466,145 @@ public function send_mail($address,$subject,$title,$body){
     
 }
 
+////////////////////////////////////////////////////
+//Estimar Costos de un proyecto, metodo general
+public function getJob_avalaible_amnt($JobID,$PhaseID=0,$CCOID=0){
 
+
+  $this->verify_session();
+
+    $clause = 'WHERE  ID_compania="'.$this->id_compania.'" AND JobID="'.$JobID.'"  ';
+
+    if ($PhaseID) {
+
+      $clause .= 'AND PhaseID="'.$PhaseID.'" ';
+
+        if ($CCOID) {
+
+        $clause .= 'AND CostCodeID="'.$CCOID.'" ';
+        
+        }
+
+    }
+
+
+
+    $Budget = $this->Query_value('Job_Estimates_Exp','SUM(Expenses)',$clause);
+
+    $sql_expenses = 'SELECT SUM(B.NetLine) AS Total 
+                     FROM INV_EVENT_LOG 
+                     '.$clause.';';
+
+
+    $Expenses_value = $this->Query($sql_expenses);
+
+        foreach ($Expenses as $datos) {
+
+        $datos = json_decode($datos);
+
+        $Expenses_total = $datos->{'Total'};
+        
+
+        } 
+
+    $Total_available = $Budget - $Expenses_total;
+
+    return $Total_available;
+    // number_format($Total_available,2,',','.');
+
+}
+
+////////////////////////////////////////////////////
+//Escribe el evento de gasto en la tabla INV_EVENT_LOG
+public function set_Budget_Log($event_values){
+
+  $this->verify_session();
+
+  $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
+
+}
+
+///////////////////////////////Purchase!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+public function set_Purchase_Header(){
+  
+  $this->verify_session();
+  
+  $PurchaseID = $this->Get_CO_No();
+  
+  $data = json_decode($_GET['Data']);
+  $value = $data[0];
+  
+  
+  list($PurchaseNumber,$VendorID,$VendorName,$AP_Account,$Date,$Subtotal,$Net_due,$Export_date,$Enviado,$Error,$ErrorPT,$nota) = explode('@', $value );
+  
+ 
+  
+  $date = strtotime($this->model->GetLocalTime(date("Y-m-d")));
+  $date = date("Y-m-d",$date);
+  
+  
+  $values = array(
+  'ID_compania'=>$this->model->id_compania,
+  'PurchaseNumber'=> $PurchaseNumber,
+  'VendorID'=>   $VendorID,
+  'VendorName'=> $VendorName,
+  'AP_Account'=>$AP_Account,
+  'Date'=>$Date,
+  'Subtotal' => $Subtotal,
+  'Net_due'=>$Net_due,
+  'Export_date'=>$Export_date,
+  'Enviado'=>$Enviado,
+  'Error'=>$Error,
+  'ErrorPT' => $ErrorPT,
+  'nota' => $nota,
+  'USER' => $this->model->active_user_id);
+  
+  $this->model->insert('Purchase_Header_Imp',$values);
+
+  echo $PurchaseNumber;
+  
+  }
+  
+  
+  
+  public function set_Purchase_Detail($PurchaseNumber){
+  
+  $this->verify_session();
+  
+  $id_compania= $this->model->id_compania;
+  
+  $data = json_decode($_GET['Data']);
+  
+  foreach ($data as $key => $value) {
+  
+  if($value){
+  
+  list($TransactionID,$Item_id,$Description,$GL_Acct,$Quantity,$Unit_Price,$Net_line,$JobID,$JobPhaseID,$JobCostCodeID) = explode('@', $value );
+
+  
+        //EN CASO QUE NO SE HAGA CONVERSION DE UNIDDES ESCRIBE EN LA TABLA DE SALES ORDER DETAIL SIN INDICAR EL ITEMID. 
+        $Purchase_values = array(
+            'ID_compania' => $this->id_compania ,
+            'TransactionID'=>$TransactionID,
+            'Item_id'=>$Item_id,
+            'Description'=> $Description,
+            'GL_Acct'=>$GL_Acct,
+            'Quantity'=>$Quantity,
+            'Unit_Price'=>$Unit_Price,
+            'Net_line'=>$Net_line,
+            'JobID'=>$JobID,
+            'JobPhaseID'=>$JobPhaseID,
+            'JobCostCodeID'=>$JobCostCodeID);
+  
+        $this->model->insert('Purchase_Detail_Imp',$Purchase_values); //set item line
+    
+   }
+  }
+  echo '1';
+  
+}
+
+
+//END
 }
 ?>

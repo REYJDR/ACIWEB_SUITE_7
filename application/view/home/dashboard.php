@@ -106,9 +106,9 @@ $conn = $this->model->sage_connected;
 	  $status = "<i class='fas fa-ban'  style='color:red;'></i> ".$this->model->Query_value('CompanySession','CompanyNameSage50','where ID_compania="'.$this->model->id_compania.'"');
 
 	}
+}
 
-
-}else{
+if ($Sage_Conn == 1) {
 	
 	 $metodo = "p3Top3";
 
@@ -116,6 +116,13 @@ $conn = $this->model->sage_connected;
 		
 }
 
+if ($Sage_Conn == 9) {
+	
+	 $metodo = "Standalone";
+
+     $status = "<i class='fas fa-check-circle'  ></i>Standalone";
+		
+}
 
 
 ?>

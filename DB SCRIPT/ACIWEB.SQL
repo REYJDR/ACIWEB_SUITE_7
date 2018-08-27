@@ -1403,6 +1403,46 @@ CREATE TABLE `Vendor_Payment_Header_Exp` (
   `Prepayment` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+-- Table structure for table `INV_EVENT_LOG`
+--
+
+DROP TABLE IF EXISTS `INV_EVENT_LOG`;
+CREATE TABLE `INV_EVENT_LOG` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ProductID` varchar(45) NOT NULL,
+  `JobID` varchar(20) NOT NULL,
+  `JobPhaseID` varchar(20) DEFAULT NULL,
+  `JobCostCodeID` varchar(20) DEFAULT NULL,
+  `PurchaseNumber` varchar(20) DEFAULT NULL,
+  `PurchaseOrderNumber` varchar(20) DEFAULT NULL,
+  `Total` decimal(18,4) NOT NULL,
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `User` int(11) NOT NULL,
+  `ID_compania` int(11) NOT NULL,
+   PRIMARY KEY (ID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- Table structure for table `INV_EVENT_LOG`
+--
+
+DROP TABLE IF EXISTS `INV_EVENT_LOG`;
+CREATE TABLE `INV_EVENT_LOG` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ProductID` varchar(45) NOT NULL,
+  `JobID` varchar(20) NOT NULL,
+  `JobPhaseID` varchar(20) DEFAULT NULL,
+  `JobCostCodeID` varchar(20) DEFAULT NULL,
+  `PurchaseNumber` varchar(20) DEFAULT NULL,
+  `PurchaseOrderNumber` varchar(20) DEFAULT NULL,
+  `Total` decimal(18,4) NOT NULL,
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `User` int(11) NOT NULL,
+  `ID_compania` int(11) NOT NULL,
+   PRIMARY KEY (ID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Indexes for table `CompanyLogSync`
 --

@@ -17,7 +17,6 @@
 // ********************************************************
 $(window).load(function(){
     
-    
 
     $('#prod_ind').hide();
     $('#prod_masive').hide();
@@ -52,9 +51,15 @@ $(window).load(function(){
         $('#ERROR').hide();
 
         //setea por defaul el valor 1 para mostrar el div de crear nueva lista de precios 
-        set_div(1);
+       
+        function setDiv() {
+            return set_div(1);
+        } 
+        $.when(setDiv()).done(function(){ 
 
-        
+            jobs();
+        });
+            
 
     });
 
@@ -104,7 +109,45 @@ document.addEventListener('DOMContentLoaded', function() {
                }
 
              });
+
+
+
+               $('#JOBID2').on("change", function (e) {
+
+                $('#Budget').val('Calculando...');
+              
+                $('#PHASEID2').html('');
+                $('#PHASEID2').prepend('<option value="-" selected>-</option>');
+                $('#PHASEID2').select2('val','-');
+                
+                $('#COSTID2').html('');
+                $('#COSTID2').prepend('<option value="-" selected>-</option>');
+                $('#COSTID2').select2('val','-');
+
+                getPhase();
+
+               
+                
+                });
+            
+                $('#PHASEID2').on('change', function (e) {
+                
+                $('#Budget').val('Calculando...');
+                getCost();
+
+
+                                
+                });
+                $('#COSTID2').on('change', function (e) {
+                $('#Budget').val('Calculando...');
+                getBudget();
+
+
+                                
+                });
+
 });
+
 
 
 // ******************************************************************************************
@@ -112,33 +155,34 @@ document.addEventListener('DOMContentLoaded', function() {
 // ******************************************************************************************
 function set_div(val){
     
+
     //OCULTA/MUESTRA EL DIV SEGUN SELECION DEL CHECKBOX PARA CREAR UN NUEVO IDPRICE O UTILIZAR UN IDPRICE EXISTENTE
     if(val=='1'){
-
-        $('#prod_ind').show();
-        $('#prod_masive').hide();
-        $('#prod_layout').hide();      
-        Type = 1;
-
-    }
-    if(val=='2'){
-
-        $('#prod_ind').hide();
-        $('#prod_masive').hide();
-        $('#prod_layout').show(); 
-        Type = 2;
         
-
-    }
-    if(val=='3'){
+                $('#prod_ind').show();
+                $('#prod_masive').hide();
+                $('#prod_layout').hide();      
+                Type = 1;
         
-        $('#prod_ind').hide();
-        $('#prod_layout').hide();
-        $('#prod_masive').show();
-        init(1);//construye tabla
-        Type = 3;
-    }
-    
+            }
+            if(val=='2'){
+        
+                $('#prod_ind').hide();
+                $('#prod_masive').hide();
+                $('#prod_layout').show(); 
+                Type = 2;
+                
+        
+            }
+            if(val=='3'){
+                
+                $('#prod_ind').hide();
+                $('#prod_layout').hide();
+                $('#prod_masive').show();
+                init(1);//construye tabla
+                Type = 3;
+            }
+
 }
 
 // ******************************************************************************************
@@ -175,26 +219,125 @@ function locat(id,line=0){
 }
 
 // ******************************************************************************************
-// * OBTIENE JOBS 
+// * OBTIENE JOBS para estimacion de presupuesto
 // ******************************************************************************************
 function jobs(){   
 
-    var datos= "url=ges_requisiciones/get_JobList";
+
+    var datos= "url=ges_inventario/getJobList";
     var link= $('#URL').val()+"index.php";
 
+      return   $.ajax({
+                    type: "GET",
+                    url: link,
+                    data: datos,
+                    success: function(res){
+                    
+                    JOBS = res;
+                    $('#JOBID').append(JOBS);
+                    $('#JOBID2').append(JOBS);
+  
+                            
+                }
+            });
+    
+}
+
+// ******************************************************************************************
+// * OBTIENE PHASE
+// ******************************************************************************************
+function getPhase(){   
+
+    $('#PHASEID2').html('');
+    $('#PHASEID2').prepend('<option value="-" selected>-</option>');
+
+    function get(){
+
+        var JOB  = $('#JOBID2').val(); 
+        var datos= "url=ges_inventario/getPhaseList/"+ $('#JOBID2').val();
+        var link= $('#URL').val()+"index.php";
+    
         $.ajax({
+                type: "GET",
+                url: link,
+                data: datos,
+                success: function(res){
+                   
+                $('#PHASEID2').append(res);
+                        
+            }
+        });
+    }
+    $.when(get()).done(function(res){  
+        
+                getBudget();
+        
+            });
+
+}
+
+
+// ******************************************************************************************
+// * OBTIENE COST
+// ******************************************************************************************
+function getCost(){   
+
+    function get(){
+
+        var job  = $('#JOBID2').val();
+        var phase= $('#PHASEID2').val();
+        
+        var datos= "url=ges_inventario/getCostList/"+job+"/"+phase;
+        var link= $('#URL').val()+"index.php";
+    
+        $.ajax({
+                type: "GET",
+                url: link,
+                data: datos,
+                success: function(res){
+                   
+                $('#COSTID2').html(res);
+                        
+            }
+        });
+    }
+    $.when(get()).done(function(res){  
+        
+                getBudget();
+        
+     });
+
+}
+
+// ******************************************************************************************
+// * OBTIENE PRESUPUESTO ESTIMADO POR PROYECTO
+// ******************************************************************************************
+function getBudget(){
+
+    var JOB  = $('#JOBID2').val();
+    var PHASE= $('#PHASEID2').val();
+    var COST = $('#COSTID2').val();
+    
+    if (PHASE == '-') { PHASE = 0}
+    if (COST  == '-') { COST = 0}
+
+    var datos= "url=ges_inventario/getBudget/"+JOB+'/'+PHASE+'/'+COST;
+    var link= $('#URL').val()+"index.php";
+
+    $.ajax({
             type: "GET",
             url: link,
             data: datos,
             success: function(res){
-
-            JOBS = res;
-
-            $('#JOBID').append(JOBS);
-                    
+        
+                $('#Budget').val(res);
+                budgetCompare();
+           
         }
     });
-    
+
+
+
 }
 
 // ******************************************************************************************
@@ -279,13 +422,13 @@ function builtTbl(chk){
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable+' '+color+' id="unit'+i+'"  ></td>'+
                 '<td width="3%"  class="rowtable_req  numb" onkeyup="checkTblChar(this.id)"  '+editable+' '+color+' id="upc'+i+'"   ></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblChar(this.id)"  id="gl'+i+'" '+editable+' '+color+' ></td>'+
-                '<td width="5%"  class="rowtable_req  numb" onkeyup="checkQtyInput(this.id)"  id="tax'+i+'" '+editable+' '+color+'></td>'+
+                '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblnum(this.id)"  id="tax'+i+'" '+editable+' '+color+'></td>'+
                 '<td width="5%"  class="rowtable_req  numb" ><select id="SelStock'+i+'" class="form-control" onchange="locat(this.value,'+i+');">'+stocks+'</select></td>'+
                 '<td width="3%"  class="rowtable_req  numb" ><select id="SelRoute'+i+'" class="form-control" ></select></td>'+
                 '<td width="3%"  class="rowtable_req  numb" id="lote'+i+'"   onkeyup="checkTblChar(this.id)" contenteditable></td>'+                
                 '<td width="3%"  class="rowtable_req  numb" id="fecha'+i+'"  onkeyup="checkTblChar(this.id)" contenteditable></td>'+                
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)" onfocusout="recalcular('+i+');" contenteditable id="qty'+i+'"></td>'+
-                '<td width="5%"  class="rowtable_req  numb" onkeyup="checkQtyInput(this.id)" onfocusout="calculate( '+i+');" contenteditable id="unitprice'+i+'" ></td>'+
+                '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblnum(this.id)" onfocusout="calculate( '+i+');" contenteditable id="unitprice'+i+'" ></td>'+
                 '<td width="5%"  class="rowtable_req  numb" '+color+' id="total'+i+'" ></td></tr>' ;
             i++
             
@@ -461,7 +604,7 @@ function sumar_total(){
     var total = [];
     var TOTAL = 0;
 
-    total_field =    document.getElementById('total');
+    total_field =   document.getElementById('total');
     
     for(var i=1; i<theTbl.rows.length ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theTbl
     {
@@ -493,10 +636,56 @@ function sumar_total(){
     }
 
     total_field.value   =  parseFloat(TOTAL).toFixed(5);
+
+   
+    budgetCompare();
+    
+   
     
 }
 // ******************************************************************************************
 // *CALCULOS DE TOTALES
+// ******************************************************************************************
+
+// ******************************************************************************************
+// *COMPARA PRESUPUESTO
+// ******************************************************************************************
+function budgetCompare() {
+
+    MSG_ERROR_RELEASE();
+   
+    if($("#JOBID2").val() != '-'){
+
+   total_field =   document.getElementById('total');
+    
+  
+   
+   var budget = $('#Budget').val();
+   budget = Number(budget);
+   
+   var total  =  Number(total_field.value);
+
+   var exceed = total - budget ;
+
+   if (total > budget){
+
+     MSG_ERROR('EL total del costo excede el presupuesto para este proyecto en '+exceed+' $');
+     $('#proc_lote').attr("disabled", "disabled");
+   
+    }else{
+
+    $('#proc_lote').removeAttr("disabled");
+   }
+   
+}
+
+
+}
+
+
+
+// ******************************************************************************************
+// *COMPARA PRESUPUESTO
 // ******************************************************************************************
 
 

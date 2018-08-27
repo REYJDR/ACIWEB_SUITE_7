@@ -122,6 +122,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 										<tbody>										
 										<select class="select col-lg-12"  id="JOBID" >
 										<option value="-" selected>-</option>
+
 										</select>		
 										</td></tr>
 										</tbody>
@@ -153,17 +154,45 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 							<div class="col-lg-8"> 
 								<div  class="col-lg-6">
 								<fieldset class="fieldsetformb">
+								<h4><?PHP echo $invIn16; ?></h4>
+					
 								<table class='table_form note'>
 									<tbody>
 									<tr>
 									    <th><strong><?PHP echo $invIn11; ?></strong></th>
 									    <td>
-								        <select class="select col-lg-12"  id="JOBID" >
+								        <select class="select col-lg-12"  id="JOBID2" >
 										<option value="-" selected>-</option>
 										</select>
 										</td>
 									</tr>
 									<tr>
+									    <th><strong><?PHP echo $invIn14; ?></strong></th>
+									    <td>
+								        <select class="select col-lg-12"  id="PHASEID2"  >
+										<option value="-" selected>-</option>
+										</select>
+										</td>
+									</tr>
+									<tr>
+									    <th><strong><?PHP echo $invIn15; ?></strong></th>
+									    <td>
+								        <select class="select col-lg-12"  id="COSTID2"  >
+										<option value="-" selected>-</option>
+										</select>
+										</td>
+									</tr>
+									<tr>
+									    <th><strong><?PHP echo $invIn17; ?></strong></th>
+										<td><input id="Budget" name="Budget" class="inputPage col-lg-12  numb"  value=""/></td>
+									</tr>	
+										
+									</tbody>
+								</table>
+								</fieldset>	
+								<fieldset class="fieldsetformb">
+								<table class='table_form note'>
+									<tbody>
 									   <th><strong><?PHP echo $invIn12; ?></strong></th>
 									   <th><input type="checkbox" id="adjust" name="adjust" /></th></tr>
 									   
@@ -226,7 +255,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 							<div class='col-lg-10'></div>
 							<div class='col-lg-2'>
 								<div class="container-login100-form-btn">
-								<input name="proc_layout" type="submit"  value="<?PHP echo $BTN_InvIN_Proc; ?>"  class="accept-form-btn" name="submit"  value="<?PHP echo $BTN_Process; ?>" />			
+								<input name="proc_lote" id="proc_lote"  type="submit"  value="<?PHP echo $BTN_InvIN_Proc; ?>"  class="accept-form-btn" name="submit"  value="<?PHP echo $BTN_Process; ?>" />			
 								</div>
 							</div>
 							<div class="separador col-lg-12"> </div>
@@ -256,7 +285,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 							<div class='col-lg-10'></div>
 							<div class='col-lg-2'>
 								<div class="container-login100-form-btn">
-								<input name="proc_layout" type="submit"  value="<?PHP echo $BTN_InvIN_Proc; ?>"  class="accept-form-btn" name="submit"  value="<?PHP echo $BTN_Process; ?>" />			
+								<input name="proc_lote" id="proc_lote" type="submit"  value="<?PHP echo $BTN_InvIN_Proc; ?>"  class="accept-form-btn" name="submit"  value="<?PHP echo $BTN_Process; ?>" />			
 								</div>
 							</div>
 							<div class="separador col-lg-12"> </div>
