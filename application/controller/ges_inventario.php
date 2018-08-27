@@ -901,6 +901,13 @@ public function getCostList($jobid=0,$phaseID=0){
     
 }
 
+public function getBudget($jobid=0,$phaseid=0,$costid=0){
+
+    echo  $this->model->getJob_avalaible_amnt($jobid,$phaseid,$costid);
+
+}
+
+
 //dejar de ultimo
 public function CheckError(){
     

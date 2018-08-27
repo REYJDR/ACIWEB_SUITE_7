@@ -169,7 +169,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 									<tr>
 									    <th><strong><?PHP echo $invIn14; ?></strong></th>
 									    <td>
-								        <select class="select col-lg-12"  id="PHASEID2" >
+								        <select class="select col-lg-12"  id="PHASEID2"  >
 										<option value="-" selected>-</option>
 										</select>
 										</td>
@@ -177,14 +177,14 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 									<tr>
 									    <th><strong><?PHP echo $invIn15; ?></strong></th>
 									    <td>
-								        <select class="select col-lg-12"  id="COSTID2" >
+								        <select class="select col-lg-12"  id="COSTID2"  >
 										<option value="-" selected>-</option>
 										</select>
 										</td>
 									</tr>
 									<tr>
 									    <th><strong><?PHP echo $invIn17; ?></strong></th>
-										<td><input  class="inputPage col-lg-12  numb"  value=""/></td>
+										<td><input id="Budget" name="Budget" class="inputPage col-lg-12  numb"  value=""/></td>
 									</tr>	
 										
 									</tbody>
@@ -255,7 +255,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 							<div class='col-lg-10'></div>
 							<div class='col-lg-2'>
 								<div class="container-login100-form-btn">
-								<input name="proc_layout" type="submit"  value="<?PHP echo $BTN_InvIN_Proc; ?>"  class="accept-form-btn" name="submit"  value="<?PHP echo $BTN_Process; ?>" />			
+								<input name="proc_lote" id="proc_lote"  type="submit"  value="<?PHP echo $BTN_InvIN_Proc; ?>"  class="accept-form-btn" name="submit"  value="<?PHP echo $BTN_Process; ?>" />			
 								</div>
 							</div>
 							<div class="separador col-lg-12"> </div>
@@ -285,7 +285,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 							<div class='col-lg-10'></div>
 							<div class='col-lg-2'>
 								<div class="container-login100-form-btn">
-								<input name="proc_layout" type="submit"  value="<?PHP echo $BTN_InvIN_Proc; ?>"  class="accept-form-btn" name="submit"  value="<?PHP echo $BTN_Process; ?>" />			
+								<input name="proc_lote" id="proc_lote" type="submit"  value="<?PHP echo $BTN_InvIN_Proc; ?>"  class="accept-form-btn" name="submit"  value="<?PHP echo $BTN_Process; ?>" />			
 								</div>
 							</div>
 							<div class="separador col-lg-12"> </div>

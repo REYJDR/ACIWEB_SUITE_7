@@ -1470,15 +1470,16 @@ public function send_mail($address,$subject,$title,$body){
 //Estimar Costos de un proyecto, metodo general
 public function getJob_avalaible_amnt($JobID,$PhaseID=0,$CCOID=0){
 
+
   $this->verify_session();
 
     $clause = 'WHERE  ID_compania="'.$this->id_compania.'" AND JobID="'.$JobID.'"  ';
 
-    if ($PhaseID != 0) {
+    if ($PhaseID) {
 
       $clause .= 'AND PhaseID="'.$PhaseID.'" ';
 
-        if ($CCOID != 0) {
+        if ($CCOID) {
 
         $clause .= 'AND CostCodeID="'.$CCOID.'" ';
         
@@ -1486,14 +1487,16 @@ public function getJob_avalaible_amnt($JobID,$PhaseID=0,$CCOID=0){
 
     }
 
-    $Budget = $this->Query_value( 'Job_Estimates_Exp','Expenses',$clause);
+
+
+    $Budget = $this->Query_value('Job_Estimates_Exp','SUM(Expenses)',$clause);
 
     $sql_expenses = 'SELECT SUM(B.NetLine) AS Total 
                      FROM INV_EVENT_LOG 
                      '.$clause.';';
 
 
-    $Expenses_value = $this->model->Query($sql_expenses);
+    $Expenses_value = $this->Query($sql_expenses);
 
         foreach ($Expenses as $datos) {
 
@@ -1507,6 +1510,7 @@ public function getJob_avalaible_amnt($JobID,$PhaseID=0,$CCOID=0){
     $Total_available = $Budget - $Expenses_total;
 
     return $Total_available;
+    // number_format($Total_available,2,',','.');
 
 }
 //END
