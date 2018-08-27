@@ -1207,7 +1207,6 @@ CREATE TABLE `sax_company_sage` (
   `onoff` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin2;
 
--- --------------------------------------------------------
 
 --
 -- Table structure for table `SAX_USER`
