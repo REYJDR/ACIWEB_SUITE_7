@@ -901,6 +901,39 @@ public function getCostList($jobid=0,$phaseID=0){
     
 }
 
+
+public function setProduct_In($Product_values){
+    
+        $this->model->verify_session();
+    
+        $this->model->insert('Products_Imp',$Product_values); //set Product line
+    
+}
+
+public function if_ProductExist_chk($ProductID){
+
+$Product_chk = $this->Query_value('Products_Imp','ProductID','where ID_compania="'.$this->model->id_compania.'" and ProductID="'.$ProductID.'"');
+
+
+    if ($Product_chk) {
+
+        return true;
+
+    }else{
+
+        return false;
+    }
+
+}
+
+public function setInv_adjustment($Adjustment_values){
+    
+        $this->model->verify_session();
+    
+        $this->model->insert('InventoryAdjust_Imp',$Adjustment_values); //set Product line
+    
+}
+
 //dejar de ultimo
 public function CheckError(){
     
