@@ -893,10 +893,10 @@ public function GetNCNumber($ID){
 
   list(,,,,,,$NCNO,$conse) = explode(chr(9), $line);
   
-  $NCNO = substr($NCNO, -5);
+  $noNc = substr($NCNO, -5);
 
   
-  return $NCNO.'-N'.$conse;
+  return $noNc.'-N'.$conse;
 }
 
 
