@@ -44,6 +44,10 @@ $invIn14 = "Fase";
 $invIn15 = "Centro de Costo";
 $invIn16 = "Estimacion de presupuesto";
 $invIn17 = "Presupuesto";
+$invIn18 = "Fecha";
+$invIn19 = "ID Proveedor";
+$invIn20 = "# Factura";
+$invIn21 = "Detalle Factura";
 
 
 
