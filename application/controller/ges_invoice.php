@@ -734,7 +734,7 @@ public function GetInvoiceNumber($ID){
 
   list(,,,,,,$FACTNO,$conse) = explode(chr(9), $line);
 
-   echo 'no:'.$FACTNO;
+  
 
   $noInv = substr($FACTNO,-5);
 
