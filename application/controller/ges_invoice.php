@@ -697,7 +697,7 @@ public function ReadInvoiceFile($id_compania){
       $folder = $value->{'printer'};
 
         //NUEVO BLOQUE
-      $PRINTER = $this->GetPrinterSeleccted($ID);
+        $PRINTER = $this->GetPrinterSeleccted($ID);
 
         $DIR = "FISCAL/".$PRINTER."/OUT/";
         $filename = $DIR.'OUT_FACTI'.$ID.'.TXT';
@@ -736,7 +736,8 @@ public function GetInvoiceNumber($ID){
 
 
   $noInv = substr($FACTNO,-5);
-  
+
+  echo $noInv.'-'.$conse;
 return $noInv.'-'.$conse;
 }
 
