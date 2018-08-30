@@ -28,7 +28,7 @@ $(window).load(function(){
     MSG_ADVICE('LOADING...');
 
     
-    function GetStockList(){
+ /*   function GetStockList(){
 
 
         var datos= "url=ges_inventario/get_almacen_selectlist/";
@@ -56,16 +56,36 @@ $(window).load(function(){
         //setea por defaul el valor 1 para mostrar el div de crear nueva lista de precios 
        
         function setDiv() {
-            return set_div(1);
+            return set_div(3);
         } 
         $.when(setDiv()).done(function(){ 
 
             jobs();
+            
         });
             
 
-    });
+    });*/
 
+    function getJobs(){
+
+      return  jobs();
+    }
+    $.when(getJobs()).done(function(){ 
+
+        $('#ERROR').hide();
+        
+        //setea por defaul el valor 1 para mostrar el div de crear nueva lista de precios 
+        
+        function setDiv() {
+            return set_div(3);
+        } 
+        $.when(setDiv()).done(function(){ 
+
+           vendors();
+            
+        });      
+    });
    
 
 });
@@ -103,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     editable = '';
                     color = "style='background-color:#ECECEC;'";
                     init(2);//construye tabla
+                   
                     $('#invDetail').hide(); 
 
                }else{
@@ -128,7 +149,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 $('#COSTID2').html('');
                 $('#COSTID2').prepend('<option value="-" selected>-</option>');
                 $('#COSTID2').select2('val','-');
-
                 getPhase();
 
                
@@ -222,6 +242,30 @@ function locat(id,line=0){
         });
         
 }
+
+
+// ******************************************************************************************
+// * OBTIENE VENDOR LIST
+// ******************************************************************************************
+function vendors(){   
+    
+    
+        var datos= "url=ges_inventario/getVendorList";
+        var link= $('#URL').val()+"index.php";
+    
+          return   $.ajax({
+                        type: "GET",
+                        url: link,
+                        data: datos,
+                        success: function(res){
+                        console.log(res);
+                        $('#vendorID').append(res);
+      
+                    }
+                });
+        
+    }
+
 
 // ******************************************************************************************
 // * OBTIENE JOBS para estimacion de presupuesto

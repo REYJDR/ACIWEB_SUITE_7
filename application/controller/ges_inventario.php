@@ -918,7 +918,7 @@ public function setProduct_In($Product_values){
 
 public function if_ProductExist_chk($ProductID){
 
-$Product_chk = $this->Query_value('Products_Imp','ProductID','where ID_compania="'.$this->model->id_compania.'" and ProductID="'.$ProductID.'"');
+ $Product_chk = $this->Query_value('Products_Imp','ProductID','where ID_compania="'.$this->model->id_compania.'" and ProductID="'.$ProductID.'"');
 
 
     if ($Product_chk) {
@@ -940,6 +940,23 @@ public function setInv_adjustment($Adjustment_values){
     
 }
 
+
+public function getVendorList(){
+
+ $this->model->verify_session();
+
+ $sql = 'SELECT * FROM Vendors_Exp WHERE ID_compania = "'.$this->model->id_compania.'" AND IsActive ="1"';
+
+ $res = $this->model->Query($sql);
+
+ foreach ($res as  $value) {
+     $value = json_decode($value);
+     echo '<option value="'.$value->{'VendorID'}.'">'.$value->{'VendorID'}.'-'.$value->{'Name'}.'</option>';
+     
+
+ }
+
+}
 //dejar de ultimo
 public function CheckError(){
     

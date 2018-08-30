@@ -37,11 +37,11 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						<table class='table_form'>
 							<tbody>
 								<tr>
-									<td><input type="checkbox" class='chkGrp' id="chk_lp" name="chk_lp" value="1" onclick="set_div(this.value)" checked /></td>					
+									<td><input type="checkbox" class='chkGrp' id="chk_lp" name="chk_lp" value="1" onclick="set_div(this.value)" /></td>					
 									<th><strong><?PHP echo $invIn1; ?></strong></th>
 								</tr>
 								</tr>
-								<td><input type="checkbox" class='chkGrp' id="chk_lp" name="chk_lp" value="3" onclick="set_div(this.value)" /></td>					
+								<td><input type="checkbox" class='chkGrp' id="chk_lp" name="chk_lp" value="3" onclick="set_div(this.value)"  checked /></td>					
 									<th><strong><?PHP echo $invIn10; ?></strong></th>
 								</tr>
 								<tr>
@@ -221,7 +221,27 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 									<tr>
 									    <th><strong><?PHP echo $invIn19; ?></strong></th>
 									    <td>
-										<input id="vendorID" name="vendorID" class="inputPage col-lg-12  numb"  value=""/>										
+										<?PHP 
+										
+										$res= $this->model->Get_company_Info();
+										
+											foreach ($res as $Comp_Info) {
+										
+												$Comp_Info = json_decode($Comp_Info);
+												$Sage_Conn = $Comp_Info->{'Sage_Conn'};
+											}	 
+											
+										if ($Sage_Conn == 9) {//standalone ?>
+									
+									   	<input id="vendorID" name="vendorID" class="inputPage col-lg-12  numb"  value=""/>										
+
+										<?PHP }else{ ?>
+
+										<select class="select col-lg-12"  id="vendorID" >
+										<option value="-" selected>-</option>
+										</select>
+
+										<?php } ?>
 										</td>
 									</tr>
 									
