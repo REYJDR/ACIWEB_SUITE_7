@@ -1113,6 +1113,11 @@ CREATE TABLE `SalesOrder_Header_Imp` (
 -- Table structure for table `Sales_Detail_Imp`
 --
 
+
+--
+-- Table structure for table `Sales_Detail_Imp`
+--
+
 DROP TABLE IF EXISTS `Sales_Detail_Imp`;
 CREATE TABLE `Sales_Detail_Imp` (
   `ID_compania` int(11) NOT NULL DEFAULT '0',
@@ -1124,8 +1129,12 @@ CREATE TABLE `Sales_Detail_Imp` (
   `Net_line` decimal(18,4) NOT NULL,
   `Taxable` int(1) DEFAULT NULL,
   `ID` int(11) NOT NULL,
-  `GL_Sales_Acct` varchar(15) DEFAULT NULL
+  `GL_Sales_Acct` varchar(15) DEFAULT NULL,
+  `JobID` varchar(20) DEFAULT NULL,
+  `JobPhaseID` varchar(20) DEFAULT NULL,
+  `JobCostCodeID` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 -- --------------------------------------------------------
 
