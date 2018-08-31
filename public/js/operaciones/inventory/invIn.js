@@ -6,6 +6,7 @@
     var Type = '';
     var listitem = '';
     var color = '';
+    var CHK_VALIDATION ='';
     LineArray = [];
     FaltaArray = [];
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -20,12 +21,14 @@ $(window).load(function(){
 
     $('#prod_ind').hide();
     $('#prod_masive').hide();
-    $('#prod_layout').hide();  
+    $('#prod_layout').hide(); 
+    $('#invDetail').show();  
+    
 
     MSG_ADVICE('LOADING...');
 
     
-    function GetStockList(){
+ /*   function GetStockList(){
 
 
         var datos= "url=ges_inventario/get_almacen_selectlist/";
@@ -53,16 +56,36 @@ $(window).load(function(){
         //setea por defaul el valor 1 para mostrar el div de crear nueva lista de precios 
        
         function setDiv() {
-            return set_div(1);
+            return set_div(3);
         } 
         $.when(setDiv()).done(function(){ 
 
             jobs();
+            
         });
             
 
-    });
+    });*/
 
+    function getJobs(){
+
+      return  jobs();
+    }
+    $.when(getJobs()).done(function(){ 
+
+        $('#ERROR').hide();
+        
+        //setea por defaul el valor 1 para mostrar el div de crear nueva lista de precios 
+        
+        function setDiv() {
+            return set_div(3);
+        } 
+        $.when(setDiv()).done(function(){ 
+
+           vendors();
+            
+        });      
+    });
    
 
 });
@@ -100,12 +123,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     editable = '';
                     color = "style='background-color:#ECECEC;'";
                     init(2);//construye tabla
+                   
+                    $('#invDetail').hide(); 
 
                }else{
 
                     color = "";
                     $box2.prop("checked", false);
                     init(1);//construye tabla
+                    $('#invDetail').show(); 
                }
 
              });
@@ -123,7 +149,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 $('#COSTID2').html('');
                 $('#COSTID2').prepend('<option value="-" selected>-</option>');
                 $('#COSTID2').select2('val','-');
-
                 getPhase();
 
                
@@ -217,6 +242,30 @@ function locat(id,line=0){
         });
         
 }
+
+
+// ******************************************************************************************
+// * OBTIENE VENDOR LIST
+// ******************************************************************************************
+function vendors(){   
+    
+    
+        var datos= "url=ges_inventario/getVendorList";
+        var link= $('#URL').val()+"index.php";
+    
+          return   $.ajax({
+                        type: "GET",
+                        url: link,
+                        data: datos,
+                        success: function(res){
+                        console.log(res);
+                        $('#vendorID').append(res);
+      
+                    }
+                });
+        
+    }
+
 
 // ******************************************************************************************
 // * OBTIENE JOBS para estimacion de presupuesto
@@ -421,12 +470,12 @@ function builtTbl(chk){
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable+' '+color+' id="desc'+i+'"  ></td>'+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable+' '+color+' id="unit'+i+'"  ></td>'+
                 '<td width="3%"  class="rowtable_req  numb" onkeyup="checkTblChar(this.id)"  '+editable+' '+color+' id="upc'+i+'"   ></td>'+
-                '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblChar(this.id)"  id="gl'+i+'" '+editable+' '+color+' ></td>'+
+              //  '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblChar(this.id)"  id="gl'+i+'" '+editable+' '+color+' ></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblnum(this.id)"  id="tax'+i+'" '+editable+' '+color+'></td>'+
-                '<td width="5%"  class="rowtable_req  numb" ><select id="SelStock'+i+'" class="form-control" onchange="locat(this.value,'+i+');">'+stocks+'</select></td>'+
+               /* '<td width="5%"  class="rowtable_req  numb" ><select id="SelStock'+i+'" class="form-control" onchange="locat(this.value,'+i+');">'+stocks+'</select></td>'+
                 '<td width="3%"  class="rowtable_req  numb" ><select id="SelRoute'+i+'" class="form-control" ></select></td>'+
                 '<td width="3%"  class="rowtable_req  numb" id="lote'+i+'"   onkeyup="checkTblChar(this.id)" contenteditable></td>'+                
-                '<td width="3%"  class="rowtable_req  numb" id="fecha'+i+'"  onkeyup="checkTblChar(this.id)" contenteditable></td>'+                
+                '<td width="3%"  class="rowtable_req  numb" id="fecha'+i+'"  onkeyup="checkTblChar(this.id)" contenteditable></td>'+    */            
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)" onfocusout="recalcular('+i+');" contenteditable id="qty'+i+'"></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblnum(this.id)" onfocusout="calculate( '+i+');" contenteditable id="unitprice'+i+'" ></td>'+
                 '<td width="5%"  class="rowtable_req  numb" '+color+' id="total'+i+'" ></td></tr>' ;
@@ -534,7 +583,6 @@ function hideCol(col) {
     if (tbl != null) {
 
   
-
         for (var i = 0; i < tbl.rows.length-1; i++) {
             
             for (var j = 0; j < tbl.rows[i].cells.length; j++) {
@@ -677,12 +725,10 @@ function budgetCompare() {
     $('#proc_lote').removeAttr("disabled");
    }
    
-}
+ }
 
 
 }
-
-
 
 // ******************************************************************************************
 // *COMPARA PRESUPUESTO
@@ -693,8 +739,10 @@ function budgetCompare() {
 //SEND ENTRADA DE MATERIALES
 //******************************************************************************************
 function proceed(){
+     
+    console.log(Type);
 
-    switch (type) {
+    switch (Type) {
 
         case 1:
         
@@ -704,13 +752,13 @@ function proceed(){
         
         case 2:
         
-        cargaLayout();
+        
 
             break;
         
         case 3:
         
-        masiva();
+         entradaLote(); 
 
             break;
     
@@ -732,9 +780,9 @@ function proceed(){
     // ******************************************************************************************
 
     // ******************************************************************************************
-    // CARGA DE LAYOUT
+    // ENTRADA POR LOTE
     // ******************************************************************************************
-    function cargaLayout(){ 
+    function entradaLote(){ 
         
         //LIMPIO ERRORES
         MSG_ERROR_RELEASE();
@@ -865,7 +913,7 @@ function proceed(){
         /////////////////////////////////////////////////////////////////////////////////////
     }
     // ******************************************************************************************
-    // CARGA DE LAYOUT
+    // ENTRADA POR LOTE
     // ******************************************************************************************
 
     // ******************************************************************************************
@@ -897,87 +945,161 @@ function proceed(){
         
           cell = '';
           for(var j=0;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
+           {
         
-                {
-        
-                var selid = "sel"+i;
+                /*
                 var stockId = 'SelStock'+i;
-                var locId = 'SelRoute'+i;
+                var locId = 'SelRoute'+i; */
+                
+                if(document.getElementById('adjust').checked != true){
+           
+                  if(theTbl.rows[i].cells[0].innerHTML !=''){ 
+                    
+                                switch (j){
+                    
+                                        case 0:
+                
+                                            itemId    = theTbl.rows[i].cells[0].innerHTML ;
+                                            desc      = theTbl.rows[i].cells[1].innerHTML;
+                                            unit      = theTbl.rows[i].cells[2].innerHTML;
+                                            gl        = theTbl.rows[i].cells[4].innerHTML;
+                                            tax       = theTbl.rows[i].cells[5].innerHTML;
+                                            
+                                            
+                                            
+            
+                                    /*   stockId   = document.getElementById(selid).value;
+                                            locId     = document.getElementById(selid).value;*/ 
+                                                                        
+                                            qty       = theTbl.rows[i].cells[5].innerHTML;
+                                            UnitPrice = theTbl.rows[i].cells[6].innerHTML;
+                                            total     = theTbl.rows[i].cells[7].innerHTML;
+                                        
+                                    /*   lote      = theTbl.rows[i].cells[7].innerHTML;
+                                            fechaVen  = theTbl.rows[i].cells[7].innerHTML;*/
+                                        
+                                            
+                                            
+                                            //agrego el registo de las demas columnas
+                                            cell += '@'+itemId+
+                                                    '@'+UnitPrice+
+                                                    '@'+qty+
+                                                    '@'+total;
+        
+        
+                                        console.log(cell);
+                
+                                        /*if( stockId==0){
+                                                FaltaArray[6] = i ;
+                                            }   
+        
+                                            if(stockId==0) {   
+                                                FaltaArray[7] = i ;
+                                            }*/
+        
+                                            break;
+            
+                                            default: 
+        
+                                                if (j!=6 || j!=7){
+                                                    
+                                                    val= theTbl.rows[i].cells[j].innerHTML;
+                                                    
+                                                                                if(val==''){                              
+                                                                                    FaltaArray[j] = i ;
+                                                    }
+                                                }
+        
+                                            break;
+                                        }
+                            }      
                 
         
-                if(document.getElementById(selid).value !=''){
-        
-                      switch (j){
-        
-                            case 0:
-    
-                                itemId    = document.getElementById(selid).value;
-  
-                                stockId   = document.getElementById(selid).value;
-                                locId     = document.getElementById(selid).value;
 
-                                qty       = theTbl.rows[i].cells[5].innerHTML;
-                                UnitPrice = theTbl.rows[i].cells[6].innerHTML;
-                                total     = theTbl.rows[i].cells[7].innerHTML;
-                                lote      = theTbl.rows[i].cells[7].innerHTML;
-                                fechaVen  = theTbl.rows[i].cells[7].innerHTML;
-                               
-                                                              
-                                if( stockId==0 || stockId==0){
+
+                }else{
+
+                //AJUSTE DE MATERIAL
+                var selid = "sel"+i;
+                
+                if(document.getElementById(selid).value !=''){ 
+        
+                        switch (j){
+            
+                                case 0:
+        
+                                    itemId    = document.getElementById(selid).value;
+    
+                            /*   stockId   = document.getElementById(selid).value;
+                                    locId     = document.getElementById(selid).value;*/ 
+                                                                
+                                    qty       = theTbl.rows[i].cells[5].innerHTML;
+                                    UnitPrice = theTbl.rows[i].cells[6].innerHTML;
+                                    total     = theTbl.rows[i].cells[7].innerHTML;
+                                
+                            /*   lote      = theTbl.rows[i].cells[7].innerHTML;
+                                    fechaVen  = theTbl.rows[i].cells[7].innerHTML;*/
+                                
                                     
                                     
-                                }
-                                
-                                
-                                //agrego el registo de las demas columnas
-                                cell += '@'+itemId+
-                                        '@'+UnitPrice+
-                                        '@'+qty+
-                                        '@'+total+
-                                        '@'+stockId+
-                                        '@'+locId+
-                                        '@'+lote+
-                                        '@'+fechaVen;
+                                    //agrego el registo de las demas columnas
+                                    cell += '@'+itemId+
+                                            '@'+UnitPrice+
+                                            '@'+qty+
+                                            '@'+total;
+
+
+                                console.log(cell);
+        
+                                /*if( stockId==0){
+                                        FaltaArray[6] = i ;
+                                    }   
+
+                                    if(stockId==0) {   
+                                        FaltaArray[7] = i ;
+                                    }*/
+
+                                    break;
     
-                                if( stockId==0){
-                                    FaltaArray[6] = i ;
-                                }   
+                                    default: 
 
-                                if(stockId==0) {   
-                                    FaltaArray[7] = i ;
+                                        if (j!=6 || j!=7){
+                                            
+                                            val= theTbl.rows[i].cells[j].innerHTML;
+                                            
+                                            if(val==''){                              
+                                                FaltaArray[j] = i ;
+                                            }
+                                        }
+
+                                    break;
                                 }
-
-                            
-                                break;
-    
-                            default: 
-
-                            if (j!=6 || j!=7){
-                                
-                                val= theTbl.rows[i].cells[j].innerHTML;
-                                
-                                                            if(val==''){                              
-                                                                FaltaArray[j] = i ;
-                                                            }
-
-
-                            }
-
-                            break;
-                               }
                     }      
         
-               } //FIN BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
+                } //FIN BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
         
-               //INSERTA valor de CELL en el arreglo 
-               if(document.getElementById(selid).value !=''){
+            }
+            if(document.getElementById('adjust').checked != true){
+                //INSERTA valor de CELL en el arreglo 
+            if(theTbl.rows[i].cells[0].innerHTML != '' ){
                 LineArray[i]=cell; 
-               }
+                }        
+        
+            }else{
+            //INSERTA valor de CELL en el arreglo 
+            if(document.getElementById(selid).value !=''){
+                LineArray[i]=cell; 
+                }
+
+            }
+
+        
+
         i++;       
         
         }//FIN BLUCLE PARA LEER LINEA POR LINEA DE LA TABLA 
         
-        //SETEA RETURN DE LA FUNCION, FLAG 1 Ó 0, SI ES 1 LA TABLA ESTA LLENA SI ES 0 LA TABLA ESTA VACIA.
+        //SETEA RETURN DE LA FUNCION, FLAG 1 Ó 0, SI ES 1 LA TABLA ESTA LLENA, SI ES 0 LA TABLA ESTA VACIA.
         if(FaltaArray.length == 0){
 
             if(LineArray.length >= 1){ 

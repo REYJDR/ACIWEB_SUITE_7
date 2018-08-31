@@ -645,3 +645,11 @@ AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""
 / Query SELECT SUM(B.NetLine) AS Total 
                      FROM INV_EVENT_LOG 
                      WHERE  ID_compania="0" AND JobID="-"  ;
+2018-08-27 09:29:36pm-(SAGE COMPANY 0) MYSQL ERROR Unknown column 'B.NetLine' in 'field list'
+/ Query SELECT SUM(B.NetLine) AS Total 
+                     FROM INV_EVENT_LOG 
+                     WHERE  ID_compania="0" AND JobID="0"  ;
+2018-08-27 09:31:59pm-(SAGE COMPANY 0) MYSQL ERROR Unknown column 'B.NetLine' in 'field list'
+/ Query SELECT SUM(B.NetLine) AS Total 
+                     FROM INV_EVENT_LOG 
+                     WHERE  ID_compania="0" AND JobID="0"  ;
