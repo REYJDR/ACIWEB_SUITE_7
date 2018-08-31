@@ -22,6 +22,31 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+DROP TABLE IF EXISTS `Sales_Header_Imp`;
+CREATE TABLE `Sales_Header_Imp` (
+  `ID_compania` int(11) NOT NULL,
+  `ID` int(11) NOT NULL,
+  `InvoiceNumber` varchar(20) NOT NULL DEFAULT '',
+  `CustomerID` varchar(50) NOT NULL,
+  `CustomerName` varchar(50) NOT NULL,
+  `Subtotal` decimal(18,4) NOT NULL,
+  `TaxID` varchar(20) NOT NULL,
+  `Net_due` decimal(18,4) NOT NULL,
+  `Export_date` datetime DEFAULT NULL,
+  `Enviado` tinyint(4) DEFAULT '0',
+  `Error` tinyint(4) DEFAULT '0',
+  `ErrorPT` varchar(1024) DEFAULT NULL,
+  `LAST_CHANGE` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `user` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  `DueDate` datetime DEFAULT NULL,
+  `saletax` int(11) NOT NULL,
+  `OrderTax` decimal(18,4) DEFAULT NULL,
+  `SalesRepID` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
 --
 -- Table structure for table `CompanyLogSync`
 --
@@ -1103,32 +1128,6 @@ CREATE TABLE `Sales_Detail_Imp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `Sales_Header_Imp`
---
-
-DROP TABLE IF EXISTS `Sales_Header_Imp`;
-CREATE TABLE `Sales_Header_Imp` (
-  `ID_compania` int(11) NOT NULL,
-  `ID` int(11) NOT NULL,
-  `InvoiceNumber` varchar(20) NOT NULL DEFAULT '',
-  `CustomerID` varchar(50) NOT NULL,
-  `CustomerName` varchar(50) NOT NULL,
-  `Subtotal` decimal(18,4) NOT NULL,
-  `TaxID` varchar(20) NOT NULL,
-  `Net_due` decimal(18,4) NOT NULL,
-  `Export_date` datetime DEFAULT NULL,
-  `Enviado` tinyint(4) DEFAULT '0',
-  `Error` tinyint(4) DEFAULT '0',
-  `ErrorPT` varchar(1024) DEFAULT NULL,
-  `LAST_CHANGE` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `user` int(11) NOT NULL,
-  `date` datetime NOT NULL,
-  `saletax` int(11) NOT NULL,
-  `OrderTax` decimal(18,4) DEFAULT NULL,
-  `SalesRepID` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
