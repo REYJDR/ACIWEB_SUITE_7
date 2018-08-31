@@ -800,6 +800,7 @@ public function InsertSalesInfo($id_compania,$ID){
     'Net_due'=>  $Total,
     'user'=>'00',
     'date'=>$InvDate,
+    'DueDate'=>$InvDate,
     'saletax'=> $TaxID
     );
 
