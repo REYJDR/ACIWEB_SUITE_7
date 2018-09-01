@@ -685,7 +685,7 @@ public function ReadInvoiceFile($id_compania){
             INVOICE_GEN_HEADER
             Where 
             ID_compania = "'.$id_compania.'" 
-            AND InvoiceNumber IS NULL ';
+            AND InvoiceNumber IS NULL or InvoiceNumber = ""';
 
   $res = $this->model->Query($SQL);
 
