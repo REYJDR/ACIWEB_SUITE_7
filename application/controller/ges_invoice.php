@@ -716,7 +716,7 @@ public function ReadInvoiceFile($id_compania){
         
 
   }
-
+  echo $logText.'<br>';
   file_put_contents('webhook_log.txt',  $logText, FILE_APPEND);
 
 }
