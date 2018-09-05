@@ -137,7 +137,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 
 				<!--Button Process-->
-				<div class='col-lg-2'></div>
+				<div class='col-lg-8'></div>
 				<div class='col-lg-2'>
 					<div class="container-login100-form-btn">
 					<input type="submit" class="accept-form-btn" name="submit"  value="<?PHP echo $BTN_add; ?>" />			
@@ -177,25 +177,6 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 				if (isset($_POST['submit'])) {
 					
-					
-					/*if ($_POST['submit'] == '') {
-						# code...
-					}elseif ($_POST['submit'] == '') {
-						# code...
-					}elseif ($_POST['submit'] == '') {
-						# code...
-					}elseif ($_POST['submit'] == '') {
-						# code...
-					}elseif ($_POST['submit'] == '') {
-						# code...
-					}elseif ($_POST['submit'] == '') {
-						# code...
-					}elseif ($_POST['submit'] == '') {
-						# code...
-					}elseif ($_POST['submit'] == '') {
-						# code...
-					}*/
-
 						
 						$Values = array( 
 									    'CustomerID' => $_POST['cus_id'],
@@ -288,7 +269,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 								<td>'.$value->{'Contact'}.'</td>
 								<td>'.$value->{'Country'}.'</td>
 								<td>'.$value->{'Email'}.'</td>
-								<td><a  href="javascript:void(0)" onclick="del_cus('.$cus_secID.')"><input type="button" id="modal_del" name="modal_del" class="btn btn-danger btn-sm btn-icon icon-left" value="'.$BTN_del.'" /></a><a  href="javascript:void(0)" onclick="set_cus_info('.$cus_ID.','.$cus_name.','.$cus_tlf.','.$cus_contact.','.$cus_country.','.$cus_state.','.$cus_city.','.$cus_zip.','.$cus_email.','.$cus_pl.','.$cus_balance.','.$cus_CL.','.$cus_acct.','.$cus_salesRep.','.$cus_BA.','.$cus_SA.')"><input id="modal_mod" name="modal_mod" data-toggle="modal" data-target="#cust_mod" type="button" class="btn btn-warning btn-sm btn-icon icon-left"  value="'.$BTN_mod.'" /></a></td>
+								<td><a  href="javascript:void(0)" onclick="del_cus('.$cus_ID.')"><input type="button" id="modal_del" name="modal_del" class="btn btn-danger btn-sm btn-icon icon-left" value="'.$BTN_del.'" /></a><a  href="javascript:void(0)" onclick="set_cus_info('.$cus_ID.','.$cus_name.','.$cus_tlf.','.$cus_contact.','.$cus_country.','.$cus_state.','.$cus_city.','.$cus_zip.','.$cus_email.','.$cus_pl.','.$cus_balance.','.$cus_CL.','.$cus_acct.','.$cus_salesRep.','.$cus_BA.','.$cus_SA.')"><input id="modal_mod" name="modal_mod" data-toggle="modal" data-target="#cust_mod" type="button" class="btn btn-warning btn-sm btn-icon icon-left"  value="'.$BTN_mod.'" /></a></td>
 							</tr>';
 
 				}

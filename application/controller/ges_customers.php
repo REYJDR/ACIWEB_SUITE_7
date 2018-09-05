@@ -281,6 +281,7 @@ public function get_cus_detail($cus_ID){
                <tr><th '.$style.' width="30%">'.$TableDet_th17.'</th><td >'.$status.'</td></tr>';
   
     $table.= '</tbody></table></fieldset>';
+    echo $table;
 }
 
 public function get_cus($cus_ID){
@@ -289,7 +290,7 @@ public function get_cus($cus_ID){
 
   $query ='SELECT * 
           FROM Customers_Exp
-          WHERE CustomerID="'.$cus_ID.'" AND  ID_compania="'.$this->model->id_compania.'"
+          WHERE ID="'.$cus_ID.'" AND  ID_compania="'.$this->model->id_compania.'"
           ORDER BY CustomerID DESC LIMIT 1;';
 
 $res = $this->model->Query($query);
