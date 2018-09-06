@@ -86,8 +86,8 @@ while(i <= cantLineas){
        }        
 
       var line_table_req = '<tr>'+reglon+
-      '<td width="15%" class="rowtable_req" onkeypress="MSG_ERROR_RELEASE();" onkeyup="checkTblChar(this.id);" contenteditable id="desc'+i+'"  ></td>'+
-      '<td width="15%" class="rowtable_req" onkeypress="MSG_ERROR_RELEASE();" onkeyup="checkTblChar(this.id);" contenteditable id="nota'+i+'"  ></td>'+
+      '<td width="15%" class="rowtable_req" onkeypress="MSG_ERROR_RELEASE();" onkeyup="checkTblChar(this.id); checkLong(this.id,"50");" contenteditable id="desc'+i+'"  ></td>'+
+      '<td width="15%" class="rowtable_req" onkeypress="MSG_ERROR_RELEASE();" onkeyup="checkTblChar(this.id); checkLong(this.id,"50");" contenteditable id="nota'+i+'"  ></td>'+
       '<input type="hidden"   id="unit'+i+'" />'+
       '<td width="3%"  class="rowtable_req numb" onkeypress="MSG_ERROR_RELEASE();" onkeyup="checkTblChar(this.id); checkTblnum(this.id);" id="chico'+i+'" contenteditable ></td>'+
       '<input type="hidden"  id="taxable'+i+'" />'+

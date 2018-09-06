@@ -21,7 +21,13 @@ $(window).load(function(){
 
   // Get the element with id="defaultOpen" and click on it
   document.getElementById("defaultOpen").click();
+
+
+ 
+
 });
+
+
 
 
 // ********************************************************
@@ -52,7 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
       });
-
 
 
 }, false);
@@ -732,6 +737,20 @@ function set_location(URL){
       return false;
     }
   }
+
+  //VALIDA LONGITUD EN CAMPOS DE inputs
+  function checkLongInp(ID,long){
+    
+        var x=document.getElementById(ID).value;
+    
+        if (x.length > long) 
+        {
+          document.getElementById(ID).value = x.slice(0,-1);
+          alert("La entrada no debe ser de longitud mayor a "+long+" caracteres");
+          
+          return false;
+        }
+      }
 // ********************************************************
 // * validaciones de campos 
 // ********************************************************
@@ -873,3 +892,4 @@ function replaceNbsps(str) {
   console.log(nStr);
   return nStr ;
 }
+

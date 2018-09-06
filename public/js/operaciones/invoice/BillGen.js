@@ -18,8 +18,14 @@ document.getElementById('NO_LINES').value = theTblToIn.rows.length;
 
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+	
+ //desbloquea documentos de so bloqueados del usuario 
+ window.onbeforeunload = function (e) {
+	unblockeSO();
+  };
 
-
+});
 
 //VALIABLES GLOBALES
 CHK_VALIDATION = false;
@@ -728,3 +734,24 @@ remtr.parentNode.removeChild(remtr);
 sumar_total();
 
 }
+
+// ********************************************************
+// * unbloked SO
+// ********************************************************
+function unblockeSO() {
+	
+		var URL = $('#URL').val();
+	
+		var datos= "url=ges_invoice/unBlockedSalesInvoice";
+		
+		 return  $.ajax({
+	
+				type: "GET",
+				url: URL+'index.php',
+				data: datos,
+				success: function(res){
+				console.log(res);
+			}
+		});
+	
+  }

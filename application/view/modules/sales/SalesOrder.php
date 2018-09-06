@@ -196,7 +196,7 @@ if ($pice_mod_ck == 1) {
 					<table class='table_form note'>
 						<tbody>
 						<tr><th><strong><?PHP echo $SO_Notes; ?></strong></th>
-						<td><textarea class="textareaPage col-lg-12" onkeypress="MSG_ERROR_RELEASE();"  onkeyup="checkInpChar(this.id);"  rows="2" id="observaciones" name="observaciones"></textarea></td></tr>
+						<td><textarea class="textareaPage col-lg-12" onkeypress="MSG_ERROR_RELEASE();"  onkeyup="checkInpChar(this.id); checkLongInp(this.id,'50');"  rows="2" id="observaciones" name="observaciones"></textarea></td></tr>
 						</tbody>
 					</table>
 					</fieldset>	

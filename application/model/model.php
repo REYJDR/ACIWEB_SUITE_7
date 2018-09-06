@@ -184,7 +184,12 @@ public function update($table,$columns,$clause){
     $sets = array();
     foreach($columns as $column => $value)
     {
-         $sets[] = "`".$column."` = '".$value."'";
+        if($value <> 'NULL'){
+            $sets[] = "`".$column."` = '".$value."'";
+        }else{
+            $sets[] = "`".$column."` = ".$value;
+        }
+        
     }
     $query .= implode(', ', $sets);
     
