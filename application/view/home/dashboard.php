@@ -153,6 +153,7 @@ if ($Sage_Conn == 9) {
 						<tr><th><strong><?php echo $compania;?></strong></th><td><?php echo  $status; ?></td></tr>
 						<tr><th><strong><?php echo $AciwebComp;?></strong></th><td><?php echo DB_NAME; ?></td></tr>
 						<tr><th><strong><?php echo $timezone;?></strong></th><td><?php echo date_default_timezone_get() ;  ?></td></tr>
+						<tr><th><strong><?php echo $version;?></strong></th><td><?php echo VER;  ?></td></tr>					
 					</tbody>
 				</table>
 			</fieldset>

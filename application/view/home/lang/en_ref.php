@@ -4,6 +4,8 @@ $compania = 'Compañia';
 $metodoCon = 'Método de conexión';
 $AciwebComp = 'Base de datos';
 $timezone = 'Zona Horaria';
+$version = 'Version del sistema';
+
 
 $dash_menu_1 = 'Clientes';
 $dash_menu_2 = 'Ventas';

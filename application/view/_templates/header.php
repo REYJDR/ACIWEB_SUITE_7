@@ -91,6 +91,9 @@
 <div class="loader"></div>
 <div id="allDocument">
     
-<?php header('Content-Type: text/html; charset=utf-8'); ?>
+<?php 
+      header('Content-Type: text/html; charset=utf-8'); 
+	  define(VER,'V_6.9.18_4');
+	  ?>
 <input type="hidden" id="active_user_id" value="<?php echo $this->model->active_user_id; ?>" />
 <input type="hidden" id='URL' value="<?php ECHO URL; ?>" />

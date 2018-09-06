@@ -49,10 +49,6 @@ echo $status;
 
 
 
-<div style="float: right; text-align:right;" class="crop col-xs-6">
-&nbsp&nbspV_<?php echo date('d.m.y').'_'.date('h'); ?>
-</div>
-
 </div>
 </div>
 
