@@ -2536,7 +2536,21 @@ public function get_Pur($id,$JobID){
   
       $bills = $this->model->Query($query);
   
-  
+  echo  '<table id="Items" class="table table-striped table-bordered" cellspacing="0"  >
+          <thead>
+            <tr>
+              <th width="20%"># Factura</th>
+              <th width="30%">Proveedor</th>
+              <th width="10%">Fecha</th>
+              <th width="10%">Total</th>
+            </tr>
+          </thead>
+
+          <tbody>';
+
+
+
+ 
 
   foreach ($bills as $datos) {
   
@@ -2552,6 +2566,7 @@ public function get_Pur($id,$JobID){
   
     } 
 
+  echo '</tbody> </table>';
 
 }
 
