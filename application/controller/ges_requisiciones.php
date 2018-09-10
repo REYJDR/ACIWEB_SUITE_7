@@ -2447,7 +2447,7 @@ public function get_bill_notRelated($JobID){
 
     $bills = $this->model->Query($query);
 
-echo '<table id="table" class="display nowrap table table-striped table-bordered" cellspacing="0" >
+echo '<table id="table_fact" class="display nowrap table table-striped table-bordered" cellspacing="0" >
       <thead>
         <tr>
           <th width="5%">'.$REP_detail_Tbl3Hdr1.'</th>
@@ -2499,7 +2499,7 @@ public function get_cash_adv($JobID){
 
     $cash = $this->model->Query($query);
 
-    echo '<table id="table" class="display nowrap table table-striped table-bordered" cellspacing="0" >
+    echo '<table id="table_cash" class="display nowrap table table-striped table-bordered" cellspacing="0" >
           <thead>
             <tr>
               <th width="5%">'.$REP_detail_Tbl4Hdr1.'</th>

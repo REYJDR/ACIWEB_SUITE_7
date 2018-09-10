@@ -17,6 +17,7 @@ $('#ERROR').hide();
 jQuery(document).ready(function($)
 {
 
+
 var table = $("#table").dataTable({
     
     responsive: false,
@@ -74,6 +75,64 @@ table.yadcf(
     {cumulative_filtering: true, 
       filter_reset_button_text: false}
     );
+
+});
+
+var table = $("#table").dataTable({
+  
+  responsive: false,
+  pageLength: 10,
+  dom: "Brtip",
+  bSort: false,
+  select: false,
+
+  info: false,
+    buttons: [
+      {
+      extend: "excelHtml5",
+      text:   "Exportar a Excel",
+      title:  "Estado_de_requisiciones",
+       
+      exportOptions: {
+            columns: ":visible",
+             format: {
+                header: function ( data ) {
+                  var StrPos = data.indexOf("<div");
+                    if (StrPos<=0){
+                      
+                      var ExpDataHeader = data;
+                    }else{
+                   
+                      var ExpDataHeader = data.substr(0, StrPos); 
+                    }
+                   
+                  return ExpDataHeader;
+                  }
+                }
+             
+              }
+            
+      }]
+
+});
+
+var table_fact = $("#table_fact").dataTable({
+  
+  responsive: false,
+  pageLength: 10,
+  dom: "Brtip",
+  bSort: false,
+  select: false
+
+});
+
+var table_cash = $("#table_cash").dataTable({
+  
+  responsive: false,
+  pageLength: 10,
+  dom: "Brtip",
+  bSort: false,
+  select: false
 
 });
 
