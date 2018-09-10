@@ -2080,7 +2080,7 @@ public function PmntReq(){
             $limit = '1000';
             $sort = 'DESC';
             $oc = $this->get_OcReqPaymnt($sort,$limit,$clause);
-            $jId= '"'.$job_id.'"';
+            $jId= "'".$job_id."'";
 
             foreach ($oc as $value) {
 
