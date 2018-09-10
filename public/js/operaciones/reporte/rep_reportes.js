@@ -54,9 +54,7 @@ function get_OC(id){
         }
    });
   
-  $('html, body').animate({
-        scrollTop: $("#table2").offset().top
-    }, 2000);
+
 
 
 }
