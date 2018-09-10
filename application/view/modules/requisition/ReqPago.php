@@ -112,7 +112,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
         <fieldset class="fieldsetform" >
           <legend><?php echo $REP_TitleTbl3; ?></legend>
        
-          <table id="table_cash" class="display nowrap table table-striped table-bordered" cellspacing="0" >
+          <table id="table_cash" class="display table table-striped table-bordered" cellspacing="0" >
           <thead>
             <tr>
               <th width="5%"><?php echo  $REP_detail_Tbl4Hdr1; ?></th>
@@ -137,7 +137,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
           <legend><?php echo $REP_TitleTbl4; ?></legend>
 
 
-        <table id="table_fact" class="display nowrap table table-striped table-bordered" cellspacing="0" >
+        <table id="table_fact" class="display  table table-striped table-bordered" cellspacing="0" >
         <thead>
           <tr>
             <th width="5%"><?php echo $REP_detail_Tbl3Hdr1; ?></th>
