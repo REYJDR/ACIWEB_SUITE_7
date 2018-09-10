@@ -260,7 +260,7 @@ function searchReq(){
                 success: function(res){
              
                 $('#tableFact').html(res);
-                $("#table_cash").dataTable();
+                $("#table_fact").dataTable();
 
                           
             }
@@ -273,7 +273,8 @@ function searchReq(){
                 success: function(res){
 
                 $('#tableAdv').html(res); 
-                $("#table_fact").dataTable();
+                $("#table_cash").dataTable();
+                
  
                           
             }
