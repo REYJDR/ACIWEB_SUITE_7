@@ -17,6 +17,20 @@ $('#ERROR').hide();
 jQuery(document).ready(function($)
 {
 
+  var table_fact = $("#table_fact").dataTable({
+    
+    responsive: false,
+    pageLength: 10
+    
+  });
+  
+  var table_cash = $("#table_cash").dataTable({
+    
+    responsive: false,
+    pageLength: 10
+    
+  });
+
 
 var table = $("#table").dataTable({
     
@@ -80,19 +94,7 @@ table.yadcf(
 
 
 
-var table_fact = $("#table_fact").dataTable({
-  
-  responsive: false,
-  pageLength: 10,
-  
-});
 
-var table_cash = $("#table_cash").dataTable({
-  
-  responsive: false,
-  pageLength: 10,
-  
-});
 
 
 // Variables globales
