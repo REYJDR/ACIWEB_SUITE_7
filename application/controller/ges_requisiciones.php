@@ -1879,7 +1879,9 @@ $res = $this->model->Query_value( 'Purchase_Header_Exp A',
                                           B.ID_compania="'.$this->model->id_compania.'"  AND
                                           A.ApplyToPurOrderNumber = "'.$PO.'" AND 
                                           A.ApplyToPurchaseOrder= "1" AND 
-                                          B.JobID="'.$job_id.'" group by A.PurchaseID;');
+                                          B.JobID="'.$job_id.'" ');
+
+                                          //group by A.PurchaseID;
 return $res;
 }
   
