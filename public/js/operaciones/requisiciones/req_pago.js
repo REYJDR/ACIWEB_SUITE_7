@@ -651,7 +651,7 @@ function get_PurInfo(id){
   
 URL = document.getElementById('URL').value;
   
-  var datos= "url=ges_reportes/get_PO_details/"+id;  
+  var datos= "url=ges_reportes/get_Pur/"+id;  
   var link = URL+"index.php";
   
   

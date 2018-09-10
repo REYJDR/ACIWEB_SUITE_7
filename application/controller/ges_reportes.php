@@ -1708,6 +1708,10 @@ $table.= '<table   class="table table-striped table-bordered" cellspacing="0"  >
 
 }
 
+
+
+
+
 //estatus requisiciones
 
 public function req_status($id,$id_compania){

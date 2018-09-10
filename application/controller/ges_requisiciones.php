@@ -2513,6 +2513,47 @@ foreach ($cash as $datos) {
 
 }
 
+
+
+public function get_Pur($id){
+  
+  $this->model->verify_session();
+  
+    require_once APP.'view/modules/requisition/lang/'.$this->model->lang.'_ref.php';
+  
+       $query ='SELECT 
+                A.PurchaseNumber,
+                A.VendorName,
+                A.Date,
+                SUM(B.NetLine) AS Total
+                FROM Purchase_Header_Exp A
+                INNER JOIN Purchase_Detail_Exp B ON A.PurchaseID = B.PurchaseID
+                WHERE B.JobID = "'.$JobID.'" AND ApplyToPurchaseOrder = 1 AND ApplyToPurchaseNumber = "'.$id.'" AND
+                A.ID_compania ="'.$this->model->id_compania.'" AND B.ID_compania ="'.$this->model->id_compania.'"
+                group by A.PurchaseID 
+                Order by A.Date DESC limit 100;';
+  
+      $bills = $this->model->Query($query);
+  
+  
+
+  foreach ($bills as $datos) {
+  
+  $datos = json_decode($datos);
+  
+  
+    echo  "<tr >
+              <td>".$datos->{'PurchaseNumber'}."</td>
+              <td>".$datos->{'VendorName'}."</td>
+              <td>".$datos->{'Date'}."</td>
+              <td class='numb'>".number_format($datos->{'Total'},2,'.',',')."</td>
+          </tr>";
+  
+    } 
+
+
+}
+
 //END
 }
 
