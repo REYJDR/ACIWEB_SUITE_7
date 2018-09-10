@@ -2536,7 +2536,7 @@ public function get_Pur($id,$JobID){
   
       $bills = $this->model->Query($query);
   
-  echo  '<fieldset>
+  echo  '<fieldset class="fieldsetform"  >
           <legend>'.$REP_TitleTbl5.'</legend>
           <table id="Items" class="table table-striped table-bordered" cellspacing="0"  >
           <thead>

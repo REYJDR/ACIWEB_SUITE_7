@@ -663,13 +663,7 @@ URL = document.getElementById('URL').value;
         
           $('#table2').html(res);
 
-          if(res !=''){
 
-            $('html, body').animate({
-              scrollTop: $("#table2").offset().top
-            }, 2000);
-
-          }
     
     
         }
