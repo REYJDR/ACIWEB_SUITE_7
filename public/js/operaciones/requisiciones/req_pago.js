@@ -29,8 +29,8 @@ var table = $("#table").dataTable({
       buttons: [
         {
         extend: "excelHtml5",
-        text: "Exportar a Excel",
-        title: "Estado_de_requisiciones",
+        text:   "Exportar a Excel",
+        title:  "Estado_de_requisiciones",
          
         exportOptions: {
               columns: ":visible",

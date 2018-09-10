@@ -117,7 +117,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
       <!--end Bill Table-->
 
       <!--top Cash Advance Table-->
-      <div class="separador col-lg-12"></div>
+      
       <div class="col-lg-6" >
         <fieldset class="fieldsetform" > 
           <legend><?php echo $REP_TitleTbl4; ?></legend>
