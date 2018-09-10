@@ -101,7 +101,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
       <!--top Detail Table-->
       <div class="separador col-lg-12"></div>
-      <div class="col-lg-4" > 
+      <div class="col-lg-6" > 
         <div id="table2"></div>
       </div>
       <!--end Detail Table-->

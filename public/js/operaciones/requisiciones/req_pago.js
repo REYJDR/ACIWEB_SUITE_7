@@ -647,4 +647,32 @@ spin_hide();
 
 }
 
+function get_PurInfo(id){
+  
+URL = document.getElementById('URL').value;
+  
+  var datos= "url=ges_reportes/get_PO_details/"+id;  
+  var link = URL+"index.php";
+  
+  
+    $.ajax({
+        type: "GET",
+        url: link,
+        data: datos,
+        success: function(res){
+        
+         $('#table2').html(res);
+  
+         // alert(res);
+  
+          }
+     });
+    
+    $('html, body').animate({
+          scrollTop: $("#table2").offset().top
+      }, 2000);
+  
+  
+  }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////

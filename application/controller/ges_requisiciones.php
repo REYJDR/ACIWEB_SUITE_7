@@ -2045,10 +2045,10 @@ echo $res;
 
 public function PmntReq(){
   
-  $this->model->verify_session();
+ $this->model->verify_session();
 
 
-$data = json_decode($_REQUEST['Data']);
+ $data = json_decode($_REQUEST['Data']);
 
  list($none,$job_id,$dateFrom,$dateTo) = explode('@',$data[0]);
   
@@ -2119,7 +2119,7 @@ $data = json_decode($_REQUEST['Data']);
                               <td  >'.$date.'</td>
                               <td  >'.$value->{'VendorName'}.'</td>
                               <td  class="numb" name="totalPO'.$i.'" id="totalPO'.$i.'">'.number_format($value->{'Total'},2).'</td>
-                              <td  class="numb" name="totalPur'.$i.'" id="totalPur'.$i.'">'.number_format($total_pur,2).'</td>
+                              <td  class="numb" name="totalPur'.$i.'" id="totalPur'.$i.'"> <a href="javascript:void(0)" onclick="get_PurInfo('.$PO_NO.');">'.number_format($total_pur,2).'</a></td>
                               <td  class="numb">'.number_format($total_pay,2).'</td>
                               <td  class="numb">'.number_format($balance_due,2).'</td>
                               <td  class="numb" >'.number_format($total_reten,2).'</td>
