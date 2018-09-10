@@ -2529,7 +2529,7 @@ public function get_Pur($id,$JobID){
                 SUM(B.NetLine) AS Total
                 FROM Purchase_Header_Exp A
                 INNER JOIN Purchase_Detail_Exp B ON A.PurchaseID = B.PurchaseID
-                WHERE B.JobID = "'.$JobID.'" AND ApplyToPurchaseOrder = "1" AND ApplyToPurchaseNumber = "'.$id.'" AND
+                WHERE B.JobID = "'.$JobID.'" AND ApplyToPurchaseOrder = "1" AND ApplyToPurOrderNumber = "'.$id.'" AND
                 A.ID_compania ="'.$this->model->id_compania.'" AND B.ID_compania ="'.$this->model->id_compania.'"
                 group by A.PurchaseID 
                 Order by A.Date DESC limit 100;';
