@@ -2522,7 +2522,7 @@ public function get_Pur($id,$JobID){
   
     require_once APP.'view/modules/requisition/lang/'.$this->model->lang.'_ref.php';
   
-       $query ='SELECT 
+      echo $query ='SELECT 
                 A.PurchaseNumber,
                 A.VendorName,
                 A.Date,
