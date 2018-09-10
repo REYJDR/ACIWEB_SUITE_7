@@ -651,7 +651,7 @@ function get_PurInfo(id){
   
 URL = document.getElementById('URL').value;
   
-  var datos= "url=ges_reportes/get_Pur/"+id;  
+  var datos= "url=ges_requisiciones/get_Pur/"+id;  
   var link = URL+"index.php";
   
   
@@ -661,16 +661,21 @@ URL = document.getElementById('URL').value;
         data: datos,
         success: function(res){
         
-         $('#table2').html(res);
-  
-         // alert(res);
-  
+          $('#table2').html(res);
+
+          if(res !=''){
+
+            $('html, body').animate({
+              scrollTop: $("#table2").offset().top
+            }, 2000);
+
           }
+    
+    
+        }
      });
     
-    $('html, body').animate({
-          scrollTop: $("#table2").offset().top
-      }, 2000);
+    
   
   
   }
