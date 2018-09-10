@@ -651,7 +651,7 @@ function get_PurInfo(id,job){
   
 URL = document.getElementById('URL').value;
   
-  var datos= "url=ges_requisiciones/get_Pur/"+id+"/"+$JobID;  
+  var datos= "url=ges_requisiciones/get_Pur/"+id+"/"+job;  
   var link = URL+"index.php";
   
   
