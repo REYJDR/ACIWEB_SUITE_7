@@ -17,8 +17,7 @@ $('#ERROR').hide();
 jQuery(document).ready(function($)
 {
 
-var table_fact = $("#table_fact").dataTable();
-var table_cash = $("#table_cash").dataTable();
+
 
 var table = $("#table").dataTable({
     
@@ -260,7 +259,8 @@ function searchReq(){
                 data: {url: 'ges_requisiciones/get_bill_notRelated/'+JOBID},
                 success: function(res){
              
-                $('#tableFact').html(res);  
+                $('#tableFact').html(res);
+                $("#table_cash").dataTable();
 
                           
             }
@@ -273,6 +273,7 @@ function searchReq(){
                 success: function(res){
 
                 $('#tableAdv').html(res); 
+                $("#table_fact").dataTable();
  
                           
             }
