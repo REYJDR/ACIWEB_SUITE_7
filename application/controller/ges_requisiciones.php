@@ -2080,6 +2080,7 @@ public function PmntReq(){
             $limit = '1000';
             $sort = 'DESC';
             $oc = $this->get_OcReqPaymnt($sort,$limit,$clause);
+            $jId= '"'.$job_id.'"';
 
             foreach ($oc as $value) {
 
@@ -2119,7 +2120,7 @@ public function PmntReq(){
                               <td  >'.$date.'</td>
                               <td  >'.$value->{'VendorName'}.'</td>
                               <td  class="numb" name="totalPO'.$i.'" id="totalPO'.$i.'">'.number_format($value->{'Total'},2).'</td>
-                              <td  class="numb" name="totalPur'.$i.'" id="totalPur'.$i.'"> <a href="javascript:void(0)" onclick="get_PurInfo('.$PO_NO.');">'.number_format($total_pur,2).'</a></td>
+                              <td  class="numb" name="totalPur'.$i.'" id="totalPur'.$i.'"> <a href="javascript:void(0)" onclick="get_PurInfo('.$PO_NO.','.$jId.');">'.number_format($total_pur,2).'</a></td>
                               <td  class="numb">'.number_format($total_pay,2).'</td>
                               <td  class="numb">'.number_format($balance_due,2).'</td>
                               <td  class="numb" >'.number_format($total_reten,2).'</td>
@@ -2515,7 +2516,7 @@ foreach ($cash as $datos) {
 
 
 
-public function get_Pur($id){
+public function get_Pur($id,$JobID){
   
   $this->model->verify_session();
   

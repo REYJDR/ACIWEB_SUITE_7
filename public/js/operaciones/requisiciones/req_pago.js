@@ -647,11 +647,11 @@ spin_hide();
 
 }
 
-function get_PurInfo(id){
+function get_PurInfo(id,job){
   
 URL = document.getElementById('URL').value;
   
-  var datos= "url=ges_requisiciones/get_Pur/"+id;  
+  var datos= "url=ges_requisiciones/get_Pur/"+id+"/"+$JobID;  
   var link = URL+"index.php";
   
   
