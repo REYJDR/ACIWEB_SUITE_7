@@ -111,7 +111,22 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
       <div class="col-lg-6" > 
         <fieldset class="fieldsetform" >
           <legend><?php echo $REP_TitleTbl3; ?></legend>
-        <div id="tableFact"></div>
+       
+          <table id="table_cash" class="display nowrap table table-striped table-bordered" cellspacing="0" >
+          <thead>
+            <tr>
+              <th width="5%"><?php echo  $REP_detail_Tbl4Hdr1; ?></th>
+              <th width="10%"><?php echo $REP_detail_Tbl4Hdr2; ?></th>
+              <th width="5%"><?php echo  $REP_detail_Tbl4Hdr3; ?></th>
+              <th width="5%"><?php echo  $REP_detail_Tbl4Hdr4; ?></th>
+              <th width="10%"><?php echo $REP_detail_Tbl4Hdr5; ?></th>
+              <th width="5%"><?php echo  $REP_detail_Tbl4Hdr6; ?></th>
+            </tr>
+          </thead>
+            <tbody id="tableFact"> </tbody>  
+           </table> 
+          
+           </div>
         </fieldset>
       </div>
       <!--end Bill Table-->
@@ -122,6 +137,18 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
         <fieldset class="fieldsetform" > 
           <legend><?php echo $REP_TitleTbl4; ?></legend>
         <div id="tableAdv"></div>
+
+        <table id="table_fact" class="display nowrap table table-striped table-bordered" cellspacing="0" >
+        <thead>
+          <tr>
+            <th width="5%"><?php echo $REP_detail_Tbl3Hdr1; ?></th>
+            <th width="10%"><?php echo $REP_detail_Tbl3Hdr2;?></th>
+            <th width="5%"><?php echo $REP_detail_Tbl3Hdr3; ?></th>
+            <th width="5%"><?php echo $REP_detail_Tbl3Hdr4; ?></th>
+          </tr>
+        </thead>
+        <tbody id="tableAdv"></tbody>
+        </table>
         </fieldset>
       </div>
       <!--end Cash Advance Table-->
