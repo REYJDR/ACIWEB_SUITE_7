@@ -312,8 +312,8 @@ function searchReq(){
                 data: {url: 'ges_requisiciones/get_bill_notRelated/'+JOBID},
                 success: function(res){
              
-                $('#tableFact').html('');  
-                $('#tableFact').append(res);  
+                $('#tableFact').html(res);  
+
                           
             }
           });
@@ -324,8 +324,8 @@ function searchReq(){
                 data: {url: 'ges_requisiciones/get_cash_adv/'+JOBID},
                 success: function(res){
 
-                $('#tableAdv').html(''); 
-                $('#tableAdv').append(res);  
+                $('#tableAdv').html(res); 
+ 
                           
             }
           });

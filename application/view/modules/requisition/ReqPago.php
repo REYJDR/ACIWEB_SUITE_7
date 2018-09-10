@@ -125,8 +125,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
           </thead>
             <tbody id="tableFact"> </tbody>  
            </table> 
-          
-           </div>
+        
         </fieldset>
       </div>
       <!--end Bill Table-->
@@ -136,7 +135,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
       <div class="col-lg-6" >
         <fieldset class="fieldsetform" > 
           <legend><?php echo $REP_TitleTbl4; ?></legend>
-        <div id="tableAdv"></div>
+
 
         <table id="table_fact" class="display nowrap table table-striped table-bordered" cellspacing="0" >
         <thead>
