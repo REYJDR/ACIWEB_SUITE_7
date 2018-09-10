@@ -123,7 +123,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
               <th width="5%"><?php echo  $REP_detail_Tbl4Hdr6; ?></th>
             </tr>
           </thead>
-            <tbody id="tableFact"> </tbody>  
+            <tbody id="tableAdv"> </tbody>  
            </table> 
         
         </fieldset>
@@ -146,7 +146,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
             <th width="5%"><?php echo $REP_detail_Tbl3Hdr4; ?></th>
           </tr>
         </thead>
-        <tbody id="tableAdv"></tbody>
+        <tbody id="tableFact"></tbody>
         </table>
         </fieldset>
       </div>
