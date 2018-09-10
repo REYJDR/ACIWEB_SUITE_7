@@ -2536,7 +2536,9 @@ public function get_Pur($id,$JobID){
   
       $bills = $this->model->Query($query);
   
-  echo  '<table id="Items" class="table table-striped table-bordered" cellspacing="0"  >
+  echo  '<fieldset>
+          <legend>'.$REP_TitleTbl5.'</legend>
+          <table id="Items" class="table table-striped table-bordered" cellspacing="0"  >
           <thead>
             <tr>
               <th width="20%"># Factura</th>
@@ -2566,7 +2568,7 @@ public function get_Pur($id,$JobID){
   
     } 
 
-  echo '</tbody> </table>';
+  echo '</tbody> </table></fieldset>';
 
 }
 
