@@ -1701,6 +1701,7 @@ echo '0';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////7
 //PROCESO COMPRAS/RECIBO DE MERCANCIAS
 public function set_fact_header($FACT_NO,$vendorID,$PO_ID,$nota,$total,$date){
+
 $this->SESSION();
 
 $date = date("Y-m-d", strtotime($date));

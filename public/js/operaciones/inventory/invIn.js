@@ -823,22 +823,21 @@ function proceed(){
          var r = confirm('Desea procesar la orden?');
         
             if (r == true) { 
-         
         
-            var CustomerID= $("#customer").val();
-            var termino_pago = document.getElementById('termino_pago').value;
-            var tipo_licitacion = document.getElementById('tipo_licitacion').value;
-            var observaciones = document.getElementById('observaciones').value;
-            var entrega = document.getElementById('entrega').value;
-            var user=document.getElementById('active_user_id').value;
-            var nopo=document.getElementById('nopo').value;
-            var fecha_entrega=document.getElementById('fecha_entrega').value;
-            var Subtotal=$("#subtotal").val();
-            var total=   $("#total").val();
-            var Ordertax =$("#tax").val();
-            var TaxID=$("#taxid option:selected").html();  //ultimo cambio
-            var LugDesp = document.getElementById('lugar_despacho').value;
-            //REGITRO DE CABECERA
+                var CustomerID= $("#customer").val();
+                var termino_pago = document.getElementById('termino_pago').value;
+                var tipo_licitacion = document.getElementById('tipo_licitacion').value;
+                var observaciones = document.getElementById('observaciones').value;
+                var entrega = document.getElementById('entrega').value;
+                var user=document.getElementById('active_user_id').value;
+                var nopo=document.getElementById('nopo').value;
+                var fecha_entrega=document.getElementById('fecha_entrega').value;
+                var Subtotal=$("#subtotal").val();
+                var total=   $("#total").val();
+                var Ordertax =$("#tax").val();
+                var TaxID=$("#taxid option:selected").html();  //ultimo cambio
+                var LugDesp = document.getElementById('lugar_despacho').value;
+                //REGITRO DE CABECERA
         
             function set_header(){
         
@@ -860,7 +859,7 @@ function proceed(){
               return  $.ajax({
                     type: "GET",
                     url: link,
-                    data: {url: 'ges_ventas/set_sales_order_header', Data : JSON.stringify(HeaderInfo)},
+                    data: {url: 'ges_inventario/set_Purchase_Header', Data : JSON.stringify(HeaderInfo)},
                     success: function(res){
                     console.log(res);
                     OS_NO = res;
@@ -877,7 +876,7 @@ function proceed(){
                 $.ajax({
                  type: "GET",
                  url:  link,
-                 data:  {url: 'ges_ventas/set_sales_order_detail_new/'+OS_NO , Data : JSON.stringify(LineArray)}, 
+                 data:  {url: 'ges_inventario/set_Purchase_Detail/'+OS_NO , Data : JSON.stringify(LineArray)}, 
                  success: function(res){
                  console.log(res);
                   if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
@@ -958,27 +957,25 @@ function proceed(){
                                 switch (j){
                     
                                         case 0:
-                
+                                            
                                             itemId    = theTbl.rows[i].cells[0].innerHTML ;
                                             desc      = theTbl.rows[i].cells[1].innerHTML;
                                             unit      = theTbl.rows[i].cells[2].innerHTML;
                                             gl        = theTbl.rows[i].cells[4].innerHTML;
                                             tax       = theTbl.rows[i].cells[5].innerHTML;
-                                            
-                                            
-                                            
-            
-                                    /*   stockId   = document.getElementById(selid).value;
+                                        
+                
+                                        /*   stockId   = document.getElementById(selid).value;
                                             locId     = document.getElementById(selid).value;*/ 
-                                                                        
+                                                                            
                                             qty       = theTbl.rows[i].cells[5].innerHTML;
                                             UnitPrice = theTbl.rows[i].cells[6].innerHTML;
                                             total     = theTbl.rows[i].cells[7].innerHTML;
-                                        
-                                    /*   lote      = theTbl.rows[i].cells[7].innerHTML;
-                                            fechaVen  = theTbl.rows[i].cells[7].innerHTML;*/
-                                        
                                             
+                                        /*   lote      = theTbl.rows[i].cells[7].innerHTML;
+                                            fechaVen  = theTbl.rows[i].cells[7].innerHTML;*/
+                                            
+                                                
                                             
                                             //agrego el registo de las demas columnas
                                             cell += '@'+itemId+
@@ -1019,7 +1016,7 @@ function proceed(){
 
                 }else{
 
-                //AJUSTE DE MATERIAL
+                //*AJUSTE DE MATERIAL
                 var selid = "sel"+i;
                 
                 if(document.getElementById(selid).value !=''){ 

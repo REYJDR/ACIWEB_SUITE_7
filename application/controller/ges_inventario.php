@@ -916,6 +916,11 @@ public function setProduct_In($Product_values){
     
 }
 
+
+
+
+
+
 public function if_ProductExist_chk($ProductID){
 
  $Product_chk = $this->Query_value('Products_Imp','ProductID','where ID_compania="'.$this->model->id_compania.'" and ProductID="'.$ProductID.'"');
@@ -931,6 +936,8 @@ public function if_ProductExist_chk($ProductID){
     }
 
 }
+
+
 
 public function setInv_adjustment($Adjustment_values){
     
