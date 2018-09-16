@@ -971,8 +971,12 @@ function proceed(){
                                             qty       = theTbl.rows[i].cells[5].innerHTML;
                                             UnitPrice = theTbl.rows[i].cells[6].innerHTML;
                                             total     = theTbl.rows[i].cells[7].innerHTML;
+
+                                            job = '';
+                                            phase= '';
+                                            cost = '';
                                             
-                                        /*   lote      = theTbl.rows[i].cells[7].innerHTML;
+                                        /*  lote      = theTbl.rows[i].cells[7].innerHTML;
                                             fechaVen  = theTbl.rows[i].cells[7].innerHTML;*/
                                             
                                                 
