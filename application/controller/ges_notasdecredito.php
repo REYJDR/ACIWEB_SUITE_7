@@ -724,7 +724,8 @@ private function CreateHeaderFile($id){
             $CustAddress.'|'.//Direccion
             $Total.'|'.      //Total Neto
             $Tax.'|'.        //Alicuota
-            $Motivo.'|'.     //NOTA MOTIVO
+          //  $Motivo.'|'.     //NOTA MOTIVO
+            '|'.               //NOTA MOTIVO
             $dfecha.'|'.     //FECHA DEVOLUCIONj
             $serprint.'|'.   //Serial de la impresora fiscal
             $NoInvoice.'|'.  //No. de factura fiscal
