@@ -987,36 +987,27 @@ public function set_Purchase_Header(){
     $value = $data[0];
     
     
-    list($PurchaseNumber,$VendorID,$VendorName,$AP_Account,$Date,$Subtotal,$Net_due,$Export_date,$Enviado,$Error,$ErrorPT,$nota) = explode('@', $value );
+    list($PurchaseNumber,$date,$VendorID) = explode('@', $value );
     
     
-    $date = strtotime($this->model->GetLocalTime(date("Y-m-d")));
-    $date = date("Y-m-d",$date);
+    //$date = strtotime($this->model->GetLocalTime(date("Y-m-d")));
+    //$date = date("Y-m-d",$date);
     
     
     $values = array(
     'ID_compania'=>$this->model->id_compania,
     'PurchaseNumber'=> $PurchaseNumber,
     'VendorID'=>   $VendorID,
-    'VendorName'=> $VendorName,
-    'AP_Account'=>$AP_Account,
     'Date'=>$Date,
-    'Subtotal' => $Subtotal,
-    'Net_due'=>$Net_due,
-    'Export_date'=>$Export_date,
-    'Enviado'=>$Enviado,
-    'Error'=>$Error,
-    'ErrorPT' => $ErrorPT,
-    'nota' => $nota,
     'USER' => $this->model->active_user_id);
     
     $this->model->insert('Purchase_Header_Imp',$values);
   
-    echo $PurchaseNumber;
+    echo $PurchaseID;
     
 }
 
-public function set_Purchase_Detail($PurchaseNumber){
+public function set_Purchase_Detail($PurchaseID){
     
         $this->verify_session();
         
@@ -1028,22 +1019,23 @@ public function set_Purchase_Detail($PurchaseNumber){
         
         if($value){
     
-        list($TransactionID,$Item_id,$Description,$GL_Acct,$Quantity,$Unit_Price,$Net_line,$JobID,$JobPhaseID,$JobCostCodeID) = explode('@', $value );
+        list($empty,$Item_id,$Description,$unit,$GL_Acct,$JobID,$JobPhaseID,$JobCostCodeID,$tax,$Quantity,$Unit_Price,$Net_line,) = explode('@', $value );
   
     
           //EN CASO QUE NO SE HAGA CONVERSION DE UNIDDES ESCRIBE EN LA TABLA DE SALES ORDER DETAIL SIN INDICAR EL ITEMID. 
           $Purchase_values = array(
               'ID_compania' => $this->id_compania ,
-              'TransactionID'=>$TransactionID,
+              'TransactionID'=>$PurchaseID,
               'Item_id'=>$Item_id,
               'Description'=> $Description,
               'GL_Acct'=>$GL_Acct,
-              'Quantity'=>$Quantity,
-              'Unit_Price'=>$Unit_Price,
-              'Net_line'=>$Net_line,
+              'Unit'=>$GL_Acct,
               'JobID'=>$JobID,
               'JobPhaseID'=>$JobPhaseID,
-              'JobCostCodeID'=>$JobCostCodeID);
+              'JobCostCodeID'=>$JobCostCodeID
+              'Quantity'=>$Quantity,
+              'Unit_Price'=>$Unit_Price,
+              'Net_line'=>$Net_line);
     
           $this->model->insert('Purchase_Detail_Imp',$Purchase_values); //set item line
       

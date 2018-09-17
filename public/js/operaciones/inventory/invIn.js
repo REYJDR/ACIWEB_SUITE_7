@@ -824,36 +824,18 @@ function proceed(){
         
             if (r == true) { 
         
-                var CustomerID= $("#customer").val();
-                var termino_pago = document.getElementById('termino_pago').value;
-                var tipo_licitacion = document.getElementById('tipo_licitacion').value;
-                var observaciones = document.getElementById('observaciones').value;
-                var entrega = document.getElementById('entrega').value;
-                var user=document.getElementById('active_user_id').value;
-                var nopo=document.getElementById('nopo').value;
-                var fecha_entrega=document.getElementById('fecha_entrega').value;
-                var Subtotal=$("#subtotal").val();
-                var total=   $("#total").val();
-                var Ordertax =$("#tax").val();
-                var TaxID=$("#taxid option:selected").html();  //ultimo cambio
-                var LugDesp = document.getElementById('lugar_despacho').value;
-                //REGITRO DE CABECERA
+                var fact_id= document.getElementById('invoice').value;
+                var fecha = document.getElementById('date').value;
+                var vend_id = document.getElementById('vendorID').value;
+
+                //REGISTRO DE CABECERA
         
             function set_header(){
         
             //INI REGISTRO DE CABECERA
-            HeaderInfo[0] =  CustomerID+
-                            '@'+Subtotal+
-                            '@'+TaxID+
-                            '@'+total+
-                            '@'+nopo+
-                            '@'+termino_pago+
-                            '@'+tipo_licitacion+
-                            '@'+observaciones+
-                            '@'+entrega+
-                            '@'+Ordertax+
-                            '@'+fecha_entrega+
-                            '@'+LugDesp;
+            HeaderInfo[0] =  fact_id+
+                            '@'+fecha+
+                            '@'+vend_id;
         
         
               return  $.ajax({
@@ -962,19 +944,18 @@ function proceed(){
                                             desc      = theTbl.rows[i].cells[1].innerHTML;
                                             unit      = theTbl.rows[i].cells[2].innerHTML;
                                             gl        = theTbl.rows[i].cells[4].innerHTML;
-                                            tax       = theTbl.rows[i].cells[5].innerHTML;
+                                            job       = theTbl.rows[i].cells[5].innerHTML;
+                                            phase     = theTbl.rows[i].cells[6].innerHTML;
+                                            cco       = theTbl.rows[i].cells[7].innerHTML;
+                                            tax       = theTbl.rows[i].cells[8].innerHTML;
                                         
                 
                                         /*   stockId   = document.getElementById(selid).value;
                                             locId     = document.getElementById(selid).value;*/ 
                                                                             
-                                            qty       = theTbl.rows[i].cells[5].innerHTML;
-                                            UnitPrice = theTbl.rows[i].cells[6].innerHTML;
-                                            total     = theTbl.rows[i].cells[7].innerHTML;
-
-                                            job = '';
-                                            phase= '';
-                                            cost = '';
+                                            qty       = theTbl.rows[i].cells[9].innerHTML;
+                                            UnitPrice = theTbl.rows[i].cells[10].innerHTML;
+                                            total     = theTbl.rows[i].cells[11].innerHTML;
                                             
                                         /*  lote      = theTbl.rows[i].cells[7].innerHTML;
                                             fechaVen  = theTbl.rows[i].cells[7].innerHTML;*/
@@ -983,8 +964,15 @@ function proceed(){
                                             
                                             //agrego el registo de las demas columnas
                                             cell += '@'+itemId+
-                                                    '@'+UnitPrice+
+                                                    '@'+desc+
+                                                    '@'+unit+
+                                                    '@'+gl+
+                                                    '@'+job+
+                                                    '@'+phase+
+                                                    '@'+cco+
+                                                    '@'+tax+
                                                     '@'+qty+
+                                                    '@'+UnitPrice+
                                                     '@'+total;
         
         
