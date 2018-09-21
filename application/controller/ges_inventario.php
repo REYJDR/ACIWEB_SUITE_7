@@ -1032,7 +1032,7 @@ public function set_Purchase_Detail($PurchaseID){
               'Unit'=>$GL_Acct,
               'JobID'=>$JobID,
               'JobPhaseID'=>$JobPhaseID,
-              'JobCostCodeID'=>$JobCostCodeID
+              'JobCostCodeID'=>$JobCostCodeID,
               'Quantity'=>$Quantity,
               'Unit_Price'=>$Unit_Price,
               'Net_line'=>$Net_line);
