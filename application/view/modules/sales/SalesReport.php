@@ -83,12 +83,12 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 					if($date2!=''){
 
-						$clause.= ' and date between "'.$date1.'%" and "'.$date2.'%" ';           
+						$clause.= ' and Sales_Header_Imp.date between "'.$date1.'%" and "'.$date2.'%" ';           
 						}
 					
 					if($date2==''){ 
 
-						$clause.= ' and date like "'.$date1.'%"';
+						$clause.= ' and Sales_Header_Imp.date like "'.$date1.'%"';
 					}
 						
 					}
@@ -99,7 +99,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					}
 											
 
-
+echo $clause;
 
 					$limit = '1000';
 					$sort = 'DESC';
