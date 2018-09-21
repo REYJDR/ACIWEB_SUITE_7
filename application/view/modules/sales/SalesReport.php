@@ -93,6 +93,13 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						
 					}
 
+					if($soNo!=''){ 
+						
+							$clause.= ' and SalesOrderNumber = "'.$soNo.'" ';
+					}
+											
+
+
 
 					$limit = '1000';
 					$sort = 'DESC';
