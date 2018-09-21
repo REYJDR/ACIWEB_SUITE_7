@@ -95,7 +95,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 					if($soNo!=''){ 
 						
-							$clause.= ' and Sales_Header_Imp.InvoiceNumber = "'.$soNo.'" ';
+							$clause.= ' and Sales_Header_Imp.InvoiceNumber like "%'.$soNo.'%" ';
 					}
 											
 
