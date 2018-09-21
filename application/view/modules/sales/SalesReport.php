@@ -23,7 +23,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
       <!--INI BARRA BUSQUEDA REPORTES -->
       <div class="col-lg-12 searchBar">
         <div class="col-lg-3" >
-          <div class="col-lg-5" ><label for='soId'><?php echo $SO_REP_input1;?></label></div>
+          <div class="col-lg-5" ><label for='soId'><?php echo $S_REP_input1;?></label></div>
           <div class="col-lg-7" ><input class="inputPage" type="text" id='soId' name='soId' /></div> 
         </div>
         <div class="col-lg-6" >
@@ -95,11 +95,11 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 					if($soNo!=''){ 
 						
-							$clause.= ' and Sales_Header_Imp.SalesOrderNumber = "'.$soNo.'" ';
+							$clause.= ' and Sales_Header_Imp.InvoiceNumber = "'.$soNo.'" ';
 					}
 											
 
-echo $clause;
+
 
 					$limit = '1000';
 					$sort = 'DESC';
