@@ -1076,7 +1076,7 @@ public function set_Purchase_Detail($PurchaseID){
 
           }else{
 
-               $this->set_Budget_Log($Purchase_values);
+               $this->set_Budget_Log($Purchase_values,1);
 
           }
      }
@@ -1085,51 +1085,99 @@ public function set_Purchase_Detail($PurchaseID){
     
 }
 
-public function set_Budget_Log($Purchase_values){
+public function set_Budget_Log($values,$type){
 
     $this->model->verify_session();
+    switch ($type) {
+        case '1':
+
+                $PurchaseNumber = $values['TransactionID']; 
+                $Item  = $values['Item_id'];
+                $phase = $values['JobPhaseID']; 
+                $job   = $values['JobID']; 
+                $cost  = $values['JobCostCodeID']; 
+                $total = $values['Net_line']; 
+                $Qty   = $values['Quantity'];
+                $UnitPrice = $values['Unit_Price'];
+            
+                $id_compania= $this->model->id_compania;
+                $user = $this->model->active_user_id;
+            
+                $event_values = array(  'ProductID' => $Item,
+                                        'JobID' => $job,
+                                        'JobPhaseID' => $phase,
+                                        'JobCostCodeID' => $cost,
+                                        'PurchaseNumber' => $PurchaseNumber,
+                                        'Qty'=> $Qty,
+                                        'unit_price' => $UnitPrice ,
+                                        'Total' => $total,
+                                        'User' => $user,
+                                        'Type' => 'PEACHTREE Fact. Tx: '.$PurchaseNumber,
+                                        'ID_compania' => $id_compania );
+            
+                $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
+                
+                usleep(1000);
+                $error = $this->CheckError();
+                if($error){
+                $error= json_decode($error) ;
+                echo 'ERROR: '.$error->{'E'}.' INV_EVENT_LOG ';
+            
+                $this->model->delete('Purchase_Header_Imp',' Where TransactionID="'.$PurchaseNumber.'" and ID_Compania="'.$id_compania.'";');
+                $this->model->delete('Purchase_Detail_Imp',' Where TransactionID="'.$PurchaseNumber.'" and ID_Compania="'.$id_compania.'";');
+                
+                die(); 
+            
+                }
+            break;
+
+
+        case '2':
         
-    $PurchaseNumber = $Purchase_values['TransactionID']; 
-    $Item  = $Purchase_values['Item_id'];
-    $phase = $Purchase_values['JobPhaseID']; 
-    $job   = $Purchase_values['JobID']; 
-    $cost  = $Purchase_values['JobCostCodeID']; 
-    $total = $Purchase_values['Net_line']; 
-    $Qty = $Purchase_values['Quantity'];
-    $UnitPrice = $Purchase_values['Unit_Price'];
+           
+                $PurchaseNumber = $values['Reference']; 
+                $Item  = $values['ItemID'];
+                $phase = $values['JobPhaseID']; 
+                $job   = $values['JobID']; 
+                $cost  = $values['JobCostCodeID']; 
+                $total = $values['Quantity']*$values['UnitCost']; 
+                $Qty   = $values['Quantity'];
+                $UnitPrice = $values['UnitCost'];
+            
+                $id_compania= $this->model->id_compania;
+                $user = $this->model->active_user_id;
+            
+                $event_values = array(  'ProductID' => $Item,
+                                        'JobID' => $job,
+                                        'JobPhaseID' => $phase,
+                                        'JobCostCodeID' => $cost,
+                                        'PurchaseNumber' => '',
+                                        'Qty'=> $Qty,
+                                        'unit_price' => $UnitPrice ,
+                                        'Total' => $total,
+                                        'User' => $user,
+                                        'Type' => 'PEACHTREE Adjuste: '.$PurchaseNumber,
+                                        'ID_compania' => $id_compania );
+            
+                $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
+                
+                usleep(1000);
+                $error = $this->CheckError();
+                if($error){
+                $error= json_decode($error) ;
+                echo 'ERROR: '.$error->{'E'}.' INV_EVENT_LOG ';
+            
+                $this->model->delete('InventoryAdjust_Imp',' Where Reference="'.$PurchaseNumber.'" and ID_Compania="'.$id_compania.'";');
+               
+                die(); 
+            
+                }
+            break;
 
-    $id_compania= $this->model->id_compania;
-    $user = $this->model->active_user_id;
+    }    
 
-    $event_values = array(  'ProductID' => $Item,
-                            'JobID' => $job,
-                            'JobPhaseID' => $phase,
-                            'JobCostCodeID' => $cost,
-                            'PurchaseNumber' => $PurchaseNumber,
-                            'Qty'=> $Qty,
-                            'unit_price' => $UnitPrice ,
-                            'Total' => $total,
-                            'User' => $user,
-                            'Type' => 'PEACHTREE Factura Tx: '.$PurchaseNumber,
-                            'ID_compania' => $id_compania );
-
-     $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
-     
-     usleep(1000);
-     $error = $this->CheckError();
-     if($error){
-       $error= json_decode($error) ;
-       echo 'ERROR: '.$error->{'E'}.' Purchase_Detail_Imp ';
-
-       $this->model->delete('Purchase_Header_Imp',' Where TransactionID="'.$PurchaseID.'" and ID_Compania="'.$id_compania.'";');
-       $this->model->delete('Purchase_Detail_Imp',' Where TransactionID="'.$PurchaseID.'" and ID_Compania="'.$id_compania.'";');
-       
-       die(); 
-
-     }
 
 }
-
 
 public function getInvInList($sort,$limit,$clause){
 
@@ -1140,6 +1188,66 @@ public function getInvInList($sort,$limit,$clause){
 
      return $res;
 }
+
+
+public function setInventoryAdjustment(){
+    
+    $this->model->verify_session();
+    $id_compania= $this->model->id_compania;
+    $user = $this->model->active_user_id;
+    $ref = '';
+
+    $data = json_decode($_GET['Data']);
+ 
+    foreach ($data as $key => $value) {
+
+        list($null,$itemid,$unitprice,$qty,$total,$jobId,$phaseid,$costcodeID,$gl_acc) = explode('@', $value );
+        
+        
+        if($value){
+            
+            $date = strtotime($this->model->GetLocalTime(date("Y-m-d")));
+            $date = date("Y-m-d",$date);
+            $reference = $this->model->Get_Ref_No();
+            
+            $values = array (
+                'ItemID' => $itemid, 
+                'JobID' => $jobId, 
+                'JobPhaseID' => $phaseid, 
+                'JobCostCodeID' => $costcodeID , 
+                'Reference' => $reference , 
+                'ReasonToAdjust' => 'Aciweb - Entrada de mercancia' , 
+                'Account' => $gl_acc , 
+                'UnitCost' => $unitprice , 
+                'Quantity' => $qty, 
+                'Date' => $date , 
+                'USER' => $user , 
+                'ID_compania' =>  $id_compania );
+
+            $this->model->insert('InventoryAdjust_Imp',$values);
+            
+            usleep(1000);
+            $error = $this->CheckError();
+            if($error){
+                $error= json_decode($error) ;
+                    echo 'ERROR: '.$error->{'E'}.' InventoryAdjust_Imp - itemID '.$itemid.' Ref:'.$reference;
+                die();
+                
+            }else{
+               
+                $this->set_Budget_Log($values,'2');
+                $ref .= 'Item:'.$itemid.'Ref: '.$reference."\n";
+            }
+        }
+    }
+    if(!$error){
+
+        echo $ref;
+    }
+    
+}
+
+
 
 }//CIERRE DE CLASE
 ?>
