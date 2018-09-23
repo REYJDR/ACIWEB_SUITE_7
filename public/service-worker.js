@@ -2,7 +2,7 @@
   var cacheName = 'ACIWEB APP';
   var filesToCache = ['/',
   '/application',
-  '/application/view/mobile/',
+  '/application/view/mobile/index.php',
   '/public',
   '/public/mobile_assets/'];
   
