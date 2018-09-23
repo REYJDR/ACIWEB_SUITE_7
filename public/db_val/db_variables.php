@@ -2,7 +2,7 @@
 
 	define('DB_HOST', 'aciweb-pa.com');
 
-	define('DB_NAME', 'ACIWEB_prococle');
+	define('DB_NAME', 'ACIWEB_test');
 
 	define('DB_USER', 'aciweb_root');
 

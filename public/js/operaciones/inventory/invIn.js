@@ -471,8 +471,8 @@ function builtTbl(chk){
             var line_table_req = '<tr>'+reglon+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable+' '+color+' id="desc'+i+'"  ></td>'+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable+' '+color+' id="unit'+i+'"  ></td>'+
-                '<td width="3%"  class="rowtable_req  numb" onkeyup="checkTblChar(this.id)"  '+editable+' '+color+' id="upc'+i+'"   ></td>'+
-              //  '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblChar(this.id)"  id="gl'+i+'" '+editable+' '+color+' ></td>'+
+               // '<td width="3%"  class="rowtable_req  numb" onkeyup="checkTblChar(this.id)"  '+editable+' '+color+' id="upc'+i+'"   ></td>'+
+                '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblChar(this.id)"  id="gl'+i+'" '+editable+' '+color+' ></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblnum(this.id)"  id="tax'+i+'" '+editable+' '+color+'></td>'+
                /* '<td width="5%"  class="rowtable_req  numb" ><select id="SelStock'+i+'" class="form-control" onchange="locat(this.value,'+i+');">'+stocks+'</select></td>'+
                 '<td width="3%"  class="rowtable_req  numb" ><select id="SelRoute'+i+'" class="form-control" ></select></td>'+
@@ -503,75 +503,89 @@ function SetDesc(itemId, line){
     var id_gl_field = 'gl'+line;
     var id_qty_field = 'qty'+line;
 
-    document.getElementById(id_desc_field).innerHTML = 'Loading...';
+
+       if(itemId == ''){
+
+        document.getElementById(id_desc_field).innerHTML  = '';
+        document.getElementById(id_unit_field).innerHTML   = '';
+        document.getElementById(id_qty_field).innerHTML  = '';
+        document.getElementById(id_price_field).innerHTML  = '';
+        document.getElementById(id_gl_field).innerHTML     = '';
+        document.getElementById(id_taxable_field).innerHTML  = '';
+
+
+
+       }  else{
+
+
+        document.getElementById(id_desc_field).innerHTML = 'Loading...';
+        
+          /*  function GetStockbItem(){
     
-      /*  function GetStockbItem(){
-
-            var url= "ges_inventario/getStockByItemID/";
-            var link=  $('#URL').val()+"index.php";
-        
-        
-            return $.ajax({
-                    type: "GET",
-                    url: link,
-                    data: {url : url, itemID: itemId },
-                    success: function(res){
-
-                        console.log(res);
+                var url= "ges_inventario/getStockByItemID/";
+                var link=  $('#URL').val()+"index.php";
             
-                        $("#SelStock"+line).html(res);
+            
+                return $.ajax({
+                        type: "GET",
+                        url: link,
+                        data: {url : url, itemID: itemId },
+                        success: function(res){
+    
+                            console.log(res);
                 
-                        }
-                });
-
-        }
-    
-        $.when(GetStockbItem()).done(function(res){ //ESPERA QUE TERMINE el query de items*/
-            
-        function getItems(){
-            
-            var datos= "bridge_query/get_ProductsInfo";
-            var link= $('#URL').val()+"index.php";
-
-           return $.ajax({
-                    type: "GET",
-                    url: link,
-                    data: {url: datos, item: itemId},
-                    success: function(res){
-            
-                   
-                }
-            
-            });
-
-        }
-        $.when(getItems()).done(function(res){ //ESPERA QUE TERMINE el query de items
-            
-            json = JSON.parse(res);
+                            $("#SelStock"+line).html(res);
                     
-            document.getElementById(id_desc_field).innerHTML  = json.Description;
-            document.getElementById(id_unit_field).innerHTML   = json.UnitMeasure;
-           // document.getElementById(id_qty_field).innerHTML  = json.QtyOnHand;
-            document.getElementById(id_price_field).innerHTML  = json.Price1;
-            document.getElementById(id_gl_field).innerHTML  = json.GL_Sales_Acct;
-            
-
-            if(json.TaxType == 1){
-    
-                document.getElementById(id_taxable_field).innerHTML  = 'SI';
-    
-            }else{
-    
-                document.getElementById(id_taxable_field).innerHTML  = 'NO';
+                            }
+                    });
     
             }
-
-           
+        
+            $.when(GetStockbItem()).done(function(res){ //ESPERA QUE TERMINE el query de items*/
+                
+            function getItems(){
+                
+                var datos= "bridge_query/get_ProductsInfo";
+                var link= $('#URL').val()+"index.php";
     
-            
-        //});
-   
-    });
+               return $.ajax({
+                        type: "GET",
+                        url: link,
+                        data: {url: datos, item: itemId},
+                        success: function(res){
+                
+                       
+                    }
+                
+                });
+    
+            }
+            $.when(getItems()).done(function(res){ //ESPERA QUE TERMINE el query de items
+                
+                json = JSON.parse(res);
+                        
+                document.getElementById(id_desc_field).innerHTML  = json.Description;
+                document.getElementById(id_unit_field).innerHTML   = json.UnitMeasure;
+               // document.getElementById(id_qty_field).innerHTML  = json.QtyOnHand;
+                document.getElementById(id_price_field).innerHTML  = json.Price1;
+                document.getElementById(id_gl_field).innerHTML     = json.GL_Sales_Acct;
+                
+    
+                if(json.TaxType == 1){
+        
+                    document.getElementById(id_taxable_field).innerHTML  = 'SI';
+        
+                }else{
+        
+                    document.getElementById(id_taxable_field).innerHTML  = 'NO';
+        
+            }
+    
+        });
+       }  
+    
+        
+        //});   
 }
 
 
@@ -825,73 +839,103 @@ function proceed(){
          var r = confirm('Desea procesar la orden?');
         
             if (r == true) { 
-        
-                var fact_id= document.getElementById('invoice').value;
-                var fecha = document.getElementById('fecha').value;
-                var vend_id = document.getElementById('vendorID').value;
-                var total = document.getElementById('total').value;
+              
+                if(document.getElementById('adjust').checked != true){
+
+                    var fact_id= document.getElementById('invoice').value;
+                    var fecha = document.getElementById('fecha').value;
+                    var vend_id = document.getElementById('vendorID').value;
+                    var total = document.getElementById('total').value;
+                    
+            
+                            //REGISTRO DE CABECERA
+                    
+                        function set_header(){
+                        
+                        //INI REGISTRO DE CABECERA
+                        HeaderInfo[0] =  fact_id+
+                                        '@'+fecha+
+                                        '@'+vend_id+
+                                        '@'+total;
+                        
+            
+                        return  $.ajax({
+                                type: "GET",
+                                url: link,
+                                data: {url: 'ges_inventario/set_Purchase_Header', Data : JSON.stringify(HeaderInfo)},
+                                success: function(res){
+                                console.log(res);
+                            
+                                if(res.indexOf('ERROR') != -1){
+            
+                                    MSG_ERROR(res);
+                                    
+                                }else{
+            
+                                    OS_NO = res;
+                                
+                                 }
+            
+                            }
+                        });
+                    
+                        }//FIN REGISTRO DE CABECERA
+                    
+                        $.when(set_header()).done(function(OS_NO){ //ESPERA QUE TERMINE LA INSERCION DE CABECERA
+                    
+                        if(OS_NO!=''){
+                            
+                        //REGISTROS DE ITEMS 
+                            $.ajax({
+                            type: "GET",
+                            url:  link,
+                            data:  {url: 'ges_inventario/set_Purchase_Detail/'+OS_NO , Data : JSON.stringify(LineArray)}, 
+                            success: function(res){
+            
+                            
+                            if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
+                                //checkSOIns(link,OS_NO);
+                                msg(link,OS_NO);
+                            }else{
+            
+                                MSG_ERROR(res,0);
+                            }
+                            }
+                    
+                            });
+                            return false; 
+                        }
+                        //FIN REGISTROS DE ITEMS     
+                        });
                 
 
-                //REGISTRO DE CABECERA
+
+
+                }else{
+
+                    //REGISTROS DE ITEMS 
+                    $.ajax({
+                        type: "GET",
+                        url:  link,
+                        data:  {url: 'ges_inventario/setInventoryAdjustment/', Data : JSON.stringify(LineArray)}, 
+                        success: function(res){
         
-            function set_header(){
-            
-            //INI REGISTRO DE CABECERA
-            HeaderInfo[0] =  fact_id+
-                            '@'+fecha+
-                            '@'+vend_id+
-                            '@'+total;
-            
-
-              return  $.ajax({
-                    type: "GET",
-                    url: link,
-                    data: {url: 'ges_inventario/set_Purchase_Header', Data : JSON.stringify(HeaderInfo)},
-                    success: function(res){
-                    console.log(res);
-                  
-                    if(res.indexOf('ERROR') != -1){
-
-                        MSG_ERROR(res);
+                        if(res.indexOf('ERROR') != -1){
                         
-                    }else{
+                            MSG_ERROR(res,0);
+                        
+                        }else{//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
+                            //checkSOIns(link,OS_NO);
+                            msg(link,res);
+                        }
 
-                        OS_NO = res;
+                        }
+                
+                        });
+
                     
-                   }
-
                 }
-              });
-        
-             }//FIN REGISTRO DE CABECERA
-        
-            $.when(set_header()).done(function(OS_NO){ //ESPERA QUE TERMINE LA INSERCION DE CABECERA
-        
-             if(OS_NO!=''){
-                 
-              //REGISTROS DE ITEMS 
-                $.ajax({
-                 type: "GET",
-                 url:  link,
-                 data:  {url: 'ges_inventario/set_Purchase_Detail/'+OS_NO , Data : JSON.stringify(LineArray)}, 
-                 success: function(res){
-
-                 
-                 if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
-                     //checkSOIns(link,OS_NO);
-                     msg(link,OS_NO);
-                  }else{
-
-                    MSG_ERROR(res,0);
-                  }
-                }
-        
-                });
-                return false; 
-              }
-              //FIN REGISTROS DE ITEMS     
-             });
-            
+                
             }
         }
         
@@ -1040,25 +1084,32 @@ function proceed(){
         
                                     itemId    = document.getElementById(selid).value;
     
-                            /*   stockId   = document.getElementById(selid).value;
+                               /*   stockId   = document.getElementById(selid).value;
                                     locId     = document.getElementById(selid).value;*/ 
                                                                 
+                                    gl_acc    = theTbl.rows[i].cells[3].innerHTML;                                    
                                     qty       = theTbl.rows[i].cells[5].innerHTML;
                                     UnitPrice = theTbl.rows[i].cells[6].innerHTML;
                                     total     = theTbl.rows[i].cells[7].innerHTML;
+                                    jobId       = document.getElementById('JOBID2').value;;
+                                    phaseid     = document.getElementById('PHASEID2').value;;
+                                    costcodeID       = document.getElementById('COSTID2').value;;
                                 
-                            /*   lote      = theTbl.rows[i].cells[7].innerHTML;
+                               /*   lote      = theTbl.rows[i].cells[7].innerHTML;
                                     fechaVen  = theTbl.rows[i].cells[7].innerHTML;*/
-                                
                                     
                                     
                                     //agrego el registo de las demas columnas
                                     cell += '@'+itemId+
                                             '@'+UnitPrice+
                                             '@'+qty+
-                                            '@'+total;
+                                            '@'+total+
+                                            '@'+jobId+
+                                            '@'+phaseid+
+                                            '@'+costcodeID+
+                                            '@'+gl_acc;
 
-
+                                            
                                 console.log(cell);
         
                                 /*if( stockId==0){
@@ -1141,11 +1192,29 @@ function proceed(){
 //******************************************************************************************
 function validacion(){
   
-   /* CUSTOMER = document.getElementById('customer').value;
-    if (CUSTOMER == ''){
-        MSG_ERROR('Se debe seleccionar un cliente',0);
-        CHK_VALIDATION = true;
-    }*/
+    if(Type == 3){
+       
+        if(document.getElementById('adjust').checked != true){
+
+            if (document.getElementById('invoice').value == ''){
+                MSG_ERROR('Se debe indicar un número de factura',0);
+                CHK_VALIDATION = true;
+            }
+
+            if (document.getElementById('fecha').value == ''){
+
+                MSG_ERROR('Se debe indicar la fecha de factura',0);
+                CHK_VALIDATION = true;
+            }
+
+            if (document.getElementById('vendorID').value == '-'){
+
+                MSG_ERROR('Se debe indicare el proveedor',0);
+                CHK_VALIDATION = true;
+            }
+        }
+    }
+
     
 }
 //******************************************************************************************

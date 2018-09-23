@@ -61,3 +61,27 @@
 / Query SELECT SUM(B.NetLine) AS Total 
                      FROM INV_EVENT_LOG 
                      WHERE  ID_compania="1" AND JobID="A.V. E-I VIAL"  AND PhaseID="AC-07" ;
+2018-09-23 10:02:54am-(SAGE COMPANY 1) MYSQL ERROR Field 'VendorName' doesn't have a default value
+/ Query INSERT INTO Purchase_Header_Imp (`ID_compania`,`PurchaseNumber`,`VendorID`,`Date`,`USER`,`Subtotal`,`Net_due`) VALUES ('1','','-','2018-09-23','1','6.75000','6.75000');
+2018-09-23 10:02:55am-(SAGE COMPANY 1) MYSQL ERROR Incorrect integer value: 'ERROR: 2018-09-23 10:02:54am-Field  VendorName  doesn t have a default value Purchase_Header_Imp' for column 'TransactionID' at row 1
+/ Query INSERT INTO Purchase_Detail_Imp (`ID_compania`,`TransactionID`,`Item_id`,`Description`,`GL_Acct`,`JobID`,`JobPhaseID`,`JobCostCodeID`,`Quantity`,`Unit_Price`,`Net_line`) VALUES ('1','ERROR: 2018-09-23 10:02:54am-Field  VendorName  doesn t have a default value Purchase_Header_Imp','40-343','2.75000','2.75000','-','','','','','');
+2018-09-23 10:12:04am-(SAGE COMPANY 1) MYSQL ERROR Unknown column 'Qty' in 'field list'
+/ Query INSERT INTO INV_EVENT_LOG (`ProductID`,`JobID`,`JobPhaseID`,`JobCostCodeID`,`PurchaseNumber`,`Qty`,`unit_price`,`Total`,`User`,`Type`,`ID_compania`) VALUES ('40-343','-','-','-','000000001','1.00000','2.75000','2.75','1','PEACHTREE Adjuste inventario Tx: 000000001','1');
+2018-09-23 10:14:00am-(SAGE COMPANY 1) MYSQL ERROR Unknown column 'Qty' in 'field list'
+/ Query INSERT INTO INV_EVENT_LOG (`ProductID`,`JobID`,`JobPhaseID`,`JobCostCodeID`,`PurchaseNumber`,`Qty`,`unit_price`,`Total`,`User`,`Type`,`ID_compania`) VALUES ('40-343','-','-','-','000000001','1.00000','2.75000','2.75','1','PEACHTREE Adjuste inventario Tx: 000000001','1');
+2018-09-23 10:14:51am-(SAGE COMPANY 1) MYSQL ERROR Data too long for column 'Type' at row 1
+/ Query INSERT INTO INV_EVENT_LOG (`ProductID`,`JobID`,`JobPhaseID`,`JobCostCodeID`,`PurchaseNumber`,`Qty`,`unit_price`,`Total`,`User`,`Type`,`ID_compania`) VALUES ('40-343','-','-','-','000000001','1.00000','2.75000','2.75','1','PEACHTREE Adjuste inventario Tx: 000000001','1');
+2018-09-23 10:27:24am-(SAGE COMPANY 1) MYSQL ERROR Duplicate entry '1-test-1-0012' for key 'ID_compania_PurchaseNumber_VendorID'
+/ Query INSERT INTO Purchase_Header_Imp (`ID_compania`,`PurchaseNumber`,`VendorID`,`Date`,`USER`,`Subtotal`,`Net_due`) VALUES ('1','test-1','0012','2018-09-23','1','7.32000','7.32000');
+2018-09-23 10:27:25am-(SAGE COMPANY 1) MYSQL ERROR Incorrect integer value: 'ERROR: 2018-09-23 10:27:24am-Duplicate entry  1-test-1-0012  for key  ID_compania_PurchaseNumber_VendorID  Purchase_Header_Imp' for column 'TransactionID' at row 1
+/ Query INSERT INTO Purchase_Detail_Imp (`ID_compania`,`TransactionID`,`Item_id`,`Description`,`GL_Acct`,`JobID`,`JobPhaseID`,`JobCostCodeID`,`Quantity`,`Unit_Price`,`Net_line`) VALUES ('1','ERROR: 2018-09-23 10:27:24am-Duplicate entry  1-test-1-0012  for key  ID_compania_PurchaseNumber_VendorID  Purchase_Header_Imp','item1','desc1','40000','-','-','-','1.00000','5.00000','5.00000');
+2018-09-23 10:28:04am-(SAGE COMPANY 1) MYSQL ERROR Incorrect decimal value: '' for column 'unit_price' at row 1
+/ Query INSERT INTO INV_EVENT_LOG (`ProductID`,`JobID`,`JobPhaseID`,`JobCostCodeID`,`PurchaseNumber`,`Qty`,`unit_price`,`Total`,`User`,`Type`,`ID_compania`) VALUES ('item1','-','-','-','000000003','1.00000','','5.00000','1','PEACHTREE Factura Tx: 000000003','1');
+2018-09-23 10:30:01am-(SAGE COMPANY 1) MYSQL ERROR Duplicate entry '1-test-1-0012' for key 'ID_compania_PurchaseNumber_VendorID'
+/ Query INSERT INTO Purchase_Header_Imp (`ID_compania`,`PurchaseNumber`,`VendorID`,`Date`,`USER`,`Subtotal`,`Net_due`) VALUES ('1','test-1','0012','2018-09-23','1','7.32000','7.32000');
+2018-09-23 10:30:02am-(SAGE COMPANY 1) MYSQL ERROR Incorrect integer value: 'ERROR: 2018-09-23 10:30:01am-Duplicate entry  1-test-1-0012  for key  ID_compania_PurchaseNumber_VendorID  Purchase_Header_Imp' for column 'TransactionID' at row 1
+/ Query INSERT INTO Purchase_Detail_Imp (`ID_compania`,`TransactionID`,`Item_id`,`Description`,`GL_Acct`,`JobID`,`JobPhaseID`,`JobCostCodeID`,`Quantity`,`Unit_Price`,`Net_line`) VALUES ('1','ERROR: 2018-09-23 10:30:01am-Duplicate entry  1-test-1-0012  for key  ID_compania_PurchaseNumber_VendorID  Purchase_Header_Imp','item1','desc1','40000','-','-','-','1.00000','5.00000','5.00000');
+2018-09-23 10:30:44am-(SAGE COMPANY 1) MYSQL ERROR Incorrect decimal value: '' for column 'unit_price' at row 1
+/ Query INSERT INTO INV_EVENT_LOG (`ProductID`,`JobID`,`JobPhaseID`,`JobCostCodeID`,`PurchaseNumber`,`Qty`,`unit_price`,`Total`,`User`,`Type`,`ID_compania`) VALUES ('item1','-','-','-','000000005','1.00000','','5.00000','1','PEACHTREE Factura Tx: 000000005','1');
+2018-09-23 10:31:11am-(SAGE COMPANY 1) MYSQL ERROR Data too long for column 'Type' at row 1
+/ Query INSERT INTO INV_EVENT_LOG (`ProductID`,`JobID`,`JobPhaseID`,`JobCostCodeID`,`PurchaseNumber`,`Qty`,`unit_price`,`Total`,`User`,`Type`,`ID_compania`) VALUES ('item1','-','-','-','000000006','1.00000','5.00000','5.00000','1','PEACHTREE Factura Tx: 000000006','1');
