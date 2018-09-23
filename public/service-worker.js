@@ -1,7 +1,7 @@
 var cacheName = 'ACIWEB APP';
 
 
-
+/*
   self.addEventListener('activate', function(event) {
     console.log('[ServiceWorker] Activated');
     event.waitUntil(
@@ -16,5 +16,5 @@ var cacheName = 'ACIWEB APP';
       })
     );
   });
-
+*/
   
