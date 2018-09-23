@@ -96,4 +96,28 @@ $SubTotal = 'Sub - Total';
 $Tax      = 'ITBMS';
 $Total    = 'Total';
 //END SALIDA DE INVENTARIO
+
+
+//REPORTE 
+$INV_REP1='';
+$Inv_REP_title ='Historial de Entrada de mercancia';
+$Inv_REP_input2 = 'Fechas desde';
+$Inv_REP_input3 = 'hasta';
+$Inv_REP_REP_BTN1= 'Consultar';
+$Inv_REP_TblHdr1 = 'ID Transaccion';
+$Inv_REP_TblHdr2 = 'ID Producto';
+$Inv_REP_TblHdr3 = 'Fecha';
+$Inv_REP_TblHdr4 = 'Procesado por';
+$Inv_REP_TblHdr5 = 'Cant.';
+$Inv_REP_TblHdr6 = 'Precio Unit.';
+$Inv_REP_TblHdr7 = 'Total';
+$Inv_REP_TblHdr8 = 'Proyecto';
+$Inv_REP_TblHdr9 = 'Fase';
+$Inv_REP_TblHdr10 = 'Centro Costo';
+$Inv_REP_TblHdr11 = 'Referencia';
+
+
+
+
+//END REPORTE
 ?>

@@ -2179,3 +2179,10 @@ END IF;
 END
 $$
 DELIMITER ;
+
+
+ALTER TABLE `Purchase_Header_Imp` CHANGE `Export_date` `Export_date` DATETIME NULL, CHANGE `Enviado` `Enviado` TINYINT(1) NULL, CHANGE `Error` `Error` TINYINT(1) NULL, CHANGE `ErrorPT` `ErrorPT` VARCHAR(1024) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL, CHANGE `nota` `nota` VARCHAR(1024) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
+ALTER TABLE `Purchase_Header_Imp` CHANGE `VendorID` `VendorID` VARCHAR(20) CHARACTER SET latin1 COLLATE latin1_general_ci NULL, CHANGE `VendorName` `VendorName` VARCHAR(39) CHARACTER SET latin1 COLLATE latin1_general_ci NULL, CHANGE `AP_Account` `AP_Account` VARCHAR(15) CHARACTER SET latin1 COLLATE latin1_general_ci NULL;
+ALTER TABLE `Purchase_Detail_Imp` CHANGE `GL_Acct` `GL_Acct` VARCHAR(15) CHARACTER SET latin1 COLLATE latin1_general_ci NULL;
+ALTER TABLE `INV_EVENT_LOG` ADD `Qty` DECIMAL(16,5) NOT NULL AFTER `PurchaseOrderNumber`, ADD `unit_price` DECIMAL(16,5) NOT NULL AFTER `Qty`;
+ALTER TABLE `INV_EVENT_LOG` ADD `Type` VARCHAR(30) NOT NULL AFTER `User`;

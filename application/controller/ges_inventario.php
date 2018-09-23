@@ -93,6 +93,24 @@ public function invIn(){
 }
 
 //******************************************************************************
+//REPORTE DE SALIDA DE IVENTARIO
+public function InvInReport(){
+    
+     $res = $this->model->verify_session();
+    
+            if($res=='0'){
+    
+                // load views
+                require APP . 'view/_templates/header.php';
+                require APP . 'view/_templates/panel.php';
+                require APP . 'view/modules/inventory/InvInReport.php';
+                require APP . 'view/_templates/footer.php';
+    
+            }
+        
+}
+
+//******************************************************************************
 //UBICACIONES 
 public function location(){
     
@@ -860,7 +878,7 @@ public function getJobList(){
 
         foreach ($res as $value) {
         $value = json_decode($value);
-        echo '<option value="'.$value->{'JobID'}.'">'.$value->{'JobID'}.'-'.$value->{'Description'}.'</option>';
+        echo '<option value="'.$value->{'JobID'}.'">('.$value->{'JobID'}.') -'.$value->{'Description'}.'</option>';
         }
 
 }
@@ -878,7 +896,7 @@ public function getPhaseList($jobid=0){
 
             foreach ($res as $value) {
             $value = json_decode($value);
-            echo '<option value="'.$value->{'PhaseID'}.'">'.$value->{'PhaseID'}.'-'.$value->{'Description'}.'</option>';
+            echo '<option value="'.$value->{'PhaseID'}.'">('.$value->{'PhaseID'}.') -'.$value->{'Description'}.'</option>';
             }
     
 }
@@ -896,7 +914,7 @@ public function getCostList($jobid=0,$phaseID=0){
     
             foreach ($res as $value) {
             $value = json_decode($value);
-            echo '<option value="'.$value->{'CostCodeID'}.'">'.$value->{'CostCodeID'}.'-'.$value->{'Description'}.'</option>';
+            echo '<option value="'.$value->{'CostCodeID'}.'">('.$value->{'CostCodeID'}.') -'.$value->{'Description'}.'</option>';
             }
     
 }
@@ -917,10 +935,6 @@ public function setProduct_In($Product_values){
 }
 
 
-
-
-
-
 public function if_ProductExist_chk($ProductID){
 
  $Product_chk = $this->Query_value('Products_Imp','ProductID','where ID_compania="'.$this->model->id_compania.'" and ProductID="'.$ProductID.'"');
@@ -936,7 +950,6 @@ public function if_ProductExist_chk($ProductID){
     }
 
 }
-
 
 
 public function setInv_adjustment($Adjustment_values){
@@ -958,7 +971,7 @@ public function getVendorList(){
 
  foreach ($res as  $value) {
      $value = json_decode($value);
-     echo '<option value="'.$value->{'VendorID'}.'">'.$value->{'VendorID'}.'-'.$value->{'Name'}.'</option>';
+     echo '<option value="'.$value->{'VendorID'}.'">('.$value->{'VendorID'}.')-'.$value->{'Name'}.'</option>';
      
 
  }
@@ -978,6 +991,155 @@ public function CheckError(){
     
 }
 
+
+
+///////////////////////////////Purchase!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+public function set_Purchase_Header(){
+    
+    $this->model->verify_session();
+        
+    $data = json_decode($_GET['Data']);
+    $value = $data[0];
+    
+    
+    list($PurchaseNumber,$date,$VendorID,$total) = explode('@', $value );
+    
+    $date = strtotime($this->model->GetLocalTime(date("Y-m-d")));
+    $date = date("Y-m-d",$date);
+    
+    $values = array(
+    'ID_compania'=>$this->model->id_compania,
+    'PurchaseNumber'=> $PurchaseNumber,
+    'VendorID'=>   $VendorID,
+    'Date'=>$date,
+    'USER' => $this->model->active_user_id,
+    'Subtotal' => $total,
+    'Net_due' => $total);
+    
+    $this->model->insert('Purchase_Header_Imp',$values);
+    
+    usleep(1000);
+    $error = $this->CheckError();
+    if($error){
+        $error= json_decode($error) ;
+            echo 'ERROR: '.$error->{'E'}.' Purchase_Header_Imp';
+        die();
+        
+    }else{
+        $PurchaseID = $this->model->Get_CO_No();
+        echo $PurchaseID;
+    }
+    
+   
+    
+}
+
+public function set_Purchase_Detail($PurchaseID){
+    
+        $this->model->verify_session();
+        
+        $id_compania= $this->model->id_compania;
+        
+        $data = json_decode($_GET['Data']);
+        
+        foreach ($data as $key => $value) {
+        
+        if($value){
+    
+        list($empty,$Item_id,$Description,$unit,$GL_Acct,$JobID,$JobPhaseID,$JobCostCodeID,$tax,$Quantity,$Unit_Price,$Net_line,) = explode('@', $value );
+  
+    
+          //EN CASO QUE NO SE HAGA CONVERSION DE UNIDDES ESCRIBE EN LA TABLA DE SALES ORDER DETAIL SIN INDICAR EL ITEMID. 
+          $Purchase_values = array(
+              'ID_compania' => $id_compania,
+              'TransactionID'=>$PurchaseID,
+              'Item_id'=>$Item_id,
+              'Description'=> $Description,
+              'GL_Acct'=>$GL_Acct,
+              'JobID'=>$JobID,
+              'JobPhaseID'=>$JobPhaseID,
+              'JobCostCodeID'=>$JobCostCodeID,
+              'Quantity'=>$Quantity,
+              'Unit_Price'=>$Unit_Price,
+              'Net_line'=>$Net_line);
+    
+          $this->model->insert('Purchase_Detail_Imp',$Purchase_values); //set item line
+          
+          usleep(1000);
+          $error = $this->CheckError();
+          if($error){
+            $error= json_decode($error) ;
+            echo 'ERROR: '.$error->{'E'}.' Purchase_Detail_Imp ';
+
+            $this->model->delete('Purchase_Header_Imp',' Where TransactionID="'.$PurchaseID.'" and ID_Compania="'.$id_compania.'";');
+            die(); 
+
+          }else{
+
+               $this->set_Budget_Log($Purchase_values);
+
+          }
+     }
+    }
+    echo '1';
+    
+}
+
+public function set_Budget_Log($Purchase_values){
+
+    $this->model->verify_session();
+        
+    $PurchaseNumber = $Purchase_values['TransactionID']; 
+    $Item  = $Purchase_values['Item_id'];
+    $phase = $Purchase_values['JobPhaseID']; 
+    $job   = $Purchase_values['JobID']; 
+    $cost  = $Purchase_values['JobCostCodeID']; 
+    $total = $Purchase_values['Net_line']; 
+    $Qty = $Purchase_values['Quantity'];
+    $UnitPrice = $Purchase_values['Unit_Price'];
+
+    $id_compania= $this->model->id_compania;
+    $user = $this->model->active_user_id;
+
+    $event_values = array(  'ProductID' => $Item,
+                            'JobID' => $job,
+                            'JobPhaseID' => $phase,
+                            'JobCostCodeID' => $cost,
+                            'PurchaseNumber' => $PurchaseNumber,
+                            'Qty'=> $Qty,
+                            'unit_price' => $UnitPrice ,
+                            'Total' => $total,
+                            'User' => $user,
+                            'Type' => 'PEACHTREE Factura Tx: '.$PurchaseNumber,
+                            'ID_compania' => $id_compania );
+
+     $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
+     
+     usleep(1000);
+     $error = $this->CheckError();
+     if($error){
+       $error= json_decode($error) ;
+       echo 'ERROR: '.$error->{'E'}.' Purchase_Detail_Imp ';
+
+       $this->model->delete('Purchase_Header_Imp',' Where TransactionID="'.$PurchaseID.'" and ID_Compania="'.$id_compania.'";');
+       $this->model->delete('Purchase_Detail_Imp',' Where TransactionID="'.$PurchaseID.'" and ID_Compania="'.$id_compania.'";');
+       
+       die(); 
+
+     }
+
+}
+
+
+public function getInvInList($sort,$limit,$clause){
+
+    
+     $sql = 'SELECT * FROM INV_EVENT_LOG '.$clause.' Order by Date '.$sort.' limit '.$limit;
+    
+     $res = $this->model->Query($sql);
+
+     return $res;
+}
 
 }//CIERRE DE CLASE
 ?>

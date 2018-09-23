@@ -128,7 +128,12 @@ function MSG_ADVICE(MSG){
 function MSG_ERROR_RELEASE(){
 
  $('#ERROR').html('');
+ $('#ERROR').removeClass('alert-success');
+ $('#ERROR').removeClass('alert-warning');
+ $('#ERROR').removeClass('alert-danger');
+ 
  $('#ERROR').hide();
+
 }
 
 
