@@ -39,7 +39,7 @@ if(isset($_POST['flag']))
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Please enter password">
-						<input class="input100" type="password" name="pass" id="pass" placeholder="Password">
+						<input class="input100" type="password" name="pass" id="pass" placeholder="Password" current-password>
 						<span class="focus-input100"></span>
 					</div>
 
