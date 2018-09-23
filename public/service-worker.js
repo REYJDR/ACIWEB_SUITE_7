@@ -1,10 +1,10 @@
 
   var cacheName = 'ACIWEB APP';
+
   var filesToCache = ['/',
-  '/application',
-  '/application/view/mobile/index.php',
-  '/public',
-  '/public/mobile_assets/'];
+  '../application',
+  '../application/view/mobile',
+  '/mobile_assets'];
   
   self.addEventListener('install', function(e) {
     console.log('[ServiceWorker] Install');
