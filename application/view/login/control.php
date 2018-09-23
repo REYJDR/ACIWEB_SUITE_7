@@ -3,7 +3,7 @@ if(isset($_POST['flag']))
 {
 	//inicio variables de session
 	$user = $_POST['user'];
-	$pass = md5($_POST['pass']);
+	$pass = md5($_POST['current-password']);
 
 	$isStandalone = $this->model->CheckStandalone();
 	
@@ -39,7 +39,7 @@ if(isset($_POST['flag']))
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Please enter password">
-						<input class="input100" type="password" name="pass" id="pass" placeholder="Password" current-password>
+						<input class="input100" type="password" name="current-password" id="current-password" placeholder="Password" >
 						<span class="focus-input100"></span>
 					</div>
 
