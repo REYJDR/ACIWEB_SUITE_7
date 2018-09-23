@@ -9,6 +9,7 @@
     var CHK_VALIDATION ='';
     LineArray = [];
     FaltaArray = [];
+    var link=  $('#URL').val()+"index.php";
 /////////////////////////////////////////////////////////////////////////////////////////////////
 //valiable globales
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -159,13 +160,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 $('#Budget').val('Calculando...');
                 getCost();
-
-
-                                
+         
                 });
+
                 $('#COSTID2').on('change', function (e) {
                 $('#Budget').val('Calculando...');
-                getBudget();
+                 getBudget();
 
 
                                 
@@ -258,7 +258,7 @@ function vendors(){
                         url: link,
                         data: datos,
                         success: function(res){
-                        console.log(res);
+                        
                         $('#vendorID').append(res);
       
                     }
@@ -367,8 +367,10 @@ function getBudget(){
     var PHASE= $('#PHASEID2').val();
     var COST = $('#COSTID2').val();
     
-    if (PHASE == '-') { PHASE = 0}
-    if (COST  == '-') { COST = 0}
+    console.log(JOB,PHASE,COST);
+
+    if (PHASE == '-' || PHASE  ==  null) { PHASE = 0}
+    if (COST  == '-' || COST  ==  null) { COST = 0}
 
     var datos= "url=ges_inventario/getBudget/"+JOB+'/'+PHASE+'/'+COST;
     var link= $('#URL').val()+"index.php";
@@ -378,7 +380,7 @@ function getBudget(){
             url: link,
             data: datos,
             success: function(res){
-        
+                console.log('budget:'+res);
                 $('#Budget').val(res);
                 budgetCompare();
            
@@ -663,9 +665,9 @@ function sumar_total(){
     
                 switch (j){
     
-                       case 12:
+                       case 7:
                        
-                        total.push(theTbl.rows[i].cells[12].innerHTML);
+                        total.push(theTbl.rows[i].cells[7].innerHTML);
     
                         break;
     
@@ -705,10 +707,10 @@ function budgetCompare() {
     if($("#JOBID2").val() != '-'){
 
    total_field =   document.getElementById('total');
-    
   
    
    var budget = $('#Budget').val();
+   
    budget = Number(budget);
    
    var total  =  Number(total_field.value);
@@ -825,26 +827,39 @@ function proceed(){
             if (r == true) { 
         
                 var fact_id= document.getElementById('invoice').value;
-                var fecha = document.getElementById('date').value;
+                var fecha = document.getElementById('fecha').value;
                 var vend_id = document.getElementById('vendorID').value;
+                var total = document.getElementById('total').value;
+                
 
                 //REGISTRO DE CABECERA
         
             function set_header(){
-        
+            
             //INI REGISTRO DE CABECERA
             HeaderInfo[0] =  fact_id+
                             '@'+fecha+
-                            '@'+vend_id;
-        
-        
+                            '@'+vend_id+
+                            '@'+total;
+            
+
               return  $.ajax({
                     type: "GET",
                     url: link,
                     data: {url: 'ges_inventario/set_Purchase_Header', Data : JSON.stringify(HeaderInfo)},
                     success: function(res){
                     console.log(res);
-                    OS_NO = res;
+                  
+                    if(res.indexOf('ERROR') != -1){
+
+                        MSG_ERROR(res);
+                        
+                    }else{
+
+                        OS_NO = res;
+                    
+                   }
+
                 }
               });
         
@@ -852,24 +867,31 @@ function proceed(){
         
             $.when(set_header()).done(function(OS_NO){ //ESPERA QUE TERMINE LA INSERCION DE CABECERA
         
-             console.log(OS_NO);
-        
+             if(OS_NO!=''){
+                 
               //REGISTROS DE ITEMS 
                 $.ajax({
                  type: "GET",
                  url:  link,
                  data:  {url: 'ges_inventario/set_Purchase_Detail/'+OS_NO , Data : JSON.stringify(LineArray)}, 
                  success: function(res){
-                 console.log(res);
-                  if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
-                     checkSOIns(link,OS_NO);
+
+                 
+                 if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
+                     //checkSOIns(link,OS_NO);
+                     msg(link,OS_NO);
+                  }else{
+
+                    MSG_ERROR(res,0);
                   }
                 }
         
                 });
                 return false; 
+              }
               //FIN REGISTROS DE ITEMS     
              });
+            
             }
         }
         
@@ -940,28 +962,27 @@ function proceed(){
                     
                                         case 0:
                                             
-                                            itemId    = theTbl.rows[i].cells[0].innerHTML ;
+                                            itemId    = theTbl.rows[i].cells[0].innerHTML;
                                             desc      = theTbl.rows[i].cells[1].innerHTML;
                                             unit      = theTbl.rows[i].cells[2].innerHTML;
-                                            gl        = theTbl.rows[i].cells[4].innerHTML;
-                                            job       = theTbl.rows[i].cells[5].innerHTML;
-                                            phase     = theTbl.rows[i].cells[6].innerHTML;
-                                            cco       = theTbl.rows[i].cells[7].innerHTML;
-                                            tax       = theTbl.rows[i].cells[8].innerHTML;
-                                        
-                
+                                            gl        = theTbl.rows[i].cells[3].innerHTML;
+                                            tax       = theTbl.rows[i].cells[4].innerHTML;
+   
                                         /*   stockId   = document.getElementById(selid).value;
                                             locId     = document.getElementById(selid).value;*/ 
-                                                                            
-                                            qty       = theTbl.rows[i].cells[9].innerHTML;
-                                            UnitPrice = theTbl.rows[i].cells[10].innerHTML;
-                                            total     = theTbl.rows[i].cells[11].innerHTML;
-                                            
+                                  
                                         /*  lote      = theTbl.rows[i].cells[7].innerHTML;
                                             fechaVen  = theTbl.rows[i].cells[7].innerHTML;*/
+                                                        
+                                            qty       = theTbl.rows[i].cells[5].innerHTML;
+                                            UnitPrice = theTbl.rows[i].cells[6].innerHTML;
+                                            total     = theTbl.rows[i].cells[7].innerHTML;
                                             
-                                                
-                                            
+                                                                                       
+                                            job       = document.getElementById('JOBID2').value;;
+                                            phase     = document.getElementById('PHASEID2').value;;
+                                            cco       = document.getElementById('COSTID2').value;;
+
                                             //agrego el registo de las demas columnas
                                             cell += '@'+itemId+
                                                     '@'+desc+
@@ -1132,7 +1153,7 @@ function validacion(){
 //******************************************************************************************
 
 //******************************************************************************************
-//VALIDACION DE CONTENIDO
+//busca nombre de columna
 //******************************************************************************************
 function FIND_COLUMN_NAME(item){
     
@@ -1142,5 +1163,27 @@ function FIND_COLUMN_NAME(item){
     return val;
     }
 //******************************************************************************************
-//VALIDACION DE CONTENIDO
+//busca nombre de columna
+//******************************************************************************************
+
+//******************************************************************************************
+//busca nombre de columna
+//******************************************************************************************
+
+function msg(link,id){
+
+   // MSG_CORRECT("La informacion ha ingresado correctamente, No. de transaccion: "+id,1);
+    alert("La informacion ha ingresado correctamente, No. de transaccion: "+id);
+    location.reload();
+    /*var R = confirm('Desea imprimir la orden de venta?');
+   
+    if(R==true){
+           window.open(link+'?url=ges_ventas/PrintSalesOrder/1/'+SalesOrderNumber,'_self');
+    }else{
+
+      location.reload();
+    }*/
+}
+//******************************************************************************************
+//busca nombre de columna
 //******************************************************************************************

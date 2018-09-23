@@ -120,7 +120,7 @@
     <!--END MENU INVENTORY-->	
 
 </div>
-
+<!--INI MENU REPORTES-->	
 <div id="menu5" class="tabcontent">
 
    <div class='col-lg-12'>
@@ -145,11 +145,21 @@
 
     <?php } ?>
 
+    <?php if($mod_invt_CK == 'checked' and $INF_INV==1 ){?>
+        <div class='col-lg-3'>
+        <button onclick="window.location='<?PHP ECHO URL; ?>index.php?url=ges_inventario/InvInReport/'" class="dashBottom" ><?php echo $SUBMENU_rep8; ?></button>              
+        </div>
+
+
+    <?php } ?>
+
 
     <?php } ?>
     </div>
     
 </div>
+<!--END MENU REPORTES-->	
+
 
 <div id="menu6" class="tabcontent">
     <!--INI MENU CONFIG-->

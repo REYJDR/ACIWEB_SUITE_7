@@ -302,10 +302,12 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 
 							<!--Button Process-->
+							<div  class="separador col-lg-12" ></div>
+							
 							<div class='col-lg-10'></div>
 							<div class='col-lg-2'>
 								<div class="container-login100-form-btn">
-								<input name="proc_lote" id="proc_lote"  onclick="proceed();"  value="<?PHP echo $BTN_InvIN_Proc; ?>"  class="accept-form-btn" />			
+								<input type='Button' name="proc_lote" id="proc_lote"  onclick="proceed();"  value="<?PHP echo $BTN_InvIN_Proc; ?>"  class="accept-form-btn" />			
 								</div>
 							</div>
 							<div class="separador col-lg-12"> </div>

@@ -785,7 +785,7 @@ $order = $this->Query_value('Purchase_Header_Imp','TransactionID','where ID_comp
 
 //$NO_ORDER = str_pad($NO_ORDER, 7 ,"0",STR_PAD_LEFT);
 
-$NO_ORDER = number_format($order, 0 , '', '')+1;
+$NO_ORDER = number_format($order, 0 , '', '');
 $NO_ORDER = str_pad($NO_ORDER, 9 ,"0",STR_PAD_LEFT);
 
 
@@ -1380,14 +1380,14 @@ public function desencriptar($cadena){
 
 public function getGLReten(){
     
-$this->verify_session();
+    $this->verify_session();
 
 
-$res = $this->Query_value( 'CTA_GL_CONF',
-                           'GL_RETEN',
-                           'WHERE  ID_compania="'.$this->id_compania.'" ');
-    
-  return $res;
+    $res = $this->Query_value( 'CTA_GL_CONF',
+                            'GL_RETEN',
+                            'WHERE  ID_compania="'.$this->id_compania.'" ');
+        
+    return $res;
 }
 
 
@@ -1478,7 +1478,7 @@ public function getJob_avalaible_amnt($JobID,$PhaseID=0,$CCOID=0){
 
   $this->verify_session();
 
-    $clause = 'WHERE  ID_compania="'.$this->id_compania.'" AND JobID="'.$JobID.'"  ';
+   $clause = 'WHERE  ID_compania="'.$this->id_compania.'" AND JobID="'.$JobID.'"  ';
 
     if ($PhaseID) {
 
@@ -1492,42 +1492,33 @@ public function getJob_avalaible_amnt($JobID,$PhaseID=0,$CCOID=0){
 
     }
 
-
-
     $Budget = $this->Query_value('Job_Estimates_Exp','SUM(Expenses)',$clause);
 
-    $sql_expenses = 'SELECT SUM(B.NetLine) AS Total 
-                     FROM INV_EVENT_LOG 
-                     '.$clause.';';
+    $clause2 = 'WHERE  ID_compania="'.$this->id_compania.'" AND JobID="'.$JobID.'"  ';
+    
+        if ($PhaseID) {
+    
+          $clause .= 'AND JobPhaseID="'.$PhaseID.'" ';
+    
+            if ($CCOID) {
+    
+            $clause .= 'AND JobCostCodeID="'.$CCOID.'" ';
+            
+            }
+    
+        }
+
+    $Expenses = $this->Query_value('INV_EVENT_LOG','SUM(Total)',$clause2);
 
 
-    $Expenses_value = $this->Query($sql_expenses);
-
-        foreach ($Expenses as $datos) {
-
-        $datos = json_decode($datos);
-
-        $Expenses_total = $datos->{'Total'};
-        
-
-        } 
-
-    $Total_available = $Budget - $Expenses_total;
+    $Total_available = $Budget - $Expenses;
 
     return $Total_available;
     // number_format($Total_available,2,',','.');
 
 }
 
-////////////////////////////////////////////////////
-//Escribe el evento de gasto en la tabla INV_EVENT_LOG
-public function set_Budget_Log($event_values){
 
-  $this->verify_session();
-
-  $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
-
-}
 
 
 
