@@ -1,3 +1,10 @@
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+           .register('./service-worker.js')
+           .then(function() { console.log('Service Worker Registered'); });
+}
+
 // ********************************************************
 // * Aciones cuando la pagina ya esta cargada
 // ********************************************************
@@ -898,8 +905,7 @@ function replaceNbsps(str) {
   return nStr ;
 }
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker
-           .register('./service-worker.js')
-           .then(function() { console.log('Service Worker Registered'); });
-}
+
+
+
+
