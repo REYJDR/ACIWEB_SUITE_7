@@ -52,7 +52,7 @@ if(isset($_POST['flag']))
 					<div class="separador col-lg-12" ></div>
 					<fieldset>
 					<legend>Sage Company</legend>
-						<select  id="company" name="company" class="select col-lg-12" onchange="set_listprice(this.value);" required>
+						<select  id="company" name="company" class="select col-lg-12"  required>
 						<option selected disabled></option>
 						<?php  
 
