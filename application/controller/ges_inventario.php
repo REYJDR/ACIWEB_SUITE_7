@@ -1011,6 +1011,7 @@ public function set_Purchase_Header(){
     'ID_compania'=>$this->model->id_compania,
     'PurchaseNumber'=> $PurchaseNumber,
     'VendorID'=>   $VendorID,
+    'AP_Account'=> $this->model->Query_value('CTA_GL_CONF','CTA_CXP','WHERE ID_compania="'.$this->model->id_compania.'"'),
     'Date'=>$date,
     'USER' => $this->model->active_user_id,
     'Subtotal' => $total,
