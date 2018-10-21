@@ -63,7 +63,7 @@ define('URL_SUB_FOLDER', str_replace(URL_PUBLIC_FOLDER, '', dirname($_SERVER['SC
 define('URL', str_replace('\\', '/', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER));
 
 
-define(VER,'V_21.10.18_12');
+define('VER','V_21.10.18_12');
 
 
 
