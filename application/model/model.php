@@ -699,7 +699,7 @@ return $res;
 
 public function get_ClientList(){
 
-$query='SELECT * FROM Customers_Exp where  id_compania="'.$this->id_compania.'" order by CustomerID ASC';
+$query='SELECT * FROM Customers_Exp where  id_compania="'.$this->id_compania.'" and isActive="1" order by CustomerID ASC';
 
 $res = $this->Query($query);
 
