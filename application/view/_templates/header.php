@@ -93,7 +93,7 @@
     
 <?php 
       header('Content-Type: text/html; charset=utf-8'); 
-	  define(VER,'V_21.10.18_12');
+	  
 	  ?>
 <input type="hidden" id="active_user_id" value="<?php echo $this->model->active_user_id; ?>" />
 <input type="hidden" id='URL' value="<?php ECHO URL; ?>" />
