@@ -166,7 +166,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					<th width="10%"><?PHP echo $TableCust_th4; ?></th>
 					<th width="10%"><?PHP echo $TableCust_th5; ?></th>
 					<th width="10%"><?PHP echo $TableCust_th6; ?></th>
-					<th width="10%"></th>
+					<th width="20%"></th>
 				</tr>
 				</thead>
 			<tbody>
@@ -176,6 +176,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 				//ADD CUSTOMER
 
 				if (isset($_POST['submit'])) {
+					
+					if ($_POST['chk_cus'] == 1) {
 					
 						
 						$Values = array( 
@@ -212,19 +214,146 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 							if ($this->model->lang == 'es') {
 								
-								echo "<script>MSG_ERROR('El Id del cliente ya existe, por favor ingrese otro',0);</script>";
+								//echo "<script>MSG_ERROR('El Id del cliente ya existe, por favor ingrese otro',0);</script>";
+								echo "<script>$(window).load(function(){ MSG_CORRECT('El Id del cliente ya existe, por favor ingrese otro',0); });</script>"; 
 
 							}else{
 
-								echo "<script>MSG_ERROR('Customer Id already exist, please input a different value',0);</script>";
+								//echo "<script>MSG_ERROR('Customer Id already exist, please input a different value',0);</script>";
+								echo "<script>$(window).load(function(){ MSG_CORRECT('Customer Id already exist, please input a different value',0); });</script>"; 
 
 							}
 
 							
 
 						}
+					}else{
 
+
+							try {
+		
+
+									//INI LECTURA DE ARCHIVO EXCEL
+									$reader=new Spreadsheet_Excel_Reader();
+
+									$filename=$_FILES["cus_file"]["tmp_name"]; 
+
+									//	echo 'file:'.$filename;  var_dump($_FILES); die();
+
+									if($_FILES["cus_file"]["size"] > 0)
+									{
+
+											$reader->setUTFEncoder('iconv');
+											$reader->setOutputEncoding('UTF-8');
+											$reader->read($filename);
+
+
+											 foreach($reader->sheets as $k=>$data)
+											 {
+									        
+
+												$i=1;
+												$values = array();
+												$STATEMENT = '';
+
+												 while ($i<=$data['numRows']){
+
+
+				                                 if(sizeof($data['cells'][$i]) > 0){
+
+												    
+
+													foreach($data['cells'][$i] as $KEY=>$cell) 
+													{
+														   
+									                        if($cell !=''){
+
+									                   		if ($KEY=='1') { 	
+
+									                   			$values['1'] = utf8_encode($cell);
+									                   			$cust_chk = $this->model->Query_value('Customers_Exp','CustomerID','where ID_compania="'.$this->model->id_compania.'" AND CustomerID ="'.$values['1'].'" ORDER BY CustomerID DESC LIMIT 1');
+
+									                   			if (!$cust_chk) {
+									                   				
+									                   				$set_flag = 0; //CREATE BRAND NEW CUSTOMER
+
+									                   			}else{
+
+									                   				$set_flag = 1; //CUSTOMER ID EXIST. THIS FLAG SET UPDATE THAT ROW
+									                   			}
+
+									                   		} 
+
+
+															if ($KEY=='2')   	$values['2'] = utf8_encode($cell) ;
+															if ($KEY=='3')   	$values['3'] = utf8_encode($cell) ;
+															if ($KEY=='4')   	$values['4'] = utf8_encode($cell) ;
+															if ($KEY=='5')   	$values['5'] = utf8_encode($cell) ;      	
+
+									                        }
+													
+												    }
+
+												   $values['6'] = $this->model->id_compania;
+												   $TABLE = 'Customers_Exp';
+
+				                           
+												   	if ($set_flag == 0) {
+												   		
+												   		//INSERTA EN BD LA LINEA ACTUAL
+										 				$STATEMENT= "INSERT INTO ".$TABLE." (
+																`IDPRICE`,
+																`IDITEM` ,
+																`DESCRIPTION` , 
+																`PRICE` ,
+																`UNIT`,
+																`ID_compania`)  
+																VALUES 
+																('".implode("','", $values)."');";
+													
+												
+										 		        $res = $this->model->Query($STATEMENT);
+
+									                  	$this->CheckError();
+
+									                  	echo "<script>$(window).load(function(){ MSG_CORRECT('2 LA LISTA  SE HA CARGADO CON EXITO ',0); });</script>"; 
+
+												   	}else{
+
+
+												   		$clause = 'WHERE CustomerID ="'.$values['1'].'" AND  ID_compania="'.$this->model->id_compania.'";';
+
+  														$update = $this->model->update($TABLE,$values,$clause);
+
+												   	}
+
+				                                }
+
+												$i=$i+1;
+									          }
+								              
+								              
+											}//termina el proceso de insercion
+
+
+										}else{
+
+											echo "<script>$(window).load(function(){ MSG_ERROR('NO SE HA PODIDO LEER EL  ARCHIVO',0); });</script>"; 
+											
+										}
+
+
+				} catch (Exception $e) {
+
+					 die("<script>$(window).load(function(){ MSG_ERROR('".$e->getMessage()."',0); });</script>"); 
 				}
+
+					$_POST = array(); //limpia las variables de $_post
+					$_FILES = array();
+
+
+								}
+							}
 
 
 				//LIST EXISTING CUSTOMERS
@@ -257,11 +386,6 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 				$cus_SA = "'".$value->{'AddressLine2'}."'";
 
 
-				/*
-				Agregar el activate/deactivate
-				crear tabla de detalle
-				mapear en el menu
-				*/
 				$table .= ' <tr>
 								<td><a href="javascript:void(0)" onclick="get_cus_detail('.$cus_secID.')"><strong>'.$value->{'CustomerID'}.'</strong></a></td>
 								<td>'.$value->{'Customer_Bill_Name'}.'</td>
@@ -275,6 +399,16 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 				}
 			
 				echo $table;
+
+
+
+//SE EJECUTA SCRIPT PHP SI SE DÁ SUBMIT AL BOTON "SUBIR"
+if (isset($_POST['submit'])){
+
+
+
+}
+
 			?>
             </tbody></table>
 
