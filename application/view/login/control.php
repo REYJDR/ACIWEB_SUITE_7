@@ -84,14 +84,15 @@ if(isset($_POST['flag']))
 
 				</form>
 				<div class="separador col-lg-12"> </div>
-					<div class="col-lg-6">
-				    <div class="col-lg-1"></div>
-					<span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=zB3xB13v2RV55GbgMLeYTlZOfhe0M5wMGtv2IKpi6SMS8b03XF39KAqppsrq"></script></span>
+					<div class="col-lg-8">
+				  		  <div class="col-lg-1"></div>
+						<span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=zB3xB13v2RV55GbgMLeYTlZOfhe0M5wMGtv2IKpi6SMS8b03XF39KAqppsrq"></script></span>
+					
 					</div> 
-
-					<div class="col-lg-4">
-						<span ><?php echo VER; ?></span>
-					</div>
+					<div class="col-lg-2"></div>
+						<div class="col-lg-2">
+							<span ><?php echo VER; ?></span>
+						</div>
 					</div>
 			 </div>
 			 <div class="separador col-lg-12"> </div>
