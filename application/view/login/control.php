@@ -33,6 +33,7 @@ if(isset($_POST['flag']))
 			       <span class="login100-form-title"> 
 				   <img width="50%" height="50%"  src="page_assets/images/ACIWEB-LOGO.png" />
 					</span> 
+					<span ><?php echo VER; ?></span>
 					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
 						<input class="input100" type="text" id="user" name="user" placeholder="Username">
 						<span class="focus-input100"></span>
@@ -84,17 +85,12 @@ if(isset($_POST['flag']))
 
 				</form>
 				<div class="separador col-lg-12"> </div>
-					<div class="col-lg-8">
+					<div class="col-lg-12">
 				  		  <div class="col-lg-1"></div>
 						<span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=zB3xB13v2RV55GbgMLeYTlZOfhe0M5wMGtv2IKpi6SMS8b03XF39KAqppsrq"></script></span>
-					
+						<div class="separador col-lg-12"> </div>
 					</div> 
-					<div class="col-lg-2"></div>
-						<div class="col-lg-2">
-							<span ><?php echo VER; ?></span>
-						</div>
-					</div>
-					<div class="separador col-lg-12"> </div>
+					
 				</div>
 			 </div>
 	</div>
