@@ -378,6 +378,8 @@ $this->model->verify_session();
 
 $data = json_decode($_GET['Data']);
 
+echo $data ; die();
+
 list($jobID, $nota) = explode('@',$data );
 
 $Req_NO = $this->model->Get_Req_No();
