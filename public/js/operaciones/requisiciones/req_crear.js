@@ -245,7 +245,7 @@ MSG_ERROR_RELEASE();
 
   //VALIDAR NOTA
  NOTA =  $("#nota").val();
- console.log('nota '+NOTA);
+
 
  if (!NOTA){
 
@@ -286,10 +286,13 @@ if (r == true) {
 
          
          var JOBID = document.getElementById('JOBID').value;
-         var nota  = document.getElementById('nota').value;  
+         var nota  = $("#nota").val();  
+
+        
 
             //INI REGISTRO DE CABECERA
           HeaderInfo[0] =  JOBID+'@'+nota;
+          console.log(HeaderInfo[0]);
 
          var data= JSON.stringify(HeaderInfo);
          var url = "ges_requisiciones/set_req_header/";
