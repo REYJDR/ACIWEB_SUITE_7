@@ -87,7 +87,7 @@ $config_2_val4 = 'Contraseña';
 $config_2_val5 = 'Repetir Contraseña';
 $config_2_val6 = 'Role';
 $config_2_val7 = 'Administrador';
-$config_2__val8 = 'Usuario';
+$config_2_val8 = 'Usuario';
 
 $config_3_val1 = 'Nombre';
 $config_3_val2 = 'Apellido';
