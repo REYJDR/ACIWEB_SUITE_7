@@ -305,7 +305,7 @@ foreach ($phase as $value) {
 
 $value = json_decode($value);
 
-  $list.= '<option value="'.$value->{'PhaseID'}.'" >'.$value->{'PhaseID'}.'</option>';
+  $list.= '<option value="'.$value->{'PhaseID'}.'" >('.$value->{'PhaseID'}.')'.$value->{'Description'}.'</option>';
 
 }
 
