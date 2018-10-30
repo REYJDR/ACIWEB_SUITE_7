@@ -390,6 +390,7 @@ $value_to_set  = array(
   'DATE' => date("Y-m-d"), 
   );
 
+  print_r($value_to_set);
 $res = $this->model->insert('REQ_HEADER',$value_to_set);
 $this->CheckError();
 
