@@ -378,9 +378,11 @@ $this->model->verify_session();
 
 $data = json_decode($_GET['Data']);
 
-echo $data ; die();
 
-list($jobID, $nota) = explode('@',$data );
+
+list($jobID, $nota) = explode('@',$data);
+
+echo 'data:'.$jobID.'-'.$nota.'--'.$data; 
 
 $Req_NO = $this->model->Get_Req_No();
 
@@ -392,7 +394,7 @@ $value_to_set  = array(
   'DATE' => date("Y-m-d"), 
   );
 
-  print_r($value_to_set);
+
 $res = $this->model->insert('REQ_HEADER',$value_to_set);
 $this->CheckError();
 
