@@ -380,9 +380,9 @@ $data = json_decode($_GET['Data']);
 
 
 
-list($jobID, $nota) = explode('@',$data);
+list($jobID, $nota) = explode('@',$data[0]);
 
-echo 'data:'.$jobID.'-'.$nota.'--'.$data; 
+
 
 $Req_NO = $this->model->Get_Req_No();
 
