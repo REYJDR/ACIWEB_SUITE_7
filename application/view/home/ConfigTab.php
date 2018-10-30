@@ -85,7 +85,7 @@
 				<tr><th><strong><?php echo $config_2_val6; ?></strong></th><td>
 					<select class="inputPage col-lg-12" id="role" name="role">
 						<option value="admin" ><?php echo $config_2_val7; ?></option>
-						<option value="user" ><?php echo $config_2_val8; ?></option>
+						<option value="user"  ><?php echo $config_2_val8; ?></option>
 					</select>
 				</td></tr>  
 				</tbody>
