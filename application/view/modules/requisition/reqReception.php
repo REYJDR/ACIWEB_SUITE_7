@@ -1,5 +1,11 @@
 <?php
 require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'_ref.php';
+
+$NO_LINES =  $this->model->Query_value('FAC_DET_CONF','NO_LINES','where ID_compania="'.$this->model->id_compania .'"');
+
+echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />'; 
+
+
 ?>
 
 <!--ADD JS FILE-->
