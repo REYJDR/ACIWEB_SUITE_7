@@ -334,7 +334,7 @@ foreach ($cost as $value) {
 
 $value = json_decode($value);
 
-  $list.= '<option value="'.$value->{'CostCodeID'}.'" >'.$value->{'Description'}.'</option>';
+  $list.= '<option value="'.$value->{'CostCodeID'}.'" >('.$value->{'CostCodeID'}.')'.$value->{'Description'}.'</option>';
 
 }
 
