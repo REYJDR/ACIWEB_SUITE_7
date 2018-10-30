@@ -90,7 +90,7 @@ if(isset($_POST['flag']))
 						<span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=zB3xB13v2RV55GbgMLeYTlZOfhe0M5wMGtv2IKpi6SMS8b03XF39KAqppsrq"></script></span>
 						<div class="separador col-lg-12"> </div>
 					</div> 
-					<div class="col-lg-12"><span ><?php echo VER; ?></span> <div class="separador col-lg-12"> </div></div>
+					<div class="col-lg-12"><div class="col-lg-10"></div><span style="text-align:right;"><?php echo VER; ?></span> <div class="separador col-lg-12"> </div></div>
 				</div>
 			 </div>
 	</div>
