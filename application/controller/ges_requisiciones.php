@@ -378,14 +378,14 @@ $this->model->verify_session();
 
 $data = json_decode($_GET['Data']);
 
-list($null,$jobID, $nota ) = explode('@',$data );
+list($jobID, $nota) = explode('@',$data );
 
 $Req_NO = $this->model->Get_Req_No();
 
 $value_to_set  = array( 
   'NO_REQ' => $Req_NO,   
   'ID_compania' => $this->model->id_compania, 
-  'NOTA' => $nota , 
+  'NOTA' => $nota, 
   'USER' => $this->model->active_user_id, 
   'DATE' => date("Y-m-d"), 
   );
