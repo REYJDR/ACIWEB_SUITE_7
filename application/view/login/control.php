@@ -33,9 +33,7 @@ if(isset($_POST['flag']))
 			       <span class="login100-form-title"> 
 				   <img width="50%" height="50%"  src="page_assets/images/ACIWEB-LOGO.png" />
 				   </span> 
-					<div class="col-lg-12" >
-						<span ><?php echo VER; ?></span> 
-					 </div>
+
 				
 					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
 						<input class="input100" type="text" id="user" name="user" placeholder="Username">
