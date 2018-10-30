@@ -94,7 +94,7 @@ if(isset($_POST['flag']))
 							<span ><?php echo VER; ?></span>
 						</div>
 					</div>
+					<div class="separador col-lg-12"> </div>
+				</div>
 			 </div>
-			 <div class="separador col-lg-12"> </div>
-		</div>
 	</div>
