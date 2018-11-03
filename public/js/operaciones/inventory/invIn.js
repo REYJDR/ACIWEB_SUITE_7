@@ -7,6 +7,7 @@
     var Type = '';
     var listitem = '';
     var color = '';
+    var color2 = '';
     var CHK_VALIDATION ='';
     LineArray = [];
     FaltaArray = [];
