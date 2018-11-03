@@ -194,6 +194,57 @@ while(i <= cantLineas){
 
 }
 
+// ******************************************************************************************
+// * OBTIENE INFORMACION DE ITEM  
+// ******************************************************************************************
+function SetDesc(itemId, line){
+  
+  var id_desc_field = 'DESC'+line;
+  var id_unit_field = 'UNI'+line;
+  var id_qty_field = 'QTY'+line;
+
+
+     if(itemId == ''){
+
+      document.getElementById(id_desc_field).innerHTML = '';
+      document.getElementById(id_unit_field).innerHTML = '';
+      document.getElementById(id_qty_field).innerHTML  = '';
+
+     }  else{
+
+
+      document.getElementById(id_desc_field).innerHTML = 'Loading...';
+   
+          function getItems(){
+              
+              var datos= "bridge_query/get_ProductsInfo";
+              var link= $('#URL').val()+"index.php";
+  
+             return $.ajax({
+                      type: "GET",
+                      url: link,
+                      data: {url: datos, item: itemId},
+                      success: function(res){
+            
+                  }
+              
+              });
+  
+          }
+          $.when(getItems()).done(function(res){ //ESPERA QUE TERMINE el query de items
+              
+              json = JSON.parse(res);
+                      
+              document.getElementById(id_desc_field).innerHTML  = json.Description;
+              document.getElementById(id_unit_field).innerHTML   = json.UnitMeasure;
+             // document.getElementById(id_qty_field).innerHTML  = json.QtyOnHand;
+              
+  
+      });
+     }  
+ 
+}
+
 
 
 
