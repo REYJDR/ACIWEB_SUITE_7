@@ -205,7 +205,9 @@ function set_div(val){
                 $('#prod_ind').hide();
                 $('#prod_layout').hide();
                 $('#prod_masive').show();
-                init(1);//construye tabla
+               // init(1);//construye tabla
+                init(2);//construye tabla
+               
                 Type = 3;
             }
 
