@@ -131,7 +131,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     color = "";
                     $box2.prop("checked", false);
-                    init(1);//construye tabla
+                    init(2);//construye tabla
+                   // init(1);//construye tabla
                     $('#invDetail').show(); 
                }
 
