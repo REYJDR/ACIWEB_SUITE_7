@@ -2,6 +2,7 @@
 //valiable globales
 /////////////////////////////////////////////////////////////////////////////////////////////////
     var editable = 'contenteditable';
+    var editable2 = 'contenteditable';
     var stocks = '';
     var Type = '';
     var listitem = '';
