@@ -2,12 +2,13 @@
 //valiable globales
 /////////////////////////////////////////////////////////////////////////////////////////////////
     var editable = 'contenteditable';
-    var editable2 = 'contenteditable';
+    var editable2 = '';
     var stocks = '';
     var Type = '';
     var listitem = '';
     var color = '';
-    var color2 = '';
+    var color2 = "style='background-color:#ECECEC;'";
+    
     var CHK_VALIDATION ='';
     LineArray = [];
     FaltaArray = [];
@@ -124,18 +125,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 if ($box2.is(":checked")) {
                 
                     editable = '';
-                    editable2 = ''
-                    color = "style='background-color:#ECECEC;'";
-                    color2 = "style='background-color:#ECECEC;'";
+                    color  = "style='background-color:#ECECEC;'";
                     
                     init(2);//construye tabla
                    
                     $('#invDetail').hide(); 
 
                }else{
-                    editable2 = ''
-                    color2 = "style='background-color:#ECECEC;'";
-                    
+                
 
                     $box2.prop("checked", false);
                     init(2);//construye tabla
