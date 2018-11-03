@@ -141,7 +141,7 @@ var datos= "url=ges_requisiciones/get_ProductsCode/";
 var reglon = '';
 
 
-/*
+
 $.ajax({
      type: "GET",
      url: link,
@@ -149,7 +149,7 @@ $.ajax({
      success: function(res){
 
      
-     listitem = res;*/
+     listitem = res;
 
 $('#table_req').html(''); //limpio la tabla 
 
@@ -191,8 +191,8 @@ while(i <= cantLineas){
       $('#table_req').append(line_table_req); //limpio la tabla 
      }
      set_selectItemStyle();
-/*      }
-    });*/
+      }
+    });
 
 
 }
