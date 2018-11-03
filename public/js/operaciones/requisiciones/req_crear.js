@@ -119,7 +119,7 @@ function cost(){
 
          if(res){
            
-           init(1);
+           init(2);
          
          }                   
           
@@ -167,7 +167,7 @@ while(i <= cantLineas){
 
      }else{
 
-/*			reglon = '<td width="10%" >'+
+			reglon = '<td width="10%" >'+
             '<div class="select-editable">'+
                '<select id="sel'+i+'" >'+
                    '<option value=""></option>'
@@ -175,7 +175,7 @@ while(i <= cantLineas){
                '</select>'+
                '<input id="inp'+i+'" type="text" name="format" value="" />'+
            '</div>'+
-           '</td>';*/
+           '</td>';
 
       }     
 

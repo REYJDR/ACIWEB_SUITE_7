@@ -7,7 +7,7 @@ $REQ_Detail1 = "Proyecto";
 $REQ_Detail2 = "Fecha";
 $REQ_Detail3 = "Nota";
 
-$REQ_TblHdr1 = "Renglon";
+$REQ_TblHdr1 = "ItemID";
 $REQ_TblHdr2 = "Descripcion";
 $REQ_TblHdr3 = "Cant.";
 $REQ_TblHdr4 = "Uni.";
