@@ -14,48 +14,6 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 <script  src="<?php echo URL; ?>js/operaciones/inventory/invOut.js" ></script>
 
 
-
-<!--ini authorization modal-->
-<div id="AuthLogin" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-		<span class="modal-form-title"><?php echo $SO_Modal1_Tittle; ?></span>
-	  </div>
-	  <div class="separador col-lg-12"></div>
-      <div class="col-lg-12 modal-body">
-      <!--ini Modal  body-->  
-            <div class="form-group col-lg-12">
-				<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-					<input class="inputPage" type="text" id="user" name="user" placeholder="<?php echo $SO_Modal1_User; ?>" autocomplete="off" >
-					<span class="focus-input100"></span>
-				</div>
-			</div>     
-			<div class="form-group col-lg-12">
-				<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-					<input class="inputPage" type="password"  name="pass" id="pass" placeholder="<?php echo $SO_Modal1_Pass; ?>" autocomplete="off" >
-					<span class="focus-input100"></span>
-				</div>
-			</div>
-      <!--fin Modal  body-->
-      </div>
-      <div class="modal-footer">
-	  <div class="col-lg-6"></div>
-	  <div class="col-lg-3">
-        <button type="button" onclick="javascript:mod_price_auth();" data-dismiss="modal" class="accept-form-btn" ><?php echo $SO_Modal1_BTN1; ?></button>
-	  </div>
-	   <div class="col-lg-3">
-		<button type="button" class="close-form-btn" data-dismiss="modal"><?php echo $SO_Modal1_BTN2; ?></button>
-		</div>
-	</div>
-    </div>
-  </div>
-</div>
-<!--fin authorization modal-->
-
-
-
 <div class="limiter">
 		<div class="container-page100">
 			<div class="wrap-page100">
@@ -76,40 +34,13 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 
 				<!--ini  header-->
 				<div class="col-lg-8"> 
-				   <div  class="col-lg-6">
-				   <fieldset class="fieldsetform">
-					<table class='table_form'>
-						<tbody>
-						<tr>
-							<th><strong><?PHP echo $SO_Cust; ?></strong></th>
-								<td><select  id="customer" name="customer" class="select col-lg-12" onchange="set_listprice(this.value);" required>
-								<option selected disabled></option>
-								<?php  
-								$CUST = $this->model-> get_ClientList(); 
-								foreach ($CUST as $datos) {
-									$CUST_INF = json_decode($datos);
-									if ($CUST_INF->{'Custom_field3'}!=''){
-									$field3 =  ' ('.$CUST_INF->{'Custom_field3'}.') ';
-								}else{
-									$field3 = '';
-								}
-								echo '<option value="'.$CUST_INF->{'ID'}.'" >'.$CUST_INF->{'CustomerID'}.' - '.$CUST_INF->{'Customer_Bill_Name'}.$field3."</option>";
-								}
-
-								?>
-							</select></td></tr>
-						</tbody>
-					</table>
-					</fieldset>
-					</div>
-					<div  class="col-lg-3"></div>
 
 				    <div  class="col-lg-3">
 					<fieldset class="fieldsetform">
 					<table class='table_form'>
 						<tbody>
 							<tr>
-								<th><strong><?PHP echo $SO_PO; ?></strong></th><td><input  class="inputPage col-lg-12" id="nopo" onkeyup="checkNOTA(this.id);" name="nopo"/></td>
+								<th><strong><?PHP echo $invout_ref; ?></strong></th><td><input  class="inputPage col-lg-12" id="nopo" onkeyup="checkNOTA(this.id);" name="nopo"/></td>
 							</tr>
 						</tbody>
 					</table>
@@ -118,62 +49,6 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 
 					<div  class="col-lg-12"></div>
 
-					<div  class="col-lg-6">
-					<fieldset class="fieldsetform">
-						<table class='table_form' >
-							<tbody>
-					        	<tr><th><strong><?PHP echo $SO_PayTer; ?></strong></th><td><input  class="inputPage col-lg-12" id="termino_pago" onkeyup="checkNOTA(this.id);" name="termino_pago" readonly /></td></tr>
-						    	<tr><th><strong><?PHP echo $SO_Lic; ?></strong></th><td><input class="inputPage col-lg-12" id="tipo_licitacion" onkeyup="checkNOTA(this.id);" name="tipo_licitacion"/></td></tr>
-								<tr>
-								<th><strong><?PHP echo $SO_Tax; ?></strong></th><td> 
-									<select  id="taxid" name="taxid" class="select col-lg-12" onchange="set_taxid(this.value,2);" required>
-										<?php  
-										$tax = $this->model->Get_sales_conf_Info(); 
-										foreach ($tax  as $datos) {
-										$tax  = json_decode($datos);
-										if($tax->{'taxid'}=='ITBMS'){
-											$selected = 'selected';
-										}else{   
-											$selected = '';
-										}
-										echo '<option value="'.$tax ->{'rate'}.'" '.$selected.'>'.$tax->{'taxid'}.'</option>';
-										}
-										?>
-									</select>
-								</td>
-								</tr>
-							</tbody>
-						</table>
-					</fieldset>
-					</div>
-					
-					<div  class="col-lg-6">
-					<fieldset class="fieldsetform">
-						<table class='table_form' >
-							<tbody>
-					        	<tr><th><strong><?PHP echo $SO_DeliDate; ?></strong></th><td><input  class="inputPage col-lg-12" id="fecha_entrega" onkeyup="checkNOTA(this.id);" name="fecha_entrega" /></td></tr>
-						        <tr><th><strong><?PHP echo $SO_Delito; ?></strong></th><td><input class="inputPage  col-lg-12" id="entrega" onkeyup="checkNOTA(this.id);" name="entrega" /></td></tr>
-								<tr><th><strong><?PHP echo $SO_DispFrom; ?></strong></th>
-								<td>
-									<select  id="lugar_despacho" name="lugar_despacho" class="select col-lg-12"  required>
-										<option  selected disabled></option>
-										<?php 
-										$sql = 'SELECT * FROM SHIP_INFO WHERE id_compania="'.$this->model->id_compania.'"';
-										$ship = $this->model->Query($sql); 
-											foreach ($ship  as $datos) {
-												$datos  = json_decode($datos);
-												echo '<option value="'.$datos->{'ShipAddress'}.'">'.$datos->{'ShipAddress'}.'</option>';
-											}
-										?>
-									</select>
-								</td>
-							  </tr>
-							</tbody>
-						</table>
-					</fieldset>
-					</div>
-
-					<div  class="col-lg-12"></div>
 
 					<div  class="col-lg-12">
 					<fieldset class="fieldsetformb">
