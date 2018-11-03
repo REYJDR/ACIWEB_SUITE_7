@@ -75,7 +75,7 @@ $SO_Modal1_BTN2 = 'Cerrar';
 $SO_title1 = 'Informacion General';
 $SO_Cust   = 'Cliente';
 $SO_Delito = 'Entrega a';
-$SO_PO     = '# PO';
+$invout_ref     = '# Referencia';
 $SO_Lic    = 'Tipo de Licitacion';
 $SO_PayTer = 'Termino de pago';
 $SO_Tax    = 'Tax ID';
@@ -125,9 +125,6 @@ $Inv_REP_TblHdr8 = 'Proyecto';
 $Inv_REP_TblHdr9 = 'Fase';
 $Inv_REP_TblHdr10 = 'Centro Costo';
 $Inv_REP_TblHdr11 = 'Referencia';
-
-
-
 
 //END REPORTE
 ?>

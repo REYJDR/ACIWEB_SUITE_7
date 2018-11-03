@@ -8,26 +8,10 @@ $NO_LINES =  $this->model->Query_value('FAC_DET_CONF','NO_LINES','where ID_compa
 echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />'; 
 
 
-$amnt_view_ck = $this->model->Query_value('SAX_USER','amountSO','where SAX_USER.onoff="1" and SAX_USER.id="'.$this->model->active_user_id.'"');
-echo '<input type="hidden" id="ANMT_VIEW" value="'.$amnt_view_ck.'" />'; 
-if ($amnt_view_ck==0){
-  $display = "display:none;";
-} else{
-  $display = "";
-}
-
-
-$pice_mod_ck = $this->model->Query_value('SAX_USER','mod_price','where SAX_USER.onoff="1" and SAX_USER.id="'.$this->model->active_user_id.'"');
-if ($pice_mod_ck == 1) {
-  echo '<input type="hidden" id="editable" value="contenteditable" />'; 
-}else{
-  echo '<input type="hidden" id="editable" value="" />'; 
-}
-
 ?>
 
 <!--ADD JS FILE-->
-<script  src="<?php echo URL; ?>js/operaciones/ventas/SalesOrderSto.js" ></script>
+<script  src="<?php echo URL; ?>js/operaciones/inventory/invOut.js" ></script>
 
 
 
