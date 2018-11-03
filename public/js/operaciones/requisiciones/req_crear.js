@@ -167,15 +167,12 @@ while(i <= cantLineas){
 
      }else{
 
-			reglon = '<td width="10%" >'+
-            '<div class="select-editable">'+
-               '<select id="sel'+i+'" >'+
-                   '<option value=""></option>'
-                    +listitem+
-               '</select>'+
-               '<input id="inp'+i+'" type="text" name="format" value="" />'+
-           '</div>'+
-           '</td>';
+      reglon = '<td width="10%" >'+
+      '<select class="selectItems col-lg-12" id="sel'+i+'" onchange="SetDesc(this.value,'+i+')" >'+
+          '<option selected></option>'
+          +listitem+
+      '</select>'+
+      '</td>';  
 
       }     
 
