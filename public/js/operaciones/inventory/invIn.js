@@ -674,12 +674,17 @@ function sumar_total(){
     var theTbl = document.getElementById('table_ord_tb'); //objeto de la tabla que contiene los datos de items
     var total = [];
     var TOTAL = 0;
+    var itbms = [];
 
-    total_field =   document.getElementById('total');
+    total_field    = document.getElementById('total');
+  /* subtotal_field = document.getElementById('subtotal');
+    tax_field      = document.getElementById('tax'); */
+    tax_value      = document.getElementById('saletaxid').value;
+
     
     for(var i=1; i<theTbl.rows.length ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theTbl
     {
-    
+       var  taxableID = 'tax'+i;
       for(var j=0;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
     
             {       
@@ -687,6 +692,13 @@ function sumar_total(){
                 switch (j){
     
                        case 7:
+                    
+                       if(document.getElementById(taxableID).value=='SI'){
+                    
+                        itbms_sum = ( Number(theTbl.rows[i].cells[j].innerHTML) * Number(theTbl.rows[i].cells[5].innerHTML) ) * Number(tax_value);
+                        itbms.push(itbms_sum);
+    
+                        }
                        
                         total.push(theTbl.rows[i].cells[7].innerHTML);
     
@@ -699,19 +711,34 @@ function sumar_total(){
     }//FIN BLUCLE PARA LEER LINEA POR LINEA DE LA TABLA
     
 
+    var subtotal  = 0;
+    var TAX  = 0;
     
-   for(var i=0; i<total.length; i++){
+    for(var i=0; i<total.length; i++){
+    
+        subtotal  += Number(total[i]);
+    
+    }
+    
+    for(var i=0; i<itbms.length; i++){
+    
+        TAX    += Number(itbms[i]);
+    
+    }
+    
+ /*  for(var i=0; i<total.length; i++){
     
         TOTAL  += Number(total[i]);
     
-    }
+    }*/
+
+    TOTAL = subtotal + TAX;
 
     total_field.value   =  parseFloat(TOTAL).toFixed(5);
 
    
     budgetCompare();
     
-   
     
 }
 // ******************************************************************************************

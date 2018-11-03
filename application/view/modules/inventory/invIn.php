@@ -243,6 +243,25 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 										<?php } ?>
 										</td>
+										
+									</tr>
+									<tr>
+									<th><strong><?PHP echo $SO_Tax; ?></strong></th><td> 
+									<select  id="taxid" name="taxid" class="select col-lg-12" onchange="set_taxid(this.value,2);" required>
+										<?php  
+										$tax = $this->model->Get_sales_conf_Info(); 
+										foreach ($tax  as $datos) {
+										$tax  = json_decode($datos);
+										if($tax->{'taxid'}=='ITBMS'){
+											$selected = 'selected';
+										}else{   
+											$selected = '';
+										}
+										echo '<option value="'.$tax ->{'rate'}.'" '.$selected.'>'.$tax->{'taxid'}.'</option>';
+										}
+										?>
+									</select>
+								</td>
 									</tr>
 									
 									</tbody>
