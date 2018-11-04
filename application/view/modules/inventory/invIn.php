@@ -299,7 +299,6 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 									<tbody id="items" ></tbody>
 								</table>
 								</fieldset>
-								
 
 								<!--totales-->
 								<div  class="separador col-lg-12" ></div>
@@ -308,6 +307,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 									<fieldset class="fieldsetform">
 										<table class='table_form' >
 											<tbody>
+												<tr><th><strong><?php echo $SubTotal;?></strong></th><td><input class="col-lg-12"  style="text-align:right;" type="number"  step="0.01" id="subtotal" name="subtotal"  value="0.00" readonly /></td></tr>
+						       			    	<tr><th><strong><?php echo $Tax;?></strong></th><td><input class="col-lg-12"  style="text-align:right;" type="number"  step="0.01" id="tax" name="tax" value="0.00" readonly/> </td></tr>
 												<tr><th><strong><?PHP echo $Total; ?></strong></th><td><input class="col-lg-12"  style="text-align:right;" type="number"  step="0.01" id="total" name="total" value="0.00" readonly /></td>
 											</tr>
 											</tbody>
