@@ -42,7 +42,7 @@ $SUBMENU_rep4 = 'Reporte Diario';
 $SUBMENU_rep5 = 'Salida de mercancia';
 $SUBMENU_rep7 = 'Requisiciones de Pagos';
 $SUBMENU_rep6 = 'Otros';
-$SUBMENU_rep8 = 'Entrada de mercancia';
+$SUBMENU_rep8 = 'Movimientos de mercancia';
 
 $SUBMENU_cust1 = 'Lista de precios';
 //END MENU

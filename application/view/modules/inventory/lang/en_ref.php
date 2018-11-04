@@ -115,7 +115,8 @@ $Inv_REP_TblHdr7 = 'Total';
 $Inv_REP_TblHdr8 = 'Proyecto';
 $Inv_REP_TblHdr9 = 'Fase';
 $Inv_REP_TblHdr10 = 'Centro Costo';
-$Inv_REP_TblHdr11 = 'Referencia';
+$Inv_REP_TblHdr11 = 'Tipo';
+$Inv_REP_TblHdr12 = 'Referencia';
 
 
 

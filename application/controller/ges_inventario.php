@@ -1104,7 +1104,8 @@ public function set_Budget_Log($values,$type){
                                         'unit_price' => $UnitPrice ,
                                         'Total' => $total,
                                         'User' => $user,
-                                        'Type' => 'PEACHTREE Fact. Tx: '.$PurchaseNumber,
+                                        'Type' => 'PEACHTREE Entrada de Mercacia - Fact. de compra',
+                                        'Referencia' => $PurchaseNumber,
                                         'ID_compania' => $id_compania );
             
                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
@@ -1148,7 +1149,8 @@ public function set_Budget_Log($values,$type){
                                         'unit_price' => $UnitPrice ,
                                         'Total' => $total,
                                         'User' => $user,
-                                        'Type' => 'PEACHTREE Adjuste: '.$PurchaseNumber,
+                                        'Type' => 'PEACHTREE Adjuste - Entrada ',
+                                        'Referencia' => $PurchaseNumber,
                                         'ID_compania' => $id_compania );
             
                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
@@ -1190,7 +1192,8 @@ public function set_Budget_Log($values,$type){
                                         'unit_price' => $UnitPrice ,
                                         'Total' => $total,
                                         'User' => $user,
-                                        'Type' => 'PEACHTREE Adjuste: '.$PurchaseNumber,
+                                        'Type' => 'PEACHTREE Adjuste - Salida',
+                                        'Referencia' => $PurchaseNumber,
                                         'ID_compania' => $id_compania );
             
                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
