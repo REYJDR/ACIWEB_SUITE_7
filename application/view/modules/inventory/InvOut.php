@@ -113,7 +113,7 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 				<div class='col-lg-10'></div>
 				<div class='col-lg-2'>
 					<div class="container-login100-form-btn">
-								<button type="button" id="process" class="accept-form-btn">
+								<button type="button" id="process" onclick="proceed();"  class="accept-form-btn">
 								<?PHP echo $BTN_Process; ?>
 								</button>
 					</div>
