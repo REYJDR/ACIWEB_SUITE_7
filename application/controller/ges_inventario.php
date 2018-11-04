@@ -952,15 +952,6 @@ public function if_ProductExist_chk($ProductID){
 }
 
 
-public function setInv_adjustment($Adjustment_values){
-    
-        $this->model->verify_session();
-    
-        $this->model->insert('InventoryAdjust_Imp',$Adjustment_values); //set Product line
-    
-}
-
-
 public function getVendorList(){
 
  $this->model->verify_session();
@@ -1175,6 +1166,48 @@ public function set_Budget_Log($values,$type){
                 }
             break;
 
+          case '3':
+        
+           
+                $PurchaseNumber = $values['Reference']; 
+                $Item  = $values['ItemID'];
+/*              $phase = $values['JobPhaseID']; 
+                $job   = $values['JobID']; 
+                $cost  = $values['JobCostCodeID']; */
+                $total = $values['Quantity']*$values['UnitCost']; 
+                $Qty   = $values['Quantity'];
+                $UnitPrice = $values['UnitCost'];
+            
+                $id_compania= $this->model->id_compania;
+                $user = $this->model->active_user_id;
+            
+                $event_values = array(  'ProductID' => $Item,
+                                     /* 'JobID' => $job,
+                                        'JobPhaseID' => $phase,
+                                        'JobCostCodeID' => $cost,*/
+                                        'PurchaseNumber' => '',
+                                        'Qty'=> $Qty,
+                                        'unit_price' => $UnitPrice ,
+                                        'Total' => $total,
+                                        'User' => $user,
+                                        'Type' => 'PEACHTREE Adjuste: '.$PurchaseNumber,
+                                        'ID_compania' => $id_compania );
+            
+                $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
+                
+                usleep(1000);
+                $error = $this->CheckError();
+                if($error){
+                $error= json_decode($error) ;
+                echo 'ERROR: '.$error->{'E'}.' INV_EVENT_LOG ';
+            
+                $this->model->delete('InventoryAdjust_Imp',' Where Reference="'.$PurchaseNumber.'" and ID_Compania="'.$id_compania.'";');
+               
+                die(); 
+            
+                }
+            break;
+
     }    
 
 
@@ -1248,7 +1281,58 @@ public function setInventoryAdjustment(){
     
 }
 
+public function setInventoryAdjustmentOUT(){
 
+$this->model->verify_session();
+    $id_compania= $this->model->id_compania;
+    $user = $this->model->active_user_id;
+    $ref = '';
+
+    $data = json_decode($_GET['Data']);
+
+    foreach ($data as $key => $value) {
+
+        list($null,$itemid,$unitprice,$qty,$total,$note) = explode('@', $value );
+
+        
+        if($value){
+            
+            $date = strtotime($this->model->GetLocalTime(date("Y-m-d")));
+            $date = date("Y-m-d",$date);
+            $reference = $this->model->Get_Ref_No();
+            
+            $values = array (
+                'ItemID' => $itemid, 
+                'Reference' => $reference , 
+                'ReasonToAdjust' => 'Aciweb - Salida de mercancia '.$note , 
+                'Account' => $gl_acc , 
+                'UnitCost' => $unitprice , 
+                'Quantity' => $qty, 
+                'Date' => $date , 
+                'USER' => $user , 
+                'ID_compania' =>  $id_compania );
+
+            $this->model->insert('InventoryAdjust_Imp',$values);
+            
+            usleep(1000);
+            $error = $this->CheckError();
+            if($error){
+                $error= json_decode($error) ;
+                    echo 'ERROR: '.$error->{'E'}.' InventoryAdjust_Imp - itemID '.$itemid.' Ref:'.$reference;
+                die();
+                
+            }else{
+            
+                $this->set_Budget_Log($values,'2');
+                $ref .= 'Item:'.$itemid.'Ref: '.$reference."\n";
+            }
+        }
+    }
+    if(!$error){
+
+        echo $ref;
+    }
+}
 
 }//CIERRE DE CLASE
 ?>

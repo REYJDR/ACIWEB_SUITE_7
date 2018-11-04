@@ -66,6 +66,7 @@ $SO_title1 = 'Informacion General';
 $SO_Cust   = 'Cliente';
 $SO_Delito = 'Entrega a';
 $invout_ref     = '# Referencia';
+$cta_mg    ='Cta. MG';
 $SO_Lic    = 'Tipo de Licitacion';
 $SO_PayTer = 'Termino de pago';
 $SO_Tax    = 'Tax ID';
@@ -100,7 +101,7 @@ $Total    = 'Total';
 
 //REPORTE 
 $INV_REP1='';
-$Inv_REP_title ='Historial de Entrada de mercancia';
+$Inv_REP_title ='Movimientos de mercancia';
 $Inv_REP_input2 = 'Fechas desde';
 $Inv_REP_input3 = 'hasta';
 $Inv_REP_REP_BTN1= 'Consultar';

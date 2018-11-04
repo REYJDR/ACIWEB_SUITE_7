@@ -344,11 +344,70 @@ function proceed(){
      //AGRUPO LAS LINEAS DE ITEMS EN ARRAY
      flag = setItems();
 
+        /////////////////////////////////////////////////////////////////////////////////////
+        //SI NO HAY ITEMS EN LA LISTA
+        if(flag==0){ 
+            MSG_ERROR('No se han indicado registros para envio'); 
+              return;
+          }
+          
+        /////////////////////////////////////////////////////////////////////////////////////
+        //SI HAY ITEMS EN LA LISTA
+        if(flag==1){  
+        
+        var r = confirm('Desea procesar la salida de mercancia?');
+        
+            if (r == true) { 
+            
 
+                    //REGISTROS DE ITEMS 
+                    $.ajax({
+                        type: "GET",
+                        url:  link,
+                        data:  {url: 'ges_inventario/setInventoryAdjustmentOUT/', Data : JSON.stringify(LineArray)}, 
+                        success: function(res){
+        
+                        if(res.indexOf('ERROR') != -1){
+                        
+                            MSG_ERROR(res,0);
+                        
+                        }else{//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
+                            //checkSOIns(link,OS_NO);
+                            msg(link,res);
+                        }
+
+                        }
+                
+                        });
+
+                
+            }
+        }
+
+
+    /////////////////////////////////////////////////////////////////////////////////////
+    //MANEJO DE ERRORES POR CAMPO FALTANTES EN LOS ITEMS
+    if(flag==2){ 
+        
+            MSG_ERROR_RELEASE(); //LIMPIO DIV DE ERRORES
+            
+            FaltaArray.forEach(ListFaltantes);
+            
+            function ListFaltantes(item,index){
+            
+                column = FIND_COLUMN_NAME(index);
+                MSG_ERROR('No se indico valor en el Item: '+item+" / Campo :" +column, 1); 
+            
+            }
+            
+            FaltaArray.length = ''; //LIMPIO ARRAY DE ERRORES
+        
+        }
+        /////////////////////////////////////////////////////////////////////////////////////
 
 }
 
-  // ******************************************************************************************
+    // ******************************************************************************************
     // CONSTRUYE ARRAY CON ITEMS 
     // ******************************************************************************************
     function setItems(){
@@ -383,7 +442,7 @@ function proceed(){
                                /*   stockId   = document.getElementById(selid).value;
                                     locId     = document.getElementById(selid).value;*/ 
                                                                 
-                                                               
+                                    note      = theTbl.rows[i].cells[2].innerHTML;
                                     qty       = theTbl.rows[i].cells[4].innerHTML;
                                     UnitPrice = theTbl.rows[i].cells[5].innerHTML;
                                     total     = theTbl.rows[i].cells[6].innerHTML;
@@ -396,7 +455,8 @@ function proceed(){
                                     cell += '@'+itemId+
                                             '@'+UnitPrice+
                                             '@'+qty+
-                                            '@'+total
+                                            '@'+total+
+                                            '@'+note
 
                                             
                                 console.log(cell);
