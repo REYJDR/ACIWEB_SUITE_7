@@ -1104,7 +1104,7 @@ public function set_Budget_Log($values,$type){
                                         'unit_price' => $UnitPrice ,
                                         'Total' => $total,
                                         'User' => $user,
-                                        'Type' => 'PEACHTREE Entrada de Mercacia - Fact. de compra',
+                                        'Type' => 'Entrada - Fact. de compra',
                                         'Referencia' => $PurchaseNumber,
                                         'ID_compania' => $id_compania );
             
@@ -1149,7 +1149,7 @@ public function set_Budget_Log($values,$type){
                                         'unit_price' => $UnitPrice ,
                                         'Total' => $total,
                                         'User' => $user,
-                                        'Type' => 'PEACHTREE Adjuste - Entrada ',
+                                        'Type' => 'Entrada por Adjuste',
                                         'Referencia' => $PurchaseNumber,
                                         'ID_compania' => $id_compania );
             
@@ -1192,7 +1192,7 @@ public function set_Budget_Log($values,$type){
                                         'unit_price' => $UnitPrice ,
                                         'Total' => $total,
                                         'User' => $user,
-                                        'Type' => 'PEACHTREE Adjuste - Salida',
+                                        'Type' => 'Salida por Ajuste',
                                         'Referencia' => $PurchaseNumber,
                                         'ID_compania' => $id_compania );
             
