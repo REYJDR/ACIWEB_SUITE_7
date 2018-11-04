@@ -559,3 +559,27 @@ function FIND_COLUMN_NAME(item){
 //******************************************************************************************
 //busca nombre de columna
 //******************************************************************************************
+
+
+
+//******************************************************************************************
+//mensaje
+//******************************************************************************************
+
+function msg(link,id){
+
+   // MSG_CORRECT("La informacion ha ingresado correctamente, No. de transaccion: "+id,1);
+    alert("La informacion ha ingresado correctamente, No. de transaccion: "+id);
+    location.reload();
+    /*var R = confirm('Desea imprimir la orden de venta?');
+   
+    if(R==true){
+           window.open(link+'?url=ges_ventas/PrintSalesOrder/1/'+SalesOrderNumber,'_self');
+    }else{
+
+      location.reload();
+    }*/
+}
+//******************************************************************************************
+//mensaje
+//******************************************************************************************
