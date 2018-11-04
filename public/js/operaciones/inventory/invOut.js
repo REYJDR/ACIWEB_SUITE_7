@@ -530,8 +530,8 @@ function proceed(){
 
 function validacion(){
 
-    if (document.getElementById('nopo').value == ''){
-        MSG_ERROR('Se debe indicar una referencia',0);
+    if (document.getElementById('observaciones').value == ''){
+        MSG_ERROR('Se debe agregar una nota en observaciones',0);
         CHK_VALIDATION = true;
     }
   
