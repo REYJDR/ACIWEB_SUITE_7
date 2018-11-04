@@ -244,9 +244,10 @@ function sumar_total(){
     var TOTAL = 0;
     var itbms = [];
 
-/*    subtotal_field = document.getElementById('subtotal');
-    tax_field      = document.getElementById('tax'); */
-    tax_value      = document.getElementById('saletaxid').value;
+    total_field    = document.getElementById('total');
+/*  subtotal_field = document.getElementById('subtotal');
+    tax_field      = document.getElementById('tax'); 
+    tax_value      = document.getElementById('saletaxid').value;*/
 
     
     for(var i=1; i<theTbl.rows.length ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theTbl
