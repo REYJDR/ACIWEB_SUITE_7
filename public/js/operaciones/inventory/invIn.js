@@ -1188,7 +1188,7 @@ function proceed(){
                 LineArray[i]=cell; 
                 }        
         
-            }
+            
 
         i++;       
         
