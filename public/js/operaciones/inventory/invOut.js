@@ -98,7 +98,7 @@ function builtTbl(chk){
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)"  id="desc'+i+'"  ></td>'+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)"  id="note'+i+'"  ></td>'+  
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable2+' '+color2+' id="unit'+i+'"  ></td>'+
-                '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblNegative(this.id)" onfocusout="recalcular('+i+');" contenteditable id="qty'+i+'"></td>'+
+                '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)" onfocusout="recalcular('+i+');" contenteditable id="qty'+i+'"></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblnum(this.id)" onfocusout="calculate( '+i+');" contenteditable   id="unitprice'+i+'" ></td>'+
                 '<td width="5%"  class="rowtable_req  numb" '+color+' id="total'+i+'" ></td></tr>' ;
             i++
@@ -259,7 +259,7 @@ function sumar_total(){
     
                 switch (j){
     
-                       case 7:
+                       case 6:
                   
                     /*   if(document.getElementById(taxableID).innerHTML=='SI'){
                     
@@ -268,7 +268,7 @@ function sumar_total(){
     
                         }*/
                        
-                        total.push(theTbl.rows[i].cells[7].innerHTML);
+                        total.push(theTbl.rows[i].cells[j].innerHTML);
     
                         break;
     
