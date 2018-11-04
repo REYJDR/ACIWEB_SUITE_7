@@ -1173,9 +1173,9 @@ public function set_Budget_Log($values,$type){
            
                 $PurchaseNumber = $values['Reference']; 
                 $Item  = $values['ItemID'];
-/*              $phase = $values['JobPhaseID']; 
-                $job   = $values['JobID']; 
-                $cost  = $values['JobCostCodeID']; */
+                $phase = ''; 
+                $job   = ''; 
+                $cost  = ''; 
                 $total = $values['Quantity']*$values['UnitCost']; 
                 $Qty   = $values['Quantity'];
                 $UnitPrice = $values['UnitCost'];
@@ -1184,9 +1184,9 @@ public function set_Budget_Log($values,$type){
                 $user = $this->model->active_user_id;
             
                 $event_values = array(  'ProductID' => $Item,
-                                     /* 'JobID' => $job,
+                                        'JobID' => $job,
                                         'JobPhaseID' => $phase,
-                                        'JobCostCodeID' => $cost,*/
+                                        'JobCostCodeID' => $cost,
                                         'PurchaseNumber' => '',
                                         'Qty'=> $Qty*(-1),
                                         'unit_price' => $UnitPrice ,
