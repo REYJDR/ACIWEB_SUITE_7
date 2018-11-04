@@ -88,20 +88,21 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 				</table>
 				</fieldset>
 				
-
 				<!--totales-->
 				<div  class="separador col-lg-12" ></div>
-				<div  class="col-lg-8" ></div>
-				<div  class="col-lg-4" style="<?php echo $display;?>">
+				<div  class="col-lg-10" ></div>
+				<div  class="col-lg-2" style="<?php echo $display;?>">
 					<fieldset class="fieldsetform">
 						<table class='table_form' >
 							<tbody>
 								<tr><th><strong><?PHP echo $Total; ?></strong></th><td><input class="col-lg-12"  style="text-align:right;" type="number"  step="0.01" id="total" name="total" value="0.00" readonly /></td>
-							  </tr>
+							</tr>
 							</tbody>
 						</table>
 					</fieldset>
 					</div>
+				<!--totales-->
+
 				<!--totales-->
 
                </div>
