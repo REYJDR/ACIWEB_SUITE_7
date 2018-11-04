@@ -739,11 +739,10 @@ function sumar_total(){
 
     TOTAL =  subtotal+ TAX;
 
-    subtotal_field.value = document.getElementById('subtotal');
-    tax_field.value      = document.getElementById('tax'); 
-    total_field.value   =  parseFloat(TOTAL).toFixed(5);
+    subtotal_field.value = parseFloat(subtotal).toFixed(2);;
+    tax_field.value      = parseFloat(TAX).toFixed(2);; 
+    total_field.value   =  parseFloat(TOTAL).toFixed(2);
 
-   console.log('sub:'+document.getElementById('subtotal'));
     budgetCompare();
     
     
