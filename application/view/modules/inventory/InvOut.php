@@ -42,6 +42,7 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 							<tr>
 								<th><strong><?PHP echo $invout_ref; ?></strong></th><td><input  class="inputPage col-lg-12" id="nopo" onkeyup="checkNOTA(this.id);" name="nopo"/></td>
 							</tr>
+
 						</tbody>
 					</table>
 					</fieldset>
@@ -50,7 +51,7 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 					<div  class="col-lg-12"></div>
 
 
-					<div  class="col-lg-12">
+					<div  class="col-lg-8">
 					<fieldset class="fieldsetformb">
 					<table class='table_form note'>
 						<tbody>
