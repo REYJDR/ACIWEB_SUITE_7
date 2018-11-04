@@ -348,7 +348,7 @@ for(var i=1; i<theTbl.rows.length ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TA
   l = 1 + l; //contador de registros
 
   ITEMid = 'sel'+i;
-  taxableID = 'taxable'+i;
+  taxableID = 'tax'+i;
   ITEM_ID = '';
 
     for(var j=0;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
@@ -400,6 +400,8 @@ for(var i=0; i<itbms.length; i++){
   subtotal_field.value = parseFloat(subtotal).toFixed(2);
   tax_field.value      = parseFloat(TAX).toFixed(2);
   total_field.value   =  parseFloat(TOTAL).toFixed(2);
+
+  console.log('sub:'.parseFloat(subtotal).toFixed(2),'/itbms:'.parseFloat(TAX).toFixed(2));
 
 }
 
