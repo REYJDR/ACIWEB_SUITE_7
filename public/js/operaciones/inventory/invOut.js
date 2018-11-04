@@ -96,7 +96,7 @@ function builtTbl(chk){
 
             var line_table_req = '<tr>'+reglon+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)"  id="desc'+i+'"  ></td>'+
-                '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)"  id="note'+i+'"  ></td>'+  
+                '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" contenteditable id="note'+i+'"  ></td>'+  
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable2+' '+color2+' id="unit'+i+'"  ></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)" onfocusout="recalcular('+i+');" contenteditable id="qty'+i+'"></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblnum(this.id)" onfocusout="calculate( '+i+');" contenteditable   id="unitprice'+i+'" ></td>'+
@@ -245,7 +245,7 @@ function sumar_total(){
     var itbms = [];
 
     total_field    = document.getElementById('total');
-/*  subtotal_field = document.getElementById('subtotal');
+ /*  subtotal_field = document.getElementById('subtotal');
     tax_field      = document.getElementById('tax'); 
     tax_value      = document.getElementById('saletaxid').value;*/
 
@@ -279,7 +279,7 @@ function sumar_total(){
     }//FIN BLUCLE PARA LEER LINEA POR LINEA DE LA TABLA
     
 
-/*    var subtotal  = 0;
+ /*    var subtotal  = 0;
     var TAX  = 0;
     
     for(var i=0; i<total.length; i++){
@@ -299,7 +299,7 @@ function sumar_total(){
         TOTAL  += Number(total[i]);
     
     }
-console.log(TOTAL);
+
  /*   TOTAL =  subtotal+ TAX
 
 
@@ -315,3 +315,123 @@ console.log(TOTAL);
 // ******************************************************************************************
 // *CALCULOS DE TOTALES
 // ******************************************************************************************
+
+
+  // ******************************************************************************************
+    // CONSTRUYE ARRAY CON ITEMS 
+    // ******************************************************************************************
+    function setItems(){
+
+        LineArray.length=''; //limpio el array
+        
+        var flag = ''; 
+        var theTbl = document.getElementById('table_ord_tb'); //objeto de la tabla que contiene los datos de items
+        var line = '';
+        var cantLineas = Number(document.getElementById('FAC_NO_LINES').value);
+        
+        var i=1;
+        
+        //BLUCLE PARA LEER LINEA POR LINEA LA TABLA 
+        while (i <= cantLineas){
+        
+          cell = '';
+          for(var j=0;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
+           {
+        
+                //*AJUSTE DE MATERIAL
+                var selid = "sel"+i;
+                
+                if(document.getElementById(selid).value !=''){ 
+        
+                        switch (j){
+            
+                                case 0:
+        
+                                    itemId    = document.getElementById(selid).value;
+    
+                               /*   stockId   = document.getElementById(selid).value;
+                                    locId     = document.getElementById(selid).value;*/ 
+                                                                
+                                                               
+                                    qty       = theTbl.rows[i].cells[5].innerHTML;
+                                    UnitPrice = theTbl.rows[i].cells[6].innerHTML;
+                                    total     = theTbl.rows[i].cells[7].innerHTML;
+
+                               /*   lote      = theTbl.rows[i].cells[7].innerHTML;
+                                    fechaVen  = theTbl.rows[i].cells[7].innerHTML;*/
+                                    
+                                    
+                                    //agrego el registo de las demas columnas
+                                    cell += '@'+itemId+
+                                            '@'+UnitPrice+
+                                            '@'+qty+
+                                            '@'+total+
+                                            '@'+jobId+
+                                            '@'+phaseid+
+                                            '@'+costcodeID+
+                                            '@'+gl_acc;
+
+                                            
+                                console.log(cell);
+        
+                                   /*if( stockId==0){
+                                        FaltaArray[6] = i ;
+                                    }   
+
+                                    if(stockId==0) {   
+                                        FaltaArray[7] = i ;
+                                    }*/
+
+                                    break;
+    
+                                    default: 
+
+                                        if (j!=5 || j!=6){
+                                            
+                                            val= theTbl.rows[i].cells[j].innerHTML;
+                                            
+                                            if(val==''){                              
+                                                FaltaArray[j] = i ;
+                                            }
+                                        }
+
+                                    break;
+                                }
+                    }      
+        
+                } //FIN BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
+            
+
+
+                 if(theTbl.rows[i].cells[0].innerHTML != '' ){
+                   LineArray[i]=cell; 
+                 }        
+            
+            i++;  
+            }//FIN BLUCLE PARA LEER LINEA POR LINEA DE LA TABLA 
+
+            
+            
+
+        
+        //SETEA RETURN DE LA FUNCION, FLAG 1 Ó 0, SI ES 1 LA TABLA ESTA LLENA, SI ES 0 LA TABLA ESTA VACIA.
+        if(FaltaArray.length == 0){
+
+            if(LineArray.length >= 1){ 
+              flag = 1; 
+             }else{  
+              flag = 0; 
+             }
+        
+        }else{
+        
+            LineArray.length = '';
+            cell = '';
+            flag = 2; //Alguna linea no tiene descripcion
+        
+        }
+        return flag;
+    }
+    // ******************************************************************************************
+    // CONSTRUYE ARRAY CON ITEMS 
+    // ******************************************************************************************
