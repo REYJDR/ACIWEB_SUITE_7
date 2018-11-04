@@ -40,9 +40,8 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 					<table class='table_form'>
 						<tbody>
 							<tr>
-								<th><strong><?PHP echo $invout_ref; ?></strong></th><td><input  class="inputPage col-lg-12" id="nopo" onkeyup="checkNOTA(this.id);" name="nopo"/></td>
+								<th><strong><?PHP echo $invout_ref; ?></strong></th><td><input  class="inputPage col-lg-12 numb" id="nopo" onkeyup="checkNOTA(this.id);" name="nopo"/></td>
 							</tr>
-
 						</tbody>
 					</table>
 					</fieldset>
@@ -56,7 +55,7 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 					<table class='table_form note'>
 						<tbody>
 						<tr><th><strong><?PHP echo $SO_Notes; ?></strong></th>
-						<td><textarea class="textareaPage col-lg-12" onkeyup="checkArroba(this.id);"  rows="2" id="observaciones" name="observaciones"></textarea></td></tr>
+						<td><textarea class="textareaPage col-lg-12" onkeyup="checkInpChar(this.id);"  rows="2" id="observaciones" name="observaciones"></textarea></td></tr>
 						</tbody>
 					</table>
 					</fieldset>	

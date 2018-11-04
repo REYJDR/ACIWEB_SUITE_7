@@ -684,6 +684,30 @@ function set_location(URL){
     
   }
 
+    //SOLO VALORES NUMERICOS POSITIVOS EN CAMPOS DE TABLAS
+  function checkTblNegative(ID){
+    
+    
+        var x=document.getElementById(ID).innerHTML;
+        var patt = new RegExp("-");
+        var sing = patt.test( x );
+    
+    
+        if (isNaN(x) && x <0) 
+        {
+    
+          if(sing==false) {
+            
+                document.getElementById(ID).innerHTML = x.slice(0,-1);
+                MSG_ERROR("La entrada debe ser valores numericos menores a 0", 0 );
+                
+                return false;
+              }
+    
+        }
+    
+  }
+
   //NO PERMITE @ EN CAMPOS DE TABLAS
   function checkTblChar(ID){
     
