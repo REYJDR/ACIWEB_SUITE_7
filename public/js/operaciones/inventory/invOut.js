@@ -490,7 +490,7 @@ function proceed(){
             
 
 
-                 if(theTbl.rows[i].cells[0].innerHTML != '' ){
+                 if(document.getElementById(selid).value !=''){
                    LineArray[i]=cell; 
                  }        
             
