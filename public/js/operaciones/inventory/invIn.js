@@ -743,7 +743,7 @@ function sumar_total(){
     tax_field.value      = document.getElementById('tax'); 
     total_field.value   =  parseFloat(TOTAL).toFixed(5);
 
-   
+   console.log('sub:'+document.getElementById('subtotal'));
     budgetCompare();
     
     
