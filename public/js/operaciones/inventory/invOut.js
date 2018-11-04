@@ -38,7 +38,7 @@ function init(){
    
        $('#items').html('loading...');
    
-       if(chk==2){
+
       
            function getItems(){
    
@@ -67,7 +67,7 @@ function init(){
                
            });
       
-       }
+
 
 }
    
