@@ -268,7 +268,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 														   
 									                        if($cell !=''){
 
-									                   		if ($KEY=='1') { 	
+									                   		if ($KEY=='1') { //CUSTOMER ID	
 
 									                   			$values['1'] = utf8_encode($cell);
 									                   			$cust_chk = $this->model->Query_value('Customers_Exp','CustomerID','where ID_compania="'.$this->model->id_compania.'" AND CustomerID ="'.$values['1'].'" ORDER BY CustomerID DESC LIMIT 1');
@@ -285,16 +285,28 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 									                   		} 
 
 
-															if ($KEY=='2')   	$values['2'] = utf8_encode($cell) ;
-															if ($KEY=='3')   	$values['3'] = utf8_encode($cell) ;
-															if ($KEY=='4')   	$values['4'] = utf8_encode($cell) ;
-															if ($KEY=='5')   	$values['5'] = utf8_encode($cell) ;      	
+															if ($KEY=='2')   	$values['2'] = utf8_encode($cell) ; //CUSTOMER NAME
+															if ($KEY=='3')   	$values['3'] = utf8_encode($cell) ; //CUSTOMER PHONE
+															if ($KEY=='4')   	$values['4'] = utf8_encode($cell) ; //CUSTOMER CONTACT
+															if ($KEY=='5')   	$values['5'] = utf8_encode($cell) ; //CUSTOMER COUNTRY
+															if ($KEY=='6')   	$values['6'] = utf8_encode($cell) ; //CUSTOMER STATE
+															if ($KEY=='7')   	$values['7'] = utf8_encode($cell) ; //CUSTOMER CITY
+															if ($KEY=='8')   	$values['8'] = utf8_encode($cell) ; //CUSTOMER ZIP
+															if ($KEY=='9')   	$values['9'] = utf8_encode($cell) ; //CUSTOMER EMAIL
+															if ($KEY=='10')   	$values['10'] = utf8_encode($cell) ; //CUSTOMER PL
+															if ($KEY=='11')   	$values['11'] = utf8_encode($cell) ; //CUSTOMER BALANCE
+															if ($KEY=='12')   	$values['12'] = utf8_encode($cell) ; //CUSTOMER CREDIT LIMIT
+															if ($KEY=='13')   	$values['13'] = utf8_encode($cell) ; //CUSTOMER SALES ID
+															if ($KEY=='14')   	$values['14'] = utf8_encode($cell) ; //CUSTOMER SALES NAME
+															if ($KEY=='15')   	$values['15'] = utf8_encode($cell) ; //CUSTOMER ADDRESS 1
+															if ($KEY=='16')   	$values['16'] = utf8_encode($cell) ; //CUSTOMER ADDRESS 2    	
 
 									                        }
 													
 												    }
 
-												   $values['6'] = $this->model->id_compania;
+												   $values['17'] = 1; //SET TO ACTIVE
+												   $values['18'] = $this->model->id_compania;
 												   $TABLE = 'Customers_Exp';
 
 				                           
