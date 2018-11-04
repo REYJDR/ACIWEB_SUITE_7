@@ -1040,13 +1040,13 @@ function proceed(){
                 
                 if(document.getElementById('adjust').checked != true){
            
-                  if(theTbl.rows[i].cells[0].innerHTML !=''){ 
+                  if(document.getElementById(selid).value !=''){ 
                     
                                 switch (j){
                     
                                         case 0:
                                             
-                                            itemId    = theTbl.rows[i].cells[0].innerHTML;
+                                            itemId    = document.getElementById(selid).value;
                                             desc      = theTbl.rows[i].cells[1].innerHTML;
                                             unit      = theTbl.rows[i].cells[2].innerHTML;
                                             gl        = theTbl.rows[i].cells[3].innerHTML;
@@ -1180,21 +1180,15 @@ function proceed(){
                 } //FIN BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
         
             }
-            if(document.getElementById('adjust').checked != true){
+
+
+        
                 //INSERTA valor de CELL en el arreglo 
-            if(theTbl.rows[i].cells[0].innerHTML != '' ){
+             if(document.getElementById(selid).value !=''){
                 LineArray[i]=cell; 
                 }        
         
-            }else{
-            //INSERTA valor de CELL en el arreglo 
-            if(document.getElementById(selid).value !=''){
-                LineArray[i]=cell; 
-                }
-
             }
-
-        
 
         i++;       
         
@@ -1276,7 +1270,7 @@ function FIND_COLUMN_NAME(item){
 //******************************************************************************************
 
 //******************************************************************************************
-//busca nombre de columna
+//mensaje
 //******************************************************************************************
 
 function msg(link,id){
@@ -1294,7 +1288,7 @@ function msg(link,id){
     }*/
 }
 //******************************************************************************************
-//busca nombre de columna
+//mensaje
 //******************************************************************************************
 
 //******************************************************************************************
