@@ -40,7 +40,7 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 					<table class='table_form'>
 						<tbody>
 							<tr>
-								<th><strong><?PHP echo $invout_ref; ?></strong></th><td><input  class="inputPage col-lg-12 numb" id="nopo" onkeyup="checkNOTA(this.id);" name="nopo"/></td>
+								<th><strong><?PHP echo $invout_ref; ?></strong></th><td><input  class="inputPage col-lg-12 numb" id="nopo" onkeyup="checkInpChar(this.id);" name="nopo"/></td>
 							</tr>
 						</tbody>
 					</table>
