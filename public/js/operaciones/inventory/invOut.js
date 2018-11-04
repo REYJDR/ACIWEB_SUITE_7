@@ -437,7 +437,7 @@ function proceed(){
                                 case 0:
         
                                     itemId    = document.getElementById(selid).value;
-                                    ctamg     =  document.getElementById('cta_mg').value;
+                                    ctamg     =  document.getElementById('ctamg').value;
                                /*   stockId   = document.getElementById(selid).value;
                                     locId     = document.getElementById(selid).value;*/ 
                                                                 
@@ -534,6 +534,12 @@ function validacion(){
         MSG_ERROR('Se debe agregar una nota en observaciones',0);
         CHK_VALIDATION = true;
     }
+    if (document.getElementById('ctamg').value == ''){
+        MSG_ERROR('Se debe indicar la cuenta de mayor',0);
+        CHK_VALIDATION = true;
+    }
+
+    
   
 }
 //******************************************************************************************
