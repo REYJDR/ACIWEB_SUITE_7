@@ -682,8 +682,8 @@ function sumar_total(){
     var itbms = [];
 
     total_field    = document.getElementById('total');
-  /* subtotal_field = document.getElementById('subtotal');
-    tax_field      = document.getElementById('tax'); */
+    subtotal_field = document.getElementById('subtotal');
+    tax_field      = document.getElementById('tax'); 
     tax_value      = document.getElementById('saletaxid').value;
 
     
@@ -737,8 +737,10 @@ function sumar_total(){
     
     }*/
 
-    TOTAL = subtotal + TAX;
+    TOTAL =  + TAX;
 
+    subtotal_field.value = document.getElementById('subtotal');
+    tax_field.value      = document.getElementById('tax'); 
     total_field.value   =  parseFloat(TOTAL).toFixed(5);
 
    
