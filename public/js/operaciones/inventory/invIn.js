@@ -481,7 +481,7 @@ function builtTbl(chk){
             }        
 
             var line_table_req = '<tr>'+reglon+
-                '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable+' '+color+' id="desc'+i+'"  ></td>'+
+                '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable+' '+color+' id="desc'+i+'"  ></td>'+              
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable+' '+color+' id="unit'+i+'"  ></td>'+
                // '<td width="3%"  class="rowtable_req  numb" onkeyup="checkTblChar(this.id)"  '+editable+' '+color+' id="upc'+i+'"   ></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblChar(this.id)"  id="gl'+i+'" '+editable2+' '+color2+' ></td>'+
