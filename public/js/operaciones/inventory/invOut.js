@@ -244,9 +244,8 @@ function sumar_total(){
     var TOTAL = 0;
     var itbms = [];
 
-    total_field    = document.getElementById('total');
-    subtotal_field = document.getElementById('subtotal');
-    tax_field      = document.getElementById('tax'); 
+/*    subtotal_field = document.getElementById('subtotal');
+    tax_field      = document.getElementById('tax'); */
     tax_value      = document.getElementById('saletaxid').value;
 
     
@@ -261,12 +260,12 @@ function sumar_total(){
     
                        case 7:
                   
-                       if(document.getElementById(taxableID).innerHTML=='SI'){
+                    /*   if(document.getElementById(taxableID).innerHTML=='SI'){
                     
                         itbms_sum = Number(theTbl.rows[i].cells[7].innerHTML) * Number(tax_value);
                         itbms.push(itbms_sum);
     
-                        }
+                        }*/
                        
                         total.push(theTbl.rows[i].cells[7].innerHTML);
     
@@ -279,7 +278,7 @@ function sumar_total(){
     }//FIN BLUCLE PARA LEER LINEA POR LINEA DE LA TABLA
     
 
-    var subtotal  = 0;
+/*    var subtotal  = 0;
     var TAX  = 0;
     
     for(var i=0; i<total.length; i++){
@@ -292,18 +291,18 @@ function sumar_total(){
     
         TAX    += Number(itbms[i]);
     
-    }
+    }*/
     
- /*  for(var i=0; i<total.length; i++){
+   for(var i=0; i<total.length; i++){
     
         TOTAL  += Number(total[i]);
     
-    }*/
+    }
 
-    TOTAL =  subtotal+ TAX;
+ /*   TOTAL =  subtotal+ TAX;
 
     subtotal_field.value = parseFloat(subtotal).toFixed(2);;
-    tax_field.value      = parseFloat(TAX).toFixed(2);; 
+    tax_field.value      = parseFloat(TAX).toFixed(2);; */
     total_field.value   =  parseFloat(TOTAL).toFixed(2);
 
    
