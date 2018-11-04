@@ -299,8 +299,10 @@ function sumar_total(){
         TOTAL  += Number(total[i]);
     
     }
+console.log(TOTAL);
+ /*   TOTAL =  subtotal+ TAX
 
- /*   TOTAL =  subtotal+ TAX;
+
 
     subtotal_field.value = parseFloat(subtotal).toFixed(2);;
     tax_field.value      = parseFloat(TAX).toFixed(2);; */
