@@ -1188,7 +1188,7 @@ public function set_Budget_Log($values,$type){
                                         'JobPhaseID' => $phase,
                                         'JobCostCodeID' => $cost,*/
                                         'PurchaseNumber' => '',
-                                        'Qty'=> $Qty,
+                                        'Qty'=> $Qty*(-1),
                                         'unit_price' => $UnitPrice ,
                                         'Total' => $total,
                                         'User' => $user,
