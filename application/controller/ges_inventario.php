@@ -1310,7 +1310,7 @@ $this->model->verify_session();
                 'ReasonToAdjust' => $note , 
                 'Account' => $ctamg , 
                 'UnitCost' => $unitprice , 
-                'Quantity' => $qty, 
+                'Quantity' => $qty*(-1), 
                 'Date' => $date , 
                 'USER' => $user , 
                 'ID_compania' =>  $id_compania );
@@ -1326,7 +1326,7 @@ $this->model->verify_session();
                 
             }else{
             
-                $this->set_Budget_Log($values,'2');
+                $this->set_Budget_Log($values,'3');
                 $ref .= 'Item:'.$itemid.'Ref: '.$reference."\n";
             }
         }
