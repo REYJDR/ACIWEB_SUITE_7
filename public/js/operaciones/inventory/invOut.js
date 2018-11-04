@@ -384,9 +384,9 @@ function proceed(){
                                     locId     = document.getElementById(selid).value;*/ 
                                                                 
                                                                
-                                    qty       = theTbl.rows[i].cells[5].innerHTML;
-                                    UnitPrice = theTbl.rows[i].cells[6].innerHTML;
-                                    total     = theTbl.rows[i].cells[7].innerHTML;
+                                    qty       = theTbl.rows[i].cells[4].innerHTML;
+                                    UnitPrice = theTbl.rows[i].cells[5].innerHTML;
+                                    total     = theTbl.rows[i].cells[6].innerHTML;
 
                                /*   lote      = theTbl.rows[i].cells[7].innerHTML;
                                     fechaVen  = theTbl.rows[i].cells[7].innerHTML;*/
@@ -396,11 +396,7 @@ function proceed(){
                                     cell += '@'+itemId+
                                             '@'+UnitPrice+
                                             '@'+qty+
-                                            '@'+total+
-                                            '@'+jobId+
-                                            '@'+phaseid+
-                                            '@'+costcodeID+
-                                            '@'+gl_acc;
+                                            '@'+total
 
                                             
                                 console.log(cell);
@@ -467,7 +463,7 @@ function proceed(){
     // CONSTRUYE ARRAY CON ITEMS 
     // ******************************************************************************************
 
-    
+
 //******************************************************************************************
 //VALIDACION DE CONTENIDO
 //******************************************************************************************
