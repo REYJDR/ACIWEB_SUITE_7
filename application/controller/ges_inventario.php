@@ -1307,7 +1307,7 @@ $this->model->verify_session();
             $values = array (
                 'ItemID' => $itemid, 
                 'Reference' => $reference , 
-                'ReasonToAdjust' => 'Aciweb - Salida de mercancia '.$note , 
+                'ReasonToAdjust' => $note , 
                 'Account' => $ctamg , 
                 'UnitCost' => $unitprice , 
                 'Quantity' => $qty, 
