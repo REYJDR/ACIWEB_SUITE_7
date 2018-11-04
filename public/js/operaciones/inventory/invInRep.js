@@ -86,6 +86,10 @@ select_type_options: { width: "100%" }
 {column_number : 10,
     select_type: "select2",
     select_type_options: { width: "100%" }
+    },
+{column_number : 11,
+    select_type: "select2",
+    select_type_options: { width: "100%" }
     }
 ],
 {cumulative_filtering: true, 
