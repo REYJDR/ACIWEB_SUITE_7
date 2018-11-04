@@ -31,6 +31,11 @@ $(window).load(function(){
 
     MSG_ADVICE('LOADING...');
 
+    var TaxID=$("#taxid option:selected").html();
+    var Taxval=$("#taxid option:selected").val();
+    
+    set_taxid(Taxval,1);
+
     
  /*   function GetStockList(){
 
@@ -1289,4 +1294,19 @@ function msg(link,id){
 }
 //******************************************************************************************
 //busca nombre de columna
+//******************************************************************************************
+
+//******************************************************************************************
+//setea el rate del tax seleccionado
+//******************************************************************************************
+
+function set_taxid(rate){
+    
+        var rate = rate/100;    
+        document.getElementById('saletaxid').value =  rate;
+        
+        sumar_total();
+}
+//******************************************************************************************
+//setea el rate del tax seleccionado
 //******************************************************************************************

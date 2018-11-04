@@ -5,7 +5,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 ?>
 
 <input type="hidden" id="FAC_NO_LINES" value="<?php echo $this->model->layout_lines; ?>" /> 
-
+<input type="hidden"  id="saletaxid"  value="" />
 <!--ADD JS FILE-->
 <script  src="<?php echo URL; ?>js/operaciones/inventory/invIn.js" ></script>
 
