@@ -259,7 +259,7 @@ function sumar_total(){
     
                 switch (j){
     
-                       case 6:
+                       case 5:
                   
                     /*   if(document.getElementById(taxableID).innerHTML=='SI'){
                     
@@ -438,14 +438,14 @@ function proceed(){
                                 case 0:
         
                                     itemId    = document.getElementById(selid).value;
-    
+                                    ctamg     =  document.getElementById('cta_mg').value;
                                /*   stockId   = document.getElementById(selid).value;
                                     locId     = document.getElementById(selid).value;*/ 
                                                                 
-                                    note      = theTbl.rows[i].cells[2].innerHTML;
-                                    qty       = theTbl.rows[i].cells[4].innerHTML;
-                                    UnitPrice = theTbl.rows[i].cells[5].innerHTML;
-                                    total     = theTbl.rows[i].cells[6].innerHTML;
+                                    note      = document.getElementById('observaciones').value;
+                                    qty       = theTbl.rows[i].cells[3].innerHTML;
+                                    UnitPrice = theTbl.rows[i].cells[4].innerHTML;
+                                    total     = theTbl.rows[i].cells[5].innerHTML;
 
                                /*   lote      = theTbl.rows[i].cells[7].innerHTML;
                                     fechaVen  = theTbl.rows[i].cells[7].innerHTML;*/
@@ -456,10 +456,11 @@ function proceed(){
                                             '@'+UnitPrice+
                                             '@'+qty+
                                             '@'+total+
-                                            '@'+note
+                                            '@'+note+
+                                            '@'+ctamg;
 
                                             
-                                console.log(cell);
+                                  console.log(cell);
         
                                    /*if( stockId==0){
                                         FaltaArray[6] = i ;
@@ -473,7 +474,7 @@ function proceed(){
     
                                     default: 
 
-                                        if (j!=5 || j!=6){
+                                        if (j!=4 || j!=5){
                                             
                                             val= theTbl.rows[i].cells[j].innerHTML;
                                             

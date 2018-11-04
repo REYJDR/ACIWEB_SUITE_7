@@ -1292,7 +1292,7 @@ $this->model->verify_session();
 
     foreach ($data as $key => $value) {
 
-        list($null,$itemid,$unitprice,$qty,$total,$note) = explode('@', $value );
+        list($null,$itemid,$unitprice,$qty,$total,$note,$ctamg) = explode('@', $value );
 
         
         if($value){
@@ -1305,7 +1305,7 @@ $this->model->verify_session();
                 'ItemID' => $itemid, 
                 'Reference' => $reference , 
                 'ReasonToAdjust' => 'Aciweb - Salida de mercancia '.$note , 
-                'Account' => $gl_acc , 
+                'Account' => $ctamg , 
                 'UnitCost' => $unitprice , 
                 'Quantity' => $qty, 
                 'Date' => $date , 
