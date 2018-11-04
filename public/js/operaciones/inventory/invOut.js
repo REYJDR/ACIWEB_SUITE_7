@@ -188,16 +188,6 @@ function SetDesc(itemId, line){
                 document.getElementById(id_price_field).innerHTML  = json.Price1;
                 
     
-                if(json.TaxType == 1){
-        
-                    document.getElementById(id_taxable_field).innerHTML  = 'SI';
-        
-                }else{
-        
-                    document.getElementById(id_taxable_field).innerHTML  = 'NO';
-        
-            }
-    
         });
        }  
     
