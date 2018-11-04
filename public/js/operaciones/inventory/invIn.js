@@ -737,7 +737,7 @@ function sumar_total(){
     
     }*/
 
-    TOTAL =  + TAX;
+    TOTAL =  subtotal+ TAX;
 
     subtotal_field.value = document.getElementById('subtotal');
     tax_field.value      = document.getElementById('tax'); 
