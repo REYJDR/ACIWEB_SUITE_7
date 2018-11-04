@@ -1037,6 +1037,9 @@ function proceed(){
                 /*
                 var stockId = 'SelStock'+i;
                 var locId = 'SelRoute'+i; */
+
+                //*AJUSTE DE MATERIAL
+                var selid = "sel"+i;
                 
                 if(document.getElementById('adjust').checked != true){
            
