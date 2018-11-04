@@ -697,10 +697,10 @@ function sumar_total(){
                 switch (j){
     
                        case 7:
-                    console.log(document.getElementById(taxableID).innerHTML);
+                  
                        if(document.getElementById(taxableID).innerHTML=='SI'){
                     
-                        itbms_sum = ( Number(theTbl.rows[i].cells[j].innerHTML) * Number(theTbl.rows[i].cells[5].innerHTML) ) * Number(tax_value);
+                        itbms_sum = Number(theTbl.rows[i].cells[7].innerHTML) * Number(tax_value);
                         itbms.push(itbms_sum);
     
                         }
