@@ -473,7 +473,7 @@ function proceed(){
     
                                     default: 
 
-                                        if (j!=4 || j!=5){
+                                        if (j!= 2){
                                             
                                             val= theTbl.rows[i].cells[j].innerHTML;
                                             
