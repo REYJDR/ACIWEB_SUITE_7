@@ -1173,9 +1173,9 @@ public function set_Budget_Log($values,$type){
            
                 $PurchaseNumber = $values['Reference']; 
                 $Item  = $values['ItemID'];
-                $phase = ''; 
-                $job   = ''; 
-                $cost  = ''; 
+                $phase = $values['JobPhaseID']; 
+                $job   = $values['JobID']; 
+                $cost  = $values['JobCostCodeID']; 
                 $total = $values['Quantity']*$values['UnitCost']; 
                 $Qty   = $values['Quantity'];
                 $UnitPrice = $values['UnitCost'];
