@@ -458,8 +458,10 @@ function proceed(){
                                                                 
                                     note      = document.getElementById('observaciones').value;
                                     qty       = theTbl.rows[i].cells[3].innerHTML;
-                                    UnitPrice = theTbl.rows[i].cells[4].innerHTML;
-                                    total     = theTbl.rows[i].cells[5].innerHTML;
+                                   // UnitPrice = theTbl.rows[i].cells[4].innerHTML;
+                                   // total     = theTbl.rows[i].cells[5].innerHTML;
+                                    UnitPrice = '';
+                                    total     = '';
 
                                /*   lote      = theTbl.rows[i].cells[7].innerHTML;
                                     fechaVen  = theTbl.rows[i].cells[7].innerHTML;*/
