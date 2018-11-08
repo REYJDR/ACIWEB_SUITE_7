@@ -74,7 +74,7 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 					</table>
 					</fieldset>
 					</div>
-					
+					<div class="separador col-lg-12"> </div>
 					<div  class="col-lg-3">
 					<fieldset class="fieldsetform">
 					<table class='table_form'>

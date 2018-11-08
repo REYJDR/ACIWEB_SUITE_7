@@ -602,24 +602,25 @@ function msg(link,id){
 // ******************************************************************************************
 function jobs(){   
     
-    
-        var datos= "url=ges_inventario/getJobList";
-        var link= $('#URL').val()+"index.php";
-    
-          return   $.ajax({
-                        type: "GET",
-                        url: link,
-                        data: datos,
-                        success: function(res){
-                        
-                        JOBS = res;
-                        $('#JOBID2').append(JOBS);
-      
-                                
-                    }
-                });
-        
+    /*JOBS*/
+    var datos= "url=ges_requisiciones/get_JobList";
+
+
+    $.ajax({
+    type: "GET",
+    url: link,
+    data: datos,
+    success: function(res){
+
+    JOBS = res;
+
+    $('#JOBID').append(JOBS);
+                
     }
+    });
+    /*JOBS*/
+        
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
