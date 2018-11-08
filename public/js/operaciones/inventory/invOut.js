@@ -30,7 +30,7 @@ var link=  $('#URL').val()+"index.php";
 $(window).load(function(){
     
     $('#ERROR').hide();
-    init();
+   // init();
     jobs();
 });
 
