@@ -618,7 +618,7 @@ function jobs(){
 
     JOBS = res;
 
-    $('#JOBID').append(JOBS);
+    $('#JOBID2').append(JOBS);
                 
     }
     });
