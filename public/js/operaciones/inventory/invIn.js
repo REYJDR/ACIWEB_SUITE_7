@@ -1066,9 +1066,9 @@ function proceed(){
                                             total     = theTbl.rows[i].cells[7].innerHTML;
                                             
                                                                                        
-                                            job       = document.getElementById('JOBID2').value;;
-                                            phase     = document.getElementById('PHASEID2').value;;
-                                            cco       = document.getElementById('COSTID2').value;;
+                                            job       = document.getElementById('JOBID2').value;
+                                            phase     = document.getElementById('PHASEID2').value;
+                                            cco       = document.getElementById('COSTID2').value;
 
                                             //agrego el registo de las demas columnas
                                             cell += '@'+itemId+

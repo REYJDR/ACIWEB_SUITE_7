@@ -27,7 +27,7 @@ $(window).load(function(){
     
     $('#ERROR').hide();
     init();
-    
+    jobs();
 });
 
 
@@ -97,9 +97,14 @@ function builtTbl(chk){
             var line_table_req = '<tr>'+reglon+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)"  id="desc'+i+'"  ></td>'+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable2+' '+color2+' id="unit'+i+'"  ></td>'+
-                '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)" onfocusout="recalcular('+i+');" contenteditable id="qty'+i+'"></td>'+
-                '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblnum(this.id)" onfocusout="calculate( '+i+');" contenteditable   id="unitprice'+i+'" ></td>'+
-                '<td width="5%"  class="rowtable_req  numb" '+color+' id="total'+i+'" ></td></tr>' ;
+                '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)"  contenteditable id="qty'+i+'"></td>'+
+                '<td width="15%" class="rowtable_req"       ><select class="selectItems" id="PHS'+i+'" ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
+                '<td width="15%" class="rowtable_req"       ><select class="selectItems" id="COST'+i+'"  ><option  value="-" selected>-</option>'+COST+'</select></td>'+
+               
+          
+                //     '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)" onfocusout="recalcular('+i+');" contenteditable id="qty'+i+'"></td>'+
+           //     '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblnum(this.id)" onfocusout="calculate( '+i+');" contenteditable   id="unitprice'+i+'" ></td>'+
+           //'<td width="5%"  class="rowtable_req  numb" '+color+' id="total'+i+'" ></td></tr>' ;
             i++
             
             $('#items').append(line_table_req); //limpio la tabla 
@@ -435,7 +440,11 @@ function proceed(){
                         switch (j){
             
                                 case 0:
-        
+                                    job       = document.getElementById('JOBID2').value;
+                                    phase = '';
+                                    cost = '';
+
+
                                     itemId    = document.getElementById(selid).value;
                                     ctamg     =  document.getElementById('ctamg').value;
                                /*   stockId   = document.getElementById(selid).value;
@@ -456,7 +465,10 @@ function proceed(){
                                             '@'+qty+
                                             '@'+total+
                                             '@'+note+
-                                            '@'+ctamg;
+                                            '@'+ctamg+
+                                            '@'+job+
+                                            '@'+phase+
+                                            '@'+cost;
 
                                             
                                   console.log(cell);
@@ -583,3 +595,88 @@ function msg(link,id){
 //******************************************************************************************
 //mensaje
 //******************************************************************************************
+
+
+// ******************************************************************************************
+// * OBTIENE JOBS para estimacion de presupuesto
+// ******************************************************************************************
+function jobs(){   
+    
+    
+        var datos= "url=ges_inventario/getJobList";
+        var link= $('#URL').val()+"index.php";
+    
+          return   $.ajax({
+                        type: "GET",
+                        url: link,
+                        data: datos,
+                        success: function(res){
+                        
+                        JOBS = res;
+                        $('#JOBID2').append(JOBS);
+      
+                                
+                    }
+                });
+        
+    }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+function phase(){
+    
+     jobID = $("#JOBID").select2("val");
+    
+    
+    /*PHASES*/
+    var datos= "url=ges_requisiciones/get_phaseList/"+jobID;
+    
+       $.ajax({
+           type: "GET",
+           url: link,
+           data: datos,
+           success: function(res){
+    
+           PHASES = res;
+          
+                               
+           if(res){
+             
+             cost();
+           
+           }
+    
+          }
+      });
+    /*PHASES*/
+    
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    function cost(){
+    
+    //  listID = '#COST'+i;
+     
+     /*cost*/
+      var datos= "url=ges_requisiciones/get_costList/";
+     
+         $.ajax({
+             type: "GET",
+             url: link,
+             data: datos,
+             success: function(res){
+     
+             COST = res;
+    
+             if(res){
+               
+               init();
+             
+             }                   
+              
+            }
+        });
+     /*cost*/
+     
+     }
+     

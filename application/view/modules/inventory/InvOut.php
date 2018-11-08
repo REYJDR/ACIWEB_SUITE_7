@@ -75,6 +75,22 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 					</fieldset>
 					</div>
 					
+					<div  class="col-lg-3">
+					<fieldset class="fieldsetform">
+					<table class='table_form'>
+						<tbody>
+							<tr>
+							<th><strong><?PHP echo $Inv_REP_TblHdr8; ?></strong></th>
+							<td>
+							<select class="select col-lg-12" onchange='phase();' id="JOBID2" >
+							<option value="-" selected>-</option>
+							</select>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+					</fieldset>
+					</div>
 
 				</div>
 				<!--fin header-->
@@ -93,8 +109,11 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 				<!--		<th width="5%"  class="text-center"><?php echo $TblLoc;?></th> -->
 			        	<th width="5%"  class="text-center"><?php echo $TblUnitMeasure;?></th>
 						<th width="5%"  class="text-center"><?php echo $TblQty;?></th>
-						<th width="5%"  class="text-center"><?php echo $TblUnitP;?></th>
-						<th width="5%"  style="<?php echo $display;?>" class="text-center"><?php echo $TblTotal;?></th>
+				<!--		<th width="5%"  class="text-center"><?php echo $TblUnitP;?></th>-->
+				<!--		<th width="5%"  style="<?php echo $display;?>" class="text-center"><?php echo $TblTotal;?></th>-->
+						<th width="5%"  class="text-center"><?php echo $Inv_REP_TblHdr9;?></th>
+						<th width="5%"  class="text-center"><?php echo $Inv_REP_TblHdr10;?></th>
+						
 						</tr>
 				</thead>
 					<tbody id="items" ></tbody>
