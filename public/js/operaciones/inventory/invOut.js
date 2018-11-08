@@ -136,8 +136,8 @@ function SetDesc(itemId, line){
         document.getElementById(id_desc_field).innerHTML  = '';
         document.getElementById(id_unit_field).innerHTML   = '';
         document.getElementById(id_qty_field).innerHTML  = '';
-        document.getElementById(id_price_field).innerHTML  = '';
-        document.getElementById(id_taxable_field).innerHTML  = '';
+      //  document.getElementById(id_price_field).innerHTML  = '';
+      //  document.getElementById(id_taxable_field).innerHTML  = '';
 
 
 
@@ -193,7 +193,7 @@ function SetDesc(itemId, line){
                 document.getElementById(id_desc_field).innerHTML  = json.Description;
                 document.getElementById(id_unit_field).innerHTML   = json.UnitMeasure;
                // document.getElementById(id_qty_field).innerHTML  = json.QtyOnHand;
-                document.getElementById(id_price_field).innerHTML  = json.Price1;
+               // document.getElementById(id_price_field).innerHTML  = json.Price1;
                 
     
         });
