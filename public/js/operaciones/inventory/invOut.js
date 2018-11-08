@@ -460,8 +460,8 @@ function proceed(){
                                     qty       = theTbl.rows[i].cells[3].innerHTML;
                                    // UnitPrice = theTbl.rows[i].cells[4].innerHTML;
                                    // total     = theTbl.rows[i].cells[5].innerHTML;
-                                    UnitPrice = '';
-                                    total     = '';
+                                    UnitPrice = '0.00';
+                                    total     = '0.00';
 
                                /*   lote      = theTbl.rows[i].cells[7].innerHTML;
                                     fechaVen  = theTbl.rows[i].cells[7].innerHTML;*/
