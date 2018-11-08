@@ -438,6 +438,8 @@ function proceed(){
         
                 //*AJUSTE DE MATERIAL
                 var selid = "sel"+i;
+                var phsid = "PHS"+i;
+                var costid = "COST"+i;
                 
                 if(document.getElementById(selid).value !=''){ 
         
@@ -445,10 +447,10 @@ function proceed(){
             
                                 case 0:
                                     job       = document.getElementById('JOBID2').value;
-                                    phase = '';
-                                    cost = '';
+                                    phase     = document.getElementById(phsid).value;
+                                    cost      = document.getElementById(costid).value;
 
-
+                       
                                     itemId    = document.getElementById(selid).value;
                                     ctamg     =  document.getElementById('ctamg').value;
                                /*   stockId   = document.getElementById(selid).value;

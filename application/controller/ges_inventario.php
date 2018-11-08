@@ -1295,7 +1295,7 @@ $this->model->verify_session();
 
     foreach ($data as $key => $value) {
 
-        list($null,$itemid,$unitprice,$qty,$total,$note,$ctamg) = explode('@', $value );
+        list($null,$itemid,$unitprice,$qty,$total,$note,$ctamg,$job,$phs,$cost) = explode('@', $value );
 
         
         if($value){
@@ -1313,6 +1313,9 @@ $this->model->verify_session();
                 'Quantity' => $qty*(-1), 
                 'Date' => $date , 
                 'USER' => $user , 
+                'JobPhaseID' => $phs,
+                'JobCostCodeID' => $cost, 
+                'JobID' => $job,
                 'ID_compania' =>  $id_compania );
 
             $this->model->insert('InventoryAdjust_Imp',$values);
