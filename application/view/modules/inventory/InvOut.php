@@ -121,7 +121,7 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 				</fieldset>
 				
 				<!--totales-->
-				<div  class="separador col-lg-12" ></div>
+			<!--	<div  class="separador col-lg-12" ></div>
 				<div  class="col-lg-10" ></div>
 				<div  class="col-lg-2" style="<?php echo $display;?>">
 					<fieldset class="fieldsetform">
@@ -132,7 +132,7 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 							</tbody>
 						</table>
 					</fieldset>
-					</div>
+					</div>-->
 				<!--totales-->
 
 				<!--totales-->
