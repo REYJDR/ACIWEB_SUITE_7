@@ -9,6 +9,10 @@ var listitem = '';
 var color = '';
 var color2 = "style='background-color:#ECECEC;'";
 
+var JOBS = '';
+var PHASES = '';
+var COST = '';
+
 var CHK_VALIDATION ='';
 LineArray = [];
 FaltaArray = [];
