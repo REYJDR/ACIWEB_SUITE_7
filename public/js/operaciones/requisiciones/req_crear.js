@@ -546,7 +546,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
 
                           cell += 
                           
-                          '@'+document.getElementById('sel').value+
+                          '@'+document.getElementById(selid).value+
                           '@'+theTbl.rows[i].cells[1].innerHTML+
                           '@'+theTbl.rows[i].cells[2].innerHTML+
                           '@'+theTbl.rows[i].cells[3].innerHTML+                          
