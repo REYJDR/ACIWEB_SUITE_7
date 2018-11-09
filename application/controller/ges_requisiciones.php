@@ -355,7 +355,7 @@ public function get_ProductsCode(){
 
 $this->model->verify_session();
 
-$sql = 'SELECT ProductID FROM Products_Exp WHERE id_compania="'.$this->model->id_compania.'"';
+$sql = 'SELECT ProductID , Description FROM Products_Exp WHERE id_compania="'.$this->model->id_compania.'"';
 
 $Codigos = $this->model->Query($sql);
 
@@ -363,7 +363,7 @@ foreach ($Codigos as $value) {
 
   $value = json_decode($value);
    
-  $codes .= '<option value="'.$value->{'ProductID'}.'">'.$value->{'ProductID'}.'</option>';
+  $codes .= '<option value="'.$value->{'ProductID'}.'">('.$value->{'ProductID'}.')-'.$value->{'Description'}.'</option>';
 
  } 
 
