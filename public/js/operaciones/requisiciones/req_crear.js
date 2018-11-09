@@ -179,7 +179,7 @@ while(i <= cantLineas){
      var line_table_req = '<tr>'+reglon+
      '<td width="30%" class="rowtable_req"      id="DESC'+i+'" onkeyup="checkTblChar(this.id); checkLong(this.id,40);  " contenteditable></td>'+
      '<td width="15%" class="rowtable_req numb" id="QTY'+i+'"  onkeyup="checkTblnum(this.id); checkLong(this.id,18);" contenteditable></td>'+
-     '<td width="15%" class="rowtable_req"      id="UNI'+i+'"  onkeyup="checkLong(this.id,4);" contenteditable></td>'+
+     '<td width="15%" class="rowtable_req"      id="UNI'+i+'"  onkeyup="checkLong(this.id,10);" contenteditable></td>'+
      '<td width="15%" class="rowtable_req"       ><select class="selectItems" id="PHS'+i+'" ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
      '<td width="15%" class="rowtable_req"       ><select class="selectItems" id="COST'+i+'"  ><option  value="-" selected>-</option>'+COST+'</select></td>'+
      '</tr>' ;
@@ -546,7 +546,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
 
                           cell += 
                           
-                          '@'+theTbl.rows[i].cells[0].innerHTML+
+                          '@'+document.getElementById('sel').value+
                           '@'+theTbl.rows[i].cells[1].innerHTML+
                           '@'+theTbl.rows[i].cells[2].innerHTML+
                           '@'+theTbl.rows[i].cells[3].innerHTML+                          
