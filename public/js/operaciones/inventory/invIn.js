@@ -24,6 +24,7 @@
 // ********************************************************
 $(window).load(function(){
     
+    set_selectWidth();
 
     $('#prod_ind').hide();
     $('#prod_masive').hide();
