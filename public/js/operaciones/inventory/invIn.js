@@ -139,7 +139,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     $('#invDetail').hide(); 
 
                }else{
-                
+                editable = 'contenteditable';
+                color  = "";
 
                     $box2.prop("checked", false);
                     init(2);//construye tabla
@@ -492,7 +493,7 @@ function builtTbl(chk){
                 '<td width="5%"  class="rowtable_req  numb" '+color+' id="total'+i+'" ></td>' +
                 '<td width="15%" class="rowtable_req" ><select class="selectItems" id="PHS'+i+'"  ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
                 '<td width="15%" class="rowtable_req" ><select class="selectItems" id="COST'+i+'" ><option  value="-" selected>-</option>'+COST+'</select></td></tr>';
-                
+
                      
             i++
             
