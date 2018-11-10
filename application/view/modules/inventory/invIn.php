@@ -264,7 +264,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 											<?PHP }else{ ?>
 
-											<select class="select selectJob col-lg-12"  id="vendorID" >
+											<select class="selectJob col-lg-12"  id="vendorID" >
 											<option value="-" selected>-</option>
 											</select>
 
