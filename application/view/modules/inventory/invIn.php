@@ -243,7 +243,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 										<?php } ?>
 										</td>
-										
+									</tr>
+									<tr>	
 									    <th><strong><?PHP echo $invIn22; ?></strong></th>
 									    <td>
 									

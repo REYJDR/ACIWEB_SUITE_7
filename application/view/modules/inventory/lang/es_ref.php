@@ -48,6 +48,8 @@ $invIn18 = "Fecha";
 $invIn19 = "ID Proveedor";
 $invIn20 = "# Factura";
 $invIn21 = "Detalle Factura";
+$invIn22 = "Orden de Compra";
+
 
 
 
