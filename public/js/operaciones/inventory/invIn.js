@@ -488,11 +488,12 @@ function builtTbl(chk){
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable+' '+color+' id="desc'+i+'"  ></td>'+              
              //   '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable+' '+color+' id="unit'+i+'"  ></td>'+
                 '<td width="5%"  class="rowtable_req  numb" style="'+display+'" onkeyup="checkTblnum(this.id)"  id="tax'+i+'" '+editable2+' '+color2+'></td>'+
+                '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)" onfocusout="recalcular('+i+');" contenteditable id="qtyord'+i+'"></td>'+ 
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)" onfocusout="recalcular('+i+');" contenteditable id="qty'+i+'"></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblnum(this.id)" onfocusout="calculate( '+i+');" contenteditable id="unitprice'+i+'" ></td>'+
                 '<td width="5%"  class="rowtable_req  numb" '+color+' id="total'+i+'" ></td>' +
-                '<td width="15%" class="rowtable_req" ><select class="selectItems" id="PHS'+i+'"  ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
-                '<td width="15%" class="rowtable_req" ><select class="selectItems" id="COST'+i+'" ><option  value="-" selected>-</option>'+COST+'</select></td></tr>';
+                '<td width="15%" class="rowtable_req" ><select class="selectItems" id="phase'+i+'"  ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
+                '<td width="15%" class="rowtable_req" ><select class="selectItems" id="cost'+i+'" ><option  value="-" selected>-</option>'+COST+'</select></td></tr>';
 
                      
             i++
@@ -1042,6 +1043,8 @@ function proceed(){
 
                 //*AJUSTE DE MATERIAL
                 var selid = "sel"+i;
+                var phaseid = "phase"+i;
+                var costid  = "cost"+i;
                 
                 if(document.getElementById('adjust').checked != true){
            
@@ -1053,8 +1056,8 @@ function proceed(){
                                             
                                             itemId    = document.getElementById(selid).value;
                                             desc      = theTbl.rows[i].cells[1].innerHTML;
-                                            unit      = theTbl.rows[i].cells[2].innerHTML;
-                                            gl        = theTbl.rows[i].cells[3].innerHTML;
+                                         // unit      = theTbl.rows[i].cells[2].innerHTML;
+                                         //   gl        = theTbl.rows[i].cells[3].innerHTML;
                                             tax       = theTbl.rows[i].cells[4].innerHTML;
    
                                         /*  stockId   = document.getElementById(selid).value;
@@ -1069,8 +1072,8 @@ function proceed(){
                                             
                                                                                        
                                             job       = document.getElementById('JOBID2').value;
-                                            phase     = document.getElementById('PHASEID2').value;
-                                            cco       = document.getElementById('COSTID2').value;
+                                            phase     = document.getElementById(phaseid).value;;
+                                            cco       = document.getElementById(costid).value;
 
                                             //agrego el registo de las demas columnas
                                             cell += '@'+itemId+

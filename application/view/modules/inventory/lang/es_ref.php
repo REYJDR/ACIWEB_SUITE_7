@@ -99,7 +99,8 @@ $TblLote  = 'Lote';
 $Tblfecha   = 'Fecha Ven.';
 $Tblstock   = 'Almacen';
 $Tblloc   = 'Ubicacion';
-$TblQty   = 'Cant.';
+$TblQtyOrd = 'Cant. Ord.';
+$TblQty   = 'Cant. Rec.';
 $TblUnitP = 'Precio';
 $TblTotal = 'Total';
 
