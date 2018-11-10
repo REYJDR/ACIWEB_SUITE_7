@@ -202,90 +202,92 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 								</fieldset>	
 								</div>
 								<div  id='invDetail' class="col-lg-6">
-								<fieldset class="fieldsetformb">	
-								<h4><?PHP echo $invIn21; ?></h4>				
-								<table class='table_form note'>
-									<tbody>
-									<tr>
-									    <th><strong><?PHP echo $invIn20; ?></strong></th>
-									    <td>
-										<input id="invoice" name="invoice" class="inputPage col-lg-12  numb"  value=""/>																				
+								<div class="col-lg-6">
+									<fieldset class="fieldsetformb">	
+									<h4><?PHP echo $invIn21; ?></h4>				
+									<table class='table_form note'>
+										<tbody>
+										<tr>
+											<th><strong><?PHP echo $invIn20; ?></strong></th>
+											<td>
+											<input id="invoice" name="invoice" class="inputPage col-lg-12  numb"  value=""/>																				
+											</td>
+										</tr>	
+										<tr>
+											<th><strong><?PHP echo $invIn18; ?></strong></th>
+											<td>
+											<input type="date" id="fecha" name="fecha" class="inputPage col-lg-12  numb"  value=""/>
+											</td>
+										</tr>
+										<tr>
+										<th><strong><?PHP echo $SO_Tax; ?></strong></th><td> 
+										<select  id="taxid" name="taxid" class="select col-lg-12" onchange="set_taxid(this.value,2);" required>
+											<?php  
+											$tax = $this->model->Get_sales_conf_Info(); 
+											foreach ($tax  as $datos) {
+											$tax  = json_decode($datos);
+											if($tax->{'taxid'}=='ITBMS'){
+												$selected = 'selected';
+											}else{   
+												$selected = '';
+											}
+											echo '<option value="'.$tax ->{'rate'}.'" '.$selected.'>'.$tax->{'taxid'}.'</option>';
+											}
+											?>
+										</select>
 										</td>
-									</tr>	
-									<tr>
-									    <th><strong><?PHP echo $invIn18; ?></strong></th>
-									    <td>
-								        <input type="date" id="fecha" name="fecha" class="inputPage col-lg-12  numb"  value=""/>
-										</td>
-									</tr>
-									<tr>
-									<th><strong><?PHP echo $SO_Tax; ?></strong></th><td> 
-									<select  id="taxid" name="taxid" class="select col-lg-12" onchange="set_taxid(this.value,2);" required>
-										<?php  
-										$tax = $this->model->Get_sales_conf_Info(); 
-										foreach ($tax  as $datos) {
-										$tax  = json_decode($datos);
-										if($tax->{'taxid'}=='ITBMS'){
-											$selected = 'selected';
-										}else{   
-											$selected = '';
-										}
-										echo '<option value="'.$tax ->{'rate'}.'" '.$selected.'>'.$tax->{'taxid'}.'</option>';
-										}
-										?>
-									</select>
-									</td>
-									</tr>
-									</tbody>
+										</tr>
+										</tbody>
+										</table>
+										</fieldset>	
+									</div
+									<div class="col-lg-6">
+										<fieldset class="fieldsetformb">	
+										<table class='table_form note'>
+										<tbody>
+										<tr>
+											<th><strong><?PHP echo $invIn19; ?></strong></th>
+											<td>
+											<?PHP 
+											
+											$res= $this->model->Get_company_Info();
+											
+												foreach ($res as $Comp_Info) {
+											
+													$Comp_Info = json_decode($Comp_Info);
+													$Sage_Conn = $Comp_Info->{'Sage_Conn'};
+												}	 
+												
+											if ($Sage_Conn == 9) {//standalone ?>
+										
+											<input id="vendorID" name="vendorID" class="inputPage col-lg-12  numb"  value=""/>										
+
+											<?PHP }else{ ?>
+
+											<select class="select col-lg-12"  id="vendorID" >
+											<option value="-" selected>-</option>
+											</select>
+
+											<?php } ?>
+											</td>
+										</tr>
+										<tr>	
+											<th><strong><?PHP echo $invIn22; ?></strong></th>
+											<td>
+										
+											<select class="select col-lg-12"  id="vendorOC" >
+											<option value="-" selected>-</option>
+											</select>
+
+											</td>
+											
+										</tr>
+
+										
+										</tbody>
 									</table>
 									</fieldset>	
-								
-								
-									<fieldset class="fieldsetformb">	
-									<table class='table_form note'>
-									<tbody>
-									<tr>
-									    <th><strong><?PHP echo $invIn19; ?></strong></th>
-									    <td>
-										<?PHP 
-										
-										$res= $this->model->Get_company_Info();
-										
-											foreach ($res as $Comp_Info) {
-										
-												$Comp_Info = json_decode($Comp_Info);
-												$Sage_Conn = $Comp_Info->{'Sage_Conn'};
-											}	 
-											
-										if ($Sage_Conn == 9) {//standalone ?>
-									
-									   	<input id="vendorID" name="vendorID" class="inputPage col-lg-12  numb"  value=""/>										
-
-										<?PHP }else{ ?>
-
-										<select class="select col-lg-12"  id="vendorID" >
-										<option value="-" selected>-</option>
-										</select>
-
-										<?php } ?>
-										</td>
-									</tr>
-									<tr>	
-									    <th><strong><?PHP echo $invIn22; ?></strong></th>
-									    <td>
-									
-										<select class="select col-lg-12"  id="vendorOC" >
-										<option value="-" selected>-</option>
-										</select>
-
-										</td>
-										
-									</tr>
-
-									
-									</tbody>
-								</table>
-								</fieldset>	
+								</div>
 								
 								</div>
 
