@@ -122,10 +122,23 @@ public function fact_mailing($id){
 
 public function PO_filter_by_Vendor($vendor){
 
+    $this->model->verify_session();
+    $list = '';
+    
+    $clause = ' WHERE VendorID="'.$vendor.'" and ID_compania="'.$this->model->id_compania.'"';
+    
+    $res = $this->model->get_OC_ID('desc','1000',$clause);
 
+    foreach($res as $value){
+        
+        $value = json_decode($value);
 
+        $list.= '<option value="'.$value->{'TransaccionID'}.'" >'.$value->{'PurchaseOrderNumber'}."</option>";
+        
 
+    }
 
+    echo  $list;
     
 }
     

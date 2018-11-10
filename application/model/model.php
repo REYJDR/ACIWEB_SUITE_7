@@ -1196,6 +1196,18 @@ return $res;
 }
 
 
+public function get_OC_ID($sort,$limit,$clause){
+    
+    $query ='SELECT * 
+            FROM PurOrdr_Header_Exp  '.$clause.' 
+                 Order by PurOrdr_Header_Exp.Date '.$sort.' limit '.$limit.';';
+    
+    
+    $res = $this->Query($query);
+    
+    
+return $res;
+}
 
 //Orden de compras asociadas a red
 public function get_OC_req_asc($sort,$limit,$clause){

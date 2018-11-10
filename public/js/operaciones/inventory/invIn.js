@@ -25,6 +25,8 @@
 $(window).load(function(){
     
     set_selectWidth('.selectJob');
+    set_selectWidth('.selectOc');
+    
 
     $('#prod_ind').hide();
     $('#prod_masive').hide();
@@ -39,45 +41,7 @@ $(window).load(function(){
     
     set_taxid(Taxval,1);
 
-    
- /*   function GetStockList(){
 
-
-        var datos= "url=ges_inventario/get_almacen_selectlist/";
-        var link=  $('#URL').val()+"index.php";
-    
-    
-       return $.ajax({
-                type: "GET",
-                url: link,
-                data: datos,
-                success: function(res){
-        
-                    stocks = res;
-        
-                    $("#up_stock").html(res);
-            
-                    }
-            });
-
-    }
-    $.when(GetStockList()).done(function(){ //ESPERA QUE TERMINE QUERY DE ALMACENES
-
-        $('#ERROR').hide();
-
-        //setea por defaul el valor 1 para mostrar el div de crear nueva lista de precios 
-       
-        function setDiv() {
-            return set_div(3);
-        } 
-        $.when(setDiv()).done(function(){ 
-
-            jobs();
-            
-        });
-            
-
-    });*/
 
     function getJobs(){
 
@@ -150,7 +114,12 @@ document.addEventListener('DOMContentLoaded', function() {
                }
 
              });
-
+           
+             $('#vendorID').on("change", function (e){
+                
+                    getOC($('#vendorID').val());
+                                
+              });
 
 
                $('#JOBID2').on("change", function (e){
@@ -1310,6 +1279,37 @@ function set_taxid(rate){
         document.getElementById('saletaxid').value =  rate;
         
         sumar_total();
+}
+//******************************************************************************************
+//setea el rate del tax seleccionado
+//******************************************************************************************
+
+
+//******************************************************************************************
+//obtiene OC por vendor
+//******************************************************************************************
+
+function getOC(vendor){
+    
+    $('#vendorID').html('');
+    $('#vendorID').prepend('<option value="-" selected>-</option>');
+    $('#vendorID').select2('val','-');
+
+    $.ajax({
+        type: "GET",
+        url: link,
+        data: {url: 'ges_compras/PO_filter_by_Vendor/'+vendor},
+        success: function(res){
+       // console.log(res);
+    
+       $('#vendorID').append(res);
+       
+
+    }
+});
+
+
+
 }
 //******************************************************************************************
 //setea el rate del tax seleccionado
