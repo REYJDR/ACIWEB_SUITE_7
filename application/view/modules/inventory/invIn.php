@@ -151,8 +151,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						<fieldset class="fieldsetform">				
 							
 							<!--INI HEADER ENTRADA MASIVA-->			
-							<div class="col-lg-6"> 
-								<div  class="col-lg-6">
+							<div class="col-lg-10"> 
+								<div  class="col-lg-4">
 								<fieldset class="fieldsetformb">
 								<h4><?PHP echo $invIn16; ?></h4>
 					
@@ -201,7 +201,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 								</table>
 								</fieldset>	
 								</div>
-								<div  id='invDetail' class="col-lg-6">
+								<div  id='invDetail' class="col-lg-8">
 								<div class="col-lg-6">
 									<fieldset class="fieldsetformb">	
 									<h4><?PHP echo $invIn21; ?></h4>				
