@@ -264,7 +264,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 											<?PHP }else{ ?>
 
-											<select class="select col-lg-12"  id="vendorID" >
+											<select class="selectItems select col-lg-12"  id="vendorID" >
 											<option value="-" selected>-</option>
 											</select>
 
@@ -275,7 +275,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 											<th><strong><?PHP echo $invIn22; ?></strong></th>
 											<td>
 										
-											<select class="select col-lg-12"  id="vendorOC" >
+											<select class="selectItems select col-lg-12"  id="vendorOC" >
 											<option value="-" selected>-</option>
 											</select>
 
