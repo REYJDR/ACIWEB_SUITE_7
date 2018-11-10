@@ -283,10 +283,10 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 									<tr>
 										<th width="10%" ><?php echo $TblItem;?></th>
 										<th width="15%" class="text-center"><?php echo $TblDes;?></th>
-										<th width="5%"  class="text-center"><?php echo $TblUnitMeasure;?></th>		
+							<!--		<th width="5%"  class="text-center"><?php echo $TblUnitMeasure;?></th> -->		
 							<!--	    <th width="15%" class="text-center"><?php echo $TblUPCSKU;?></th>	 -->	
-										<th width="5%"  class="text-center"><?php echo $TblGlAcct;?></th>
-										<th width="5%"  class="text-center"><?php echo $TblTaxTyp;?></th>		
+							<!--	    <th width="5%"  class="text-center"><?php echo $TblGlAcct;?></th>-->
+										<th width="5%"  style='display:none;' class="text-center"><?php echo $TblTaxTyp;?></th>		
 							<!--		<th width="5%"  class="text-center"><?php echo $Tblstock?></th>										
 										<th width="5%"  class="text-center"><?php echo $Tblloc;?></th>
 										<th width="5%"  class="text-center"><?php echo $TblLote?></th>
@@ -294,6 +294,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 										<th width="5%"  class="text-center"><?php echo $TblQty;?></th>
 										<th width="5%"  class="text-center"><?php echo $TblUnitP;?></th>
 										<th width="5%"  class="text-center"><?php echo $TblTotal;?></th>
+										<th width="5%"  class="text-center"><?php echo $Inv_REP_TblHdr9;?></th>
+					                	<th width="5%"  class="text-center"><?php echo $Inv_REP_TblHdr10;?></th>
 										</tr>
 								</thead>
 									<tbody id="items" ></tbody>
