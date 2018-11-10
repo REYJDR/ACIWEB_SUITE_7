@@ -244,6 +244,15 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 										<?php } ?>
 										</td>
 										
+									    <th><strong><?PHP echo $invIn22; ?></strong></th>
+									    <td>
+									
+										<select class="select col-lg-12"  id="vendorOC" >
+										<option value="-" selected>-</option>
+										</select>
+
+										</td>
+										
 									</tr>
 									<tr>
 									<th><strong><?PHP echo $SO_Tax; ?></strong></th><td> 
