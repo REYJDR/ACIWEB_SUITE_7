@@ -489,9 +489,9 @@ function builtTbl(chk){
                 '<td width="5%"  class="rowtable_req  numb" style="'+display+'" onkeyup="checkTblnum(this.id)"  id="tax'+i+'" '+editable2+' '+color2+'></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)" onfocusout="recalcular('+i+');" contenteditable id="qty'+i+'"></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblnum(this.id)" onfocusout="calculate( '+i+');" contenteditable id="unitprice'+i+'" ></td>'+
-                '<td width="5%"  class="rowtable_req  numb" '+color+' id="total'+i+'" ></td></tr>' ;
+                '<td width="5%"  class="rowtable_req  numb" '+color+' id="total'+i+'" ></td>' +
                 '<td width="15%" class="rowtable_req" ><select class="selectItems" id="PHS'+i+'"  ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
-                '<td width="15%" class="rowtable_req" ><select class="selectItems" id="COST'+i+'" ><option  value="-" selected>-</option>'+COST+'</select></td>'+
+                '<td width="15%" class="rowtable_req" ><select class="selectItems" id="COST'+i+'" ><option  value="-" selected>-</option>'+COST+'</select></td></tr>';
                      
             i++
             
