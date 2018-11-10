@@ -133,7 +133,7 @@ public function PO_filter_by_Vendor($vendor){
         
         $value = json_decode($value);
 
-        $list.= '<option value="'.$value->{'TransaccionID'}.'" >'.$value->{'PurchaseOrderNumber'}."</option>";
+        $list.= '<option value="'.$value->{'PurchaseOrderNumber'}.'" >'.$value->{'PurchaseOrderNumber'}."</option>";
         
 
     }
@@ -142,6 +142,13 @@ public function PO_filter_by_Vendor($vendor){
     
 }
     
+public function PO_item($PurchaseOrderNumber){
+ 
+ $this->model->verify_session();
+   
+ echo  $res = $this->model->get_items_by_OC($PurchaseOrderNumber);
+
+}
 
 
 }

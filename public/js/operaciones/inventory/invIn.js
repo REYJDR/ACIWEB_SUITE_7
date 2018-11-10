@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
             });
 
-           $("#adjust").on('click', function() {
+             $("#adjust").on('click', function() {
                 var $box2 = $(this);
                 
                 if ($box2.is(":checked")) {
@@ -118,6 +118,12 @@ document.addEventListener('DOMContentLoaded', function() {
              $('#vendorID').on("change", function (e){
                 
                     getOC($('#vendorID').val());
+                                
+              });
+
+              $('#vendorOC').on("change", function (e){
+                
+                    getOCitem($('#vendorOC').val());
                                 
               });
 
@@ -1308,9 +1314,37 @@ function getOC(vendor){
     }
 });
 
+}
+//******************************************************************************************
+//obtiene OC por vendor
+//******************************************************************************************
 
+//******************************************************************************************
+//obtiene detalles del OC
+//******************************************************************************************
+
+function getOCitem(oc){
+    
+    $('#vendorOC').html('Getting PO...');
+    $('#vendorOC').prepend('<option value="-" selected>-</option>');
+    $('#vendorOC').select2('val','-');
+
+    $.ajax({
+        type: "GET",
+        url: link,
+        data: {url: 'ges_compras/PO_item/'+oc},
+        success: function(res){
+       // console.log(res);
+         console.log(res);
+          // $('#vendorOC').append(res);
+       
+
+    }
+});
 
 }
 //******************************************************************************************
-//setea el rate del tax seleccionado
+//obtiene detalles del OC
 //******************************************************************************************
+
+
