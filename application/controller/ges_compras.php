@@ -146,7 +146,7 @@ public function PO_item($PurchaseOrderNumber){
  
  $this->model->verify_session();
    
- echo  $res = $this->model->get_items_by_OC($PurchaseOrderNumber);
+ echo  $this->model->get_items_by_OC($PurchaseOrderNumber);
 
 }
 

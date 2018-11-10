@@ -1331,10 +1331,12 @@ function getOCitem(oc){
         data: {url: 'ges_compras/PO_item/'+oc},
         success: function(res){
        // console.log(res);
-       json = JSON.parse(res);
-         console.log(json);
-          // $('#vendorOC').append(res);
-       
+
+       for(var i=0; i<res.length; i++){
+        json = JSON.parse(res[i]);
+
+        console.log(json);
+       }
 
     }
 });
