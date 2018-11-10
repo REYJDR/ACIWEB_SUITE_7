@@ -201,8 +201,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 								</table>
 								</fieldset>	
 								</div>
-								<div  id='invDetail' class="col-lg-8">
-								<div class="col-lg-5">
+								<div  id='invDetail' class="col-lg-6">
+								<div class="col-lg-6">
 									<fieldset class="fieldsetformb">	
 									<h4><?PHP echo $invIn21; ?></h4>				
 									<table class='table_form note'>
@@ -240,8 +240,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 										</tbody>
 										</table>
 										</fieldset>	
-									</div
-									<div class="col-lg-5">
+									</div>
+									<div class="col-lg-6">
 										<fieldset class="fieldsetformb">	
 										<table class='table_form note'>
 										<tbody>
