@@ -312,6 +312,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 										<th width="5%"  class="text-center"><?php echo $Tblloc;?></th>
 										<th width="5%"  class="text-center"><?php echo $TblLote?></th>
 										<th width="5%"  class="text-center"><?php echo $Tblfecha?></th> -->
+										
+										<th width="5%"  class="text-center"><?php echo $TblQtyOrd;?></th>
 										<th width="5%"  class="text-center"><?php echo $TblQty;?></th>
 										<th width="5%"  class="text-center"><?php echo $TblUnitP;?></th>
 										<th width="5%"  class="text-center"><?php echo $TblTotal;?></th>
