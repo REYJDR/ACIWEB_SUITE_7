@@ -1291,9 +1291,9 @@ function set_taxid(rate){
 
 function getOC(vendor){
     
-    $('#vendorID').html('');
-    $('#vendorID').prepend('<option value="-" selected>-</option>');
-    $('#vendorID').select2('val','-');
+    $('#vendorOC').html('Getting PO...');
+    $('#vendorOC').prepend('<option value="-" selected>-</option>');
+    $('#vendorOC').select2('val','-');
 
     $.ajax({
         type: "GET",
@@ -1302,7 +1302,7 @@ function getOC(vendor){
         success: function(res){
        // console.log(res);
     
-       $('#vendorID').append(res);
+       $('#vendorOC').append(res);
        
 
     }
