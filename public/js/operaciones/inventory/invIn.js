@@ -1325,17 +1325,14 @@ function getOC(vendor){
 
 function getOCitem(oc){
     
-    $('#vendorOC').html('Getting PO...');
-    $('#vendorOC').prepend('<option value="-" selected>-</option>');
-    $('#vendorOC').select2('val','-');
-
     $.ajax({
         type: "GET",
         url: link,
         data: {url: 'ges_compras/PO_item/'+oc},
         success: function(res){
        // console.log(res);
-         console.log(res);
+       json = JSON.parse(res);
+         console.log(json);
           // $('#vendorOC').append(res);
        
 
