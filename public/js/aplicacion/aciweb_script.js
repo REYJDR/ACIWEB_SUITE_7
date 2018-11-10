@@ -838,7 +838,7 @@ function set_selectLocStyle(line){
 function set_selectWidth(){
   
      //selectc con buscador 
-     $(".select").select2({
+     $(".job").select2({
      placeholder: '',
      allowClear: true,
      maximumSelectionSize: 1,
