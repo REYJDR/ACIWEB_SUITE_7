@@ -835,10 +835,10 @@ function set_selectLocStyle(line){
     
 }
 
-function set_selectWidth(){
+function set_selectWidth(selecClass){
   
      //selectc con buscador 
-     $(".job").select2({
+     $(selecClass).select2({
      placeholder: '',
      allowClear: true,
      maximumSelectionSize: 1,

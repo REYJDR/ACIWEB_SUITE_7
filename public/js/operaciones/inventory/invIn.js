@@ -24,7 +24,7 @@
 // ********************************************************
 $(window).load(function(){
     
-    set_selectWidth();
+    set_selectWidth('.selectJob');
 
     $('#prod_ind').hide();
     $('#prod_masive').hide();
