@@ -842,7 +842,9 @@ function set_selectWidth(selecClass){
      placeholder: '',
      allowClear: true,
      maximumSelectionSize: 1,
-     dropdownCssClass : 'bigdrop'
+     dropdownCssClass : 'bigdrop',
+     dropdownAutoWidth : true,
+     width: 'auto'
    
      }); 
    
