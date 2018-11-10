@@ -492,6 +492,7 @@ function builtTbl(chk){
                 '<td width="5%"  class="rowtable_req  numb" '+color+' id="total'+i+'" ></td>' +
                 '<td width="15%" class="rowtable_req" ><select class="selectItems" id="PHS'+i+'"  ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
                 '<td width="15%" class="rowtable_req" ><select class="selectItems" id="COST'+i+'" ><option  value="-" selected>-</option>'+COST+'</select></td></tr>';
+                
                      
             i++
             
