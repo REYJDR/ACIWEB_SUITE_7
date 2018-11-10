@@ -146,9 +146,12 @@ public function PO_item($PurchaseOrderNumber){
  
  $this->model->verify_session();
    
- echo $res = $this->model->get_items_by_OC($PurchaseOrderNumber);
+ $res = $this->model->get_items_by_OC($PurchaseOrderNumber);
 
-
+    
+ foreach ($res as  $value) {
+    echo $value;
+}
 
 }
 

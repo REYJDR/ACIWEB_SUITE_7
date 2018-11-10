@@ -1204,8 +1204,7 @@ public function get_OC_ID($sort,$limit,$clause){
     
     
     $res = $this->Query($query);
-    
-    
+
 return $res;
 }
 
