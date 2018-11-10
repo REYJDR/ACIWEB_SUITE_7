@@ -153,20 +153,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 $('#Budget').val('Calculando...');
               
-                $('#PHASEID2').html('');
+               /* $('#PHASEID2').html('');
                 $('#PHASEID2').prepend('<option value="-" selected>-</option>');
                 $('#PHASEID2').select2('val','-');
                 
                 $('#COSTID2').html('');
                 $('#COSTID2').prepend('<option value="-" selected>-</option>');
                 $('#COSTID2').select2('val','-');
-                getPhase();
+                getPhase();*/
 
-               
+                getBudget();
                 
                 });
             
-                $('#PHASEID2').on('change', function (e) {
+          /*      $('#PHASEID2').on('change', function (e) {
                 
                 $('#Budget').val('Calculando...');
                 getCost();
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
                                 
-                });
+                });*/
 
 });
 
@@ -457,7 +457,8 @@ function builtTbl(chk){
     var i = 1;
     var reglon = '';
     var cantLineas = $('#FAC_NO_LINES').val();
-  
+    var display ='display:none;'; 
+
     $('#items').html(''); //limpio la tabla 
 
     while(i <= cantLineas){
@@ -479,20 +480,17 @@ function builtTbl(chk){
                 
                
             }        
-
+           
             var line_table_req = '<tr>'+reglon+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable+' '+color+' id="desc'+i+'"  ></td>'+              
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable+' '+color+' id="unit'+i+'"  ></td>'+
-               // '<td width="3%"  class="rowtable_req  numb" onkeyup="checkTblChar(this.id)"  '+editable+' '+color+' id="upc'+i+'"   ></td>'+
-                '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblChar(this.id)"  id="gl'+i+'" '+editable2+' '+color2+' ></td>'+
-                '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblnum(this.id)"  id="tax'+i+'" '+editable2+' '+color2+'></td>'+
-               /* '<td width="5%"  class="rowtable_req  numb" ><select id="SelStock'+i+'" class="form-control" onchange="locat(this.value,'+i+');">'+stocks+'</select></td>'+
-                '<td width="3%"  class="rowtable_req  numb" ><select id="SelRoute'+i+'" class="form-control" ></select></td>'+
-                '<td width="3%"  class="rowtable_req  numb" id="lote'+i+'"   onkeyup="checkTblChar(this.id)" contenteditable></td>'+                
-                '<td width="3%"  class="rowtable_req  numb" id="fecha'+i+'"  onkeyup="checkTblChar(this.id)" contenteditable></td>'+    */            
+                '<td width="5%"  class="rowtable_req  numb" style="'+display+'" onkeyup="checkTblnum(this.id)"  id="tax'+i+'" '+editable2+' '+color2+'></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)" onfocusout="recalcular('+i+');" contenteditable id="qty'+i+'"></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblnum(this.id)" onfocusout="calculate( '+i+');" contenteditable id="unitprice'+i+'" ></td>'+
                 '<td width="5%"  class="rowtable_req  numb" '+color+' id="total'+i+'" ></td></tr>' ;
+                '<td width="15%" class="rowtable_req" ><select class="selectItems" id="PHS'+i+'"  ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
+                '<td width="15%" class="rowtable_req" ><select class="selectItems" id="COST'+i+'" ><option  value="-" selected>-</option>'+COST+'</select></td>'+
+                     
             i++
             
             $('#items').append(line_table_req); //limpio la tabla 

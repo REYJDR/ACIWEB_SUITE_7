@@ -78,7 +78,7 @@ $(document).keypress(function(e){
 function MSG_ERROR(MSG,VAL){
 
   $('#ERROR').show();
-  $('#ERROR').addClass( "alert alert-danger" ); 
+  $('#ERROR').addClass( "alert alert-danger alert-dismissible" ); 
 
   if(VAL == 1){
 
@@ -98,7 +98,7 @@ function MSG_ERROR(MSG,VAL){
 function MSG_CORRECT(MSG,VAL){
 
   $('#ERROR').show();
-  $('#ERROR').addClass( "alert alert-success" ); 
+  $('#ERROR').addClass( "alert alert-success alert-dismissible" ); 
 
   if(VAL == 1){
     
@@ -120,7 +120,7 @@ function MSG_CORRECT(MSG,VAL){
 function MSG_ADVICE(MSG){
   
     $('#ERROR').show();
-    $('#ERROR').addClass( "alert alert-warning" ); 
+    $('#ERROR').addClass( "alert alert-warning alert-dismissible" ); 
   
 
     $('#ERROR').html(MSG+'<br>');

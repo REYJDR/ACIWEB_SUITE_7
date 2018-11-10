@@ -166,7 +166,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 										</select>
 										</td>
 									</tr>
-									<tr>
+					<!--				<tr>
 									    <th><strong><?PHP echo $invIn14; ?></strong></th>
 									    <td>
 								        <select class="select col-lg-12"  id="PHASEID2"  >
@@ -181,7 +181,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 										<option value="-" selected>-</option>
 										</select>
 										</td>
-									</tr>
+									</tr> -->
 									<tr>
 									    <th><strong><?PHP echo $invIn17; ?></strong></th>
 										<td><input id="Budget" name="Budget" class="inputPage col-lg-12  numb"  value=""/></td>
