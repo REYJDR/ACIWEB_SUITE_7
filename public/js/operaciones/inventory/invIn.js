@@ -1332,12 +1332,12 @@ function getOCitem(oc){
         success: function(res){
         console.log(res);
 
-      /* for(var i=0; i<res.length; i++){
+      for(var i=0; i<res.length; i++){
        
-        json = JSON.parse(res[i]);
+       // json = JSON.parse(res[i]);
 
-        console.log(json);
-       }*/
+        console.log(res[i]);
+       }
 
     }
 });
