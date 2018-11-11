@@ -41,8 +41,6 @@ $(window).load(function(){
     
     set_taxid(Taxval,1);
 
-
-
     function getJobs(){
 
       return  jobs();
@@ -62,6 +60,7 @@ $(window).load(function(){
             
         });      
     });
+
    
 
 });
@@ -91,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
             });
 
-             $("#adjust").on('click', function() {
+            $("#adjust").on('click', function() {
                 var $box2 = $(this);
                 
                 if ($box2.is(":checked")) {
@@ -113,52 +112,31 @@ document.addEventListener('DOMContentLoaded', function() {
                     $('#invDetail').show(); 
                }
 
-             });
+            });
            
-             $('#vendorID').on("change", function (e){
+            $('#vendorID').on("change", function (e){
                 
                     getOC($('#vendorID').val());
                                 
-              });
+            });
 
-              $('#vendorOC').on("change", function (e){
+            $('#vendorOC').on("change", function (e){
                 
                     getOCitem($('#vendorOC').val());
                                 
-              });
+            });
 
 
-               $('#JOBID2').on("change", function (e){
+            $('#JOBID2').on("change", function (e){
 
-                $('#Budget').val('Calculando...');
+               $('#Budget').val('Calculando...');
               
-               /* $('#PHASEID2').html('');
-                $('#PHASEID2').prepend('<option value="-" selected>-</option>');
-                $('#PHASEID2').select2('val','-');
-                
-                $('#COSTID2').html('');
-                $('#COSTID2').prepend('<option value="-" selected>-</option>');
-                $('#COSTID2').select2('val','-');
-                getPhase();*/
  
-                getBudget();
+              getBudget();
                 
-                });
+            });
             
-          /*      $('#PHASEID2').on('change', function (e) {
-                
-                $('#Budget').val('Calculando...');
-                getCost();
-         
-                });
 
-                $('#COSTID2').on('change', function (e) {
-                $('#Budget').val('Calculando...');
-                 getBudget();
-
-
-                                
-                });*/
 
 });
 
@@ -194,7 +172,28 @@ function set_div(val){
                 $('#prod_layout').hide();
                 $('#prod_masive').show();
                // init(1);//construye tabla
-                init(2);//construye tabla
+
+                function getPhase(){
+
+                    return phase();
+                }
+                $.when(getPhase()).done(function(){ //ESPERA QUE TERMINE el query de items
+                    
+                    function getCost(){
+                        
+                        return cost();
+                    }
+                    $.when(getCost()).done(function(){ //ESPERA QUE TERMINE el query de items
+                        
+                        
+                        init(2);//construye tabla
+                        
+                    });
+                   
+                    
+                });
+
+                
                
                 Type = 3;
             }
@@ -283,71 +282,52 @@ function jobs(){
     
 }
 
-// ******************************************************************************************
-// * OBTIENE PHASE
-// ******************************************************************************************
-function getPhase(){   
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
-    $('#PHASEID2').html('');
-    $('#PHASEID2').prepend('<option value="-" selected>-</option>');
-
-    function get(){
-
-        var JOB  = $('#JOBID2').val(); 
-        var datos= "url=ges_inventario/getPhaseList/"+ $('#JOBID2').val();
-        var link= $('#URL').val()+"index.php";
+function phase(){
     
-        $.ajax({
-                type: "GET",
-                url: link,
-                data: datos,
-                success: function(res){
-                   
-                $('#PHASEID2').append(res);
-                        
+     jobID = $("#JOBID").select2("val");
+    
+    
+    /*PHASES*/
+    var datos= "url=ges_requisiciones/get_phaseList/"+jobID;
+    
+       $.ajax({
+           type: "GET",
+           url: link,
+           data: datos,
+           success: function(res){
+    
+           PHASES = res;
+          
+    
+          }
+      });
+    /*PHASES*/
+    
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    function cost(){
+    
+    //  listID = '#COST'+i;
+     
+     /*cost*/
+      var datos= "url=ges_requisiciones/get_costList/";
+     
+         $.ajax({
+             type: "GET",
+             url: link,
+             data: datos,
+             success: function(res){
+     
+             COST = res;                  
+              
             }
         });
-    }
-    $.when(get()).done(function(res){  
-        
-                getBudget();
-        
-            });
-
-}
-
-
-// ******************************************************************************************
-// * OBTIENE COST
-// ******************************************************************************************
-function getCost(){   
-
-    function get(){
-
-        var job  = $('#JOBID2').val();
-        var phase= $('#PHASEID2').val();
-        
-        var datos= "url=ges_inventario/getCostList/"+job+"/"+phase;
-        var link= $('#URL').val()+"index.php";
-    
-        $.ajax({
-                type: "GET",
-                url: link,
-                data: datos,
-                success: function(res){
-                   
-                $('#COSTID2').html(res);
-                        
-            }
-        });
-    }
-    $.when(get()).done(function(res){  
-        
-                getBudget();
-        
-     });
-
-}
+     /*cost*/
+     
+     }
 
 // ******************************************************************************************
 // * OBTIENE PRESUPUESTO ESTIMADO POR PROYECTO
@@ -1330,7 +1310,7 @@ function getOCitem(oc){
         for(var m=0;m<res.length;m++){
 
             
-            JSON.parse(res[m]).Description;
+           
             JSON.parse(res[m]).Unit_Price; 
             JSON.parse(res[m]).JobPhaseID;
             JSON.parse(res[m]).JobID;
