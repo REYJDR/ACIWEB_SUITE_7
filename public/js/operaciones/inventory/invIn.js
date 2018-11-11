@@ -1269,7 +1269,7 @@ function set_taxid(rate){
 //******************************************************************************************
 
 function getOC(vendor){
-    
+    init(2);
     $('#vendorOC').html('Getting PO...');
     $('#vendorOC').prepend('<option value="-" selected>-</option>');
     $('#vendorOC').select2('val','-');
