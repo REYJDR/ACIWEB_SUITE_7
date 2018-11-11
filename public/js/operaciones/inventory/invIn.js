@@ -1295,7 +1295,7 @@ function getOCitem(oc){
     var job      = '#JOBID2';
 
     $(job).select2("val", '-');
-    $('#Budget').val() = '';
+    $('#Budget').val('');
 
     var datos= "bridge_query/get_ProductsInfo";
     var link= $('#URL').val()+"index.php";
