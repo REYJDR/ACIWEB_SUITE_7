@@ -848,6 +848,7 @@ function proceed(){
                         return  $.ajax({
                                 type: "GET",
                                 url: link,
+                                async: false,
                                 data: {url: 'ges_inventario/set_Purchase_Header', Data : JSON.stringify(HeaderInfo)},
                                 success: function(res){
                                 console.log(res);
@@ -875,6 +876,7 @@ function proceed(){
                             $.ajax({
                             type: "GET",
                             url:  link,
+                            async: false,
                             data:  {url: 'ges_inventario/set_Purchase_Detail/'+OS_NO , Data : JSON.stringify(LineArray)}, 
                             success: function(res){
             
