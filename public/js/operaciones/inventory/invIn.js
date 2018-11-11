@@ -1346,17 +1346,17 @@ function getOCitem(oc){
             JSON.parse(res[m]).JobCostCodeID;
             JSON.parse(res[m]).AccountID
 
-            for(var i=1; i<m+1 ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theTbl
-            {
+          
                var  selid = '#sel'+i;
                var  phase = '#phase'+i;
                var  cost  = '#phase'+i;
-               
+                
                 if(JSON.parse(res[m]).JobID != ''){
                  
                  $(job).select2("val", JSON.parse(res[m]).JobID); //set the value
                 }
 
+                $i = m + 1 ;
                for(var j=0;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
                {       
                     switch (j){
@@ -1377,8 +1377,6 @@ function getOCitem(oc){
                     }
 
                 }//FIN BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
-            
-            }//FIN BLUCLE PARA LEER LINEA POR LINEA DE LA TABLA
             
         
             
