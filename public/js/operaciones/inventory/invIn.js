@@ -1039,7 +1039,7 @@ function proceed(){
             
                                             default: 
         
-                                                if (j!=6 || j!=7){
+                                                if (j!=2 || j!=6 || j!=7){
                                                     
                                                     val= theTbl.rows[i].cells[j].innerHTML;
                                                     
@@ -1106,7 +1106,7 @@ function proceed(){
     
                                     default: 
 
-                                        if (j!=6 || j!=7){
+                                        if (j!=2 || j!=6 || j!=7){
                                             
                                             val= theTbl.rows[i].cells[j].innerHTML;
                                             
