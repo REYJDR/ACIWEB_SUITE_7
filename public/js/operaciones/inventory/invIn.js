@@ -467,6 +467,8 @@ function builtTbl(chk){
 // * OBTIENE INFORMACION DE ITEM  
 // ******************************************************************************************
 function SetDesc(itemId, line){
+
+    console.log(itemId);
     
     var id_desc_field = 'desc'+line;
   //  var id_unit_field = 'unit'+line;
