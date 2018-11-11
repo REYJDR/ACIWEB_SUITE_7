@@ -1331,17 +1331,23 @@ function getOCitem(oc){
         data: {url: 'ges_compras/PO_item/'+oc},
         success: function(res){
             
-            var string = res;
-            var arrayOfObjects = eval(string);
-
-            for (var i = 0; i < arrayOfObjects.length; i++) {
-                var object = arrayOfObjects[i];
-                for (var property in object) {
-                    console.log('item ' + i + ': ' + property + '=' + object[property]);
+            res.forEach(function(res) {
+                
+                var string = res;
+                var arrayOfObjects = eval(string);
+    
+                for (var i = 0; i < arrayOfObjects.length; i++) {
+                    var object = arrayOfObjects[i];
+                    for (var property in object) {
+                        console.log('item ' + i + ': ' + property + '=' + object[property]);
+                    }
+                    // If property names are known beforehand, you can also just do e.g.
+                    // alert(object.id + ',' + object.Title);
                 }
-                // If property names are known beforehand, you can also just do e.g.
-                // alert(object.id + ',' + object.Title);
-            }
+
+            }, this);
+            
+           
 
             //console.log(res);
           /* 
