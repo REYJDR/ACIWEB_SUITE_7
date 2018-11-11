@@ -1332,14 +1332,16 @@ function getOCitem(oc){
         success: function(res){
        
             json = JSON.parse(res);
-            for (var i = 0; i < json.length; i++) {
+
+            console.log( json); 
+        /*    for (var i = 0; i < json.length; i++) {
                 var object = json[i];
                 for (var property in object) {
                     console.log('item ' + i + ': ' + property + '=' + object[property]);
                 }
                 // If property names are known beforehand, you can also just do e.g.
                 // alert(object.id + ',' + object.Title);
-            }
+            } */
 
 /*       json = JSON.parse(res);
 
