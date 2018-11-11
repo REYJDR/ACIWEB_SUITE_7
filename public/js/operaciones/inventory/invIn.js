@@ -1246,7 +1246,7 @@ function set_taxid(rate){
 //******************************************************************************************
 
 function getOC(vendor){
-    init(2);
+    
     $('#vendorOC').html('Getting PO...');
     $('#vendorOC').prepend('<option value="-" selected>-</option>');
     $('#vendorOC').select2('val','-');
@@ -1274,7 +1274,7 @@ function getOC(vendor){
 //******************************************************************************************
 
 function getOCitem(oc){
-
+    init(2);
     var theTbl = document.getElementById('table_ord_tb'); //objeto de la tabla que contiene los datos de items
     var job   = '#JOBID2';
     var datos= "bridge_query/get_ProductsInfo";
