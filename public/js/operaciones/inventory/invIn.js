@@ -1346,17 +1346,17 @@ function getOCitem(oc){
             JSON.parse(res[m]).JobCostCodeID;
             JSON.parse(res[m]).AccountID
 
-          
-               var  selid = '#sel'+i;
-               var  phase = '#phase'+i;
-               var  cost  = '#phase'+i;
-                
+            $i = m + 1 ;
+            var  selid = '#sel'+i;
+            var  phase = '#phase'+i;
+            var  cost  = '#phase'+i;
+            
                 if(JSON.parse(res[m]).JobID != ''){
                  
                  $(job).select2("val", JSON.parse(res[m]).JobID); //set the value
                 }
 
-                $i = m + 1 ;
+               
                for(var j=0;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
                {       
                     switch (j){
