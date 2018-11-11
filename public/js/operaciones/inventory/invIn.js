@@ -1336,7 +1336,7 @@ function getOCitem(oc){
           
             for(var i=0;i<res.length;i++){
 
-                console.log("<tr><td>"+JSON.parse(res[i]).ID_compania+"</td><td>"+JSON.parse(res[i]).Items_id+"</td></tr>");
+                console.log("<tr><td>"+JSON.parse(res[i]).ID_compania+"</td><td>"+JSON.parse(res[i]).Item_id+"</td></tr>");
             }
 
 
