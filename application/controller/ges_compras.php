@@ -151,7 +151,7 @@ public function PO_item($PurchaseOrderNumber){
 
 
  $array['items'] = json_encode($res);
- echo json_encode($array['items']);
+ echo json_encode($array);
 }
 
 
