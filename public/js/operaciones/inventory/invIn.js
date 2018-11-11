@@ -335,15 +335,17 @@ function phase(){
 function getBudget(){
 
     var JOB  = $('#JOBID2').val();
-    var PHASE= $('#PHASEID2').val();
-    var COST = $('#COSTID2').val();
+   // var PHASE= $('#PHASEID2').val();
+   // var COST = $('#COSTID2').val();
     
     console.log(JOB,PHASE,COST);
 
-    if (PHASE == '-' || PHASE  ==  null) { PHASE = 0}
+/*    if (PHASE == '-' || PHASE  ==  null) { PHASE = 0}
     if (COST  == '-' || COST  ==  null) { COST = 0}
 
-    var datos= "url=ges_inventario/getBudget/"+JOB+'/'+PHASE+'/'+COST;
+    var datos= "url=ges_inventario/getBudget/"+JOB+'/'+PHASE+'/'+COST;*/
+    var datos= "url=ges_inventario/getBudget/"+JOB;
+    
     var link= $('#URL').val()+"index.php";
 
     $.ajax({
@@ -1325,6 +1327,7 @@ function getOCitem(oc){
                 if(JSON.parse(res[m]).JobID != ''){
                  
                  $(job).select2("val", JSON.parse(res[m]).JobID); //set the value
+                 getBudget();
                 }
 
                
