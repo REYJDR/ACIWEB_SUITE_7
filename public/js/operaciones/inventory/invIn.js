@@ -481,8 +481,8 @@ function SetDesc(itemId, line){
     var qtyord = 'qtyord'+line;
     var id_qty_field = 'qty'+line;
     var id_total = 'total'+line;
-    var phase = 'phase'+line;
-    var cost = 'cost'+line;
+    var phase = '#phase'+line;
+    var cost = '#cost'+line;
     
 
 
