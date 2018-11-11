@@ -1330,26 +1330,9 @@ function getOCitem(oc){
         url: link,
         data: {url: 'ges_compras/PO_item/'+oc},
         success: function(res){
-            
-            res.forEach(function(res) {
-                
-                var string = res;
-                var arrayOfObjects = eval(string);
-    
-                for (var i = 0; i < arrayOfObjects.length; i++) {
-                    var object = arrayOfObjects[i];
-                    for (var property in object) {
-                        console.log('item ' + i + ': ' + property + '=' + object[property]);
-                    }
-                    // If property names are known beforehand, you can also just do e.g.
-                    // alert(object.id + ',' + object.Title);
-                }
-
-            }, this);
-            
            
 
-            //console.log(res);
+            console.log(JSON.parse(res));
           /* 
             for(var i=0;i<res.length;i++){
                 console.log("<tr><td>"+res[i].ID_compania+"</td><td>"+res[i].Items_id+"</td></tr>");
