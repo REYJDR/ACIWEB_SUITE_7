@@ -1335,8 +1335,8 @@ function getOCitem(oc){
         json = JSON.parse(res);
 
         for (var items in json.items  ) {
-           // line = JSON.parse(items);
-            console.log(items );
+            line = JSON.parse(items);
+            console.log(line);
         }
 
 
