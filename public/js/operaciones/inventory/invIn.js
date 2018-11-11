@@ -1339,22 +1339,22 @@ function getOCitem(oc){
         for(var m=0;m<res.length;m++){
 
             
-            JSON.parse(res[i]).Description;
-            JSON.parse(res[i]).Unit_Price; 
-            JSON.parse(res[i]).JobPhaseID;
-            JSON.parse(res[i]).JobID;
-            JSON.parse(res[i]).JobCostCodeID;
-            JSON.parse(res[i]).AccountID
+            JSON.parse(res[m]).Description;
+            JSON.parse(res[m]).Unit_Price; 
+            JSON.parse(res[m]).JobPhaseID;
+            JSON.parse(res[m]).JobID;
+            JSON.parse(res[m]).JobCostCodeID;
+            JSON.parse(res[m]).AccountID
 
-            for(var i=1; i<theTbl.rows.length ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theTbl
+            for(var i=1; i<m+1 ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theTbl
             {
                var  selid = '#sel'+i;
                var  phase = '#phase'+i;
                var  cost  = '#phase'+i;
                
-                if(JSON.parse(res[i]).JobID != ''){
+                if(JSON.parse(res[m]).JobID != ''){
                  
-                 $(job).select2("val", JSON.parse(res[i]).JobID); //set the value
+                 $(job).select2("val", JSON.parse(res[m]).JobID); //set the value
                 }
 
                for(var j=0;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
@@ -1362,14 +1362,14 @@ function getOCitem(oc){
                     switch (j){
                         
                     case 8:
-                        $(selid).select2("val", JSON.parse(res[i]).Item_id); //set the value
-                        $(phase).select2("val", JSON.parse(res[i]).JobPhaseID); //set the value
-                        $(cost).select2("val", JSON.parse(res[i]).JobCostCodeID); //set the value
+                        $(selid).select2("val", JSON.parse(res[m]).Item_id); //set the value
+                        $(phase).select2("val", JSON.parse(res[m]).JobPhaseID); //set the value
+                        $(cost).select2("val", JSON.parse(res[m]).JobCostCodeID); //set the value
                         
-                        theTbl.rows[i].cells[1].innerHTML = JSON.parse(res[i]).Description;
-                        theTbl.rows[i].cells[3].innerHTML = JSON.parse(res[i]).Quantity;
-                        theTbl.rows[i].cells[4].innerHTML = JSON.parse(res[i]).Quantity;
-                        theTbl.rows[i].cells[5].innerHTML = JSON.parse(res[i]).Unit_Price;
+                        theTbl.rows[i].cells[1].innerHTML = JSON.parse(res[m]).Description;
+                        theTbl.rows[i].cells[3].innerHTML = JSON.parse(res[m]).Quantity;
+                        theTbl.rows[i].cells[4].innerHTML = JSON.parse(res[m]).Quantity;
+                        theTbl.rows[i].cells[5].innerHTML = JSON.parse(res[m]).Unit_Price;
                         
                         
                         recalcular(i);
