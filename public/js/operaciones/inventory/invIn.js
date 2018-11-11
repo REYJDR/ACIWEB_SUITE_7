@@ -1359,18 +1359,21 @@ function getOCitem(oc){
                
                for(var j=0;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
                {       
-            
-                $(selid).select2("val", JSON.parse(res[i]).Item_id); //set the value
-                $(phase).select2("val", JSON.parse(res[i]).JobPhaseID); //set the value
-                $(cost).select2("val", JSON.parse(res[i]).JobCostCodeID); //set the value
-                
-                theTbl.rows[i].cells[1].innerHTML = JSON.parse(res[i]).Description;
-                theTbl.rows[i].cells[2].innerHTML = JSON.parse(res[i]).Quantity;
-                theTbl.rows[i].cells[3].innerHTML = JSON.parse(res[i]).Quantity;
-                theTbl.rows[i].cells[4].innerHTML = JSON.parse(res[i]).Unit_Price;
-                
-                
-                recalcular(i);
+                switch (j){
+                    
+                 case 7:
+                    $(selid).select2("val", JSON.parse(res[i]).Item_id); //set the value
+                    $(phase).select2("val", JSON.parse(res[i]).JobPhaseID); //set the value
+                    $(cost).select2("val", JSON.parse(res[i]).JobCostCodeID); //set the value
+                    
+                    theTbl.rows[i].cells[1].innerHTML = JSON.parse(res[i]).Description;
+                    theTbl.rows[i].cells[2].innerHTML = JSON.parse(res[i]).Quantity;
+                    theTbl.rows[i].cells[3].innerHTML = JSON.parse(res[i]).Quantity;
+                    theTbl.rows[i].cells[4].innerHTML = JSON.parse(res[i]).Unit_Price;
+                    
+                    
+                    recalcular(i);
+                break;
 
                 }//FIN BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
             
