@@ -1328,13 +1328,14 @@ function getOCitem(oc){
                                         data: {url: datos, item: itemId},
                                         success: function(x){
                                 
-                                       
+                                        console.log('setdesc'+i);
                                     }
                                 
                                 });
                     
                         }   
                         $.when(getDesc()).done(function(x){ //ESPERA QUE TERMINE LA INSERCION DE CABECERA
+                           
                             xjson = JSON.parse(x);
                             
                             theTbl.rows[i].cells[1].innerHTML =xjson.Description;
