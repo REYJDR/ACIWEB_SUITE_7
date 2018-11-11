@@ -840,7 +840,6 @@ function set_selectWidth(selecClass){
   selecClass.forEach(set);
 
   function set(item, index){
-console.log(item+'-'+index)
      //selectc con buscador 
      $(item).select2({
       placeholder: '',
