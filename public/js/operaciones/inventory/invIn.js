@@ -1324,8 +1324,10 @@ function getOC(vendor){
 //******************************************************************************************
 
 function getOCitem(oc){
+
     var theTbl = document.getElementById('table_ord_tb'); //objeto de la tabla que contiene los datos de items
-    
+    var job   = '#JOBID2';
+
     $.ajax({
         type: "GET",
         url: link,
@@ -1340,7 +1342,6 @@ function getOCitem(oc){
 
             
             JSON.parse(res[i]).Description;
-            JSON.parse(res[i]).Quantity;
             JSON.parse(res[i]).Unit_Price; 
             JSON.parse(res[i]).JobPhaseID;
             JSON.parse(res[i]).JobID;
@@ -1350,14 +1351,27 @@ function getOCitem(oc){
             for(var i=1; i<theTbl.rows.length ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theTbl
             {
                var  selid = '#sel'+i;
-
+               var  phase = '#phase'+i;
+               var  cost  = '#phase'+i;
+               
+                
+               $(job).select2("val", JSON.parse(res[i]).JobID); //set the value
                
                for(var j=0;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
                {       
             
                 $(selid).select2("val", JSON.parse(res[i]).Item_id); //set the value
+                $(phase).select2("val", JSON.parse(res[i]).JobPhaseID); //set the value
+                $(cost).select2("val", JSON.parse(res[i]).JobCostCodeID); //set the value
                 
-            
+                theTbl.rows[i].cells[1].innerHTML = JSON.parse(res[i]).Description;
+                theTbl.rows[i].cells[2].innerHTML = JSON.parse(res[i]).Quantity;
+                theTbl.rows[i].cells[3].innerHTML = JSON.parse(res[i]).Quantity;
+                theTbl.rows[i].cells[4].innerHTML = JSON.parse(res[i]).Unit_Price;
+                
+                
+                recalcular();
+
                 }//FIN BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
             
             }//FIN BLUCLE PARA LEER LINEA POR LINEA DE LA TABLA
