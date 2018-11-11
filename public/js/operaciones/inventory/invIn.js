@@ -1207,7 +1207,7 @@ function FIND_COLUMN_NAME(item){
     var theTbl = document.getElementById('table_ord_tb');
 
     var val = theTbl.rows[0].cells[item].innerHTML;
-    return val;
+    return '('+item+') '+val;
     }
 //******************************************************************************************
 //busca nombre de columna
