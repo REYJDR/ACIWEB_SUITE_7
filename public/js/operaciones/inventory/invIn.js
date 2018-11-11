@@ -1346,7 +1346,7 @@ function getOCitem(oc){
             JSON.parse(res[i]).JobCostCodeID;
             JSON.parse(res[i]).AccountID
 
-            for(var i=1; i<m+1 ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theTbl
+            for(var i=1; i<theTbl.rows.length ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theTbl
             {
                var  selid = '#sel'+i;
                var  phase = '#phase'+i;
