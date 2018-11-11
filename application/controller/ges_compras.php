@@ -150,7 +150,7 @@ public function PO_item($PurchaseOrderNumber){
    $res = $this->model->get_items_by_OC($PurchaseOrderNumber);
 
    foreach ($res as $value) {
-       echo $res;
+       echo $value;
    }
 
 }
