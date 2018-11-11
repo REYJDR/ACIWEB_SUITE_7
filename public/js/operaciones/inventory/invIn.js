@@ -1361,15 +1361,15 @@ function getOCitem(oc){
                {       
                     switch (j){
                         
-                    case 7:
+                    case 8:
                         $(selid).select2("val", JSON.parse(res[i]).Item_id); //set the value
                         $(phase).select2("val", JSON.parse(res[i]).JobPhaseID); //set the value
                         $(cost).select2("val", JSON.parse(res[i]).JobCostCodeID); //set the value
                         
                         theTbl.rows[i].cells[1].innerHTML = JSON.parse(res[i]).Description;
-                        theTbl.rows[i].cells[2].innerHTML = JSON.parse(res[i]).Quantity;
                         theTbl.rows[i].cells[3].innerHTML = JSON.parse(res[i]).Quantity;
-                        theTbl.rows[i].cells[4].innerHTML = JSON.parse(res[i]).Unit_Price;
+                        theTbl.rows[i].cells[4].innerHTML = JSON.parse(res[i]).Quantity;
+                        theTbl.rows[i].cells[5].innerHTML = JSON.parse(res[i]).Unit_Price;
                         
                         
                         recalcular(i);
