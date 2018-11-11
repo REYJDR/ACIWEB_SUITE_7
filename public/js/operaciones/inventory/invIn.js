@@ -1317,7 +1317,7 @@ function getOCitem(oc){
                         
                         function getDesc(){
                             
-                            return SetDesc(selid,i);
+                            return SetDesc(JSON.parse(res[m]).Item_id,i);
 
                         }   
                         $.when(getDesc()).done(function(){ //ESPERA QUE TERMINE LA INSERCION DE CABECERA
