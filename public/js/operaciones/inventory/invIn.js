@@ -1320,7 +1320,7 @@ function getOCitem(oc){
                             return SetDesc(JSON.parse(res[m]).Item_id,i);
 
                         }   
-                        $.when(getDesc()).done(function(res){ //ESPERA QUE TERMINE LA INSERCION DE CABECERA
+                        $.when(getDesc()).done(function(x){ //ESPERA QUE TERMINE LA INSERCION DE CABECERA
                     
                             theTbl.rows[i].cells[3].innerHTML = JSON.parse(res[m]).Quantity;
                             theTbl.rows[i].cells[4].innerHTML = JSON.parse(res[m]).Quantity;
