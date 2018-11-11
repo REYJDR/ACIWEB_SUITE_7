@@ -1334,7 +1334,7 @@ function getOCitem(oc){
            
        json = JSON.parse(res);
        
-       document.writeln(json);
+      console.log(json[0]);
           /* 
             for(var i=0;i<res.length;i++){
                 console.log("<tr><td>"+res[i].ID_compania+"</td><td>"+res[i].Items_id+"</td></tr>");
