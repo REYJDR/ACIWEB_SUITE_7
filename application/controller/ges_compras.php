@@ -146,11 +146,10 @@ public function PO_item($PurchaseOrderNumber){
  
    $this->model->verify_session();
 
-    $array = [];
-
    $res = $this->model->get_items_by_OC($PurchaseOrderNumber);
 
-   echo json_encode($res);
+   print_r($res);
+  // echo json_encode($res);
 }
 
 
