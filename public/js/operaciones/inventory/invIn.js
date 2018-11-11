@@ -1039,7 +1039,8 @@ function proceed(){
             
                                             default: 
         
-                                            if (j==3 || j==4 || j==5 ){
+                                            if (j==5 || j==6 || j==7 ){
+                                                
                                                 
                                                 val= theTbl.rows[i].cells[j].innerHTML;
                                                 
@@ -1108,7 +1109,7 @@ function proceed(){
     
                                     default: 
 
-                                        if (j==3 || j==4 || j==5 ){
+                                        if (j==5 || j==6 || j==7 ){
                                             
                                             val= theTbl.rows[i].cells[j].innerHTML;
                                             
