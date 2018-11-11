@@ -1333,12 +1333,10 @@ function getOCitem(oc){
        
        
 
-        json = JSON.parse(res);
+        json = JSON.parse(JSON.parse(res));
 
-        console.log(json);
         
         for (var items in json){
-            line = JSON.parse(items)
             console.log(line.ID_compania);
 
           //  line = JSON.parse(items);
