@@ -1346,7 +1346,7 @@ function getOCitem(oc){
             JSON.parse(res[m]).JobCostCodeID;
             JSON.parse(res[m]).AccountID
 
-            $i = m + 1 ;
+            i = m + 1 ;
             var  selid = '#sel'+i;
             var  phase = '#phase'+i;
             var  cost  = '#phase'+i;
