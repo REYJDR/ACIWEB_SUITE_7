@@ -270,6 +270,7 @@ function jobs(){
                     type: "GET",
                     url: link,
                     data: datos,
+                    async: false,
                     success: function(res){
                     
                     JOBS = res;
@@ -354,6 +355,7 @@ function getBudget(){
             type: "GET",
             url: link,
             data: datos,
+            async: false,
             success: function(res){
                 console.log('budget:'+res);
                 $('#Budget').val(res);
