@@ -296,6 +296,7 @@ function phase(){
            type: "GET",
            url: link,
            data: datos,
+           async = false,
            success: function(res){
     
            PHASES = res;
@@ -319,6 +320,7 @@ function phase(){
              type: "GET",
              url: link,
              data: datos,
+             async = false,
              success: function(res){
      
              COST = res;                  
