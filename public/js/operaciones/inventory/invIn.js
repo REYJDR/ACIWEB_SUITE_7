@@ -1340,7 +1340,7 @@ function getOCitem(oc){
             
 
              line = JSON.parse(items);
-             console.log(line.ID_compania);
+             console.log(line);
            
         }
 
