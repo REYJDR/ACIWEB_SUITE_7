@@ -24,8 +24,9 @@
 // ********************************************************
 $(window).load(function(){
     
-    set_selectWidth('.selectJob');
-    set_selectWidth('.selectOc');
+    cls = ['.selectJob','.selectOc']
+    set_selectWidth(cls);
+ 
     
 
     $('#prod_ind').hide();
@@ -1301,7 +1302,7 @@ function getOCitem(oc){
             
                 if(JSON.parse(res[m]).JobID != ''){
                  
-                    if($(job).val() == '') {
+                    if($(job).select2("val") == '') {
                         $(job).select2("val", JSON.parse(res[m]).JobID); //set the value
                         getBudget();
                     }
@@ -1316,8 +1317,6 @@ function getOCitem(oc){
                 
                 function getDesc(){
             
-                    console.log(m);
-                       
                         return $.ajax({
                                 type: "GET",
                                 url: link,
@@ -1325,7 +1324,6 @@ function getOCitem(oc){
                                 data: {url: datos, item: itemId},
                                 success: function(x){
                         
-                                console.log('setdesc'+m);
                             }
                         
                         });

@@ -837,16 +837,23 @@ function set_selectLocStyle(line){
 
 function set_selectWidth(selecClass){
   
+  selecClass.forEach(set);
+
+  function set(item, index){
+console.log(item+'-'+index)
      //selectc con buscador 
-     $(selecClass).select2({
-     placeholder: '',
-     allowClear: true,
-     maximumSelectionSize: 1,
-     dropdownCssClass : 'bigdrop',
-     dropdownAutoWidth : true,
-     width: 'auto'
-   
-     }); 
+     $(item).select2({
+      placeholder: '',
+      allowClear: true,
+      maximumSelectionSize: 1,
+      dropdownCssClass : 'bigdrop',
+      dropdownAutoWidth : true,
+      width: 'auto'
+    
+      }); 
+
+  }
+
    
 }
 // ********************************************************
