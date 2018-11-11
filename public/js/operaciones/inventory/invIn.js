@@ -1286,12 +1286,14 @@ function getOC(vendor){
 //******************************************************************************************
 
 function getOCitem(oc){
-    $(job).select2("val", '-');
+    
     init(2);
     var theTbl = document.getElementById('table_ord_tb'); //objeto de la tabla que contiene los datos de items
     var jobSel   = '#JOBID2 option:selected';
     var job      = '#JOBID2';
     
+    $(job).select2("val", '-');
+
     var datos= "bridge_query/get_ProductsInfo";
     var link= $('#URL').val()+"index.php";
 
