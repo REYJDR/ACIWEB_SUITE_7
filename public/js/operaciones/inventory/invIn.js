@@ -1276,6 +1276,8 @@ function getOCitem(oc){
 
     var theTbl = document.getElementById('table_ord_tb'); //objeto de la tabla que contiene los datos de items
     var job   = '#JOBID2';
+    var datos= "bridge_query/get_ProductsInfo";
+    var link= $('#URL').val()+"index.php";
 
     $.ajax({
         type: "GET",
@@ -1287,8 +1289,6 @@ function getOCitem(oc){
           
         for(var m=0;m<res.length;m++){
 
-            
-           
  
             JSON.parse(res[m]).AccountID
 
@@ -1296,6 +1296,8 @@ function getOCitem(oc){
             var  selid = '#sel'+i;
             var  phase = '#phase'+i;
             var  cost  = '#cost'+i;
+            
+
             
                 if(JSON.parse(res[m]).JobID != ''){
                  
@@ -1305,58 +1307,41 @@ function getOCitem(oc){
                     }
                 }
 
-               
-               for(var j=0;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
-               {       
-                    switch (j){
-                        
-                    case 8:
-                    itemId = JSON.parse(res[m]).Item_id;
-                        $(selid).select2("val",  itemId); //set the value
-                        $(phase).select2("val", JSON.parse(res[m]).JobPhaseID); //set the value
-                        $(cost).select2("val", JSON.parse(res[m]).JobCostCodeID); //set the value
-                        
-                        function getDesc(){
-                            
-                    
-                                var datos= "bridge_query/get_ProductsInfo";
-                                var link= $('#URL').val()+"index.php";
-                    
-                               return $.ajax({
-                                        type: "GET",
-                                        url: link,
-                                        data: {url: datos, item: itemId},
-                                        success: function(x){
-                                
-                                        console.log('setdesc'+i);
-                                    }
-                                
-                                });
-                    
-                        }   
-                        $.when(getDesc()).done(function(x){ //ESPERA QUE TERMINE LA INSERCION DE CABECERA
-                           
-                            xjson = JSON.parse(x);
-                            
-                            theTbl.rows[i].cells[1].innerHTML =xjson.Description;
-                            theTbl.rows[i].cells[2].innerHTML =xjson.TaxType;
-            
-                            theTbl.rows[i].cells[3].innerHTML = JSON.parse(res[m]).Quantity;
-                            theTbl.rows[i].cells[4].innerHTML = JSON.parse(res[m]).Quantity;
-                            theTbl.rows[i].cells[5].innerHTML = JSON.parse(res[m]).Unit_Price;
-                            recalcular(i);
-                        } );
-                        
-                        
-                        
-                     break;
-                    }
 
-                }//FIN BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
-            
-        
-            
+                itemId = JSON.parse(res[m]).Item_id;
 
+                $(selid).select2("val",  itemId); //set the value
+                $(phase).select2("val", JSON.parse(res[m]).JobPhaseID); //set the value
+                $(cost).select2("val", JSON.parse(res[m]).JobCostCodeID); //set the value
+                
+                function getDesc(){
+            
+                       
+                        return $.ajax({
+                                type: "GET",
+                                url: link,
+                                data: {url: datos, item: itemId},
+                                success: function(x){
+                        
+                                console.log('setdesc'+i);
+                            }
+                        
+                        });
+            
+                }   
+                $.when(getDesc()).done(function(x){ //ESPERA QUE TERMINE LA INSERCION DE CABECERA
+                    
+                    xjson = JSON.parse(x);
+                    
+                    theTbl.rows[i].cells[1].innerHTML =xjson.Description;
+                    theTbl.rows[i].cells[2].innerHTML =xjson.TaxType;
+    
+                    theTbl.rows[i].cells[3].innerHTML = JSON.parse(res[m]).Quantity;
+                    theTbl.rows[i].cells[4].innerHTML = JSON.parse(res[m]).Quantity;
+                    theTbl.rows[i].cells[5].innerHTML = JSON.parse(res[m]).Unit_Price;
+                    recalcular(i);
+                } );
+                
         
         }
 
