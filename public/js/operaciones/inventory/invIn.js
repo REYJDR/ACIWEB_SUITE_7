@@ -560,17 +560,8 @@ function SetDesc(itemId, line){
                // document.getElementById(id_qty_field).innerHTML  = json.QtyOnHand;
                 document.getElementById(id_price_field).innerHTML  = json.Price1;
                 document.getElementById(id_gl_field).innerHTML     = json.GL_Sales_Acct;
-                
-    
-                if(json.TaxType == 1){
-        
-                    document.getElementById(id_taxable_field).innerHTML  = 'SI';
-        
-                }else{
-        
-                    document.getElementById(id_taxable_field).innerHTML  = 'NO';
-        
-            }
+                document.getElementById(id_taxable_field).innerHTML  = json.TaxType;
+
     
         });
        }  
@@ -675,16 +666,16 @@ function sumar_total(){
     
                 switch (j){
     
-                       case 7:
+                       case 5:
                   
-                       if(document.getElementById(taxableID).innerHTML=='SI'){
+                       if(document.getElementById(taxableID).innerHTML==1){
                     
-                        itbms_sum = Number(theTbl.rows[i].cells[7].innerHTML) * Number(tax_value);
+                        itbms_sum = Number(theTbl.rows[i].cells[5].innerHTML) * Number(tax_value);
                         itbms.push(itbms_sum);
     
                         }
                        
-                        total.push(theTbl.rows[i].cells[7].innerHTML);
+                        total.push(theTbl.rows[i].cells[5].innerHTML);
     
                         break;
     
