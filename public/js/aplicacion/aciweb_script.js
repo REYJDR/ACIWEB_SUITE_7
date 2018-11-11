@@ -847,8 +847,8 @@ function set_selectWidth(selecClass){
       allowClear: true,
       maximumSelectionSize: 1,
       dropdownCssClass : 'bigdrop',
- /*     dropdownAutoWidth : true,
-      width: 'auto'*/
+      dropdownAutoWidth : true,
+      width: 'auto'
     
       }); 
 
