@@ -1316,6 +1316,7 @@ function getOCitem(oc){
                 
                 function getDesc(){
             
+                    console.log(m);
                        
                         return $.ajax({
                                 type: "GET",
@@ -1323,7 +1324,7 @@ function getOCitem(oc){
                                 data: {url: datos, item: itemId},
                                 success: function(x){
                         
-                                console.log('setdesc'+i);
+                                console.log('setdesc'+m);
                             }
                         
                         });
