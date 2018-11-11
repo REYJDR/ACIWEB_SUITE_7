@@ -338,7 +338,7 @@ function getBudget(){
    // var PHASE= $('#PHASEID2').val();
    // var COST = $('#COSTID2').val();
     
-    console.log(JOB,PHASE,COST);
+ //   console.log(JOB,PHASE,COST);
 
 /*    if (PHASE == '-' || PHASE  ==  null) { PHASE = 0}
     if (COST  == '-' || COST  ==  null) { COST = 0}
