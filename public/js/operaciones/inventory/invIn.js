@@ -1303,8 +1303,9 @@ function getOCitem(oc){
 
             
                 if(JSON.parse(res[m]).JobID != ''){
-                 
-                    if($(job).select2("val") == '') {
+           
+
+                    if($(job).select2("data") == '-') {
                         $(job).select2("val", JSON.parse(res[m]).JobID); //set the value
                         getBudget();
                     }
