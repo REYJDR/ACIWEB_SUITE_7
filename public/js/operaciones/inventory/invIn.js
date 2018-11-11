@@ -1331,9 +1331,9 @@ function getOCitem(oc){
         data: {url: 'ges_compras/PO_item/'+oc},
         success: function(res){
        
-       
-            for (var i = 0; i < res.length; i++) {
-                var object = res[i];
+            json = JSON.parse(res);
+            for (var i = 0; i < json.length; i++) {
+                var object = json[i];
                 for (var property in object) {
                     console.log('item ' + i + ': ' + property + '=' + object[property]);
                 }
