@@ -152,9 +152,11 @@ public function PO_item($PurchaseOrderNumber){
 
    foreach ($res as $value) {
        array_push($array , $value);
-   }
+   
+   
+    }
 
-   echo json_encode($array, JSON_FORCE_OBJECT);
+   echo json_encode($res, JSON_FORCE_OBJECT);
 }
 
 
