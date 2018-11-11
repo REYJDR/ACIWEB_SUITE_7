@@ -1347,7 +1347,7 @@ function getOCitem(oc){
 
     }
 });
-set_selectItemStyle();
+set_selectWidth(cls=['.selectItems']);
 
 }
 //******************************************************************************************
