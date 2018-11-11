@@ -151,7 +151,7 @@ public function PO_item($PurchaseOrderNumber){
 
  $i = 0;
  foreach ($res as  $value) {
-    $array[$i] .= $value.',';
+    $array[$i] = $value;
     $i = $i + 1;
  }
  $items['items'] = json_encode($array);
