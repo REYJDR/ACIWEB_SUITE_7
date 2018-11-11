@@ -987,7 +987,7 @@ function proceed(){
                 var locId = 'SelRoute'+i; */
 
                 //*AJUSTE DE MATERIAL
-                var selid = "sel"+i;
+                var selid   = "sel"+i;
                 var phaseid = "phase"+i;
                 var costid  = "cost"+i;
                 
@@ -1066,34 +1066,32 @@ function proceed(){
             
                                 case 0:
         
-                                    itemId    = document.getElementById(selid).value;
-    
-                               /*   stockId   = document.getElementById(selid).value;
-                                    locId     = document.getElementById(selid).value;*/ 
-                                                                
-                                    gl_acc    = theTbl.rows[i].cells[3].innerHTML;                                    
-                                    qty       = theTbl.rows[i].cells[5].innerHTML;
-                                    UnitPrice = theTbl.rows[i].cells[6].innerHTML;
-                                    total     = theTbl.rows[i].cells[7].innerHTML;
-                                    jobId       = document.getElementById('JOBID2').value;;
-                                    phaseid     = document.getElementById('PHASEID2').value;;
-                                    costcodeID       = document.getElementById('COSTID2').value;;
+                                itemId    = document.getElementById(selid).value;
+                                desc      = theTbl.rows[i].cells[1].innerHTML;
+                                gl        = theTbl.rows[i].cells[9].innerHTML;
+                                tax       = theTbl.rows[i].cells[2].innerHTML;
+                                qty       = theTbl.rows[i].cells[4].innerHTML;
+                                UnitPrice = theTbl.rows[i].cells[5].innerHTML;
+                                total     = theTbl.rows[i].cells[6].innerHTML;
                                 
-                               /*   lote      = theTbl.rows[i].cells[7].innerHTML;
-                                    fechaVen  = theTbl.rows[i].cells[7].innerHTML;*/
-                                    
-                                    
-                                    //agrego el registo de las demas columnas
-                                    cell += '@'+itemId+
-                                            '@'+UnitPrice+
-                                            '@'+qty+
-                                            '@'+total+
-                                            '@'+jobId+
-                                            '@'+phaseid+
-                                            '@'+costcodeID+
-                                            '@'+gl_acc;
+                                                                           
+                                job       = document.getElementById('JOBID2').value;
+                                phase     = document.getElementById(phaseid).value;
+                                cco       = document.getElementById(costid).value;
 
-                                            
+        
+        
+                                //agrego el registo de las demas columnas
+                                cell += '@'+itemId+
+                                        '@'+desc+
+                                        '@'+gl+
+                                        '@'+job+
+                                        '@'+phase+
+                                        '@'+cco+
+                                        '@'+qty+
+                                        '@'+UnitPrice+
+                                        '@'+total;
+
                                 console.log(cell);
         
                                 /*if( stockId==0){
