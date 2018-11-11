@@ -1330,10 +1330,14 @@ function getOCitem(oc){
         url: link,
         data: {url: 'ges_compras/PO_item/'+oc},
         success: function(res){
-       
-            json = JSON.parse(res);
 
-            console.log( json); 
+
+            $(jQuery.parseJSON(JSON.stringify(res))).each(function() {  
+                var ID = this.Item_id;
+                var TITLE = this.Description;
+                console.log(ID+' '+TITLE);
+            });
+
         /*    for (var i = 0; i < json.length; i++) {
                 var object = json[i];
                 for (var property in object) {
