@@ -1322,8 +1322,10 @@ function getOCitem(oc){
             
                 if(JSON.parse(res[m]).JobID != ''){
                  
-                 $(job).select2("val", JSON.parse(res[m]).JobID); //set the value
-                 getBudget();
+                    if($(job).val() == '') {
+                        $(job).select2("val", JSON.parse(res[m]).JobID); //set the value
+                        getBudget();
+                    }
                 }
 
                
@@ -1336,15 +1338,22 @@ function getOCitem(oc){
                         $(phase).select2("val", JSON.parse(res[m]).JobPhaseID); //set the value
                         $(cost).select2("val", JSON.parse(res[m]).JobCostCodeID); //set the value
                         
-                        SetDesc(selid,i);
+                        function getDesc(){
+                            
+                            return SetDesc(selid,i);
+
+                        }   
+                        $.when(getDesc()).done(function(){ //ESPERA QUE TERMINE LA INSERCION DE CABECERA
+                    
+                            theTbl.rows[i].cells[3].innerHTML = JSON.parse(res[m]).Quantity;
+                            theTbl.rows[i].cells[4].innerHTML = JSON.parse(res[m]).Quantity;
+                            theTbl.rows[i].cells[5].innerHTML = JSON.parse(res[m]).Unit_Price;
+                            recalcular(i);
+                        } );
                         
-                        theTbl.rows[i].cells[3].innerHTML = JSON.parse(res[m]).Quantity;
-                        theTbl.rows[i].cells[4].innerHTML = JSON.parse(res[m]).Quantity;
-                        theTbl.rows[i].cells[5].innerHTML = JSON.parse(res[m]).Unit_Price;
                         
                         
-                        recalcular(i);
-                    break;
+                     break;
                     }
 
                 }//FIN BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
