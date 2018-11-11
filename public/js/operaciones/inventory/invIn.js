@@ -1339,13 +1339,13 @@ function getOCitem(oc){
             $("#select").select2("val", "CA"); //set the value
 
             
-            JSON.paser(res[i]).Description;
-            JSON.paser(res[i]).Quantity;
-            JSON.paser(res[i]).Unit_Price; 
-            JSON.paser(res[i]).JobPhaseID;
-            JSON.paser(res[i]).JobID;
-            JSON.paser(res[i]).JobCostCodeID;
-            JSON.paser(res[i]).AccountID
+            JSON.parse(res[i]).Description;
+            JSON.parse(res[i]).Quantity;
+            JSON.parse(res[i]).Unit_Price; 
+            JSON.parse(res[i]).JobPhaseID;
+            JSON.parse(res[i]).JobID;
+            JSON.parse(res[i]).JobCostCodeID;
+            JSON.parse(res[i]).AccountID
 
             for(var i=1; i<theTbl.rows.length ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theTbl
             {
@@ -1355,7 +1355,7 @@ function getOCitem(oc){
                for(var j=0;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
                {       
             
-                $(selid).select2("val", JSON.paser(res[i]).Item_id); //set the value
+                $(selid).select2("val", JSON.parse(res[i]).Item_id); //set the value
                 
             
                 }//FIN BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
