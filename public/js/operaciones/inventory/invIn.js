@@ -1328,11 +1328,12 @@ function getOCitem(oc){
     $.ajax({
         type: "GET",
         url: link,
+        dataType: 'json',
         data: {url: 'ges_compras/PO_item/'+oc},
         success: function(res){
            
 
-            document.writeln(JSON.parse(JSON.stringify(res)));
+            document.writeln(res);
           /* 
             for(var i=0;i<res.length;i++){
                 console.log("<tr><td>"+res[i].ID_compania+"</td><td>"+res[i].Items_id+"</td></tr>");

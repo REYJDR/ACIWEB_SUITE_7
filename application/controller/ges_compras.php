@@ -148,8 +148,8 @@ public function PO_item($PurchaseOrderNumber){
 
    $res = $this->model->get_items_by_OC($PurchaseOrderNumber);
 
-   print_r($res);
-  // echo json_encode($res);
+  
+   echo json_encode($res);
 }
 
 
