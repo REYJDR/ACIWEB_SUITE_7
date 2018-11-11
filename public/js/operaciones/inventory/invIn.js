@@ -831,7 +831,7 @@ function proceed(){
                     var fecha = document.getElementById('fecha').value;
                     var vend_id = document.getElementById('vendorID').value;
                     var total = document.getElementById('total').value;
-                    
+                    var oc = document.getElementById('vendorOC').value;
             
                             //REGISTRO DE CABECERA
                     
@@ -841,6 +841,7 @@ function proceed(){
                         HeaderInfo[0] =  fact_id+
                                         '@'+fecha+
                                         '@'+vend_id+
+                                        '@'+oc+
                                         '@'+total;
                         
             
@@ -993,39 +994,30 @@ function proceed(){
                   if(document.getElementById(selid).value !=''){ 
                     
                                 switch (j){
-                    
                                         case 0:
                                             
                                             itemId    = document.getElementById(selid).value;
                                             desc      = theTbl.rows[i].cells[1].innerHTML;
-                                         // unit      = theTbl.rows[i].cells[2].innerHTML;
-                                         //   gl        = theTbl.rows[i].cells[3].innerHTML;
-                                            tax       = theTbl.rows[i].cells[4].innerHTML;
-   
-                                        /*  stockId   = document.getElementById(selid).value;
-                                            locId     = document.getElementById(selid).value;*/ 
-                                  
-                                        /*  lote      = theTbl.rows[i].cells[7].innerHTML;
-                                            fechaVen  = theTbl.rows[i].cells[7].innerHTML;*/
-                                                        
-                                            qty       = theTbl.rows[i].cells[5].innerHTML;
-                                            UnitPrice = theTbl.rows[i].cells[6].innerHTML;
-                                            total     = theTbl.rows[i].cells[7].innerHTML;
+                                            gl        = theTbl.rows[i].cells[9].innerHTML;
+                                            tax       = theTbl.rows[i].cells[2].innerHTML;
+                                            qty       = theTbl.rows[i].cells[4].innerHTML;
+                                            UnitPrice = theTbl.rows[i].cells[5].innerHTML;
+                                            total     = theTbl.rows[i].cells[6].innerHTML;
                                             
                                                                                        
                                             job       = document.getElementById('JOBID2').value;
-                                            phase     = document.getElementById(phaseid).value;;
+                                            phase     = document.getElementById(phaseid).value;
                                             cco       = document.getElementById(costid).value;
 
+                    
+                    
                                             //agrego el registo de las demas columnas
                                             cell += '@'+itemId+
                                                     '@'+desc+
-                                                    '@'+unit+
                                                     '@'+gl+
                                                     '@'+job+
                                                     '@'+phase+
                                                     '@'+cco+
-                                                    '@'+tax+
                                                     '@'+qty+
                                                     '@'+UnitPrice+
                                                     '@'+total;
@@ -1049,8 +1041,8 @@ function proceed(){
                                                     
                                                     val= theTbl.rows[i].cells[j].innerHTML;
                                                     
-                                                                                if(val==''){                              
-                                                                                    FaltaArray[j] = i ;
+                                                    if(val==''){                              
+                                                        FaltaArray[j] = i ;
                                                     }
                                                 }
         

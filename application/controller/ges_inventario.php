@@ -993,7 +993,18 @@ public function set_Purchase_Header(){
     $value = $data[0];
     
     
-    list($PurchaseNumber,$date,$VendorID,$total) = explode('@', $value );
+    list($PurchaseNumber,$date,$VendorID,$OC,$total) = explode('@', $value );
+
+    if($OC != '' || $OC != '-' ){
+        $ApplyToPurOrderNumber = $OC;
+        $ApplyToPurchaseOrder  = true;
+        
+    }else{
+        $ApplyToPurOrderNumber = '';
+        $ApplyToPurchaseOrder  = false;
+
+    }
+
     
     $date = strtotime($this->model->GetLocalTime(date("Y-m-d")));
     $date = date("Y-m-d",$date);
@@ -1038,7 +1049,7 @@ public function set_Purchase_Detail($PurchaseID){
         
         if($value){
     
-        list($empty,$Item_id,$Description,$unit,$GL_Acct,$JobID,$JobPhaseID,$JobCostCodeID,$tax,$Quantity,$Unit_Price,$Net_line,) = explode('@', $value );
+        list($empty,$Item_id,$Description,$GL_Acct,$JobID,$JobPhaseID,$JobCostCodeID,$Quantity,$Unit_Price,$Net_line) = explode('@', $value );
   
     
           //EN CASO QUE NO SE HAGA CONVERSION DE UNIDDES ESCRIBE EN LA TABLA DE SALES ORDER DETAIL SIN INDICAR EL ITEMID. 
