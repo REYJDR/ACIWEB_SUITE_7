@@ -1278,7 +1278,7 @@ function getOC(vendor){
 function getOCitem(oc){
     init(2);
     var theTbl = document.getElementById('table_ord_tb'); //objeto de la tabla que contiene los datos de items
-    var job   = '#JOBID2';
+    var job   = '#JOBID2 option:selected"';
     var datos= "bridge_query/get_ProductsInfo";
     var link= $('#URL').val()+"index.php";
 
@@ -1303,13 +1303,13 @@ function getOCitem(oc){
 
             
                 if(JSON.parse(res[m]).JobID != ''){
-                    console.log($(job).select2("data"));
-                    
-                    if($(job).select2("data") == '-') {
+                    console.log($(job).text());
+
+                    if($(job).text() == '-') {
                         $(job).select2("val", JSON.parse(res[m]).JobID); //set the value
                         getBudget();
                     }
-                }
+                } 
 
 
                 itemId = JSON.parse(res[m]).Item_id;
