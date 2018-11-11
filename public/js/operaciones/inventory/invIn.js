@@ -648,16 +648,16 @@ function sumar_total(){
     
                 switch (j){
     
-                       case 5:
+                       case 6:
                   
                        if(document.getElementById(taxableID).innerHTML==1){
                     
-                        itbms_sum = Number(theTbl.rows[i].cells[5].innerHTML) * Number(tax_value);
+                        itbms_sum = Number(theTbl.rows[i].cells[6].innerHTML) * Number(tax_value);
                         itbms.push(itbms_sum);
     
                         }
                        
-                        total.push(theTbl.rows[i].cells[5].innerHTML);
+                        total.push(theTbl.rows[i].cells[6].innerHTML);
     
                         break;
     
