@@ -453,7 +453,9 @@ function builtTbl(chk){
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblnum(this.id)" onfocusout="calculate( '+i+');" contenteditable id="unitprice'+i+'" ></td>'+
                 '<td width="5%"  class="rowtable_req  numb" '+color+' id="total'+i+'" ></td>' +
                 '<td width="15%" class="rowtable_req" ><select class="selectItems" id="phase'+i+'"  ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
-                '<td width="15%" class="rowtable_req" ><select class="selectItems" id="cost'+i+'" ><option  value="-" selected>-</option>'+COST+'</select></td></tr>';
+                '<td width="15%" class="rowtable_req" ><select class="selectItems" id="cost'+i+'" ><option  value="-" selected>-</option>'+COST+'</select></td></tr>'+
+                '<td width="5%"  class="rowtable_req  numb" style="'+display+'" onkeyup="checkTblnum(this.id)"  id="gl'+i+'" '+editable2+' '+color2+'></td>';
+                ;
 
                      
             i++
@@ -477,7 +479,7 @@ function SetDesc(itemId, line){
   //  var id_unit_field = 'unit'+line;
     var id_price_field = 'unitprice'+line;
     var id_taxable_field = 'tax'+line;
-  //  var id_gl_field = 'gl'+line;
+  
     var qtyord = 'qtyord'+line;
     var id_qty_field = 'qty'+line;
     var id_total = 'total'+line;
@@ -492,7 +494,7 @@ function SetDesc(itemId, line){
        // document.getElementById(id_unit_field).innerHTML   = '';
         document.getElementById(id_qty_field).innerHTML  = '';
         document.getElementById(id_price_field).innerHTML  = '';
-       // document.getElementById(id_gl_field).innerHTML     = '';
+        //document.getElementById(id_gl_field).innerHTML     = '';
         document.getElementById(qtyord).innerHTML  = '';
         document.getElementById(id_taxable_field).innerHTML  = '';
         document.getElementById(id_total).innerHTML  = '';
@@ -532,7 +534,7 @@ function SetDesc(itemId, line){
                 //document.getElementById(id_unit_field).innerHTML   = json.UnitMeasure;
                 //document.getElementById(id_qty_field).innerHTML    = json.QtyOnHand;
                 document.getElementById(id_price_field).innerHTML  = json.Price1;
-               // document.getElementById(id_gl_field).innerHTML     = json.GL_Sales_Acct;
+                //document.getElementById(id_gl_field).innerHTML     = json.GL_Sales_Acct;
                 document.getElementById(id_taxable_field).innerHTML  = json.TaxType;
 
     
@@ -1315,6 +1317,7 @@ function getOCitem(oc){
             var  selid = '#sel'+i;
             var  phase = '#phase'+i;
             var  cost  = '#cost'+i;
+            var  gl = 'gl'+line;
             
 
             
@@ -1358,6 +1361,7 @@ function getOCitem(oc){
                     theTbl.rows[i].cells[3].innerHTML = JSON.parse(res[m]).Quantity;
                     theTbl.rows[i].cells[4].innerHTML = JSON.parse(res[m]).Quantity;
                     theTbl.rows[i].cells[5].innerHTML = JSON.parse(res[m]).Unit_Price;
+                    theTbl.rows[i].cells[9].innerHTML = JSON.parse(res[m]).AccountID;
                     recalcular(i);
                 } );
                 
