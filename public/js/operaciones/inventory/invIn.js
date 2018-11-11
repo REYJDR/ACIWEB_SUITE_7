@@ -468,7 +468,7 @@ function builtTbl(chk){
 // ******************************************************************************************
 function SetDesc(itemId, line){
 
-    console.log(itemId);
+
     
     var id_desc_field = 'desc'+line;
   //  var id_unit_field = 'unit'+line;
@@ -1311,17 +1311,35 @@ function getOCitem(oc){
                     switch (j){
                         
                     case 8:
-                        $(selid).select2("val", JSON.parse(res[m]).Item_id); //set the value
+                    itemId = JSON.parse(res[m]).Item_id;
+                        $(selid).select2("val",  itemId); //set the value
                         $(phase).select2("val", JSON.parse(res[m]).JobPhaseID); //set the value
                         $(cost).select2("val", JSON.parse(res[m]).JobCostCodeID); //set the value
                         
                         function getDesc(){
                             
-                            return SetDesc(JSON.parse(res[m]).Item_id,i);
-
+                    
+                                var datos= "bridge_query/get_ProductsInfo";
+                                var link= $('#URL').val()+"index.php";
+                    
+                               return $.ajax({
+                                        type: "GET",
+                                        url: link,
+                                        data: {url: datos, item: itemId},
+                                        success: function(x){
+                                
+                                       
+                                    }
+                                
+                                });
+                    
                         }   
                         $.when(getDesc()).done(function(x){ //ESPERA QUE TERMINE LA INSERCION DE CABECERA
-                    
+                            xjson = JSON.parse(x);
+                            
+                            theTbl.rows[i].cells[1].innerHTML =xjson.Description;
+                            theTbl.rows[i].cells[2].innerHTML =xjson.TaxType;
+            
                             theTbl.rows[i].cells[3].innerHTML = JSON.parse(res[m]).Quantity;
                             theTbl.rows[i].cells[4].innerHTML = JSON.parse(res[m]).Quantity;
                             theTbl.rows[i].cells[5].innerHTML = JSON.parse(res[m]).Unit_Price;
