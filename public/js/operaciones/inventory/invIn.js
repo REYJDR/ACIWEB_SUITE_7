@@ -1039,14 +1039,16 @@ function proceed(){
             
                                             default: 
         
-                                                if (j!=2 || j!=3 || j!=7 || j!=8){
-                                                    
-                                                    val= theTbl.rows[i].cells[j].innerHTML;
-                                                    
-                                                    if(val==''){                              
-                                                        FaltaArray[j] = i ;
-                                                    }
+                                            if (j==3 || j==4 || j==5 ){
+                                                
+                                                val= theTbl.rows[i].cells[j].innerHTML;
+                                                
+                                                if(val==''){                              
+                                                    FaltaArray[j] = i ;
                                                 }
+                                            }
+                                                    
+                                                   
         
                                             break;
                                         }
@@ -1106,7 +1108,7 @@ function proceed(){
     
                                     default: 
 
-                                        if (j!=2 || j!=3 || j!=7 || j!=8){
+                                        if (j==3 || j==4 || j==5 ){
                                             
                                             val= theTbl.rows[i].cells[j].innerHTML;
                                             
