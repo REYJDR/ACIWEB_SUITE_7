@@ -1331,14 +1331,13 @@ function getOCitem(oc){
         dataType: 'json',
         data: {url: 'ges_compras/PO_item/'+oc},
         success: function(res){
-           
-     //  json = JSON.parse(res);
-       
+
       console.log(JSON.parse(res[0]).ID_compania);
-          /* 
+          
             for(var i=0;i<res.length;i++){
-                console.log("<tr><td>"+res[i].ID_compania+"</td><td>"+res[i].Items_id+"</td></tr>");
-                }*/
+
+                console.log("<tr><td>"+JSON.parse(res[i]).ID_compania+"</td><td>"+JSON.parse(res[i]).Items_id+"</td></tr>");
+            }
 
 
 
