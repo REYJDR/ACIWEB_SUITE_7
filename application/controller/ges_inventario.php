@@ -1249,9 +1249,9 @@ public function setInventoryAdjustment(){
  
     foreach ($data as $key => $value) {
 
-        list($null,$itemid,$unitprice,$qty,$total,$jobId,$phaseid,$costcodeID,$gl_acc) = explode('@', $value );
+        list($null,$Item_id,$Description,$GL_Acct,$JobID,$JobPhaseID,$JobCostCodeID,$Quantity,$Unit_Price,$Net_line) = explode('@', $value );
         
-        
+
         if($value){
             
             $date = strtotime($this->model->GetLocalTime(date("Y-m-d")));
@@ -1259,15 +1259,15 @@ public function setInventoryAdjustment(){
             $reference = $this->model->Get_Ref_No();
             
             $values = array (
-                'ItemID' => $itemid, 
-                'JobID' => $jobId, 
-                'JobPhaseID' => $phaseid, 
-                'JobCostCodeID' => $costcodeID , 
+                'ItemID' => $Item_id, 
+                'JobID' => $JobID, 
+                'JobPhaseID' => $JobPhaseID, 
+                'JobCostCodeID' => $JobCostCodeID , 
                 'Reference' => $reference , 
                 'ReasonToAdjust' => 'Aciweb - Entrada de mercancia' , 
-                'Account' => $gl_acc , 
-                'UnitCost' => $unitprice , 
-                'Quantity' => $qty, 
+                'Account' => $GL_Acct , 
+                'UnitCost' => $Unit_Price , 
+                'Quantity' => $Quantity, 
                 'Date' => $date , 
                 'USER' => $user , 
                 'ID_compania' =>  $id_compania );
