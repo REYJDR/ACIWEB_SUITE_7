@@ -478,7 +478,12 @@ function SetDesc(itemId, line){
     var id_price_field = 'unitprice'+line;
     var id_taxable_field = 'tax'+line;
   //  var id_gl_field = 'gl'+line;
+    var id_qtyord_field = 'qtyord'+line;
     var id_qty_field = 'qty'+line;
+    var id_total = 'total'+line;
+    var phase = 'phase'+line;
+    var cost = 'cost'+line;
+    
 
 
        if(itemId == ''){
@@ -489,6 +494,10 @@ function SetDesc(itemId, line){
         document.getElementById(id_price_field).innerHTML  = '';
        // document.getElementById(id_gl_field).innerHTML     = '';
         document.getElementById(id_taxable_field).innerHTML  = '';
+        document.getElementById(id_total).innerHTML  = '';
+        
+        $(phase).select2("val", '-'); //set the value
+        $(cost).select2("val", '-'); //set the value
 
 
 
