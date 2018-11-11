@@ -184,7 +184,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 									</tr> -->
 									<tr>
 									    <th><strong><?PHP echo $invIn17; ?></strong></th>
-										<td><input id="Budget" name="Budget" class="inputPage col-lg-12  numb"  value=""/></td>
+										<td><input id="Budget" name="Budget" class="inputPage col-lg-6  numb"  value=""/></td>
 									</tr>	
 										
 									</tbody>
