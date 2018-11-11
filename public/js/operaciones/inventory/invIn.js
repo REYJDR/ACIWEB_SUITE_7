@@ -1331,12 +1331,12 @@ function getOCitem(oc){
         data: {url: 'ges_compras/PO_item/'+oc},
         success: function(res){
 
-
-            $(jQuery.parseJSON(JSON.stringify(res))).each(function() {  
+            $(jQuery.parseJSON(res)).each(function() {  
                 var ID = this.Item_id;
                 var TITLE = this.Description;
                 console.log(ID+' '+TITLE);
             });
+
 
         /*    for (var i = 0; i < json.length; i++) {
                 var object = json[i];
