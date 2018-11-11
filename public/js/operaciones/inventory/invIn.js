@@ -1324,6 +1324,7 @@ function getOC(vendor){
 //******************************************************************************************
 
 function getOCitem(oc){
+    var theTbl = document.getElementById('table_ord_tb'); //objeto de la tabla que contiene los datos de items
     
     $.ajax({
         type: "GET",
@@ -1332,16 +1333,40 @@ function getOCitem(oc){
         data: {url: 'ges_compras/PO_item/'+oc},
         success: function(res){
 
-      console.log(JSON.parse(res[0]).ID_compania);
           
-            for(var i=0;i<res.length;i++){
+        for(var i=0;i<res.length;i++){
 
-                console.log("<tr><td>"+JSON.parse(res[i]).ID_compania+"</td><td>"+JSON.parse(res[i]).Item_id+"</td></tr>");
-            }
+            $("#select").select2("val", "CA"); //set the value
 
+            
+            JSON.paser(res[i]).Description;
+            JSON.paser(res[i]).Quantity;
+            JSON.paser(res[i]).Unit_Price; 
+            JSON.paser(res[i]).JobPhaseID;
+            JSON.paser(res[i]).JobID;
+            JSON.paser(res[i]).JobCostCodeID;
+            JSON.paser(res[i]).AccountID
 
+            for(var i=1; i<theTbl.rows.length ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theTbl
+            {
+               var  selid = '#sel'+i;
 
+               
+               for(var j=0;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
+               {       
+            
+                $(selid).select2("val", JSON.paser(res[i]).Item_id); //set the value
+                
+            
+                }//FIN BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
+            
+            }//FIN BLUCLE PARA LEER LINEA POR LINEA DE LA TABLA
+            
+        
+            
 
+        
+        }
 
     }
 });
