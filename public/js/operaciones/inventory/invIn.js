@@ -1332,9 +1332,9 @@ function getOCitem(oc){
         data: {url: 'ges_compras/PO_item/'+oc},
         success: function(res){
            
-       json = JSON.parse(res);
+     //  json = JSON.parse(res);
        
-      console.log(json[0]);
+      console.log(res[0]);
           /* 
             for(var i=0;i<res.length;i++){
                 console.log("<tr><td>"+res[i].ID_compania+"</td><td>"+res[i].Items_id+"</td></tr>");
