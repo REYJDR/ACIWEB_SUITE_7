@@ -135,7 +135,6 @@ document.addEventListener('DOMContentLoaded', function() {
               getBudget();
                 
             });
-            
 
 
 });
@@ -1313,16 +1312,13 @@ function getOCitem(oc){
 
             
            
-            JSON.parse(res[m]).Unit_Price; 
-            JSON.parse(res[m]).JobPhaseID;
-            JSON.parse(res[m]).JobID;
-            JSON.parse(res[m]).JobCostCodeID;
+ 
             JSON.parse(res[m]).AccountID
 
             i = m + 1 ;
             var  selid = '#sel'+i;
             var  phase = '#phase'+i;
-            var  cost  = '#phase'+i;
+            var  cost  = '#cost'+i;
             
                 if(JSON.parse(res[m]).JobID != ''){
                  
@@ -1340,7 +1336,8 @@ function getOCitem(oc){
                         $(phase).select2("val", JSON.parse(res[m]).JobPhaseID); //set the value
                         $(cost).select2("val", JSON.parse(res[m]).JobCostCodeID); //set the value
                         
-                        theTbl.rows[i].cells[1].innerHTML = JSON.parse(res[m]).Description;
+                        SetDesc(selid,i);
+                        
                         theTbl.rows[i].cells[3].innerHTML = JSON.parse(res[m]).Quantity;
                         theTbl.rows[i].cells[4].innerHTML = JSON.parse(res[m]).Quantity;
                         theTbl.rows[i].cells[5].innerHTML = JSON.parse(res[m]).Unit_Price;
