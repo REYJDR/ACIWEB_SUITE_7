@@ -149,12 +149,12 @@ public function PO_item($PurchaseOrderNumber){
  $res = $this->model->get_items_by_OC($PurchaseOrderNumber);
 
 
- $i = 0;
+ /*$i = 0;
  foreach ($res as  $value) {
     $array[$i] = $value;
     $i = $i + 1;
- }
- $items['items'] = json_encode($array);
+ } */
+ $items['items'] = json_encode($res);
  echo json_encode($items);
 }
 
