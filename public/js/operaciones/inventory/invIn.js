@@ -1321,6 +1321,7 @@ function getOCitem(oc){
                         return $.ajax({
                                 type: "GET",
                                 url: link,
+                                async: false,
                                 data: {url: datos, item: itemId},
                                 success: function(x){
                         
