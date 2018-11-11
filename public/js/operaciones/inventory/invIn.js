@@ -1333,7 +1333,12 @@ function getOCitem(oc){
         console.log(res);
         json = JSON.parse(res);
 
-        console.log(json);
+
+        for (var items in json.items  ) {
+            console.log(items.Item_id);
+        }
+
+
 
     }
 });
