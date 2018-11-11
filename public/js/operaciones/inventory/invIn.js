@@ -469,20 +469,20 @@ function builtTbl(chk){
 function SetDesc(itemId, line){
     
     var id_desc_field = 'desc'+line;
-    var id_unit_field = 'unit'+line;
+  //  var id_unit_field = 'unit'+line;
     var id_price_field = 'unitprice'+line;
     var id_taxable_field = 'tax'+line;
-    var id_gl_field = 'gl'+line;
+  //  var id_gl_field = 'gl'+line;
     var id_qty_field = 'qty'+line;
 
 
        if(itemId == ''){
 
         document.getElementById(id_desc_field).innerHTML  = '';
-        document.getElementById(id_unit_field).innerHTML   = '';
+       // document.getElementById(id_unit_field).innerHTML   = '';
         document.getElementById(id_qty_field).innerHTML  = '';
         document.getElementById(id_price_field).innerHTML  = '';
-        document.getElementById(id_gl_field).innerHTML     = '';
+       // document.getElementById(id_gl_field).innerHTML     = '';
         document.getElementById(id_taxable_field).innerHTML  = '';
 
 
@@ -540,7 +540,7 @@ function SetDesc(itemId, line){
                 document.getElementById(id_unit_field).innerHTML   = json.UnitMeasure;
                // document.getElementById(id_qty_field).innerHTML  = json.QtyOnHand;
                 document.getElementById(id_price_field).innerHTML  = json.Price1;
-                document.getElementById(id_gl_field).innerHTML     = json.GL_Sales_Acct;
+               // document.getElementById(id_gl_field).innerHTML     = json.GL_Sales_Acct;
                 document.getElementById(id_taxable_field).innerHTML  = json.TaxType;
 
     
