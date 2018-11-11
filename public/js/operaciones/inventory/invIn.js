@@ -1317,7 +1317,7 @@ function getOCitem(oc){
             var  selid = '#sel'+i;
             var  phase = '#phase'+i;
             var  cost  = '#cost'+i;
-            var  gl = 'gl'+line;
+            var  gl = 'gl'+i;
             
 
             
