@@ -1370,7 +1370,7 @@ function getOCitem(oc){
                 theTbl.rows[i].cells[4].innerHTML = JSON.parse(res[i]).Unit_Price;
                 
                 
-                recalcular();
+                recalcular(i);
 
                 }//FIN BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
             
