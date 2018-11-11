@@ -801,7 +801,8 @@ function set_selectItemStyle(){
     placeholder: '',
     allowClear: true,
     maximumSelectionSize: 1,
-    dropdownCssClass : 'bigdrop'
+    dropdownCssClass : 'bigdrop',
+    width: 'resolve'
 
   }); 
 
@@ -840,11 +841,14 @@ function set_selectWidth(selecClass){
   selecClass.forEach(set);
 
   function set(item, index){
-    
+     //selectc con buscador 
      $(item).select2({
-
+      placeholder: '',
+      allowClear: true,
+      maximumSelectionSize: 1,
+      dropdownCssClass : 'bigdrop',
       dropdownAutoWidth : true,
-      width: 'auto'
+      width: 'resolve'
     
       }); 
 
