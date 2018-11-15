@@ -216,13 +216,13 @@ public function getItemList($location,$stock){
     $this->model->verify_session();
 
     $query="SELECT * 
-              FROM STOCK_ITEMS_LOCATION 
-              INNER JOIN Products_Exp ON ProductID = itemID and ID_compania='".$this->model->id_compania."'
-              WHERE location='".$location."' and 
-                    stock='".$stock."' and 
-                    ID_compania='".$this->model->id_compania."' and 
-                    isActive = '1' and 
-                    QtyOnHand > 0;";
+              FROM STOCK_ITEMS_LOCATION as A
+              INNER JOIN Products_Exp as B ON B.ProductID = A.itemID and A.ID_compania='".$this->model->id_compania."'
+              WHERE A.location='".$location."' and 
+                    A.stock='".$stock."' and 
+                    A.ID_compania='".$this->model->id_compania."' and 
+                    B.isActive = '1' and 
+                    B.QtyOnHand > 0;";
 
     $res = $this->model->Query($query); 
 
