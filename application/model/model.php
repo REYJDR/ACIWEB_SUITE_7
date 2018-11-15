@@ -675,7 +675,7 @@ ECHO $query='SELECT
 Products_Exp.ProductID,
 Products_Exp.Description,
 Products_Exp.UnitMeasure,
-(SELECT SUM(qty) FROM STOCK_ITEMS_LOCATION WHERE itemID = ProductID and ID_compania="'.$this->id_compania.'";) AS QtyOnHand,
+(SELECT SUM(qty) FROM STOCK_ITEMS_LOCATION WHERE itemID = ProductID and ID_compania="'.$this->id_compania.'") AS QtyOnHand,
 Products_Exp.Price1,
 Products_Exp.Price2,
 Products_Exp.Price3,
@@ -688,7 +688,7 @@ Products_Exp.Price9,
 Products_Exp.Price10,
 Products_Exp.LastUnitCost
 FROM Products_Exp 
-inner join STOCK_ITEMS_LOCATION on STOCK_ITEMS_LOCATION.ItemID = Products_Exp.ProductID and STOCK_ITEMS_LOCATION..id_compania="'.$this->id_compania.'" 
+inner join STOCK_ITEMS_LOCATION on STOCK_ITEMS_LOCATION.ItemID = Products_Exp.ProductID and STOCK_ITEMS_LOCATION.id_compania="'.$this->id_compania.'" 
 WHERE Products_Exp.IsActive="1" AND QtyOnHand  > 0 and Products_Exp.id_compania="'.$this->id_compania.'" 
 group by Products_Exp.ProductID';
 
