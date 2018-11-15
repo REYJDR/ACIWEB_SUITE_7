@@ -670,11 +670,12 @@ return $res;
 public function get_ProductsList(){
 
 
+
 $query='SELECT 
 Products_Exp.ProductID,
 Products_Exp.Description,
 Products_Exp.UnitMeasure,
-Products_Exp.QtyOnHand,
+(SELECT SUM(qty) FROM STOCK_ITEMS_LOCATION WHERE itemID = ProductID and ID_compania="'.$this->id_compania.'";) AS QtyOnHand,
 Products_Exp.Price1,
 Products_Exp.Price2,
 Products_Exp.Price3,
@@ -687,8 +688,9 @@ Products_Exp.Price9,
 Products_Exp.Price10,
 Products_Exp.LastUnitCost
 FROM Products_Exp 
-inner join ITEMS_NO_LOTES on ITEMS_NO_LOTES.ProductID=Products_Exp.ProductID
-WHERE Products_Exp.IsActive="1" AND  Products_Exp.QtyOnHand > 0 and Products_Exp.id_compania="'.$this->id_compania.'" and ITEMS_NO_LOTES.ID_compania="'.$this->id_compania.'" group by Products_Exp.ProductID';
+inner join STOCK_ITEMS_LOCATION on STOCK_ITEMS_LOCATION.ItemID = Products_Exp.ProductID and STOCK_ITEMS_LOCATION..id_compania="'.$this->id_compania.'" 
+WHERE Products_Exp.IsActive="1" AND QtyOnHand  > 0 and Products_Exp.id_compania="'.$this->id_compania.'" 
+group by Products_Exp.ProductID';
 
 
 $res = $this->Query($query);
