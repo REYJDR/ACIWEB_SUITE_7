@@ -687,6 +687,7 @@ function set_location(URL){
 
 
   //NO PERMITE @ EN CAMPOS DE TABLAS
+
   function checkTblChar(ID){
     
     
@@ -697,6 +698,22 @@ function set_location(URL){
       if (val== true) 
       {
         MSG_ERROR("No se permite el caracter especial '@' ",0);
+        document.getElementById(ID).innerHTML = x.slice(0,-1);
+
+        return false;
+      }
+  }
+
+  function checkTblCharComa(ID){
+    
+    
+    var x=document.getElementById(ID).innerHTML;
+    var patt = new RegExp(";");
+    var val = patt.test( x );
+    
+      if (val== true) 
+      {
+        MSG_ERROR("No se permite el caracter especial ';' ",0);
         document.getElementById(ID).innerHTML = x.slice(0,-1);
 
         return false;
