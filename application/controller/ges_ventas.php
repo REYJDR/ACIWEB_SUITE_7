@@ -1038,6 +1038,27 @@ public function SetSOfromStock($SalesOrderNumber){
    }
 
    $this->UpdateItemsLocation($loc,$OriQty);
+
+   //set event item 
+   $id_compania= $this->model->id_compania;
+   $user = $this->model->active_user_id;
+  
+   $event_values = array(  'ProductID' => $itemid,
+                           'JobID' => '',
+                           'JobPhaseID' => '',
+                           'JobCostCodeID' => '',
+                           'PurchaseNumber' => '',
+                           'Qty'=> $qty,
+                           'unit_price' => $unit_price ,
+                           'Total' => $Price,
+                           'User' => $user,
+                           'Type' => 'Orden de venta',
+                           'Referencia' => $SalesOrderNumber,
+                           'ID_compania' => $id_compania );
+                   
+   $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
+
+   
   }
   echo '1';
 }
@@ -1057,6 +1078,8 @@ public function UpdateItemsLocation($Idruta,$qty){
   $res = $this->model->Query($query);
   
   $this->CheckError();
+
+
 }
 
 public function get_any_lote_qty($idLoc=''){
