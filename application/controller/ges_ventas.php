@@ -1048,7 +1048,7 @@ public function SetSOfromStock($SalesOrderNumber){
                            'JobPhaseID' => '',
                            'JobCostCodeID' => '',
                            'PurchaseNumber' => '',
-                           'Qty'=> $qty,
+                           'Qty'=> (-1)*$qty,
                            'unit_price' => $unit_price ,
                            'Total' => $Price,
                            'User' => $user,
