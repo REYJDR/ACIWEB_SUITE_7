@@ -98,7 +98,7 @@ while (i <= theTbl.rows.length-1){
 	                    n = Number(i) + Number(x);
 
 	                    line = "<tr><td >"+ItemID+'('+aciRef+")</td>"+
-						         "<td contenteditable >"+Desc+"</td>"+
+						         "<td contenteditable  onkeyup='checkTblChar(this.id); checkLong(this.id,'50'); checkTblCharComa(this.id);' >"+Desc+"</td>"+
 						         "<td >"+taxable+"</td>"+
 						         "<td class='numb' id='qty"+n+"'>"+Ordenado+"</td>"+
 						         "<td class='numb' contenteditable onfocusout='calculate("+n+");' id='desp"+n+"'></td>"+
