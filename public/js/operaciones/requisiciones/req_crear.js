@@ -213,7 +213,7 @@ function SetDesc(itemId, line){
      }  else{
 
 
-      document.getElementById(id_desc_field).innerHTML = 'Loading...';
+      //document.getElementById(id_desc_field).innerHTML = 'Loading...';
    
           function getItems(){
               
@@ -223,6 +223,7 @@ function SetDesc(itemId, line){
              return $.ajax({
                       type: "GET",
                       url: link,
+                      async:false,
                       data: {url: datos, item: itemId},
                       success: function(res){
             
@@ -235,9 +236,9 @@ function SetDesc(itemId, line){
               
               json = JSON.parse(res);
                       
-              document.getElementById(id_desc_field).innerHTML  = json.Description;
+              document.getElementById(id_desc_field).innerHTML   = json.Description;
               document.getElementById(id_unit_field).innerHTML   = json.UnitMeasure;
-             // document.getElementById(id_qty_field).innerHTML  = json.QtyOnHand;
+              //document.getElementById(id_qty_field).innerHTML  = json.QtyOnHand;
               
   
       });
