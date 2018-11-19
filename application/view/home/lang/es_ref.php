@@ -26,7 +26,7 @@ $SUBMENU_pur1  = 'Facturas';
 $SUBMENU_req1 = 'Requisicion de materiales';
 $SUBMENU_req2 = 'Requisicion de Pagos';
 $SUBMENU_req3 = 'Recepcion de materiales';
-$SUBMENU_req4  = 'Requisiciones creadas';
+$SUBMENU_req4  = 'Requisiciones de materiales';
 
 $SUBMENU_inv1 = 'Productos';
 $SUBMENU_inv2 = 'Consignaciones';
