@@ -58,7 +58,7 @@ $sql= 'SELECT
 A.ProductID,
 A.Description,
 A.UnitMeasure,
-A.QtyOnHand,
+(SELECT SUM(qty) FROM STOCK_ITEMS_LOCATION WHERE itemID = ProductID and ID_compania="'.$this->model->id_compania.'") AS QtyOnHand,
 A.Price1,
 A.LastUnitCost,
 A.TaxType,
@@ -74,7 +74,7 @@ $res = $this->model->Query($sql);
 
 
 foreach ($res as  $value) {
-    echo $value;
+    echo str_replace("'","",$value);
 }
 
 }

@@ -115,8 +115,10 @@ return $connected;
         $res ='';
 
         //eliminar occurrencias invalidas de caracteres especiales
-     //   $query = str_replace("''","'",$query);
+        //$query = str_replace("''","'",$query);
     
+
+
         $res = $this->connect($query);
 
 
@@ -696,8 +698,8 @@ group by Products_Exp.ProductID';
 
 $res = $this->Query($query);
 
-return $res;
 
+return $res;
 }
 
 public function get_ClientList(){
