@@ -457,18 +457,20 @@ $id = trim(preg_replace('/000+/','',$id));
 }
 
 
-public function GetPayTerm($ID){
+public function GetPayTerm($ID=0){
 
-  $this->model->verify_session();
-  $id_compania = $this->model->id_compania;
+  if($ID!=0){
+    $this->model->verify_session();
+    $id_compania = $this->model->id_compania;
 
-  $customField = $this->model->Query_value('FAC_DET_CONF','CUSTOM_FIELD','WHERE ID_compania="'.$this->model->id_compania.'"');
+    $customField = $this->model->Query_value('FAC_DET_CONF','CUSTOM_FIELD','WHERE ID_compania="'.$this->model->id_compania.'"');
 
-  $TermID = $this->model->Query_value('Customers_Exp',$customField,'WHERE  ID= "'.$ID.'" AND ID_compania="'.$id_compania.'"'); 
+    $TermID = $this->model->Query_value('Customers_Exp',$customField,'WHERE  ID= "'.$ID.'" AND ID_compania="'.$id_compania.'"'); 
 
-  $DaysToPay = $this->model->Query_value('CUST_PAY_TERM','DaysToPay','WHERE TermID = "'.$TermID.'" AND ID_compania="'.$id_compania.'"'); 
-
+    $DaysToPay = $this->model->Query_value('CUST_PAY_TERM','DaysToPay','WHERE TermID = "'.$TermID.'" AND ID_compania="'.$id_compania.'"'); 
+ 
  echo $DaysToPay;
+  }
 }
 
 

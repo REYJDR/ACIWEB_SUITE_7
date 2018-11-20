@@ -875,7 +875,7 @@ public function InsertSalesInfo($id_compania,$ID){
                 'USER' => '00',
                 'UnitCost' => $UnitCost,
                 'Date' => $InvDate,
-                'location_id' => $this->model->Query_value('status_location','id','where lote="'.$itemid.'0000" and id_product="'.$itemid.'" and route="1" and ID_compania="'.$id_compania.'"')
+                'location_id' => $this->model->Query_value('STOCK_ITEMS_LOCATION','id','where lote="'.$itemid.'0000" and itemID="'.$itemid.'" and location="1" and stock="1" and ID_compania="'.$id_compania.'"')
                 );
 
                $this->model->insert('InventoryAdjust_Imp',$valuesInvAd);
