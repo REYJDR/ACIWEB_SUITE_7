@@ -115,7 +115,7 @@ return $connected;
         $res ='';
 
         //eliminar occurrencias invalidas de caracteres especiales
-        $query = str_replace("''","'",$query);
+     //   $query = str_replace("''","'",$query);
     
         $res = $this->connect($query);
 
