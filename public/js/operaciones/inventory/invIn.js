@@ -347,24 +347,26 @@ function getBudget(){
     if (COST  == '-' || COST  ==  null) { COST = 0}
 
     var datos= "url=ges_inventario/getBudget/"+JOB+'/'+PHASE+'/'+COST;*/
-    var datos= "url=ges_inventario/getBudget/"+JOB;
-    
-    var link= $('#URL').val()+"index.php";
+    if(JOB != '-' || JOB != ''  ){
 
-    $.ajax({
-            type: "GET",
-            url: link,
-            data: datos,
-            async: false,
-            success: function(res){
-                console.log('budget:'+res);
-                $('#Budget').val(res);
-                budgetCompare();
-           
-        }
-    });
+        var datos= "url=ges_inventario/getBudget/"+JOB;
+        
+        var link= $('#URL').val()+"index.php";
 
+        $.ajax({
+                type: "GET",
+                url: link,
+                data: datos,
+                async: false,
+                success: function(res){
+                    console.log('budget:'+res);
+                    $('#Budget').val(res);
+                    budgetCompare();
+            
+            }
+        });
 
+    }
 
 }
 
