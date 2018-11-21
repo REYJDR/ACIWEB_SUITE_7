@@ -338,10 +338,12 @@ function phase(){
 function getBudget(){
 
     var JOB  = $('#JOBID2').val();
+
+    console.log(JOB);
    // var PHASE= $('#PHASEID2').val();
    // var COST = $('#COSTID2').val();
     
- //   console.log(JOB,PHASE,COST);
+ //   //console.log(JOB,PHASE,COST);
 
 /*    if (PHASE == '-' || PHASE  ==  null) { PHASE = 0}
     if (COST  == '-' || COST  ==  null) { COST = 0}
@@ -359,7 +361,7 @@ function getBudget(){
                 data: datos,
                 async: false,
                 success: function(res){
-                    console.log('budget:'+res);
+                    
                     $('#Budget').val(res);
                     budgetCompare();
             
@@ -747,7 +749,7 @@ function budgetCompare() {
 //******************************************************************************************
 function proceed(){
      
-    console.log(Type);
+   ////console.log(Type);
 
     switch (Type) {
 
@@ -857,7 +859,7 @@ function proceed(){
                                 async: false,
                                 data: {url: 'ges_inventario/set_Purchase_Header', Data : JSON.stringify(HeaderInfo)},
                                 success: function(res){
-                                console.log(res);
+                                //console.log(res);
                             
                                 if(res.indexOf('ERROR') != -1){
             
@@ -1031,7 +1033,7 @@ function proceed(){
                                                     '@'+total;
         
         
-                                        console.log(cell);
+                                        //console.log(cell);
                 
                                         /*if( stockId==0){
                                                 FaltaArray[6] = i ;
@@ -1101,7 +1103,7 @@ function proceed(){
                                         '@'+UnitPrice+
                                         '@'+total;
 
-                                console.log(cell);
+                                //console.log(cell);
         
                                 /*if( stockId==0){
                                         FaltaArray[6] = i ;
@@ -1273,7 +1275,7 @@ function getOC(vendor){
         url: link,
         data: {url: 'ges_compras/PO_filter_by_Vendor/'+vendor},
         success: function(res){
-       // console.log(res);
+       // //console.log(res);
     
        $('#vendorOC').append(res);
        
@@ -1326,7 +1328,7 @@ if(oc != '-' || oc != '')
 
             
                 if(JSON.parse(res[m]).JobID != ''){
-                    console.log($(jobSel).text());
+                    //console.log($(jobSel).text());
 
                     if($(jobSel).text() == '-') {
                         $(job).select2("val", JSON.parse(res[m]).JobID); //set the value
