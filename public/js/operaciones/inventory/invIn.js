@@ -339,7 +339,7 @@ function getBudget(){
 
     var JOB  = $('#JOBID2').val();
 
-    console.log(JOB);
+    
    // var PHASE= $('#PHASEID2').val();
    // var COST = $('#COSTID2').val();
     
@@ -349,8 +349,8 @@ function getBudget(){
     if (COST  == '-' || COST  ==  null) { COST = 0}
 
     var datos= "url=ges_inventario/getBudget/"+JOB+'/'+PHASE+'/'+COST;*/
-    if(JOB != '-' || JOB != ''  ){
-
+    if(JOB != '-'){
+      
         var datos= "url=ges_inventario/getBudget/"+JOB;
         
         var link= $('#URL').val()+"index.php";
