@@ -10,6 +10,7 @@ $Tblcol6 = 'Lote';
 $Tblcol7 = 'Compa&ntildeia';
 $Tblcol8 = 'Costo Unit.';
 $Tblcol9 = 'Detalle';
+$InvListButtom = 'Listar Inventario';
 //  END INV lIST
 
 // INI INV INFO
@@ -23,6 +24,7 @@ $invInfo6 ="Stock Qty";
 $invInfo7 ="Ult. Cost. Uni.";
 $invInfo8 ="Cta GL";
 $invInfo9 ="UPC SKU";
+
 // END INV INFO
 
 // INI INV IN

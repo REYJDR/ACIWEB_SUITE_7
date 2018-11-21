@@ -23,8 +23,9 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 			<div class="col-lg-12"> 
 			<fieldset class="table_req fieldsetform" >
 			<div class="col-lg-2">
-			<button type="submit" class="btn-bar" name="search" onclick="getListItem()"><?php echo $REQ_REP_BTN1; ?></button>
+			<button  class="btn-bar" name="search" onclick="getListItem()"><?php echo $REQ_REP_BTN1; ?></button>
 			</div>
+			<div class="separador col-lg-12"> </div>
 			<table  id="productos" class="display table table-striped table-condensed table-bordered " cellspacing="0">
 			<thead>
 				<tr >
