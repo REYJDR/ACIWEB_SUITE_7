@@ -28,3 +28,23 @@ table.yadcf(
     );
     
 });
+
+function getListItem(){
+    $('#listItem').html('');
+              
+    var URL = $('#URL').val();
+    var metodo= "ges_inventario/getListItem/";
+    var link= URL+"index.php";
+
+      $.ajax({
+          type: "GET",
+          url: link,
+          data: {url:metodo} ,
+          success: function(res){
+            $('#listItem').html(res);
+            }
+       });
+
+
+
+}

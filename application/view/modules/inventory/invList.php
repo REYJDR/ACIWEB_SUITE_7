@@ -22,6 +22,9 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 			<!--ini contenido-->
 			<div class="col-lg-12"> 
 			<fieldset class="table_req fieldsetform" >
+			<div class="col-lg-2">
+			<button type="submit" class="btn-bar" name="search" onclick="getListItem()"><?php echo $REQ_REP_BTN1; ?></button>
+			</div>
 			<table  id="productos" class="display table table-striped table-condensed table-bordered " cellspacing="0">
 			<thead>
 				<tr >
@@ -32,25 +35,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 				<th width="5%" class="text-center"><?php echo $Tblcol8;?></th>
 				</tr>
 			</thead>
-				<tbody>
-				<?php
-					$Item = $this->model->get_ProductsList();
-
-					foreach ($Item as $datos) {
-
-
-					$Item = json_decode($datos);
-
-
-					echo	'<tr>
-							<td><a href="'.URL.'index.php?url=ges_inventario/inv_info/'.$Item->{'ProductID'}.'" >'.$Item->{'ProductID'}.'</a></td>
-							<td>'.$Item->{'Description'}.'</td>
-							<td>'.$Item->{'UnitMeasure'}.'</td>
-							<td class="numb">'.number_format($Item->{'QtyOnHand'},0, '.', ',').'</td>
-							<td class="numb">'.number_format($Item->{'LastUnitCost'},4, '.', ',').'</td>';
-							}
-
-				?>
+				<tbody id='listItem'>
+				
 				</tbody>
 			</table>
 			</fieldset>

@@ -1358,5 +1358,31 @@ $this->model->verify_session();
     }
 }
 
+
+
+public function getListItems(){
+
+$Item = $this->model->get_ProductsList();
+
+foreach ($Item as $datos) {
+
+
+$Item = json_decode($datos);
+
+
+echo	'<tr>
+        <td><a href="'.URL.'index.php?url=ges_inventario/inv_info/'.$Item->{'ProductID'}.'" >'.$Item->{'ProductID'}.'</a></td>
+        <td>'.$Item->{'Description'}.'</td>
+        <td>'.$Item->{'UnitMeasure'}.'</td>
+        <td class="numb">'.number_format($Item->{'QtyOnHand'},0, '.', ',').'</td>
+        <td class="numb">'.number_format($Item->{'LastUnitCost'},4, '.', ',').'</td>';
+        }
+
+}
+
+
+
+
+
 }//CIERRE DE CLASE
 ?>
