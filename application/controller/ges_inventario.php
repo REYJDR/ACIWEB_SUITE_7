@@ -1375,7 +1375,7 @@ echo	'<tr>
         <td>'.$Item->{'Description'}.'</td>
         <td>'.$Item->{'UnitMeasure'}.'</td>
         <td class="numb">'.number_format($Item->{'QtyOnHand'},0, '.', ',').'</td>
-        <td class="numb">'.number_format($Item->{'LastUnitCost'},4, '.', ',').'</td>';
+        <td class="numb">'.number_format($Item->{'LastUnitCost'},4, '.', ',').'</td></tr>';
         }
 
 }

@@ -30,15 +30,17 @@ table.yadcf(
 });
 
 function getListItem(){
-    $('#listItem').html('');
+    
+    $('#listItem').html('Loading, please wait...');
               
     var URL = $('#URL').val();
-    var metodo= "ges_inventario/getListItem/";
+    var metodo= "ges_inventario/getListItem";
     var link= URL+"index.php";
 
       $.ajax({
           type: "GET",
           url: link,
+          async: false,
           data: {url:metodo} ,
           success: function(res){
             $('#listItem').html(res);
