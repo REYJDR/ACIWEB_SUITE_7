@@ -16,7 +16,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 			<form class="login100-form validate-form p-l-25 p-r-25 p-t-60" >
 			
 			<div class="col-lg-2">
-			<button  class="btn-bar" name="search" onclick="getListItem()"><?php echo $InvListButtom; ?></button>
+			<button  class="btn-bar" name="searchItem" id="searchItem"  onclick="getListItem()"><?php echo $InvListButtom; ?></button>
 			</div>
 			<span class="page100-form-title">
 						<?PHP echo $Title1; ?>
