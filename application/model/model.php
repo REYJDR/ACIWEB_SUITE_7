@@ -689,15 +689,14 @@ Products_Exp.Price7,
 Products_Exp.Price8,
 Products_Exp.Price9,
 Products_Exp.Price10,
-Products_Exp.LastUnitCost
+Products_Exp.LastUnitCost,
+Products_Exp.IsActive
 FROM Products_Exp 
 inner join STOCK_ITEMS_LOCATION on STOCK_ITEMS_LOCATION.ItemID = Products_Exp.ProductID and STOCK_ITEMS_LOCATION.id_compania="'.$this->id_compania.'" 
-WHERE Products_Exp.IsActive="1" AND QtyOnHand  > 0 and Products_Exp.id_compania="'.$this->id_compania.'" 
+WHERE Products_Exp.id_compania="'.$this->id_compania.'" 
 group by Products_Exp.ProductID';
 
-
 $res = $this->Query($query);
-
 
 return $res;
 }

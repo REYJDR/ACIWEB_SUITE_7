@@ -66,7 +66,7 @@ A.UPC_SKU,
 A.GL_Sales_Acct
 FROM Products_Exp as A
 WHERE 
-A.IsActive="1" 
+A.IsActive="1"
 AND  A.id_compania="'.$this->model->id_compania.'" 
 AND  A.ProductID ="'.$ITEM.'"';
 
@@ -1399,9 +1399,11 @@ if($itemFilter){
   $clause= '';
 }
 
-$sql = 'SELECT ProductID , Description 
+$sql = 'SELECT ProductID , 
+               Description ,
+              (SELECT SUM(qty) FROM STOCK_ITEMS_LOCATION WHERE itemID = ProductID and ID_compania="'.$this->id_compania.'") AS QtyOnHand,
           FROM Products_Exp 
-          WHERE isActive="1" and id_compania="'.$this->model->id_compania.'" '.$clause;
+          WHERE isActive="1" and QtyOnHand > 0 id_compania="'.$this->model->id_compania.'" '.$clause;
 
 $Codigos = $this->model->Query($sql);
 

@@ -412,9 +412,7 @@ public function set_req_items($NO_REQ){
   $COUNT = $this->model->Query_value('REQ_DETAIL','COUNT(*)',' WHERE NO_REQ="'.$NO_REQ.'" AND ID_compania="'.$this->model->id_compania.'"');
 
   if($COUNT > 0){
-
     $this->model->delete('REQ_DETAIL',' WHERE NO_REQ="'.$NO_REQ.'" AND ID_compania="'.$this->model->id_compania.'"');
-
   }
 
 
