@@ -366,6 +366,10 @@ function getBudget(){
             }
         });
 
+    }else{
+
+        $('#Budget').val('');
+
     }
 
 }
