@@ -13,8 +13,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 			<div class="separador col-lg-12"> </div>
 
-			<form class="login100-form validate-form p-l-25 p-r-25 p-t-60" >
-			
+			<!--	<form method="POST" action="" class="login100-form validate-form p-l-25 p-r-25 p-t-60" > -->
+			<div class="login100-form validate-form p-l-25 p-r-25 p-t-60" > 
 			<div class="col-lg-2">
 			<button  class="btn-bar" name="searchItem" id="searchItem"  onclick="getListItem()"><?php echo $InvListButtom; ?></button>
 			</div>
@@ -47,7 +47,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 		</div>
 
 			<!--fin contenido-->
-			</form>	
+			<!--	</form>	-->
+			<div>
 			<div class="separador col-lg-12"> </div>
 			</div>
 		</div>
