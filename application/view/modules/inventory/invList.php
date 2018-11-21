@@ -10,7 +10,13 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 <div class="limiter">
 		<div class="container-page100">
 			<div class="wrap-page100">
-			
+			<div class="col-lg-2">
+			<button  class="btn-bar" name="search" onclick="getListItem()"><?php echo $InvListButtom; ?></button>
+			</div>
+			<div class="separador col-lg-12"> </div>
+
+			<form method="POST"  action="" class="login100-form validate-form p-l-25 p-r-25 p-t-60" >
+
 			<span class="page100-form-title">
 						<?PHP echo $Title1; ?>
 			</span>
@@ -21,9 +27,6 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 			<!--ini contenido-->
 			<div class="col-lg-12"> 
 			<fieldset class="table_req fieldsetform" >
-			<div class="col-lg-2">
-			<button  class="btn-bar" name="search" onclick="getListItem()"><?php echo $InvListButtom; ?></button>
-			</div>
 			<div class="separador col-lg-12"> </div>
 			<table  id="productos" class="display table table-striped table-condensed table-bordered " cellspacing="0">
 			<thead>
@@ -43,7 +46,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 		</div>
 
 			<!--fin contenido-->
-		
+			</form>	
 			<div class="separador col-lg-12"> </div>
 			</div>
 		</div>
