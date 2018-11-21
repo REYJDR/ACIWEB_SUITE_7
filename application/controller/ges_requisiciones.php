@@ -408,8 +408,8 @@ ECHO $Req_NO;
 public function set_req_items($NO_REQ){
 $this->model->verify_session();
 
-$COUNT = $this->model->Query_value('COUNT(*)','REQ_DETAIL',' WHERE NO_REQ="'.$NO_REQ.'" AND ID_compania="'.$this->model->id_compania.'"');
-
+ECHO $COUNT = $this->model->Query_value('COUNT(*)','REQ_DETAIL',' WHERE NO_REQ="'.$NO_REQ.'" AND ID_compania="'.$this->model->id_compania.'"');
+die();
 if($COUNT > 0){
 
   $this->model->delete('REQ_DETAIL',' WHERE NO_REQ="'.$NO_REQ.'" AND ID_compania="'.$this->model->id_compania.'"');
