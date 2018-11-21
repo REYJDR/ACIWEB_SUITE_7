@@ -406,15 +406,16 @@ ECHO $Req_NO;
 
 
 public function set_req_items($NO_REQ){
-$this->model->verify_session();
 
-$COUNT = $this->model->Query_value('NO_REQ','REQ_DETAIL',' WHERE NO_REQ="'.$NO_REQ.'" AND ID_compania="'.$this->model->id_compania.'"');
+  $this->model->verify_session();
 
-if($COUNT != ''){
+  $COUNT = $this->model->Query_value('REQ_DETAIL','COUNT(*)',' WHERE NO_REQ="'.$NO_REQ.'" AND ID_compania="'.$this->model->id_compania.'"');
 
-  $this->model->delete('REQ_DETAIL',' WHERE NO_REQ="'.$NO_REQ.'" AND ID_compania="'.$this->model->id_compania.'"');
+  if($COUNT > 0){
 
-}
+    $this->model->delete('REQ_DETAIL',' WHERE NO_REQ="'.$NO_REQ.'" AND ID_compania="'.$this->model->id_compania.'"');
+
+  }
 
 
 $data = json_decode($_GET['Data']);
