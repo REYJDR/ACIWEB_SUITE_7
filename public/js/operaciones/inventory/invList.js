@@ -42,8 +42,9 @@ function getListItem(){
           url: link,
           data: {url:metodo} ,
           success: function(res){
+            $('#listItem').html('');
+            $('#listItem').append(res);
 
-            $('#listItem').html(res);
             }
        });
 
