@@ -34,7 +34,7 @@ function getListItem(){
     $('#listItem').html('Loading, please wait...');
               
     var URL = $('#URL').val();
-    var metodo= "ges_inventario/getListItem";
+    var metodo= "ges_inventario/getListItems";
     var link= URL+"index.php";
 
       $.ajax({
