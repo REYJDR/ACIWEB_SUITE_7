@@ -1366,7 +1366,7 @@ public function getListItems(){
 
  $Item = $this->model->get_ProductsList();
 
- echo  $Item ;
+ echo   json_encode($Item) ;
 
  /*   foreach ($Item as $datos) {
 
