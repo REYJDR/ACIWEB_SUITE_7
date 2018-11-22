@@ -1,9 +1,12 @@
+
+var table ;
+
 jQuery(document).ready(function($)
 {
 
 $('#ERROR').hide();
 
-var table = $("#productos").dataTable({
+    table = $("#productos").dataTable({
     aLengthMenu: [
         [10, 25,50,-1], [10, 25, 50,"All"]
     ]
