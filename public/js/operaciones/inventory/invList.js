@@ -11,8 +11,8 @@ table = $("#productos").DataTable({
         [10, 25,50,-1], [10, 25, 50,"All"]
     ]
     });
-
-$("#productos").dataTable.yadcf(
+   
+    $("#productos").dataTable().yadcf(
     [{column_number : 0,
      column_data_type: "html",
      html_data_type: "text" ,
