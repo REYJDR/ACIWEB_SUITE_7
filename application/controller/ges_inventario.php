@@ -1362,6 +1362,8 @@ $this->model->verify_session();
 
 public function getListItems(){
 
+    $this->model->verify_session();
+    
 $Item = $this->model->get_ProductsList();
 
 foreach ($Item as $datos) {
