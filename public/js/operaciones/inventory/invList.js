@@ -1,12 +1,12 @@
 
-var table ;
+ ;
 
 jQuery(document).ready(function($)
 {
 
 $('#ERROR').hide();
 
-    table = $("#productos").dataTable({
+    var table = $("#productos").dataTable({
     aLengthMenu: [
         [10, 25,50,-1], [10, 25, 50,"All"]
     ]
@@ -39,6 +39,7 @@ function getListItem(){
     var URL = $('#URL').val();
     var metodo= "ges_inventario/getListItems";
     var link= URL+"index.php";
+    var prnttable = $("#productos").dataTable();
 
       $.ajax({
           type: "GET",
@@ -57,7 +58,7 @@ function getListItem(){
 
             
 
-                table.row.add( [
+                prnttable.row.add( [
                     JSON.parse(res[m]).ProductID,
                     JSON.parse(res[m]).Description,
                     JSON.parse(res[m]).UnitMeasure,
