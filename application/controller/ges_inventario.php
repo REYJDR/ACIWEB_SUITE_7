@@ -1364,9 +1364,9 @@ public function getListItems(){
 
     $this->model->verify_session();
 
- $Item = $this->model->get_ProductsList();
+    $Item = $this->model->get_ProductsList();
 
- echo   json_encode($Item) ;
+    echo   json_encode($Item) ;
 
  /*   foreach ($Item as $datos) {
 
