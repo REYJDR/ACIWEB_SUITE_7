@@ -40,7 +40,6 @@ function getListItem(){
       $.ajax({
           type: "GET",
           url: link,
-          async: false,
           data: {url:metodo} ,
           success: function(res){
 
