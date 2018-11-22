@@ -678,7 +678,7 @@ $query='SELECT
 Products_Exp.ProductID,
 Products_Exp.Description,
 Products_Exp.UnitMeasure,
-(SELECT SUM(qty) FROM STOCK_ITEMS_LOCATION WHERE itemID = ProductID and ID_compania="'.$this->id_compania.'") AS QtyOnHand,
+SUM(STOCK_ITEMS_LOCATION.qty) AS QtyOnHand,
 Products_Exp.Price1,
 Products_Exp.Price2,
 Products_Exp.Price3,
