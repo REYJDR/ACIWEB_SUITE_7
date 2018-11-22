@@ -43,7 +43,7 @@ function getListItem(){
           async: false,
           data: {url:metodo} ,
           success: function(res){
-            $('#listItem').html('');
+
             $('#listItem').html(res);
             }
        });

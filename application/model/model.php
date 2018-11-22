@@ -674,7 +674,7 @@ return $res;
 
 public function get_ProductsList(){
 
-echo $query='SELECT 
+$query='SELECT 
 Products_Exp.ProductID,
 Products_Exp.Description,
 Products_Exp.UnitMeasure,
