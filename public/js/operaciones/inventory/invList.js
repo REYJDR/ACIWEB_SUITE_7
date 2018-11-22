@@ -40,10 +40,11 @@ function getListItem(){
       $.ajax({
           type: "GET",
           url: link,
+          dataType: 'json',
           data: {url:metodo} ,
           success: function(res){
-            $('#listItem').html('');
-            $('#listItem').append(res);
+        /*    $('#listItem').html('');
+            $('#listItem').append(res);*/
 
 
             for(var m=0;m<res.length;m++){
