@@ -45,6 +45,17 @@ function getListItem(){
             $('#listItem').html('');
             $('#listItem').append(res);
 
+
+            table.row.add( [
+                counter +'.1',
+                counter +'.2',
+                counter +'.3',
+                counter +'.4',
+                counter +'.5'
+            ] ).draw( false );
+
+
+
             }
        });
 
