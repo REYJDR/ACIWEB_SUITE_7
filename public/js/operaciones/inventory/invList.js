@@ -39,7 +39,7 @@ function getListItem(){
     var URL = $('#URL').val();
     var metodo= "ges_inventario/getListItems";
     var link= URL+"index.php";
-    var prnttable = $("#productos").dataTable();
+   
 
       $.ajax({
           type: "GET",
@@ -50,7 +50,8 @@ function getListItem(){
         /*    $('#listItem').html('');
             $('#listItem').append(res);*/
 
-
+            var prnttable = $("#productos").DataTable();
+            
             for(var m=0;m<res.length;m++){
 
  
