@@ -1,12 +1,12 @@
 
- ;
+var table;
 
 jQuery(document).ready(function($)
 {
 
 $('#ERROR').hide();
 
-    var table = $("#productos").dataTable({
+    table = $("#productos").DataTable({
     aLengthMenu: [
         [10, 25,50,-1], [10, 25, 50,"All"]
     ]
@@ -50,12 +50,12 @@ function getListItem(){
         /*    $('#listItem').html('');
             $('#listItem').append(res);*/
 
-            var prnttable = $("#productos").dataTable();
+
 
             for(var m=0;m<res.length;m++){
             
 
-                prnttable.row.add( [
+                table.row.add( [
                     JSON.parse(res[m]).ProductID,
                     JSON.parse(res[m]).Description,
                     JSON.parse(res[m]).UnitMeasure,
