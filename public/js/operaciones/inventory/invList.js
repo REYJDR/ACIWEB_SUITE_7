@@ -50,13 +50,9 @@ function getListItem(){
         /*    $('#listItem').html('');
             $('#listItem').append(res);*/
 
-            var prnttable = $("#productos").DataTable();
-            
+            var prnttable = $("#productos").dataTable();
+
             for(var m=0;m<res.length;m++){
-
- 
-                JSON.parse(res[m]).AccountID
-
             
 
                 prnttable.row.add( [
