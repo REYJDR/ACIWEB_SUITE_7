@@ -1364,7 +1364,9 @@ public function getListItems(){
 
     $this->model->verify_session();
 
- echo   $Item = $this->model->get_ProductsList();
+ $Item = $this->model->get_ProductsList();
+
+ echo  $Item ;
 
  /*   foreach ($Item as $datos) {
 
@@ -1382,7 +1384,7 @@ public function getListItems(){
      } */
 
 
-
+    }
 
 
 }//CIERRE DE CLASE
