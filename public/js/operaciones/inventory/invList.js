@@ -46,17 +46,25 @@ function getListItem(){
             $('#listItem').append(res);
 
 
-            table.row.add( [
-                counter +'.1',
-                counter +'.2',
-                counter +'.3',
-                counter +'.4',
-                counter +'.5'
-            ] ).draw( false );
+            for(var m=0;m<res.length;m++){
+
+ 
+                JSON.parse(res[m]).AccountID
+
+            
+
+                table.row.add( [
+                    JSON.parse(res[m]).ProductID,
+                    JSON.parse(res[m]).Description,
+                    JSON.parse(res[m]).UnitMeasure,
+                    JSON.parse(res[m]).QtyOnHand,
+                    JSON.parse(res[m]).LastUnitCost,
+                ] ).draw( false );
 
 
 
-            }
+            } 
+        }
        });
 
 
