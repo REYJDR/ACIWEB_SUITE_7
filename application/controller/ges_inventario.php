@@ -1365,19 +1365,19 @@ public function getListItems(){
      
     $this->model->verify_session();
 
-   // require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'_ref.php';
+    require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'_ref.php';
 
 
     //$Item = $this->model->get_ProductsList();
 
     $columns =  array( 
-                'ProductID',
-                'Description',
-                'UnitMeasure',
-                'QtyOnHand',
-                'IsActive' );
+                'ProductID as '.$Tblcol1,
+                'Description as '.$Tblcol2,
+                'UnitMeasure as '.$Tblcol3,
+                'QtyOnHand as '.$Tblcol4,
+                'IsActive as '.$Tblcol5);
 
-    $Item = $this->model->queryColumns('Products_Exp', $columns,'WHERE    Products_Exp.id_compania="'.$this->id_compania.'" 
+    $Item = $this->model->queryColumns('Products_Exp', $columns,'WHERE    Products_Exp.id_compania="'.$this->model->id_compania.'" 
                                                                  GROUP BY Products_Exp.ProductID');
 
     /* foreach ($Item as $key => $datos) {
