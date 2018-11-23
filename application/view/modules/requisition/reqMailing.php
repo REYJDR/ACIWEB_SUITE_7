@@ -122,7 +122,11 @@ $message .= '<tr>
    
    </tr>';
 
+   $JobID = $value->{'JOB'};
+
 }
+
+$JobDesc = $this->model->getJobDesc($proyecto);
 
 
 $message .= '</table><BR><BR>';
@@ -166,7 +170,7 @@ foreach ($smtp as $smtp_val) {
 
 
 
-$mail->Subject = utf8_decode("Requisicion-".$ref);
+$mail->Subject = '('.utf8_decode("Requisicion-".$ref).') - Proyecto: ('.$JobID.')'.$JobDesc ;
 $mail->Body = $message_to_send;
 
         $mail->SMTPOptions = array(

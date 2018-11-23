@@ -955,6 +955,15 @@ if(!$jobs){
 
 }
 
+
+public function getJobDesc(){
+    
+  return $this->Query_value('Jobs_Exp','Description','where ID_compania="'.$this->id_compania.'" and IsActive="1"');
+
+  
+}
+
+
 public function get_phaseList(){
 
 $jobs = $this->Query('Select * from Job_Phases_Exp where ID_compania="'.$this->id_compania.'" and IsActive="1"'); 
