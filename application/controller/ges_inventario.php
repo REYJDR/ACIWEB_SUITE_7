@@ -1371,11 +1371,11 @@ public function getListItems(){
     //$Item = $this->model->get_ProductsList();
 
     $columns =  array( 
-                'ProductID as '.$Tblcol1,
-                'Description as '.$Tblcol2,
-                'UnitMeasure as '.$Tblcol3,
-                'QtyOnHand as '.$Tblcol4,
-                'IsActive as '.$Tblcol5);
+                '`ProductID` as `'.$Tblcol1.'`',
+                '`Description` as `'.$Tblcol2.'`',
+                '`UnitMeasure` as `'.$Tblcol3.'`',
+                '`QtyOnHand` as `'.$Tblcol4.'`',
+                '`IsActive` as `'.$Tblcol5.'`');
 
     $Item = $this->model->queryColumns('Products_Exp', $columns,'WHERE    Products_Exp.id_compania="'.$this->model->id_compania.'" 
                                                                  GROUP BY Products_Exp.ProductID');
