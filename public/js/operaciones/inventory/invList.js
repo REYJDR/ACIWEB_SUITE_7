@@ -52,28 +52,24 @@ function getListItem(){
 
         console.log(res);
 
-        printTbl = $('#productos').DataTable();
+       // printTbl = $('#productos').DataTable();
         
-        printTbl.rows.add(res);
-        printTbl.draw();
+       // printTbl.rows.add(res);
+       // printTbl.draw();
          
       //   $('#productos').DataTable().draw();
         //  table.clear().draw();
    
-         /*   for(var m=0;m<res.length;m++){
+            for(var m=0;m<res.length;m++){
             
 
-                table.row.add( [
-                    JSON.parse(res[m]).ProductID,
-                    JSON.parse(res[m]).Description,
-                    JSON.parse(res[m]).UnitMeasure,
-                    JSON.parse(res[m]).QtyOnHand,
-                    JSON.parse(res[m]).LastUnitCost,
+                printTbl.row.add( [
+                    res[m]
                 ] ).draw( false );
 
 
 
-            } */
+            } 
         }
        });
 
