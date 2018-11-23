@@ -47,10 +47,10 @@ function getListItem(){
           data: {url:metodo} ,
           success: function(res){
 
-         $('#listItem').html(''); 
-         $('#listItem').append(res);
+        // $('#listItem').html(''); 
+        // $('#listItem').append(res);
 
-
+        console.log(res);
 
          $('#productos').DataTable().rows.add(res);
          
