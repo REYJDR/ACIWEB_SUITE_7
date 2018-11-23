@@ -54,8 +54,7 @@ function getListItem(){
 
          $('#listItem').append(res);
          
-         table.columns.adjust().draw(); // Redraw the DataTable
-
+       console.log(res);
          /*   for(var m=0;m<res.length;m++){
             
 
