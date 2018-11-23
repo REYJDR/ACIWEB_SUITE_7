@@ -267,8 +267,8 @@ public function queryColumns($table,$columns,$clause){
     
     //$fields = array_keys($columns);
     
-    $query = "SELECT `".implode('`,`', $columns)."` FROM ".$table." ".$clause." ;";
-    die($query);
+    echo $query = "SELECT `".implode('`,`', $columns)."` FROM ".$table." ".$clause." ;";
+    die();
     $this->Query($query);
     
     
