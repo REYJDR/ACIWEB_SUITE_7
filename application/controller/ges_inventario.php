@@ -1365,7 +1365,7 @@ public function getListItems(){
      
     $this->model->verify_session();
 
-    require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'_ref.php';
+    require_once APP.'view/modules/inventory/lang/'.$this->model->lang.'_ref.php';
 
 
     //$Item = $this->model->get_ProductsList();
