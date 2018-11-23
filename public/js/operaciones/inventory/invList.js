@@ -43,15 +43,18 @@ function getListItem(){
       $.ajax({
           type: "GET",
           url: link,
-        //  dataType: 'json',
+          dataType: 'json',
           data: {url:metodo} ,
           success: function(res){
 
          $('#listItem').html(''); 
          $('#listItem').append(res);
 
+
+
+         $('#productos').DataTable().row.add(res);
          
-        $('#productos').DataTable().draw();
+      //   $('#productos').DataTable().draw();
         //  table.clear().draw();
    
          /*   for(var m=0;m<res.length;m++){

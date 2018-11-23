@@ -1366,14 +1366,14 @@ public function getListItems(){
 
     $Item = $this->model->get_ProductsList();
 
-  //  echo   json_encode($Item) ;
+   echo   json_encode($Item) ;
 
-    foreach ($Item as $datos) {
+/*  foreach ($Item as $datos) {
 
     $Item = json_decode($datos);
 
 
-    echo	'<tr>
+   echo	'<tr>
             <td><a href="'.URL.'index.php?url=ges_inventario/inv_info/'.$Item->{'ProductID'}.'" >'.$Item->{'ProductID'}.'</a></td>
             <td>'.$Item->{'Description'}.'</td>
             <td>'.$Item->{'UnitMeasure'}.'</td>
@@ -1384,7 +1384,7 @@ public function getListItems(){
      
 
 
-    }
+    }*/
 
 
 }//CIERRE DE CLASE
