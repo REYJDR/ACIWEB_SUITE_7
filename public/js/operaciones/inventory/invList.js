@@ -54,13 +54,13 @@ function getListItem(){
 
        printTbl = $('#productos').DataTable();
         
-       // printTbl.rows.add(res);
-       // printTbl.draw();
+      printTbl.rows.add(res);
+      printTbl.draw();
          
       //   $('#productos').DataTable().draw();
         //  table.clear().draw();
    
-            for(var m=0;m<res.length;m++){
+         /*   for(var m=0;m<res.length;m++){
             
 
                 printTbl.row.add( [
@@ -69,7 +69,7 @@ function getListItem(){
 
 
 
-            } 
+            } */
         }
        });
 
