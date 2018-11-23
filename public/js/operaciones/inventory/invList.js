@@ -47,12 +47,12 @@ function getListItem(){
           data: {url:metodo} ,
           success: function(res){
 
-          $('#listItem').html(''); 
-          $('#listItem').append(res);
+         // $('#listItem').html(''); 
+        //  $('#listItem').append(res);
 
-          table.clear().draw();
+          table.data(res).draw();
+        //  table.clear().draw();
    
-          console.log(res);
          /*   for(var m=0;m<res.length;m++){
             
 
