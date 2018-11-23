@@ -1365,29 +1365,8 @@ public function getListItems(){
      
     $this->model->verify_session();
 
-    require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'_ref.php';
-    
-    /*$query='SELECT 
-    Products_Exp.ProductID,
-    Products_Exp.Description,
-    Products_Exp.UnitMeasure,
-    SUM(STOCK_ITEMS_LOCATION.qty) AS QtyOnHand,
-    Products_Exp.Price1,
-    Products_Exp.Price2,
-    Products_Exp.Price3,
-    Products_Exp.Price4,
-    Products_Exp.Price5,
-    Products_Exp.Price6,
-    Products_Exp.Price7,
-    Products_Exp.Price8,
-    Products_Exp.Price9,
-    Products_Exp.Price10,
-    Products_Exp.LastUnitCost,
-    Products_Exp.IsActive
-    FROM Products_Exp 
-    inner join STOCK_ITEMS_LOCATION on STOCK_ITEMS_LOCATION.ItemID = Products_Exp.ProductID and STOCK_ITEMS_LOCATION.id_compania="'.$this->id_compania.'" 
-    WHERE Products_Exp.id_compania="'.$this->id_compania.'" 
-    group by Products_Exp.ProductID'; */
+   // require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'_ref.php';
+
 
     //$Item = $this->model->get_ProductsList();
 
@@ -1398,23 +1377,23 @@ public function getListItems(){
                 'QtyOnHand',
                 'IsActive' );
 
-    $Item = $this->model->queryColumns('Products_Exp', $columns,'WHERE Products_Exp.id_compania="'.$this->id_compania.'" 
-                                                                       GROUP BY Products_Exp.ProductID');
+    $Item = $this->model->queryColumns('Products_Exp', $columns,'WHERE    Products_Exp.id_compania="'.$this->id_compania.'" 
+                                                                 GROUP BY Products_Exp.ProductID');
 
-  /* foreach ($Item as $key => $datos) {
+    /* foreach ($Item as $key => $datos) {
+            
+        $Item = json_decode($datos);
+
+            $row[$key][$Tblcol1] = $Item->{'ProductID'};
+            $row[$key][$Tblcol2] = $Item->{'Description'};
+            $row[$key][$Tblcol3] = $Item->{'UnitMeasure'};
+            $row[$key][$Tblcol4] = number_format($Item->{'QtyOnHand'},0, '.', ',');
+            $row[$key][$Tblcol5] = number_format($Item->{'LastUnitCost'},4, '.', ',');
         
-    $Item = json_decode($datos);
 
-        $row[$key][$Tblcol1] = $Item->{'ProductID'};
-        $row[$key][$Tblcol2] = $Item->{'Description'};
-        $row[$key][$Tblcol3] = $Item->{'UnitMeasure'};
-        $row[$key][$Tblcol4] = number_format($Item->{'QtyOnHand'},0, '.', ',');
-        $row[$key][$Tblcol5] = number_format($Item->{'LastUnitCost'},4, '.', ',');
-    
+        } */
 
-    } */
-
-    echo  json_encode($row);
+        echo  json_encode($Item);
 
 /*  foreach ($Item as $datos) {
 
