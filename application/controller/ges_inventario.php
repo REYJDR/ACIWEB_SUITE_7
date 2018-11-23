@@ -1366,9 +1366,9 @@ public function getListItems(){
 
     $Item = $this->model->get_ProductsList();
 
-    echo   json_encode($Item) ;
+  //  echo   json_encode($Item) ;
 
- /*   foreach ($Item as $datos) {
+    foreach ($Item as $datos) {
 
     $Item = json_decode($datos);
 
@@ -1381,7 +1381,7 @@ public function getListItems(){
             <td class="numb">'.number_format($Item->{'LastUnitCost'},4, '.', ',').'</td></tr>';
             }
 
-     } */
+     } 
 
 
     }
