@@ -1362,11 +1362,28 @@ $this->model->verify_session();
 
 public function getListItems(){
 
+     
     $this->model->verify_session();
+
+    require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'_ref.php';
+  
 
     $Item = $this->model->get_ProductsList();
 
-   echo   json_encode($Item) ;
+    foreach ($Item as $key => $datos) {
+        
+    $Item = json_decode($datos);
+
+    $row[$key][$Tblcol1] = $Item->{'ProductID'};
+    $row[$key][$Tblcol2] = $Item->{'Description'};
+    $row[$key][$Tblcol3] = $Item->{'UnitMeasure'};
+    $row[$key][$Tblcol4] = number_format($Item->{'QtyOnHand'},0, '.', ',');
+    $row[$key][$Tblcol5] = number_format($Item->{'LastUnitCost'},4, '.', ',');
+    
+
+    }
+
+    echo   json_encode($row) ;
 
 /*  foreach ($Item as $datos) {
 
