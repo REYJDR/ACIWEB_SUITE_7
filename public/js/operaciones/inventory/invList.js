@@ -50,7 +50,7 @@ function getListItem(){
          $('#listItem').html(''); 
          $('#listItem').append(res);
 
-          table.data().reload();
+          table.ajax.reload();
         //  table.clear().draw();
    
          /*   for(var m=0;m<res.length;m++){
