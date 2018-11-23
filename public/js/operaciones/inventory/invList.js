@@ -43,7 +43,7 @@ function getListItem(){
       $.ajax({
           type: "GET",
           url: link,
-          dataType: 'json',
+          //dataType: 'json',
           data: {url:metodo} ,
           success: function(res){
 
@@ -54,7 +54,7 @@ function getListItem(){
 
         printTbl = $('#productos').DataTable();
         
-        printTbl.rows.add(JSON.parse(res));
+        printTbl.rows.add(res);
         printTbl.draw();
          
       //   $('#productos').DataTable().draw();
