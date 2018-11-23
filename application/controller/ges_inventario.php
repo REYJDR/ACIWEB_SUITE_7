@@ -1377,10 +1377,10 @@ public function getListItems(){
                 '`QtyOnHand` as `'.$Tblcol4.'`',
                 '`IsActive` as `'.$Tblcol5.'`');
 
-    echo $Item = $this->model->queryColumns('Products_Exp', $columns,'WHERE    Products_Exp.id_compania="'.$this->model->id_compania.'" 
+    $Items = $this->model->queryColumns('Products_Exp', $columns,'WHERE    Products_Exp.id_compania="'.$this->model->id_compania.'" 
                                                                       GROUP BY Products_Exp.ProductID');
 
-   // echo  json_encode($Item);
+    echo  json_encode($Items);
 
 /*  foreach ($Item as $datos) {
 
