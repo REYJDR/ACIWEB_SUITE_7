@@ -52,7 +52,10 @@ function getListItem(){
 
         console.log(res);
 
-         $('#productos').DataTable().rows.add(res).draw();
+        printTbl = $('#productos').DataTable();
+        
+        printTbl.rows.add(JSON.parse(res));
+        printTbl.draw();
          
       //   $('#productos').DataTable().draw();
         //  table.clear().draw();
