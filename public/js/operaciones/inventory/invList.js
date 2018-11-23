@@ -51,7 +51,7 @@ function getListItem(){
          $('#listItem').append(res);
 
          
-        $('#productos').DataTable().ajax.reload();
+        $('#productos').DataTable().draw();
         //  table.clear().draw();
    
          /*   for(var m=0;m<res.length;m++){
