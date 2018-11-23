@@ -52,7 +52,9 @@ function getListItem(){
 
         console.log(res);
 
-         $('#productos').DataTable().rows.add(res);
+         $('#productos').DataTable()
+         .rows.add(res)
+         .draw();
          
       //   $('#productos').DataTable().draw();
         //  table.clear().draw();
