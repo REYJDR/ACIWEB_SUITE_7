@@ -48,10 +48,12 @@ function getListItem(){
           success: function(res){
 
         // $('#listItem').html('');
-        // $('#listItem').append(res);
+        
 
          table.clear().draw();
-         table.rows.add(res); // Add new data
+
+         $('#listItem').append(res);
+         
          table.columns.adjust().draw(); // Redraw the DataTable
 
          /*   for(var m=0;m<res.length;m++){
