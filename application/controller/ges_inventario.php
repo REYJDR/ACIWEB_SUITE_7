@@ -1375,7 +1375,7 @@ public function getListItems(){
                 '`Description` as `'.$Tblcol2.'`',
                 '`UnitMeasure` as `'.$Tblcol3.'`',
                 '`QtyOnHand` as `'.$Tblcol4.'`',
-                '`IsActive` as `'.$Tblcol5.'`');
+                '`Price1` as `'.$Tblcol8.'`');
 
     $Items = $this->model->queryColumns('Products_Exp', $columns,'WHERE    Products_Exp.id_compania="'.$this->model->id_compania.'" 
                                                                       GROUP BY Products_Exp.ProductID');
