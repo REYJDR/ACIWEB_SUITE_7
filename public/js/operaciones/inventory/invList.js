@@ -52,9 +52,9 @@ function getListItem(){
 
         console.log(res);
 
-       printTbl = $('#productos').DataTable();
+      printTbl = $('#productos').DataTable();
         
-      printTbl.rows.add(res);
+      printTbl.rows.add(res['data'][0]);
       printTbl.draw();
          
       //   $('#productos').DataTable().draw();
