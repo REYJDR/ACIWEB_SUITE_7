@@ -1381,7 +1381,7 @@ public function getListItems(){
             <td class="numb">'.number_format($Item->{'LastUnitCost'},4, '.', ',').'</td></tr>';
             }
 
-     } 
+     
 
 
     }
