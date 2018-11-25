@@ -192,16 +192,11 @@ var link= URL+"index.php";
         if (res == '1') {
 
           if (lang = 'es') {
-
-             //MSG_CORRECT('El cliente ha sido modificado exitosamente.',0);
-             //location.reload(true);
-             $(window).load(function(){ MSG_CORRECT('El cliente ha sido modificado exitosamente.',0); });
-             
+            console.log('es');
+             $(window).load(function(){ MSG_CORRECT('El cliente ha sido modificado exitosamente.',0); });             
 
           }else{
 
-             //MSG_CORRECT('Customer is modified successfully!.',0);
-             //location.reload(true); 
              $(window).load(function(){ MSG_CORRECT('Customer is modified successfully!.',0); });
           }              
         }             

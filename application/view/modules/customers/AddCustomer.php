@@ -208,19 +208,31 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 							
 							$res = $this->model->insert('Customers_Exp',$Values);
 							$this->CheckError();
+							
 
+							if ($this->model->lang == 'es') {
+								
+								
+								echo "<script>$(window).load(function(){ MSG_CORRECT('El cliente ha sido creado con exito!',0); });</script>"; 
+
+							}else{
+
+								
+								echo "<script>$(window).load(function(){ MSG_CORRECT('Customer has been successfuly created!',0); });</script>"; 
+
+							}
 
 						}else{
 
 							if ($this->model->lang == 'es') {
 								
-								//echo "<script>MSG_ERROR('El Id del cliente ya existe, por favor ingrese otro',0);</script>";
-								echo "<script>$(window).load(function(){ MSG_CORRECT('El Id del cliente ya existe, por favor ingrese otro',0); });</script>"; 
+								
+								echo "<script>$(window).load(function(){ MSG_ERROR('El Id del cliente ya existe, por favor ingrese otro',0); });</script>"; 
 
 							}else{
 
-								//echo "<script>MSG_ERROR('Customer Id already exist, please input a different value',0);</script>";
-								echo "<script>$(window).load(function(){ MSG_CORRECT('Customer Id already exist, please input a different value',0); });</script>"; 
+								
+								echo "<script>$(window).load(function(){ MSG_ERROR('Customer Id already exist, please input a different value',0); });</script>"; 
 
 							}
 
