@@ -119,7 +119,7 @@ function cost(){
 
          if(res){
            
-           init(1);
+           init(2);
          
          }                   
           
@@ -141,7 +141,7 @@ var datos= "url=ges_requisiciones/get_ProductsCode/";
 var reglon = '';
 
 
-/*
+
 $.ajax({
      type: "GET",
      url: link,
@@ -149,7 +149,7 @@ $.ajax({
      success: function(res){
 
      
-     listitem = res;*/
+     listitem = res;
 
 $('#table_req').html(''); //limpio la tabla 
 
@@ -167,22 +167,19 @@ while(i <= cantLineas){
 
      }else{
 
-/*			reglon = '<td width="10%" >'+
-            '<div class="select-editable">'+
-               '<select id="sel'+i+'" >'+
-                   '<option value=""></option>'
-                    +listitem+
-               '</select>'+
-               '<input id="inp'+i+'" type="text" name="format" value="" />'+
-           '</div>'+
-           '</td>';*/
+      reglon = '<td width="10%" >'+
+      '<select class="selectItems col-lg-12" id="sel'+i+'" onchange="SetDesc(this.value,'+i+')" >'+
+          '<option selected></option>'
+          +listitem+
+      '</select>'+
+      '</td>';  
 
       }     
 
      var line_table_req = '<tr>'+reglon+
-     '<td width="30%" class="rowtable_req"      id="DESC'+i+'" onkeyup="checkChar('+i+');" contenteditable></td>'+
-     '<td width="15%" class="rowtable_req numb" id="QTY'+i+'"  onfocusout="checkInp('+i+');" contenteditable></td>'+
-     '<td width="15%" class="rowtable_req"      id="UNI'+i+'"  onkeyup="checkuni('+i+');" contenteditable></td>'+
+     '<td width="30%" class="rowtable_req"      id="DESC'+i+'" onkeyup="checkTblChar(this.id); checkLong(this.id,40);  " contenteditable></td>'+
+     '<td width="15%" class="rowtable_req numb" id="QTY'+i+'"  onkeyup="checkTblnum(this.id); checkLong(this.id,18);" contenteditable></td>'+
+     '<td width="15%" class="rowtable_req"      id="UNI'+i+'"  onkeyup="checkLong(this.id,10);" contenteditable></td>'+
      '<td width="15%" class="rowtable_req"       ><select class="selectItems" id="PHS'+i+'" ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
      '<td width="15%" class="rowtable_req"       ><select class="selectItems" id="COST'+i+'"  ><option  value="-" selected>-</option>'+COST+'</select></td>'+
      '</tr>' ;
@@ -191,162 +188,70 @@ while(i <= cantLineas){
       $('#table_req').append(line_table_req); //limpio la tabla 
      }
      set_selectItemStyle();
-/*      }
-    });*/
+      }
+    });
 
 
 }
 
-function checkNOTA(){
+// ******************************************************************************************
+// * OBTIENE INFORMACION DE ITEM  
+// ******************************************************************************************
+function SetDesc(itemId, line){
+  
+  var id_desc_field = 'DESC'+line;
+  var id_unit_field = 'UNI'+line;
+  var id_qty_field = 'QTY'+line;
 
 
-var x=document.getElementById('nota').value;
+     if(itemId == ''){
 
-var patt_slash = new RegExp("/");
-var slash = patt_slash.test( x );
+      document.getElementById(id_desc_field).innerHTML = '';
+      document.getElementById(id_unit_field).innerHTML = '';
+      document.getElementById(id_qty_field).innerHTML  = '';
 
-if (slash == true){
+     }  else{
 
-   document.getElementById('nota').value = x.slice(0,-1);
 
-   alert("No se permite carecteres especiales en este campo");
+      //document.getElementById(id_desc_field).innerHTML = 'Loading...';
    
-   return false;
- }
-
-
-
-
-var patt_comilla = new RegExp("'");
-var comilla = patt_comilla.test( x );
-
-if (comilla  == true){
-
-   document.getElementById('nota').value = x.slice(0,-1);
-
-   alert("No se permite carecteres especiales en este campo");
-   
-   return false;
- }
-
-
-var patt_dat = new RegExp("#");
-var dat = patt_dat.test( x );
-
-if (dat == true){
-
-   document.getElementById('nota').value = x.slice(0,-1);
-
-   alert("No se permite carecteres especiales en este campo");
-   
-   return false;
- }
-
-if (x.length > 1024) 
- {
-   document.getElementById('nota').value =  x.slice(0,-1);
-   alert("El campo de Nota admite un maximo de 1024 caracteres");
-   
-   return false;
- }
-
-
-}
-
-
-function checkChar(line){
-
-var DESCID = 'DESC'+line;
-var x=document.getElementById(DESCID).innerHTML;
-
-var patt = new RegExp("@");
-var val = patt.test( x );
-
-console.log(val);
-
- if (val== true) 
- {
-
-   document.getElementById(DESCID).innerHTML = x.slice(0,-1);
-
-  alert("No se permite carecteres especiales en este campo");
-   
-   return false;
- }
-
-
-
-var patt_comilla = new RegExp("'");
-var comilla = patt_comilla.test( x );
-
-if (comilla == true){
-
-   document.getElementById(DESCID).innerHTML = x.slice(0,-1);
-
-   alert("No se permite carecteres especiales en este campo");
-   
-   return false;
- }
-
-
- if (x.length > 255) 
- {
-   document.getElementById(DESCID).innerHTML =  x.slice(0,-1);
-   alert("El campo de Descripcion admite un maximo de 255 caracteres");
-   
-   return false;
- }
-
-
-
-}
-
-function checkInp(line)
-{
-
-
-var QTYID = 'QTY'+line;
-
-console.log(QTYID);
-
-var x=document.getElementById(QTYID).innerHTML;
-
- if (isNaN(x)) 
- {
-   document.getElementById(QTYID).innerHTML = '';
-   alert("La entrada de CANTIDAD debe ser solo en valores numericos");
-   
-   return false;
- }
-
-
- if (x.length > 18) 
- {
-   document.getElementById(QTYID).innerHTML  = x.slice(0,-1);
-   alert("La entrada de CANTIDAD no debe ser mayor a 18 digitos");
-   
-   return false;
- }
-
-
+          function getItems(){
+              
+              var datos= "bridge_query/get_ProductsInfo";
+              var link= $('#URL').val()+"index.php";
+  
+             return $.ajax({
+                      type: "GET",
+                      url: link,
+                      async:false,
+                      data: {url: datos, item: itemId},
+                      success: function(res){
+            
+                  }
+              
+              });
+  
+          }
+          $.when(getItems()).done(function(res){ //ESPERA QUE TERMINE el query de items
+              
+              json = JSON.parse(res);
+                      
+              document.getElementById(id_desc_field).innerHTML   = json.Description;
+              document.getElementById(id_unit_field).innerHTML   = json.UnitMeasure;
+              //document.getElementById(id_qty_field).innerHTML  = json.QtyOnHand;
+              
+  
+      });
+     }  
+ 
 }
 
 
 
-function checkuni(line)
-{
 
-var UNIID = 'UNI'+line;
-var x=document.getElementById(UNIID).innerHTML;
 
- if (x.length > 15) 
- {
-   document.getElementById(UNIID).innerHTML = x.slice(0,-1);
-   alert("La entrada de UNIDAD no debe ser mayor a 15 caracteres");
-   
-   return false;
- }
-}
+
+
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -355,6 +260,7 @@ var x=document.getElementById(UNIID).innerHTML;
 var falta = 1;
 LineArray = [];
 FaltaArray  = [];
+HeaderInfo = [];  
 URL = document.getElementById('URL').value;
 
 
@@ -388,7 +294,7 @@ MSG_ERROR_RELEASE();
 
   //VALIDAR NOTA
  NOTA =  $("#nota").val();
- console.log('nota '+NOTA);
+
 
  if (!NOTA){
 
@@ -429,21 +335,39 @@ if (r == true) {
 
          
          var JOBID = document.getElementById('JOBID').value;
-         var nota  = document.getElementById('nota').value;  
+         var nota  = $("#nota").val();  
 
-         var datos= "url=ges_requisiciones/set_req_header/"+JOBID+"/"+nota; //LINK DEL METODO EN BRIDGE_QUERY
+        
+
+            //INI REGISTRO DE CABECERA
+          HeaderInfo[0] =  JOBID+'@'+nota;
+          console.log(HeaderInfo[0]);
+
+         var data= JSON.stringify(HeaderInfo);
+         var url = "ges_requisiciones/set_req_header/";
 
          return   $.ajax({
                      type: "GET",
                      url: link,
-                     data: datos,
+                     data: {url:url,Data:data},
                      success: function(res){
-                                  
+
+                              console.log(res);
+                           
+
+                              if(isJson(res) & res!=1 ){ //si es un objeto, que supone es JSON
+                             
+                                error = JSON.parse(res);
+                                MSG_ERROR(error.E,0);
+                                spin_hide();
+
+                              }else{
+
                                   Req_NO = res;
-
-                                  console.log(res);
-
+                                
                                   $('#req_no_jobid').html(res);
+
+                              }
                  
                         }
              });
@@ -459,14 +383,23 @@ if (r == true) {
         data:  {url: 'ges_requisiciones/set_req_items/'+Req_NO.trim() , Data : JSON.stringify(LineArray)}, 
         success: function(res){
               
-               console.log('RES:'+res);
-               
-         if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
-                 
-           send_mail(link,Req_NO);
-       
-         }
+            console.log('RES:'+res);
 
+            if(isJson(res) & res!=1 ){ //si es un objeto, que supone es JSON
+            
+                 error = JSON.parse(res);
+                 spin_hide();
+                 MSG_ERROR(error.E,0);
+                 
+
+            }else{
+                      
+                if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
+                    console.log(link+' '+Req_NO);
+                    send_mail(link,Req_NO);
+              
+                }
+            }
           }
        });       
 
@@ -557,7 +490,7 @@ function send_mail(link,Req_NO){
 function msg(link,Req_NO){
 
 spin_hide();
-  alert("La orden se ha enviado con exito");
+  MSG_CORRECT("La orden se ha enviado con exito",0);
 
  var R = confirm('Desea imprimir la orden de venta?');
 
@@ -578,8 +511,6 @@ spin_hide();
 
 
 }
-
-
 
 
 
@@ -611,30 +542,38 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
                    //leer columnas de jobs
                  switch (j){
 
-                      case 4:
-                          cell += '@'+document.getElementById('JOBID').value+
+             
+                      case 5:
+
+                          cell += 
+                          
+                          '@'+document.getElementById(selid).value+
+                          '@'+theTbl.rows[i].cells[1].innerHTML+
+                          '@'+theTbl.rows[i].cells[2].innerHTML+
+                          '@'+theTbl.rows[i].cells[3].innerHTML+                          
+                          '@'+document.getElementById('JOBID').value+
                           '@'+document.getElementById('JOBID').options[document.getElementById('JOBID').selectedIndex].text+
                           '@'+document.getElementById(phsid).value+
                           '@'+document.getElementById(phsid).options[document.getElementById(phsid).selectedIndex].text+
+                          '@'+document.getElementById(costid).value+
                           '@'+document.getElementById(costid).options[document.getElementById(costid).selectedIndex].text;
+                          
                           console.log(cell);
-               //SI LA CELDA NO CONTIENE VALOR 
-                               /* if(document.getElementById(phsid).value == '-'){
-                                    
-                                   FaltaArray[j] = i+1;
-                                }
-*/
-                             break;            
+                          //SI LA CELDA NO CONTIENE VALOR 
+                          /* if(document.getElementById(phsid).value == '-'){
+                              
+                              FaltaArray[j] = i+1;
+                          }
+                          */
+                            break;            
 
 
                       default: 
 
-                            val= theTbl.rows[i].cells[j].innerHTML;
-
-                            cell += '@'+val;//agrego el registo de las demas columnas
-
                               //SI LA CELDA NO CONTIENE VALOR 
-                              if(j!=4){
+                              if(j!=4 || j!=5 ){
+
+                                val= theTbl.rows[i].cells[j].innerHTML;
 
                                 if(val==''){
                                     
@@ -643,7 +582,8 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
 
                               }
 
-
+                            
+                            
                             break;
                            }
                     //fin leer columnas de jobs
@@ -653,6 +593,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
 
        }//FIN BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
 
+       
 
        if (theTbl.rows[i].cells[1].innerHTML!=''){
 

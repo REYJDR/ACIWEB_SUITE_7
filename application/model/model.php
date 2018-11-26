@@ -19,6 +19,7 @@ class Model
      public  $sage_connected = null;
      public  $role_compras = null;
      public  $role_campo = null;
+     public  $layout_lines= null;
       
 
     function __construct($db,$dbname)
@@ -33,6 +34,8 @@ class Model
         }
 
          $this->sage_connected =   $this->ConexionSage();
+
+         
     }
     
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -110,14 +113,19 @@ return $connected;
        
         $i=0;
         $res ='';
+
+        //eliminar occurrencias invalidas de caracteres especiales
+        //$query = str_replace("''","'",$query);
     
+
+
         $res = $this->connect($query);
 
 
         if(mysqli_error($this->db)){
         
 
-          $ERROR['ERROR'] = date("Y-m-d h:i:sa").'-'.str_replace("'", " ",mysqli_error($this->db));
+          $ERROR['ERROR'] = date("Y-m-d h:i:sa").'- Error inserting to DataBase, contact to system administrator';
 
           file_put_contents("LOG_ERROR/TEMP_LOG.json",json_encode($ERROR),FILE_APPEND);
           file_put_contents("LOG_ERROR/ERROR_LOG.txt","\n".date("Y-m-d h:i:sa").'-(SAGE COMPANY '.$this->id_compania.') MYSQL ERROR '.mysqli_error($this->db)."\n/ Query ".$query,FILE_APPEND);
@@ -181,7 +189,12 @@ public function update($table,$columns,$clause){
     $sets = array();
     foreach($columns as $column => $value)
     {
-         $sets[] = "`".$column."` = '".$value."'";
+        if($value <> 'NULL'){
+            $sets[] = "`".$column."` = '".$value."'";
+        }else{
+            $sets[] = "`".$column."` = ".$value;
+        }
+        
     }
     $query .= implode(', ', $sets);
     
@@ -197,7 +210,7 @@ public function update($table,$columns,$clause){
 
 function Query_value($table,$columns,$clause){
 
-$query = 'SELECT '.$columns.' FROM '.$table.' '.$clause.';';
+ $query = 'SELECT '.$columns.' FROM '.$table.' '.$clause.';';
 
 
 
@@ -225,9 +238,9 @@ return  $column_value;
 ////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////
-    /**
-     * INSERT
-     */
+/**
+ * INSERT
+ */
 
 public function insert($table,$values){
 
@@ -240,6 +253,22 @@ $insert = $this->Query($query);
 
 
 
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * query per columns
+ */
+
+public function queryColumns($table,$columns,$clause){
+    
+
+    $query = "SELECT  ".implode(',', $columns)." FROM ".$table." ".$clause." ;";
+
+    return $this->Query($query);
+        
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -256,19 +285,26 @@ public function read_db_error(){
 
     $R_ERRORS = str_replace(',', '  ', $R_ERRORS);
 
-   echo $R_ERRORS;
-   return $R_ERRORS ;
+    if($R_ERRORS!=''){
+
+        $ARRAY['E'] =  $R_ERRORS;
+        $R_ERRORS = json_encode($ARRAY);
+
+    }else{
+
+        $R_ERRORS = '';
+    }
+
+
+   // echo $R_ERRORS ;
+    return $R_ERRORS ;
 
 }
-
-
-
 
 
 /**
 * delete
 */
-
 public function delete($table,$clause){
 
 
@@ -341,6 +377,7 @@ $_SESSION['ROLE1'] = $rol_compras;
 $_SESSION['ROLE2'] = $rol_campo;
 $_SESSION['COMPANY'] = $company;
 
+
 if($temp_url!=''){
 
   $url = str_replace('@',  '/', $temp_url);
@@ -364,6 +401,7 @@ if($temp_url!=''){
 
                                 $Comp_Info = json_decode($Comp_Info);
                                 $Sage_Conn = $Comp_Info->{'Sage_Conn'};
+                                
                             }    
                             
                                 if ($Sage_Conn == 0) {
@@ -466,6 +504,7 @@ private function set_login_parameters(){
         $this->lang        = $this->Query_value('company_info','lang','');
         $this->rol_compras = $_SESSION['ROLE1'];
         $this->rol_campo   = $_SESSION['ROLE2'];
+        $this->layout_lines = $this->Query_value('FAC_DET_CONF','NO_LINES','where ID_compania="'.$this->id_compania.'"');
         //$active_user_pass = $_SESSION['PASS'] ;
 
         
@@ -481,6 +520,26 @@ $date  = strtotime($dateIn.' '.UTC);
 $dateOut = date("Y-m-d H:i:s",  $date);
 
 return $dateOut;
+}
+
+
+public function CheckStandalone(){
+
+
+    $Sage_Conn = $this->Query_value('company_info','Sage_Conn',' limit 1');
+
+
+    if ($Sage_Conn == 9) {
+
+      return true;
+
+    }else{
+
+
+        return false;
+    }
+
+
 }
 
 public function CompanyConnected(){
@@ -631,12 +690,11 @@ return $res;
 
 public function get_ProductsList(){
 
-
 $query='SELECT 
 Products_Exp.ProductID,
 Products_Exp.Description,
 Products_Exp.UnitMeasure,
-Products_Exp.QtyOnHand,
+SUM(STOCK_ITEMS_LOCATION.qty) AS QtyOnHand,
 Products_Exp.Price1,
 Products_Exp.Price2,
 Products_Exp.Price3,
@@ -647,21 +705,21 @@ Products_Exp.Price7,
 Products_Exp.Price8,
 Products_Exp.Price9,
 Products_Exp.Price10,
-Products_Exp.LastUnitCost
+Products_Exp.LastUnitCost,
+Products_Exp.IsActive
 FROM Products_Exp 
-inner join ITEMS_NO_LOTES on ITEMS_NO_LOTES.ProductID=Products_Exp.ProductID
-WHERE Products_Exp.IsActive="1" AND  Products_Exp.QtyOnHand > 0 and Products_Exp.id_compania="'.$this->id_compania.'" and ITEMS_NO_LOTES.ID_compania="'.$this->id_compania.'" group by Products_Exp.ProductID';
-
+inner join STOCK_ITEMS_LOCATION on STOCK_ITEMS_LOCATION.ItemID = Products_Exp.ProductID and STOCK_ITEMS_LOCATION.id_compania="'.$this->id_compania.'" 
+WHERE Products_Exp.id_compania="'.$this->id_compania.'" 
+group by Products_Exp.ProductID';
 
 $res = $this->Query($query);
 
 return $res;
-
 }
 
 public function get_ClientList(){
 
-$query='SELECT * FROM Customers_Exp where  id_compania="'.$this->id_compania.'" order by CustomerID ASC';
+$query='SELECT * FROM Customers_Exp where  id_compania="'.$this->id_compania.'" and isActive="1" order by CustomerID ASC';
 
 $res = $this->Query($query);
 
@@ -747,7 +805,7 @@ $order = $this->Query_value('Purchase_Header_Imp','TransactionID','where ID_comp
 
 //$NO_ORDER = str_pad($NO_ORDER, 7 ,"0",STR_PAD_LEFT);
 
-$NO_ORDER = number_format($order, 0 , '', '')+1;
+$NO_ORDER = number_format($order, 0 , '', '');
 $NO_ORDER = str_pad($NO_ORDER, 9 ,"0",STR_PAD_LEFT);
 
 
@@ -912,6 +970,15 @@ if(!$jobs){
 }
 
 }
+
+
+public function getJobDesc(){
+    
+  return $this->Query_value('Jobs_Exp','Description','where ID_compania="'.$this->id_compania.'" and IsActive="1"');
+
+  
+}
+
 
 public function get_phaseList(){
 
@@ -1158,6 +1225,17 @@ return $res;
 }
 
 
+public function get_OC_ID($sort,$limit,$clause){
+    
+    $query ='SELECT * 
+            FROM PurOrdr_Header_Exp  '.$clause.' 
+                 Order by PurOrdr_Header_Exp.Date '.$sort.' limit '.$limit.';';
+    
+    
+    $res = $this->Query($query);
+
+return $res;
+}
 
 //Orden de compras asociadas a red
 public function get_OC_req_asc($sort,$limit,$clause){
@@ -1342,14 +1420,14 @@ public function desencriptar($cadena){
 
 public function getGLReten(){
     
-$this->verify_session();
+    $this->verify_session();
 
 
-$res = $this->Query_value( 'CTA_GL_CONF',
-                           'GL_RETEN',
-                           'WHERE  ID_compania="'.$this->id_compania.'" ');
-    
-  return $res;
+    $res = $this->Query_value( 'CTA_GL_CONF',
+                            'GL_RETEN',
+                            'WHERE  ID_compania="'.$this->id_compania.'" ');
+        
+    return $res;
 }
 
 
@@ -1433,6 +1511,52 @@ public function send_mail($address,$subject,$title,$body){
     
 }
 
-//END
+
+//Estimar Costos de un proyecto, metodo general
+public function getJob_avalaible_amnt($JobID,$PhaseID=0,$CCOID=0){
+
+
+  $this->verify_session();
+
+   $clause = 'WHERE  ID_compania="'.$this->id_compania.'" AND JobID="'.$JobID.'"  ';
+
+    if ($PhaseID) {
+
+      $clause .= 'AND PhaseID="'.$PhaseID.'" ';
+
+        if ($CCOID) {
+
+        $clause .= 'AND CostCodeID="'.$CCOID.'" ';
+        
+        }
+
+    }
+
+    $Budget = $this->Query_value('Job_Estimates_Exp','SUM(Expenses)',$clause);
+
+    $clause2 = 'WHERE  ID_compania="'.$this->id_compania.'" AND JobID="'.$JobID.'"  ';
+    
+        if ($PhaseID) {
+    
+          $clause .= 'AND JobPhaseID="'.$PhaseID.'" ';
+    
+            if ($CCOID) {
+    
+            $clause .= 'AND JobCostCodeID="'.$CCOID.'" ';
+            
+            }
+    
+        }
+
+    $Expenses = $this->Query_value('INV_EVENT_LOG','SUM(Total)',$clause2);
+
+
+    $Total_available = $Budget - $Expenses;
+
+    return $Total_available;
+    // number_format($Total_available,2,',','.');
+
+}
+
 }
 ?>

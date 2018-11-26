@@ -181,12 +181,25 @@ echo '<script> alert("El nuevo termino de pago de agrego con exito","ok"); windo
 //AGREGA DATOS DE IMPRESORA FISCAL
 if (isset($_REQUEST['addPrint'])) {
 
+$PRINTER = $_POST['serial'];
+
 $value  = array(
 	'SERIAL' => $_POST['serial'],
 	'DESCRIPCION' => $_POST['printdesc']
  );
 
-
+ $DIR = "FISCAL/".$PRINTER."/IN/";
+ $DIROUT = "FISCAL/".$PRINTER."/OUT/";
+ $DIRERROR = "FISCAL/".$PRINTER."/ERROR/";
+ 
+ if (!file_exists($DIR)) {
+ 
+	 mkdir($DIR, 0777, true);
+	 mkdir($DIROUT, 0777, true);
+	 mkdir($DIRERROR, 0777, true);
+	 
+ }
+ 
 $this->model->INSERT('INV_PRINT_CONF',$value);
 $this->CheckError();
 

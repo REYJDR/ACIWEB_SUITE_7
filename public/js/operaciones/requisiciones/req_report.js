@@ -257,3 +257,29 @@ function close_rep(id){
   
     }
 }
+
+
+function get_OC(id){
+  
+    URL = document.getElementById('URL').value;
+  
+    var datos= "url=ges_reportes/get_PO_details/"+id;  
+    var link = URL+"index.php";
+  
+    $.ajax({
+        type: "GET",
+        url: link,
+        data: datos,
+        success: function(res){
+        
+         $('#info').html(res);
+  
+         // alert(res);
+  
+          }
+     });
+     $('html, body').animate({
+      scrollTop: $("#info").offset().top
+      }, 2000);
+
+    }

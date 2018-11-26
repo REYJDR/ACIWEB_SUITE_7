@@ -16,10 +16,8 @@
             <tr><th><button class="tablinks" onclick="openCity(event, 'menu4')"><i class="fas fa-boxes  fa-2x icon-color-dash" > </i> &nbsp;&nbsp;<?php echo $dash_menu_4; ?></button></th></tr>
             <tr><th><button class="tablinks" onclick="openCity(event, 'menu5')"><i class="fas fa-list-alt fa-2x icon-color-dash" > </i> &nbsp;&nbsp;<?php echo $dash_menu_5; ?></button></th></tr>
             <tr><th><button class="tablinks" onclick="openCity(event, 'menu6')"><i class="fas fa-wrench fa-2x icon-color-dash" > </i> &nbsp;&nbsp;<?php echo $dash_menu_6; ?></button></th></tr>
-         
-           <?php if($this->model->active_user_role=='admin'){?>
             <tr><th><button class="tablinks" onclick="goOut();"><i class="fas fa-sign-out-alt fa-2x icon-color-out" > </i> &nbsp;&nbsp;<?php echo $dash_menu_7; ?></button></th></tr>					
-          <?php } ?>
+
         </tbody>
     </table>
 </fieldset>
@@ -102,6 +100,9 @@
     <div class='col-lg-12'>
     <?php   if($mod_invt_CK == 'checked' and $INF_INV==1 ){?>
         <div class='col-lg-3'>
+        <button onclick="window.location='<?PHP ECHO URL; ?>index.php?url=ges_inventario/InvIn'" class="dashBottom" ><?php echo $SUBMENU_inv4; ?></button>				
+        </div>
+        <div class='col-lg-3'>
         <button onclick="window.location='<?PHP ECHO URL; ?>index.php?url=ges_inventario/inv_list'" class="dashBottom" ><?php echo $SUBMENU_inv1; ?></button>				
         </div>
         <div class='col-lg-3'>
@@ -110,6 +111,7 @@
         <div class='col-lg-3'>
         <button onclick="window.location='<?PHP ECHO URL; ?>index.php?url=ges_inventario/InvOut'" class="dashBottom" ><?php echo $SUBMENU_inv3; ?></button>				
         </div>
+
 
     <?php } ?>
 
@@ -123,7 +125,7 @@
     <!--END MENU INVENTORY-->	
 
 </div>
-
+<!--INI MENU REPORTES-->	
 <div id="menu5" class="tabcontent">
 
    <div class='col-lg-12'>
@@ -148,11 +150,21 @@
 
     <?php } ?>
 
+    <?php if($mod_invt_CK == 'checked' and $INF_INV==1 ){?>
+        <div class='col-lg-3'>
+        <button onclick="window.location='<?PHP ECHO URL; ?>index.php?url=ges_inventario/InvInReport/'" class="dashBottom" ><?php echo $SUBMENU_rep8; ?></button>              
+        </div>
+
+
+    <?php } ?>
+
 
     <?php } ?>
     </div>
     
 </div>
+<!--END MENU REPORTES-->	
+
 
 <div id="menu6" class="tabcontent">
     <!--INI MENU CONFIG-->

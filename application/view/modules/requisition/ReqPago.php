@@ -27,7 +27,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
       <div class="separador col-lg-12"></div>
 			    <!--ini  header-->
         <div class="col-lg-4"> 
-          <fieldset>
+          <fieldset class="fieldsetform" >
             <div class="col-lg-12"> 
               <fieldset class="fieldsetform">
               <table class='table_form'>
@@ -68,7 +68,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 	  <div class="separador col-lg-12"> </div>
 	
   <!--top Table-->
-  <fieldset>
+  <fieldset class="fieldsetform" >
 	<table id="table"  class="display table  table-condensed table-striped table-bordered" >
       <thead>
         <tr>
@@ -76,11 +76,11 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
           <th width="10%"><?PHP echo $POnumb; ?></th>
           <th width="10%"><?PHP echo $POdate; ?></th>
           <th width="20%"><?PHP echo $POvendor; ?></th> 
-          <th width="10%"><?PHP echo $POtotal; ?></th>
-          <th width="10%"><?PHP echo $POreq_amt; ?></th>
-          <th width="10%"><?PHP echo $POpaid; ?></th>
-          <th width="10%"><?PHP echo $POdue; ?></th>
-          <th width="10%"><?PHP echo $POret; ?></th>
+          <th width="5%"><?PHP echo $POtotal; ?></th>
+          <th width="5%"><?PHP echo $POreq_amt; ?></th>
+          <th width="5%"><?PHP echo $POpaid; ?></th>
+          <th width="5%"><?PHP echo $POdue; ?></th>
+          <th width="5%"><?PHP echo $POret; ?></th>
           <th width="10%"><?PHP echo $POreq; ?></th>
         </tr>
       </thead>
@@ -101,7 +101,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
       <!--top Detail Table-->
       <div class="separador col-lg-12"></div>
-      <div class="col-lg-4" > 
+      <div class="col-lg-6" > 
         <div id="table2"></div>
       </div>
       <!--end Detail Table-->
@@ -109,19 +109,45 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
       <!--top Bill Table-->
       <div class="separador col-lg-12"></div>
       <div class="col-lg-6" > 
-        <fieldset>
+        <fieldset class="fieldsetform" >
           <legend><?php echo $REP_TitleTbl3; ?></legend>
-        <div id="tableFact"></div>
+       
+          <table id="table_cash" class="display table table-striped table-bordered" cellspacing="0" >
+          <thead>
+            <tr>
+              <th width="5%"><?php echo  $REP_detail_Tbl4Hdr1; ?></th>
+              <th width="10%"><?php echo $REP_detail_Tbl4Hdr2; ?></th>
+              <th width="5%"><?php echo  $REP_detail_Tbl4Hdr3; ?></th>
+              <th width="5%"><?php echo  $REP_detail_Tbl4Hdr4; ?></th>
+              <th width="10%"><?php echo $REP_detail_Tbl4Hdr5; ?></th>
+              <th width="5%"><?php echo  $REP_detail_Tbl4Hdr6; ?></th>
+            </tr>
+          </thead>
+            <tbody id="tableAdv"> </tbody>  
+           </table> 
+        
         </fieldset>
       </div>
       <!--end Bill Table-->
 
       <!--top Cash Advance Table-->
-      <div class="separador col-lg-12"></div>
+      
       <div class="col-lg-6" >
-        <fieldset> 
+        <fieldset class="fieldsetform" > 
           <legend><?php echo $REP_TitleTbl4; ?></legend>
-        <div id="tableAdv"></div>
+
+
+        <table id="table_fact" class="display  table table-striped table-bordered" cellspacing="0" >
+        <thead>
+          <tr>
+            <th width="5%"><?php echo $REP_detail_Tbl3Hdr1; ?></th>
+            <th width="10%"><?php echo $REP_detail_Tbl3Hdr2;?></th>
+            <th width="5%"><?php echo $REP_detail_Tbl3Hdr3; ?></th>
+            <th width="5%"><?php echo $REP_detail_Tbl3Hdr4; ?></th>
+          </tr>
+        </thead>
+        <tbody id="tableFact"></tbody>
+        </table>
         </fieldset>
       </div>
       <!--end Cash Advance Table-->

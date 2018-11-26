@@ -58,13 +58,15 @@ $sql= 'SELECT
 A.ProductID,
 A.Description,
 A.UnitMeasure,
-A.QtyOnHand,
+(SELECT SUM(qty) FROM STOCK_ITEMS_LOCATION WHERE itemID = ProductID and ID_compania="'.$this->model->id_compania.'") AS QtyOnHand,
 A.Price1,
 A.LastUnitCost,
-A.TaxType
+A.TaxType,
+A.UPC_SKU,
+A.GL_Sales_Acct
 FROM Products_Exp as A
 WHERE 
-A.IsActive="1" 
+A.IsActive="1"
 AND  A.id_compania="'.$this->model->id_compania.'" 
 AND  A.ProductID ="'.$ITEM.'"';
 
@@ -72,7 +74,7 @@ $res = $this->model->Query($sql);
 
 
 foreach ($res as  $value) {
-    echo $value;
+    echo str_replace("'","",$value);
 }
 
 }
@@ -1397,9 +1399,11 @@ if($itemFilter){
   $clause= '';
 }
 
-$sql = 'SELECT ProductID , Description 
+$sql = 'SELECT ProductID , 
+               Description ,
+              (SELECT SUM(qty) FROM STOCK_ITEMS_LOCATION WHERE itemID = ProductID and ID_compania="'.$this->id_compania.'") AS QtyOnHand,
           FROM Products_Exp 
-          WHERE isActive="1" and id_compania="'.$this->model->id_compania.'" '.$clause;
+          WHERE isActive="1" and QtyOnHand > 0 id_compania="'.$this->model->id_compania.'" '.$clause;
 
 $Codigos = $this->model->Query($sql);
 
@@ -1699,6 +1703,7 @@ echo '0';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////7
 //PROCESO COMPRAS/RECIBO DE MERCANCIAS
 public function set_fact_header($FACT_NO,$vendorID,$PO_ID,$nota,$total,$date){
+
 $this->SESSION();
 
 $date = date("Y-m-d", strtotime($date));

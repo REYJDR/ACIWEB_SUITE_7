@@ -4,6 +4,7 @@ $compania = 'Compañia';
 $metodoCon = 'Método de conexión';
 $AciwebComp = 'Base de datos';
 $timezone = 'Zona Horaria';
+$version = 'Version del sistema';
 
 $dash_menu_1 = 'Clientes';
 $dash_menu_2 = 'Ventas';
@@ -25,11 +26,12 @@ $SUBMENU_pur1  = 'Facturas';
 $SUBMENU_req1 = 'Requisicion de materiales';
 $SUBMENU_req2 = 'Requisicion de Pagos';
 $SUBMENU_req3 = 'Recepcion de materiales';
-$SUBMENU_req4  = 'Requisiciones creadas';
+$SUBMENU_req4  = 'Requisiciones de materiales';
 
 $SUBMENU_inv1 = 'Productos';
 $SUBMENU_inv2 = 'Consignaciones';
 $SUBMENU_inv3 = 'Salida de mercancia';
+$SUBMENU_inv4 = 'Entrada de mercancia';
 
 $SUBMENU_stock1 = 'Almacenes';
 
@@ -40,6 +42,7 @@ $SUBMENU_rep4 = 'Reporte Diario';
 $SUBMENU_rep5 = 'Salida de mercancia';
 $SUBMENU_rep7 = 'Requisiciones de Pagos';
 $SUBMENU_rep6 = 'Otros';
+$SUBMENU_rep8 = 'Movimientos de mercancia';
 
 $SUBMENU_cust1 = 'Lista de precios';
 $SUBMENU_cust2 = 'Administrar Clientes';
@@ -84,8 +87,8 @@ $config_2_val3 = 'Email';
 $config_2_val4 = 'Contraseña';
 $config_2_val5 = 'Repetir Contraseña';
 $config_2_val6 = 'Role';
-$config_3_val7 = 'Administrador';
-$config_3_val8 = 'Usuario';
+$config_2_val7 = 'Administrador';
+$config_2_val8 = 'Usuario';
 
 $config_3_val1 = 'Nombre';
 $config_3_val2 = 'Apellido';
@@ -131,6 +134,7 @@ $config_10_title = 'Interfaz con Sage';
 $config_8_val1  = 'Tipo de interfaz';  
 $config_8_val2  = 'SageConnect';
 $config_8_val3  = 'P3 To P3';
+$config_8_val4  = 'Standalone';
 //INTERFAZ SAGE
 
 //BASE DE DATOS

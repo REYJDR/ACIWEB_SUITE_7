@@ -23,7 +23,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
       <!--INI BARRA BUSQUEDA REPORTES -->
       <div class="col-lg-12 searchBar">
         <div class="col-lg-3" >
-          <div class="col-lg-5" ><label for='soId'><?php echo $SO_REP_input1;?></label></div>
+          <div class="col-lg-5" ><label for='soId'><?php echo $S_REP_input1;?></label></div>
           <div class="col-lg-7" ><input class="inputPage" type="text" id='soId' name='soId' /></div> 
         </div>
         <div class="col-lg-6" >
@@ -83,15 +83,22 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 					if($date2!=''){
 
-						$clause.= ' and date between "'.$date1.'%" and "'.$date2.'%" ';           
+						$clause.= ' and Sales_Header_Imp.date between "'.$date1.'%" and "'.$date2.'%" ';           
 						}
 					
 					if($date2==''){ 
 
-						$clause.= ' and date like "'.$date1.'%"';
+						$clause.= ' and Sales_Header_Imp.date like "'.$date1.'%"';
 					}
 						
 					}
+
+					if($soNo!=''){ 
+						
+							$clause.= ' and Sales_Header_Imp.InvoiceNumber like "%'.$soNo.'%" ';
+					}
+											
+
 
 
 					$limit = '1000';
@@ -138,6 +145,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					$name= $value->{'name'};
 					$lastname = $value->{'lastname'};
 					}
+					
 					
 					 $OrdPedi = $this->model->Query_value('INVOICE_GEN_HEADER','SalesOrderNumber','WHERE InvoiceNumber="'.$filter->{'InvoiceNumber'}.'"');
 					 $OrdPediID ="'".$OrdPedi."'"; 

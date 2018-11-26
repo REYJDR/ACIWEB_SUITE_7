@@ -7,7 +7,7 @@ $REQ_Detail1 = "Proyecto";
 $REQ_Detail2 = "Fecha";
 $REQ_Detail3 = "Nota";
 
-$REQ_TblHdr1 = "Renglon";
+$REQ_TblHdr1 = "ItemID";
 $REQ_TblHdr2 = "Descripcion";
 $REQ_TblHdr3 = "Cant.";
 $REQ_TblHdr4 = "Uni.";
@@ -136,6 +136,7 @@ $REP_detail_Tbl4Hdr6 = 'Total Cheque';
 
 $REP_TitleTbl3 = 'Facturas Relacionadas';
 $REP_TitleTbl4 = 'Cheques Adelantados'; 
+$REP_TitleTbl5 = 'Facturas asociadas a PO';
 
 $REP_Modal_title = 'Razón de Cierre';
 $REP_Modal_reason = 'Indique la razón del cierre de la requisición';

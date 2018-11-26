@@ -5,6 +5,8 @@ class ges_inventario extends Controller
 
 public $ProductID;
 
+//******************************************************************************
+//LISTA DE PRODUCTOS
 public function inv_list(){
  
 
@@ -27,6 +29,8 @@ public function inv_list(){
 	
 }
 
+//******************************************************************************
+//DETALLES DE PRODUCTO
 public function inv_info($itemid){
  
  $this->ProductID = $itemid;
@@ -52,7 +56,6 @@ public function inv_info($itemid){
 
 //******************************************************************************
 //SALIDA DE INVENTARIO POR AJUSTES
-
 public function InvOut(){
     
     
@@ -69,8 +72,46 @@ public function InvOut(){
     
             }
                
-    }
+}
 
+//******************************************************************************
+//ENTRADA DE INVENTARIO
+public function invIn(){
+       
+        $res = $this->model->verify_session();
+       
+               if($res=='0'){
+       
+                   // load views
+                   require APP . 'view/_templates/header.php';
+                   require APP . 'view/_templates/panel.php';
+                   require APP . 'view/modules/inventory/invIn.php';
+                   require APP . 'view/_templates/footer.php';
+       
+               }
+           
+}
+
+//******************************************************************************
+//REPORTE DE SALIDA DE IVENTARIO
+public function InvInReport(){
+    
+     $res = $this->model->verify_session();
+    
+            if($res=='0'){
+    
+                // load views
+                require APP . 'view/_templates/header.php';
+                require APP . 'view/_templates/panel.php';
+                require APP . 'view/modules/inventory/InvInReport.php';
+                require APP . 'view/_templates/footer.php';
+    
+            }
+        
+}
+
+//******************************************************************************
+//UBICACIONES 
 public function location(){
     
     
@@ -92,8 +133,8 @@ public function location(){
 
 
 ////////////////////////////////////////////////////////////////////////////////////
-//*
 //* OPERATION METHODS
+////////////////////////////////////////////////////////////////////////////////////
 
 public function getStockList(){
 
@@ -101,7 +142,7 @@ public function getStockList(){
     $table = '';
 
 
-   echo  $query="select * from STOCKS where onoff='1' and 
+    $query="select * from STOCKS where onoff='1' and 
     ID_compania='".$this->model->id_compania."' or
     ID_compania='0' ;";
 
@@ -121,7 +162,7 @@ public function getStockInfo($id){
   
     $this->model->verify_session();
     
-   echo $query="select * from STOCKS where onoff='1' and id='".$id."';";
+    $query="select * from STOCKS where onoff='1' and id='".$id."';";
     $res = $this->model->Query($query); 
 
    $table = '<fieldset class="fieldsetform">
@@ -174,7 +215,14 @@ public function getItemList($location,$stock){
 
     $this->model->verify_session();
 
-    $query="select * from STOCK_ITEMS_LOCATION where location='".$location."' and stock='".$stock."' and ID_compania='".$this->model->id_compania."';";
+    $query="SELECT * 
+              FROM STOCK_ITEMS_LOCATION as A
+              INNER JOIN Products_Exp as B ON B.ProductID = A.itemID and A.ID_compania='".$this->model->id_compania."'
+              WHERE A.location='".$location."' and 
+                    A.stock='".$stock."' and 
+                    A.ID_compania='".$this->model->id_compania."' and 
+                    B.isActive = '1' and 
+                    B.QtyOnHand > 0;";
 
     $res = $this->model->Query($query); 
 
@@ -263,54 +311,79 @@ public function getLocByItem($lote='',$line=''){
         echo '</select>';
 }
 
+public function getStockByItemID(){
+
+    $itemid = $_GET['itemID'];
+    $list = '';
+    $this->model->verify_session();
+        
+      $query = 'SELECT 
+        A.id as ID,
+        B.name AS Stock,
+        C.location as Location
+        FROM STOCK_ITEMS_LOCATION as A
+        INNER JOIN STOCKS B ON B.id = A.stock 
+        INNER JOIN STOCK_LOCATION C ON C.id = A.location
+        where  A.itemID="'.$itemid.'" and A.ID_compania ="'.$this->model->id_compania.'"';
+        
+        
+        $res = $this->model->Query($query); 
+
+        foreach ( $res as $data){
+        $value = json_decode($data);
+    
+        $list .= '<option value="'.$value->{'ID'}.'">'.$value->{'Stock'}.' ( '.$value->{'Location'}.')</option>';
+    
+        }
+   echo $list ;
+}
+
 public function addStock(){
 
-$this->model->verify_session();
+    $this->model->verify_session();
 
-$values = array('name'    => $_REQUEST['name'], 
-                'address' => $_REQUEST['desc'], 
-                'description' => $_REQUEST['address'], 
-                'capacity' => $_REQUEST['capa'], 
-                'ID_compania' => $this->model->id_compania );
+    $values = array('name'    => $_REQUEST['name'], 
+                    'address' => $_REQUEST['desc'], 
+                    'description' => $_REQUEST['address'], 
+                    'capacity' => $_REQUEST['capa'], 
+                    'ID_compania' => $this->model->id_compania );
 
-$this->model->insert('STOCKS',$values );
-$err = $this->CheckError();
+    $this->model->insert('STOCKS',$values );
+    $err = $this->CheckError();
 
-    if($err){
-    
-    echo $err;
+        if($err){
+        
+        echo $err;
 
-    }else{
-     
-    echo 0;
+        }else{
+        
+        echo 0;
 
-    }
+        }
 
 }
 
 
 public function addLoc($id){
     
-$this->model->verify_session();
+    $this->model->verify_session();
 
-$values = array('location'    => $_REQUEST['name'], 
-                'description' => $_REQUEST['desc'], 
-                'stock' => $id,  
-                'ID_compania' => $this->model->id_compania );
-    
-$this->model->insert('STOCK_LOCATION',$values);
+    $values = array('location'    => $_REQUEST['name'], 
+                    'description' => $_REQUEST['desc'], 
+                    'stock' => $id,  
+                    'ID_compania' => $this->model->id_compania );
+        
+    $this->model->insert('STOCK_LOCATION',$values);
 
-$err = $this->CheckError();
+    $err = $this->CheckError();
 
-    if($err){
-        echo $err;
-    }else{
-        echo 0;    
-    }
+        if($err){
+            echo $err;
+        }else{
+            echo 0;    
+        }
     
 }
-
-
 
 
 public function getItemLoteSt(){
@@ -385,74 +458,73 @@ public function getItemLoteSt(){
         echo $table_lote;
 }
 
-
 public function SET_NO_LOTE($item,$no_lote,$qty,$fecha){
     
     
-    $this->model->verify_session();
-    
-    
-    //Verifico No_lote si existe
-    $lote = $this->model->Query_value('ITEMS_NO_LOTES','no_lote','Where no_lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
-    
-    if($lote==''){ 
-    
-    
-    //Actualizo la cantidad en el lote default
-    $now_qty = $this->model->Query_value('STOCK_ITEMS_LOCATION','sum(qty)','Where lote="'.$item.'0000" and ID_compania="'.$this->model->id_compania.'"');
-    
-    $qty_to_up = $now_qty - $qty;
-    
-    
-    $query= 'UPDATE STOCK_ITEMS_LOCATION SET qty="'.$qty_to_up.'" where lote="'.$item.'0000" and location="1" and stock="1" and ID_compania="'.$this->model->id_compania.'"';
-    $res = $this->model->Query($query);
-    
-    
-    
-    
-    //Agrego nuevo lote
-    $value  = array(
-      'ProductID' => $item ,
-      'no_lote' => $no_lote ,
-      'fecha_ven' => $fecha,
-      'REG_KEY' => uniqid(),
-      'ID_compania' => $this->model->id_compania );
-    
-    
-    $res = $this->model->insert('ITEMS_NO_LOTES',$value);
-    if($this->CheckError()){
-
-        echo $this->CheckError();
-        die();
-
-    } 
-    
-    //Agrego ubicacion de nuevo lote por default
-    $value  = array(
-      'itemID' => $item ,
-      'lote' => $no_lote ,
-      'qty' => $qty ,
-      'stock' => '1',
-      'location' => '1',
-      'ID_compania' => $this->model->id_compania );
-    
-    $res = $this->model->insert('STOCK_ITEMS_LOCATION',$value);
-
-    if($this->CheckError()){
+        $this->model->verify_session();
         
-        echo $this->CheckError();
-        die();
         
-     } 
-    
-    
-}else{
+        //Verifico No_lote si existe
+        $lote = $this->model->Query_value('ITEMS_NO_LOTES','no_lote','Where no_lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
+        
+        if($lote==''){ 
+        
+        
+        //Actualizo la cantidad en el lote default
+        $now_qty = $this->model->Query_value('STOCK_ITEMS_LOCATION','sum(qty)','Where lote="'.$item.'0000" and ID_compania="'.$this->model->id_compania.'"');
+        
+        $qty_to_up = $now_qty - $qty;
+        
+        
+        $query= 'UPDATE STOCK_ITEMS_LOCATION SET qty="'.$qty_to_up.'" where lote="'.$item.'0000" and location="1" and stock="1" and ID_compania="'.$this->model->id_compania.'"';
+        $res = $this->model->Query($query);
+        
+        
+        
+        
+        //Agrego nuevo lote
+        $value  = array(
+        'ProductID' => $item ,
+        'no_lote' => $no_lote ,
+        'fecha_ven' => $fecha,
+        'REG_KEY' => uniqid(),
+        'ID_compania' => $this->model->id_compania );
+        
+        
+        $res = $this->model->insert('ITEMS_NO_LOTES',$value);
+        if($this->CheckError()){
+
+            echo $this->CheckError();
+            die();
+
+        } 
+        
+        //Agrego ubicacion de nuevo lote por default
+        $value  = array(
+        'itemID' => $item ,
+        'lote' => $no_lote ,
+        'qty' => $qty ,
+        'stock' => '1',
+        'location' => '1',
+        'ID_compania' => $this->model->id_compania );
+        
+        $res = $this->model->insert('STOCK_ITEMS_LOCATION',$value);
+
+        if($this->CheckError()){
+            
+            echo $this->CheckError();
+            die();
+            
+        } 
+        
+        
+    }else{
 
 
-echo 'El No de Lote ya existe, por favor elija otro nombre';
+    echo 'El No de Lote ya existe, por favor elija otro nombre';
 
 
-}
+    }
 
 }
     
@@ -460,38 +532,37 @@ echo 'El No de Lote ya existe, por favor elija otro nombre';
 public function erase_lote($no_lote,$qty){
 
 
-$this->model->verify_session();
+    $this->model->verify_session();
 
 
-$item = $this->model->Query_value('ITEMS_NO_LOTES','ProductID','Where no_lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
+    $item = $this->model->Query_value('ITEMS_NO_LOTES','ProductID','Where no_lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
 
 
-//Actualizo la cantidad en el lote default
-$now_qty = $this->model->Query_value('STOCK_ITEMS_LOCATION','qty','Where lote="'.$item.'0000" and stock="1" and location="1" and ID_compania="'.$this->model->id_compania.'";');
+    //Actualizo la cantidad en el lote default
+    $now_qty = $this->model->Query_value('STOCK_ITEMS_LOCATION','qty','Where lote="'.$item.'0000" and stock="1" and location="1" and ID_compania="'.$this->model->id_compania.'";');
 
-$qty_to_up = $now_qty + $qty;
+    $qty_to_up = $now_qty + $qty;
 
-$query= 'UPDATE STOCK_ITEMS_LOCATION SET qty="'.$qty_to_up.'" where lote="'.$item.'0000" and location="1" and stock="1" and ID_compania="'.$this->model->id_compania.'"';
-$res = $this->model->Query($query);
+    $query= 'UPDATE STOCK_ITEMS_LOCATION SET qty="'.$qty_to_up.'" where lote="'.$item.'0000" and location="1" and stock="1" and ID_compania="'.$this->model->id_compania.'"';
+    $res = $this->model->Query($query);
 
 
-$this->model->Query('DELETE FROM ITEMS_NO_LOTES WHERE no_lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
-$this->model->Query('DELETE FROM STOCK_ITEMS_LOCATION WHERE lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
+    $this->model->Query('DELETE FROM ITEMS_NO_LOTES WHERE no_lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
+    $this->model->Query('DELETE FROM STOCK_ITEMS_LOCATION WHERE lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
 
-if($this->CheckError()){
-    
-    echo $this->CheckError();
-    die();
-    
- } 
+    if($this->CheckError()){
+        
+        echo $this->CheckError();
+        die();
+        
+    } 
 }
-
 
 public function getLocationByItem(){
 
-$this->model->verify_session();
+    $this->model->verify_session();
 
-$STATUS_LOC = $this->model->lote_loc_by_itemID($this->ProductID);
+    $STATUS_LOC = $this->model->lote_loc_by_itemID($this->ProductID);
 
             foreach ($STATUS_LOC as $STATUS_LOC) { 
 
@@ -561,12 +632,12 @@ $STATUS_LOC = $this->model->lote_loc_by_itemID($this->ProductID);
     }
 }
 
-public function  get_almacen_selectlist(){
+public function get_almacen_selectlist(){
     
    $query_almacen= 'SELECT STOCKS.id, STOCKS.name  
-    FROM STOCKS
-    inner join STOCK_LOCATION on STOCK_LOCATION.stock = STOCKS.id
-    where STOCKS.onoff="1" GROUP BY STOCKS.name ';
+                        FROM STOCKS
+                        inner join STOCK_LOCATION on STOCK_LOCATION.stock = STOCKS.id
+                        where STOCKS.onoff="1" GROUP BY STOCKS.name ';
     
     $select = '<option selected disabled>Seleccionar Almacen</option>';
     $res = $this->model->Query($query_almacen);
@@ -580,9 +651,9 @@ public function  get_almacen_selectlist(){
     echo $select;
     
     return $select;
-    }
+}
 
-public function  get_routes_by_almacenid($almacen){
+public function get_routes_by_almacenid($almacen){
     
        $query= 'SELECT id , location 
                 FROM STOCK_LOCATION 
@@ -603,8 +674,8 @@ public function get_lote_qty($lote,$itemid){
 
     $res = $this->model->Query_value('STOCK_ITEMS_LOCATION','Floor(qty)','where stock="1" and location="1" and lote="'.$lote.'" and itemID="'.$itemid.'" and ID_compania ="'.$this->model->id_compania.'";');
 
-echo $res;
-return $res;
+    echo $res;
+    return $res;
 }
 
 public function getItemQtyOnHand($itemid){
@@ -613,8 +684,8 @@ public function getItemQtyOnHand($itemid){
 
     $res = $this->model->Query_value('STOCK_ITEMS_LOCATION','SUM(qty)','where  itemID="'.$itemid.'" and ID_compania ="'.$this->model->id_compania.'";');
 
-echo $res;
-return $res;
+    echo $res;
+    return $res;
 }
 
 public function get_any_lote_qty($idLoc=''){
@@ -623,171 +694,140 @@ public function get_any_lote_qty($idLoc=''){
 
     $res = $this->model->Query_value('STOCK_ITEMS_LOCATION','Floor(qty)','where id="'.$idLoc.'" and ID_compania ="'.$this->model->id_compania.'";');
 
-echo $res;
-return $res;
+    echo $res;
+    return $res;
 }
-
-
 
 public function set_lote_location($ruta_selected,$almacen_selected,$item_id,$lote,$qty){
-$this->model->verify_session();
+    $this->model->verify_session();
 
-//UBICO LA CANTIDAD ACTUAL EN STATUS_LOCATION
-$CURRENT_QTY = $this->get_lote_qty($lote,$item_id);
+    //UBICO LA CANTIDAD ACTUAL EN STATUS_LOCATION
+    $CURRENT_QTY = $this->get_lote_qty($lote,$item_id);
 
-//ACTUALIZO LA CANTIDAD EN LA UBICCION DEFAULT
-$QTY_TO_SET = $CURRENT_QTY - $qty;
+    //ACTUALIZO LA CANTIDAD EN LA UBICCION DEFAULT
+    $QTY_TO_SET = $CURRENT_QTY - $qty;
 
-$query= 'UPDATE STOCK_ITEMS_LOCATION  SET qty="'.$QTY_TO_SET.'" where itemID="'.$item_id.'" and stock="1" and location="1" and onoff="1" and ID_compania ="'.$this->model->id_compania.'"';
+    $query= 'UPDATE STOCK_ITEMS_LOCATION  SET qty="'.$QTY_TO_SET.'" where itemID="'.$item_id.'" and stock="1" and location="1" and onoff="1" and ID_compania ="'.$this->model->id_compania.'"';
 
-$res = $this->model->Query($query);
-
-
-
-$id_verify = $this->model->Query_value('STOCK_ITEMS_LOCATION ','id','where lote="'.$lote.'" and stock="'.$almacen_selected.'" and location="'.$ruta_selected.'" and ID_compania ="'.$this->model->id_compania.'";');
-
-if(!$id_verify){ 
-
-//agregar nueva location
-$val_to_insert = array(
-    'lote' => $lote, 
-    'stock' => $almacen_selected, 
-    'qty' => $qty, 
-    'location' => $ruta_selected,
-    'itemID' => $item_id,
-    'ID_compania' => $this->model->id_compania);
-
-$res = $this->model->insert('STOCK_ITEMS_LOCATION',$val_to_insert);
-
-
-//registro de traslado Default a una nueva ubicacion
-$value_traslate = array(
-    'id_almacen_ini' => '1',
-    'route_ini' => '1' ,
-    'id_almacen_des' => $almacen_selected,
-    'route_des' => $ruta_selected,
-    'lote' => $lote,
-    'qty' => $qty ,
-    'ProductID' => $item_id ,
-    'id_user' => $this->model->active_user_id
-    );
-
-$this->model->insert('reg_traslado',$value_traslate);
-
-
-}else{
-
-$old_qty = $this->model->Query_value('STOCK_ITEMS_LOCATION','qty','where id="'.$id_verify.'";');
-
-$qty_to_up = $old_qty  + $qty;
-
-$query= 'UPDATE STOCK_ITEMS_LOCATION SET qty="'.$qty_to_up.'"  where id="'.$id_verify.'";';
-$this->model->Query($query);
-
-
-//registro de traslado Default a una nueva ubicacion
-$id_route_reg = $this->model->Query_value('STOCK_LOCATION ','route','where id="'.$id_verify.'";');
-$id_alma_reg = $this->model->Query_value('STOCK_LOCATION','id_almacen','where id="'.$id_route_reg.'";');
-
-
-$value_traslate = array(
-    'id_almacen_ini' => $id_alma_reg,
-    'route_ini' => $id_route_reg,
-    'id_almacen_des' => $almacen_selected,
-    'route_des' => $ruta_selected,
-    'lote' => $lote,
-    'qty' => $qty ,
-    'ProductID' => $item_id ,
-    'id_user' => $this->model->active_user_id
-    );
-
-$this->model->insert('reg_traslado',$value_traslate);
+    $res = $this->model->Query($query);
 
 
 
-}
+    $id_verify = $this->model->Query_value('STOCK_ITEMS_LOCATION ','id','where lote="'.$lote.'" and stock="'.$almacen_selected.'" and location="'.$ruta_selected.'" and ID_compania ="'.$this->model->id_compania.'";');
 
-//$this->clear_lotacion_register();
-
-}
-
-
-
-public function update_lote_location($OrigenROUTE,$OrigenALMACEN,$status_location_id,$ruta,$almacen,$lote,$qty){
-    
-$this->model->verify_session();
-
-//ID DE UBICACIONES DE ORIGEN
-$ruta_src = $this->model->Query_value('STOCK_LOCATION','id',' where location="'.$OrigenROUTE.'"');
-$almacen_src = $this->model->Query_value('STOCK_LOCATION','stock',' where id="'.$ruta_src.'"');
-
-//ID DEL USER QUE REALIZA EL TRASLADO
-$id_user_active = $this->model->active_user_id;
-
-//QTY ACTUAL
-$CURRENT_QTY = $this->model->Query_value('STOCK_ITEMS_LOCATION','qty','where id="'.$status_location_id.'";');
-
-$NEW_QTY = $CURRENT_QTY - $qty;
-
-//ACTUALIZA LA CANTIDAD RESTANTE EN LA UBICACION ACTUAL
-$query= 'UPDATE STOCK_ITEMS_LOCATION SET qty="'.$NEW_QTY.'" where id="'.$status_location_id.'";';
-$this->model->Query($query);
-
-
-//ID DEL PRODUCT
-$ProductID = $this->model->Query_value('STOCK_ITEMS_LOCATION','itemID','where id="'.$status_location_id.'";');
-
-
-    //VERIFICO SI EXISTE UN LOTE IGUAL EN LA UBICACION DESTINO
-    $id_verify = $this->model->Query_value('STOCK_ITEMS_LOCATION','id','where lote="'.$lote.'" and stock="'.$almacen.'" and location="'.$ruta.'" and  ID_compania ="'.$this->model->id_compania.'"');
-
-    if(!$id_verify){ //SI NO EXISTE CREO LA NUEVA UBICACION PARA EL LOTE 
+    if(!$id_verify){ 
 
     //agregar nueva location
     $val_to_insert = array(
-    'lote' => $lote, 
-    'stock' => $almacen, 
-    'qty' => $qty, 
-    'location' => $ruta,
-    'itemID' => $ProductID,
-    'ID_compania' => $this->model->id_compania);
+        'lote' => $lote, 
+        'stock' => $almacen_selected, 
+        'qty' => $qty, 
+        'location' => $ruta_selected,
+        'itemID' => $item_id,
+        'ID_compania' => $this->model->id_compania);
 
     $res = $this->model->insert('STOCK_ITEMS_LOCATION',$val_to_insert);
 
 
-
     //registro de traslado Default a una nueva ubicacion
     $value_traslate = array(
-    'id_almacen_ini' => $almacen_src,
-    'route_ini' => $ruta_src,
-    'id_almacen_des' => $almacen,
-    'route_des' => $ruta,
-    'lote' => $lote,
-    'qty' => $qty ,
-    'ProductID' => $ProductID,
-    'id_user' => $this->model->active_user_id,
-    'ID_compania' => $this->model->id_compania
+        'id_almacen_ini' => '1',
+        'route_ini' => '1' ,
+        'id_almacen_des' => $almacen_selected,
+        'route_des' => $ruta_selected,
+        'lote' => $lote,
+        'qty' => $qty ,
+        'ProductID' => $item_id ,
+        'id_user' => $this->model->active_user_id
         );
 
     $this->model->insert('reg_traslado',$value_traslate);
 
 
-}else{//SI EXISTE LE SUMO LA NUEVA CANTIDAD
+    }else{
 
-    //consulta qty actual en lla ubicacion destino apra ese lote
     $old_qty = $this->model->Query_value('STOCK_ITEMS_LOCATION','qty','where id="'.$id_verify.'";');
 
-    $qty_to_up = $old_qty  + $qty; //se suma
+    $qty_to_up = $old_qty  + $qty;
 
-    //se actualiza
-    $query= 'UPDATE STOCK_ITEMS_LOCATION  SET qty="'.$qty_to_up.'"  where id="'.$id_verify.'";';
+    $query= 'UPDATE STOCK_ITEMS_LOCATION SET qty="'.$qty_to_up.'"  where id="'.$id_verify.'";';
     $this->model->Query($query);
 
 
-    //registro de traslado
+    //registro de traslado Default a una nueva ubicacion
+    $id_route_reg = $this->model->Query_value('STOCK_LOCATION ','route','where id="'.$id_verify.'";');
+    $id_alma_reg = $this->model->Query_value('STOCK_LOCATION','id_almacen','where id="'.$id_route_reg.'";');
+
+
     $value_traslate = array(
+        'id_almacen_ini' => $id_alma_reg,
+        'route_ini' => $id_route_reg,
+        'id_almacen_des' => $almacen_selected,
+        'route_des' => $ruta_selected,
+        'lote' => $lote,
+        'qty' => $qty ,
+        'ProductID' => $item_id ,
+        'id_user' => $this->model->active_user_id
+        );
+
+    $this->model->insert('reg_traslado',$value_traslate);
+
+
+
+ }
+
+ //$this->clear_lotacion_register();
+
+}
+
+
+public function update_lote_location($OrigenROUTE,$OrigenALMACEN,$status_location_id,$ruta,$almacen,$lote,$qty){
+    
+    $this->model->verify_session();
+
+    //ID DE UBICACIONES DE ORIGEN
+    $ruta_src = $this->model->Query_value('STOCK_LOCATION','id',' where location="'.$OrigenROUTE.'"');
+    $almacen_src = $this->model->Query_value('STOCK_LOCATION','stock',' where id="'.$ruta_src.'"');
+
+    //ID DEL USER QUE REALIZA EL TRASLADO
+    $id_user_active = $this->model->active_user_id;
+
+    //QTY ACTUAL
+    $CURRENT_QTY = $this->model->Query_value('STOCK_ITEMS_LOCATION','qty','where id="'.$status_location_id.'";');
+
+    $NEW_QTY = $CURRENT_QTY - $qty;
+
+    //ACTUALIZA LA CANTIDAD RESTANTE EN LA UBICACION ACTUAL
+    $query= 'UPDATE STOCK_ITEMS_LOCATION SET qty="'.$NEW_QTY.'" where id="'.$status_location_id.'";';
+    $this->model->Query($query);
+
+
+    //ID DEL PRODUCT
+    $ProductID = $this->model->Query_value('STOCK_ITEMS_LOCATION','itemID','where id="'.$status_location_id.'";');
+
+
+        //VERIFICO SI EXISTE UN LOTE IGUAL EN LA UBICACION DESTINO
+        $id_verify = $this->model->Query_value('STOCK_ITEMS_LOCATION','id','where lote="'.$lote.'" and stock="'.$almacen.'" and location="'.$ruta.'" and  ID_compania ="'.$this->model->id_compania.'"');
+
+        if(!$id_verify){ //SI NO EXISTE CREO LA NUEVA UBICACION PARA EL LOTE 
+
+        //agregar nueva location
+        $val_to_insert = array(
+        'lote' => $lote, 
+        'stock' => $almacen, 
+        'qty' => $qty, 
+        'location' => $ruta,
+        'itemID' => $ProductID,
+        'ID_compania' => $this->model->id_compania);
+
+        $res = $this->model->insert('STOCK_ITEMS_LOCATION',$val_to_insert);
+
+
+
+        //registro de traslado Default a una nueva ubicacion
+        $value_traslate = array(
         'id_almacen_ini' => $almacen_src,
-        'route_ini' => $ruta_src ,
+        'route_ini' => $ruta_src,
         'id_almacen_des' => $almacen,
         'route_des' => $ruta,
         'lote' => $lote,
@@ -795,16 +835,146 @@ $ProductID = $this->model->Query_value('STOCK_ITEMS_LOCATION','itemID','where id
         'ProductID' => $ProductID,
         'id_user' => $this->model->active_user_id,
         'ID_compania' => $this->model->id_compania
-        );
+            );
+
+        $this->model->insert('reg_traslado',$value_traslate);
 
 
-    $this->model->insert('reg_traslado',$value_traslate);
+    }else{//SI EXISTE LE SUMO LA NUEVA CANTIDAD
 
-    }
+        //consulta qty actual en lla ubicacion destino apra ese lote
+        $old_qty = $this->model->Query_value('STOCK_ITEMS_LOCATION','qty','where id="'.$id_verify.'";');
+
+        $qty_to_up = $old_qty  + $qty; //se suma
+
+        //se actualiza
+        $query= 'UPDATE STOCK_ITEMS_LOCATION  SET qty="'.$qty_to_up.'"  where id="'.$id_verify.'";';
+        $this->model->Query($query);
+
+
+        //registro de traslado
+        $value_traslate = array(
+            'id_almacen_ini' => $almacen_src,
+            'route_ini' => $ruta_src ,
+            'id_almacen_des' => $almacen,
+            'route_des' => $ruta,
+            'lote' => $lote,
+            'qty' => $qty ,
+            'ProductID' => $ProductID,
+            'id_user' => $this->model->active_user_id,
+            'ID_compania' => $this->model->id_compania
+            );
+
+
+        $this->model->insert('reg_traslado',$value_traslate);
+
+        }
 
 
 }
 
+public function getJobList(){
+
+    $this->model->verify_session();
+
+    $res = $this->model->Query('SELECT A.JobID, B.Description 
+                                FROM Job_Estimates_Exp A
+                                INNER JOIN  Jobs_Exp B on A.JobID = B.JobID
+                                where A.ID_compania ="'.$this->model->id_compania.'" and 
+                                    B.ID_compania ="'.$this->model->id_compania.'" Group by JobID');
+
+        foreach ($res as $value) {
+        $value = json_decode($value);
+        echo '<option value="'.$value->{'JobID'}.'">('.$value->{'JobID'}.') -'.$value->{'Description'}.'</option>';
+        }
+
+}
+
+public function getPhaseList($jobid=0){
+    
+        $this->model->verify_session();
+    
+        $res = $this->model->Query('SELECT A.PhaseID, B.Description 
+                                    FROM Job_Estimates_Exp A
+                                    INNER JOIN  Job_Phases_Exp B on A.PhaseID = B.PhaseID
+                                    where A.ID_compania ="'.$this->model->id_compania.'" and 
+                                          B.ID_compania ="'.$this->model->id_compania.'" and 
+                                          A.JobID ="'.$jobid.'" Group by A.PhaseID');
+
+            foreach ($res as $value) {
+            $value = json_decode($value);
+            echo '<option value="'.$value->{'PhaseID'}.'">('.$value->{'PhaseID'}.') -'.$value->{'Description'}.'</option>';
+            }
+    
+}
+
+public function getCostList($jobid=0,$phaseID=0){
+    
+        $this->model->verify_session();
+    
+        $res = $this->model->Query('SELECT A.CostCodeID, B.Description 
+                                    FROM Job_Estimates_Exp A
+                                    INNER JOIN  Job_Cost_Codes_Exp B on A.CostCodeID = B.CostCodeID
+                                    where A.ID_compania ="'.$this->model->id_compania.'" and 
+                                          B.ID_compania ="'.$this->model->id_compania.'" and 
+                                          A.JobID ="'.$jobid.'" and A.phaseID ="'.$phaseID.'" Group by A.CostCodeID');
+    
+            foreach ($res as $value) {
+            $value = json_decode($value);
+            echo '<option value="'.$value->{'CostCodeID'}.'">('.$value->{'CostCodeID'}.') -'.$value->{'Description'}.'</option>';
+            }
+    
+}
+
+public function getBudget($jobid=0,$phaseid=0,$costid=0){
+
+    echo  $this->model->getJob_avalaible_amnt($jobid,$phaseid,$costid);
+
+}
+
+
+public function setProduct_In($Product_values){
+    
+        $this->model->verify_session();
+    
+        $this->model->insert('Products_Imp',$Product_values); //set Product line
+    
+}
+
+
+public function if_ProductExist_chk($ProductID){
+
+ $Product_chk = $this->Query_value('Products_Imp','ProductID','where ID_compania="'.$this->model->id_compania.'" and ProductID="'.$ProductID.'"');
+
+
+    if ($Product_chk) {
+
+        return true;
+
+    }else{
+
+        return false;
+    }
+
+}
+
+
+public function getVendorList(){
+
+ $this->model->verify_session();
+
+ $sql = 'SELECT * FROM Vendors_Exp WHERE ID_compania = "'.$this->model->id_compania.'" AND IsActive ="1"';
+
+ $res = $this->model->Query($sql);
+
+ foreach ($res as  $value) {
+     $value = json_decode($value);
+     echo '<option value="'.$value->{'VendorID'}.'">('.$value->{'VendorID'}.')-'.$value->{'Name'}.'</option>';
+     
+
+ }
+
+}
 //dejar de ultimo
 public function CheckError(){
     
@@ -820,5 +990,416 @@ public function CheckError(){
 }
 
 
+
+///////////////////////////////Purchase!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+public function set_Purchase_Header(){
+    
+    $this->model->verify_session();
+        
+    $data = json_decode($_GET['Data']);
+    $value = $data[0];
+    
+    
+    list($PurchaseNumber,$date,$VendorID,$OC,$total) = explode('@', $value );
+
+    if($OC != '' || $OC != '-' ){
+        $ApplyToPurOrderNumber = $OC;
+        $ApplyToPurchaseOrder  = true;
+        
+    }else{
+        $ApplyToPurOrderNumber = '';
+        $ApplyToPurchaseOrder  = false;
+
+    }
+
+    
+    $date = strtotime($this->model->GetLocalTime(date("Y-m-d")));
+    $date = date("Y-m-d",$date);
+    
+    $values = array(
+    'ID_compania'=>$this->model->id_compania,
+    'PurchaseNumber'=> $PurchaseNumber,
+    'VendorID'=>   $VendorID,
+    'AP_Account'=> $this->model->Query_value('CTA_GL_CONF','CTA_CXP','WHERE ID_compania="'.$this->model->id_compania.'"'),
+    'Date'=>$date,
+    'USER' => $this->model->active_user_id,
+    'Subtotal' => $total,
+    'Net_due' => $total);
+    
+    $this->model->insert('Purchase_Header_Imp',$values);
+    
+    usleep(1000);
+    $error = $this->CheckError();
+    if($error){
+        $error= json_decode($error) ;
+            echo 'ERROR: '.$error->{'E'}.' Purchase_Header_Imp';
+        die();
+        
+    }else{
+        $PurchaseID = $this->model->Get_CO_No();
+        echo $PurchaseID;
+    }
+    
+   
+    
 }
+
+public function set_Purchase_Detail($PurchaseID){
+    
+        $this->model->verify_session();
+        
+        $id_compania= $this->model->id_compania;
+        
+        $data = json_decode($_GET['Data']);
+        
+        foreach ($data as $key => $value) {
+        
+        if($value){
+    
+        list($empty,$Item_id,$Description,$GL_Acct,$JobID,$JobPhaseID,$JobCostCodeID,$Quantity,$Unit_Price,$Net_line) = explode('@', $value );
+  
+    
+          //EN CASO QUE NO SE HAGA CONVERSION DE UNIDDES ESCRIBE EN LA TABLA DE SALES ORDER DETAIL SIN INDICAR EL ITEMID. 
+          $Purchase_values = array(
+              'ID_compania' => $id_compania,
+              'TransactionID'=>$PurchaseID,
+              'Item_id'=>$Item_id,
+              'Description'=> $Description,
+              'GL_Acct'=>$GL_Acct,
+              'JobID'=>$JobID,
+              'JobPhaseID'=>$JobPhaseID,
+              'JobCostCodeID'=>$JobCostCodeID,
+              'Quantity'=>$Quantity,
+              'Unit_Price'=>$Unit_Price,
+              'Net_line'=>$Net_line);
+    
+          $this->model->insert('Purchase_Detail_Imp',$Purchase_values); //set item line
+          
+          usleep(1000);
+          $error = $this->CheckError();
+          if($error){
+            $error= json_decode($error) ;
+            echo 'ERROR: '.$error->{'E'}.' Purchase_Detail_Imp ';
+
+            $this->model->delete('Purchase_Header_Imp',' Where TransactionID="'.$PurchaseID.'" and ID_Compania="'.$id_compania.'";');
+            die(); 
+
+          }else{
+
+               $this->set_Budget_Log($Purchase_values,1);
+
+          }
+     }
+    }
+    echo '1';
+    
+}
+
+public function set_Budget_Log($values,$type){
+
+    $this->model->verify_session();
+    switch ($type) {
+        case '1':
+
+                $PurchaseNumber = $values['TransactionID']; 
+                $Item  = $values['Item_id'];
+                $phase = $values['JobPhaseID']; 
+                $job   = $values['JobID']; 
+                $cost  = $values['JobCostCodeID']; 
+                $total = $values['Net_line']; 
+                $Qty   = $values['Quantity'];
+                $UnitPrice = $values['Unit_Price'];
+            
+                $id_compania= $this->model->id_compania;
+                $user = $this->model->active_user_id;
+            
+                $event_values = array(  'ProductID' => $Item,
+                                        'JobID' => $job,
+                                        'JobPhaseID' => $phase,
+                                        'JobCostCodeID' => $cost,
+                                        'PurchaseNumber' => $PurchaseNumber,
+                                        'Qty'=> $Qty,
+                                        'unit_price' => $UnitPrice ,
+                                        'Total' => $total,
+                                        'User' => $user,
+                                        'Type' => 'Entrada - Fact. de compra',
+                                        'Referencia' => $PurchaseNumber,
+                                        'ID_compania' => $id_compania );
+            
+                $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
+                
+                usleep(1000);
+                $error = $this->CheckError();
+                if($error){
+                $error= json_decode($error) ;
+                echo 'ERROR: '.$error->{'E'}.' INV_EVENT_LOG ';
+            
+                $this->model->delete('Purchase_Header_Imp',' Where TransactionID="'.$PurchaseNumber.'" and ID_Compania="'.$id_compania.'";');
+                $this->model->delete('Purchase_Detail_Imp',' Where TransactionID="'.$PurchaseNumber.'" and ID_Compania="'.$id_compania.'";');
+                
+                die(); 
+            
+                }
+            break;
+
+
+        case '2':
+        
+           
+                $PurchaseNumber = $values['Reference']; 
+                $Item  = $values['ItemID'];
+                $phase = $values['JobPhaseID']; 
+                $job   = $values['JobID']; 
+                $cost  = $values['JobCostCodeID']; 
+                $total = $values['Quantity']*$values['UnitCost']; 
+                $Qty   = $values['Quantity'];
+                $UnitPrice = $values['UnitCost'];
+            
+                $id_compania= $this->model->id_compania;
+                $user = $this->model->active_user_id;
+            
+                $event_values = array(  'ProductID' => $Item,
+                                        'JobID' => $job,
+                                        'JobPhaseID' => $phase,
+                                        'JobCostCodeID' => $cost,
+                                        'PurchaseNumber' => '',
+                                        'Qty'=> $Qty,
+                                        'unit_price' => $UnitPrice ,
+                                        'Total' => $total,
+                                        'User' => $user,
+                                        'Type' => 'Entrada por Adjuste',
+                                        'Referencia' => $PurchaseNumber,
+                                        'ID_compania' => $id_compania );
+            
+                $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
+                
+                usleep(1000);
+                $error = $this->CheckError();
+                if($error){
+                $error= json_decode($error) ;
+                echo 'ERROR: '.$error->{'E'}.' INV_EVENT_LOG ';
+            
+                $this->model->delete('InventoryAdjust_Imp',' Where Reference="'.$PurchaseNumber.'" and ID_Compania="'.$id_compania.'";');
+               
+                die(); 
+            
+                }
+            break;
+
+          case '3':
+        
+           
+                $PurchaseNumber = $values['Reference']; 
+                $Item  = $values['ItemID'];
+                $phase = $values['JobPhaseID']; 
+                $job   = $values['JobID']; 
+                $cost  = $values['JobCostCodeID']; 
+                $total = $values['Quantity']*$values['UnitCost']; 
+                $Qty   = $values['Quantity'];
+                $UnitPrice = $values['UnitCost'];
+            
+                $id_compania= $this->model->id_compania;
+                $user = $this->model->active_user_id;
+            
+                $event_values = array(  'ProductID' => $Item,
+                                        'JobID' => $job,
+                                        'JobPhaseID' => $phase,
+                                        'JobCostCodeID' => $cost,
+                                        'PurchaseNumber' => '',
+                                        'Qty'=> $Qty,
+                                        'unit_price' => $UnitPrice ,
+                                        'Total' => (-1)*$total,
+                                        'User' => $user,
+                                        'Type' => 'Salida por Ajuste',
+                                        'Referencia' => $PurchaseNumber,
+                                        'ID_compania' => $id_compania );
+            
+                $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
+                
+                usleep(1000);
+                $error = $this->CheckError();
+                if($error){
+                $error= json_decode($error) ;
+                echo 'ERROR: '.$error->{'E'}.' INV_EVENT_LOG ';
+            
+                $this->model->delete('InventoryAdjust_Imp',' Where Reference="'.$PurchaseNumber.'" and ID_Compania="'.$id_compania.'";');
+               
+                die(); 
+            
+                }
+            break;
+
+    }    
+
+
+}
+
+public function getInvInList($sort,$limit,$clause){
+
+    
+     $sql = 'SELECT * FROM INV_EVENT_LOG '.$clause.' Order by Date '.$sort.' limit '.$limit;
+    
+     $res = $this->model->Query($sql);
+
+     return $res;
+}
+
+
+public function setInventoryAdjustment(){
+    
+    $this->model->verify_session();
+    $id_compania= $this->model->id_compania;
+    $user = $this->model->active_user_id;
+    $ref = '';
+
+    $data = json_decode($_GET['Data']);
+ 
+    foreach ($data as $key => $value) {
+
+        list($null,$Item_id,$Description,$GL_Acct,$JobID,$JobPhaseID,$JobCostCodeID,$Quantity,$Unit_Price,$Net_line) = explode('@', $value );
+        
+
+        if($value){
+            
+            $date = strtotime($this->model->GetLocalTime(date("Y-m-d")));
+            $date = date("Y-m-d",$date);
+            $reference = $this->model->Get_Ref_No();
+            
+            $values = array (
+                'ItemID' => $Item_id, 
+                'JobID' => $JobID, 
+                'JobPhaseID' => $JobPhaseID, 
+                'JobCostCodeID' => $JobCostCodeID , 
+                'Reference' => $reference , 
+                'ReasonToAdjust' => 'Aciweb - Entrada de mercancia' , 
+                'Account' => $GL_Acct , 
+                'UnitCost' => $Unit_Price , 
+                'Quantity' => $Quantity, 
+                'Date' => $date , 
+                'USER' => $user , 
+                'ID_compania' =>  $id_compania );
+
+            $this->model->insert('InventoryAdjust_Imp',$values);
+            
+            usleep(1000);
+            $error = $this->CheckError();
+            if($error){
+                $error= json_decode($error) ;
+                    echo 'ERROR: '.$error->{'E'}.' InventoryAdjust_Imp - itemID '.$itemid.' Ref:'.$reference;
+                die();
+                
+            }else{
+               
+                $this->set_Budget_Log($values,'2');
+                $ref .= 'Item:'.$itemid.'Ref: '.$reference."\n";
+            }
+        }
+    }
+    if(!$error){
+
+        echo $ref;
+    }
+    
+}
+
+public function setInventoryAdjustmentOUT(){
+
+$this->model->verify_session();
+    $id_compania= $this->model->id_compania;
+    $user = $this->model->active_user_id;
+    $ref = '';
+
+    $data = json_decode($_GET['Data']);
+
+    foreach ($data as $key => $value) {
+
+        list($null,$itemid,$unitprice,$qty,$total,$note,$ctamg,$job,$phs,$cost) = explode('@', $value );
+
+        
+        if($value){
+            
+            $date = strtotime($this->model->GetLocalTime(date("Y-m-d")));
+            $date = date("Y-m-d",$date);
+            $reference = $this->model->Get_Ref_No();
+            
+            $values = array (
+                'ItemID' => $itemid, 
+                'Reference' => $reference , 
+                'ReasonToAdjust' => $note , 
+                'Account' => $ctamg , 
+                'UnitCost' => $unitprice , 
+                'Quantity' => $qty*(-1), 
+                'Date' => $date , 
+                'USER' => $user , 
+                'JobPhaseID' => $phs,
+                'JobCostCodeID' => $cost, 
+                'JobID' => $job,
+                'ID_compania' =>  $id_compania );
+
+            $this->model->insert('InventoryAdjust_Imp',$values);
+            
+            usleep(1000);
+            $error = $this->CheckError();
+            if($error){
+                $error= json_decode($error) ;
+                    echo 'ERROR: '.$error->{'E'}.' InventoryAdjust_Imp - itemID '.$itemid.' Ref:'.$reference;
+                die();
+                
+            }else{
+            
+                $this->set_Budget_Log($values,'3');
+                $ref .= 'Item:'.$itemid.'Ref: '.$reference."\n";
+            }
+        }
+    }
+    if(!$error){
+
+        echo $ref;
+    }
+}
+
+
+
+public function getListItems(){
+
+     
+    $this->model->verify_session();
+
+    require_once APP.'view/modules/inventory/lang/'.$this->model->lang.'_ref.php';
+
+
+    //$Item = $this->model->get_ProductsList();
+
+    $columns =  array( 
+                '`ProductID` as `'.$Tblcol1.'`',
+                '`Description` as `'.$Tblcol2.'`',
+                '`UnitMeasure` as `'.$Tblcol3.'`',
+                '`QtyOnHand` as `'.$Tblcol4.'`',
+                '`Price1` as `'.$Tblcol8.'`');
+
+    $Items['data'] = $this->model->queryColumns('Products_Exp', $columns,'WHERE    Products_Exp.id_compania="'.$this->model->id_compania.'" 
+                                                                      GROUP BY Products_Exp.ProductID');
+
+    echo  json_encode($Items);
+
+/*  foreach ($Item as $datos) {
+
+    $Item = json_decode($datos);
+
+
+   echo	'<tr>
+            <td><a href="'.URL.'index.php?url=ges_inventario/inv_info/'.$Item->{'ProductID'}.'" >'.$Item->{'ProductID'}.'</a></td>
+            <td>'.$Item->{'Description'}.'</td>
+            <td>'.$Item->{'UnitMeasure'}.'</td>
+            <td class="numb">'.number_format($Item->{'QtyOnHand'},0, '.', ',').'</td>
+            <td class="numb">'.number_format($Item->{'LastUnitCost'},4, '.', ',').'</td></tr>';
+            }
+
+     
+*/
+
+    }
+
+
+}//CIERRE DE CLASE
 ?>

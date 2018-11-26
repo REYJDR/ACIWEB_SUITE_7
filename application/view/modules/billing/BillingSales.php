@@ -73,9 +73,9 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 				</table>
 			</fieldset> 
 			<div class="separador col-lg-12"></div>
-			<fieldset>
-				<div id="info"></div>
-			</fieldset>
+			
+			<div id="info"></div>
+			
 
 			<!--fin contenido-->
 			</form>	

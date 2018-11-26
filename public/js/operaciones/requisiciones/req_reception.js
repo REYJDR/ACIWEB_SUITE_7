@@ -193,7 +193,7 @@ FaltaArray.length='';
 
 var flag = ''; 
 var theTbl    = document.getElementById('table_info'); //objeto de la tabla que contiene los datos de items
-var cantLineas = document.getElementById('count_lines').value;
+var cantLineas = document.getElementById('FAC_NO_LINES').value;
 var rec = 0;
 var val = 0;
 var ord = 0;
@@ -297,7 +297,7 @@ function set_count_lines(){
                     success: function(res){
 
                     
-                    document.getElementById('count_lines').value = res;
+                    document.getElementById('FAC_NO_LINES').value = res;
 
                     }
               }); 
@@ -305,3 +305,31 @@ function set_count_lines(){
 return true;
  
 }
+
+
+
+
+function get_OC(id){
+  
+    URL = document.getElementById('URL').value;
+  
+    var datos= "url=ges_reportes/get_PO_details/"+id;  
+    var link = URL+"index.php";
+  
+    $.ajax({
+        type: "GET",
+        url: link,
+        data: datos,
+        success: function(res){
+        
+         $('#info').html(res);
+  
+         // alert(res);
+  
+          }
+     });
+     $('html, body').animate({
+      scrollTop: $("#info").offset().top
+      }, 2000);
+
+    }

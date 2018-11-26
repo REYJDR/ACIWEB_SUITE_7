@@ -22,6 +22,31 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+DROP TABLE IF EXISTS `Sales_Header_Imp`;
+CREATE TABLE `Sales_Header_Imp` (
+  `ID_compania` int(11) NOT NULL,
+  `ID` int(11) NOT NULL,
+  `InvoiceNumber` varchar(20) NOT NULL DEFAULT '',
+  `CustomerID` varchar(50) NOT NULL,
+  `CustomerName` varchar(50) NOT NULL,
+  `Subtotal` decimal(18,4) NOT NULL,
+  `TaxID` varchar(20) NOT NULL,
+  `Net_due` decimal(18,4) NOT NULL,
+  `Export_date` datetime DEFAULT NULL,
+  `Enviado` tinyint(4) DEFAULT '0',
+  `Error` tinyint(4) DEFAULT '0',
+  `ErrorPT` varchar(1024) DEFAULT NULL,
+  `LAST_CHANGE` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `user` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  `DueDate` datetime DEFAULT NULL,
+  `saletax` int(11) NOT NULL,
+  `OrderTax` decimal(18,4) DEFAULT NULL,
+  `SalesRepID` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
 --
 -- Table structure for table `CompanyLogSync`
 --
@@ -1088,6 +1113,11 @@ CREATE TABLE `SalesOrder_Header_Imp` (
 -- Table structure for table `Sales_Detail_Imp`
 --
 
+
+--
+-- Table structure for table `Sales_Detail_Imp`
+--
+
 DROP TABLE IF EXISTS `Sales_Detail_Imp`;
 CREATE TABLE `Sales_Detail_Imp` (
   `ID_compania` int(11) NOT NULL DEFAULT '0',
@@ -1099,36 +1129,14 @@ CREATE TABLE `Sales_Detail_Imp` (
   `Net_line` decimal(18,4) NOT NULL,
   `Taxable` int(1) DEFAULT NULL,
   `ID` int(11) NOT NULL,
-  `GL_Sales_Acct` varchar(15) DEFAULT NULL
+  `GL_Sales_Acct` varchar(15) DEFAULT NULL,
+  `JobID` varchar(20) DEFAULT NULL,
+  `JobPhaseID` varchar(20) DEFAULT NULL,
+  `JobCostCodeID` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `Sales_Header_Imp`
---
-
-DROP TABLE IF EXISTS `Sales_Header_Imp`;
-CREATE TABLE `Sales_Header_Imp` (
-  `ID_compania` int(11) NOT NULL,
-  `ID` int(11) NOT NULL,
-  `InvoiceNumber` varchar(20) NOT NULL DEFAULT '',
-  `CustomerID` varchar(50) NOT NULL,
-  `CustomerName` varchar(50) NOT NULL,
-  `Subtotal` decimal(18,4) NOT NULL,
-  `TaxID` varchar(20) NOT NULL,
-  `Net_due` decimal(18,4) NOT NULL,
-  `Export_date` datetime DEFAULT NULL,
-  `Enviado` tinyint(4) DEFAULT '0',
-  `Error` tinyint(4) DEFAULT '0',
-  `ErrorPT` varchar(1024) DEFAULT NULL,
-  `LAST_CHANGE` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `user` int(11) NOT NULL,
-  `date` datetime NOT NULL,
-  `saletax` int(11) NOT NULL,
-  `OrderTax` decimal(18,4) DEFAULT NULL,
-  `SalesRepID` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -1207,7 +1215,6 @@ CREATE TABLE `sax_company_sage` (
   `onoff` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin2;
 
--- --------------------------------------------------------
 
 --
 -- Table structure for table `SAX_USER`
@@ -1401,6 +1408,46 @@ CREATE TABLE `Vendor_Payment_Header_Exp` (
   `Memo` varchar(1024) DEFAULT NULL,
   `Total` decimal(18,4) DEFAULT NULL,
   `Prepayment` tinyint(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- Table structure for table `INV_EVENT_LOG`
+--
+
+DROP TABLE IF EXISTS `INV_EVENT_LOG`;
+CREATE TABLE `INV_EVENT_LOG` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ProductID` varchar(45) NOT NULL,
+  `JobID` varchar(20) NOT NULL,
+  `JobPhaseID` varchar(20) DEFAULT NULL,
+  `JobCostCodeID` varchar(20) DEFAULT NULL,
+  `PurchaseNumber` varchar(20) DEFAULT NULL,
+  `PurchaseOrderNumber` varchar(20) DEFAULT NULL,
+  `Total` decimal(18,4) NOT NULL,
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `User` int(11) NOT NULL,
+  `ID_compania` int(11) NOT NULL,
+   PRIMARY KEY (ID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- Table structure for table `INV_EVENT_LOG`
+--
+
+DROP TABLE IF EXISTS `INV_EVENT_LOG`;
+CREATE TABLE `INV_EVENT_LOG` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ProductID` varchar(45) NOT NULL,
+  `JobID` varchar(20) NOT NULL,
+  `JobPhaseID` varchar(20) DEFAULT NULL,
+  `JobCostCodeID` varchar(20) DEFAULT NULL,
+  `PurchaseNumber` varchar(20) DEFAULT NULL,
+  `PurchaseOrderNumber` varchar(20) DEFAULT NULL,
+  `Total` decimal(18,4) NOT NULL,
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `User` int(11) NOT NULL,
+  `ID_compania` int(11) NOT NULL,
+   PRIMARY KEY (ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2132,3 +2179,12 @@ END IF;
 END
 $$
 DELIMITER ;
+
+
+ALTER TABLE `Purchase_Header_Imp` CHANGE `Export_date` `Export_date` DATETIME NULL, CHANGE `Enviado` `Enviado` TINYINT(1) NULL, CHANGE `Error` `Error` TINYINT(1) NULL, CHANGE `ErrorPT` `ErrorPT` VARCHAR(1024) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL, CHANGE `nota` `nota` VARCHAR(1024) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
+ALTER TABLE `Purchase_Header_Imp` CHANGE `VendorID` `VendorID` VARCHAR(20) CHARACTER SET latin1 COLLATE latin1_general_ci NULL, CHANGE `VendorName` `VendorName` VARCHAR(39) CHARACTER SET latin1 COLLATE latin1_general_ci NULL, CHANGE `AP_Account` `AP_Account` VARCHAR(15) CHARACTER SET latin1 COLLATE latin1_general_ci NULL;
+ALTER TABLE `Purchase_Detail_Imp` CHANGE `GL_Acct` `GL_Acct` VARCHAR(15) CHARACTER SET latin1 COLLATE latin1_general_ci NULL;
+ALTER TABLE `INV_EVENT_LOG` ADD `Qty` DECIMAL(16,5) NOT NULL AFTER `PurchaseOrderNumber`, ADD `unit_price` DECIMAL(16,5) NOT NULL AFTER `Qty`;
+ALTER TABLE `INV_EVENT_LOG` ADD `Type` VARCHAR(30) NOT NULL AFTER `User`;
+ALTER TABLE `INV_EVENT_LOG` ADD `referencia` VARCHAR(45) NOT NULL AFTER `ID`;
+ALTER TABLE `REQ_DETAIL` CHANGE COLUMN `UNIDAD` `UNIDAD` VARCHAR(10) CHARACTER SET 'latin1' COLLATE 'latin1_general_ci' NOT NULL ;

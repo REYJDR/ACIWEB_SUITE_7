@@ -134,6 +134,7 @@ $REP_detail_Tbl4Hdr6 = 'Total';
 
 $REP_TitleTbl3 = 'Related Bills';
 $REP_TitleTbl4 = 'Cash Advance'; 
+$REP_TitleTbl5 = 'PO Related bills';
 
 $REP_Modal_title = 'Cancel Reason';
 $REP_Modal_reason = 'Reason for cancellation:';

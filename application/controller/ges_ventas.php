@@ -265,7 +265,7 @@ public function ges_print_OrdEmpaque($id){
             // load views
             require APP . 'view/_templates/header.php';
             require APP . 'view/_templates/panel.php';
-            require APP . 'view/operaciones/ges_print_OrdEmpaque.php';
+            require APP . 'view/modules/sales/SalesOrderEmpaque.php';
             require APP . 'view/_templates/footer.php';
 
 
@@ -457,18 +457,20 @@ $id = trim(preg_replace('/000+/','',$id));
 }
 
 
-public function GetPayTerm($ID){
+public function GetPayTerm($ID=0){
 
-  $this->model->verify_session();
-  $id_compania = $this->model->id_compania;
+  if($ID!=0){
+    $this->model->verify_session();
+    $id_compania = $this->model->id_compania;
 
-  $customField = $this->model->Query_value('FAC_DET_CONF','CUSTOM_FIELD','WHERE ID_compania="'.$this->model->id_compania.'"');
+    $customField = $this->model->Query_value('FAC_DET_CONF','CUSTOM_FIELD','WHERE ID_compania="'.$this->model->id_compania.'"');
 
-  $TermID = $this->model->Query_value('Customers_Exp',$customField,'WHERE  ID= "'.$ID.'" AND ID_compania="'.$id_compania.'"'); 
+    $TermID = $this->model->Query_value('Customers_Exp',$customField,'WHERE  ID= "'.$ID.'" AND ID_compania="'.$id_compania.'"'); 
 
-  $DaysToPay = $this->model->Query_value('CUST_PAY_TERM','DaysToPay','WHERE TermID = "'.$TermID.'" AND ID_compania="'.$id_compania.'"'); 
-
+    $DaysToPay = $this->model->Query_value('CUST_PAY_TERM','DaysToPay','WHERE TermID = "'.$TermID.'" AND ID_compania="'.$id_compania.'"'); 
+ 
  echo $DaysToPay;
+  }
 }
 
 
@@ -613,11 +615,13 @@ echo  "<tr>
   }
 
 echo '</tbody></table><div style="float:right;" class="col-md-2">
-<a href="'.URL.'index.php?url=ges_ventas/PrintSalesOrder/'.$ORDER_detail->{'SalesOrderNumber'}.'"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
+<a href="'.URL.'index.php?url=ges_ventas/PrintSalesOrder/2/'.$ORDER_detail->{'SalesOrderNumber'}.'"  class="btn-bar">
    <img  class="icon" src="img/Printer.png" />
   <span>Imprimir</span>
 </a>
-</div></fieldset>';
+</div>
+<div class="separador col-lg-12"></div>
+</fieldset>';
 
 
 }
@@ -671,7 +675,6 @@ public function CheckError(){
 
 
 ///////////////////////////////SALESS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 public function set_sales_order_header(){
   
   $this->model->verify_session();
@@ -1037,6 +1040,27 @@ public function SetSOfromStock($SalesOrderNumber){
    }
 
    $this->UpdateItemsLocation($loc,$OriQty);
+
+   //set event item 
+   $id_compania= $this->model->id_compania;
+   $user = $this->model->active_user_id;
+  
+   $event_values = array(  'ProductID' => $itemid,
+                           'JobID' => '',
+                           'JobPhaseID' => '',
+                           'JobCostCodeID' => '',
+                           'PurchaseNumber' => '',
+                           'Qty'=> (-1)*$qty,
+                           'unit_price' => $unit_price ,
+                           'Total' => $Price,
+                           'User' => $user,
+                           'Type' => 'Orden de venta',
+                           'Referencia' => $SalesOrderNumber,
+                           'ID_compania' => $id_compania );
+                   
+   $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
+
+   
   }
   echo '1';
 }
@@ -1056,6 +1080,8 @@ public function UpdateItemsLocation($Idruta,$qty){
   $res = $this->model->Query($query);
   
   $this->CheckError();
+
+
 }
 
 public function get_any_lote_qty($idLoc=''){
@@ -1101,7 +1127,7 @@ $this->model->verify_session();
       order by LAST_CHANGE '.$sort.' limit '.$limit ; 
     }
     
-    
+    //echo $query; die();
     
     return $filter =  $this->model->Query($query);
 

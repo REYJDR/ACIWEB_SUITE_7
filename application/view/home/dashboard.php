@@ -106,9 +106,9 @@ $conn = $this->model->sage_connected;
 	  $status = "<i class='fas fa-ban'  style='color:red;'></i> ".$this->model->Query_value('CompanySession','CompanyNameSage50','where ID_compania="'.$this->model->id_compania.'"');
 
 	}
+}
 
-
-}else{
+if ($Sage_Conn == 1) {
 	
 	 $metodo = "p3Top3";
 
@@ -116,6 +116,13 @@ $conn = $this->model->sage_connected;
 		
 }
 
+if ($Sage_Conn == 9) {
+	
+	 $metodo = "Standalone";
+
+     $status = "<i class='fas fa-check-circle'  ></i>Standalone";
+		
+}
 
 
 ?>
@@ -146,6 +153,7 @@ $conn = $this->model->sage_connected;
 						<tr><th><strong><?php echo $compania;?></strong></th><td><?php echo  $status; ?></td></tr>
 						<tr><th><strong><?php echo $AciwebComp;?></strong></th><td><?php echo DB_NAME; ?></td></tr>
 						<tr><th><strong><?php echo $timezone;?></strong></th><td><?php echo date_default_timezone_get() ;  ?></td></tr>
+						<tr><th><strong><?php echo $version;?></strong></th><td><?php echo VER;  ?></td></tr>					
 					</tbody>
 				</table>
 			</fieldset>

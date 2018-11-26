@@ -724,7 +724,8 @@ private function CreateHeaderFile($id){
             $CustAddress.'|'.//Direccion
             $Total.'|'.      //Total Neto
             $Tax.'|'.        //Alicuota
-            $Motivo.'|'.     //NOTA MOTIVO
+          //  $Motivo.'|'.     //NOTA MOTIVO
+            '|'.               //NOTA MOTIVO
             $dfecha.'|'.     //FECHA DEVOLUCIONj
             $serprint.'|'.   //Serial de la impresora fiscal
             $NoInvoice.'|'.  //No. de factura fiscal
@@ -893,10 +894,10 @@ public function GetNCNumber($ID){
 
   list(,,,,,,$NCNO,$conse) = explode(chr(9), $line);
   
-  //$NCNO = substr($NCNO, 6);
+  $noNc = substr($NCNO, -5);
 
-
-  return $NCNO.'-N'.$conse;
+  
+  return $noNc.'-N'.$conse;
 }
 
 

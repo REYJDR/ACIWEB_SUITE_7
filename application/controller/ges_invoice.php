@@ -195,7 +195,7 @@ public function GetOrdrDetail($id){
 
     $ORDER= $this->model->Query($query);
 
-    echo '<table id="example-12" class="table table-striped table-bordered" cellspacing="0"  >
+    echo '<fieldset><table id="example-12" class="table table-striped table-bordered" cellspacing="0"  >
           <thead>
             <tr>
               <th>Codigo</th>
@@ -219,24 +219,26 @@ public function GetOrdrDetail($id){
           </tr>";
 
       }
+    $so = "'".$id."'";
+    echo '</tbody></table></fieldset>
 
-    echo '</tbody></table>
+    <div class="separador class="col-lg-12" ></div>
 
     <div style="float:right;" class="col-md-2">
-    <a href="'.URL.'index.php?url=ges_ventas/ges_print_OrdEmpaque/'.$id.'"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
+    <a href="'.URL.'index.php?url=ges_ventas/ges_print_OrdEmpaque/'.$id.'"  class="btn-bar">
       <i class="fas fa-print"></i>    
-      <span>Imprimir</span>
+      <span> Imprimir</span>
     </a>
     </div>
 
     <div style="float:right;" class="col-md-2">
-    <a href="'.URL.'index.php?url=ges_invoice/GenInvoice/'.$id.'"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
+    <a onclick="blockeSO('.$so.')" href="javascript: void(0);"  class="btn-bar">
       <i class="fas fa-file-alt"></i>
-      <span>A Factura</span>
+      <span> A Factura</span>
     </a>
     </div>
-
-    </fieldset>';
+    <div class="separador class="col-lg-12" ></div>
+    ';
 }
 
 
@@ -623,48 +625,43 @@ private function CreateDetailFile($id){
     }
 
 
-//$filename = 'INVOICE/IN/FACMV'.$id.'.txt';
-//file_put_contents($filename , $DATA);
+ //$filename = 'INVOICE/IN/FACMV'.$id.'.txt';
+ //file_put_contents($filename , $DATA);
 
 
-//NUEVO BLOQUE
-$PRINTER = $this->GetPrinterSeleccted($id);
+  //NUEVO BLOQUE
+  $PRINTER = $this->GetPrinterSeleccted($id);
 
-$DIR = "FISCAL/".$PRINTER."/IN/";
+  $DIR = "FISCAL/".$PRINTER."/IN/";
 
-if (!file_exists($DIR)) {
+  if (!file_exists($DIR)) {
 
-    mkdir($DIR, 0777, true);
+      mkdir($DIR, 0777, true);
 
-}
+  }
 
-$filename = $DIR."FACMV".$id.'.txt';
+ $filename = $DIR."FACMV".$id.'.txt';
 
-file_put_contents($filename , $DATA);
+ file_put_contents($filename , $DATA);
 
       
 }
 
-
-
-
-
-
 //Ver config de dropbox
 public function GetDropboxConfig(){
 
-require_once "dropbox-sdk/Dropbox/autoload.php";
+  require_once "dropbox-sdk/Dropbox/autoload.php";
 
-$accessToken = file_get_contents('dropbox-sdk/atoken.txt');
+  $accessToken = file_get_contents('dropbox-sdk/atoken.txt');
 
-$dbxClient = new Dropbox\Client($accessToken, "PHP-Example/1.0");
-$accountInfo = $dbxClient->getAccountInfo();
+  $dbxClient = new Dropbox\Client($accessToken, "PHP-Example/1.0");
+  $accountInfo = $dbxClient->getAccountInfo();
 
-  foreach ($accountInfo as $key => $value) {
+    foreach ($accountInfo as $key => $value) {
 
-    echo '<strong>'.$key.'</strong> : '.$value."</br>";
-   
-  }
+      echo '<strong>'.$key.'</strong> : '.$value."</br>";
+    
+    }
 
 }
 
@@ -683,7 +680,7 @@ public function ReadInvoiceFile($id_compania){
             INVOICE_GEN_HEADER
             Where 
             ID_compania = "'.$id_compania.'" 
-            AND InvoiceNumber IS NULL ';
+            AND InvoiceNumber IS NULL or InvoiceNumber = ""';
 
   $res = $this->model->Query($SQL);
 
@@ -695,7 +692,7 @@ public function ReadInvoiceFile($id_compania){
       $folder = $value->{'printer'};
 
         //NUEVO BLOQUE
-      $PRINTER = $this->GetPrinterSeleccted($ID);
+        $PRINTER = $this->GetPrinterSeleccted($ID);
 
         $DIR = "FISCAL/".$PRINTER."/OUT/";
         $filename = $DIR.'OUT_FACTI'.$ID.'.TXT';
@@ -714,7 +711,7 @@ public function ReadInvoiceFile($id_compania){
         
 
   }
-
+  echo $logText.'<br>';
   file_put_contents('webhook_log.txt',  $logText, FILE_APPEND);
 
 }
@@ -732,17 +729,20 @@ public function GetInvoiceNumber($ID){
 
   list(,,,,,,$FACTNO,$conse) = explode(chr(9), $line);
 
+  
 
-return $FACTNO.'-'.$conse;
+  $noInv = substr($FACTNO,-5);
+
+  echo $noInv.'-'.$conse;
+ return $noInv.'-'.$conse;
 }
-
 
 
 //inserto informacion de SO en Sales par acontabilizacion en PT
 public function InsertSalesInfo($id_compania,$ID){
 
-//$this->model->verify_session();
-//$id_compania = $this->model->id_compania;
+ //$this->model->verify_session();
+ //$id_compania = $this->model->id_compania;
 
 
     $SalesOrder = $this->model->Query('SELECT 
@@ -797,6 +797,7 @@ public function InsertSalesInfo($id_compania,$ID){
     'Net_due'=>  $Total,
     'user'=>'00',
     'date'=>$InvDate,
+    'DueDate'=>$InvDate,
     'saletax'=> $TaxID
     );
 
@@ -874,7 +875,7 @@ public function InsertSalesInfo($id_compania,$ID){
                 'USER' => '00',
                 'UnitCost' => $UnitCost,
                 'Date' => $InvDate,
-                'location_id' => $this->model->Query_value('status_location','id','where lote="'.$itemid.'0000" and id_product="'.$itemid.'" and route="1" and ID_compania="'.$id_compania.'"')
+                'location_id' => $this->model->Query_value('STOCK_ITEMS_LOCATION','id','where lote="'.$itemid.'0000" and itemID="'.$itemid.'" and location="1" and stock="1" and ID_compania="'.$id_compania.'"')
                 );
 
                $this->model->insert('InventoryAdjust_Imp',$valuesInvAd);
@@ -908,12 +909,60 @@ public function InsertSalesInfo($id_compania,$ID){
 
  }
 
-return $InvoiceNumber;
+ return $InvoiceNumber;
 }
 
+//bloquea orden a factura 
+public function BlockedSalesInvoice($SOId)
+{
+  $this->model->verify_session();
 
+  $emi = $this->model->Query_value('SalesOrder_Header_Imp','Emitida','where SalesOrderNumber="'.$SOId.'" and ID_compania ="'.$this->model->id_compania.'"');
 
+  if($emi <> 1){
 
+    $res = $this->model->Query_value('SalesOrder_Header_Imp','blocked','where SalesOrderNumber="'.$SOId.'" and ID_compania ="'.$this->model->id_compania.'"');
+
+    if($res == ''){
+
+      $value = array('blocked' => $this->model->active_user_id );
+      
+      $this->model->update('SalesOrder_Header_Imp',$value,'SalesOrderNumber="'.$SOId.'" and ID_compania ="'.$this->model->id_compania.'"');
+      
+      echo 1;
+
+    }else{
+
+      $user = $this->model->Get_User_Info($res); 
+      
+      foreach ($user as $value) {
+      $value = json_decode($value);
+      $name= $value->{'name'};
+      $lastname = $value->{'lastname'};
+      }
+
+      echo 'El usuario '.$name.' '.$lastname.' ('.$res.') ya esta tratado esta orden';
+  
+    }
+
+  }else{
+
+    echo 'La orden seleccionada ya ha sido facturada. Por favor actualice la tabla.';
+    
+  }
+
+}
+
+public function unBlockedSalesInvoice(){
+
+  $this->model->verify_session();
+
+  $value = array('blocked' => 'NULL');
+  
+  $this->model->update('SalesOrder_Header_Imp',$value,'blocked="'.$this->model->active_user_id.'" and 
+                                                       ID_compania ="'.$this->model->id_compania.'"');
+  
+}
 
 //EXTRAE STRING ENTRE DOS CARACTERES
 private function get_string_between($string, $start, $end){
@@ -957,6 +1006,10 @@ public function CheckError(){
   }
 
 }
+
+
+
+
 
 }//fin clase
 ?>

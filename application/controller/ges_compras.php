@@ -122,13 +122,35 @@ public function fact_mailing($id){
 
 public function PO_filter_by_Vendor($vendor){
 
+    $this->model->verify_session();
+    $list = '';
+    
+    $clause = ' WHERE VendorID="'.$vendor.'" and ID_compania="'.$this->model->id_compania.'"';
+    
+    $res = $this->model->get_OC_ID('desc','1000',$clause);
 
+    foreach($res as $value){
+        
+        $value = json_decode($value);
 
+        $list.= '<option value="'.$value->{'PurchaseOrderNumber'}.'" >'.$value->{'PurchaseOrderNumber'}."</option>";
+        
 
+    }
 
+    echo  $list;
     
 }
     
+public function PO_item($PurchaseOrderNumber){
+ 
+   $this->model->verify_session();
+
+   $res = $this->model->get_items_by_OC($PurchaseOrderNumber);
+
+  
+   echo json_encode($res);
+}
 
 
 }

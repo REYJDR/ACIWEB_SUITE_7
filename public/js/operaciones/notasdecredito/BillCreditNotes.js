@@ -132,46 +132,52 @@ while(i <= cantLineas){
 
 }
 
+function set_listprice(ID){
+  
+    var datos= "bridge_query/get_Cust_info";
+    
+    var link= URL+"index.php";
+    
+      $.ajax({
+    
+          type: "GET",
+          url: link,
+          data: {url: datos, id : ID},
+          success: function(res){
+            res = JSON.parse(res);
+            document.getElementById('listID').value = res.Custom_field4;
+            }
+    
+       });
+
+      }
 
 
 function SetDesc(itemId, line){
 
-var datos= "url=bridge_query/get_ProductsInfo/"+itemId;
+var url = "bridge_query/get_ProductsInfo/";
 
-var id_desc_field = 'desc'+line;
-
-var id_unit_field = 'unit'+line;
-
-var id_price_field = 'unitprice'+line;
-
-var id_taxable_field = 'taxable'+line;
-
-var id_qty_field = 'qty'+line;
-
-var id_stock_field = 'stock'+line;
-
-var id_total_field = 'total'+line;
+  var id_desc_field = 'desc'+line;
+  var id_unit_field = 'unit'+line;
+  var id_price_field = 'unitprice'+line;
+  var id_taxable_field = 'taxable'+line;
+  var id_qty_field = 'qty'+line;
+  var id_stock_field = 'stock'+line;
+  var id_total_field = 'total'+line;
 
 var listID =  document.getElementById('listID').value;
 
 $.ajax({
 
       type: "GET",
-
       url: link,
-
-      data: datos,
-
+      data: {url: url, item: itemId},
       success: function(res){
 
       console.log(res);
-
        json = JSON.parse(res);
-
        document.getElementById(id_desc_field).innerHTML  = json.Description;
-
        document.getElementById(id_unit_field).value  = json.UnitMeasure;
-
        document.getElementById(id_stock_field).value  = json.QtyOnHand;
 
        if(json.TaxType == 1){

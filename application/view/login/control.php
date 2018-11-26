@@ -4,8 +4,20 @@ if(isset($_POST['flag']))
 	//inicio variables de session
 	$user = $_POST['user'];
 	$pass = md5($_POST['pass']);
-	$company = $_POST['company'];
-    $login = $this->model->login_in($user,$pass,'',$company); 
+
+	$isStandalone = $this->model->CheckStandalone();
+	
+	if(!$isStandalone){ 
+
+	  $company = $_POST['company']; 
+
+    }else{
+
+	  $company = '0'; 
+	  
+	}
+	
+	$login = $this->model->login_in($user,$pass,'',$company); 
 }
 ?>
 
@@ -13,29 +25,36 @@ if(isset($_POST['flag']))
 		<div class="container-login100">
 			<div class="wrap-login100">
 		
-				<form method="POST"  action="" class="login100-form validate-form p-l-55 p-r-55 p-t-178" id="login" >
+				<form method="POST"  action="" class="login100-form validate-form p-l-55 p-r-55 p-t-178" id="login" autocomplete="on" >
 
 				<input type="hidden" name='flag' value="1"/>
 				
 				
 			       <span class="login100-form-title"> 
 				   <img width="50%" height="50%"  src="page_assets/images/ACIWEB-LOGO.png" />
-					</span> 
+				   </span> 
+
+				
 					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
 						<input class="input100" type="text" id="user" name="user" placeholder="Username">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Please enter password">
-						<input class="input100" type="password" name="pass" id="pass" placeholder="Password">
+						<input class="input100" type="password" name="pass" id="pass" placeholder="Password" >
 						<span class="focus-input100"></span>
 					</div>
 
+				<?php 
+
+				$isStandalone = $this->model->CheckStandalone();
+
+				if(!$isStandalone){ ?>
 
 					<div class="separador col-lg-12" ></div>
 					<fieldset>
 					<legend>Sage Company</legend>
-						<select  id="company" name="company" class="select col-lg-12" onchange="set_listprice(this.value);" required>
+						<select  id="company" name="company" class="select col-lg-12"  required>
 						<option selected disabled></option>
 						<?php  
 
@@ -46,6 +65,9 @@ if(isset($_POST['flag']))
 					</select>  
 					<div class="separador col-lg-12" ></div>
 					</fieldset>
+
+				<?php } ?>
+
 
 					<div class="text-right p-t-13 p-b-23">
 						<span class="txt1">
@@ -64,12 +86,11 @@ if(isset($_POST['flag']))
 
 				</form>
 				<div class="separador col-lg-12"> </div>
-				<div class="col-lg-12">
-
-				   <span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=zB3xB13v2RV55GbgMLeYTlZOfhe0M5wMGtv2IKpi6SMS8b03XF39KAqppsrq"></script></span>
-   
-				</div>
-				<div class="separador col-lg-12"> </div>
-			</div>
-		</div>
+					<div class="col-lg-12">
+				  		  <div class="col-lg-1"></div>
+						<span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=zB3xB13v2RV55GbgMLeYTlZOfhe0M5wMGtv2IKpi6SMS8b03XF39KAqppsrq"></script></span>
+						<div class="separador col-lg-12"> </div>
+					</div> 
+					</div>
+			 </div>
 	</div>

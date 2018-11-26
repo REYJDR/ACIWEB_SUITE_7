@@ -92,8 +92,8 @@ while(i <= cantLineas){
        }        
 
       var line_table_req = '<tr>'+reglon+
-      '<td width="15%" class="rowtable_req" onkeyup="checkArroba(this.id);" contenteditable id="desc'+i+'"  ></td>'+
-      '<td width="15%" class="rowtable_req" onkeyup="checkArroba(this.id);" contenteditable id="nota'+i+'"  ></td>'+
+      "<td width='15%' class='rowtable_req' onkeypress='MSG_ERROR_RELEASE();' onkeyup='checkTblChar(this.id); checkLong(this.id,"+'50'+");' contenteditable id='desc"+i+"'  ></td>"+
+      "<td width='15%' class='rowtable_req' onkeypress='MSG_ERROR_RELEASE();' onkeyup='checkTblChar(this.id); checkLong(this.id,"+'50'+");' contenteditable id='nota"+i+"'  ></td>"+
       '<input type="hidden"   id="unit'+i+'" />'+
       '<td width="3%" style="'+displayStock+'"  class="rowtable_req numb" id="Tblote'+i+'"  ></td>'+
       '<input type="hidden"  id="taxable'+i+'" />'+
@@ -798,10 +798,10 @@ while (i <= cantLineas){
                               lote  = document.getElementById(lote).value;
                               loc   = document.getElementById(loc).value;
                             }
-
-
-                            cell += desc+'@'+nota+'@'+UnitMeasure+'@'+itemId+'@'+UnitPrice+'@'+qty+'@'+total+'@'+lote+'@'+loc;//agrego el registo de las demas columnas
-                            console.log(cell);
+                            
+                            var line = desc+'@'+nota+'@'+UnitMeasure+'@'+itemId+'@'+UnitPrice+'@'+qty+'@'+total+'@'+lote+'@'+loc;
+                            cell += replaceNbsps(line);
+                           
                           break;
 
                        default: 

@@ -21,11 +21,12 @@ $SUBMENU_pur1  = 'Facturas';
 $SUBMENU_req1 = 'Requisicion de materiales';
 $SUBMENU_req2 = 'Requisicion de Pagos';
 $SUBMENU_req3 = 'Recepcion de materiales';
-$SUBMENU_req4  = 'Requisiciones creadas';
+$SUBMENU_req4  = 'Requisiciones de materiales';
 
 $SUBMENU_inv1 = 'Productos';
 $SUBMENU_inv2 = 'Consignaciones';
 $SUBMENU_inv3 = 'Salida de mercancia';
+$SUBMENU_inv4 = 'Entrada de mercancia';
 
 $SUBMENU_stock1 = 'Almacenes';
 
@@ -36,6 +37,8 @@ $SUBMENU_rep4 = 'Reporte Diario';
 $SUBMENU_rep5 = 'Salida de mercancia';
 $SUBMENU_rep7 = 'Requisiciones de Pagos';
 $SUBMENU_rep6 = 'Otros';
+$SUBMENU_rep8 = 'Movimientos de mercancia';
+
 
 $SUBMENU_cust1 = 'Lista de precios';
 //END MENU

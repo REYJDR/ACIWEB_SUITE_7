@@ -305,7 +305,7 @@ foreach ($phase as $value) {
 
 $value = json_decode($value);
 
-  $list.= '<option value="'.$value->{'PhaseID'}.'" >'.$value->{'PhaseID'}.'</option>';
+  $list.= '<option value="'.$value->{'PhaseID'}.'" >('.$value->{'PhaseID'}.')'.$value->{'Description'}.'</option>';
 
 }
 
@@ -334,7 +334,7 @@ foreach ($cost as $value) {
 
 $value = json_decode($value);
 
-  $list.= '<option value="'.$value->{'CostCodeID'}.'" >'.$value->{'Description'}.'</option>';
+  $list.= '<option value="'.$value->{'CostCodeID'}.'" >('.$value->{'CostCodeID'}.')'.$value->{'Description'}.'</option>';
 
 }
 
@@ -355,7 +355,7 @@ public function get_ProductsCode(){
 
 $this->model->verify_session();
 
-$sql = 'SELECT ProductID FROM Products_Exp WHERE id_compania="'.$this->model->id_compania.'"';
+$sql = 'SELECT ProductID , Description FROM Products_Exp WHERE id_compania="'.$this->model->id_compania.'"';
 
 $Codigos = $this->model->Query($sql);
 
@@ -363,7 +363,7 @@ foreach ($Codigos as $value) {
 
   $value = json_decode($value);
    
-  $codes .= '<option value="'.$value->{'ProductID'}.'">'.$value->{'ProductID'}.'</option>';
+  $codes .= '<option value="'.$value->{'ProductID'}.'">('.$value->{'ProductID'}.')-'.$value->{'Description'}.'</option>';
 
  } 
 
@@ -373,18 +373,27 @@ echo $codes;
 
 
 //REQUISICIONES//////////////////////////////////////////////////////////////////////////////////////////////////////////
-public function set_req_header($JobID,$nota){
+public function set_req_header(){
 $this->model->verify_session();
+
+$data = json_decode($_GET['Data']);
+
+
+
+list($jobID, $nota) = explode('@',$data[0]);
+
+
 
 $Req_NO = $this->model->Get_Req_No();
 
 $value_to_set  = array( 
   'NO_REQ' => $Req_NO,   
   'ID_compania' => $this->model->id_compania, 
-  'NOTA' => $nota , 
+  'NOTA' => $nota, 
   'USER' => $this->model->active_user_id, 
   'DATE' => date("Y-m-d"), 
   );
+
 
 $res = $this->model->insert('REQ_HEADER',$value_to_set);
 $this->CheckError();
@@ -397,14 +406,22 @@ ECHO $Req_NO;
 
 
 public function set_req_items($NO_REQ){
-$this->model->verify_session();
+
+  $this->model->verify_session();
+
+  $COUNT = $this->model->Query_value('REQ_DETAIL','COUNT(*)',' WHERE NO_REQ="'.$NO_REQ.'" AND ID_compania="'.$this->model->id_compania.'"');
+
+  if($COUNT > 0){
+    $this->model->delete('REQ_DETAIL',' WHERE NO_REQ="'.$NO_REQ.'" AND ID_compania="'.$this->model->id_compania.'"');
+  }
+
 
 $data = json_decode($_GET['Data']);
 
 foreach ($data as $value) {
 
 
-  list($null,$ITEMID, $DESC, $QTY, $UNIT, $JOB_ID, $PROY_DESC, $PHASE_ID, $PHASE_DESC ) = explode('@', $value );
+  list($null,$ITEMID, $DESC, $QTY, $UNIT, $JOB_ID, $PROY_DESC, $PHASE_ID,  $COST_ID) = explode('@', $value );
    
 
   $value_to_set  = array( 
@@ -413,7 +430,8 @@ foreach ($data as $value) {
     'CANTIDAD' => $QTY,  
     'UNIDAD' => $UNIT,  
     'JOB' => $JOB_ID,  
-    'PHASE' => $PHASE_ID,    
+    'PHASE' => $PHASE_ID,
+    'CCOST' => $COST_ID,     
     'NO_REQ' => $NO_REQ, 
     'ITEM_UNIQUE_NO' => $ITEMID.'@'.$NO_REQ.'@'.$ITEMID.'@'.$this->model->id_compania,
     'ID_compania' => $this->model->id_compania
@@ -618,7 +636,10 @@ var table = $("#table_info").dataTable({
 
 </script>';
 
-echo '<br/><br/><fieldset><legend>Detalle de Requisición</legend>
+echo '<br/><br/><fieldset class="fieldsetform" >
+
+<h4>Detalle de Requisición</h4>
+<div class="separador col-lg-12" ></div>
 <table  class="display nowrap table table-striped table-bordered" cellspacing="0"  ><tbody>';
 
   foreach ($ORDER_detail as $datos) {
@@ -1183,7 +1204,9 @@ echo '<br/><br/>
 <button type="button" class="close" aria-label="Close" onclick="CLOSE_DIV('."'info'".');" >
           <span STYLE="color:red" aria-hidden="true">&times; </span> Cerrar
           </button>
-<fieldset><legend>Detalle de Requisición</legend>
+<fieldset class="fieldsetform" >
+<h4>Detalle de Requisición</h4>
+<div class="separador col-lg-12"></div>
 <table  class="display nowrap table table-striped table-bordered" cellspacing="0"  ><tbody>';
 
   foreach ($ORDER_detail as $datos) {
@@ -1368,7 +1391,7 @@ $QTY_FALTANTE = $ORDER->{'CANTIDAD'} - $QTY_TOTAL;
 
 echo '</tbody></table>
 <div style="float:right;" class="col-md-2">
-<a href="'.URL.'index.php?url=ges_requisiciones/req_print/'.$ORDER->{'NO_REQ'}.'"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
+<a href="'.URL.'index.php?url=ges_requisiciones/req_print/'.$ORDER->{'NO_REQ'}.'"  class="btn-bar">
    <img  class="icon" src="img/Printer.png" />
   <span>Imprimir</span>
 </a>
@@ -1378,7 +1401,7 @@ if($ORDER_detail->{'st_closed'}=='0' && $status_gen !='FINALIZADO'){
 
 if($this->model->rol_campo=='1'){ 
 echo '<div style="float:right;" class="col-md-2">
-<a href="'.URL.'index.php?url=ges_requisiciones/req_reception/'.$ORDER->{'NO_REQ'}.'"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
+<a href="'.URL.'index.php?url=ges_requisiciones/req_reception/'.$ORDER->{'NO_REQ'}.'"  class="btn-bar">
    <img  class="icon" src="img/Box Down.png" />
   <span>Registrar entradas</span>
 </a>
@@ -1388,7 +1411,7 @@ echo '<div style="float:right;" class="col-md-2">
 if($this->model->rol_compras=='1' && $status_gen !='FINALIZADO'){ 
 
 echo '<div style="float:right;" class="col-md-2">
-        <a title="Cerrar Rerquisición" data-toggle="modal" data-target="#CerrarModal" href="javascript:void(0)"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
+        <a title="Cerrar Rerquisición" data-toggle="modal" data-target="#CerrarModal" href="javascript:void(0)"  class="btn-bar">
           <img  class="icon" src="img/Stop.png" />
           <span>Cerrar Requisición</span>
         </a>
@@ -1401,7 +1424,7 @@ if($this->model->rol_compras=='1'){
   if($status_gen =='POR COTIZAR'){
 
     echo '<div style="float:right;" class="col-md-2">
-    <a href="'.URL.'index.php?url=ges_requisiciones/set_req_quota/'.$ORDER->{'NO_REQ'}.'/'.$id_compania.'"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
+    <a href="'.URL.'index.php?url=ges_requisiciones/set_req_quota/'.$ORDER->{'NO_REQ'}.'/'.$id_compania.'"  class="btn-bar">
        <img  class="icon" src="img/Search.png" />
       <span>Iniciar Cotización</span>
     </a>
@@ -1620,18 +1643,11 @@ $this->model->update($table,$columns,$clause);
 
 public function CheckError(){
 
-
   $CHK_ERROR =  $this->model->read_db_error();
   
-
   if ($CHK_ERROR!=''){ 
-
-   die("<script>$(window).load(  
-        function(){   
-          $('#ErrorModal').modal('show');
-          $('#ErrorMsg').html('".$CHK_ERROR."');
-         }
-       );</script>"); 
+   echo $CHK_ERROR;
+   die(); 
 
   }
 
@@ -1876,7 +1892,9 @@ $res = $this->model->Query_value( 'Purchase_Header_Exp A',
                                           B.ID_compania="'.$this->model->id_compania.'"  AND
                                           A.ApplyToPurOrderNumber = "'.$PO.'" AND 
                                           A.ApplyToPurchaseOrder= "1" AND 
-                                          B.JobID="'.$job_id.'" group by A.PurchaseID;');
+                                          B.JobID="'.$job_id.'" ');
+
+                                          //group by A.PurchaseID;
 return $res;
 }
   
@@ -2040,10 +2058,10 @@ echo $res;
 
 public function PmntReq(){
   
-  $this->model->verify_session();
+ $this->model->verify_session();
 
 
-$data = json_decode($_REQUEST['Data']);
+ $data = json_decode($_REQUEST['Data']);
 
  list($none,$job_id,$dateFrom,$dateTo) = explode('@',$data[0]);
   
@@ -2075,6 +2093,7 @@ $data = json_decode($_REQUEST['Data']);
             $limit = '1000';
             $sort = 'DESC';
             $oc = $this->get_OcReqPaymnt($sort,$limit,$clause);
+            $jId= "'".$job_id."'";
 
             foreach ($oc as $value) {
 
@@ -2114,7 +2133,7 @@ $data = json_decode($_REQUEST['Data']);
                               <td  >'.$date.'</td>
                               <td  >'.$value->{'VendorName'}.'</td>
                               <td  class="numb" name="totalPO'.$i.'" id="totalPO'.$i.'">'.number_format($value->{'Total'},2).'</td>
-                              <td  class="numb" name="totalPur'.$i.'" id="totalPur'.$i.'">'.number_format($total_pur,2).'</td>
+                              <td  class="numb" name="totalPur'.$i.'" id="totalPur'.$i.'"> <a href="javascript:void(0)" onclick="get_PurInfo('.$PO_NO.','.$jId.');">'.number_format($total_pur,2).'</a></td>
                               <td  class="numb">'.number_format($total_pay,2).'</td>
                               <td  class="numb">'.number_format($balance_due,2).'</td>
                               <td  class="numb" >'.number_format($total_reten,2).'</td>
@@ -2442,15 +2461,7 @@ public function get_bill_notRelated($JobID){
 
     $bills = $this->model->Query($query);
 
-echo '<table id="table_fact" class="display nowrap table table-striped table-bordered" cellspacing="0" >
-      <thead>
-        <tr>
-          <th width="5%">'.$REP_detail_Tbl3Hdr1.'</th>
-          <th width="10%">'.$REP_detail_Tbl3Hdr2.'</th>
-          <th width="5%">'.$REP_detail_Tbl3Hdr3.'</th>
-          <th width="5%">'.$REP_detail_Tbl3Hdr4.'</th>
-        </tr>
-      </thead><tbody>';   
+
 
 
 foreach ($bills as $datos) {
@@ -2467,7 +2478,7 @@ $datos = json_decode($datos);
 
   } 
 
-  echo '</tbody></table>';
+
 
 }
 
@@ -2494,17 +2505,7 @@ public function get_cash_adv($JobID){
 
     $cash = $this->model->Query($query);
 
-    echo '<table id="table_cash" class="display nowrap table table-striped table-bordered" cellspacing="0" >
-          <thead>
-            <tr>
-              <th width="5%">'.$REP_detail_Tbl4Hdr1.'</th>
-              <th width="10%">'.$REP_detail_Tbl4Hdr2.'</th>
-              <th width="5%">'.$REP_detail_Tbl4Hdr3.'</th>
-              <th width="5%">'.$REP_detail_Tbl4Hdr4.'</th>
-              <th width="10%">'.$REP_detail_Tbl4Hdr5.'</th>
-              <th width="5%">'.$REP_detail_Tbl4Hdr6.'</th>
-            </tr>
-          </thead><tbody>';   
+
 
 
 foreach ($cash as $datos) {
@@ -2523,7 +2524,64 @@ foreach ($cash as $datos) {
 
   } 
 
-  echo '</tbody></table>';
+
+}
+
+
+
+public function get_Pur($id,$JobID){
+  
+  $this->model->verify_session();
+  
+    require_once APP.'view/modules/requisition/lang/'.$this->model->lang.'_ref.php';
+  
+    $query ='SELECT 
+                A.PurchaseNumber,
+                A.VendorName,
+                A.Date,
+                SUM(B.NetLine) AS Total
+                FROM Purchase_Header_Exp A
+                INNER JOIN Purchase_Detail_Exp B ON A.PurchaseID = B.PurchaseID
+                WHERE B.JobID = "'.$JobID.'" AND ApplyToPurchaseOrder = "1" AND ApplyToPurOrderNumber = "'.$id.'" AND
+                A.ID_compania ="'.$this->model->id_compania.'" AND B.ID_compania ="'.$this->model->id_compania.'"
+                group by A.PurchaseID 
+                Order by A.Date DESC limit 100;';
+  
+      $bills = $this->model->Query($query);
+  
+  echo  '<fieldset class="fieldsetform"  >
+          <legend>'.$REP_TitleTbl5.'</legend>
+          <table id="Items" class="table table-striped table-bordered" cellspacing="0"  >
+          <thead>
+            <tr>
+              <th width="20%"># Factura</th>
+              <th width="30%">Proveedor</th>
+              <th width="10%">Fecha</th>
+              <th width="10%">Total</th>
+            </tr>
+          </thead>
+
+          <tbody>';
+
+
+
+ 
+
+  foreach ($bills as $datos) {
+  
+  $datos = json_decode($datos);
+  
+  
+    echo  "<tr >
+              <td>".$datos->{'PurchaseNumber'}."</td>
+              <td>".$datos->{'VendorName'}."</td>
+              <td>".$datos->{'Date'}."</td>
+              <td class='numb'>".number_format($datos->{'Total'},2,'.',',')."</td>
+          </tr>";
+  
+    } 
+
+  echo '</tbody> </table></fieldset>';
 
 }
 

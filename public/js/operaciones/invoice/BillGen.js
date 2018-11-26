@@ -8,13 +8,24 @@ $('#ERROR').hide();
 URL = document.getElementById('URL').value;
 link = URL+"index.php";
 
+
 //set_listprice();
 SetSoToAdd();
 
+var theTblToIn = document.getElementById('invoice'); 
+
+document.getElementById('NO_LINES').value = theTblToIn.rows.length;
+
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+	
+ //desbloquea documentos de so bloqueados del usuario 
+ window.onbeforeunload = function (e) {
+	unblockeSO();
+  };
 
-
+});
 
 //VALIABLES GLOBALES
 CHK_VALIDATION = false;
@@ -87,13 +98,13 @@ while (i <= theTbl.rows.length-1){
 	                    n = Number(i) + Number(x);
 
 	                    line = "<tr><td >"+ItemID+'('+aciRef+")</td>"+
-						         "<td contenteditable >"+Desc+"</td>"+
+						         "<td contenteditable  onkeyup='checkTblChar(this.id); checkLong(this.id,'50'); checkTblCharComa(this.id);' >"+Desc+"</td>"+
 						         "<td >"+taxable+"</td>"+
 						         "<td class='numb' id='qty"+n+"'>"+Ordenado+"</td>"+
 						         "<td class='numb' contenteditable onfocusout='calculate("+n+");' id='desp"+n+"'></td>"+
 						         "<td class='numb'  id='unitprice"+n+"'>"+price +"</td>"+
 						         "<td class='numb'  id='total"+n+"'></td>"+
-						         "<td class='numb' ><i onclick='del_tr(this)' style='color:red;' class='fa fa- fa-trash-o' ></i></td>"+
+						         "<td class='numb' ><i onclick='del_tr(this)' style='color:red;' class='fas fa-trash' ></i></td>"+
 						     "</tr>";
                     }
 
@@ -723,3 +734,24 @@ remtr.parentNode.removeChild(remtr);
 sumar_total();
 
 }
+
+// ********************************************************
+// * unbloked SO
+// ********************************************************
+function unblockeSO() {
+	
+		var URL = $('#URL').val();
+	
+		var datos= "url=ges_invoice/unBlockedSalesInvoice";
+		
+		 return  $.ajax({
+	
+				type: "GET",
+				url: URL+'index.php',
+				data: datos,
+				success: function(res){
+				console.log(res);
+			}
+		});
+	
+  }

@@ -17,6 +17,8 @@ $('#ERROR').hide();
 jQuery(document).ready(function($)
 {
 
+
+
 var table = $("#table").dataTable({
     
     responsive: false,
@@ -29,8 +31,8 @@ var table = $("#table").dataTable({
       buttons: [
         {
         extend: "excelHtml5",
-        text: "Exportar a Excel",
-        title: "Estado_de_requisiciones",
+        text:   "Exportar a Excel",
+        title:  "Estado_de_requisiciones",
          
         exportOptions: {
               columns: ":visible",
@@ -76,6 +78,10 @@ table.yadcf(
     );
 
 });
+
+
+
+
 
 
 // Variables globales
@@ -252,8 +258,10 @@ function searchReq(){
                 url: link,
                 data: {url: 'ges_requisiciones/get_bill_notRelated/'+JOBID},
                 success: function(res){
+             
+                $('#tableFact').html(res);
+                $("#table_fact").dataTable();
 
-                $('#tableFact').html(res);  
                           
             }
           });
@@ -264,7 +272,10 @@ function searchReq(){
                 data: {url: 'ges_requisiciones/get_cash_adv/'+JOBID},
                 success: function(res){
 
-                $('#tableAdv').html(res);  
+                $('#tableAdv').html(res); 
+                $("#table_cash").dataTable();
+                
+ 
                           
             }
           });
@@ -635,5 +646,32 @@ spin_hide();
 
 
 }
+
+function get_PurInfo(id,job){
+  
+URL = document.getElementById('URL').value;
+  
+  var datos= "url=ges_requisiciones/get_Pur/"+id+"/"+job;  
+  var link = URL+"index.php";
+  
+  
+    $.ajax({
+        type: "GET",
+        url: link,
+        data: datos,
+        success: function(res){
+        
+          $('#table2').html(res);
+
+
+    
+    
+        }
+     });
+    
+    
+  
+  
+  }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////

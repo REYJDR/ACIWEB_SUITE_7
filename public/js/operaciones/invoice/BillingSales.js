@@ -4,6 +4,7 @@
 $(window).load(function(){
     
     $('#ERROR').hide();
+   
     
 });
     
@@ -61,26 +62,53 @@ filter_reset_button_text: false}
 
 function SaleToInvoice(URL,id){
     
-    
-var datos= "url=ges_invoice/GetOrdrDetail/"+id;
-
-
+    var URL = $('#URL').val();
+    var datos= "url=ges_invoice/GetOrdrDetail/"+id;           
     $.ajax({
         type: "GET",
         url: URL+'index.php',
         data: datos,
         success: function(res){
 
-        //$("historial").hide();
+            $("#info").html(res);
 
-        $("#info").html(res);
-
-                }
+            }
         });
 
     $('html, body').animate({
-    scrollTop: $("#info").offset().top
+    
+        scrollTop: $("#info").offset().top
+    
     }, 2000);
 
+}
+
+
+function blockeSO(id) {
+
+    var URL = $('#URL').val();
+
+    var datos= "url=ges_invoice/BlockedSalesInvoice/"+id;
+    
+     return  $.ajax({
+
+            type: "GET",
+            url: URL+'index.php',
+            data: datos,
+            success: function(res){
+
+            if(res==1){
+                
+                window.open(URL+"index.php?url=ges_invoice/GenInvoice/"+id,'_self');
+    
+            }else{
+
+                MSG_ERROR(res,0);
+            
+            }
+
+        }
+    });
 
 }
+

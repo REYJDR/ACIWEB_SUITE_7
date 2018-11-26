@@ -28,10 +28,18 @@ $conn = $this->model->sage_connected;
 	}
 
 
-}else{
+}
 
+if ($Sage_Conn == 1) {
 
-     $status ="<i class='fas fa-check-circle' style='color:green;' ></i> p3Top3 -> ".$this->model->Query_value('CompanyLogSync','CompanyNameSage50','where ID_compania="'.$this->model->id_compania.'"');
+     $status ="<i class='fas fa-check-circle' style='color:green;' ></i> p3Top3 -> ".$this->model->Query_value('CompanyLogSync','CompanyNameSage50','where ID_compania="'.$this->model->id_compania.'"');		
+}
+
+if ($Sage_Conn == 9) {
+	
+	 $metodo = "Standalone";
+
+     $status = "<i class='fas fa-check-circle'  ></i>Standalone";
 		
 }
 
@@ -40,10 +48,6 @@ echo $status;
 </div>
 
 
-
-<div style="float: right; text-align:right;" class="crop col-xs-6">
-&nbsp&nbspV_<?php echo date('d.m.y').'_'.date('h'); ?>
-</div>
 
 </div>
 </div>

@@ -3,16 +3,39 @@
 $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
 
 
-//company
-$comp = $this->model->Get_company_Info();
 
-foreach ($comp as $value) {
-    $value = json_decode($value);
 
-    $address = $value->{'address'};
-    $name = $value->{'company_name'};
-    $tel= $value->{'Tel'};
-    $fax = $value->{'Fax'};
+$comp= $this->model->Get_company_Info();
+
+	foreach ($comp as $Comp_Info) {
+
+		$Comp_Info = json_decode($Comp_Info);
+		$Sage_Conn = $Comp_Info->{'Sage_Conn'};
+	}	 
+	
+switch ($Sage_Conn) {
+  case 0:
+
+	  $nameComp = $this->model->Query_value('CompanySession','CompanyNameSage50','where ID_compania="'.$this->model->id_compania.'"');
+   
+    $compania = '<tr>
+                <th style="text-align:left;"><strong>SAGE 50 Compañia: </strong>'.$nameComp.'</th>
+                </tr>';
+    break;
+  
+  case 1:
+    $nameComp = $this->model->Query_value('CompanyLogSync','CompanyNameSage50','where ID_compania="'.$this->model->id_compania.'"');
+   
+    $compania = '<tr>
+    <th style="text-align:left;"><strong>SAGE 50 Compañia: </strong>'.$nameComp.'</th>
+    </tr>';
+   
+    break;
+
+ default:
+     $compania = "";
+    break;
+  
 }
 
 
@@ -53,8 +76,8 @@ $message .='<h2 class="h_invoice_header" >Requisicion</h2>
                     </tr>
                     <tr>
                       <th style="text-align:left;"><strong>Solicitante: </strong>'.$rep.'</th>
-                      
-                    </tr>
+                    </tr>'.$compania.'
+                    
 </table>
                   
 <br>
@@ -99,7 +122,11 @@ $message .= '<tr>
    
    </tr>';
 
+   $JobID = $value->{'JOB'};
+
 }
+
+$JobDesc = $this->model->getJobDesc($proyecto);
 
 
 $message .= '</table><BR><BR>';
@@ -143,7 +170,7 @@ foreach ($smtp as $smtp_val) {
 
 
 
-$mail->Subject = utf8_decode("Requisicion-".$ref);
+$mail->Subject = '('.utf8_decode("Requisicion-".$ref).') - Proyecto: ('.$JobID.')'.$JobDesc ;
 $mail->Body = $message_to_send;
 
         $mail->SMTPOptions = array(

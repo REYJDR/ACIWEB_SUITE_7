@@ -1,16 +1,18 @@
+
+var table;
+
 jQuery(document).ready(function($)
 {
 
 $('#ERROR').hide();
 
-var table = $("#productos").dataTable({
+table = $("#productos").DataTable({
     aLengthMenu: [
         [10, 25,50,-1], [10, 25, 50,"All"]
     ]
     });
-
-
-table.yadcf(
+   
+    $("#productos").dataTable().yadcf(
     [{column_number : 0,
      column_data_type: "html",
      html_data_type: "text" ,
@@ -28,3 +30,49 @@ table.yadcf(
     );
     
 });
+
+function getListItem(){
+    
+    $('#listItem').html('Loading, please wait...');
+              
+    var URL = $('#URL').val();
+    var metodo= "ges_inventario/getListItems";
+    var link= URL+"index.php";
+   
+
+      $.ajax({
+          type: "GET",
+          url: link,
+          dataType: 'json',
+          data: {url:metodo} ,
+          success: function(res){
+
+        // $('#listItem').html(''); 
+        // $('#listItem').append(res);
+
+        console.log(res);
+
+      printTbl = $('#productos').DataTable();
+        
+      printTbl.rows.add(res['data'][0]);
+      printTbl.draw();
+         
+      //   $('#productos').DataTable().draw();
+        //  table.clear().draw();
+   
+         /*   for(var m=0;m<res.length;m++){
+            
+
+                printTbl.row.add( [
+                    res[m]
+                ] ).draw( false );
+
+
+
+            } */
+        }
+       });
+
+
+
+}

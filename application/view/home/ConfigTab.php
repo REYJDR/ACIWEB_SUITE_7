@@ -85,7 +85,7 @@
 				<tr><th><strong><?php echo $config_2_val6; ?></strong></th><td>
 					<select class="inputPage col-lg-12" id="role" name="role">
 						<option value="admin" ><?php echo $config_2_val7; ?></option>
-						<option value="user" ><?php echo $config_2_val8; ?></option>
+						<option value="user"  ><?php echo $config_2_val8; ?></option>
 					</select>
 				</td></tr>  
 				</tbody>
@@ -550,6 +550,7 @@
 						<option <?php if ($Sage_Conn == null){echo 'selected disable';} ?>></option>
 						<option value="0" <?php if ($Sage_Conn == 0){echo 'selected';} ?>><?php echo $config_8_val2; ?></option>
 						<option value="1" <?php if ($Sage_Conn == 1){echo 'selected';} ?>><?php echo $config_8_val3; ?></option>
+						<option value="9" <?php if ($Sage_Conn == 9){echo 'selected';} ?>><?php echo $config_8_val4; ?></option>
 					</select>
 					</td></tr>
 				</tbody>

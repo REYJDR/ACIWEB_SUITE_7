@@ -92,7 +92,7 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
               <table class='table_form note'>
                 <tbody>
                 <tr><th><strong><?PHP echo $Note; ?></strong></th>
-                <td> <textarea class="textareaPage"  onkeyup="checkNOTA(this.id);" rows="3" cols="70" id="nota" name="nota"></textarea></td></tr>
+                <td> <textarea class="textareaPage"  onkeyup="checkInpChar(this.id);" rows="3" cols="70" id="nota" name="nota"></textarea></td></tr>
                 </tbody>
               </table>
               </fieldset>
