@@ -124,8 +124,8 @@ return $connected;
 
         if(mysqli_error($this->db)){
         
-
-          $ERROR['ERROR'] = date("Y-m-d h:i:sa").'- Error inserting to DataBase, contact to system administrator';
+            $ERROR['ERROR'] = mysqli_error($this->db);
+          $ERROR['ERROR'] = date("Y-m-d h:i:sa").'- Error inserting to DataBase, contact to system administrator.';
 
           file_put_contents("LOG_ERROR/TEMP_LOG.json",json_encode($ERROR),FILE_APPEND);
           file_put_contents("LOG_ERROR/ERROR_LOG.txt","\n".date("Y-m-d h:i:sa").'-(SAGE COMPANY '.$this->id_compania.') MYSQL ERROR '.mysqli_error($this->db)."\n/ Query ".$query,FILE_APPEND);
