@@ -54,7 +54,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
                   <th width="10%"><?PHP echo $REQ_REP_TblHdr1; ?></th>
                   <th width="10%"><?PHP echo $REQ_REP_TblHdr2; ?></th>
                   <th width="45%"><?PHP echo $REQ_REP_TblHdr3; ?></th>
-                  <th width="25%"><?PHP echo $REQ_REP_TblHdr7; ?></th>
+                  <th width="25%"><?PHP echo $REQ_REP_TblHdr6; ?></th>
                   <th width="25%"><?PHP echo $REQ_REP_TblHdr4; ?></th>
                   <th width="10%"><?PHP echo $REQ_REP_TblHdr5; ?></th>
                   

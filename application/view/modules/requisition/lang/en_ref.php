@@ -37,6 +37,7 @@ $REQ_TblHdr2 = "Fecha";
 $REQ_TblHdr3 = "Descripcion";
 $REQ_TblHdr4 = "Solicitado por";
 $REQ_TblHdr5 = "Estado";
+$REQ_REP_TblHdr6 = 'Proyecto';
 
 $REQ_BTN1 = "Buscar";
 //END REQ REPORT
