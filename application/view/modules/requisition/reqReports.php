@@ -54,6 +54,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
                   <th width="10%"><?PHP echo $REQ_REP_TblHdr1; ?></th>
                   <th width="10%"><?PHP echo $REQ_REP_TblHdr2; ?></th>
                   <th width="45%"><?PHP echo $REQ_REP_TblHdr3; ?></th>
+                  <th width="25%"><?PHP echo $REQ_REP_TblHdr7; ?></th>
                   <th width="25%"><?PHP echo $REQ_REP_TblHdr4; ?></th>
                   <th width="10%"><?PHP echo $REQ_REP_TblHdr5; ?></th>
                   
@@ -143,6 +144,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
                                 <td width='10%' ><a href='#' onclick='javascript: show_req(".$URL.",".$ID.");'>".$Item->{'NO_REQ'}."</a></td>
                                 <td width='10%' >".date('m/d/Y',strtotime($Item->{'DATE'}))."</td>
                                 <td width='45%' >".$Item->{'NOTA'}.'</td>
+                                <td width="45%" >'.$Item->{'JOB'}.'</td>
                                 <td width="25%" >'.$name.' '.$lastname.'</td>
                                 <td width="10%" '.$style.' >'.$status.'</td>
                             </tr>';

@@ -11,6 +11,7 @@ $REQ_TblHdr1 = "Renglon";
 $REQ_TblHdr2 = "Descripcion";
 $REQ_TblHdr3 = "Cant.";
 $REQ_TblHdr4 = "Uni.";
+$REQ_TblHdr7 = "Job";
 $REQ_TblHdr5 = "Fase";
 $REQ_TblHdr6 = "Ctr. Costo";
 

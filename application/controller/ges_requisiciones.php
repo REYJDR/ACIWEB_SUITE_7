@@ -433,7 +433,7 @@ foreach ($data as $value) {
     'PHASE' => $PHASE_ID,
     'CCOST' => $COST_ID,     
     'NO_REQ' => $NO_REQ, 
-    'ITEM_UNIQUE_NO' => $ITEMID.'@'.$NO_REQ.'@'.$ITEMID.'@'.$this->model->id_compania,
+    'ITEM_UNIQUE_NO' => $ITEMID.'@'.$NO_REQ.'@'.$ITEMID.'@'.$this->model->id_compania.'@'.$PHASE_ID.'@'.$COST_ID,
     'ID_compania' => $this->model->id_compania
     );
 
