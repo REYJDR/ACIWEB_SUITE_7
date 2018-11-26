@@ -1511,7 +1511,7 @@ public function send_mail($address,$subject,$title,$body){
     
 }
 
-////////////////////////////////////////////////////
+
 //Estimar Costos de un proyecto, metodo general
 public function getJob_avalaible_amnt($JobID,$PhaseID=0,$CCOID=0){
 
@@ -1558,10 +1558,5 @@ public function getJob_avalaible_amnt($JobID,$PhaseID=0,$CCOID=0){
 
 }
 
-
-
-
-
-//END
 }
 ?>

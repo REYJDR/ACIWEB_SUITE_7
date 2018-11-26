@@ -321,7 +321,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 <?php
 
-//SE EJECUTA SCRIPT PHP SI SE DÁ SUBMIT AL MOTON "SUBIR"
+//SE EJECUTA SCRIPT PHP SI SE DÁ SUBMIT AL BOTON "SUBIR"
 if (isset($_POST['submit'])){
 
 	try {

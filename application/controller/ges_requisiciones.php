@@ -660,7 +660,7 @@ $status = $this->req_status($ORDER_detail->{'NO_REQ'},$this->model->id_compania)
 
 switch ($status) {
   case 'CERRADA':
-     $style = 'style="background-color:#D8D8D8 ;"';//verder
+     $style = 'style="background-color:#D8D8D8 ;"';//gris
     break;
   case 'FINALIZADO':
      $style = 'style="background-color:#BCF5A9;"';//verder
