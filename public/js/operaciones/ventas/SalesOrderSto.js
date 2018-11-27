@@ -71,7 +71,7 @@ $.ajax({
       data: datos,
       success: function(res){
       listitem = res;
-
+console.log(res);
 $('#table_req').html(''); //limpio la tabla 
 
 while(i <= cantLineas){
