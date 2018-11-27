@@ -1399,11 +1399,11 @@ if($itemFilter){
   $clause= '';
 }
 
-$sql = 'SELECT ProductID , 
+echo $sql = 'SELECT ProductID , 
                Description ,
               (SELECT SUM(qty) FROM STOCK_ITEMS_LOCATION WHERE itemID = ProductID and ID_compania="'.$this->id_compania.'") AS QtyOnHand,
           FROM Products_Exp 
-          WHERE isActive="1" and id_compania="'.$this->model->id_compania.'" '.$clause;
+          WHERE   id_compania="'.$this->model->id_compania.'" '.$clause;
 
 $Codigos = $this->model->Query($sql);
 
