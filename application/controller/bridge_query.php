@@ -1437,14 +1437,23 @@ public function getItems(){
     $clause= '';
   }
   
-  $sql = 'SELECT Products_Exp.ProductID as ProductID , 
+ /* $sql = 'SELECT Products_Exp.ProductID as ProductID , 
                  Products_Exp.Description  as Description 
             FROM Products_Exp 
             INNER JOIN STOCK_ITEMS_LOCATION ON STOCK_ITEMS_LOCATION.itemID = Products_Exp.ProductID 
             WHERE Products_Exp.id_compania="'.$this->model->id_compania.'"  
              and  STOCK_ITEMS_LOCATION.qty > 0
              and  STOCK_ITEMS_LOCATION.ID_compania="'.$this->model->id_compania.'"  '.$clause.' group by ProductID';
+  */
   
+  $sql = 'SELECT Products_Exp.ProductID as ProductID , 
+             Products_Exp.Description  as Description 
+        FROM Products_Exp 
+        INNER JOIN STOCK_ITEMS_LOCATION ON STOCK_ITEMS_LOCATION.itemID = Products_Exp.ProductID 
+        WHERE Products_Exp.id_compania="'.$this->model->id_compania.'"  
+         and  STOCK_ITEMS_LOCATION.ID_compania="'.$this->model->id_compania.'"  '.$clause.' group by ProductID';
+
+
   $Codigos = $this->model->Query($sql);
   
   foreach ($Codigos as $value) {
