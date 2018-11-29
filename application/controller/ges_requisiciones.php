@@ -421,7 +421,7 @@ $data = json_decode($_GET['Data']);
 foreach ($data as $value) {
 
 
-  list($null,$ITEMID, $DESC, $QTY, $UNIT, $JOB_ID, $PROY_DESC, $PHASE_ID,  $COST_ID) = explode('@', $value );
+  list($null,$ITEMID, $DESC, $QTY, $UNIT, $JOB_ID, $PROY_DESC, $PHASE_ID, $PHASEDESC, $COST_ID, $COSTDESC) = explode('@', $value );
    
 
   $value_to_set  = array( 
