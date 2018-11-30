@@ -63,7 +63,7 @@ foreach ($ORDER as  $value) {
 
 <?php
 
-$message .='<h2 class="h_invoice_header" >Requisicion</h2>
+$message .='<h2 class="h_invoice_header" >Requisicion - Proyecto: '.$JobDesc .'</h2>
                  <table BORDER="1">
                     
                     <tr>
