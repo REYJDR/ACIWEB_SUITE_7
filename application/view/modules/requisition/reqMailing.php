@@ -137,7 +137,7 @@ $message .= '<a href="'.URL.'index.php?url=ges_requisiciones/set_req_quota/'.$re
 $message_to_send ='<html>
 <head>
 <meta charset="UTF-8">
-<title>Requisicion de materiales</title>
+<title>Requisicion de materiales - Proyecto: '.$JobDesc .'</title>
 </head>
 <body>'.$message.'</body>
 </html>';
