@@ -972,9 +972,9 @@ if(!$jobs){
 }
 
 
-public function getJobDesc(){
+public function getJobDesc($id){
 
-  echo   $clause = 'where ID_compania="'.$this->id_compania.'" and IsActive="1"';
+  $clause = 'where JobID="'.$id.'" and  ID_compania="'.$this->id_compania.'" and IsActive="1"';
     
   return $this->Query_value('Jobs_Exp','Description',$clause);
 
