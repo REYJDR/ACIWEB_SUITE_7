@@ -143,7 +143,7 @@ $message_to_send ='<html>
 </html>';
 
 
-
+die($message_to_send);
 
 $mail->IsMail(); // enable SMTP
 $mail->IsHTML(true);
