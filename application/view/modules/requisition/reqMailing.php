@@ -126,7 +126,7 @@ $message .= '<tr>
 
 }
 
-$JobDesc = $this->model->getJobDesc($proyecto);
+$JobDesc = $this->model->getJobDesc($JobID);
 
 
 $message .= '</table><BR><BR>';
