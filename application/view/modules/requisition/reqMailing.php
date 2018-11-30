@@ -63,7 +63,7 @@ foreach ($ORDER as  $value) {
 
 <?php
 
-$message .='<h2 class="h_invoice_header" >Requisicion - Proyecto: '.$JobDesc .'</h2>
+$message .='<h2 class="h_invoice_header" >Requisicion</h2>
                  <table BORDER="1">
                     
                     <tr>
@@ -129,7 +129,7 @@ $message .= '<tr>
 $JobDesc = $this->model->getJobDesc($JobID);
 
 
-$message .= '</table><BR><BR>';
+$message .= '</table><BR><BR>'.$JobDesc;
 
 
 $message .= '<a href="'.URL.'index.php?url=ges_requisiciones/set_req_quota/'.$ref.'/'.$this->model->id_compania.'" type="button" id="cotizar" >INICIAR COTIZACION</a>';
