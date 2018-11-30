@@ -129,7 +129,7 @@ $message .= '<tr>
 $JobDesc = $this->model->getJobDesc($JobID);
 
 
-$message .= '</table><BR><BR>'.$JobDesc;
+$message .= '</table><BR><BR>ID:'.$JobID.' -'.$JobDesc;
 
 
 $message .= '<a href="'.URL.'index.php?url=ges_requisiciones/set_req_quota/'.$ref.'/'.$this->model->id_compania.'" type="button" id="cotizar" >INICIAR COTIZACION</a>';
