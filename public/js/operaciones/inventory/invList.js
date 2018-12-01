@@ -61,10 +61,10 @@ function getListItem(){
             for(var m=0;m<items.length;m++){
 
                 data = JSON.parse(items[m]);
-            console.log(data);
-             /*   printTbl.row.add( [
+                //console.log(data);
+                console.log( printTbl.row.add( [
                     data
-                ] ).draw( false );*/
+                ] ).draw( false ));
 
 
 
