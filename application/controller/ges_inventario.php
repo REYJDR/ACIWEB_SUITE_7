@@ -1378,16 +1378,16 @@ public function getListItems(){
                 '`QtyOnHand` as `'.$Tblcol4.'`',
                 '`Price1` as `'.$Tblcol8.'`');
 
-    echo $clause = 'WHERE Products_Exp.id_compania="'.$this->model->id_compania.'" 
-    GROUP BY Products_Exp.ProductID';
+    $clause = 'WHERE Products_Exp.id_compania="'.$this->model->id_compania.'" 
+                GROUP BY Products_Exp.ProductID';
 
-    $Items = $this->model->queryColumns('Products_Exp', $columns,$clause );
+    $Items = $this->model->queryColumns('Products_Exp', $columns,$clause);
 
    // echo  json_encode($Items);
 
   foreach ($Item as $datos) {
 
-    $Item = json_decode($datos);
+ echo   $Item = json_decode($datos);
 
 
    echo	'<tr>
@@ -1397,8 +1397,6 @@ public function getListItems(){
             <td class="numb">'.number_format($Item->{$Tblcol1},0, '.', ',').'</td>
             <td class="numb">'.number_format($Item->{$Tblcol8},4, '.', ',').'</td></tr>';
             }
-
-    
 
     }
 
