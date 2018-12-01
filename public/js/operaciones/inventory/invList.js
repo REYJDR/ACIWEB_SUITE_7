@@ -47,7 +47,7 @@ function getListItem(){
           async:  false,
           data: {url:metodo} ,
           success: function(res){
-
+console.log(res);
             addRows(res) ;
         }
        });
