@@ -1381,7 +1381,7 @@ public function getListItems(){
     $clause = 'WHERE Products_Exp.id_compania="'.$this->model->id_compania.'" 
                 GROUP BY Products_Exp.ProductID';
 
-    $Items = $this->model->queryColumns('Products_Exp', $columns,$clause);
+   echo  $Items = $this->model->queryColumns('Products_Exp', $columns,$clause);
 
    // echo  json_encode($Items);
 
