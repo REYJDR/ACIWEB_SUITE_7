@@ -33,7 +33,8 @@ table = $("#productos").DataTable({
 
 function getListItem(){
     
-    $('#listItem').html('Loading, please wait...');
+    //$('#listItem').html('Searching, please wait...');
+    MSG_ADVICE('Searching, please wait...',0);
               
     var URL = $('#URL').val();
     var metodo= "ges_inventario/getListItems";
@@ -49,9 +50,10 @@ function getListItem(){
           success: function(res){
           
             if(res == 0){
+                MSG_ERROR("There's no Items to List",0);
                 $('#listItem').html("There's no Items to List");
             }else{
-                $('#listItem').html('');
+                MSG_ADVICE("Filling table...",0);
                 addRows(res);
             }
             
@@ -79,9 +81,11 @@ function getListItem(){
 
                 ] ).draw( false );
 
-
+                
 
             } 
+
+            MSG_CORRECT("Done",0);
 
        }
 
