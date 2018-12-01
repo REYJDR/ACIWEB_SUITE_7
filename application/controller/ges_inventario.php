@@ -1386,8 +1386,9 @@ public function getListItems(){
    // echo  json_encode($Items);
 
   foreach ($Item as $datos) {
+      echo $datos;
 
- echo   $Item = json_decode($datos);
+    $Item = json_decode($datos);
 
 
    echo	'<tr>
