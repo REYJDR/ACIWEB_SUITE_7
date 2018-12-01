@@ -47,30 +47,23 @@ function getListItem(){
           async:  false,
           data: {url:metodo} ,
           success: function(res){
-console.log(res);
+           console.log(res);
             addRows(res) ;
         }
        });
 
        function addRows(items) {
         
-         printTbl = $('#productos').DataTable();
+          printTbl = $('#productos').DataTable();
     
           printTbl.clear().draw();
    
             for(var m=0;m<items.length;m++){
+
+                data = JSON.parse(items);
             
                 printTbl.row.add( [
-                    items[m].Codigo,
-                    items[m].Descripcion,
-                    items[m].Unidad,
-                    items[m].Stockk,
-                    '',
-                    
-
-
-
-
+                    data
                 ] ).draw( false );
 
 
