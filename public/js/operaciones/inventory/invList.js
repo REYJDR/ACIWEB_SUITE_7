@@ -44,20 +44,18 @@ function getListItem(){
           type: "GET",
           url: link,
           dataType: 'json',
+          async:  false,
           data: {url:metodo} ,
           success: function(res){
 
-
+            addRows(res) ;
         }
        });
 
        function addRows(items) {
         
-        printTbl = $('#productos').DataTable();
-        
-         
-          $('#productos').DataTable();
-
+         printTbl = $('#productos').DataTable();
+    
           printTbl.clear().draw();
    
             for(var m=0;m<items.length;m++){
