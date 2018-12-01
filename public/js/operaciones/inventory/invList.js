@@ -12,7 +12,7 @@ table = $("#productos").DataTable({
     ]
     });
    
-    $("#productos").dataTable().yadcf(
+   /* $("#productos").dataTable().yadcf(
     [{column_number : 0,
      column_data_type: "html",
      html_data_type: "text" ,
@@ -27,7 +27,7 @@ table = $("#productos").DataTable({
     }],
     {cumulative_filtering: true, 
     filter_reset_button_text: false}
-    );
+    );*/
     
 });
 
@@ -45,7 +45,7 @@ function getListItem(){
           type: "GET",
           url: link,
           dataType: 'json',
-          async:  false,
+         // async:  false,
           data: {url:metodo} ,
           success: function(res){
           
