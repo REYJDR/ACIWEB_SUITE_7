@@ -8,7 +8,7 @@ $Tblcol4 = 'Stock';
 $Tblcol5 = 'Fecha Venc.';
 $Tblcol6 = 'Lote';
 $Tblcol7 = 'Compa&ntildeia';
-$Tblcol8 = 'Costo Unit.';
+$Tblcol8 = 'Costo_Uni';
 $Tblcol9 = 'Detalle';
 $InvListButtom = 'Listar Inventario';
 //  END INV lIST

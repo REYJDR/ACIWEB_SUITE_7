@@ -1368,9 +1368,6 @@ public function getListItems(){
 
     require_once APP.'view/modules/inventory/lang/'.$this->model->lang.'_ref.php';
 
-
-    //$Item = $this->model->get_ProductsList();
-
     $columns =  array( 
                 '`ProductID` as `'.$Tblcol1.'`',
                 '`Description` as `'.$Tblcol2.'`',
@@ -1383,23 +1380,18 @@ public function getListItems(){
 
    $Item = $this->model->queryColumns('Products_Exp', $columns,$clause);
 
-  echo json_encode($Item);
+   if($Item != '' ){
 
-  /*foreach ($Item as $datos) {
+    echo json_encode($Item);
     
+   }else{
 
-    $Item = json_decode($datos);
+    echo 0;
+   }
+  
 
 
-    echo	'<tr>
-                <td><a href="'.URL.'index.php?url=ges_inventario/inv_info/'.$Item->{$Tblcol1}.'" >'.$Item->{$Tblcol1}.'</a></td>
-                <td>'.$Item->{$Tblcol2}.'</td>
-                <td>'.$Item->{$Tblcol3}.'</td>
-                <td class="numb">'.number_format($Item->{$Tblcol1},0, '.', ',').'</td>
-                <td class="numb">'.number_format($Item->{$Tblcol8},4, '.', ',').'</td></tr>';
-                }
-*/
-    }
+}
 
 
 }//CIERRE DE CLASE

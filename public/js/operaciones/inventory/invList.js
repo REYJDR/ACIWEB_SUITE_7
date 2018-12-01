@@ -47,8 +47,15 @@ function getListItem(){
           async:  false,
           data: {url:metodo} ,
           success: function(res){
-           console.log(res);
-            addRows(res) ;
+          
+            if(res == 0){
+                $('#listItem').html("There's no Items to List");
+            }else{
+                $('#listItem').html('');
+                addRows(res);
+            }
+            
+        
         }
        });
 
@@ -58,17 +65,18 @@ function getListItem(){
     
           printTbl.clear().draw();
    
-          //  for(var m=0;m<items.length;m++){
-                for(var m=0;m<2;m++){
+           for(var m=0;m<items.length;m++){
+               
                     
                 data = JSON.parse(items[m]);
-                //console.log(data);
+                console.log(data);
                 printTbl.row.add( [
                     data.Codigo,
                     data.Descripcion,
                     data.Unidad,
                     data.Stock,
-                    'test'
+                    data.Costo_Uni
+
                 ] ).draw( false );
 
 
