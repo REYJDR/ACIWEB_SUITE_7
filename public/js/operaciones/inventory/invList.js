@@ -38,36 +38,45 @@ function getListItem(){
     
     MSG_ADVICE('Searching, please wait...',0);
               
-    var URL = $('#URL').val();
-    var metodo= "ges_inventario/getListItems";
-    var link= URL+"index.php";
-   
 
-      $.ajax({
-          type: "GET",
-          url: link,
-          dataType: 'json',
-         // async:  false,
-          data: {url:metodo} ,
-          success: function(res){
-          
-            if(res == 0){
-                MSG_ERROR_RELEASE();
-        
-                MSG_ERROR("There's no Items to List",0);
-                $('#listItem').html("There's no Items to List");
-            }else{
-              
-                addRows(res);
+    function getItems(){
+
+        var URL = $('#URL').val();
+        var metodo= "ges_inventario/getListItems";
+        var link= URL+"index.php";
+       
+    
+         return $.ajax({
+              type: "GET",
+              url: link,
+              dataType: 'json',
+             // async:  false,
+              data: {url:metodo} ,
+              success: function(res){
+                
             }
-            
-        
+           });
+
+    }
+    $.when(getItems()).done(function(res){ 
+
+        if(res == 0){
+            MSG_ERROR_RELEASE();
+            MSG_ERROR("There's no Items to List",0);
+            $('#listItem').html("There's no Items to List");
+        }else{
+            MSG_ERROR_RELEASE();
+            MSG_ADVICE("Loading items...",0);
+            addRows(res);
         }
-       });
+
+    });
+
+
+    
 
        function addRows(items) {
-          MSG_ERROR_RELEASE();
-          MSG_ADVICE("Loading items...",0);
+         
         
           printTbl = $('#productos').DataTable();
     
