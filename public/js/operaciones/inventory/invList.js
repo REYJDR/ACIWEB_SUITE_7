@@ -48,6 +48,7 @@ function getListItem(){
           success: function(res){
 
         $('#listItem').html(''); 
+        
        // $('#listItem').append(res);
 
       /*  console.log(res);
