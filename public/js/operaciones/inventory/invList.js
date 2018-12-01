@@ -80,7 +80,7 @@ function getListItem(){
         printTbl = $('#productos').DataTable();
         printTbl.clear().draw();
 
-        data = JSON.parse(items['data']).data;
+        data = items.data;
 
         printTbl.rowS.add( [
             data
