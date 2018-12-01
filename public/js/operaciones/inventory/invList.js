@@ -80,11 +80,18 @@ function getListItem(){
         printTbl = $('#productos').DataTable();
         printTbl.clear().draw();
 
-        for(var m=0;m<items.length;m++){
+        data = JSON.parse(items);
+
+        printTbl.rowS.add( [
+            data
+
+        ] ); 
+
+   /*     for(var m=0;m<items.length;m++){
                             
-            data = JSON.parse(items[m]);
+           data = JSON.parse(items[m]);
         
-          /*  printTbl.row.add( [
+           printTbl.row.add( [
                 data.Codigo,
                 data.Descripcion,
                 data.Unidad,
@@ -93,9 +100,6 @@ function getListItem(){
 
             ] ); */
 
-            printTbl.rows.add( [
-                data
-            ] );
 
         } 
 
