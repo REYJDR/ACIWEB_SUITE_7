@@ -67,7 +67,7 @@ function getListItem(){
 
        function addRows(items) {
           MSG_ERROR_RELEASE();
-          MSG_ADVICE("Filling table...",0);
+          MSG_ADVICE("Loading items...",0);
         
           printTbl = $('#productos').DataTable();
     
