@@ -54,12 +54,13 @@ function getListItem(){
 
        function addRows(items) {
         
-          printTbl = $('#productos').DataTable();
+          printTbl = $('#productos').dataTable();
     
           printTbl.clear().draw();
    
-            for(var m=0;m<items.length;m++){
-
+          //  for(var m=0;m<items.length;m++){
+                for(var m=0;m<2;m++){
+                    
                 data = JSON.parse(items[m]);
                 //console.log(data);
                 printTbl.row.add( [
