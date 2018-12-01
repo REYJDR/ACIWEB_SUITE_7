@@ -43,12 +43,12 @@ function getListItem(){
       $.ajax({
           type: "GET",
           url: link,
-          dataType: 'json',
+         // dataType: 'json',
           data: {url:metodo} ,
           success: function(res){
 
         $('#listItem').html(''); 
-         $('#listItem').append(res);
+       // $('#listItem').append(res);
 
       /*  console.log(res);
 

@@ -1391,13 +1391,13 @@ public function getListItems(){
     $Item = json_decode($datos);
 
 
-   echo	'<tr>
-            <td><a href="'.URL.'index.php?url=ges_inventario/inv_info/'.$Item->{$Tblcol1}.'" >'.$Item->{$Tblcol1}.'</a></td>
-            <td>'.$Item->{$Tblcol2}.'</td>
-            <td>'.$Item->{$Tblcol3}.'</td>
-            <td class="numb">'.number_format($Item->{$Tblcol1},0, '.', ',').'</td>
-            <td class="numb">'.number_format($Item->{$Tblcol8},4, '.', ',').'</td></tr>';
-            }
+    echo	'<tr>
+                <td><a href="'.URL.'index.php?url=ges_inventario/inv_info/'.$Item->{$Tblcol1}.'" >'.$Item->{$Tblcol1}.'</a></td>
+                <td>'.$Item->{$Tblcol2}.'</td>
+                <td>'.$Item->{$Tblcol3}.'</td>
+                <td class="numb">'.number_format($Item->{$Tblcol1},0, '.', ',').'</td>
+                <td class="numb">'.number_format($Item->{$Tblcol8},4, '.', ',').'</td></tr>';
+                }
 
     }
 
