@@ -48,26 +48,38 @@ function getListItem(){
           success: function(res){
 
 
+        }
+       });
 
-         printTbl = $('#productos').DataTable();
+       function addRows(items) {
+        
+        printTbl = $('#productos').DataTable();
         
          
-          $('#productos').DataTable().draw();
-          table.clear().draw();
-   
-            for(var m=0;m<res.length;m++){
-            
+          $('#productos').DataTable();
 
+          printTbl.clear().draw();
+   
+            for(var m=0;m<items.length;m++){
+            
                 printTbl.row.add( [
-                    res[m]
+                    items[m].Codigo,
+                    items[m].Descripcion,
+                    items[m].Unidad,
+                    items[m].Stockk,
+                    '',
+                    
+
+
+
+
                 ] ).draw( false );
 
 
 
             } 
-        }
-       });
 
+       }
 
 
 }
