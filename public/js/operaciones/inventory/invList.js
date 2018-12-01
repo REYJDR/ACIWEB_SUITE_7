@@ -62,9 +62,13 @@ function getListItem(){
 
                 data = JSON.parse(items[m]);
                 //console.log(data);
-                console.log( printTbl.row.add( [
-                    data
-                ] ).draw( false ));
+                printTbl.row.add( [
+                    data.Codigo,
+                    data.descripcion,
+                    data.Unidad,
+                    data.Stock,
+                    'test'
+                ] ).draw( false );
 
 
 
