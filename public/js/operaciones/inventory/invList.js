@@ -82,7 +82,9 @@ function getListItem(){
 
         data = items.data;
 
-        printTbl.rowS.add( [
+        console.log(data);
+
+        printTbl.rows.add( [
             data
 
         ] ); 
