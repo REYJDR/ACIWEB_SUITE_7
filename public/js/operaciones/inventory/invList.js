@@ -98,10 +98,10 @@ function getListItem(){
                 data.Stock,
                 data.Costo_Uni
 
-            ] ); */
+            ] ); 
 
 
-        } 
+        } */
 
         printTbl.draw();
         MSG_ERROR_RELEASE();
