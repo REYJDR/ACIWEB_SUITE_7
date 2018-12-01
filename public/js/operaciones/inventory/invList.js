@@ -54,7 +54,7 @@ function getListItem(){
 
       printTbl = $('#productos').DataTable();
         
-      printTbl.rows.add(res['data'][0]);
+      printTbl.rows.add(res['data']);
       printTbl.draw();
          
       //   $('#productos').DataTable().draw();

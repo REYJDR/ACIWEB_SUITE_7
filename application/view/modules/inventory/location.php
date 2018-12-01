@@ -53,7 +53,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					</fieldset >
 					</div>			
 					<!--ITEMS-->
-					<div  class="col-lg-8" id="item"></div>
+					<div  class="col-lg-8" id="it	em"></div>
 					
 				
 				</div>
