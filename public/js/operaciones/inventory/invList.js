@@ -34,6 +34,8 @@ table = $("#productos").DataTable({
 function getListItem(){
     
     //$('#listItem').html('Searching, please wait...');
+    MSG_ERROR_RELEASE();
+    
     MSG_ADVICE('Searching, please wait...',0);
               
     var URL = $('#URL').val();
@@ -50,6 +52,8 @@ function getListItem(){
           success: function(res){
           
             if(res == 0){
+                MSG_ERROR_RELEASE();
+        
                 MSG_ERROR("There's no Items to List",0);
                 $('#listItem').html("There's no Items to List");
             }else{
@@ -62,7 +66,7 @@ function getListItem(){
        });
 
        function addRows(items) {
-         
+          MSG_ERROR_RELEASE();
           MSG_ADVICE("Filling table...",0);
         
           printTbl = $('#productos').DataTable();
@@ -86,7 +90,7 @@ function getListItem(){
                 
 
             } 
-
+            MSG_ERROR_RELEASE();
             MSG_CORRECT("Done",0);
 
        }
