@@ -172,17 +172,18 @@ public function getStockInfo($id){
     foreach ($res as $datos) {	
         $datos = json_decode($datos);
         
-   $table .= '<tr><th>ID</th><td>'.$datos->{'id'}.'</td></tr>
-            <tr><th>Name</th><td>'.$datos->{'name'}.'</td></tr>
-            <tr><th>Description</th><td>'.$datos->{'description'}.'</td></tr>
-            <tr><th>Address</th><td>'.$datos->{'address'}.'</td></tr>
-            <tr><th>Capacity</th><td>'.$datos->{'capacity'}.'</td></tr>';  
-    }
+   $table .=    '<tr><th>ID</th><td>'.$datos->{'id'}.'</td></tr>
+                <tr><th>Name</th><td>'.$datos->{'name'}.'</td></tr>
+                <tr><th>Description</th><td>'.$datos->{'description'}.'</td></tr>
+                <tr><th>Address</th><td>'.$datos->{'address'}.'</td></tr>
+                <tr><th>Capacity</th><td>'.$datos->{'capacity'}.'</td></tr>';  
+        }
 
+    $id = '"'.$datos->{'id'}.'"';
     $table .= '</tbody>
                 </table>
-            <div class="col-lg-6"><i style="color:red;" class="fas fa-trash-alt" >&nbsp</i><span><a href="#">Modificar</a></span></div> 
-            <div class="col-lg-6"><i style="color:blue;" class="fas fas fa-edit" >&nbsp</i><span><a href="#">Eliminar</a></span></div> 
+            <div class="col-lg-6"><i style="color:red;"  onclick="removeStock('.$id.')"  class="fas fa-trash-alt" >&nbsp</i><span><a href="#">Eliminar</a></span></div> 
+           <!-- <div class="col-lg-6"><i style="color:blue;" onclick=""  class="fas fas fa-edit"  >&nbsp</i><span><a href="#">Modificar</a></span></div> -->
             </fieldset>';
 
     
