@@ -65,7 +65,7 @@ function getListItem(){
                 //console.log(data);
                 printTbl.row.add( [
                     data.Codigo,
-                    data.descripcion,
+                    data.Descripcion,
                     data.Unidad,
                     data.Stock,
                     'test'
