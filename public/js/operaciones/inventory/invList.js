@@ -53,7 +53,7 @@ function getListItem(){
                 MSG_ERROR("There's no Items to List",0);
                 $('#listItem').html("There's no Items to List");
             }else{
-                MSG_ADVICE("Filling table...",0);
+              
                 addRows(res);
             }
             
@@ -62,6 +62,8 @@ function getListItem(){
        });
 
        function addRows(items) {
+         
+          MSG_ADVICE("Filling table...",0);
         
           printTbl = $('#productos').DataTable();
     
@@ -71,7 +73,7 @@ function getListItem(){
                
                     
                 data = JSON.parse(items[m]);
-                console.log(data);
+            
                 printTbl.row.add( [
                     data.Codigo,
                     data.Descripcion,
