@@ -75,34 +75,35 @@ function getListItem(){
 
     
 
-       function addRows(items) {
-         
+    function addRows(items) {
         
-          printTbl = $('#productos').DataTable();
-    
-          printTbl.clear().draw();
-   
-           for(var m=0;m<items.length;m++){
-               
-                    
-                data = JSON.parse(items[m]);
-            
-                printTbl.row.add( [
-                    data.Codigo,
-                    data.Descripcion,
-                    data.Unidad,
-                    data.Stock,
-                    data.Costo_Uni
+        printTbl = $('#productos').DataTable();
+        printTbl.clear().draw();
 
-                ] ).draw( false );
+        for(var m=0;m<items.length;m++){
+                            
+            data = JSON.parse(items[m]);
+        
+          /*  printTbl.row.add( [
+                data.Codigo,
+                data.Descripcion,
+                data.Unidad,
+                data.Stock,
+                data.Costo_Uni
 
-                
+            ] ); */
 
-            } 
-            MSG_ERROR_RELEASE();
-            MSG_CORRECT("Done",0);
+            printTbl.rows.add( [
+                data
+            ] );
 
-       }
+        } 
+
+        printTbl.draw();
+        MSG_ERROR_RELEASE();
+        MSG_CORRECT("Done",0);
+
+    }
 
 
 }
