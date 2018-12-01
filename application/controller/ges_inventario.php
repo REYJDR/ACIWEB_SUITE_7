@@ -1383,9 +1383,9 @@ public function getListItems(){
 
    $Item = $this->model->queryColumns('Products_Exp', $columns,$clause);
 
-   // echo  json_encode($Items);
+   echo  json_encode($Items);
 
-  foreach ($Item as $datos) {
+  /*foreach ($Item as $datos) {
     
 
     $Item = json_decode($datos);
@@ -1398,7 +1398,7 @@ public function getListItems(){
                 <td class="numb">'.number_format($Item->{$Tblcol1},0, '.', ',').'</td>
                 <td class="numb">'.number_format($Item->{$Tblcol8},4, '.', ',').'</td></tr>';
                 }
-
+*/
     }
 
 

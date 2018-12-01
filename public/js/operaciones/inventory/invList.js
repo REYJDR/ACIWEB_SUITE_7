@@ -43,29 +43,19 @@ function getListItem(){
       $.ajax({
           type: "GET",
           url: link,
-         // dataType: 'json',
+          dataType: 'json',
           data: {url:metodo} ,
           success: function(res){
 
 
 
-        $('#listItem').html(res); 
-
-        $('#productos').DataTable().clear();
-
-       // $('#listItem').append(res);
-
-      /*  console.log(res);
-
-      printTbl = $('#productos').DataTable();
+         printTbl = $('#productos').DataTable();
         
-      printTbl.rows.add(res['data']);
-      printTbl.draw();
          
-      //   $('#productos').DataTable().draw();
-        //  table.clear().draw();
+          $('#productos').DataTable().draw();
+          table.clear().draw();
    
-         /*   for(var m=0;m<res.length;m++){
+            for(var m=0;m<res.length;m++){
             
 
                 printTbl.row.add( [
@@ -74,7 +64,7 @@ function getListItem(){
 
 
 
-            } */
+            } 
         }
        });
 
