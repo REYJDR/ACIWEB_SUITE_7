@@ -80,7 +80,7 @@ function getListItem(){
         printTbl = $('#productos').DataTable();
         printTbl.clear().draw();
 
-        data = items.data;
+        data = items;
 
         console.log(data);
 
