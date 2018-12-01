@@ -85,7 +85,7 @@ function MSG_ERROR(MSG,VAL){
     $('#ERROR').append(MSG+'<br>');
 
   }else{
-
+    MSG_ERROR_RELEASE();
     $('#ERROR').html(MSG+'<br>');
   }
 
@@ -105,7 +105,7 @@ function MSG_CORRECT(MSG,VAL){
     $('#ERROR').append(MSG+'<br>');
 
   }else{
-
+    MSG_ERROR_RELEASE();
     $('#ERROR').html(MSG+'<br>');
   }
 
@@ -118,7 +118,7 @@ function MSG_CORRECT(MSG,VAL){
 
 //FUNCION DE ADVERTENCIA
 function MSG_ADVICE(MSG){
-  
+    MSG_ERROR_RELEASE();
     $('#ERROR').show();
     $('#ERROR').addClass( "alert alert-warning alert-dismissible" ); 
   
