@@ -1378,26 +1378,25 @@ public function getListItems(){
                 '`QtyOnHand` as `'.$Tblcol4.'`',
                 '`Price1` as `'.$Tblcol8.'`');
 
-    $Items['data'] = $this->model->queryColumns('Products_Exp', $columns,'WHERE    Products_Exp.id_compania="'.$this->model->id_compania.'" 
+    $Items = $this->model->queryColumns('Products_Exp', $columns,'WHERE    Products_Exp.id_compania="'.$this->model->id_compania.'" 
                                                                       GROUP BY Products_Exp.ProductID');
 
-    echo  json_encode($Items);
+   // echo  json_encode($Items);
 
-/*  foreach ($Item as $datos) {
+  foreach ($Item as $datos) {
 
     $Item = json_decode($datos);
 
 
    echo	'<tr>
-            <td><a href="'.URL.'index.php?url=ges_inventario/inv_info/'.$Item->{'ProductID'}.'" >'.$Item->{'ProductID'}.'</a></td>
-            <td>'.$Item->{'Description'}.'</td>
-            <td>'.$Item->{'UnitMeasure'}.'</td>
-            <td class="numb">'.number_format($Item->{'QtyOnHand'},0, '.', ',').'</td>
-            <td class="numb">'.number_format($Item->{'LastUnitCost'},4, '.', ',').'</td></tr>';
+            <td><a href="'.URL.'index.php?url=ges_inventario/inv_info/'.$Item->{$Tblcol1}.'" >'.$Item->{$Tblcol1}.'</a></td>
+            <td>'.$Item->{$Tblcol2}.'</td>
+            <td>'.$Item->{$Tblcol3}.'</td>
+            <td class="numb">'.number_format($Item->{$Tblcol1},0, '.', ',').'</td>
+            <td class="numb">'.number_format($Item->{$Tblcol8},4, '.', ',').'</td></tr>';
             }
 
-     
-*/
+    
 
     }
 
