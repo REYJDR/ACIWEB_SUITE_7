@@ -11,11 +11,11 @@ table = $("#productos").DataTable({
         [10, 25,50,-1], [10, 25, 50,"All"]
     ],
     columns: [
-        { "data": "param1"},
-        { "data": "param2"},
-        { "data": "param3"},
-        { "data": "param4"},
-        { "data": "param5"}
+        { "data": "Codigo"},
+        { "data": "Descripcion"},
+        { "data": "Unidad"},
+        { "data": "Stock"},
+        { "data": "Costo_Uni"}
 ]       
     });
    
