@@ -90,9 +90,9 @@ function getListItem(){
       
         printTbl.clear();
 
-        console.log('data: '+ data.data);
+       // console.log('data: '+ data.data);
 
-        printTbl.rows.add( JSON.parse(data.data)).draw(); 
+        printTbl.rows.add(data).draw(); 
 
 
         MSG_ERROR_RELEASE();
