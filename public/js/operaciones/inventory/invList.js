@@ -14,7 +14,8 @@ table = $("#productos").DataTable({
         { "data": "param1"},
         { "data": "param2"},
         { "data": "param3"},
-        { "data": "param4"}
+        { "data": "param4"},
+        { "data": "param5"}
 ]       
     });
    
