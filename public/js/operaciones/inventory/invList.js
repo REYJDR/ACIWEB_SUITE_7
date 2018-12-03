@@ -13,12 +13,11 @@ table = $("#productos").DataTable({
     });
    
     $("#productos").dataTable().yadcf(
-    [{column_number : 0,
-     column_data_type: "html",
-     html_data_type: "text" ,
-     select_type: "select2",
-     select_type_options: { width: "100%" }
-    
+    [
+    {column_number : 0,
+        select_type: "select2",
+        select_type_options: { width: "100%" }
+       
     },
     {column_number : 1,
      select_type: "select2",
@@ -30,6 +29,14 @@ table = $("#productos").DataTable({
     );
     
 });
+
+/*{column_number : 0,
+     column_data_type: "html",
+     html_data_type: "text" ,
+     select_type: "select2",
+     select_type_options: { width: "100%" }
+    
+    },*/
 
 function getListItem(){
     
@@ -80,29 +87,13 @@ function getListItem(){
         data = items;   
         
         printTbl = $('#productos').DataTable();
+      
         printTbl.clear();
-
-       // data = JSON.parse(items);
 
         console.log('data: '+ data.data);
 
         printTbl.rows.add( data.data ).draw(); 
 
-       /* for(var m=0;m<items.length;m++){
-                            
-           data = JSON.parse(items[m]);
-        
-           printTbl.row.add( [
-                data.Codigo,
-                data.Descripcion,
-                data.Unidad,
-                data.Stock,
-                data.Costo_Uni
-
-            ] ); 
-
-
-        } */
 
         MSG_ERROR_RELEASE();
         MSG_CORRECT("Done",0);
