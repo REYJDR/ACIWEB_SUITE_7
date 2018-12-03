@@ -86,7 +86,7 @@ function getListItem(){
 
         console.log('data: '+ data);
 
-        printTbl.rows.add( data ).draw(); 
+        printTbl.rows.add( data ); 
 
        /* for(var m=0;m<items.length;m++){
                             
