@@ -1383,7 +1383,7 @@ public function getListItems(){
    if($Item != '' ){
 
  //   echo json_encode(['data' => $Item]);
-
+var_dump($Item);
     echo $Item;
     
 
