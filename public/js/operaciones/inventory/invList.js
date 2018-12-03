@@ -56,7 +56,7 @@ function getListItem(){
          return $.ajax({
               type: "GET",
               url: link,
-              dataType: 'json',
+             // dataType: 'json',
              // async:  false,
               data: {url:metodo} ,
               success: function(res){
