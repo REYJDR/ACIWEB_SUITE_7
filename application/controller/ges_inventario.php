@@ -1369,16 +1369,16 @@ public function getListItems(){
     require_once APP.'view/modules/inventory/lang/'.$this->model->lang.'_ref.php';
 
     $columns =  array( 
-                "`ProductID` as `".$Tblcol1."`",
-                "`REPLACE(Description,''','')`  as `".$Tblcol2."`",
-                "`UnitMeasure` as `".$Tblcol3."`",
-                "`QtyOnHand` as `".$Tblcol4."`",
-                "`Price1` as `".$Tblcol8."`",);
+                '`ProductID` as `'.$Tblcol1.'`',
+                '`Description` as `'.$Tblcol2.'`',
+                '`UnitMeasure` as `'.$Tblcol3.'`',
+                '`QtyOnHand` as `'.$Tblcol4.'`',
+                '`Price1` as `'.$Tblcol8.'`');
 
     $clause = 'WHERE Products_Exp.id_compania="'.$this->model->id_compania.'" 
                 GROUP BY Products_Exp.ProductID';
 
-   $Items['DATA'] = $Item = $this->model->queryColumns('Products_Exp', $columns,$clause);
+   $Items['DATA'] = $Item= $this->model->queryColumns('Products_Exp', $columns,$clause);
 
    if($Item != '' ){
 

@@ -84,9 +84,9 @@ function getListItem(){
 
         console.log('data: '+ data);
 
-        printTbl.rows.add( data  ); 
+    /*    printTbl.rows.add( data  ); 
 
-   /*     for(var m=0;m<items.length;m++){
+        for(var m=0;m<items.length;m++){
                             
            data = JSON.parse(items[m]);
         
