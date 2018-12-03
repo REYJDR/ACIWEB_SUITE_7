@@ -1384,15 +1384,12 @@ public function getListItems(){
 
    // echo json_encode(['data' => $Item]);
 
-echo '{ "data" : [ 
-
-    "Codigo":"1",
+echo '{ "data" : [ {
+     "Codigo":"1",
     "Descripcion" : "2",
     "Unidad":"3",
     "Stock":"4",
-    "Costo_Uni":"5"
-
-]}';
+    "Costo_Uni":"5" } ]}';
 
    }else{
 
