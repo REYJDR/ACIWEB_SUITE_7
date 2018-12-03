@@ -80,13 +80,13 @@ function getListItem(){
         data = items;   
         
         printTbl = $('#productos').DataTable();
-        printTbl.clear().draw();
+        printTbl.clear();
 
        // data = JSON.parse(items);
 
         console.log('data: '+ data);
 
-        printTbl.rows.add( data.data  ); 
+        printTbl.rows.add( data ); 
 
        /* for(var m=0;m<items.length;m++){
                             
