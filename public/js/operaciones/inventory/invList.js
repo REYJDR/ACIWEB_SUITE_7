@@ -90,7 +90,7 @@ function getListItem(){
       
         printTbl.clear();
 
-       // console.log('data: '+ data.data);
+        console.log('data: '+ data.data);
 
         printTbl.rows.add(data.data).draw(); 
 
