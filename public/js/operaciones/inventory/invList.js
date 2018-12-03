@@ -76,15 +76,17 @@ function getListItem(){
     
 
     function addRows(items) {
+
+        data = items;
         
         printTbl = $('#productos').DataTable();
         printTbl.clear().draw();
 
-        data = JSON.parse(items);
+       // data = JSON.parse(items);
 
         console.log('data: '+ data);
 
-    /*    printTbl.rows.add( data  ); 
+        printTbl.rows.add( data  ); 
 
         for(var m=0;m<items.length;m++){
                             
@@ -100,7 +102,7 @@ function getListItem(){
             ] ); 
 
 
-        } */
+        } 
 
         printTbl.draw();
         MSG_ERROR_RELEASE();
