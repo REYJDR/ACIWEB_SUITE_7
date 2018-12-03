@@ -9,10 +9,16 @@ $('#ERROR').hide();
 table = $("#productos").DataTable({
     aLengthMenu: [
         [10, 25,50,-1], [10, 25, 50,"All"]
-    ]
+    ],
+    columns: [
+        { "data": "param1"},
+        { "data": "param2"},
+        { "data": "param3"},
+        { "data": "param4"}
+]       
     });
    
-   /* $("#productos").dataTable().yadcf(
+    $("#productos").dataTable().yadcf(
     [{column_number : 0,
      column_data_type: "html",
      html_data_type: "text" ,
@@ -27,7 +33,7 @@ table = $("#productos").DataTable({
     }],
     {cumulative_filtering: true, 
     filter_reset_button_text: false}
-    );*/
+    );
     
 });
 
