@@ -104,7 +104,7 @@ function getListItem(){
 
         } */
 
-      
+        printTbl.draw();
         MSG_ERROR_RELEASE();
         MSG_CORRECT("Done",0);
 
