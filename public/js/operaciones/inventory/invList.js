@@ -56,7 +56,7 @@ function getListItem(){
          return $.ajax({
               type: "GET",
               url: link,
-             // dataType: 'json',
+              dataType: 'json',
              // async:  false,
               data: {url:metodo} ,
               success: function(res){
@@ -92,7 +92,7 @@ function getListItem(){
 
        // console.log('data: '+ data.data);
 
-        printTbl.rows.add(JSON.parse(data).data).draw(); 
+        printTbl.row.add(data.data).draw(); 
 
 
         MSG_ERROR_RELEASE();
