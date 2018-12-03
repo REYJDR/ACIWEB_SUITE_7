@@ -86,7 +86,7 @@ function getListItem(){
 
         console.log('data: '+ data);
 
-        printTbl.rows.add( data ); 
+        printTbl.rows.add( data ).draw(); 
 
        /* for(var m=0;m<items.length;m++){
                             
@@ -104,7 +104,7 @@ function getListItem(){
 
         } */
 
-        printTbl.draw();
+      
         MSG_ERROR_RELEASE();
         MSG_CORRECT("Done",0);
 
