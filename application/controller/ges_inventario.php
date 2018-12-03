@@ -1384,7 +1384,7 @@ public function getListItems(){
 
  //   echo json_encode(['data' => $Item]);
 
-    echo json_encode($Item);
+    echo $Item;
     
 
    }else{
