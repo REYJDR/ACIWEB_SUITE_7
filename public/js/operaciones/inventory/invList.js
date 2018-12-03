@@ -92,7 +92,7 @@ function getListItem(){
 
        // console.log('data: '+ data.data);
 
-        printTbl.row.add(data.data).draw(); 
+        printTbl.row.add(data).draw(); 
 
 
         MSG_ERROR_RELEASE();
