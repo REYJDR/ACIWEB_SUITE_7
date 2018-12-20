@@ -267,7 +267,7 @@ if ($amnt_view_ck==0){
                                 <!--existencias-->
                                 <div class="form_row">
                                       <label>Existencia</label>
-                                      <input type="number" min='0' class="form_input" id="qtyonhand"  name="qtyonhand" onlyread/>
+                                      <input type="number" min='0' class="form_input" id="qtyonhand"  name="qtyonhand" readonly/>
                                 </div>
                                 <!--existencias-->
 
