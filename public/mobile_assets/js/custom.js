@@ -7,6 +7,7 @@ var taxable_val = '';
 var stock_val = '';
 var Price = '';
 var id_price_field = 'unitprice';
+var id_qtyonhand_field = 'qtyonhand';
 
 //variable globales
 
@@ -139,6 +140,10 @@ $.ajax({
        document.getElementById(id_desc_field).value  = json.Description;
        document.getElementById(id_unit_field).value  = json.UnitMeasure;  
        document.getElementById(id_price_field).value  = json.Price1;
+
+
+       document.getElementById(id_qtyonhand_field).value  = json.QtyOnHand;
+
        stock_val = json.QtyOnHand;
 
 
@@ -177,6 +182,8 @@ setTimeout(function(){
          taxable_val = '';
          document.getElementById(id_price_field).value  = '';
          stock_val = '';
+
+       document.getElementById(id_qtyonhand_field).value  = '';
   }
 
 },500);
