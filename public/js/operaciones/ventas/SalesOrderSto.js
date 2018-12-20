@@ -150,7 +150,7 @@ $.ajax({
        json = JSON.parse(res);
        document.getElementById(id_desc_field).innerHTML  = json.Description;
        document.getElementById(id_unit_field).value  = json.UnitMeasure;
-       document.getElementById(id_stock_field).value  = json.QtyOnHand;
+       document.getElementById(id_stock_field).innerHTML  = json.QtyOnHand;
        document.getElementById(id_price_field).innerHTML  = json.Price1;
 
        if(json.TaxType == 1){
