@@ -239,6 +239,8 @@ echo '<input type="hidden" id="STOCK_VIEW" value="1" />';
 
 						<th <?php echo $display; ?> width="5%"  class="text-center"><?php echo $TblLote?></th>
 						<th <?php echo $display; ?> width="5%"  class="text-center"><?php echo $TblLoc;?></th>
+						<th  width="5%"  class="text-center"><?php echo $TblQtyOnHand;?></th>
+						
 						<th  width="5%"  class="text-center"><?php echo $TblQty;?></th>
 
 						<th width="5%"  class="text-center"><?php echo $TblUnitP;?></th>

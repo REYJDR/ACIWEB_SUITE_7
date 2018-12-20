@@ -98,7 +98,7 @@ while(i <= cantLineas){
       '<td width="3%" style="'+displayStock+'"  class="rowtable_req numb" id="Tblote'+i+'"  ></td>'+
       '<input type="hidden"  id="taxable'+i+'" />'+
       '<td width="3%" style="'+displayStock+'"  class="rowtable_req numb" id="Tbloc'+i+'"   ></td>'+
-      '<input type="hidden"  id="stock'+i+'" />'+
+      '<td width="5%"  class="rowtable_req  numb"  id="stock'+i+'"></td>'+      
       '<td width="5%"  class="rowtable_req  numb" onfocusout="checkMax('+i+');" contenteditable id="qty'+i+'"></td>'+
       '<td width="5%"  style="'+bg_color+'"  class="rowtable_req  numb" '+editable+' onfocusout="calculate('+i+');" id="unitprice'+i+'" ></td>'+
       '<td width="5%"  style="'+display+'" class="rowtable_req  numb" id="total'+i+'" ></td></tr>' ;
@@ -455,11 +455,11 @@ for(var i=1; i<theTbl.rows.length ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TA
 
             switch (j){
 
-                   case 7:
+                   case 8:
                    
                     if(document.getElementById(taxableID).value=='SI'){
 
-                    itbms_sum = ( Number(theTbl.rows[i].cells[j].innerHTML) * Number(theTbl.rows[i].cells[5].innerHTML) ) * Number(tax_value);
+                    itbms_sum = ( Number(theTbl.rows[i].cells[j].innerHTML) * Number(theTbl.rows[i].cells[6].innerHTML) ) * Number(tax_value);
                     itbms.push(itbms_sum);
 
                     }
@@ -790,9 +790,9 @@ while (i <= cantLineas){
                             nota        = theTbl.rows[i].cells[2].innerHTML;
                             UnitMeasure = document.getElementById(unitid).value;
 
-                            qty       = theTbl.rows[i].cells[5].innerHTML;
-                            UnitPrice = theTbl.rows[i].cells[6].innerHTML;
-                            total     = theTbl.rows[i].cells[7].innerHTML;
+                            qty       = theTbl.rows[i].cells[6].innerHTML;
+                            UnitPrice = theTbl.rows[i].cells[7].innerHTML;
+                            total     = theTbl.rows[i].cells[8].innerHTML;
                            
                             if (STOCK_VIEW == 1){
                               lote  = document.getElementById(lote).value;

@@ -92,7 +92,7 @@ while(i <= cantLineas){
       '<td width="3%"  class="rowtable_req numb" onkeypress="MSG_ERROR_RELEASE();" onkeyup="checkTblChar(this.id); checkTblnum(this.id);" id="chico'+i+'" contenteditable ></td>'+
       '<input type="hidden"  id="taxable'+i+'" />'+
       '<td width="3%"  class="rowtable_req numb" onkeypress="MSG_ERROR_RELEASE();" onkeyup="checkTblChar(this.id); checkTblnum(this.id);" id="grande'+i+'" contenteditable ></td>'+
-      '<input type="hidden"  id="stock'+i+'" />'+
+      '<td width="5%"  class="rowtable_req  numb"  id="stock'+i+'"></td>'+      
       '<td width="5%"  class="rowtable_req  numb"  onfocusout="recalcular('+i+');" contenteditable id="qty'+i+'"></td>'+
       '<td width="5%"  style="'+bg_color+'"  class="rowtable_req  numb" '+editable+' onfocusout="calculate('+i+');" id="unitprice'+i+'" ></td>'+
       '<td width="5%"  style="'+display+'" class="rowtable_req  numb" id="total'+i+'" ></td></tr>' ;
@@ -357,11 +357,11 @@ for(var i=1; i<theTbl.rows.length ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TA
 
             switch (j){
 
-                   case 7:
+                   case 8:
                    
                     if(document.getElementById(taxableID).value=='SI'){
 
-                    itbms_sum = ( Number(theTbl.rows[i].cells[j].innerHTML) * Number(theTbl.rows[i].cells[5].innerHTML) ) * Number(tax_value);
+                    itbms_sum = ( Number(theTbl.rows[i].cells[j].innerHTML) * Number(theTbl.rows[i].cells[6].innerHTML) ) * Number(tax_value);
                     itbms.push(itbms_sum);
 
                     }

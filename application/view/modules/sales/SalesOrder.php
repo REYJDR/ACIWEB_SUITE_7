@@ -227,6 +227,7 @@ if ($pice_mod_ck == 1) {
 					<th width="15%" class="text-center"><?php echo $TblNote;?></th>
 					<th width="5%"  class="text-center"><?php echo $TblSmall?></th>
 					<th width="5%"  class="text-center"><?php echo $TblBig;?></th>
+					<th width="5%"  class="text-center"><?php echo $TblQtyOnHand;?></th>
 					<th width="5%" class="text-center"><?php echo $TblQty;?></th>
 					<th width="5%" class="text-center"><?php echo $TblUnitP;?></th>
 					<th width="5%" style="<?php echo $display;?>" class="text-center"><?php echo $TblTotal;?></th>

@@ -31,7 +31,7 @@ $TblBig   = 'Grande';
 
 $TblLote = 'No. Lote';
 $TblLoc  = 'Ubicacion';
-
+$TblQtyOnHand = 'Existencias';
 $TblQty   = 'Cant.';
 $TblUnitP = 'Precio';
 $TblTotal = 'Total';
