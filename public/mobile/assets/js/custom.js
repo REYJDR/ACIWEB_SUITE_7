@@ -2,6 +2,8 @@
 var id_desc_field = 'desc';
 var id_unit_field = 'unit';
 var id_qty_field = 'qty';
+var id_qtyonhand_field = 'qtyonhand';
+
 var id_total_field = 'total';
 var taxable_val = '';
 var stock_val = '';
@@ -122,7 +124,9 @@ $.ajax({
 
        json = JSON.parse(res);
        document.getElementById(id_desc_field).value  = json.Description;
-       document.getElementById(id_unit_field).value  = json.UnitMeasure;       
+       document.getElementById(id_unit_field).value  = json.UnitMeasure;     
+       
+       document.getElementById(id_qtyonhand_field).value  = json.QtyOnHand;
        stock_val = json.QtyOnHand;
 
 
@@ -208,6 +212,8 @@ function addItem(){
   price_field = document.getElementById(id_price_field).value * qty_field;
   desc_field = document.getElementById(id_desc_field).value;
   unit_val = document.getElementById(id_unit_field).value;
+
+
 
   nota= document.getElementById('nota').value ;
   chico = document.getElementById('chico').value ;

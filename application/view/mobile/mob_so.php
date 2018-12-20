@@ -264,6 +264,14 @@ if ($amnt_view_ck==0){
                                 </div>
                                 <!--fin Grande-->
 
+                                <!--existencias-->
+                                <div class="form_row">
+                                      <label>Existencia</label>
+                                      <input type="number" min='0' class="form_input" id="qtyonhand"  name="qtyonhand" onlyread/>
+                                </div>
+                                <!--existencias-->
+
+
                                 <!--Cantidad-->
                                  <div class="form_row">
                                       <label>Cantidad</label>
