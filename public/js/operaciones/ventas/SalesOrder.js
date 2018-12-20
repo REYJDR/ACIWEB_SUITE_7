@@ -178,7 +178,7 @@ setTimeout(function(){
          recalcular(line);
 
          document.getElementById(id_qty_field).innerHTML  = '';
-
+         document.getElementById(id_stock_field).innerHTML = '';
          document.getElementById(id_total_field).innerHTML  = '';       
 
          document.getElementById(id_unit_field ).innerHTML = '';

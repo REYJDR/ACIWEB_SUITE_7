@@ -195,6 +195,8 @@ setTimeout(function(){
          document.getElementById(id_price_field).innerHTML  = '';
          document.getElementById(id_loc).innerHTML  = '';
          document.getElementById(id_lote).innerHTML  = '';
+         document.getElementById(id_stock_field).innerHTML = '';
+         
 
   }
  
