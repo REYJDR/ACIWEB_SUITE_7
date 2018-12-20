@@ -165,6 +165,8 @@ setTimeout(function(){
          taxable_val = '';
          document.getElementById(id_price_field).value  = '';
          stock_val = '';
+        document.getElementById(id_qtyonhand_field).value = '';
+       
   }
 
 },500);
