@@ -299,11 +299,11 @@ if ($amnt_view_ck==0){
                                     
                                     <table  class="responsive_table" id="ItemAdded" >
                                       <tr class="table_row" >
-                                      <td class="table_section_small" >Item ID</td>
-                                      <td class="table_section">Descripción</td>
+                                      <td class="table_section_small" >ID</td>
+                                      <td class="table_section">Desc.</td>
                                       <td class="table_section">Nota</td>
                                       <td class="table_section_qty" >Cant.</td>
-                                      <td class="table_section_qty" >Precio</td>
+                                      <td class="table_section_qty" >P.U.</td>
                                       <td class="table_section_qty dplynone" >Chico</td>
                                       <td class="table_section_qty dplynone" >Grande</td>
                                       <td class="table_section_qty dplynone" >Unidad</td>
