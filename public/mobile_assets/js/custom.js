@@ -232,7 +232,7 @@ if(CHK_VALIDATION == true){ CHK_VALIDATION = false;  return;  }
 
   IdItem = document.getElementById('selItem').value ;
   qty_field = document.getElementById(id_qty_field).value ;    
-  price_field = document.getElementById(id_price_field).value * qty_field;
+  price_field = document.getElementById(id_price_field).value;
   desc_field = document.getElementById(id_desc_field).value;
   unit_val = document.getElementById(id_unit_field).value;
 
