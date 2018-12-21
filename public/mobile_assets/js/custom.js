@@ -248,8 +248,10 @@ if(CHK_VALIDATION == true){ CHK_VALIDATION = false;  return;  }
                   '<td class="table_section_small" >'+IdItem+'</td>'+
                   '<td class="table_section">'+desc_field+'</td>'+
                   '<td class="table_section">'+nota+'</td>'+
-                  '<td class="table_section_qty" >'+qty_field+'</td>'+
-                  '<td class="table_section_qty" >'+price_field+'</td>'+
+                  '<td class="table_section_qty table_section_small" >'+qty_field+'</td>'+
+                  '<td class="table_section_qty table_section_small" >'+price_field+'</td>'+
+                  '<td class="table_section_qty table_section_small" >'+(price_field*qty_field)+'</td>'+
+                  
                   '<td class="table_section_qty dplynone" >'+chico+'</td>'+
                   '<td class="table_section_qty dplynone" >'+grande+'</td>'+
                   '<td class="table_section_qty dplynone" >'+unit_val+'</td>'+
@@ -634,7 +636,7 @@ function set_items(){
   
                               qty       = theTbl.rows[i].cells[3].innerHTML;
                               UnitPrice = Number(theTbl.rows[i].cells[4].innerHTML) / Number(theTbl.rows[i].cells[3].innerHTML);
-                              total     = Number(theTbl.rows[i].cells[4].innerHTML) ;
+                              total     = Number(theTbl.rows[i].cells[5].innerHTML) ;
   
                               chic  = theTbl.rows[i].cells[5].innerHTML;
                               gran  = theTbl.rows[i].cells[6].innerHTML;
