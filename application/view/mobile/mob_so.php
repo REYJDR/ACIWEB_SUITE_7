@@ -299,7 +299,7 @@ if ($amnt_view_ck==0){
                                     
                                     <table  class="responsive_table" id="ItemAdded" >
                                       <tr class="table_row" >
-                                      <td class="able_section_small" >ID</td>
+                                      <td class="table_section_small" >ID</td>
                                       <td class="table_section">Desc.</td>
                                       <td class="table_section">Nota</td>
                                       
