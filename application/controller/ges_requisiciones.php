@@ -1410,7 +1410,7 @@ echo '<div style="float:right;" class="col-md-2">
 </div>';
 }
 
-if($this->model->rol_compras=='1' && $status_gen !='FINALIZADO'){ 
+if($this->can_close=='1' && $status_gen !='FINALIZADO'){ 
 
 echo '<div style="float:right;" class="col-md-2">
         <a title="Cerrar Rerquisición" data-toggle="modal" data-target="#CerrarModal" href="javascript:void(0)"  class="btn-bar">

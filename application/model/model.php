@@ -19,6 +19,7 @@ class Model
      public  $sage_connected = null;
      public  $role_compras = null;
      public  $role_campo = null;
+     public  $can_close = null;
      public  $layout_lines= null;
       
 
@@ -213,8 +214,8 @@ function Query_value($table,$columns,$clause){
 
 
 
-$res= $this->connect($query);
-$columns= mysqli_fetch_fields($res);
+ $res= $this->connect($query);
+ $columns= mysqli_fetch_fields($res);
 
 
 
@@ -231,8 +232,8 @@ $columns= mysqli_fetch_fields($res);
 
        } 
 
-//echo $column_value;
-return  $column_value;
+ //echo $column_value;
+ return  $column_value;
 }
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -244,11 +245,11 @@ return  $column_value;
 public function insert($table,$values){
 
 
-$fields = array_keys($values);
+    $fields = array_keys($values);
 
-$query= "INSERT INTO ".$table." (`".implode('`,`', $fields)."`) VALUES ('".implode("','", $values)."');";
+    $query= "INSERT INTO ".$table." (`".implode('`,`', $fields)."`) VALUES ('".implode("','", $values)."');";
 
-$insert = $this->Query($query);
+    $insert = $this->Query($query);
 
 
 
@@ -347,6 +348,8 @@ foreach ($res as $value) {
     $pass=$value->{'pass'};
     $rol_compras=$value->{'role_purc'};
     $rol_campo  =$value->{'role_fiel'};
+    $can_close  =$value->{'closeSO'};
+    
 }
 
 
@@ -374,6 +377,7 @@ $_SESSION['PASS'] = $pass;
 //$_SESSION['ALMACEN'] = $almacen;
 $_SESSION['ROLE1'] = $rol_compras;
 $_SESSION['ROLE2'] = $rol_campo;
+$_SESSION['CANCLOSE'] = $can_close;
 $_SESSION['COMPANY'] = $company;
 
 
@@ -504,6 +508,7 @@ private function set_login_parameters(){
         $this->rol_compras = $_SESSION['ROLE1'];
         $this->rol_campo   = $_SESSION['ROLE2'];
         $this->layout_lines = $this->Query_value('FAC_DET_CONF','NO_LINES','where ID_compania="'.$this->id_compania.'"');
+        $this->can_close = $_SESSION['CANCLOSE'];
         //$active_user_pass = $_SESSION['PASS'] ;
 
         
