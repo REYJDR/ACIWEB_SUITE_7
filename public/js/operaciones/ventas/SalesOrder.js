@@ -361,7 +361,7 @@ for(var i=1; i<theTbl.rows.length ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TA
                    
                     if(document.getElementById(taxableID).value=='SI'){
 
-                    itbms_sum = ( Number(theTbl.rows[i].cells[j].innerHTML) * Number(theTbl.rows[i].cells[6].innerHTML) ) * Number(tax_value);
+                    itbms_sum = ( Number(theTbl.rows[i].cells[j].innerHTML) * Number(theTbl.rows[i].cells[7].innerHTML) ) * Number(tax_value);
                     itbms.push(itbms_sum);
 
                     }
@@ -689,9 +689,9 @@ while (i <= cantLineas){
                             nota        = theTbl.rows[i].cells[2].innerHTML;
                             UnitMeasure = document.getElementById(unitid).value;
 
-                            qty       = theTbl.rows[i].cells[5].innerHTML;
-                            UnitPrice = theTbl.rows[i].cells[6].innerHTML;
-                            total     = theTbl.rows[i].cells[7].innerHTML;
+                            qty       = theTbl.rows[i].cells[6].innerHTML;
+                            UnitPrice = theTbl.rows[i].cells[7].innerHTML;
+                            total     = theTbl.rows[i].cells[8].innerHTML;
 
                             chic  = theTbl.rows[i].cells[3].innerHTML;
                             gran  = theTbl.rows[i].cells[4].innerHTML;
