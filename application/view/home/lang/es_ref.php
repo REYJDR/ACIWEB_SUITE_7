@@ -108,7 +108,7 @@ $config_4_val6 = 'Role';
 
 $config_5_title ='Autorizaciones';
 $config_4_val7 = 'Modificar de Precios';
-$config_4_val8 = 'Cancelacion de Ordenes de ventas/Pedidos';
+$config_4_val8 = 'Cancelaciones';
 $config_4_val9 = 'Visualizar Montos Ordenes de ventas/Pedidos';
 $config_4_val10 = 'Gestionar Inventario';
 $config_4_val11 = 'Gestionar Ubicaciones';
