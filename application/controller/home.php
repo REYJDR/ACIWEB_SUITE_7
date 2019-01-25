@@ -179,7 +179,7 @@ public function del_term($id){
 public function GetBDLog(){
 
 
-echo file_get_contents('LOG_ERROR/ERROR_LOG.txt');
+echo file_get_contents(APP.'/LOG_ERROR/ERROR_LOG.txt');
 
   
 }
