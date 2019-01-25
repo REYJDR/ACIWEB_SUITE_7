@@ -178,7 +178,7 @@ public function del_term($id){
 
 public function GetBDLog(){
 
-echo URL.'/LOG_ERROR/ERROR_LOG.txt';
+echo URL.'public/LOG_ERROR/ERROR_LOG.txt';
 echo file_get_contents(URL.'/LOG_ERROR/ERROR_LOG.txt');
 
   
