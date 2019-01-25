@@ -178,8 +178,7 @@ public function del_term($id){
 
 public function GetBDLog(){
 
-
-echo file_get_contents('LOG_ERROR/ERROR_LOG.txt');
+echo nl2br( file_get_contents('LOG_ERROR/ERROR_LOG.txt'));
 
   
 }

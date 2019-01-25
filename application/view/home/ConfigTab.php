@@ -478,7 +478,10 @@
 				<table class="table_form">
 				<tbody>
 				<tr><th><strong><button class="tablinks" onclick="ShowLogBD();"><i class="fas fa-file-medical-alt fa-2x"></i>&nbsp;&nbsp;<?php echo $config_10_val2; ?></button></strong></th>
-				<td> <div id ="logViewBD" class="logWindow col-lg-12" ></div></td></tr>
+					<td> 
+						<div id ="logViewBD" class="logWindow col-lg-12" ></div>
+					</td>
+				</tr>
 				</tbody>
 			</table> 
 		</fieldset > 
