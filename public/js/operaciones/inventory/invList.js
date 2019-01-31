@@ -87,7 +87,10 @@ function getListItem(){
         
         console.log(items); 
       
-        printTbl = $('#productos').DataTable();
+        printTbl = $('#productos').DataTable({ bJQueryUI: true,}
+           
+
+        );
       
         printTbl.clear();
 
