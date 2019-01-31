@@ -85,7 +85,7 @@ function getListItem(){
     function addRows(items) {
 
         
-        
+        console.log(items.data); return;
       
         printTbl = $('#productos').DataTable();
       
