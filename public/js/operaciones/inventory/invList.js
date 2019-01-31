@@ -30,7 +30,8 @@ table = $("#productos").DataTable({
 
         console.log(link);
 
-        window.location.replace(link); });
+       // window.location.replace(link); 
+    });
     
     
    
