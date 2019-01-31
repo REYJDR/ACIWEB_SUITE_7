@@ -91,7 +91,7 @@ function getListItem(){
       
         printTbl.clear();
 
-        printTbl.rows.add(data).draw(); 
+        printTbl.rows.add(items).draw(); 
 
 
         MSG_ERROR_RELEASE();
