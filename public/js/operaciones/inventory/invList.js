@@ -20,23 +20,15 @@ table = $("#productos").DataTable({
 
 
          
-        $('#productos tbody').on('click', 'tr', function () {
+    $('#productos tbody').on('click', 'tr', function () {
 
-            var data = table.row( this ).data();
+        var data = table.row( this ).data();
 
-            var URL = $('#URL').val();
-            var metodo= "ges_inventario/inv_info/"+data['Codigo'];
-            var link= URL+"index.php";
-           
-        
-             return $.ajax({
-                  type: "GET",
-                  url: link,
-                  data: {url:metodo} ,
-                  success: function(res){}});
+        var URL = $('#URL').val();
+        var metodo= "ges_inventario/inv_info/"+data['Codigo'];
+        var link= URL+"index.php";
 
-        
-        });
+        window.location.replace(link); });
     
     
    
