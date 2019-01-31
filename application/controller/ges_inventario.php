@@ -1382,10 +1382,16 @@ public function getListItems(){
 
    if($Item != '' ){
     
-    var_dump($Item); die();
   
+    $itemarray = [];
+    $i = 0;
+foreach ($Item as $value) {
+    $value =  json_decode($value);
+    $itemarray['data'][$i] =  $value;  
+    $i += 1;
+}
 
-    echo json_encode($Item);
+    echo json_encode($itemarray);
 
     // echo '{ "data" : [ 
         
