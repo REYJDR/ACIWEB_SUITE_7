@@ -90,11 +90,11 @@ function getListItem(){
       
         printTbl.clear();
 
-        console.log('data: '+ JSON.parse(data.data));
+        console.log('data: '+ data);
 
-        var json = $.jsonParse(data.data);
+        var json = data;
         
-        printTbl.rows.add([json]).draw(); 
+        printTbl.rows.add(json).draw(); 
 
 
         MSG_ERROR_RELEASE();
