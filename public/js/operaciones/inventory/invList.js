@@ -28,6 +28,8 @@ table = $("#productos").DataTable({
         var metodo= "ges_inventario/inv_info/"+data['Codigo'];
         var link= URL+"index.php";
 
+        console.log(link);
+
         window.location.replace(link); });
     
     
