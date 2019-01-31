@@ -85,13 +85,13 @@ function getListItem(){
     function addRows(items) {
 
         
-        console.log(items.data); return;
+        console.log(items.data); 
       
         printTbl = $('#productos').DataTable();
       
         printTbl.clear();
 
-        printTbl.rows.add(items.data).draw(); 
+        printTbl.rows.add(data).draw(); 
 
 
         MSG_ERROR_RELEASE();
