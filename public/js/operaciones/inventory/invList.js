@@ -86,12 +86,12 @@ function getListItem(){
 
         
        var Json =  JSON.parse(items);
-       console.log(Json); return;
+       console.log(Json); 
         printTbl = $('#productos').DataTable();
       
         printTbl.clear();
 
-        printTbl.rows.add(items).draw(); 
+        printTbl.rows.add(Json).draw(); 
 
 
         MSG_ERROR_RELEASE();
