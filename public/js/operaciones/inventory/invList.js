@@ -9,8 +9,14 @@ $('#ERROR').hide();
 table = $("#productos").DataTable({
     aLengthMenu: [
         [10, 25,50,-1], [10, 25, 50,"All"]
-    ]     
-    });
+    ] ,
+    columns:[
+        {data:"Codigo"},
+        {data:"Descripcion"},
+        {data:"Unidad"},
+        {data:"Stock"},
+        {data:"Costo_Uni"}]}    
+    );
    
     $("#productos").dataTable().yadcf(
     [
@@ -87,12 +93,7 @@ function getListItem(){
         
         console.log(items); 
       
-        printTbl = $('#productos').DataTable(   {"columns":[
-                                                {data:"Codigo"},
-                                                {data:"Descripcion"},
-                                                {data:"Unidad"},
-                                                {data:"Stock"},
-                                                {data:"Costo_Uni"}]} );
+        printTbl = $('#productos').DataTable();
            
 
 
