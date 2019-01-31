@@ -17,6 +17,15 @@ table = $("#productos").DataTable({
         {data:"Stock"},
         {data:"Costo_Uni"}]}    
     );
+
+
+         
+        $('#productos tbody').on('click', 'tr', function () {
+            var data = table.row( this ).data();
+            alert( 'You clicked on '+data[0]+'\'s row' );
+        } );
+    
+    
    
     $("#productos").dataTable().yadcf(
     [
@@ -95,7 +104,6 @@ function getListItem(){
       
         printTbl = $('#productos').DataTable();
            
-
 
         printTbl.clear();
 

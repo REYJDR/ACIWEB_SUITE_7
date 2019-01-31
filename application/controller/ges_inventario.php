@@ -1383,25 +1383,18 @@ public function getListItems(){
    if($Item != '' ){
     
   
-    $itemarray = [];
-    $i = 0;
-foreach ($Item as $value) {
-    $value =  json_decode($value);
-    $itemarray['data'][$i] =  $value;  
-    $i += 1;
-}
-
-    echo json_encode($itemarray);
-
-    // echo '{ "data" : [ 
+        $itemarray = [];
+        $i = 0;
         
-    //         { "Codigo":"1",
-    //         "Descripcion" : "2",
-    //         "Unidad":"3",
-    //         "Stock":"4",
-    //         "Costo_Uni":"5" }
-            
-    //     ]}';
+        foreach ($Item as $value) {
+            $value =  json_decode($value);
+            $itemarray['data'][$i] =  $value;  
+            $i += 1;
+        }
+
+        echo json_encode($itemarray);
+
+ 
 
    }else{
 
