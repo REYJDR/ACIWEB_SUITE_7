@@ -84,17 +84,27 @@ function getListItem(){
 
     function addRows(items) {
 
-        data = items;   
+     //   data = items;   
+         printTbl= null;
+         
+         printTbl =  $('#productos').DataTable({
+            aaData: items,
+            "aoColumns": [
+              { "mData": "Codigo" },
+              { "mData": "Descripcion" },
+              { "mData": "Unidad" },
+              { "mData": "Stock" },
+              { "mData": "Costo_Uni" }    
+            ]
+        });
         
-        printTbl = $('#productos').DataTable();
-      
-        printTbl.clear();
+       
 
-        console.log('data: '+ data);
+        //console.log('data: '+ data);
 
-        var json = data;
+        //var json = data;
         
-        printTbl.rows.add(json).draw(); 
+       // printTbl.rows.add(json).draw(); 
 
 
         MSG_ERROR_RELEASE();
