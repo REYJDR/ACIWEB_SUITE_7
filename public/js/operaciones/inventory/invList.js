@@ -25,7 +25,7 @@ table = $("#productos").DataTable({
         var data = table.row( this ).data();
 
         var URL = $('#URL').val();
-        var metodo= "url=ges_inventario/inv_info/"+data['Codigo'];
+        var metodo= "url=ges_inventario/inv_info&item="+data['Codigo'];
         var link= URL+"index.php?"+metodo;
 
         window.location.replace(link); 

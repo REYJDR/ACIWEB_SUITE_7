@@ -31,9 +31,9 @@ public function inv_list(){
 
 //******************************************************************************
 //DETALLES DE PRODUCTO
-public function inv_info($itemid){
+public function inv_info(){
  
- $this->ProductID = $itemid;
+ $this->ProductID = $_GET['item'];
 
  $res = $this->model->verify_session();
 
