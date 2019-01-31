@@ -56,7 +56,7 @@ function getListItem(){
          return $.ajax({
               type: "GET",
               url: link,
-              dataType: 'json',
+             // dataType: 'json',
              // async:  false,
               data: {url:metodo} ,
               success: function(res){
@@ -84,27 +84,14 @@ function getListItem(){
 
     function addRows(items) {
 
-     //   data = items;   
-         printTbl= null;
-         
-         printTbl =  $('#productos').DataTable({
-            aaData: items,
-            "aoColumns": [
-              { "mData": "Codigo" },
-              { "mData": "Descripcion" },
-              { "mData": "Unidad" },
-              { "mData": "Stock" },
-              { "mData": "Costo_Uni" }    
-            ]
-        });
+        Console.log(items);
+        return;
         
-       
+        printTbl = $('#productos').DataTable();
+      
+        printTbl.clear();
 
-        //console.log('data: '+ data);
-
-        //var json = data;
-        
-       // printTbl.rows.add(json).draw(); 
+        printTbl.rows.add(items).draw(); 
 
 
         MSG_ERROR_RELEASE();
