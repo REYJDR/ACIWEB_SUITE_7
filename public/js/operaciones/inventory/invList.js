@@ -84,9 +84,9 @@ function getListItem(){
 
     function addRows(items) {
 
-        console.log(items);
-        return;
         
+       var Json =  JSON.parse(items);
+       console.log(Json); return;
         printTbl = $('#productos').DataTable();
       
         printTbl.clear();
