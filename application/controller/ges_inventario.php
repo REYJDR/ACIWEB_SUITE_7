@@ -1381,6 +1381,9 @@ public function getListItems(){
    $Item= $this->model->queryColumns('Products_Exp', $columns,$clause);
 
    if($Item != '' ){
+    
+    var_dump($Item); die();
+  
 
     echo json_encode($Item);
 
