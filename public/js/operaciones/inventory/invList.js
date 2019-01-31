@@ -87,11 +87,15 @@ function getListItem(){
         
         console.log(items); 
       
-        printTbl = $('#productos').DataTable({ bJQueryUI: true,}
+        printTbl = $('#productos').DataTable(   {"columns":[
+                                                {data:"Codigo"},
+                                                {data:"Descripcion"},
+                                                {data:"Unidad"},
+                                                {data:"Stock"},
+                                                {data:"Costo_Uni"}]} );
            
 
-        );
-      
+
         printTbl.clear();
 
         printTbl.rows.add(items.data).draw(); 
