@@ -1382,7 +1382,7 @@ public function getListItems(){
 
    if($Item != '' ){
 
-    echo json_encode(['data' => $Item]);
+    echo json_encode($Item);
 
     // echo '{ "data" : [ 
         
