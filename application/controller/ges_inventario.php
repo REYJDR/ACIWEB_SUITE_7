@@ -1215,7 +1215,8 @@ public function set_Budget_Log($values,$type){
                                         'User' => $user,
                                         'Type' => 'Salida por Ajuste',
                                         'Referencia' => $PurchaseNumber,
-                                        'ID_compania' => $id_compania );
+                                        'ID_compania' => $id_compania ,
+                                        'aci_ref' => $aciref );
             
                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
                 
