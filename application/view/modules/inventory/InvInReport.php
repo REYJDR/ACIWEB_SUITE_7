@@ -61,7 +61,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
                   <th width="10%"><?PHP echo $Inv_REP_TblHdr10; ?></th>
                   <th width="10%"><?PHP echo $Inv_REP_TblHdr11; ?></th>
 				  <th width="10%"><?PHP echo $Inv_REP_TblHdr12; ?></th>
-		
+				  <th width="10%"><?PHP echo $Inv_REP_TblHdr13; ?></th>
                   
                 </tr>
               </thead>
