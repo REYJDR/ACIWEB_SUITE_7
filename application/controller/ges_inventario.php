@@ -1200,6 +1200,7 @@ public function set_Budget_Log($values,$type){
                 $total = $values['Quantity']*$values['UnitCost']; 
                 $Qty   = $values['Quantity'];
                 $UnitPrice = $values['UnitCost'];
+                $aciref = $values['aci_ref'];
             
                 $id_compania= $this->model->id_compania;
                 $user = $this->model->active_user_id;
