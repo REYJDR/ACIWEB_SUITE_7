@@ -1110,6 +1110,7 @@ public function set_Budget_Log($values,$type){
                 $total = $values['Net_line']; 
                 $Qty   = $values['Quantity'];
                 $UnitPrice = $values['Unit_Price'];
+                $aciref = $values['aci_ref'];
             
                 $id_compania= $this->model->id_compania;
                 $user = $this->model->active_user_id;
@@ -1125,7 +1126,8 @@ public function set_Budget_Log($values,$type){
                                         'User' => $user,
                                         'Type' => 'Entrada - Fact. de compra',
                                         'Referencia' => $PurchaseNumber,
-                                        'ID_compania' => $id_compania );
+                                        'ID_compania' => $id_compania ,
+                                        'aci_ref' => $aciref );
             
                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
                 
