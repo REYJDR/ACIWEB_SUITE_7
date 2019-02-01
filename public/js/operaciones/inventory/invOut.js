@@ -457,6 +457,7 @@ function proceed(){
                                     locId     = document.getElementById(selid).value;*/ 
                                                                 
                                     note      = document.getElementById('observaciones').value;
+                                    ref       = document.getElementById('referencia').value;
                                     qty       = theTbl.rows[i].cells[3].innerHTML;
                                    // UnitPrice = theTbl.rows[i].cells[4].innerHTML;
                                    // total     = theTbl.rows[i].cells[5].innerHTML;
@@ -476,18 +477,11 @@ function proceed(){
                                             '@'+ctamg+
                                             '@'+job+
                                             '@'+phase+
-                                            '@'+cost;
+                                            '@'+cost+
+                                            '@'+ref ;
 
                                             
-                                  console.log(cell);
-        
-                                   /*if( stockId==0){
-                                        FaltaArray[6] = i ;
-                                    }   
-
-                                    if(stockId==0) {   
-                                        FaltaArray[7] = i ;
-                                    }*/
+                                 
 
                                     break;
     

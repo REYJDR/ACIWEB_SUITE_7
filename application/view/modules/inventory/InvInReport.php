@@ -126,7 +126,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						<td >'.$filter->{'JobPhaseID'}.'</td>
 						<td >'.$filter->{'JobCostCodeID'}.'</td>
 						<td >'.$filter->{'Type'}.'</td>
-						<td >'.$filter->{'referencia'}."</td>
+						<td >'.$filter->{'referencia'}.'</td>
+						<td >'.$filter->{'aci_ref'}."</td>
 						
 					   </tr>";
 					
