@@ -11,6 +11,7 @@ table = $("#productos").DataTable({
         [10, 25,50,-1], [10, 25, 50,"All"]
     ] ,
     columns:[
+        {data:"ID"},
         {data:"Codigo"},
         {data:"Descripcion"},
         {data:"Unidad"},
@@ -44,18 +45,8 @@ table = $("#productos").DataTable({
      select_type: "select2",
      select_type_options: { width: "100%" }
     
-    },
-    {column_number : 3,
-        className: 'numb'
-       
-       },
-    {column_number : 4,
-        className: 'numb'
-    
-    }
+    }],
 
-
-],
     {cumulative_filtering: true, 
     filter_reset_button_text: false}
     );
