@@ -35,19 +35,19 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 				<!--ini  header-->
 				<div class="col-lg-8"> 
 
-				<!--    <div  class="col-lg-3">
+			     <div  class="col-lg-3">
 					<fieldset class="fieldsetform">
 					<table class='table_form'>
 						<tbody>
 							<tr>
-								<th><strong><?PHP echo $invout_ref; ?></strong></th><td><input  class="inputPage col-lg-12 numb" id="nopo" onkeyup="checkInpChar(this.id);" name="nopo"/></td>
+								<th><strong><?PHP echo $invout_ref; ?></strong></th><td><input  class="inputPage col-lg-12 numb" id="referencia" onkeyup="checkInpChar(this.id);" name="referencia"/></td>
 							</tr>
 						</tbody>
 					</table>
 					</fieldset>
 					</div>
 
-					<div  class="col-lg-12"></div>-->
+					<div  class="col-lg-12"></div>
 
 
 					<div  class="col-lg-8">
