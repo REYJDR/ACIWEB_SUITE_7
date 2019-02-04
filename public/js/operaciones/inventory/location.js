@@ -191,7 +191,20 @@ function  getItemList(location,stock){
 
 }
 
+function addRows(items) {
+    
 
+    printTbl = $('#listItemByStock').DataTable();
+        
+
+    printTbl.clear();
+
+    printTbl.rows.add(items.data).draw(); 
+
+    MSG_ERROR_RELEASE();
+    MSG_CORRECT("Done",0);
+
+}
 
 function addStock(){
 
