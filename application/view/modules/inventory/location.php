@@ -54,7 +54,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					</div>			
 
 					<div class="separador col-lg-12"> </div>
-					
+				</div>
 					<!--ITEMS-->
 					<div  class="col-lg-12" >
 					
@@ -75,7 +75,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					</div>
 					
 				
-				</div>
+		
 				
 			</div>
 
