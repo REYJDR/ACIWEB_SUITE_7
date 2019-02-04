@@ -59,6 +59,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					<div  class="col-lg-12" >
 					
 					<fieldset class="fieldsetform">
+					<div id="locLegend"></div>
 					<table id="listItemByStock" class="table table-bordered"  >
 						<thead>
 						<tr>
