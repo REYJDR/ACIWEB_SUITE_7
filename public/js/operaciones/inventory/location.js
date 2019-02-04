@@ -5,7 +5,7 @@ $(window).load(function(){
     
     $('#ERROR').hide();
     $('#loc').hide();
-    $('#item').hide();
+    $('#item').show();
     getStocks();
 
     
