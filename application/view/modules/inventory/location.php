@@ -52,16 +52,19 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						</table>	
 					</fieldset >
 					</div>			
+
+					<div class="separador col-lg-12"> </div>
+					
 					<!--ITEMS-->
-					<!-- <div  class="col-lg-8" id="item"> -->
+					<div  class="col-lg-12" >
 					
 					<fieldset class="fieldsetform">
 					<table id="listItemByStock" class="table"  >
 						<thead>
 						<tr>
-							<th>ProductID</th>
-							<th>lote</th>
-							<th>QtyOnHand</th>
+							<th>ItemId</th>
+							<th>Lote</th>
+							<th>Cantidad</th>
 						</tr>
 						</thead>
 						<tbody></tbody>
@@ -69,7 +72,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					</fieldset>
 							
 					
-					<!-- </div> -->
+					</div>
 					
 				
 				</div>
