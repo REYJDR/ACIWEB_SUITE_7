@@ -229,7 +229,7 @@ public function getItemList($location,$stock){
                         A.stock='".$stock."' and 
                         A.ID_compania='".$this->model->id_compania."' and 
                         B.isActive = '1' and 
-                        B.QtyOnHand > 0;";
+                        B.QtyOnHand >= 0;";
 
         $Item= $this->model->queryColumns('STOCK_ITEMS_LOCATION as A', $columns,$clause);
 
