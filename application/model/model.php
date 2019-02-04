@@ -263,7 +263,7 @@ public function insert($table,$values){
 public function queryColumns($table,$columns,$clause){
     
 
-   echo $query = "SELECT  ".implode(',', $columns)." FROM ".$table." ".$clause." ;";
+    $query = "SELECT  ".implode(',', $columns)." FROM ".$table." ".$clause." ;";
 
   
     return $this->Query($query);

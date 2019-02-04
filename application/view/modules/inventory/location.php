@@ -65,8 +65,6 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 							<th>ItemId</th>
 							<th>Lote</th>
 							<th>Cantidad</th>
-							<th>Almacen</th>
-							<th>Ubicación</th>
 						</tr>
 						</thead>
 						<tbody></tbody>

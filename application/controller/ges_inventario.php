@@ -216,36 +216,25 @@ public function getItemList($location,$stock){
 
     $this->model->verify_session();
 
-    // $query="SELECT * 
-    //           FROM STOCK_ITEMS_LOCATION as A
-    //           INNER JOIN Products_Exp as B ON B.ProductID = A.itemID and A.ID_compania='".$this->model->id_compania."'
-    //           WHERE A.location='".$location."' and 
-    //                 A.stock='".$stock."' and 
-    //                 A.ID_compania='".$this->model->id_compania."' and 
-    //                 B.isActive = '1' and 
-    //                 B.QtyOnHand > 0;";
-
-    // $res = $this->model->Query($query); 
-
     require_once APP.'view/modules/inventory/lang/'.$this->model->lang.'_ref.php';
-    
+
         $columns =  array( 
                     '`ProductID`',
                     '`QtyOnHand`',
                     '`lote`');
-    
+
         $clause = "INNER JOIN Products_Exp as B ON B.ProductID = A.itemID and A.ID_compania='".$this->model->id_compania."'
                     WHERE A.location='".$location."' and 
                         A.stock='".$stock."' and 
                         A.ID_compania='".$this->model->id_compania."' and 
                         B.isActive = '1' and 
                         B.QtyOnHand > 0;";
-    
-       $Item= $this->model->queryColumns('STOCK_ITEMS_LOCATION as A', $columns,$clause);
-    
-       if($Item != '' ){
+
+        $Item= $this->model->queryColumns('STOCK_ITEMS_LOCATION as A', $columns,$clause);
+
+        if($Item != '' ){
         
-      
+        
             $itemarray = [];
             $i = 0;
             
@@ -254,42 +243,13 @@ public function getItemList($location,$stock){
                 $itemarray['data'][$i] =  $value;  
                 $i += 1;
             }
-    
+
             echo json_encode($itemarray);
-    
-       }else{
-    
+
+        }else{
+
         echo 0;
-       }
-
-
-//    $table = '<fieldset class="fieldsetform">
-//              <table id="tblItem" class="table"  >
-//                 <thead>
-//                 <tr>
-//                     <th>items</th>
-//                     <th>Lote</th>
-//                     <th>Qty</th>
-//                 </tr>
-//                 </thead>
-//                 <tbody id="item">';
-
-
-//     foreach ($res as $datos) {	
-//         $datos = json_decode($datos);
-//         $id = '"'.$datos->{'location'}.'"';
-    
-//     $table .= '<tr> <td><a href="'.URL.'index.php?url=ges_inventario/inv_info/'.$datos->{'itemID'}.'" >'.$datos->{'itemID'}."</a></td>
-//                     <td>".$datos->{'lote'}."</td>
-//                     <td class='numb' >".$datos->{'qty'}."</td>
-//               </tr>";
-//     }
-
-//     $table .=  '<tbody>
-//                 </table>	
-//                 </fieldset>';
-
-//     echo $table;
+        }
 
 }
 
