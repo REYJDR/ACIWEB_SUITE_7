@@ -59,12 +59,14 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					<div  class="col-lg-12" >
 					
 					<fieldset class="fieldsetform">
-					<table id="listItemByStock" class="table"  >
+					<table id="listItemByStock" class="table table-bordered"  >
 						<thead>
 						<tr>
 							<th>ItemId</th>
 							<th>Lote</th>
 							<th>Cantidad</th>
+							<th>Almacen</th>
+							<th>Ubicación</th>
 						</tr>
 						</thead>
 						<tbody></tbody>
