@@ -183,6 +183,7 @@ function  getItemList(location,stock){
             MSG_ERROR_RELEASE();
             MSG_ADVICE("Loading items...",0);
             addRows(res);
+            $('#item').show();
         }
 
     });
