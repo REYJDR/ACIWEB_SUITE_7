@@ -11,6 +11,63 @@ $(window).load(function(){
     
 });
 
+
+var table;
+
+jQuery(document).ready(function($)
+{
+
+$('#ERROR').hide();
+
+table = $("#listItemByStock").DataTable({
+    aLengthMenu: [
+        [10, 25,50,-1], [10, 25, 50,"All"]
+    ] ,
+    columns:[
+
+        {data:"Codigo"},
+        {data:"Descripcion"},
+        {data:"Unidad",className: "numb"},
+        {data:"Stock",className: "numb"},
+        {data:"Costo_Uni",className: "numb"}]}    
+    );
+
+
+         
+    $('#listItemByStock tbody').on('click', 'tr', function () {
+
+        var data = table.row( this ).data();
+
+        var URL = $('#URL').val();
+        var metodo= "url=ges_inventario/inv_info&item="+data['Codigo'];
+        var link= URL+"index.php?"+metodo;
+
+        window.location.replace(link); 
+    });
+    
+    
+   
+    $("#listItemByStock").dataTable().yadcf(
+    [
+    {column_number : 0,
+        select_type: "select2",
+        select_type_options: { width: "100%" }
+       
+    },
+    {column_number : 1,
+     select_type: "select2",
+     select_type_options: { width: "100%" }
+    
+    }],
+
+    {cumulative_filtering: true, 
+    filter_reset_button_text: false}
+    );
+    
+});
+
+
+
 function getStocks(){
 
 URL = document.getElementById('URL').value;
