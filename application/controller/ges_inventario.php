@@ -206,7 +206,7 @@ public function getLocationList($stock){
 
         $id = '"'.$datos->{'id'}.'"';
         $IDstock = '"'.$stock.'"';
-        echo "<tr><td><a  href='#' onclick='getItemList(".$id.",".$IDstock.");' >".$datos->{'location'}."&nbsp&nbsp<i style='float:right;' class='fas fa-angle-right'></i></a></td></tr>";
+        echo "<tr><td><a  href='#' onclick='getItemList(".$id.",".$IDstock.",".$datos->{'location'}.");' >".$datos->{'location'}."&nbsp&nbsp<i style='float:right;' class='fas fa-angle-right'></i></a></td></tr>";
     }
 
 }

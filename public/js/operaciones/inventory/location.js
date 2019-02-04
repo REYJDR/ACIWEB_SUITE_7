@@ -152,9 +152,9 @@ $.ajax({
 
 }
 
-function  getItemList(location,stock){
+function  getItemList(location,stock,locName){
 
-    $('#locLegend').html('<p>'+location+'</p>');
+    $('#locLegend').html('<p>Location: '+locName+'</p>');
     
     var URL = $('#URL').val();
     var metodo= 'ges_inventario/getItemList/'+location+'/'+stock;
