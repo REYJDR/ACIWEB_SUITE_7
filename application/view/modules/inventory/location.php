@@ -29,7 +29,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 							<tbody id='stockList'>
 								
 
-							<tbody>
+							</tbody>
 				</table>	
 				
 				</div>	
@@ -48,7 +48,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						<table class='table' >
 									<thead><tr><th>location</th></tr></thead>
 									<tbody id="location">
-									<tbody>
+									</tbody>
 						</table>	
 					</fieldset >
 					</div>			
@@ -59,9 +59,9 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					<table id="listItemByStock" class="table"  >
 						<thead>
 						<tr>
-							<th>Items</th>
-							<th>Lote</th>
-							<th>Qty</th>
+							<th>ProductID</th>
+							<th>lote</th>
+							<th>QtyOnHand</th>
 						</tr>
 						</thead>
 						<tbody></tbody>
