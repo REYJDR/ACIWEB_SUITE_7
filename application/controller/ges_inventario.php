@@ -237,7 +237,7 @@ public function getItemList($location,$stock){
                     '`Price1` as `'.$Tblcol8.'`',
                     '`lote` as `'.$Tblcol8.'`');
     
-        $clause = "INNER JOIN Products_Exp as B ON B.ProductID = A.itemID and A.ID_compania='".$this->model->id_compania."'
+    echo     $clause = "INNER JOIN Products_Exp as B ON B.ProductID = A.itemID and A.ID_compania='".$this->model->id_compania."'
                     WHERE A.location='".$location."' and 
                         A.stock='".$stock."' and 
                         A.ID_compania='".$this->model->id_compania."' and 
