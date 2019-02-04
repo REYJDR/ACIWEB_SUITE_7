@@ -155,30 +155,40 @@ $.ajax({
 
 function  getItemList(location,stock){
 
-URL = document.getElementById('URL').value;
-link = URL+"index.php";
-data = 'url=ges_inventario/getItemList/'+location+'/'+stock;
 
-    $('#item').html('Searching...');
-    $('#item').show();
-    
-    
-    $.ajax({
-            type: "GET",
-            url: link,
-            data: data ,
-            success: function(res){
-    
-            if(res != ''){
-                  $('#item').html(res);
-                  setTableStyle();
-            }else{
-                $('#item').html('There´s no information');
+        var URL = $('#URL').val();
+        var metodo= 'ges_inventario/getItemList/'+location+'/'+stock;
+        var link= URL+"index.php";
+       
+    function  getItems(){
+         return $.ajax({
+              type: "GET",
+              url: link,
+              dataType: 'json',
+             // async:  false,
+              data: {url:metodo} ,
+              success: function(res){
+                
             }
-    
-            } 
-        });
-    
+           });
+
+    }
+    $.when(getItems()).done(function(res){ 
+
+        if(res == 0){
+            MSG_ERROR_RELEASE();
+            MSG_ERROR("There's no Items to List",0);
+           
+        }else{
+            MSG_ERROR_RELEASE();
+            MSG_ADVICE("Loading items...",0);
+            addRows(res);
+        }
+
+    });
+
+
+
 }
 
 
