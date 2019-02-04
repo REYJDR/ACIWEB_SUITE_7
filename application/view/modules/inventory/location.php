@@ -53,7 +53,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					</fieldset >
 					</div>			
 					<!--ITEMS-->
-					<div  class="col-lg-8" id="item">
+					<!-- <div  class="col-lg-8" id="item"> -->
 					
 					<fieldset class="fieldsetform">
 					<table id="listItemByStock" class="table"  >
@@ -69,7 +69,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					</fieldset>
 							
 					
-					</div>
+					<!-- </div> -->
 					
 				
 				</div>
