@@ -204,7 +204,7 @@ function addRows(items) {
 
     MSG_ERROR_RELEASE();
     MSG_CORRECT("Done",0);
-    $('#item').show();
+    $('#item').hide();
 
 }
 
