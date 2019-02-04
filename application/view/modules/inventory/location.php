@@ -64,7 +64,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 							<th>Qty</th>
 						</tr>
 						</thead>
-						<tbody ><tbody>
+						<tbody></tbody>
 					</table>	
 					</fieldset>
 							

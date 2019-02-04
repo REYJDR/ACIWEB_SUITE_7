@@ -5,7 +5,7 @@ $(window).load(function(){
     
     $('#ERROR').hide();
     $('#loc').hide();
-    $('#item').show();
+    $('#item').hide();
     getStocks();
 
     
@@ -156,9 +156,9 @@ $.ajax({
 function  getItemList(location,stock){
 
 
-        var URL = $('#URL').val();
-        var metodo= 'ges_inventario/getItemList/'+location+'/'+stock;
-        var link= URL+"index.php";
+    var URL = $('#URL').val();
+    var metodo= 'ges_inventario/getItemList/'+location+'/'+stock;
+    var link= URL+"index.php";
        
     function  getItems(){
          return $.ajax({
@@ -197,7 +197,6 @@ function addRows(items) {
 
     printTbl = $('#listItemByStock').DataTable();
         
-
     printTbl.clear();
 
     printTbl.rows.add(items.data).draw(); 
