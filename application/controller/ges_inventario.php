@@ -230,12 +230,9 @@ public function getItemList($location,$stock){
     require_once APP.'view/modules/inventory/lang/'.$this->model->lang.'_ref.php';
     
         $columns =  array( 
-                    '`ProductID` as `'.$Tblcol1.'`',
-                    '`Description` as `'.$Tblcol2.'`',
-                    '`UnitMeasure` as `'.$Tblcol3.'`',
-                    '`QtyOnHand` as `'.$Tblcol4.'`',
-                    '`Price1` as `'.$Tblcol8.'`',
-                    '`lote` as `'.$Tblcol8.'`');
+                    '`ProductID`',
+                    '`QtyOnHand`',
+                    '`lote`');
     
         $clause = "INNER JOIN Products_Exp as B ON B.ProductID = A.itemID and A.ID_compania='".$this->model->id_compania."'
                     WHERE A.location='".$location."' and 

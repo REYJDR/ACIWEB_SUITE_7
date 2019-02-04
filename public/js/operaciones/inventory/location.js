@@ -25,11 +25,9 @@ table = $("#listItemByStock").DataTable({
     ] ,
     columns:[
 
-        {data:"Codigo"},
-        {data:"Descripcion"},
-        {data:"Unidad",className: "numb"},
-        {data:"Stock",className: "numb"},
-        {data:"Costo_Uni",className: "numb"}]}    
+        {data:"ProductID"},
+        {data:"QtyOnHand",className: "numb"},
+        {data:"lote"}]}    
     );
 
 
@@ -39,7 +37,7 @@ table = $("#listItemByStock").DataTable({
         var data = table.row( this ).data();
 
         var URL = $('#URL').val();
-        var metodo= "url=ges_inventario/inv_info&item="+data['Codigo'];
+        var metodo= "url=ges_inventario/inv_info&item="+data['ProductID'];
         var link= URL+"index.php?"+metodo;
 
         window.location.replace(link); 
