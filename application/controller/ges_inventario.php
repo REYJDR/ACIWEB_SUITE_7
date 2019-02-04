@@ -244,7 +244,7 @@ public function getItemList($location,$stock){
                         B.isActive = '1' and 
                         B.QtyOnHand > 0;";
     
-       $Item= $this->model->queryColumns('STOCK_ITEMS_LOCATION', $columns,$clause);
+       $Item= $this->model->queryColumns('STOCK_ITEMS_LOCATION as A', $columns,$clause);
     
        if($Item != '' ){
         
