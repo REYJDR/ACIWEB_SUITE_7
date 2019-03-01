@@ -557,7 +557,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
 
                           cell += 
                           
-                          repeat =  validateItemId(document.getElementById(selid).value,document.getElementById(phsid).value, j);
+                          repeat =  validateItemId(document.getElementById(selid).value,document.getElementById(phsid).value, i);
                           if(repeat){
 
                             FaltaArray[1024] = document.getElementById(selid).value+'/'+document.getElementById(phsid).value ;
