@@ -557,7 +557,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
 
                           cell += 
                           
-                          repeat =  validateItemId(document.getElementById(selid).value,document.getElementById(phsid).value);
+                          repeat =  validateItemId(document.getElementById(selid).value,document.getElementById(phsid).value, j);
                           if(repeat){
 
                             FaltaArray[1024] = document.getElementById(selid).value+'/'+document.getElementById(phsid).value ;
@@ -651,7 +651,7 @@ return flag;
 
 
 
-function validateItemId($itemID , $faseID){
+function validateItemId($itemID , $faseID, $NotLine){
 
   var theTbl = document.getElementById('table_req'); //objeto de la tabla que contiene los datos de items
   
@@ -662,19 +662,23 @@ function validateItemId($itemID , $faseID){
   
      for(var j=0;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
       {
+          if(j != $NotLine){
 
-          y=i+1;
-          var selid = "sel"+y;
-          var phsid = "PHS"+y;
-          var costid = "COST"+y;
+            y=i+1;
+            var selid = "sel"+y;
+            var phsid = "PHS"+y;
+            var costid = "COST"+y;
+  
+                    if($itemID == document.getElementById(selid).value  && $faseID == document.getElementById(phsid).value){
+  
+                      return true;
+                      break;
+                    }   
 
-                  if($itemID == document.getElementById(selid).value  && $faseID == document.getElementById(phsid).value){
-
-                    return true;
-                    break;
-                  }                 
+          }
+                      
             
-            }
+      }
   }
 
   return false;
