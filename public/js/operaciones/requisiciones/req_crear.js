@@ -558,7 +558,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
                           cell += 
                           
                           repeat =  validateItemId(document.getElementById(selid).value,document.getElementById(phsid).value);
-                          if(!repeat){
+                          if(repeat){
 
                             FaltaArray['repeate'] = document.getElementById(selid).value+'/'+document.getElementById(phsid).value ;
 
@@ -669,7 +669,7 @@ function validateItemId($itemID , $faseID){
                   if($itemID == document.getElementById(selid).value   && $faseID == document.getElementById(phsid).value){
 
                     return true;
-
+                    break;
                   }                 
             
             }
