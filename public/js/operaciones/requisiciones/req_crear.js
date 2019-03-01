@@ -563,18 +563,21 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
                             FaltaArray['repeate'] = document.getElementById(selid).value+'/'+document.getElementById(phsid).value ;
 
 
+                          }else{
+
+                            '@'+document.getElementById(selid).value+
+                            '@'+theTbl.rows[i].cells[1].innerHTML+
+                            '@'+theTbl.rows[i].cells[2].innerHTML+
+                            '@'+theTbl.rows[i].cells[3].innerHTML+                          
+                            '@'+document.getElementById('JOBID').value+
+                            '@'+document.getElementById('JOBID').options[document.getElementById('JOBID').selectedIndex].text+
+                            '@'+document.getElementById(phsid).value+
+                            '@'+document.getElementById(phsid).options[document.getElementById(phsid).selectedIndex].text+
+                            '@'+document.getElementById(costid).value+
+                            '@'+document.getElementById(costid).options[document.getElementById(costid).selectedIndex].text;
+
                           }
 
-                          '@'+document.getElementById(selid).value+
-                          '@'+theTbl.rows[i].cells[1].innerHTML+
-                          '@'+theTbl.rows[i].cells[2].innerHTML+
-                          '@'+theTbl.rows[i].cells[3].innerHTML+                          
-                          '@'+document.getElementById('JOBID').value+
-                          '@'+document.getElementById('JOBID').options[document.getElementById('JOBID').selectedIndex].text+
-                          '@'+document.getElementById(phsid).value+
-                          '@'+document.getElementById(phsid).options[document.getElementById(phsid).selectedIndex].text+
-                          '@'+document.getElementById(costid).value+
-                          '@'+document.getElementById(costid).options[document.getElementById(costid).selectedIndex].text;
                           
                           //console.log(cell);
                           //SI LA CELDA NO CONTIENE VALOR 
@@ -583,7 +586,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
                               FaltaArray[j] = i+1;
                           }
                           */
-                            break;            
+                          break;            
 
 
                       default: 
@@ -599,7 +602,6 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
 
                               }
 
-                            
                             
                             break;
                            }
