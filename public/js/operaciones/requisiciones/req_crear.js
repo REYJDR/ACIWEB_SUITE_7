@@ -424,9 +424,19 @@ FaltaArray.forEach(ListFaltantes);
 
  function ListFaltantes(item,index){
 
-     column = FIND_COLUMN_NAME(index);
-     
-     MSG_ERROR('No se indico valor en el Item: '+item+" / Campo :" +column, 1); 
+  if(index=='repeate'){
+
+    MSG_ERROR('La combinacion de item/fase:  '+item+', esta repetida', 1); 
+    
+
+  }else{
+    column = FIND_COLUMN_NAME(index);
+    
+    MSG_ERROR('No se indico valor en el Item: '+item+" / Campo :" +column, 1); 
+    
+
+  }
+
      
 
  }
@@ -547,6 +557,14 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
 
                           cell += 
                           
+                          repeat =  validateItemId(document.getElementById(selid).value,document.getElementById(phsid).value);
+                          if(!repeat){
+
+                            FaltaArray['repeate'] = document.getElementById(selid).value+'/'+document.getElementById(phsid).value ;
+
+
+                          }
+
                           '@'+document.getElementById(selid).value+
                           '@'+theTbl.rows[i].cells[1].innerHTML+
                           '@'+theTbl.rows[i].cells[2].innerHTML+
@@ -558,7 +576,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
                           '@'+document.getElementById(costid).value+
                           '@'+document.getElementById(costid).options[document.getElementById(costid).selectedIndex].text;
                           
-                          console.log(cell);
+                          //console.log(cell);
                           //SI LA CELDA NO CONTIENE VALOR 
                           /* if(document.getElementById(phsid).value == '-'){
                               
@@ -576,7 +594,6 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
                                 val= theTbl.rows[i].cells[j].innerHTML;
 
                                 if(val==''){
-                                    
                                    FaltaArray[j] = i+1 ;
                                 }
 
@@ -630,3 +647,34 @@ if(FaltaArray.length == 0){
 return flag;
 }
 
+
+
+function validateItemId($itemID , $faseID){
+
+  var theTbl = document.getElementById('table_req'); //objeto de la tabla que contiene los datos de items
+  
+  for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theTbl
+  {
+   cell = '';
+   y='';
+  
+     for(var j=0;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
+      {
+
+          y=i+1;
+          var selid = "sel"+y;
+          var phsid = "PHS"+y;
+          var costid = "COST"+y;
+
+                  if($itemID == document.getElementById(selid).value   && $faseID == document.getElementById(phsid).value){
+
+                    return true;
+
+                  }                 
+            
+            }
+  }
+
+  return false;
+
+}
