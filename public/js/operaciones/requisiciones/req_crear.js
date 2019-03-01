@@ -551,13 +551,15 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
 
                    //leer columnas de jobs
                  switch (j){
-
              
                       case 5:
 
                           cell += 
                           
-                          repeat =  validateItemId(document.getElementById(selid).value,document.getElementById(phsid).value, i);
+                          repeat =  validateItemId(document.getElementById(selid).value,
+                                                   document.getElementById(phsid).value, 
+                                                   i);
+                         
                           if(repeat){
 
                             FaltaArray[1024] = document.getElementById(selid).value+'/'+document.getElementById(phsid).value ;
@@ -660,9 +662,8 @@ function validateItemId($itemID , $faseID, $NotLine){
    cell = '';
    y='';
   
-     for(var j=0;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
-      {
-          if(j != $NotLine){
+
+          if(i != $NotLine){
 
             y=i+1;
             var selid = "sel"+y;
@@ -675,7 +676,6 @@ function validateItemId($itemID , $faseID, $NotLine){
                       break;
                     }   
 
-          }
                       
             
       }
