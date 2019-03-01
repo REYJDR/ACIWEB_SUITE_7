@@ -424,7 +424,7 @@ FaltaArray.forEach(ListFaltantes);
 
  function ListFaltantes(item,index){
 
-  if(index=='repeate'){
+  if(index==1024){
 
     MSG_ERROR('La combinacion de item/fase:  '+item+', esta repetida', 1); 
     
@@ -560,7 +560,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
                           repeat =  validateItemId(document.getElementById(selid).value,document.getElementById(phsid).value);
                           if(repeat){
 
-                            FaltaArray['repeate'] = document.getElementById(selid).value+'/'+document.getElementById(phsid).value ;
+                            FaltaArray[1024] = document.getElementById(selid).value+'/'+document.getElementById(phsid).value ;
 
 
                           }else{
@@ -668,7 +668,7 @@ function validateItemId($itemID , $faseID){
           var phsid = "PHS"+y;
           var costid = "COST"+y;
 
-                  if($itemID == document.getElementById(selid).value   && $faseID == document.getElementById(phsid).value){
+                  if($itemID == document.getElementById(selid).value  && $faseID == document.getElementById(phsid).value){
 
                     return true;
                     break;
