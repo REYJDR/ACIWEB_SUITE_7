@@ -542,7 +542,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
    for(var j=0;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
        {
 
-             y=i+1;
+           y=i+1;
            var selid = "sel"+y;
            var phsid = "PHS"+y;
            var costid = "COST"+y;
@@ -581,7 +581,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
                           }
 
                           
-                          //console.log(cell);
+                          console.log(cell);
                           //SI LA CELDA NO CONTIENE VALOR 
                           /* if(document.getElementById(phsid).value == '-'){
                               
