@@ -581,7 +581,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
                           }
 
                           
-                         console.log(cell);
+                         console.log('cel:'+cell);
                           //SI LA CELDA NO CONTIENE VALOR 
                           /* if(document.getElementById(phsid).value == '-'){
                               
