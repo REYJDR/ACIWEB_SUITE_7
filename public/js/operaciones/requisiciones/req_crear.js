@@ -567,7 +567,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
 
                           }else{
 
-                            cell +=   '@'+document.getElementById(selid).value+
+                            cell +=  '@'+document.getElementById(selid).value+
                             '@'+theTbl.rows[i].cells[1].innerHTML+
                             '@'+theTbl.rows[i].cells[2].innerHTML+
                             '@'+theTbl.rows[i].cells[3].innerHTML+                          
@@ -581,7 +581,7 @@ for(var i=0; i<cantLineas ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theT
                           }
 
                           
-                         // console.log(cell);
+                         console.log(cell);
                           //SI LA CELDA NO CONTIENE VALOR 
                           /* if(document.getElementById(phsid).value == '-'){
                               
