@@ -297,7 +297,7 @@ $taxval = $taxval/100;
               	$PRICE = $this->numberFormatPrecision($ORDER->{'Unit_Price'});
 								echo  "<tr>
 													<td>".$ORDER->{'Item_id'}."[".$ORDER->{'ID'}.']</td>
-													<td contenteditable id="desc'.$i.'" onkeyup="checkTblChar(this.id); checkLong(this.id,100);" >'.$ORDER->{'Description'}."</td>
+													<td contenteditable id="desc'.$i.'" onkeyup="checkTblChar(this.id); checkLong(this.id,50);" >'.$ORDER->{'Description'}."</td>
 													<td>".$ORDER->{'Taxable'}."</td>
 													<td class='numb' id='qty".$i."' >".number_format($ORDER->{'Quantity'},5,'.',',')."</td>
 													<td class='numb' contenteditable onfocusout='calculate(".$i.");' id='desp".$i."' ></td>
