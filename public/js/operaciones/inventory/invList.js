@@ -29,7 +29,7 @@ table = $("#productos").DataTable({
             {
             extend: "excelHtml5",
             text: "Exportar a Excel",
-            title: "Entrada_mercancia",
+            title: "Inventario_por_ubicacion",
              
             exportOptions: {
                   columns: ":visible",
@@ -71,8 +71,41 @@ table = $("#productos").DataTable({
             {data:"Ubicacion"},
             {data:"Modificado_el"}
         
-            ]}    
-        );
+            ],
+            responsive: false,
+            pageLength: 20,
+            dom: "Brtip",
+            bSort: false,
+            select: false,
+        
+            info: false,
+              buttons: [
+                {
+                extend: "excelHtml5",
+                text: "Exportar a Excel",
+                title: "Inventario_por_ubicacion",
+                 
+                exportOptions: {
+                      columns: ":visible",
+                       format: {
+                          header: function ( data ) {
+                            var StrPos = data.indexOf("<div");
+                              if (StrPos<=0){
+                                
+                                var ExpDataHeader = data;
+                              }else{
+                             
+                                var ExpDataHeader = data.substr(0, StrPos); 
+                              }
+                             
+                            return ExpDataHeader;
+                            }
+                          }
+                       
+                        }
+                      
+                }]
+        });
 
     $('#itemXStock tbody').on('click', 'tr', function () {
             
