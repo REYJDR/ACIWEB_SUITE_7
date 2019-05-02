@@ -16,8 +16,44 @@ table = $("#productos").DataTable({
         {data:"Descripcion"},
         {data:"Unidad",className: "numb"},
         {data:"Stock",className: "numb"},
-        {data:"Costo_Uni",className: "numb"}]}    
-    );
+        {data:"Costo_Uni",className: "numb"}],
+
+        responsive: false,
+        pageLength: 20,
+        dom: "Brtip",
+        bSort: false,
+        select: false,
+    
+        info: false,
+          buttons: [
+            {
+            extend: "excelHtml5",
+            text: "Exportar a Excel",
+            title: "Entrada_mercancia",
+             
+            exportOptions: {
+                  columns: ":visible",
+                   format: {
+                      header: function ( data ) {
+                        var StrPos = data.indexOf("<div");
+                          if (StrPos<=0){
+                            
+                            var ExpDataHeader = data;
+                          }else{
+                         
+                            var ExpDataHeader = data.substr(0, StrPos); 
+                          }
+                         
+                        return ExpDataHeader;
+                        }
+                      }
+                   
+                    }
+                  
+            }]
+    
+    
+    });
 
    table2 = $("#itemXStock").DataTable({
         aLengthMenu: [
