@@ -1439,15 +1439,15 @@ public function getItemsStocksList(){
         require_once APP.'view/modules/inventory/lang/'.$this->model->lang.'_ref.php';
     
         $columns =  array( 
-                    '`D.ProductID` as `'.$STblcol1.'`',
-                    '`D.Description` as `'.$STblcol2.'`',
-                    '`E.no_lote` as `'.$STblcol3.'`',
-                    '`E.fecha_ven` as `'.$STblcol4.'`',
-                    '`A.qty` as `'.$STblcol5.'`',
-                    '`C.name` as `'.$STblcol6.'`',
-                    '`C.description` as `'.$STblcol7.'`',
-                    '`B.location` as `'.$STblcol8.'`',
-                    '`A.last_change` as `'.$STblcol9.'`' );
+                    'D.ProductID as '.$STblcol1,
+                    'D.Description as '.$STblcol2,
+                    'E.no_lote as '.$STblcol3,
+                    'E.fecha_ven as '.$STblcol4,
+                    'A.qty as '.$STblcol5,
+                    'C.name as '.$STblcol6,
+                    'C.description as '.$STblcol7,
+                    'B.location as '.$STblcol8,
+                    'A.last_change as '.$STblcol9 );
     
         $clause = ' LEFT JOIN STOCK_ITEMS_LOCATION AS A  ON D.ProductID = A.itemID
                     LEFT JOIN ITEMS_NO_LOTES AS E ON E.no_lote = A.lote
