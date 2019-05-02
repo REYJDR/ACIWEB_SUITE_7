@@ -123,3 +123,66 @@ function getListItem(){
 
 
 }
+
+function getListItemByStock(){
+    
+    //$('#listItem').html('Searching, please wait...');
+    MSG_ERROR_RELEASE();
+    
+    MSG_ADVICE('Searching, please wait...',0);
+              
+
+    function getItems(){
+
+        var URL = $('#URL').val();
+        var metodo= "ges_inventario/getItemsStocksList";
+        var link= URL+"index.php";
+       
+    
+         return $.ajax({
+              type: "GET",
+              url: link,
+              dataType: 'json',
+             // async:  false,
+              data: {url:metodo} ,
+              success: function(res){
+                
+            }
+           });
+
+    }
+    $.when(getItems()).done(function(res){ 
+
+        if(res == 0){
+            MSG_ERROR_RELEASE();
+            MSG_ERROR("There's no Items to List",0);
+            $('#listItem').html("There's no Items to List");
+        }else{
+            MSG_ERROR_RELEASE();
+            MSG_ADVICE("Loading items...",0);
+            addRows(res);
+        }
+
+    });
+
+
+    
+
+    function addRows(items) {
+
+        
+
+        printTbl = $('#productos').DataTable();
+           
+
+        printTbl.clear();
+
+        printTbl.rows.add(items.data).draw(); 
+
+        MSG_ERROR_RELEASE();
+        MSG_CORRECT("Done",0);
+
+    }
+
+
+}

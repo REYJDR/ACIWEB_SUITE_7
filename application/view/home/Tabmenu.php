@@ -154,7 +154,10 @@
         <div class='col-lg-3'>
         <button onclick="window.location='<?PHP ECHO URL; ?>index.php?url=ges_inventario/InvInReport/'" class="dashBottom" ><?php echo $SUBMENU_rep8; ?></button>              
         </div>
-
+        
+        <div class='col-lg-3'>
+        <button onclick="window.location='<?PHP ECHO URL; ?>index.php?url=ges_inventario/invStocklist/'" class="dashBottom" ><?php echo $SUBMENU_rep9; ?></button>              
+        </div>
 
     <?php } ?>
 

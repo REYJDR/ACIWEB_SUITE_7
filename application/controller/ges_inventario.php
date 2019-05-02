@@ -30,6 +30,30 @@ public function inv_list(){
 }
 
 //******************************************************************************
+//LISTA DE PRODUCTOS X STOCK
+public function invStocklist(){
+    
+   
+   
+    $res = $this->model->verify_session();
+   
+           if($res=='0'){
+           
+               // load views
+               require APP . 'view/_templates/header.php';
+               require APP . 'view/_templates/panel.php';
+               require APP . 'view/modules/inventory/invStock.php';
+               require APP . 'view/_templates/footer.php';
+   
+   
+           }
+             
+   
+   
+       
+   }
+
+//******************************************************************************
 //DETALLES DE PRODUCTO
 public function inv_info(){
  
@@ -1405,6 +1429,57 @@ public function getListItems(){
 
 
 }
+
+
+public function getItemsStocksList(){
+    
+ 
+        $this->model->verify_session();
+    
+        require_once APP.'view/modules/inventory/lang/'.$this->model->lang.'_ref.php';
+    
+        $columns =  array( 
+                    '`D.ProductID` as `'.$STblcol1.'`',
+                    '`D.Description` as `'.$STblcol2.'`',
+                    '`E.no_lote` as `'.$STblcol3.'`',
+                    '`E.fecha_ven` as `'.$STblcol4.'`',
+                    '`A.qty` as `'.$STblcol5.'`',
+                    '`C.name` as `'.$STblcol6.'`',
+                    '`C.description` as `'.$STblcol7.'`',
+                    '`B.location` as `'.$STblcol8.'`',
+                    '`A.last_change` as `'.$STblcol9.'`' );
+    
+        $clause = ' LEFT JOIN STOCK_ITEMS_LOCATION AS A  ON D.ProductID = A.itemID
+                    LEFT JOIN ITEMS_NO_LOTES AS E ON E.no_lote = A.lote
+                    LEFT JOIN STOCK_LOCATION  AS B ON  B.id = A.Location
+                    LEFT JOIN  STOCKS AS C on C.ID = A.stock;';
+    
+       $Item= $this->model->queryColumns('Products_Exp as D', $columns,$clause);
+    
+       if($Item != '' ){
+        
+      
+            $itemarray = [];
+            $i = 0;
+            
+            foreach ($Item as $value) {
+                $value =  json_decode($value);
+                $itemarray['data'][$i] =  $value;  
+                $i += 1;
+            }
+    
+            echo json_encode($itemarray);
+    
+     
+    
+       }else{
+    
+        echo 0;
+       }
+      
+    
+    
+    }
 
 
 }//CIERRE DE CLASE

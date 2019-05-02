@@ -13,6 +13,19 @@ $Tblcol9 = 'Detalle';
 $InvListButtom = 'Listar Inventario';
 //  END INV lIST
 
+
+$STblcol1 = 'Codigo';
+$STblcol2 = 'Descripcion';
+$STblcol3 = 'No Lote';
+$STblcol4 = 'Fecha Venc.';
+$STblcol5 = 'Cantidad';
+$STblcol6 = 'Almacen';
+$STblcol7 = 'Descriocion Almacen';
+$STblcol8 = 'Ubicacion';
+$STblcol9 = 'Modificado el';
+
+
+
 // INI INV INFO
 $Title2 = '';
 $invInfo1 ="Item ID";

@@ -44,6 +44,8 @@ $SUBMENU_rep5 = 'Salida de mercancia';
 $SUBMENU_rep7 = 'Requisiciones de Pagos';
 $SUBMENU_rep6 = 'Otros';
 $SUBMENU_rep8 = 'Movimientos de mercancia';
+$SUBMENU_rep9 = 'Inventario por Ubicacion';
+
 $SUBMENU_cust1 = 'Lista de precios';
 $SUBMENU_cust2 = 'Manage Customers';
 //END MENU
