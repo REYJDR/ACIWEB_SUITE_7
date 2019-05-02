@@ -34,15 +34,15 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 			<table  id="itemXStock" class="display table table-striped table-condensed table-bordered " cellspacing="0">
 			<thead>
 				<tr >
-				<th width="15%" class="text-center"><?php echo $Tblcol1;?></th>
-				<th width="15%" class="text-center"><?php echo $Tblcol2;?></th>
-				<th width="5%"  class="text-center"><?php echo $Tblcol3?></th>
-				<th width="5%"  class="text-center"><?php echo $Tblcol4;?></th>
-				<th width="5%" class="text-center"><?php echo $Tblcol5;?></th>
-                <th width="5%" class="text-center"><?php echo $Tblcol6;?></th>
-                <th width="5%" class="text-center"><?php echo $Tblcol7;?></th>
-                <th width="5%" class="text-center"><?php echo $Tblcol8;?></th>
-                <th width="5%" class="text-center"><?php echo $Tblcol9;?></th>
+				<th width="15%" class="text-center"><?php echo $STblcol1;?></th>
+				<th width="15%" class="text-center"><?php echo $STblcol2;?></th>
+				<th width="5%"  class="text-center"><?php echo $STblcol3?></th>
+				<th width="5%"  class="text-center"><?php echo $STblcol4;?></th>
+				<th width="5%" class="text-center"><?php echo $STblcol5;?></th>
+                <th width="5%" class="text-center"><?php echo $STblcol6;?></th>
+                <th width="5%" class="text-center"><?php echo $STblcol7;?></th>
+                <th width="5%" class="text-center"><?php echo $STblcol8;?></th>
+                <th width="5%" class="text-center"><?php echo $STblcol9;?></th>
                 
 				</tr>
 			</thead>
