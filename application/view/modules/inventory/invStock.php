@@ -31,7 +31,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 			<div class="col-lg-12"> 
 			<fieldset class="table_req fieldsetform" >
 			<div class="separador col-lg-12"> </div>
-			<table  id="productos" class="display table table-striped table-condensed table-bordered " cellspacing="0">
+			<table  id="itemXStock" class="display table table-striped table-condensed table-bordered " cellspacing="0">
 			<thead>
 				<tr >
 				<th width="15%" class="text-center"><?php echo $Tblcol1;?></th>
