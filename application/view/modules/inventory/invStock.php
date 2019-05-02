@@ -20,7 +20,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 				<div class="separador col-lg-12"> </div>
 			<!--INI DIV ERROR-->
 			<div class="col-lg-2">
-			<button  class="btn-bar" name="searchItem" id="searchItem"  onclick="getItemsStocksList()"><?php echo $InvListButtom; ?></button>
+			<button  class="btn-bar" name="searchItem" id="searchItem"  onclick="getListItemByStock()"><?php echo $InvListButtom; ?></button>
 			</div>
 			<span class="page100-form-title">
 						<?PHP echo $Title1; ?>
