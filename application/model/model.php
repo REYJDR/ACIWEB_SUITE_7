@@ -265,7 +265,6 @@ public function queryColumns($table,$columns,$clause){
 
    $query = "SELECT  ".implode(',', $columns)." FROM ".$table." ".$clause." ;";
 
-  die($query);
     return $this->Query($query);
         
 }
