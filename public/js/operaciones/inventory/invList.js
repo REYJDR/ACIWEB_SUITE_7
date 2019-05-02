@@ -220,12 +220,26 @@ function getListItemByStock(){
         }else{
             MSG_ERROR_RELEASE();
             MSG_ADVICE("Loading items...",0);
-            addRows(res);
+            addRowsStock(res);
         }
 
     });
 
-
+    function addRowsStock(items) {
+        
+                
+        
+                printTbl = $('#itemXStock').DataTable();
+                   
+        
+                printTbl.clear();
+        
+                printTbl.rows.add(items.data).draw(); 
+        
+                MSG_ERROR_RELEASE();
+                MSG_CORRECT("Done",0);
+        
+            }
     
 
     function addRows(items) {
