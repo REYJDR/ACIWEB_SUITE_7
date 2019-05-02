@@ -19,8 +19,37 @@ table = $("#productos").DataTable({
         {data:"Costo_Uni",className: "numb"}]}    
     );
 
+   table2 = $("#itemXStock").DataTable({
+        aLengthMenu: [
+            [10, 25,50,-1], [10, 25, 50,"All"]
+        ] ,
+        columns:[
+    
+            {data:"Codigo"},
+            {data:"Descripcion"},
+            {data:"No_Lote"},
+            {data:"Fecha_Venc"},
+            {data:"Cantidad",className: "numb"},
+            {data:"Almacen"},
+            {data:"Descriocion_Almacen"},
+            {data:"Ubicacion"},
+            {data:"Modificado_el"}
+        
+            ]}    
+        );
 
-         
+    $('#itemXStock tbody').on('click', 'tr', function () {
+            
+                    var data = table2.row( this ).data();
+            
+                    var URL = $('#URL').val();
+                    var metodo= "url=ges_inventario/inv_info&item="+data['Codigo'];
+                    var link= URL+"index.php?"+metodo;
+            
+                    window.location.replace(link); 
+                });
+
+
     $('#productos tbody').on('click', 'tr', function () {
 
         var data = table.row( this ).data();
@@ -50,6 +79,37 @@ table = $("#productos").DataTable({
     {cumulative_filtering: true, 
     filter_reset_button_text: false}
     );
+
+    $("#itemXStock").dataTable().yadcf(
+        [
+        {column_number : 0,
+            select_type: "select2",
+            select_type_options: { width: "100%" }
+           
+        },
+        {column_number : 1,
+         select_type: "select2",
+         select_type_options: { width: "100%" }
+        
+        },
+        {column_number : 5,
+            select_type: "select2",
+            select_type_options: { width: "100%" }
+           
+        },
+        {column_number : 7,
+            select_type: "select2",
+            select_type_options: { width: "100%" }
+           
+        },
+    
+    
+    
+    ],
+    
+        {cumulative_filtering: true, 
+        filter_reset_button_text: false}
+        );
     
 });
 

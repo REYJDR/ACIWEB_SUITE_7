@@ -16,13 +16,13 @@ $InvListButtom = 'Listar Inventario';
 
 $STblcol1 = 'Codigo';
 $STblcol2 = 'Descripcion';
-$STblcol3 = 'No Lote';
-$STblcol4 = 'Fecha Venc.';
+$STblcol3 = 'No_Lote';
+$STblcol4 = 'Fecha_Venc.';
 $STblcol5 = 'Cantidad';
 $STblcol6 = 'Almacen';
-$STblcol7 = 'Descriocion Almacen';
+$STblcol7 = 'Descriocion_Almacen';
 $STblcol8 = 'Ubicacion';
-$STblcol9 = 'Modificado el';
+$STblcol9 = 'Modificado_el';
 
 
 
