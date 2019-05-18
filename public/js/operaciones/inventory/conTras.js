@@ -137,12 +137,12 @@ function SetDesc(itemId, line){
        if(itemId == ''){
 
         document.getElementById(id_desc_field).innerHTML  = '';
-        document.getElementById(id_unit_field).innerHTML   = '';
-        document.getElementById(id_qty_field).innerHTML  = '';
+       // document.getElementById(id_unit_field).innerHTML   = '';
+        //document.getElementById(id_qty_field).innerHTML  = '';
       //  document.getElementById(id_price_field).innerHTML  = '';
       //  document.getElementById(id_taxable_field).innerHTML  = '';
 
-      $("#stockOri"+line).html("");
+         $("#stockOri"+line).html("");
 
        }  else{
 
