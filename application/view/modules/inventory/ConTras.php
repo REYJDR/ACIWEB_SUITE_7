@@ -64,23 +64,7 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 					</fieldset>
 					</div>
 				
-					<div class="separador col-lg-12"> </div>
-					<div  class="col-lg-3">
-					<fieldset class="fieldsetform">
-					<table class='table_form'>
-						<tbody>
-							<tr>
-							<th><strong><?PHP echo $Inv_REP_TblHdr8; ?></strong></th>
-							<td>
-							<select class="select col-lg-12"  id="JOBID2" >
-							<option value="-" selected>-</option>
-							</select>
-							</td>
-						</tr>
-						</tbody>
-					</table>
-					</fieldset>
-					</div>
+	
 
 				</div>
 				<!--fin header-->
