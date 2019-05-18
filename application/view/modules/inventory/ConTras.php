@@ -75,8 +75,10 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 					<tr>
 						<th width="10%" ><?php echo $TblItem;?></th>
 						<th width="15%" class="text-center"><?php echo $TblDes;?></th>
-						<th width="5%"  class="text-center"><?php echo $TblQtyCon;?></th>
-						<th width="5%"  class="text-center"><?php echo $TblStockOri;?></th> 
+						
+						<th width="5%"  class="text-center"><?php echo $TblStockOri;?></th>
+						 <th width="5%"  class="text-center"><?php echo $TblQtyCon;?></th>
+
 						<!-- <th width="5%"  class="text-center"><?php echo $TblLocOri;?></th> -->
 						<th width="5%"  class="text-center"><?php echo $TblStockDes;?></th> 
 						<th width="5%"  class="text-center"><?php echo $TblLocDes;?></th>
