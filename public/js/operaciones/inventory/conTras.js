@@ -88,7 +88,7 @@ function builtTbl(chk){
     var i = 1;
     var reglon = '';
     var cantLineas = $('#FAC_NO_LINES').val();
-  
+   var selectItems = '"selectItems"';
     $('#items').html(''); //limpio la tabla 
 
     while(i <= cantLineas){
@@ -103,7 +103,7 @@ function builtTbl(chk){
 
             var line_table_req = '<tr>'+reglon+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)"  id="desc'+i+'"  ></td>'+
-                '<td width="15%" class="rowtable_req" ><select class="selectItems" id="stockOri'+i+'"   onchange="set_selectWidth("selectItems"); "  ><option  value="-" selected>-</option>'+STOCK+'</select></td>'+
+                '<td width="15%" class="rowtable_req" ><select class="selectItems" id="stockOri'+i+'"   onchange="set_selectWidth('+selectItems+');"  ><option  value="-" selected>-</option>'+STOCK+'</select></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)"  contenteditable id="qty'+i+'"></td>'+                
                 '<td width="15%" class="rowtable_req" ><select class="selectItems" id="stockDes'+i+'"     ><option  value="-" selected>-</option>'+STOCK+'</select></td>'+
                 '<td width="15%" class="rowtable_req" ><select class="selectItems" id="locationDes'+i+'"  ><option  value="-" selected>-</option>'+LOCATION+'</select></td>'+
