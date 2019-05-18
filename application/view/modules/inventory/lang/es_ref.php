@@ -149,4 +149,10 @@ $Inv_REP_TblHdr13 = 'ACI Ref.';
 
 
 //END REPORTE
+
+
+//consignacion
+$Title4 = 'Consignaciones'
+
+
 ?>
