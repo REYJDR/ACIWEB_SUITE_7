@@ -152,7 +152,13 @@ $Inv_REP_TblHdr13 = 'ACI Ref.';
 
 
 //consignacion
-$Title4 = 'Consignaciones'
+$Title4 = 'Consignaciones';
+
+$TblStockOri = 'Almacen Origen';
+$TblStockDes= 'Almacen Destino';
+$TblLocOri = 'Ubicacion Origen';
+$TblLocDes= 'Ubicacion Origen';
+
 
 
 ?>
