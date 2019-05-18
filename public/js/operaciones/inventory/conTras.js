@@ -150,7 +150,7 @@ function SetDesc(itemId, line){
 
         document.getElementById(id_desc_field).innerHTML = 'Loading...';
         
-          /*  function GetStockbItem(){
+            function GetStockbItem(){
     
                 var url= "ges_inventario/getStockByItemID/";
                 var link=  $('#URL').val()+"index.php";
@@ -164,7 +164,7 @@ function SetDesc(itemId, line){
     
                             console.log(res);
                 
-                            $("#SelStock"+line).html(res);
+                            $("#stockOri"+line).html(res);
                     
                             }
                     });
