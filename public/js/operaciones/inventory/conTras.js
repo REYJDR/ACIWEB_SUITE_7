@@ -142,7 +142,7 @@ function SetDesc(itemId, line){
       //  document.getElementById(id_price_field).innerHTML  = '';
       //  document.getElementById(id_taxable_field).innerHTML  = '';
 
-
+      $("#stockOri"+line).html("");
 
        }  else{
 
