@@ -12,11 +12,11 @@ public function con_crear(){
 
         if($res=='0'){
 
-            // load views
-            require APP . 'view/_templates/header.php';
-            require APP . 'view/_templates/panel.php';
-            require APP . 'view/operaciones/inventory/ConTras.php';
-            require APP . 'view/_templates/footer.php';
+          // load views
+          require APP . 'view/_templates/header.php';
+          require APP . 'view/_templates/panel.php';
+          require APP . 'view/modules/inventory/ConTras.php';
+          require APP . 'view/_templates/footer.php';
 
 
         }
