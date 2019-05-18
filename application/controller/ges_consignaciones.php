@@ -11,7 +11,6 @@ public function con_crear(){
  $res = $this->model->verify_session();
 
         if($res=='0'){
-        echo '********************************************+';
 
             // load views
             require APP . 'view/_templates/header.php';
