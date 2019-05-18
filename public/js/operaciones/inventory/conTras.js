@@ -103,7 +103,7 @@ function builtTbl(chk){
 
             var line_table_req = '<tr>'+reglon+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)"  id="desc'+i+'"  ></td>'+
-                '<td width="15%" class="rowtable_req" ><select class="selectItems" id="stockOri'+i+'"   onchange="set_selectItemStyle()"  ><option  value="-" selected>-</option>'+STOCK+'</select></td>'+
+                '<td width="15%" class="rowtable_req" ><select class="selectItems" id="stockOri'+i+'"   onchange="set_selectItemStyle(); "  ><option  value="-" selected>-</option>'+STOCK+'</select></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)"  contenteditable id="qty'+i+'"></td>'+                
                 '<td width="15%" class="rowtable_req" ><select class="selectItems" id="stockDes'+i+'"     ><option  value="-" selected>-</option>'+STOCK+'</select></td>'+
                 '<td width="15%" class="rowtable_req" ><select class="selectItems" id="locationDes'+i+'"  ><option  value="-" selected>-</option>'+LOCATION+'</select></td>'+
@@ -161,7 +161,7 @@ function SetDesc(itemId, line){
                         data: {url : url, itemID: itemId },
                         success: function(res){
     
-                            console.log(res);
+                         //   console.log(res);
                 
                             $("#stockOri"+line).html(res);
                     
@@ -194,7 +194,7 @@ function SetDesc(itemId, line){
                 json = JSON.parse(res);
                         
                 document.getElementById(id_desc_field).innerHTML  = json.Description;
-                document.getElementById(id_unit_field).innerHTML   = json.UnitMeasure;
+               // document.getElementById(id_unit_field).innerHTML   = json.UnitMeasure;
                // document.getElementById(id_qty_field).innerHTML  = json.QtyOnHand;
                // document.getElementById(id_price_field).innerHTML  = json.Price1;
                 
