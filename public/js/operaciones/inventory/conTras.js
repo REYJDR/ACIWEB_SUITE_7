@@ -201,7 +201,7 @@ function SetDesc(itemId, line){
                 
     
         });
-       }  
+       }  );
     
  
 }
@@ -686,4 +686,3 @@ function phase(){
      /*cost*/
      
      }
-     
