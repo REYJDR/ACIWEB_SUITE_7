@@ -20,8 +20,6 @@ public function con_crear(){
 
 
         }
-          
-
 
 	
 }
