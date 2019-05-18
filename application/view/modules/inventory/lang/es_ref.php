@@ -158,6 +158,7 @@ $TblStockOri = 'Almacen Origen';
 $TblStockDes= 'Almacen Destino';
 $TblLocOri = 'Ubicacion Origen';
 $TblLocDes= 'Ubicacion Origen';
+$TblQtyCon = 'Cantidad'
 
 
 
