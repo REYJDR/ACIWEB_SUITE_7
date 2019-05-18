@@ -15,7 +15,7 @@ public function con_crear(){
             // load views
             require APP . 'view/_templates/header.php';
             require APP . 'view/_templates/panel.php';
-            require APP . 'view/operaciones/ConTras.php';
+            require APP . 'view/operaciones/inventory/ConTras.php';
             require APP . 'view/_templates/footer.php';
 
 
