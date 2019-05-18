@@ -31,14 +31,14 @@ public function con_print($id){
 
         if($res=='0'){
         	
-$id = trim($id);
+ $id = trim($id);
 
-$clause= 'WHERE CON_HEADER.ID_compania="'.$this->model->id_compania.'"
+ $clause= 'WHERE CON_HEADER.ID_compania="'.$this->model->id_compania.'"
                  and CON_REG_TRAS.ID_compania="'.$this->model->id_compania.'"  
                  and reg_traslado.ID_compania="'.$this->model->id_compania.'"
                  and CON_HEADER.refReg="'.$id.'"';
 
-$ORDER = $this->model->get_con_to_report('DESC','1',$clause);
+ $ORDER = $this->model->get_con_to_report('DESC','1',$clause);
 
   
             foreach ($ORDER as  $value) {
@@ -76,6 +76,8 @@ $ORDER = $this->model->get_con_to_report('DESC','1',$clause);
 
 
 }
+
+
 
 
 }

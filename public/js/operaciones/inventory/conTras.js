@@ -103,7 +103,7 @@ function builtTbl(chk){
 
             var line_table_req = '<tr>'+reglon+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)"  id="desc'+i+'"  ></td>'+
-                '<td width="15%" class="rowtable_req" ><select class="selectItems" id="stockOri'+i+'"   onchange="set_selectWidth('+selectItems+');"  ><option  value="-" selected>-</option>'+STOCK+'</select></td>'+
+                '<td width="15%" class="rowtable_req" ><select class="selectItems" id="stockOri'+i+'"   onchange="GetQtyInStock(this.value,'+i+');"  ><option  value="-" selected>-</option>'+STOCK+'</select></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)"  contenteditable id="qty'+i+'"></td>'+                
                 '<td width="15%" class="rowtable_req" ><select class="selectItems" id="stockDes'+i+'"     ><option  value="-" selected>-</option>'+STOCK+'</select></td>'+
                 '<td width="15%" class="rowtable_req" ><select class="selectItems" id="locationDes'+i+'"  ><option  value="-" selected>-</option>'+LOCATION+'</select></td>'+
@@ -117,7 +117,7 @@ function builtTbl(chk){
             $('#items').append(line_table_req); //limpio la tabla 
             }
 
-        set_selectItemStyle(); 
+           set_selectItemStyle(); 
 
 
 }
@@ -132,18 +132,14 @@ function SetDesc(itemId, line){
     var id_price_field = 'unitprice'+line;
     var id_taxable_field = 'tax'+line;
     var id_qty_field = 'qty'+line;
+    var id_stockOri = 'stockOri'+line;
 
 
        if(itemId == ''){
 
         document.getElementById(id_desc_field).innerHTML  = '';
-       // document.getElementById(id_unit_field).innerHTML   = '';
-        //document.getElementById(id_qty_field).innerHTML  = '';
-      //  document.getElementById(id_price_field).innerHTML  = '';
-      //  document.getElementById(id_taxable_field).innerHTML  = '';
+        document.getElementById(id_stockOri).innerHTML  = '';
 
-       
-         $("#stockOri"+line).html();
 
        }else{
 
@@ -206,127 +202,6 @@ function SetDesc(itemId, line){
 }
 }
 
-// ******************************************************************************************
-// *CALCULOS DE TOTALES
-// ******************************************************************************************
-function recalcular(line){
-    
-    PriceID = 'unitprice'+line;
-    
-    UnitPrice = document.getElementById(PriceID).innerHTML;
-    
-      if(UnitPrice!=''){
-    
-          calculate(line);
-    
-      }
-    
-}
-    
-function calculate(line){
-    
-    qtyID = 'qty'+line;
-    PriceID = 'unitprice'+line;
-    totalID = 'total'+line;
-    qty = document.getElementById(qtyID).innerHTML;
-    UnitPrice = document.getElementById(PriceID).innerHTML;
-    
-    if(qty=='' || UnitPrice == ''){
-    
-    qty = 0;
-    UnitPrice = 0;
-    
-    }
-    
-    total = qty * UnitPrice;
-    
-    //document.getElementById(totalID).innerHTML = parseFloat(total).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]; 
-    document.getElementById(totalID).innerHTML = parseFloat(total).toFixed(5); 
-    document.getElementById( PriceID).innerHTML =   parseFloat(UnitPrice ).toFixed(5);
-    document.getElementById(qtyID).innerHTML =   parseFloat(qty).toFixed(5);
-    
-    sumar_total();
-    
-}
-    
-function sumar_total(){
-    
-    var theTbl = document.getElementById('table_ord_tb'); //objeto de la tabla que contiene los datos de items
-    var total = [];
-    var TOTAL = 0;
-    var itbms = [];
-
-    total_field    = document.getElementById('total');
- /*  subtotal_field = document.getElementById('subtotal');
-    tax_field      = document.getElementById('tax'); 
-    tax_value      = document.getElementById('saletaxid').value;*/
-
-    
-    for(var i=1; i<theTbl.rows.length ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theTbl
-    {
-       var  taxableID = 'tax'+i;
-      for(var j=0;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
-    
-            {       
-    
-                switch (j){
-    
-                       case 5:
-                  
-                    /*   if(document.getElementById(taxableID).innerHTML=='SI'){
-                    
-                        itbms_sum = Number(theTbl.rows[i].cells[7].innerHTML) * Number(tax_value);
-                        itbms.push(itbms_sum);
-    
-                        }*/
-                       
-                        total.push(theTbl.rows[i].cells[j].innerHTML);
-    
-                        break;
-    
-                }
-    
-               }//FIN BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
-    
-    }//FIN BLUCLE PARA LEER LINEA POR LINEA DE LA TABLA
-    
-
- /*    var subtotal  = 0;
-    var TAX  = 0;
-    
-    for(var i=0; i<total.length; i++){
-    
-        subtotal  += Number(total[i]);
-    
-    }
-    
-    for(var i=0; i<itbms.length; i++){
-    
-        TAX    += Number(itbms[i]);
-    
-    }*/
-    
-   for(var i=0; i<total.length; i++){
-    
-        TOTAL  += Number(total[i]);
-    
-    }
-
- /*   TOTAL =  subtotal+ TAX
-
-
-
-    subtotal_field.value = parseFloat(subtotal).toFixed(2);;
-    tax_field.value      = parseFloat(TAX).toFixed(2);; */
-    total_field.value   =  parseFloat(TOTAL).toFixed(2);
-
-   
-    
-    
-}
-// ******************************************************************************************
-// *CALCULOS DE TOTALES
-// ******************************************************************************************
 
 
 function proceed(){
@@ -685,4 +560,26 @@ function phase(){
         });
      /*cost*/
      
+     }
+
+
+     function GetQtyInStock(id,line){
+
+            /*cost*/
+            var url= "ges_inventory/get_any_lote_qty/"+id;
+            var link=  $('#URL').val()+"index.php";
+        
+        
+            return $.ajax({
+                    type: "GET",
+                    url: link,
+                    data: {url : url},
+                    success: function(res){
+
+                        $("#qty"+line).html(res);
+                        set_selectItemStyle(); 
+                    }
+                });
+            /*cost*/
+
      }
