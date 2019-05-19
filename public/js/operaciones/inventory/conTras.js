@@ -141,7 +141,7 @@ function builtTbl(chk){
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)"  id="desc'+i+'"  ></td>'+
                 '<td width="15%" class="rowtable_req" ><select class="selectStocks col-lg-12" id="stockOri'+i+'" onchange="GetQtyInStock(this.value,'+i+')"  ><option  value="-" selected>-</option></select></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)"  contenteditable id="qty'+i+'"></td>'+                
-                '<td width="15%" class="rowtable_req" ><select class="selectStocks col-lg-12" id="stockDes'+i+'"     >'+STOCKS+'</select></td>'+
+                '<td width="15%" class="rowtable_req" ><select class="selectStocks col-lg-12" onchange="GetLocList(this.value,'+i+')"  id="stockDes'+i+'"     >'+STOCKS+'</select></td>'+
                 '<td width="15%" class="rowtable_req" ><select class="selectStocks col-lg-12" id="locationDes'+i+'"  >'+LOCATION+'</select></td>'+
                 
           
@@ -635,5 +635,33 @@ function GetQtyInStock(id,line){
 
    }
    
+
+}
+
+function GetLocList(id,line){
+
+    if(id != '-'){
+        var url= "ges_inventario/get_routes_by_almacenid/"+id;
+        var link=  $('#URL').val()+"index.php";
+    
+    
+        $.ajax({
+                type: "GET",
+                url: link,
+                data: {url : url},
+                success: function(res){
+    
+    
+                    $("#locationDes"+line).html(res);
+                   
+                }
+            });
+        
+       }else{
+    
+        $("#locationDes"+line).html('');
+    
+       }
+       
 
 }
