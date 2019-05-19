@@ -825,6 +825,20 @@ function set_selectItemStyle(){
 
 }
 
+function set_selectStockStyle(){
+  
+    //selectc con buscador 
+    $(".selectStocks").select2({
+  
+      placeholder: '',
+      allowClear: true,
+      maximumSelectionSize: 1,
+      dropdownCssClass : 'bigdrop'
+  
+    }); 
+  
+}
+
 function set_selectLoteStyle(line){
   
 
