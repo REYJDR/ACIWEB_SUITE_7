@@ -13,6 +13,7 @@ var JOBS = '';
 var PHASES = '';
 var COST = '';
 
+var OriStock= "";
 var STOCK = '';
 var LOCATION = '';
 
@@ -103,7 +104,7 @@ function builtTbl(chk){
 
             var line_table_req = '<tr>'+reglon+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)"  id="desc'+i+'"  ></td>'+
-                '<td width="15%" class="rowtable_req" ><select class="selectItems" id="stockOri'+i+'" onchange="GetQtyInStock(this.value,'+i+')"  ><option  value="-" selected>-</option>'+STOCK+'</select></td>'+
+                '<td width="15%" class="rowtable_req" ><select class="selectItems" id="stockOri'+i+'" onchange="GetQtyInStock(this.value,'+i+')"  ><option  value="-" selected>-</option></select></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)"  contenteditable id="qty'+i+'"></td>'+                
                 '<td width="15%" class="rowtable_req" ><select class="selectItems" id="stockDes'+i+'"     ><option  value="-" selected>-</option>'+STOCK+'</select></td>'+
                 '<td width="15%" class="rowtable_req" ><select class="selectItems" id="locationDes'+i+'"  ><option  value="-" selected>-</option>'+LOCATION+'</select></td>'+
@@ -138,8 +139,8 @@ function SetDesc(itemId, line){
        if(itemId == ''){
 
         document.getElementById(id_desc_field).innerHTML  = '';
-        document.getElementById(id_stockOri).innerHTML  = '';
 
+        $("#stockOri"+line).html('<option  value="-" selected>-</option>');
 
        }else{
 
@@ -158,8 +159,8 @@ function SetDesc(itemId, line){
                         success: function(res){
     
                          //   console.log(res);
-                
-                            $("#stockOri"+line).html(res);
+                           
+                            $("#stockOri"+line).append(res);
                     
                             }
                     });
@@ -560,7 +561,8 @@ function phase(){
         });
      /*cost*/
      
-     }
+}
+
 
 
 function GetQtyInStock(id,line){
