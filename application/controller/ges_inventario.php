@@ -713,8 +713,9 @@ public function get_any_lote_qty($idLoc=''){
 
     $this->model->verify_session();
 
-    $res = $this->model->Query_value('STOCK_ITEMS_LOCATION','Floor(qty)','where id="'.$idLoc.'" and ID_compania ="'.$this->model->id_compania.'";');
+    $res = $this->model->Query_value('STOCK_ITEMS_LOCATION','Floor(qty)','where id="'.$idLoc.'" and ID_compania="'.$this->model->id_compania.'";');
 
+    
     echo $res;
     return $res;
 }
