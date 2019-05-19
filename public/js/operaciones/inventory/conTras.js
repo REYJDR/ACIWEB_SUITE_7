@@ -88,7 +88,7 @@ function getStocklist(){
 
     function getStocks(){
 
-        var datos= "url=bridge_query/get_almacen_selectlist/";
+        var datos= "url=ges_inventario/get_almacen_selectlist/";
         var link= $('#URL').val()+"index.php";
         
         
