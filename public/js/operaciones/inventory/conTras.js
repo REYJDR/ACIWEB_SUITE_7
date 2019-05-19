@@ -34,7 +34,7 @@ var link=  $('#URL').val()+"index.php";
 $(window).load(function(){
     
     $('#ERROR').hide();
-    stocks();
+    getStocklist();
    
 });
 
@@ -83,39 +83,36 @@ function init(){
 
 }
    
-function stocks(){
+function getStocklist(){
     
-    
-        function getStocks(){
-    
-            var datos= "url=bridge_query/get_almacen_selectlist/";
-            var link= $('#URL').val()+"index.php";
-            
-            
-            return   $.ajax({
-                    type: "GET",
-                    url: link,
-                    data: datos,
-                    success: function(res){
+
+    function getStocks(){
+
+        var datos= "url=bridge_query/get_almacen_selectlist/";
+        var link= $('#URL').val()+"index.php";
+        
+        
+        return   $.ajax({
+                type: "GET",
+                url: link,
+                data: datos,
+                success: function(res){
+                
+                    STOCKS = res;
                     
-                        STOCKS = res;
-                        
-                    }
-                    });
-    
-            
-            
-        } //obtengo lista de items
-    
-        $.when(getStocks()).done(function(){ //ESPERA QUE TERMINE el query de items
-            
-            init();
-            
-        });
-          
-    
-    
+                }
+                });
+
+        
+        
     }
+    $.when(getStocks()).done(function(){ //ESPERA QUE TERMINE el query de items
+        
+        init();
+        
+    });
+    
+}
     
 
 // ******************************************************************************************
