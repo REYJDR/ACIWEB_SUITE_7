@@ -146,18 +146,16 @@ $Inv_REP_TblHdr10 = 'Centro Costo';
 $Inv_REP_TblHdr11 = 'Tipo';
 $Inv_REP_TblHdr12 = 'Referencia';
 $Inv_REP_TblHdr13 = 'ACI Ref.';
-
-
 //END REPORTE
 
 
 //consignacion
 $Title4 = 'Consignaciones';
 
-$TblStockOri = 'Almacen Origen';
+$TblStockOri = 'Origen';
 $TblStockDes= 'Almacen Destino';
 $TblLocOri = 'Ubicacion Origen';
-$TblLocDes= 'Ubicacion Origen';
+$TblLocDes= 'Ubicacion Destino';
 $TblQtyCon = 'Cantidad'
 
 

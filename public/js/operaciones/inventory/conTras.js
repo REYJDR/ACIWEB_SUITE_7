@@ -34,13 +34,51 @@ var link=  $('#URL').val()+"index.php";
 $(window).load(function(){
     
     $('#ERROR').hide();
-    init();
-    jobs();
+    stocks();
+   
 });
 
 
 // * INICIALIZA TBL ENTRADA MASIVA  (CHK = 1-ENTRADA NUEVO ITEM / 2- AJUSTE DE ITEM EXISTENTE 
 // ******************************************************************************************
+
+function stocks(){
+       
+       $('#items').html('loading...');
+
+           function getStocks(){
+   
+               var datos= "url=bridge_query/get_almacen_selectlist/";
+               var link= $('#URL').val()+"index.php";
+              
+                
+                return   $.ajax({
+                        type: "GET",
+                        url: link,
+                        data: datos,
+                        success: function(res){
+                        
+                            STOCKS = res;
+                            
+                        }
+                        });
+   
+               
+               
+           } //obtengo lista de items
+   
+           $.when(getItems()).done(function(){ //ESPERA QUE TERMINE el query de items
+               
+              init();
+               
+           });
+      
+
+
+}
+
+
+
 function init(){
     
    
@@ -140,8 +178,17 @@ function SetDesc(itemId, line){
 
         document.getElementById(id_desc_field).innerHTML  = '';
         document.getElementById(id_qty_field).innerHTML  = '';
+
         $("#stockOri"+line).select2("destroy");
         $("#stockOri"+line).html('<option  value="-" selected>-</option>');
+        $("#stockOri"+line).select2({
+            
+                placeholder: '',
+                allowClear: true,
+                maximumSelectionSize: 1,
+                dropdownCssClass : 'bigdrop'
+            
+              }); 
 
        }else{
 
