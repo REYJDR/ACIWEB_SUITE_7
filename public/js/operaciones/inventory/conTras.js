@@ -139,7 +139,7 @@ function SetDesc(itemId, line){
        if(itemId == ''){
 
         document.getElementById(id_desc_field).innerHTML  = '';
-
+        $("#stockOri"+line).select2("destroy");
         $("#stockOri"+line).html('<option  value="-" selected>-</option>');
 
        }else{
