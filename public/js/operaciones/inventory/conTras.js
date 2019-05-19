@@ -43,8 +43,7 @@ $(window).load(function(){
 // ******************************************************************************************
 
 function stocks(){
-       
-       $('#items').html('loading...');
+
 
            function getStocks(){
    
@@ -67,7 +66,7 @@ function stocks(){
                
            } //obtengo lista de items
    
-           $.when(getItems()).done(function(){ //ESPERA QUE TERMINE el query de items
+           $.when(getStocks()).done(function(){ //ESPERA QUE TERMINE el query de items
                
               init();
                
