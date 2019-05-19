@@ -103,7 +103,7 @@ function builtTbl(chk){
 
             var line_table_req = '<tr>'+reglon+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)"  id="desc'+i+'"  ></td>'+
-                '<td width="15%" class="rowtable_req" ><select class="selectItems" id="stockOri'+i+'"   onchange="GetQtyInStock(this.value,'+i+');"  ><option  value="-" selected>-</option>'+STOCK+'</select></td>'+
+                '<td width="15%" class="rowtable_req" ><select class="selectItems" id="stockOri'+i+'" onchange="GetQtyInStock(this.value,'+i+')"  ><option  value="-" selected>-</option>'+STOCK+'</select></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)"  contenteditable id="qty'+i+'"></td>'+                
                 '<td width="15%" class="rowtable_req" ><select class="selectItems" id="stockDes'+i+'"     ><option  value="-" selected>-</option>'+STOCK+'</select></td>'+
                 '<td width="15%" class="rowtable_req" ><select class="selectItems" id="locationDes'+i+'"  ><option  value="-" selected>-</option>'+LOCATION+'</select></td>'+
@@ -563,25 +563,25 @@ function phase(){
      }
 
 
-     function GetQtyInStock(id,line){
+function GetQtyInStock(id,line){
 
-        console.log(id+'-'+line);
-            /*cost*/
-            var url= "ges_inventory/get_any_lote_qty/"+id;
-            var link=  $('#URL').val()+"index.php";
-        
-        
-            $.ajax({
-                    type: "GET",
-                    url: link,
-                    data: {url : url},
-                    success: function(res){
+    console.log('GetStock:'+id+'-'+line);
+           
+    var url= "ges_inventory/get_any_lote_qty/"+id;
+    var link=  $('#URL').val()+"index.php";
 
-                        console.log('qty'+res);
-                        $("#qty"+line).html(res);
-                        set_selectItemStyle(); 
-                    }
-                });
-            /*cost*/
 
-     }
+    $.ajax({
+            type: "GET",
+            url: link,
+            data: {url : url},
+            success: function(res){
+
+                console.log('qty'+res);
+                $("#qty"+line).html(res);
+                set_selectItemStyle(); 
+            }
+        });
+    
+
+}
