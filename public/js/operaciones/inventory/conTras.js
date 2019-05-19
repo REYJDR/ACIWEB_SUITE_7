@@ -161,7 +161,7 @@ function SetDesc(itemId, line){
                          //   console.log(res);
                            
                             $("#stockOri"+line).append(res);
-                            set_selectWidth('selectItems');
+                            set_selectStockStyle();
                             }
                     });
     
