@@ -567,9 +567,8 @@ function phase(){
 
 function GetQtyInStock(id,line){
 
-    console.log('GetStock:'+id+'-'+line);
-           
-    var url= "ges_inventory/get_any_lote_qty/"+id;
+   
+    var url= "ges_inventario/get_any_lote_qty/"+id;
     var link=  $('#URL').val()+"index.php";
 
 
@@ -579,7 +578,7 @@ function GetQtyInStock(id,line){
             data: {url : url},
             success: function(res){
 
-                console.log('qty'+res);
+
                 $("#qty"+line).html(res);
                 set_selectItemStyle(); 
             }
