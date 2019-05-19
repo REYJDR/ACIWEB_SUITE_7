@@ -104,10 +104,10 @@ function builtTbl(chk){
 
             var line_table_req = '<tr>'+reglon+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)"  id="desc'+i+'"  ></td>'+
-                '<td width="15%" class="rowtable_req" ><select class="selectItems selectStocks col-lg-12" id="stockOri'+i+'" onchange="GetQtyInStock(this.value,'+i+')"  ><option  value="-" selected>-</option></select></td>'+
+                '<td width="15%" class="rowtable_req" ><select class="selectStocks col-lg-12" id="stockOri'+i+'" onchange="GetQtyInStock(this.value,'+i+')"  ><option  value="-" selected>-</option></select></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)"  contenteditable id="qty'+i+'"></td>'+                
-                '<td width="15%" class="rowtable_req" ><select class="selectItems selectStocks col-lg-12" id="stockDes'+i+'"     ><option  value="-" selected>-</option>'+STOCK+'</select></td>'+
-                '<td width="15%" class="rowtable_req" ><select class="selectItems selectStocks col-lg-12" id="locationDes'+i+'"  ><option  value="-" selected>-</option>'+LOCATION+'</select></td>'+
+                '<td width="15%" class="rowtable_req" ><select class="selectStocks col-lg-12" id="stockDes'+i+'"     ><option  value="-" selected>-</option>'+STOCK+'</select></td>'+
+                '<td width="15%" class="rowtable_req" ><select class="selectStocks col-lg-12" id="locationDes'+i+'"  ><option  value="-" selected>-</option>'+LOCATION+'</select></td>'+
                 
           
                 //     '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)" onfocusout="recalcular('+i+');" contenteditable id="qty'+i+'"></td>'+
@@ -119,7 +119,7 @@ function builtTbl(chk){
             }
 
            set_selectItemStyle(); 
-
+           set_selectStockStyle();
 
 }
 
@@ -568,7 +568,7 @@ function phase(){
 
 function GetQtyInStock(id,line){
 
-   
+   if(id != '-'){
     var url= "ges_inventario/get_any_lote_qty/"+id;
     var link=  $('#URL').val()+"index.php";
 
@@ -585,5 +585,11 @@ function GetQtyInStock(id,line){
             }
         });
     
+   }else{
+
+    $("#qty"+line).html('');
+
+   }
+   
 
 }
