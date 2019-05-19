@@ -565,17 +565,19 @@ function phase(){
 
      function GetQtyInStock(id,line){
 
+        
             /*cost*/
             var url= "ges_inventory/get_any_lote_qty/"+id;
             var link=  $('#URL').val()+"index.php";
         
         
-            return $.ajax({
+            $.ajax({
                     type: "GET",
                     url: link,
                     data: {url : url},
                     success: function(res){
 
+                        console.log(res);
                         $("#qty"+line).html(res);
                         set_selectItemStyle(); 
                     }
