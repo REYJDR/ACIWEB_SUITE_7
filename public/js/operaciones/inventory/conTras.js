@@ -14,7 +14,7 @@ var PHASES = '';
 var COST = '';
 
 var OriStock= "";
-var STOCK = '';
+var STOCKS = '';
 var LOCATION = '';
 
 var CHK_VALIDATION ='';
@@ -124,7 +124,7 @@ function builtTbl(chk){
     var reglon = '';
     var cantLineas = $('#FAC_NO_LINES').val();
 
-   console.log(STOCKS);
+
     $('#items').html(''); //limpio la tabla 
 
     while(i <= cantLineas){
@@ -141,7 +141,7 @@ function builtTbl(chk){
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)"  id="desc'+i+'"  ></td>'+
                 '<td width="15%" class="rowtable_req" ><select class="selectStocks col-lg-12" id="stockOri'+i+'" onchange="GetQtyInStock(this.value,'+i+')"  ><option  value="-" selected>-</option></select></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)"  contenteditable id="qty'+i+'"></td>'+                
-                '<td width="15%" class="rowtable_req" ><select class="selectStocks col-lg-12" id="stockDes'+i+'"     >'+STOCK+'</select></td>'+
+                '<td width="15%" class="rowtable_req" ><select class="selectStocks col-lg-12" id="stockDes'+i+'"     >'+STOCKS+'</select></td>'+
                 '<td width="15%" class="rowtable_req" ><select class="selectStocks col-lg-12" id="locationDes'+i+'"  >'+LOCATION+'</select></td>'+
                 
           
