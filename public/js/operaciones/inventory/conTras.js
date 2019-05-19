@@ -161,7 +161,7 @@ function SetDesc(itemId, line){
                          //   console.log(res);
                            
                             $("#stockOri"+line).append(res);
-                    
+                            set_selectWidth('selectItems');
                             }
                     });
     
@@ -580,7 +580,7 @@ function GetQtyInStock(id,line){
 
 
                 $("#qty"+line).html(res);
-                set_selectItemStyle(); 
+               
             }
         });
     
