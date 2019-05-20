@@ -1632,11 +1632,12 @@ public function getStocLockName($id){
                     ' C.name' );
     
         $clause = ' LEFT JOIN STOCK_LOCATION AS B ON  A.id = A.Location
-                    LEFT JOIN STOCKS AS C on C.ID = A.stock;';
+                    LEFT JOIN STOCKS AS C on C.ID = A.stock 
+                    WHERE A.id=$id';
     
         $Item= $this->model->queryColumns('STOCK_ITEMS_LOCATION as A', $columns,$clause);
 
-        echo $Item;
+
         if($Item != '' ){
             
         
