@@ -917,18 +917,24 @@ return $NO_REF;
 public function Get_con_No(){
 
 
-$order = $this->Query_value('CON_HEADER','refAci','where ID_compania="'.$this->id_compania.'" order by refReg DESC LIMIT 1');
+$order = $this->Query_value('CON_HEADER','refAci','where ID_compania="'.$this->id_compania.'" order by lastChange DESC LIMIT 1');
 
-$NO_ORDER = number_format((int)$order+1);
-$NO_REF = str_pad($NO_ORDER, 9 ,"0",STR_PAD_LEFT);
+list($ACI , $NO_ORDER) = explode('-', $order);
 
 
-if($NO_REF < '1'){
+$NO_ORDER = number_format((int)$NO_ORDER+1);
+//$NO_ORDER = str_pad($NO_ORDER, 7 ,"0",STR_PAD_LEFT);
 
-    $NO_REF=0;
-    $NO_REF = str_pad($NO_REF, 9 ,"0",STR_PAD_LEFT);
+$NO_ORDER = 'CON-'.$NO_ORDER;
+
+if($NO_ORDER< '1'){
+
+    $NO_ORDER=0;
+    $NO_ORDER = 'CON-'.$NO_ORDER;
+   
 
 }
+
 
 
 return $NO_REF; 
