@@ -118,7 +118,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 					$stockDestID = json_decode($this->getStocLockName($filter->{'stockDestID'}));
 
-					
+					var_dump($stockOrigID);
 
 					$table.= '<tr>
 						<td ><strong>'.$filter->{'ID'}.'</strong></td>
