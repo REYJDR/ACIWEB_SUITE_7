@@ -295,10 +295,10 @@ function proceed(){
             
                 console.log(LineArray);
                     //REGISTROS DE ITEMS 
-                 /*   $.ajax({
+                    $.ajax({
                         type: "GET",
                         url:  link,
-                        data:  {url: 'ges_inventario/setInventoryAdjustmentOUT/', Data : JSON.stringify(LineArray)}, 
+                        data:  {url: 'ges_inventario/exeConsig/', Data : JSON.stringify(LineArray)}, 
                         success: function(res){
         
                             if(res.indexOf('ERROR') != -1){
@@ -312,7 +312,7 @@ function proceed(){
 
                         }
                 
-                    });*/
+                    });
 
                 
             }
@@ -385,7 +385,7 @@ function proceed(){
                                   
                                     if( itemId == '-'  ) FaltaArray[0] = i ;
                                     if( origenID == '-') FaltaArray[2] = i ;
-                                    if( qty == '' || 0 ) FaltaArray[3] = i ;
+                                    if( qty == '' || qty == 0 ) FaltaArray[3] = i ;
                                     if( stockId == '-' ) FaltaArray[4] = i ;
                                     if( locId == '-'   ) FaltaArray[5] = i ;
 
@@ -525,8 +525,7 @@ function jobs(){
         
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////
-
+///////////////////////////////////////////////////////////////////////////////////////////////// 
 function phase(){
     
      jobID = $("#JOBID").select2("val");
@@ -583,7 +582,6 @@ function phase(){
      /*cost*/
      
 }
-
 
 
 function GetQtyInStock(id,line){

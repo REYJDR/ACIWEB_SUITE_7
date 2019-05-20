@@ -341,6 +341,7 @@ public function getStockByItemID(){
       $query = 'SELECT 
         A.id as ID,
         B.name AS Stock,
+        A.lote,
         C.location as Location
         FROM STOCK_ITEMS_LOCATION as A
         INNER JOIN STOCKS B ON B.id = A.stock 
@@ -353,7 +354,7 @@ public function getStockByItemID(){
         foreach ( $res as $data){
         $value = json_decode($data);
     
-        $list .= '<option value="'.$value->{'ID'}.'">'.$value->{'Stock'}.' ( '.$value->{'Location'}.')</option>';
+        $list .= '<option value="'.$value->{'ID'}.'">'.$value->{'Stock'}.' ( '.$value->{'Location'}.' - '.$value->{'lote'}.')</option>';
     
         }
    echo $list ;
@@ -1117,6 +1118,108 @@ public function set_Purchase_Detail($PurchaseID){
     
 }
 
+public function exeConsig(){
+    
+        $this->model->verify_session();
+  
+        $id_compania= $this->model->id_compania;
+        $user = $this->model->active_user_id;
+        $ConNo = '';
+    
+        $data = json_decode($_GET['Data']);
+
+        //Header consignacion
+        list($null,$itemid,$origenID,$stockId,$locId,$qty,$note,$ref) = explode('@', $data[0]);
+
+        $ConNo = $this->model->Get_con_No();
+        
+        $values = array ( 'refReg' => $ref, 
+                          'refAci' => $ConNo , 
+                          'idUser' => $user , 
+                          'ID_compania' =>  $id_compania );
+
+        $this->model->insert('CON_HEADER',$values);
+       
+        usleep(1000);
+        $error = $this->CheckError();
+        if($error){
+            $error= json_decode($error) ;
+                echo 'ERROR: '.$error->{'E'}.' CON_HEADER - Ref:'.$ConNo;
+            die();
+            
+        }
+
+
+
+    
+        foreach ($data as $key => $value) {
+    
+        list($null,$itemid,$origenID,$stockId,$locId,$qty,$note,$ref) = explode('@', $value );
+    
+            
+            if($value){
+                
+                $ConNo = $this->model->Get_con_No();
+
+
+                    $stockValues = $this->model->Query('select location, stock, lote from STOCK_ITEMS_LOCATION where id="'.$origenID.'"');
+
+                    $stockValues = json_decode($stockValues[0]);
+
+
+                    $OrigenROUTE   =  $stockValues->{'location'};
+                    $OrigenALMACEN =  $stockValues->{'sotck'};
+                    $lote          =  $stockValues->{'lote'};
+
+
+
+                    $status_location_id = $origenID;
+                
+
+                  
+                   $this->update_lote_location($OrigenROUTE,$OrigenALMACEN,$status_location_id,$locId,$stockId,$lote,$qty);
+              
+                
+                   usleep(1000);
+                   $error = $this->CheckError();
+                   if($error){
+                       $error= json_decode($error) ;
+                           echo 'ERROR: '.$error->{'E'}.' Traspaso - Ref:'.$ConNo;
+                       die();
+                       
+                   }else{
+
+
+                     $values = array (
+                    'ItemID' => $itemid, 
+                    'Reference' => $reference , 
+                    'origen' => $origenID , 
+                    'stockId' => $stockId , 
+                    'locId' => $locId , 
+                    'Qty'  => $qty, 
+                    'aci_ref' => $ConNo,
+                    'stockOrigID' => $origenID,
+                    'stockDestID' => $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'limit 1 order by last_change desc') );
+
+                  
+
+                    $this->set_Budget_Log($values,'4');
+                    $ref .= 'Item:'.$itemid.'Ref: '.$reference."\n";
+
+                   }
+
+                 
+                
+            }
+        }
+        if(!$error){
+    
+            echo $ref;
+        }
+
+}
+  
+
 public function set_Budget_Log($values,$type){
 
     $this->model->verify_session();
@@ -1210,7 +1313,7 @@ public function set_Budget_Log($values,$type){
                 }
             break;
 
-          case '3':
+        case '3':
         
            
                 $PurchaseNumber = $values['Reference']; 
@@ -1253,7 +1356,46 @@ public function set_Budget_Log($values,$type){
                 die(); 
             
                 }
-            break;
+                break;
+
+        case '4':
+            
+
+            $ref = $values['Reference']; 
+            $Item  = $values['ItemID'];
+            $Qty   = $values['Qty'];
+            $aciref = $values['aci_ref'];
+            $stockOrigID =  $values['stockOrigID'];
+            $stockDestID =  $values['stockDestID'];
+        
+            $id_compania= $this->model->id_compania;
+            $user = $this->model->active_user_id;
+        
+            $event_values = array(  'ProductID' => $Item,
+                                    'Qty'=> $Qty,
+                                    'User' => $user,
+                                    'Type' => 'Traspaso de mercancia',
+                                    'Referencia' => $ref,
+                                    'ID_compania' => $id_compania ,
+                                    'aci_ref' => $aciref,
+                                    'stockOrigID'   => $stockOrigID ,
+                                    'stockDestID'  => $stockDestID );
+        
+            $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
+            
+            usleep(1000);
+            $error = $this->CheckError();
+            if($error){
+            $error= json_decode($error) ;
+            echo 'ERROR: '.$error->{'E'}.' INV_EVENT_LOG ';
+        
+            $this->model->delete('CON_HEADER',' Where Reference="'.$ref.'" and ID_Compania="'.$id_compania.'";');
+            
+            die(); 
+        
+            }
+        break;
+
 
     }    
 
@@ -1330,7 +1472,7 @@ public function setInventoryAdjustment(){
 
 public function setInventoryAdjustmentOUT(){
 
-$this->model->verify_session();
+    $this->model->verify_session();
     $id_compania= $this->model->id_compania;
     $user = $this->model->active_user_id;
     $ref = '';

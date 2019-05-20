@@ -1265,17 +1265,17 @@ public function get_OC_req_asc($sort,$limit,$clause){
 
 public function con_reg($refReg,$cont,$ID_compania){
 
-$idReg = $this->Query_value('CON_HEADER','idReg','WHERE refReg = "'.$refReg.'" and ID_compania="'.$ID_compania.'";');
+    $idReg = $this->Query_value('CON_HEADER','idReg','WHERE refReg = "'.$refReg.'" and ID_compania="'.$ID_compania.'";');
 
-$regTra = $this->Query('SELECT id from reg_traslado where ID_compania="'.$ID_compania.'" ORDER BY LAST_CHANGE desc limit '.$cont.';');
+    $regTra = $this->Query('SELECT id from reg_traslado where ID_compania="'.$ID_compania.'" ORDER BY LAST_CHANGE desc limit '.$cont.';');
 
-   foreach ($regTra as $value) {
-  
-   $value = json_decode($value);
+    foreach ($regTra as $value) {
+    
+    $value = json_decode($value);
 
-   $ID_REG_TRAS = $value->{'id'};
+    $ID_REG_TRAS = $value->{'id'};
 
-    $this->Query('INSERT INTO CON_REG_TRAS (idReg,idRegTras,ID_compania) values ("'.$idReg.'","'.$ID_REG_TRAS.'","'.$ID_compania.'");');
+        $this->Query('INSERT INTO CON_REG_TRAS (idReg,idRegTras,ID_compania) values ("'.$idReg.'","'.$ID_REG_TRAS.'","'.$ID_compania.'");');
 
     }
 
