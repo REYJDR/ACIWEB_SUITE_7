@@ -1637,26 +1637,8 @@ public function getStocLockName($id){
     
         $Item= $this->model->queryColumns('STOCK_ITEMS_LOCATION as A', $columns,$clause);
 
-
-        if($Item != '' ){
-            
-        
-                $itemarray = [];
-                $i = 0;
-                
-                foreach ($Item as $value) {
-                    $value =  json_decode($value);
-                    $itemarray['data'][$i] =  $value;  
-                    $i += 1;
-                }
-              
-                return $itemarray;
- 
-    
-       }else{
-    
-        return 0;
-       }
+        return $Item; 
+       
       
 }
 
