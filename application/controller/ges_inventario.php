@@ -1637,7 +1637,7 @@ public function getStocLockName($id){
     
         $Item= $this->model->queryColumns('STOCK_ITEMS_LOCATION as A', $columns,$clause);
 
-var_dump( $Item); die();
+var_dump( $Item[0]['location']); die();
         if($Item != '' ){
             
         
