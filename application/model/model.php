@@ -943,7 +943,7 @@ if($NO_ORDER< '1'){
 
 
 
-return $NO_REF; 
+return $NO_ORDER; 
 }
 
 public function Get_Req_No(){
