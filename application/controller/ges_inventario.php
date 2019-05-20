@@ -1636,6 +1636,7 @@ public function getStocLockName($id){
     
         $Item= $this->model->queryColumns('STOCK_ITEMS_LOCATION as A', $columns,$clause);
 
+        echo $Item;
         if($Item != '' ){
             
         
@@ -1647,9 +1648,9 @@ public function getStocLockName($id){
                     $itemarray['data'][$i] =  $value;  
                     $i += 1;
                 }
-        
+                echo json_encode($itemarray);
                 return json_encode($itemarray);
-     echo json_encode($itemarray);
+ 
     
        }else{
     
