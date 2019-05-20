@@ -1631,7 +1631,7 @@ public function getStocLockName($id){
                     ' B.location',
                     ' C.name' );
     
-        $clause = ' LEFT JOIN STOCK_LOCATION AS B ON  A.id = A.Location
+        $clause = ' LEFT JOIN STOCK_LOCATION AS B ON  B.id = A.Location
                     LEFT JOIN STOCKS AS C on C.ID = A.stock 
                     WHERE A.id="'.$id.'"';
     
