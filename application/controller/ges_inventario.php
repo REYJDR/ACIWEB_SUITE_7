@@ -1650,7 +1650,7 @@ public function getStocLockName($id){
                     $i += 1;
                 }
               
-                return json_encode($itemarray);
+                return $itemarray;
  
     
        }else{
