@@ -41,10 +41,6 @@ $(window).load(function(){
 
 // * INICIALIZA TBL ENTRADA MASIVA  (CHK = 1-ENTRADA NUEVO ITEM / 2- AJUSTE DE ITEM EXISTENTE 
 // ******************************************************************************************
-
-
-
-
 function init(){
     
    
@@ -187,6 +183,11 @@ function SetDesc(itemId, line){
             
               }); 
 
+        $("#stockDes"+line).val('-');
+        $("#locationDes"+line).val('-');
+        
+       
+
        }else{
 
         document.getElementById(id_desc_field).innerHTML = 'Loading...';
@@ -280,7 +281,7 @@ function proceed(){
         /////////////////////////////////////////////////////////////////////////////////////
         //SI NO HAY ITEMS EN LA LISTA
         if(flag==0){ 
-            MSG_ERROR('No se han indicado registros para envio'); 
+            MSG_ERROR('No se han indicado registros para el traspaso'); 
               return;
           }
           
@@ -288,30 +289,30 @@ function proceed(){
         //SI HAY ITEMS EN LA LISTA
         if(flag==1){  
         
-        var r = confirm('Desea procesar la salida de mercancia?');
+        var r = confirm('Está seguro de procesar el traspado de mercancia ?');
         
             if (r == true) { 
             
-
+                console.log(LineArray);
                     //REGISTROS DE ITEMS 
-                    $.ajax({
+                 /*   $.ajax({
                         type: "GET",
                         url:  link,
                         data:  {url: 'ges_inventario/setInventoryAdjustmentOUT/', Data : JSON.stringify(LineArray)}, 
                         success: function(res){
         
-                        if(res.indexOf('ERROR') != -1){
-                        
-                            MSG_ERROR(res,0);
-                        
-                        }else{//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
-                            //checkSOIns(link,OS_NO);
-                            msg(link,res);
-                        }
+                            if(res.indexOf('ERROR') != -1){
+                            
+                                MSG_ERROR(res,0);
+                            
+                            }else{//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
+                                //checkSOIns(link,OS_NO);
+                                msg(link,res);
+                            }
 
                         }
                 
-                        });
+                    });*/
 
                 
             }
@@ -362,72 +363,51 @@ function proceed(){
            {
         
                 //*AJUSTE DE MATERIAL
-                var selid = "sel"+i;
-                var phsid = "PHS"+i;
-                var costid = "COST"+i;
+                var selid    = "sel"+i;
+                var origen   = "stockOri"+i;
+                var stockDes = "stockDes"+i;
+                var locDes   = "locationDes"+i;
                 
                 if(document.getElementById(selid).value !=''){ 
         
                         switch (j){
             
                                 case 0:
-                                    job       = document.getElementById('JOBID2').value;
-                                    phase     = document.getElementById(phsid).value;
-                                    cost      = document.getElementById(costid).value;
-
-                       
+                                  
                                     itemId    = document.getElementById(selid).value;
-                                    ctamg     =  document.getElementById('ctamg').value;
-                               /*   stockId   = document.getElementById(selid).value;
-                                    locId     = document.getElementById(selid).value;*/ 
-                                                                
+                                    origenID  = document.getElementById(origen).value;
+                                    stockId   = document.getElementById(stockDes).value;
+                                    locId     = document.getElementById(locDes).value;
                                     note      = document.getElementById('observaciones').value;
                                     ref       = document.getElementById('referencia').value;
                                     qty       = theTbl.rows[i].cells[3].innerHTML;
-                                   // UnitPrice = theTbl.rows[i].cells[4].innerHTML;
-                                   // total     = theTbl.rows[i].cells[5].innerHTML;
-                                    UnitPrice = '0.00';
-                                    total     = '0.00';
+                                   
+                                  
+                                    if( itemId == '-'  ) FaltaArray[0] = i ;
+                                    if( origenID == '-') FaltaArray[2] = i ;
+                                    if( qty == '' || 0 ) FaltaArray[3] = i ;
+                                    if( stockId == '-' ) FaltaArray[4] = i ;
+                                    if( locId == '-'   ) FaltaArray[5] = i ;
 
-                               /*   lote      = theTbl.rows[i].cells[7].innerHTML;
-                                    fechaVen  = theTbl.rows[i].cells[7].innerHTML;*/
-                                    
-                                    
+
                                     //agrego el registo de las demas columnas
                                     cell += '@'+itemId+
-                                            '@'+UnitPrice+
+                                            '@'+origenID+
+                                            '@'+stockId+
+                                            '@'+locId+
                                             '@'+qty+
-                                            '@'+total+
                                             '@'+note+
-                                            '@'+ctamg+
-                                            '@'+job+
-                                            '@'+phase+
-                                            '@'+cost+
                                             '@'+ref ;
-
-                                            
                                  
 
                                     break;
     
-                                    default: 
-
-                                        if (j!= 2){
-                                            
-                                            val= theTbl.rows[i].cells[j].innerHTML;
-                                            
-                                            if(val==''){                              
-                                                FaltaArray[j] = i ;
-                                            }
-                                        }
-
-                                    break;
+                                   
                                 }
                     }      
         
                 } //FIN BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
             
-
 
                  if(document.getElementById(selid).value !=''){
                    LineArray[i]=cell; 
@@ -466,20 +446,16 @@ function proceed(){
 //******************************************************************************************
 //VALIDACION DE CONTENIDO
 //******************************************************************************************
-
 function validacion(){
 
     if (document.getElementById('observaciones').value == ''){
         MSG_ERROR('Se debe agregar una nota en observaciones',0);
         CHK_VALIDATION = true;
     }
-    if (document.getElementById('ctamg').value == ''){
-        MSG_ERROR('Se debe indicar la cuenta de mayor',0);
+    if (document.getElementById('referencia').value == ''){
+        MSG_ERROR('Se debe agregar una referencia',0);
         CHK_VALIDATION = true;
     }
-
-    
-  
 }
 //******************************************************************************************
 //VALIDACION DE CONTENIDO

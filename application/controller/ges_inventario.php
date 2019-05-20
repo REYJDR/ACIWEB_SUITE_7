@@ -660,7 +660,7 @@ public function get_almacen_selectlist(){
                         inner join STOCK_LOCATION on STOCK_LOCATION.stock = STOCKS.id
                         where STOCKS.onoff="1" GROUP BY STOCKS.name ';
     
-    $select = '<option selected disabled>Seleccionar Almacen</option>';
+    $select = '';
     $res = $this->model->Query($query_almacen);
     
     foreach ($res as $value) {
@@ -682,7 +682,7 @@ public function get_routes_by_almacenid($almacen){
     
         $res = $this->model->Query($query);
     
-        echo '<option selected disabled>Seleccionar Ruta</option>';
+        $select = '';
         foreach ($res as $value) {
         $value = json_decode($value);
         echo '<option value="'.$value->{'id'}.'">'.$value->{'location'}.'</option>';
@@ -715,7 +715,7 @@ public function get_any_lote_qty($idLoc=''){
 
     $res = $this->model->Query_value('STOCK_ITEMS_LOCATION','Floor(qty)','where id="'.$idLoc.'" and ID_compania="'.$this->model->id_compania.'";');
 
-    
+
     echo $res;
     return $res;
 }
