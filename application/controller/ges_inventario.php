@@ -1640,7 +1640,9 @@ public function getStocLockName($id){
 
         if($Item){
             $Item = json_decode($Item[0]);
-            echo $Item->{'name'}.'-'.$Item->{'location'};
+
+            if($Item->{'name'} != null || $Item->{'location'} != null )
+            return $Item->{'name'}.'-'.$Item->{'location'};
         }
 
         
