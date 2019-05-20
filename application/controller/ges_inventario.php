@@ -1129,13 +1129,14 @@ public function exeConsig(){
         $data = json_decode($_GET['Data']);
 
         //Header consignacion
-        list($null,$itemid,$origenID,$stockId,$locId,$qty,$note,$ref) = explode('@', $data[0]);
+        list($null,$itemid,$origenID,$stockId,$locId,$qty,$note,$ref) = explode('@', $data[1]);
 
         $ConNo = $this->model->Get_con_No();
         
         $values = array ( 'refReg' => $ref, 
                           'refAci' => $ConNo , 
                           'idUser' => $user , 
+                          'nota' => $note , 
                           'ID_compania' =>  $id_compania );
 
         $this->model->insert('CON_HEADER',$values);
@@ -1148,8 +1149,6 @@ public function exeConsig(){
             die();
             
         }
-
-
 
     
         foreach ($data as $key => $value) {
@@ -1375,10 +1374,10 @@ public function set_Budget_Log($values,$type){
                                     'Qty'=> $Qty,
                                     'User' => $user,
                                     'Type' => 'Traspaso de mercancia',
-                                    'Referencia' => $ref,
+                                    'referencia' => $ref,
                                     'ID_compania' => $id_compania ,
                                     'aci_ref' => $aciref,
-                                    'stockOrigID'   => $stockOrigID ,
+                                    'stockOrigID'  => $stockOrigID ,
                                     'stockDestID'  => $stockDestID );
         
             $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
@@ -1389,7 +1388,7 @@ public function set_Budget_Log($values,$type){
             $error= json_decode($error) ;
             echo 'ERROR: '.$error->{'E'}.' INV_EVENT_LOG ';
         
-            $this->model->delete('CON_HEADER',' Where Reference="'.$ref.'" and ID_Compania="'.$id_compania.'";');
+               $this->model->delete('CON_HEADER',' Where Reference="'.$ref.'" and ID_Compania="'.$id_compania.'";');
             
             die(); 
         
