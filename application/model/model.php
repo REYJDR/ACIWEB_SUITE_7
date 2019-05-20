@@ -917,7 +917,7 @@ return $NO_REF;
 public function Get_con_No(){
 
 
-$order = $this->Query_value('CON_HEADER','refReg','where ID_compania="'.$this->id_compania.'" order by refReg DESC LIMIT 1');
+$order = $this->Query_value('CON_HEADER','refAci','where ID_compania="'.$this->id_compania.'" order by refReg DESC LIMIT 1');
 
 $NO_ORDER = number_format((int)$order+1);
 $NO_REF = str_pad($NO_ORDER, 9 ,"0",STR_PAD_LEFT);
