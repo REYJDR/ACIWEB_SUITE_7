@@ -1198,7 +1198,7 @@ public function exeConsig(){
                     'Qty'  => $qty, 
                     'aci_ref' => $ConNo,
                     'stockOrigID' => $origenID,
-                    'stockDestID' => $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'limit 1 order by last_change desc') );
+                    'stockDestID' => $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$lote.'" and location="'.$locId.'" and stock="'.$stockId.'" ') );
 
                   
 
