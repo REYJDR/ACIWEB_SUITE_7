@@ -114,9 +114,9 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					$lastname = $value->{'lastname'};
 					}
 					
-					$stockOrigID = $this->getStocLockName($filter->{'stockOrigID'});
+					$stockOrigID = json_decode($this->getStocLockName($filter->{'stockOrigID'}));
 
-					$stockDestID =  $this->getStocLockName($filter->{'stockDestID'});
+					$stockDestID = json_decode($this->getStocLockName($filter->{'stockDestID'}));
 
 					
 
@@ -134,8 +134,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						<td >'.$filter->{'Type'}.'</td>
 						<td >'.$filter->{'referencia'}.'</td>
 						<td >'.$filter->{'aci_ref'}.'</td>
-						<td >'.$stockOrigID['name'].'-('.$stockOrigID['location'].")</td>
-						<td >".$stockDestID['name'].'-('.$stockDestID['location'].")</td>
+						<td >'.$stockOrigID->{'name'}.'-('.$stockOrigID->{'location'}.")</td>
+						<td >".$stockDestID->{'name'}.'-('.$stockDestID->{'location'}.")</td>
 						
 					   </tr>";
 					
