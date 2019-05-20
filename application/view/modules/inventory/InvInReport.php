@@ -133,8 +133,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						<td >'.$filter->{'Type'}.'</td>
 						<td >'.$filter->{'referencia'}.'</td>
 						<td >'.$filter->{'aci_ref'}.'</td>
-						<td >'.$stockOrigID[0].'-('.$stockOrigID[1].")</td>
-						<td >".$stockDestID[0].'-('.$stockDestID[1].")</td>
+						<td >'.$stockOrigID['name'].'-('.$stockOrigID['location'].")</td>
+						<td >".$stockDestID['name'].'-('.$stockDestID['location'].")</td>
 						
 					   </tr>";
 					
