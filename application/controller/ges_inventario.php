@@ -1649,7 +1649,7 @@ public function getStocLockName($id){
                     $itemarray['data'][$i] =  $value;  
                     $i += 1;
                 }
-                echo json_encode($itemarray);
+              
                 return json_encode($itemarray);
  
     
