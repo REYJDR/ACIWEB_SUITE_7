@@ -1191,7 +1191,7 @@ public function exeConsig(){
 
                      $values = array (
                     'ItemID' => $itemid, 
-                    'Reference' => $reference , 
+                    'Reference' => $ref, 
                     'origen' => $origenID , 
                     'stockId' => $stockId , 
                     'locId' => $locId , 
@@ -1203,7 +1203,7 @@ public function exeConsig(){
                   
 
                     $this->set_Budget_Log($values,'4');
-                    $ref .= 'Item:'.$itemid.'Ref: '.$reference."\n";
+                    $ref .= 'Item:'.$itemid.'Ref: '.$ref."\n";
 
                    }
 
@@ -1527,7 +1527,6 @@ public function setInventoryAdjustmentOUT(){
 }
 
 
-
 public function getListItems(){
 
      
@@ -1621,8 +1620,49 @@ public function getItemsStocksList(){
       
     
     
-    }
+}
+
+public function getStocLockName($id){
+    
+        $this->model->verify_session();
+    
+        
+        $columns =  array( 
+                    ' A.location',
+                    ' C.name' );
+    
+        $clause = ' LEFT JOIN STOCK_LOCATION AS B ON  A.id = A.Location
+                    LEFT JOIN STOCKS AS C on C.ID = A.stock;';
+    
+        $Item= $this->model->queryColumns('STOCK_ITEMS_LOCATION as A', $columns,$clause);
+    
+        if($Item != '' ){
+            
+        
+                $itemarray = [];
+                $i = 0;
+                
+                foreach ($Item as $value) {
+                    $value =  json_decode($value);
+                    $itemarray['data'][$i] =  $value;  
+                    $i += 1;
+                }
+        
+                return json_encode($itemarray);
+     
+    
+       }else{
+    
+        return 0;
+       }
+      
+}
 
 
 }//CIERRE DE CLASE
+
+
+
+
+
 ?>

@@ -62,7 +62,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
                   <th width="10%"><?PHP echo $Inv_REP_TblHdr11; ?></th>
 				  <th width="10%"><?PHP echo $Inv_REP_TblHdr12; ?></th>
 				  <th width="10%"><?PHP echo $Inv_REP_TblHdr13; ?></th>
-                  
+                  <th width="10%"><?PHP echo $Inv_REP_TblHdr14; ?></th>
+				  <th width="10%"><?PHP echo $Inv_REP_TblHdr15; ?></th>
                 </tr>
               </thead>
               <tbody>
@@ -127,7 +128,9 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						<td >'.$filter->{'JobCostCodeID'}.'</td>
 						<td >'.$filter->{'Type'}.'</td>
 						<td >'.$filter->{'referencia'}.'</td>
-						<td >'.$filter->{'aci_ref'}."</td>
+						<td >'.$filter->{'aci_ref'}.'</td>
+						<td >'.$filter->{'stockOrigID'}."</td>
+						<td >".$filter->{'stockDestID'}."</td>
 						
 					   </tr>";
 					
