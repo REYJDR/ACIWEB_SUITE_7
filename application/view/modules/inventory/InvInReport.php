@@ -131,7 +131,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						<td >'.$filter->{'referencia'}.'</td>
 						<td >'.$filter->{'aci_ref'}.'</td>
 						<td >'.$this->getStocLockName($filter->{'stockOrigID'})."</td>
-						<td >".$this->getStocLockName($filter->{'stockOrigID'})."</td>
+						<td >".$this->getStocLockName($filter->{'stockDestID'})."</td>
 						
 					   </tr>";
 					
