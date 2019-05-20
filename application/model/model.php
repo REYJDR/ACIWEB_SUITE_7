@@ -919,7 +919,13 @@ public function Get_con_No(){
 
 $order = $this->Query_value('CON_HEADER','refAci','where ID_compania="'.$this->id_compania.'" order by lastChange DESC LIMIT 1');
 
-list($ACI , $NO_ORDER) = explode('-', $order);
+if(str_pos($order,'-')){
+
+    list($ACI , $NO_ORDER) = explode('-', $order);
+}else{
+
+    $NO_ORDER = $order;
+}
 
 
 $NO_ORDER = number_format((int)$NO_ORDER+1);
