@@ -919,7 +919,7 @@ public function Get_con_No(){
 
 $order = $this->Query_value('CON_HEADER','refAci','where ID_compania="'.$this->id_compania.'" order by lastChange DESC LIMIT 1');
 
-if(str_pos($order,'-')){
+if(strpos($order,'-')){
 
     list($ACI , $NO_ORDER) = explode('-', $order);
 }else{
