@@ -1627,36 +1627,24 @@ public function getStocLockName($id){
         $this->model->verify_session();
     
         
-        $columns =  array( 
-                    ' B.location',
-                    ' C.name' );
+       $SQL =  'SELECT B.location,
+                      C.name 
+                FROM STOCK_ITEMS_LOCATION as A
+                LEFT JOIN STOCK_LOCATION AS B ON  B.id = A.Location
+                LEFT JOIN STOCKS AS C on C.ID = A.stock 
+                WHERE A.id="'.$id.'"';
     
-        $clause = ' LEFT JOIN STOCK_LOCATION AS B ON  B.id = A.Location
-                    LEFT JOIN STOCKS AS C on C.ID = A.stock 
-                    WHERE A.id="'.$id.'"';
-    
-        $Item= $this->model->queryColumns('STOCK_ITEMS_LOCATION as A', $columns,$clause);
 
-var_dump( $Item[0]['location']); die();
-        if($Item != '' ){
-            
+    
+        $Item= $this->model->Query($SQL);
+
+        if($Item){
+            $Item = json_decode($Item[0]);
+            echo $Item->{'name'}.'-'.$Item->{'location'};
+        }
+
         
-                $itemarray = [];
-                $i = 0;
-                
-                foreach ($Item as $value) {
-                    $value =  json_decode($value);
-                    $itemarray['data'][$i] =  $value;  
-                    $i += 1;
-                }
-              
-                return json_encode($itemarray);
- 
-    
-       }else{
-    
-        return 0;
-       }
+
       
 }
 
