@@ -1373,7 +1373,7 @@ public function set_Budget_Log($values,$type){
             $event_values = array(  'ProductID' => $Item,
                                     'Qty'=> $Qty,
                                     'User' => $user,
-                                    'Type' => 'Traspaso de mercancia',
+                                    'Type' => 'Traspaso',
                                     'referencia' => $ref,
                                     'ID_compania' => $id_compania ,
                                     'aci_ref' => $aciref,
@@ -1642,7 +1642,7 @@ public function getStocLockName($id){
             $Item = json_decode($Item[0]);
 
             if($Item->{'name'} != null || $Item->{'location'} != null )
-            return $Item->{'name'}.'-'.$Item->{'location'};
+            return $Item->{'name'}.'-('.$Item->{'location'}.')';
         }
 
         

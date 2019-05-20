@@ -49,19 +49,19 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
                 <tr>
 				<tr>
 
-                  <th width="10%"><?PHP echo $Inv_REP_TblHdr1; ?></th>
-                  <th width="10%"><?PHP echo $Inv_REP_TblHdr2; ?></th>
-                  <th width="25%"><?PHP echo $Inv_REP_TblHdr3; ?></th>
+                  <th width="5%"><?PHP echo $Inv_REP_TblHdr1; ?></th>
+                  <th width="5%"><?PHP echo $Inv_REP_TblHdr2; ?></th>
+                  <th width="5%"><?PHP echo $Inv_REP_TblHdr3; ?></th>
                   <th width="5%"><?PHP  echo $Inv_REP_TblHdr4; ?></th>
-                  <th width="15%"><?PHP echo $Inv_REP_TblHdr5; ?></th>
-                  <th width="10%"><?PHP echo $Inv_REP_TblHdr6; ?></th>
-                  <th width="10%"><?PHP echo $Inv_REP_TblHdr7; ?></th>
-                  <th width="10%"><?PHP echo $Inv_REP_TblHdr8; ?></th>
-                  <th width="10%"><?PHP echo $Inv_REP_TblHdr9; ?></th>
-                  <th width="10%"><?PHP echo $Inv_REP_TblHdr10; ?></th>
-                  <th width="10%"><?PHP echo $Inv_REP_TblHdr11; ?></th>
-				  <th width="10%"><?PHP echo $Inv_REP_TblHdr12; ?></th>
-				  <th width="10%"><?PHP echo $Inv_REP_TblHdr13; ?></th>
+                  <th width="5%"><?PHP echo $Inv_REP_TblHdr5; ?></th>
+                  <th width="5%"><?PHP echo $Inv_REP_TblHdr6; ?></th>
+                  <th width="5%"><?PHP echo $Inv_REP_TblHdr7; ?></th>
+                  <th width="5%"><?PHP echo $Inv_REP_TblHdr8; ?></th>
+                  <th width="5%"><?PHP echo $Inv_REP_TblHdr9; ?></th>
+                  <th width="5%"><?PHP echo $Inv_REP_TblHdr10; ?></th>
+                  <th width="5%"><?PHP echo $Inv_REP_TblHdr11; ?></th>
+				  <th width="5%"><?PHP echo $Inv_REP_TblHdr12; ?></th>
+				  <th width="5%"><?PHP echo $Inv_REP_TblHdr13; ?></th>
                   <th width="10%"><?PHP echo $Inv_REP_TblHdr14; ?></th>
 				  <th width="10%"><?PHP echo $Inv_REP_TblHdr15; ?></th>
                 </tr>
