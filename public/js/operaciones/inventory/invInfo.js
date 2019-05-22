@@ -207,7 +207,7 @@ var qty = $('#up_qty').val();
 maxqty = Number(maxqty); 
 qty = Number(qty);
 
-console.log(maxqty+' '+qty);
+
 
 if(qty <= maxqty){ 
 

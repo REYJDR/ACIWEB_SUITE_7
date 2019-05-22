@@ -804,7 +804,7 @@ public function set_lote_location($ruta_selected,$almacen_selected,$item_id,$lot
 }
 
 
-public function update_lote_location($OrigenROUTE,$OrigenALMACEN,$status_location_id,$ruta,$almacen,$lote,$qty,$mov = 0){
+public function update_lote_location($OrigenROUTE,$OrigenALMACEN,$status_location_id,$ruta,$almacen,$lote,$qty, $mov = 0){
     
     $this->model->verify_session();
 
@@ -871,9 +871,9 @@ public function update_lote_location($OrigenROUTE,$OrigenALMACEN,$status_locatio
             $values = array ( 'refReg' => 'MOV-'.date('hms'), 
                               'refAci' => $ConNo , 
                               'idUser' => $id_user_active  , 
-                              'nota' => 'Generada automaticamente por rubicación de material' , 
+                              'nota' => 'Generada automaticamente por reubicación de material' , 
                               'ID_compania' =>  $this->model->id_compania );
-
+echo 'con_header: '.var_dump($values);
                               
             $this->model->insert('CON_HEADER',$values);
 
@@ -885,7 +885,7 @@ public function update_lote_location($OrigenROUTE,$OrigenALMACEN,$status_locatio
                 'aci_ref' => $ConNo,
                 'stockOrigID' => $status_location_id,
                 'stockDestID' => $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$lote.'" and location="'.$ruta.'" and stock="'.$almacen.'" ') );
-
+echo 'STOCK_ITEMS_LOCATION: '.var_dump($values);
             $this->set_Budget_Log($values,'5');
 
         }
