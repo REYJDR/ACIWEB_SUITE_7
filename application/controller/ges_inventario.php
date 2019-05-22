@@ -1573,6 +1573,8 @@ public function getListItems(){
      
     $this->model->verify_session();
 
+    $id_compania= $this->model->id_compania;
+
     require_once APP.'view/modules/inventory/lang/'.$this->model->lang.'_ref.php';
 
     $columns =  array( 
@@ -1581,10 +1583,10 @@ public function getListItems(){
                 '`UnitMeasure` as `'.$Tblcol3.'`',
                 '`stockQTY` as `'.$Tblcol4.'`',
                 '`Price1` as `'.$Tblcol8.'`');
+
     $clause = ' INNER JOIN ( SELECT SUM(qty) as stockQTY , 
-                             itemID FROM STOCK_ITEMSLOCATION WHERE ID_compania="'.$this->model->id_compania.'") AS STK ON STK.itemID = Products_Exp.ProductID
-                WHERE Products_Exp.id_compania="'.$this->model->id_compania.'" 
-                GROUP BY Products_Exp.ProductID';
+                             itemID FROM STOCK_ITEMS_LOCATION  WHERE ID_compania="'.$id_compania.'"  GROUP BY  itemID ) AS STK ON STK.itemID = Products_Exp.ProductID
+                WHERE Products_Exp.id_compania="'.$id_compania .'" GROUP BY Products_Exp.ProductID';
 
    $Item= $this->model->queryColumns('Products_Exp', $columns,$clause);
 
