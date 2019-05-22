@@ -862,7 +862,7 @@ public function update_lote_location($OrigenROUTE,$OrigenALMACEN,$status_locatio
         }
 
 
-die('mov:'.$mov);
+
         if($mov == 1 ){
 
             //registro de traslado
@@ -873,7 +873,7 @@ die('mov:'.$mov);
                               'idUser' => $id_user_active  , 
                               'nota' => 'Generada automaticamente por reubicación de material' , 
                               'ID_compania' =>  $this->model->id_compania );
-echo 'con_header: '.var_dump($values);
+
                               
             $this->model->insert('CON_HEADER',$values);
 
@@ -885,7 +885,7 @@ echo 'con_header: '.var_dump($values);
                 'aci_ref' => $ConNo,
                 'stockOrigID' => $status_location_id,
                 'stockDestID' => $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$lote.'" and location="'.$ruta.'" and stock="'.$almacen.'" ') );
-echo 'STOCK_ITEMS_LOCATION: '.var_dump($values);
+
             $this->set_Budget_Log($values,'5');
 
         }
