@@ -1584,9 +1584,9 @@ public function getListItems(){
                 '`stockQTY` as `'.$Tblcol4.'`',
                 '`Price1` as `'.$Tblcol8.'`');
 
-    $clause = ' INNER JOIN ( SELECT SUM(qty) as stockQTY , 
+  echo  $clause = ' INNER JOIN ( SELECT SUM(qty) as stockQTY , 
                              itemID FROM STOCK_ITEMS_LOCATION  WHERE ID_compania="'.$id_compania.'"  GROUP BY  itemID ) AS STK ON STK.itemID = Products_Exp.ProductID
-                WHERE Products_Exp.id_compania="'.$id_compania .'" GROUP BY Products_Exp.ProductID';
+                WHERE Products_Exp.id_compania="'.$id_compania.'" GROUP BY Products_Exp.ProductID';
 
    $Item= $this->model->queryColumns('Products_Exp', $columns,$clause);
 
