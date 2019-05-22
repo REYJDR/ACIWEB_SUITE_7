@@ -133,7 +133,7 @@ return $connected;
           
         }else{
 
-         //    file_put_contents("LOG_ERROR/TEMP_LOG.json",''); //LIMPIO EL ARCHIVO
+             file_put_contents("LOG_ERROR/TEMP_LOG.json",''); //LIMPIO EL ARCHIVO
 
              $columns = mysqli_fetch_fields($res);
          
