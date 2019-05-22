@@ -861,14 +861,21 @@ public function update_lote_location($OrigenROUTE,$OrigenALMACEN,$status_locatio
 
         }
 
-
+        usleep(1000);
+        $error = $this->CheckError();
+        if($error){
+            $error= json_decode($error) ;
+                echo 'ERROR: '.$error->{'E'}.' UPDATE STOCK LOCATION - itemID:'.$ProductID;
+            die();
+            
+        }
 
         if($mov == 1 ){
 
             //registro de traslado
             $ConNo = $this->model->Get_con_No();
             
-            $values = array ( 'refReg' => 'MOV-'.date('hms'), 
+            $values = array ( 'refReg' => 'MOV-'.date('dmYhms'), 
                               'refAci' => $ConNo , 
                               'idUser' => $id_user_active  , 
                               'nota' => 'Generada automaticamente por reubicación de material' , 
@@ -880,7 +887,7 @@ public function update_lote_location($OrigenROUTE,$OrigenALMACEN,$status_locatio
 
             $values = array (
                 'ItemID' => $ProductID, 
-                'Reference' => 'MOV-'.date('hms'), 
+                'Reference' => 'MOV-'.date('dmYhms'), 
                 'Qty'  => $qty, 
                 'aci_ref' => $ConNo,
                 'stockOrigID' => $status_location_id,
