@@ -862,7 +862,7 @@ public function update_lote_location($OrigenROUTE,$OrigenALMACEN,$status_locatio
         }
 
 
-
+die('mov:'.$mov);
         if($mov == 1 ){
 
             //registro de traslado
