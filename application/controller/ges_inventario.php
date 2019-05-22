@@ -879,8 +879,8 @@ public function update_lote_location($OrigenROUTE,$OrigenALMACEN,$status_locatio
 
 
             $values = array (
-                'ItemID' => $itemid, 
-                'Reference' => $ref, 
+                'ItemID' => $ProductID, 
+                'Reference' => 'MOV-'.date('hms'), 
                 'Qty'  => $qty, 
                 'aci_ref' => $ConNo,
                 'stockOrigID' => $status_location_id,
