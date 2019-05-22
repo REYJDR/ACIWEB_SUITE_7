@@ -215,7 +215,7 @@ if(qty <= maxqty){
 
     if ( $('#up_route').val() && $('#up_stock').val()  && $('#up_qty').val() ){
 
-    var datos= "url=ges_inventario/update_lote_location/"+STOCK_ROUTE_SRC+'/'+STOCK_NAME_SRC+'/'+id_location+'/'+ruta+'/'+almacen+'/'+lote+'/'+qty;
+    var datos= "url=ges_inventario/update_lote_location/"+STOCK_ROUTE_SRC+'/'+STOCK_NAME_SRC+'/'+id_location+'/'+ruta+'/'+almacen+'/'+lote+'/'+qty+'/1';
 
 
     var link= dir+"index.php";

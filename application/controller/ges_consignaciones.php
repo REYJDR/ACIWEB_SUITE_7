@@ -34,9 +34,8 @@ public function con_print($id){
  $id = trim($id);
 
  $clause= 'WHERE CON_HEADER.ID_compania="'.$this->model->id_compania.'"
-                 and CON_REG_TRAS.ID_compania="'.$this->model->id_compania.'"  
                  and reg_traslado.ID_compania="'.$this->model->id_compania.'"
-                 and CON_HEADER.refReg="'.$id.'"';
+                 and CON_HEADER.refAci="'.$id.'"';
 
  $ORDER = $this->model->get_con_to_report('DESC','1',$clause);
 
