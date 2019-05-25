@@ -12,7 +12,7 @@
             <?php } 
             
             if($mod_cust_CK == 'checked'){ ?>
-            <tr><th><button class="tablinks" onclick="openCity(event, 'menu1')" id="defaultOpen"><i class="fas fa-users fa-2x icon-color-dash" > </i> &nbsp;&nbsp; <?php echo $dash_menu_1; ?></button></th></tr>
+            <!-- <tr><th><button class="tablinks" onclick="openCity(event, 'menu1')" id="defaultOpen"><i class="fas fa-users fa-2x icon-color-dash" > </i> &nbsp;&nbsp; <?php echo $dash_menu_1; ?></button></th></tr> -->
             <?php } 
             
             if($mod_sales_CK == 'checked'){?>
@@ -26,11 +26,11 @@
             if($mod_invt_CK == 'checked' ){ ?>
             <tr><th><button class="tablinks" onclick="openCity(event, 'menu4')"><i class="fas fa-boxes  fa-2x icon-color-dash" > </i> &nbsp;&nbsp;<?php echo $dash_menu_4; ?></button></th></tr>
             <?php }  
-            
+
             if($INF_REP==1){?>
             <tr><th><button class="tablinks" onclick="openCity(event, 'menu5')"><i class="fas fa-list-alt fa-2x icon-color-dash" > </i> &nbsp;&nbsp;<?php echo $dash_menu_5; ?></button></th></tr>
-            
             <?php } 
+
             if($this->model->active_user_role=='admin'){?>
             <tr><th><button class="tablinks" onclick="openCity(event, 'menu6')"><i class="fas fa-wrench fa-2x icon-color-dash" > </i> &nbsp;&nbsp;<?php echo $dash_menu_6; ?></button></th></tr>
             <?php } ?>
