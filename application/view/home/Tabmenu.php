@@ -8,10 +8,10 @@
         <tbody>
 
             <?php if( $home != 'home'){ ?>
-                <tr><th><button class="tablinks" onclick="goHome();" ><i class="fas fa-tachometer-alt fa-2x icon-color-home" > </i> &nbsp;&nbsp; <?php echo $dash_menu_8; ?></button></th></tr>    
+             <tr><th><button class="tablinks" onclick="goHome();" ><i class="fas fa-tachometer-alt fa-2x icon-color-home" > </i> &nbsp;&nbsp; <?php echo $dash_menu_8; ?></button></th></tr>    
             <?php } 
             
-            if($mod_cust_CK == 'checked'){?>
+            if($mod_cust_CK == 'checked'){ ?>
             <tr><th><button class="tablinks" onclick="openCity(event, 'menu1')" id="defaultOpen"><i class="fas fa-users fa-2x icon-color-dash" > </i> &nbsp;&nbsp; <?php echo $dash_menu_1; ?></button></th></tr>
             <?php } 
             
@@ -26,6 +26,7 @@
             if($mod_invt_CK == 'checked' ){ ?>
             <tr><th><button class="tablinks" onclick="openCity(event, 'menu4')"><i class="fas fa-boxes  fa-2x icon-color-dash" > </i> &nbsp;&nbsp;<?php echo $dash_menu_4; ?></button></th></tr>
             <?php }  
+            
             if($INF_REP==1){?>
             <tr><th><button class="tablinks" onclick="openCity(event, 'menu5')"><i class="fas fa-list-alt fa-2x icon-color-dash" > </i> &nbsp;&nbsp;<?php echo $dash_menu_5; ?></button></th></tr>
             
