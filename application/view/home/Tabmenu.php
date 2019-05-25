@@ -12,7 +12,7 @@
             <?php } 
             
             if($mod_cust_CK == 'checked'){ ?>
-            <!-- <tr><th><button class="tablinks" onclick="openCity(event, 'menu1')" id="defaultOpen"><i class="fas fa-users fa-2x icon-color-dash" > </i> &nbsp;&nbsp; <?php echo $dash_menu_1; ?></button></th></tr> -->
+            <!-- <tr><th><button class="tablinks" onclick="openCity(event, 'menu6')" id="defaultOpen"><i class="fas fa-users fa-2x icon-color-dash" > </i> &nbsp;&nbsp; <?php echo $dash_menu_1; ?></button></th></tr> -->
             <?php } 
             
             if($mod_sales_CK == 'checked'){?>
@@ -32,7 +32,7 @@
             <?php } 
 
             if($this->model->active_user_role=='admin'){?>
-            <tr><th><button class="tablinks" onclick="openCity(event, 'menu6')"><i class="fas fa-wrench fa-2x icon-color-dash" > </i> &nbsp;&nbsp;<?php echo $dash_menu_6; ?></button></th></tr>
+            <tr><th><button class="tablinks" onclick="openCity(event, 'menu1')"><i class="fas fa-wrench fa-2x icon-color-dash" > </i> &nbsp;&nbsp;<?php echo $dash_menu_6; ?></button></th></tr>
             <?php } ?>
           
             <tr><th><button class="tablinks" onclick="goOut();"><i class="fas fa-sign-out-alt fa-2x icon-color-out" > </i> &nbsp;&nbsp;<?php echo $dash_menu_7; ?></button></th></tr>					
