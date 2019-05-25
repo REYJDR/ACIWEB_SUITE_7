@@ -30,13 +30,12 @@ require_once APP.'view/'.basename(__DIR__).'/lang/'.$this->model->lang.'_ref.php
 <!--modal-->
 <!--INI DIV ERROR-->
 
-<!--ADD JS FILE-->
-<script  src="<?php echo URL; ?>js/operaciones/home/config_sys.js" ></script>
+
 
 
 <?php
 
- if (isset($_REQUEST['smtp'])) {
+if (isset($_REQUEST['smtp'])) {
 
 	
 $value  = array(
@@ -604,7 +603,8 @@ $this->CheckError();
 
 ?>	
 
-
+<!--ADD JS FILE-->
+<script  src="<?php echo URL; ?>js/operaciones/home/config_sys.js" ></script>
 <div class="limiter">
 		<div class="container-page100">
 			<div class="wrap-page100">
