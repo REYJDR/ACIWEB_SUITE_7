@@ -605,6 +605,8 @@ $this->CheckError();
 
 <!--ADD JS FILE-->
 <script  src="<?php echo URL; ?>js/operaciones/home/config_sys.js" ></script>
+
+
 <div class="limiter">
 		<div class="container-page100">
 			<div class="wrap-page100">

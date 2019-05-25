@@ -1,4 +1,14 @@
+<script>
+$(window).load(function(){
 
+$('#ERROR').hide();
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("ConfigOpen").click();
+
+
+
+});
+</script>
 
 <!--ini aqui va el menu de acceso rapido-->
 <fieldset class="fieldsetDash">
