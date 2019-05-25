@@ -26,11 +26,8 @@ $(window).load(function(){
   });  
 
   var elements = document.getElementsByClassName('tablinks');
-  var requiredElement = elements[0];
-  console.log(requiredElement);
+  var requiredElement = elements[0].click();
 
-  // Get the element with id="defaultOpen" and click on it
-  //document.getElementById("defaultOpen").click();
 
 
  
