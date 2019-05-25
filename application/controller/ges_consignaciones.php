@@ -33,9 +33,8 @@ public function con_print($id){
         	
  $id = trim($id);
 
- $clause= 'WHERE CON_HEADER.ID_compania="'.$this->model->id_compania.'"
-                 and reg_traslado.ID_compania="'.$this->model->id_compania.'"
-                 and CON_HEADER.refAci="'.$id.'"';
+ $clause= 'WHERE A.ID_compania="'.$this->model->id_compania.'"
+                 and A.refAci="'.$id.'"';
 
  $ORDER = $this->model->get_con_to_report('DESC','1',$clause);
 
@@ -47,9 +46,6 @@ public function con_print($id){
              $name = $this->model->Query_value('SAX_USER','name','Where ID="'.$value->{'USER'}.'"');
              $lastname =  $this->model->Query_value('SAX_USER','lastname','Where ID="'.$value->{'USER'}.'"');
 
-             $Job = $value->{'JOB'};      
-             $fase= $value->{'PHASE'};
-             $ccost= $value->{'CCOST'};
               
               $ref = $value->{'REF'};
 
@@ -67,7 +63,7 @@ public function con_print($id){
             // load views
             require APP . 'view/_templates/header.php';
             require APP . 'view/_templates/panel.php';
-            require APP . 'view/operaciones/con_print.php';
+            require APP . 'view/modules/con_print.php';
             require APP . 'view/_templates/footer.php';
 
 

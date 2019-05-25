@@ -1297,32 +1297,29 @@ public function con_reg($refReg,$cont,$ID_compania){
 
 public function get_con_to_report($sort,$limit,$clause){
 
-$sql='SELECT      
-                  CON_HEADER.date,
-                  CON_HEADER.refReg as REF,
-                  CON_HEADER.idJob  as JOB,
-                  CON_HEADER.idPha as  PHASE,
-                  CON_HEADER.idCost as COST,
-                  CON_HEADER.nota as NOTA,
-                  reg_traslado.id_almacen_ini,
-                  reg_traslado.route_ini,
-                  reg_traslado.id_almacen_des,
-                  reg_traslado.route_des,
-                  reg_traslado.id_user as USER,
-                  reg_traslado.lote as LOTE,
-                  reg_traslado.ProductID,
-                  reg_traslado.qty as CANT
-                  FROM CON_HEADER 
-                  INNER JOIN CON_REG_TRAS ON CON_REG_TRAS.idReg = CON_HEADER.idReg 
-                  INNER JOIN reg_traslado ON CON_REG_TRAS.idRegTras = reg_traslado.id 
-                  '.$clause.' order by CON_HEADER.idReg '.$sort.' limit '.$limit.';';
+    $sql='SELECT  A.date,
+                  A.refReg as REF,
+                  A.nota as NOTA,
+                  D.stock as id_almacen_ini,
+                  D.location as route_ini,
+                  E.stock as id_almacen_des,
+                  E.location as route_des,
+                  B.User,
+                  E.lote,
+                  B.ProductID ,
+                  B.Qty as CANT
+                  FROM CON_HEADER A
+                    INNER JOIN INV_EVENT_LOG B ON B.aci_ref =  A.refReg
+                    LEFT JOIN (SELECT id, stock , location   FROM STOCK_ITEMS_LOCATION  )   D  ON D.id = B.stockOrigID
+                    LEFT JOIN (SELECT id, stock , location, lote   FROM STOCK_ITEMS_LOCATION  )   E  ON D.id = B.stockDestID
+                  '.$clause.' order by A.idReg '.$sort.' limit '.$limit.';';
 
 $get_con = $this->Query($sql);
 
 
 return $get_con;
 }
-////////////////////////////////////////////////////
+////////////////////////////////////////////////////   
 
 //Metodo para traer la lista de precios
 

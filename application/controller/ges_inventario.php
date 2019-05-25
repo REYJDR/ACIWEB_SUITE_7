@@ -539,7 +539,26 @@ public function SET_NO_LOTE($item,$no_lote,$qty,$fecha){
             
         } 
         
-        
+
+            //registro de traslado
+            $id_user_active = $this->model->active_user_id;
+
+
+            $values = array (
+                'ItemID' => $ProductID, 
+                'Reference' => 'LOT-'.date('dmyhms'), 
+                'Qty'  => $qty, 
+                'aci_ref' => 'LOT-'.date('dmyhms'), 
+                'stockOrigID' => '',
+                'stockDestID' => $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$lote.'" and location="1" and stock="1" ') );
+
+            $this->set_Budget_Log($values,'6');
+
+
+
+
+
+
     }else{
 
 
@@ -722,6 +741,7 @@ public function get_any_lote_qty($idLoc=''){
 }
 
 public function set_lote_location($ruta_selected,$almacen_selected,$item_id,$lote,$qty){
+   
     $this->model->verify_session();
 
     //UBICO LA CANTIDAD ACTUAL EN STATUS_LOCATION
@@ -733,7 +753,6 @@ public function set_lote_location($ruta_selected,$almacen_selected,$item_id,$lot
     $query= 'UPDATE STOCK_ITEMS_LOCATION  SET qty="'.$QTY_TO_SET.'" where itemID="'.$item_id.'" and stock="1" and location="1" and onoff="1" and ID_compania ="'.$this->model->id_compania.'"';
 
     $res = $this->model->Query($query);
-
 
 
     $id_verify = $this->model->Query_value('STOCK_ITEMS_LOCATION ','id','where lote="'.$lote.'" and stock="'.$almacen_selected.'" and location="'.$ruta_selected.'" and ID_compania ="'.$this->model->id_compania.'";');
@@ -752,8 +771,9 @@ public function set_lote_location($ruta_selected,$almacen_selected,$item_id,$lot
     $res = $this->model->insert('STOCK_ITEMS_LOCATION',$val_to_insert);
 
 
+
     //registro de traslado Default a una nueva ubicacion
-    $value_traslate = array(
+  /*  $value_traslate = array(
         'id_almacen_ini' => '1',
         'route_ini' => '1' ,
         'id_almacen_des' => $almacen_selected,
@@ -764,7 +784,7 @@ public function set_lote_location($ruta_selected,$almacen_selected,$item_id,$lot
         'id_user' => $this->model->active_user_id
         );
 
-    $this->model->insert('reg_traslado',$value_traslate);
+    $this->model->insert('reg_traslado',$value_traslate); */
 
 
     }else{
@@ -782,7 +802,7 @@ public function set_lote_location($ruta_selected,$almacen_selected,$item_id,$lot
     $id_alma_reg = $this->model->Query_value('STOCK_LOCATION','id_almacen','where id="'.$id_route_reg.'";');
 
 
-    $value_traslate = array(
+   /* $value_traslate = array(
         'id_almacen_ini' => $id_alma_reg,
         'route_ini' => $id_route_reg,
         'id_almacen_des' => $almacen_selected,
@@ -793,11 +813,35 @@ public function set_lote_location($ruta_selected,$almacen_selected,$item_id,$lot
         'id_user' => $this->model->active_user_id
         );
 
-    $this->model->insert('reg_traslado',$value_traslate);
+    $this->model->insert('reg_traslado',$value_traslate); */
 
 
 
  }
+
+    //registro de traslado
+    $ConNo = $this->model->Get_con_No();
+    
+    $values = array ( 'refReg' => 'MOV-'.date('dmyhms'), 
+                    'refAci' => $ConNo , 
+                    'idUser' => $id_user_active  , 
+                    'nota' => 'Generada automaticamente por reubicación de material' , 
+                    'ID_compania' =>  $this->model->id_compania );
+
+                    
+    $this->model->insert('CON_HEADER',$values);
+
+
+    $values = array (
+        'ItemID' => $ProductID, 
+        'Reference' => 'LOT-'.date('dmyhms'), 
+        'Qty'  => $qty, 
+        'aci_ref' => $ConNo,
+        'stockOrigID' => $status_location_id,
+        'stockDestID' => $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$lote.'" and location="'.$ruta_selected.'" and stock="'.$almacen_selected.'" ') );
+
+    $this->set_Budget_Log($values,'6');
+ 
 
  //$this->clear_lotacion_register();
 
@@ -875,7 +919,7 @@ public function update_lote_location($OrigenROUTE,$OrigenALMACEN,$status_locatio
             //registro de traslado
             $ConNo = $this->model->Get_con_No();
             
-            $values = array ( 'refReg' => 'MOV-'.date('dmYhms'), 
+            $values = array ( 'refReg' => 'MOV-'.date('dmyhms'), 
                               'refAci' => $ConNo , 
                               'idUser' => $id_user_active  , 
                               'nota' => 'Generada automaticamente por reubicación de material' , 
@@ -887,7 +931,7 @@ public function update_lote_location($OrigenROUTE,$OrigenALMACEN,$status_locatio
 
             $values = array (
                 'ItemID' => $ProductID, 
-                'Reference' => 'MOV-'.date('dmYhms'), 
+                'Reference' => 'MOV-'.date('dmyhms'), 
                 'Qty'  => $qty, 
                 'aci_ref' => $ConNo,
                 'stockOrigID' => $status_location_id,
@@ -1407,7 +1451,6 @@ public function set_Budget_Log($values,$type){
 
         case '5':
          
-
          $ref = $values['Reference']; 
          $Item  = $values['ItemID'];
          $Qty   = $values['Qty'];
@@ -1441,9 +1484,46 @@ public function set_Budget_Log($values,$type){
          die(); 
      
          }
-        break;
+         break;
    
-   
+        case '6':
+         
+
+                $ref = $values['Reference']; 
+                $Item  = $values['ItemID'];
+                $Qty   = $values['Qty'];
+                $aciref = $values['aci_ref'];
+                $stockOrigID =  $values['stockOrigID'];
+                $stockDestID =  $values['stockDestID'];
+            
+                $id_compania= $this->model->id_compania;
+                $user = $this->model->active_user_id;
+            
+                $event_values = array(  'ProductID' => $Item,
+                                        'Qty'=> $Qty,
+                                        'User' => $user,
+                                        'Type' => 'Nuevo Lote',
+                                        'referencia' => $ref,
+                                        'ID_compania' => $id_compania ,
+                                        'aci_ref' => $aciref,
+                                        'stockOrigID'  => $stockOrigID ,
+                                        'stockDestID'  => $stockDestID );
+            
+                $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
+                
+                usleep(1000);
+                $error = $this->CheckError();
+                if($error){
+                $error= json_decode($error) ;
+                echo 'ERROR: '.$error->{'E'}.' Nuevo Lote - INV_EVENT_LOG ';
+            
+                
+                
+                die(); 
+            
+            }
+          break;
+
         }    
 
 
