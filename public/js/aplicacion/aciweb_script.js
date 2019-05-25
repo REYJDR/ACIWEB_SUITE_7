@@ -25,6 +25,9 @@ $(window).load(function(){
 
   });  
 
+  var elements = document.getElementsByClassName('className');
+  var requiredElement = elements[0];
+  console.log(requiredElement);
 
   // Get the element with id="defaultOpen" and click on it
   //document.getElementById("defaultOpen").click();
