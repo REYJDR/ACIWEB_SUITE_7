@@ -1,10 +1,9 @@
 <script>
 $(window).load(function(){
 
-$('#ERROR').hide();
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("ConfigOpen").click();
 
+// Get the element with id="defaultOpen" and click on it
+openCity(event, 'Config1');
 
 
 });
