@@ -1669,7 +1669,7 @@ public function getListItems(){
                 '`Description` as `'.$Tblcol2.'`',
                 '`UnitMeasure` as `'.$Tblcol3.'`',
                 '`stockQTY` as `'.$Tblcol4.'`',
-                '`Price1` as `'.$Tblcol8.'`');
+                '`LastUnitCost` as `'.$Tblcol8.'`');
 
    $clause = ' INNER JOIN ( SELECT SUM(qty) as stockQTY , 
                              itemID FROM STOCK_ITEMS_LOCATION  WHERE ID_compania="'.$id_compania.'"  GROUP BY  itemID ) AS STK ON STK.itemID = Products_Exp.ProductID
