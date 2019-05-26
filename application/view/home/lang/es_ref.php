@@ -20,6 +20,7 @@ $SUBMENU_sales1  = ' Orden de Venta ';
 $SUBMENU_sales2  = ' Orden de Venta ';
 $SUBMENU_sales3  = ' Facturas de Ordern de Ventas';
 $SUBMENU_sales4  = ' Notas de Credito';
+$SUBMENU_sales5  = ' Salida de mercancia (Orden de Venta) ';
 
 $SUBMENU_pur1  = 'Facturas';
 
@@ -30,8 +31,9 @@ $SUBMENU_req4  = 'Requisiciones de materiales';
 
 $SUBMENU_inv1 = 'Productos';
 $SUBMENU_inv2 = 'Consignaciones';
-$SUBMENU_inv3 = 'Salida de mercancia';
+$SUBMENU_inv3 = 'Salida de mercancia (Ajuste)';
 $SUBMENU_inv4 = 'Entrada de mercancia';
+
 
 $SUBMENU_stock1 = 'Almacenes';
 
