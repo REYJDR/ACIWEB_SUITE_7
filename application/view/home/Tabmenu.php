@@ -150,8 +150,13 @@ $(window).load(function(){
         <div class='col-lg-3'>
         <button onclick="window.location='<?PHP ECHO URL; ?>index.php?url=ges_inventario/InvOut'" class="dashBottom" ><?php echo $SUBMENU_inv3; ?></button>				
         </div>
-
-
+        <?php if($mod_sales_CK == 'checked'){?>
+        <div class='col-lg-3'>
+            <button  onclick="window.location='<?PHP ECHO URL; ?>index.php?url=ges_ventas/SalesOrderSto'" class="dashBottom" >
+             <?php echo $SUBMENU_sales1; ?>
+            </button>
+            </div>
+        <?php } ?>
     <?php } ?>
 
     <?php if($mod_stoc_CK  == 'checked' and $INF_STO==1){?>
