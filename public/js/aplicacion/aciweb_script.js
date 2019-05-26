@@ -26,10 +26,6 @@ $(window).load(function(){
   });  
 
 
-
-
- 
-
 });
 
 
