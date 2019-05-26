@@ -524,7 +524,7 @@ overflow-x: scroll;
   background-color: rgb(230, 230, 230) ;
   background: linear-gradient(rgb(230, 230, 230),rgb(247, 245, 245),rgb(230, 230, 230));
   
-  padding-top:65px;
+  /* padding-top:65px; */
   
   font-family: JosefinSans-Bold;
   font-size: 18px;
