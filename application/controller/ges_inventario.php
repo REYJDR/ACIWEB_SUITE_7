@@ -1726,9 +1726,8 @@ public function getItemsStocksList(){
                     LEFT JOIN STOCK_LOCATION  AS B ON  B.id = A.Location
                     LEFT JOIN STOCKS AS C on C.ID = A.stock
                     
-                WHER D.id_compania="'.$this->model->id_compania.'"';
-    
-                echo  $clause ;
+                WHERE D.id_compania="'.$this->model->id_compania.'"';
+
        $Item= $this->model->queryColumns('Products_Exp as D', $columns,$clause);
     
        if($Item != '' ){
