@@ -1728,6 +1728,7 @@ public function getItemsStocksList(){
                     
                 WHER D.id_compania="'.$this->model->id_compania.'"';
     
+                echo  $clause ;
        $Item= $this->model->queryColumns('Products_Exp as D', $columns,$clause);
     
        if($Item != '' ){
