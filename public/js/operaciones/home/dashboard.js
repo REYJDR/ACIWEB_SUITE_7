@@ -5,9 +5,16 @@ $(window).load(function(){
 	var text = $('#code').text();
 	// $('#code2').text()+$('#code3').text();
     eval(text);
-    
-// Get the element with id="defaultOpen" and click on it
-//sdocument.getElementById("defaultOpen").click();
+
+	
+	
+	  var elements = document.getElementsByClassName('tablinks');
+	  var requiredElement = elements[0].click();
+	
+	 
+	
+
+	
 	});
 
 
