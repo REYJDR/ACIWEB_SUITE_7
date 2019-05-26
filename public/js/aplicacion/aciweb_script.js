@@ -25,8 +25,6 @@ $(window).load(function(){
 
   });  
 
-  //var elements = document.getElementsByClassName('tablinks');
-  //var requiredElement = elements[0].click();*/
 
 
 
