@@ -1721,10 +1721,12 @@ public function getItemsStocksList(){
                     'B.location as '.$STblcol8,
                     'A.last_change as '.$STblcol9 );
     
-        $clause = ' LEFT JOIN STOCK_ITEMS_LOCATION AS A  ON D.ProductID = A.itemID
+        $clause = ' INNER JOIN STOCK_ITEMS_LOCATION AS A  ON D.ProductID = A.itemID
                     LEFT JOIN ITEMS_NO_LOTES AS E ON E.no_lote = A.lote
                     LEFT JOIN STOCK_LOCATION  AS B ON  B.id = A.Location
-                    LEFT JOIN  STOCKS AS C on C.ID = A.stock;';
+                    LEFT JOIN STOCKS AS C on C.ID = A.stock
+                    
+                WHER D.ID_compania="'.$this->model->id_compania.'"';
     
        $Item= $this->model->queryColumns('Products_Exp as D', $columns,$clause);
     
