@@ -32,7 +32,7 @@ $SUBMENU_req3 = 'Recepcion de materiales';
 $SUBMENU_req4  = 'Requisiciones de materiales';
 
 $SUBMENU_inv1 = 'Productos';
-$SUBMENU_inv2 = 'Consignaciones';3
+$SUBMENU_inv2 = 'Consignaciones';
 $SUBMENU_inv4 = 'Entrada de mercancia';
 $SUBMENU_inv3 = 'Salida de mercancia (Ajuste)';
 
