@@ -7,7 +7,7 @@ $(window).load(function(){
     eval(text);
     
 // Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
+//sdocument.getElementById("defaultOpen").click();
 	});
 
 
