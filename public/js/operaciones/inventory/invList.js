@@ -67,7 +67,7 @@ table = $("#productos").DataTable({
             {data:"Fecha_Venc"},
             {data:"Cantidad",className: "numb"},
             {data:"Almacen"},
-            {data:"Descriocion_Almacen"},
+            {data:"Descripcion_Almacen"},
             {data:"Ubicacion"},
             {data:"Modificado_el"}
         
