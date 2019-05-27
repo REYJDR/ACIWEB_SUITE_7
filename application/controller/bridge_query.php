@@ -70,14 +70,15 @@ A.IsActive="1"
 AND  A.id_compania="'.$this->model->id_compania.'" 
 AND  A.ProductID ="'.$ITEM.'"';
 
-echo $sql;
 
 $res = $this->model->Query($sql);
 
 
-foreach ($res as  $value) {
-    echo str_replace("'","",$value);
-}
+  foreach ($res as  $value) {
+      echo str_replace("'","",$value);
+  }
+
+
 
 }
 
