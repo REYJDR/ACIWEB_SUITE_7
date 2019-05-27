@@ -1303,8 +1303,9 @@ public function set_Budget_Log($values,$type){
                                         'Type' => 'Entrada - Fact. de compra',
                                         'Referencia' => $PurchaseNumber,
                                         'ID_compania' => $id_compania ,
-                                        'aci_ref' => $aciref );
-            
+                                        'aci_ref' => $aciref ,
+                                        'stockDestID' => $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$Item.'0000" and location="1" and stock="1" ') );
+                          
                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
                 
                 usleep(1000);
@@ -1395,7 +1396,9 @@ public function set_Budget_Log($values,$type){
                                         'Type' => 'Salida por Ajuste',
                                         'Referencia' => $PurchaseNumber,
                                         'ID_compania' => $id_compania ,
-                                        'aci_ref' => $aciref );
+                                        'aci_ref' => $aciref ,
+                                        'stockOrigID' => $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$Item.'0000" and location="1" and stock="1" ') );
+                             
             
                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
                 
