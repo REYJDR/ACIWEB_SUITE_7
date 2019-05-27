@@ -70,6 +70,8 @@ A.IsActive="1"
 AND  A.id_compania="'.$this->model->id_compania.'" 
 AND  A.ProductID ="'.$ITEM.'"';
 
+echo $sql;
+
 $res = $this->model->Query($sql);
 
 
