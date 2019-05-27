@@ -1348,7 +1348,9 @@ public function set_Budget_Log($values,$type){
                                         'User' => $user,
                                         'Type' => 'Entrada por Adjuste',
                                         'Referencia' => $PurchaseNumber,
-                                        'ID_compania' => $id_compania );
+                                        'ID_compania' => $id_compania ,
+                                        'stockDestID' => $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$Item.'0000" and location="1" and stock="1" ') );
+
             
                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
                 
