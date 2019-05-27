@@ -20,7 +20,7 @@ $STblcol3 = 'No_Lote';
 $STblcol4 = 'Fecha_Venc';
 $STblcol5 = 'Cantidad';
 $STblcol6 = 'Almacen';
-$STblcol7 = 'Descripcion';
+$STblcol7 = 'Descripcion_Almacen';
 $STblcol8 = 'Ubicacion';
 $STblcol9 = 'Modificado_el';
 

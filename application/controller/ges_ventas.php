@@ -1020,6 +1020,7 @@ public function SetSOfromStock($SalesOrderNumber){
 
           //SI TIENE MODULO DE UBICACIONES
           if($mod_stoc_CK == 'checked' ){ 
+
               $values2 = array(
               'ItemOrd' => $key,
               'ID_compania'=>$id_compania,
@@ -1056,7 +1057,8 @@ public function SetSOfromStock($SalesOrderNumber){
                            'User' => $user,
                            'Type' => 'Orden de venta',
                            'Referencia' => $SalesOrderNumber,
-                           'ID_compania' => $id_compania );
+                           'ID_compania' => $id_compania ,
+                           'stockOrigID' => $loc );
                    
    $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
 
