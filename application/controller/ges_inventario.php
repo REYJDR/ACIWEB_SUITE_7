@@ -683,6 +683,8 @@ public function get_almacen_selectlist(){
     $select = '';
     $res = $this->model->Query($query_almacen);
     
+    $select.='<option value="">-</option>';
+
     foreach ($res as $value) {
       $value = json_decode($value);
       $select.='<option value="'.$value->{'id'}.'">'.$value->{'name'}.'</option>';
