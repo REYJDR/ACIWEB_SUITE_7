@@ -279,6 +279,7 @@ if($id){
 			</div>
 
 			<div class="col-lg-6">
+				<?PHP if ($mod_fact_CK == 'checked' || $mod_req_CK == 'checked' ) { ?>
 				<fieldset class="fieldsetform">
 				<h4><?php echo $config_6_title; ?></h4>
 				<table class="table_form">
@@ -292,6 +293,7 @@ if($id){
 					</tbody>
 				</table>
 				</fieldset>
+				<?php } ?>
 			   </div>
 
 			<div class="separador col-lg-12"> </div>
