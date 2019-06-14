@@ -702,7 +702,7 @@ public function set_sales_order_header(){
 
     list($ACI , $NO_ORDER) = explode('-', $SalesOrderNumber);
         
-    $SalesOrderNumber = $ACI.$lugDespID.$NO_ORDER;
+    $SalesOrderNumber = $ACI.'-'.$lugDespID.'-'.$NO_ORDER;
 
   }
   
