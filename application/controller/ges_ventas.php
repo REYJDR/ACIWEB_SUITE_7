@@ -696,6 +696,15 @@ public function set_sales_order_header(){
   $date = strtotime($this->model->GetLocalTime(date("Y-m-d")));
   $date = date("Y-m-d",$date);
   
+  if($lugDesp !=""){
+
+    $lugDespID = substr($lugDesp,0,1);
+
+    list($ACI , $NO_ORDER) = explode('-', $SalesOrderNumber);
+        
+    $SalesOrderNumber = $ACI.$lugDespID.$NO_ORDER;
+
+  }
   
   $values = array(
   'ID_compania'=>$this->model->id_compania,
