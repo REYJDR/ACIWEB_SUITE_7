@@ -680,7 +680,7 @@ public function set_sales_order_header(){
   $this->model->verify_session();
   
   $id_compania = $this->model->id_compania;
-  $SalesOrderNumber = $this->model->Get_SO_NoDes();
+  $SalesOrderNumber = $this->model->Get_SO_No();
   
   $data = json_decode($_GET['Data']);
   $value = $data[0];
