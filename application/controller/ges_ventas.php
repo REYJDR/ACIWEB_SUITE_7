@@ -680,7 +680,7 @@ public function set_sales_order_header(){
   $this->model->verify_session();
   
   $id_compania = $this->model->id_compania;
-  $SalesOrderNumber = $this->model->Get_SO_No();
+  $SalesOrderNumber = $this->model->Get_SO_NoDes();
   
   $data = json_decode($_GET['Data']);
   $value = $data[0];
@@ -692,7 +692,6 @@ public function set_sales_order_header(){
   $custinfo = $this->model->get_Cust_info_int($CustomerID);
   $custinfo = json_decode($custinfo);
   
-  
   $date = strtotime($this->model->GetLocalTime(date("Y-m-d")));
   $date = date("Y-m-d",$date);
   
@@ -700,7 +699,7 @@ public function set_sales_order_header(){
 
     $lugDespID = substr($lugDesp,0,1);
 
-    list($ACI , $NO_ORDER) = explode('-', $SalesOrderNumber);
+  list($ACI , $NO_ORDER) = explode('-', $SalesOrderNumber);
         
     $SalesOrderNumber = $ACI.'-'.$lugDespID.'-'.$NO_ORDER;
 

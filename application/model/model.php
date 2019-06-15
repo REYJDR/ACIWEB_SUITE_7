@@ -821,29 +821,53 @@ if($NO_ORDER< '1'){
 return $NO_ORDER; 
 }
 
+public function Get_SO_NoDes(){
+    
+    $order = $this->Query_value('SalesOrder_Header_Imp','SalesOrderNumber','where ID_compania="'.$this->id_compania.'" ORDER BY ID DESC LIMIT 1');
+    
+
+    $count = substr_count($order, '-');
+
+    if($count == 3){
+        list($ACI , $lugDespID ,$NO_ORDER) = explode('-', $order);
+    }else{
+        list($ACI , $NO_ORDER) = explode('-', $order);
+    }
+  
+
+    $NO_ORDER = number_format($NO_ORDER , 0 , '', '')+1;
+
+    
+    $NO_ORDER = 'ACI-'.$NO_ORDER;
+    
+    if($NO_ORDER < '1'){
+    
+        $NO_ORDER=0;
+        $NO_ORDER = 'ACI-'.$NO_ORDER;
+      
+    }
+
+}
+
+
 
 public function Get_SO_No(){
 
-$order = $this->Query_value('SalesOrder_Header_Imp','SalesOrderNumber','where ID_compania="'.$this->id_compania.'" ORDER BY ID DESC LIMIT 1');
+    $order = $this->Query_value('SalesOrder_Header_Imp','SalesOrderNumber','where ID_compania="'.$this->id_compania.'" ORDER BY ID DESC LIMIT 1');
 
-list($ACI , $NO_ORDER) = explode('-', $order);
+    list($ACI , $NO_ORDER) = explode('-', $order);
+
+    $NO_ORDER = number_format($NO_ORDER , 0 , '', '')+1;
 
 
-
-$NO_ORDER = number_format($NO_ORDER , 0 , '', '')+1;
-//$NO_ORDER = str_pad($NO_ORDER, 7 ,"0",STR_PAD_LEFT);
-
-//echo  $NO_ORDER.'<br>';
-
-$NO_ORDER = 'ACI-'.$NO_ORDER;
-
-if($NO_ORDER < '1'){
-
-    $NO_ORDER=0;
     $NO_ORDER = 'ACI-'.$NO_ORDER;
-   // $NO_ORDER = str_pad($NO_ORDER, 7 ,"0",STR_PAD_LEFT);
 
-}
+    if($NO_ORDER < '1'){
+
+        $NO_ORDER=0;
+        $NO_ORDER = 'ACI-'.$NO_ORDER;
+
+    }
 
 return $NO_ORDER; 
 }
