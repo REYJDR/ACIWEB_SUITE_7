@@ -828,7 +828,7 @@ public function Get_SO_NoDes(){
 
     $count = substr_count($order, '-');
 
-    if($count == 3){
+    if($count == 2){
         list($ACI , $lugDespID ,$NO_ORDER) = explode('-', $order);
     }else{
         list($ACI , $NO_ORDER) = explode('-', $order);
