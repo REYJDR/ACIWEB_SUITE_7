@@ -223,7 +223,7 @@ foreach ($comp as $value) {
                                <td width="10%" style="padding-right:10px; text-align: right;">'.$value->{'Item_id'}.'</td>
                                <td width="40%" ">'.$FinalDesc.'</td>
                                <td width="10%" style="padding-right:10px; text-align: right;">'.$value->{'Unit_Price'}.'</td>
-                               <td width="10%" style="padding-right:10px; text-align: right;">'.$value->{'Net_line'}.'</td>
+                               <td width="10%" style="padding-right:10px; text-align: right;">'.number_format($value->{'Net_line'},2,'.',',').'</td>
                                </tr>';
 
                             }
