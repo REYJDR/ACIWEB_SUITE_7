@@ -232,39 +232,15 @@ foreach ($comp as $value) {
                             ?>
 
                             </tbody>
-                            
-                            <tfoot>
-                                <tr>
-                                  <td class="numb" ></td>
-                                  <td class="numb" ></td>
-                                  <td class="numb" ></td>
-                                  <td class="numb" ></td>
-                                  <td ></td>
-                                  <td class="numb" ></td>
-                                  <td class="numb" ></td>
-                                  <td class="numb" ><strong>SubTotal</strong></td>
-                                  <td class="numb" ><?php $subtotal;?></td>
-                                  <td class="numb" ></td>
-                                  <td class="numb" ></td>
-                                  <td class="numb" ></td>
-                                  <td class="numb" ></td>
-                                  <td ></td>
-                                  <td class="numb" ></td>
-                                  <td class="numb" ></td>
-                                  <td class="numb" ><strong>Tax</strong></td>
-                                  <td class="numb" ><?php $tax;?></td>
-                                  <td class="numb" ></td>
-                                  <td class="numb" ></td>
-                                  <td class="numb" ></td>
-                                  <td class="numb" ></td>
-                                  <td ></td>
-                                  <td class="numb" ></td>
-                                  <td class="numb" ></td>
-                                  <td class="numb" ><strong>Total</strong></td>
-                                  <td class="numb" ><?php $total;?></td>
-                                </tr>
-                              </tfoot>
                             </table>      
+
+                            <table>
+                            <tbody>
+                              <tr><td>SubTotal</td><td><?php echo $subtotal; ?></td></tr>
+                              <tr><td>Tax</td><td><?php echo $tax; ?></td></tr>
+                              <tr><td>Total</td><td><?php echo $total; ?></td></tr>
+                            </tbody>
+                            </table>
 
                         
                         </div>
