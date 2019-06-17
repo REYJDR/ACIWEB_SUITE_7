@@ -846,6 +846,7 @@ public function Get_SO_NoDes(){
         $NO_ORDER = 'ACI-'.$NO_ORDER;
       
     }
+    
 return $NO_ORDER;
 }
 

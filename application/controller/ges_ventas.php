@@ -672,7 +672,7 @@ public function CheckError(){
 }
 
 public function test(){
-
+  $this->model->verify_session();
  echo  $this->model->Get_SO_NoDes();
 
 }
