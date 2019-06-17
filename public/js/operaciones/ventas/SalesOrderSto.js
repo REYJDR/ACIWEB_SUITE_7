@@ -617,6 +617,11 @@ function validacion(){
    MSG_ERROR('Se debe seleccionar un cliente',0);
    CHK_VALIDATION = true;
   }
+
+
+
+
+  
 }
 
 function send_order(){

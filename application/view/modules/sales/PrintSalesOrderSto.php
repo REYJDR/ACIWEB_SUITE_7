@@ -105,19 +105,6 @@ foreach ($comp as $value) {
                 </div>
                </div>
 
-             <?php
-              
-              if($lugar_despacho=='VACAMONTE'){
-
-              echo '<label><font size="35">V</font></label>';
-              }
-
-              if($lugar_despacho=='PANAMA'){
-
-               echo '<label><font size="35">P</font></label>';
-              } 
-
-              ?>
        
                    
                    <table  class='borderTable' width="100%" border='1'>  
@@ -164,11 +151,12 @@ foreach ($comp as $value) {
                              <TABLE  class='borderTable'  width="100%" border='1' >
                               <thead>
                                 <TR >
-
-                                    <TH width="15%">Item</TH>
-                                    <TH width="40%">Descripcion</TH>
-                                    
+                                    <TH width="10%">Cantidad</TH>
+                                    <TH width="10%">Código</TH>
+                                    <TH width="30%">Descripción</TH>
+                                    <TH width="40%">Precio Unitario</TH>
                                 </TR>
+
                            </thead>
                            <tbody>
                            <?php  foreach ($ORDER as  $value) { 
@@ -229,9 +217,11 @@ foreach ($comp as $value) {
    
 
                             $table .= '<tr>
-
-                               <td width="20%" style="padding-right:10px; text-align: right;">'.$value->{'Item_id'}.'</td>
-                               <td width="80%" ">'.$FinalDesc.'</td>
+                             
+                               <td width="10%" style="padding-right:10px; text-align: right;">'.$value->{'Quantity'}.'</td>
+                               <td width="10%" style="padding-right:10px; text-align: right;">'.$value->{'Item_id'}.'</td>
+                               <td width="40%" ">'.$FinalDesc.'</td>
+                               <td width="10%" style="padding-right:10px; text-align: right;">'.$value->{'Unit_Price'}.'</td>
                                </tr>';
 
                             }
@@ -240,7 +230,41 @@ foreach ($comp as $value) {
 
                             echo $table;
                             ?>
-                            </tbody></table>      
+
+                            </tbody>
+                            
+                            <tfoot>
+                                <tr>
+                                  <td class="numb" ></td>
+                                  <td class="numb" ></td>
+                                  <td class="numb" ></td>
+                                  <td class="numb" ></td>
+                                  <td ></td>
+                                  <td class="numb" ></td>
+                                  <td class="numb" ></td>
+                                  <td class="numb" ><strong>SubTotal</strong></td>
+                                  <td class="numb" ><?php $subtotal;?></td>
+                                  <td class="numb" ></td>
+                                  <td class="numb" ></td>
+                                  <td class="numb" ></td>
+                                  <td class="numb" ></td>
+                                  <td ></td>
+                                  <td class="numb" ></td>
+                                  <td class="numb" ></td>
+                                  <td class="numb" ><strong>Tax</strong></td>
+                                  <td class="numb" ><?php $tax;?></td>
+                                  <td class="numb" ></td>
+                                  <td class="numb" ></td>
+                                  <td class="numb" ></td>
+                                  <td class="numb" ></td>
+                                  <td ></td>
+                                  <td class="numb" ></td>
+                                  <td class="numb" ></td>
+                                  <td class="numb" ><strong>Total</strong></td>
+                                  <td class="numb" ><?php $total;?></td>
+                                </tr>
+                              </tfoot>
+                            </table>      
 
                         
                         </div>
