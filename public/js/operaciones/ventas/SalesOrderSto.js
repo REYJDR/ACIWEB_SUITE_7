@@ -143,7 +143,7 @@ $.ajax({
       data: {url: datos, item: itemId},
       success: function(res){
 
-      console.log(res);
+      //console.log(res);
  
 
 
@@ -243,7 +243,7 @@ function SetLocation(lote,line){
             url: link,
             data: datos,
             success: function(res){ 
-             console.log(res);
+             //console.log(res);
               document.getElementById(id_loc).innerHTML  = res;
 
             
@@ -291,7 +291,7 @@ function checkMax(line){
   var curVal = Number(value);
   var maxVal = Number(max);
   
-  console.log(curVal +'-'+maxVal);
+  //console.log(curVal +'-'+maxVal);
 
 
 
@@ -332,7 +332,7 @@ function findprice(itemId, listID, id_price_field){
 
 var datos= "url=bridge_query/get_ProductsPrice/"+itemId+"/"+listID;
 
-console.log(datos);
+//console.log(datos);
 
 $.ajax({
 
@@ -341,14 +341,14 @@ $.ajax({
       data: datos,
       success: function(res){
 
-        console.log(res);
+        //console.log(res);
         if(res.trim()!=''){
 
         document.getElementById( id_price_field ).innerHTML  = parseFloat(res).toFixed(4); ;
 
         }else{
 
-        console.log('yes');
+        //console.log('yes');
         document.getElementById(id_price_field).innerHTML  = '';
         document.getElementById(id_price_field).setAttribute("contenteditable","");
 
@@ -491,7 +491,7 @@ for(var i=0; i<itbms.length; i++){
 
 }
 
-    console.log(itbms);
+    //console.log(itbms);
 
     //TAX = Number(subtotal)*Number(TAX);
 
@@ -619,8 +619,7 @@ function validacion(){
   }
 
   var listValue=$('#lugar_despacho')[0].length;
-  console.log('values:'+listValue);
-  if (listValue > 0) {
+  if (listValue > 1) {
 
     despacho = document.getElementById('lugar_despacho').value;
     if (despacho == ''){
@@ -723,7 +722,7 @@ var r = confirm('Desea procesar la orden?');
             url: link,
             data: {url: 'ges_ventas/set_sales_order_header', Data : JSON.stringify(HeaderInfo)},
             success: function(res){
-            console.log(res);
+         //   //console.log(res);
             OS_NO = res;
         }
       });
@@ -732,7 +731,7 @@ var r = confirm('Desea procesar la orden?');
 
     $.when(set_header()).done(function(OS_NO){ //ESPERA QUE TERMINE LA INSERCION DE CABECERA
 
-     console.log(OS_NO);
+     //console.log(OS_NO);
 
       //REGISTROS DE ITEMS 
         $.ajax({
@@ -740,7 +739,7 @@ var r = confirm('Desea procesar la orden?');
          url:  link,
          data:  {url: 'ges_ventas/SetSOfromStock/'+OS_NO , Data : JSON.stringify(LineArray)}, 
          success: function(res){
-         console.log(res);
+         //console.log(res);
           if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
              checkSOIns(link,OS_NO);
           }
@@ -920,7 +919,7 @@ function checkSOIns(link_so,OS_NO){
             data:  {url: 'bridge_query/checkSOIns/'+OS_NO},
             success: function(res){
                
-            console.log('check:'+res);
+            //console.log('check:'+res);
             if (res == 1) {
               MSG_ERROR('Ocurrio un error al crear el pedido. Por favor valide los datos de cabecera!.', 0); 
             }
