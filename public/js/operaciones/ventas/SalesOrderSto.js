@@ -618,10 +618,28 @@ function validacion(){
    CHK_VALIDATION = true;
   }
 
+  var listValue=$('#lugar_despacho')[0].length;
+  console.log('values:'+listValue);
+  if (listValue > 0) {
 
-
-
+    despacho = document.getElementById('lugar_despacho').value;
+    if (despacho == ''){
+     MSG_ERROR('Se debe seleccionar un lugad de despacho',0);
+     CHK_VALIDATION = true;
+    }
   
+  }
+	
+  
+
+
+
+
+
+
+
+
+
 }
 
 function send_order(){
