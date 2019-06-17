@@ -623,7 +623,7 @@ function validacion(){
 
     despacho = document.getElementById('lugar_despacho').value;
     if (despacho == ''){
-     MSG_ERROR('Se debe seleccionar un lugad de despacho',0);
+     MSG_ERROR('Se debe seleccionar un lugar de despacho',0);
      CHK_VALIDATION = true;
     }
   
