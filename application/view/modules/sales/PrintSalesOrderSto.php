@@ -238,9 +238,9 @@ foreach ($comp as $value) {
                               <div style="float:right;"> 
                               <table>
                                <tbody>
-                                <tr><td>SubTotal</td><td style="padding-right:10px; text-align: right;"><?php echo number_format($subtotal,2,',','.'); ?></td></tr>
-                                <tr><td>Tax</td><td style="padding-right:10px; text-align: right;"><?php echo number_format($tax,2,',','.');?></td></tr>
-                                <tr><td>Total</td><td style="padding-right:10px; text-align: right;"><?php echo number_format($total,2,',','.');?></td></tr>
+                                <tr><td>SubTotal</td><td style="padding-right:10px; text-align: right;"><?php echo number_format($subtotal,2,'.',','); ?></td></tr>
+                                <tr><td>Tax</td><td style="padding-right:10px; text-align: right;"><?php echo number_format($tax,2,'.',',');?></td></tr>
+                                <tr><td>Total</td><td style="padding-right:10px; text-align: right;"><?php echo number_format($total,2,'.',',');?></td></tr>
                               </tbody>
                             </table>
                         </div>
