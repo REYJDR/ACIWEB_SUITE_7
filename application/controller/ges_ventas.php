@@ -671,7 +671,13 @@ public function CheckError(){
 
 }
 
+public function test(){
 
+ echo  $this->model->Get_SO_NoDes();
+
+}
+
+  
 
 
 ///////////////////////////////SALESS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
