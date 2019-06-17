@@ -233,6 +233,8 @@ foreach ($comp as $value) {
 
                             </tbody>
                             </table>      
+
+                            <div class="separador col-xs-12"></div>
                               <div style="float:right;"> 
                               <table>
                                <tbody>
