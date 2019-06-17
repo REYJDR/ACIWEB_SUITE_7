@@ -822,6 +822,8 @@ return $NO_ORDER;
 }
 
 public function Get_SO_NoDes(){
+
+    $this->model->verify_session();
     
     $order = $this->Query_value('SalesOrder_Header_Imp','SalesOrderNumber','where ID_compania="'.$this->id_compania.'" ORDER BY ID DESC LIMIT 1');
     
@@ -846,7 +848,7 @@ public function Get_SO_NoDes(){
         $NO_ORDER = 'ACI-'.$NO_ORDER;
       
     }
-    
+
 return $NO_ORDER;
 }
 
