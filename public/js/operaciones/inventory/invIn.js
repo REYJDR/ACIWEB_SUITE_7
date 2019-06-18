@@ -27,8 +27,6 @@ $(window).load(function(){
    // cls = ['.selectJob','.selectOc']
     set_selectWidth('selectJob');
     set_selectWidth('selectOc');
-    set_selectWidth('selectPhase');
-    set_selectWidth('selectCost');
  
     
 
@@ -468,7 +466,7 @@ function builtTbl(chk){
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblnum(this.id)" onfocusout="calculate( '+i+');" contenteditable id="unitprice'+i+'" ></td>'+
                 '<td width="5%"  class="rowtable_req  numb" '+color+' id="total'+i+'" ></td>' +
                 '<td width="15%" class="rowtable_req" ><select class="selectPhase col-lg-12" id="phase'+i+'"  ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
-                '<td width="15%" class="rowtable_req" ><select class="selectCost col-lg-12" id="cost'+i+'" ><option  value="-" selected>-</option>'+COST+'</select></td>'+
+                '<td width="15%" class="rowtable_req" ><select class="selectCost  col-lg-12" id="cost'+i+'" ><option  value="-" selected>-</option>'+COST+'</select></td>'+
                 '<td width="5%"  class="rowtable_req  numb" style="'+display+'" onkeyup="checkTblnum(this.id)"  id="gl'+i+'" '+editable2+' '+color2+'></td></tr>';
                 ;
 
@@ -479,6 +477,9 @@ function builtTbl(chk){
             }
 
         set_selectItemStyle(); 
+
+    set_selectWidth('selectPhase');
+    set_selectWidth('selectCost');
 
 
 }
