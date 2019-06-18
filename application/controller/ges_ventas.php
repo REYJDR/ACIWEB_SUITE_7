@@ -182,6 +182,7 @@ public function PrintSalesOrder($Type,$id){
                $termino_pago =  $value->{'termino_pago'};
                $obser =  $value->{'observaciones'} ;
                $entrega =   $value->{'entrega'};
+               $fecha_entrega =   $value->{'fecha_entrega'};
 
                
 
