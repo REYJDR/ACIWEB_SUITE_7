@@ -24,8 +24,10 @@
 // ********************************************************
 $(window).load(function(){
     
-    cls = ['.selectJob','.selectOc']
-    set_selectWidth(cls);
+   // cls = ['.selectJob','.selectOc']
+    set_selectWidth('selectJob');
+    set_selectWidth('selectOc');
+    
  
     
 
