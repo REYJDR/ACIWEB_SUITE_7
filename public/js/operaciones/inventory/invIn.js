@@ -307,7 +307,7 @@ function phase(){
     
           }
       });
-      set_selectWidth('selectPhase');
+     
     /*PHASES*/
     
     }
@@ -331,7 +331,7 @@ function phase(){
               
             }
         });
-        set_selectWidth('selectCost');
+        
      /*cost*/
      
      }
