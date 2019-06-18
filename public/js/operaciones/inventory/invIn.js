@@ -474,8 +474,8 @@ function builtTbl(chk){
             
             $('#items').append(line_table_req); //limpio la tabla 
             }
-            set_selectWidth('selectPhase');
-            set_selectWidth('selectCost');
+        set_selectWidth('selectPhase');
+        set_selectWidth('selectCost');
         set_selectItemStyle(); 
 
 
