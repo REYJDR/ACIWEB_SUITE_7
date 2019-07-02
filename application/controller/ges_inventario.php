@@ -456,8 +456,18 @@ public function getItemLoteSt(){
                   $venc = '';
                 }
     
+        if($value->{'fecha_fab'}!='0000-00-00 00:00:00' and $value->{'fecha_fab'}!=null){
+            
+            $fab = date('Y-m-d',strtotime($value->{'fecha_fab'}));
+
+        }else{
+
+            $fab = '';
+        }
+    
          $table_lote.= '<tr>     
               <td><input class="form-control col-lg-2"  value="'.$value->{'no_lote'}.'" readonly/></td>
+              <td><input class="form-control col-lg-2"  value="'. $fab.'" readonly/></td>
               <td><input class="form-control col-lg-2"  value="'. $venc.'" readonly/></td>
               <td><input class="numb form-control col-lg-2"  value="'.number_format($qty,0, '.', ',').'" readonly/></td>
               <td>'.$button.'</td>
