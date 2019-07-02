@@ -480,7 +480,7 @@ public function getItemLoteSt(){
         echo $table_lote;
 }
 
-public function SET_NO_LOTE($item,$no_lote,$qty,$fecha){
+public function SET_NO_LOTE($item,$no_lote,$qty,$fecha,$fechaFab){
     
     
         $this->model->verify_session();
@@ -509,6 +509,7 @@ public function SET_NO_LOTE($item,$no_lote,$qty,$fecha){
         'ProductID' => $item ,
         'no_lote' => $no_lote ,
         'fecha_ven' => $fecha,
+        'fecha_fab' => $fechaFab,
         'REG_KEY' => uniqid(),
         'ID_compania' => $this->model->id_compania );
         
@@ -611,6 +612,8 @@ public function getLocationByItem(){
             $ID_STATUS = $STATUS_LOC->{'id'};
             $LOTE= $STATUS_LOC->{'no_lote'};
             $VENC= $STATUS_LOC->{'fecha_ven'};
+            $FAB= $STATUS_LOC->{'fecha_fab'};
+            
             $STOCK_QTY= $STATUS_LOC->{'qty'};
             $STOCK_ROUTE= $this->model->Query_value('STOCK_LOCATION','LOCATION','where id="'.$STATUS_LOC->{'location'}.'"');
             $STOCK_NAME=  $this->model->Query_value('STOCKS','name',' where id="'.$STATUS_LOC->{'stock'}.'"');
@@ -648,15 +651,21 @@ public function getLocationByItem(){
             if($STATUS_LOC->{'fecha_ven'}!=NULL and $STATUS_LOC->{'fecha_ven'}!='0000-00-00 00:00:00' ){
 
             $venc = date('Y-m-d',strtotime($STATUS_LOC->{'fecha_ven'}));
+
+            $FAB = date('Y-m-d',strtotime($FAB));
+            
             $venc2= "'".date('Y-m-d',strtotime($STATUS_LOC->{'fecha_ven'}))."'";
 
             }else{
 
             $venc = '';
+            $FAB = '';
             $venc2= "'-'";
             }
 
             echo '<tr><td><input class="form-control col-lg-2"    value="'.$LOTE.'" readonly/></td>
+                <td><input class="form-control col-lg-2"  value="'.$FAB.'" readonly/></td>
+            
                 <td><input class="form-control col-lg-2"  value="'.$venc.'" readonly/></td>
                 <td><input class="numb form-control col-lg-2"  value="'.number_format($STOCK_QTY,0, '.', ',').'" readonly/></td>
                 <td><input '.$color.' class="form-control col-lg-2"  value="'.$pendding_sale.'" readonly/></td>

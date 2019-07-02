@@ -101,6 +101,7 @@ foreach ($detail as $value) {
 							<thead>
 							<tr>
 								<th>Lote</th>
+								<th>Fecha Fabr.</th>
 								<th>Fecha Venc.</th>
 								<th>Cant. Stock</th>
 								<th></th>
@@ -126,6 +127,7 @@ foreach ($detail as $value) {
 							<thead>
 							<tr>
 								<th>Lote</th>
+								<th>Fecha Fabr.</th>
 								<th>Fecha Venc.</th>
 								<th>Cant. Stock</th>
 								<th>Reservados</th>
@@ -173,6 +175,7 @@ foreach ($detail as $value) {
             <table class="table_form" >
                 <tbody>
 					<tr><th>No Lote</th><td><input class="inputPage col-lg-12"  type='text' id="no_lote" name="no_lote" /></td></tr>
+					<tr><th>Fecha Fabricación</th><td><input type="date" class="inputPage col-lg-12"   id="fecha_fab" name="fecha_fab" /></tr>				
 					<tr><th>Fecha Venc</th><td><input type="date" class="inputPage col-lg-12"   id="fecha_lote" name="fecha_lote" /></tr>
 					<tr><th>cant.</th><td><input type="number" min='1' max="<?php echo $maxLote; ?>" value='<?php echo $maxLote; ?>' class="form-control col-lg-10" id="qty_lote" name="qty_lote"   /></tr>
 				</tbody>

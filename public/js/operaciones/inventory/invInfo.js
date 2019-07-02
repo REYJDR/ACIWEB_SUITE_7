@@ -46,6 +46,7 @@ function addLote(item,maxqty){
     
     var lote = $('#no_lote').val();
     var fecha = $('#fecha_lote').val();
+    var fechaFab = $('#fecha_fab').val();
     var qty = $('#qty_lote').val();
     var URL = $('#URL').val();
     
@@ -56,7 +57,7 @@ function addLote(item,maxqty){
     
     if(qty <= maxqty || qty <= 0 ){
     
-    var datos= "url=ges_inventario/SET_NO_LOTE/"+item+'/'+lote+'/'+qty+'/'+fecha;
+    var datos= "url=ges_inventario/SET_NO_LOTE/"+item+'/'+lote+'/'+qty+'/'+fecha+'/'+fechaFab;
     var link= URL+"index.php";
     
       $.ajax({
