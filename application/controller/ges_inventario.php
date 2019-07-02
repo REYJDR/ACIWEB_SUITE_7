@@ -663,12 +663,12 @@ public function getLocationByItem(){
             if($STATUS_LOC->{'fecha_fab'}!=NULL and $STATUS_LOC->{'fecha_fab'}!='0000-00-00 00:00:00' ){
                 
             $fab= date('Y-m-d',strtotime($STATUS_LOC->{'fecha_fab'}));
-            $fab= "'".date('Y-m-d',strtotime($STATUS_LOC->{'fecha_fab'}))."'";
+            $fab2= "'".date('Y-m-d',strtotime($STATUS_LOC->{'fecha_fab'}))."'";
 
             }else{
 
             $fab = '';
-            $fab= "'-'";
+            $fab2= "'-'";
 
             }
 
