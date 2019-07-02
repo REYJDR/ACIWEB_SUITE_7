@@ -454,7 +454,7 @@ function builtTbl(chk){
                         '</td>';  
 
                 
-               
+                
             }        
            
             var line_table_req = '<tr>'+reglon+
