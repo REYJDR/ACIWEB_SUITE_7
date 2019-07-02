@@ -651,21 +651,29 @@ public function getLocationByItem(){
             if($STATUS_LOC->{'fecha_ven'}!=NULL and $STATUS_LOC->{'fecha_ven'}!='0000-00-00 00:00:00' ){
 
             $venc = date('Y-m-d',strtotime($STATUS_LOC->{'fecha_ven'}));
-
-            $FAB = date('Y-m-d',strtotime($FAB));
-            
             $venc2= "'".date('Y-m-d',strtotime($STATUS_LOC->{'fecha_ven'}))."'";
 
             }else{
 
             $venc = '';
-            $FAB = '';
             $venc2= "'-'";
+
+            }
+
+            if($STATUS_LOC->{'fecha_fab'}!=NULL and $STATUS_LOC->{'fecha_fab'}!='0000-00-00 00:00:00' ){
+                
+            $fab= date('Y-m-d',strtotime($STATUS_LOC->{'fecha_fab'}));
+            $fab= "'".date('Y-m-d',strtotime($STATUS_LOC->{'fecha_fab'}))."'";
+
+            }else{
+
+            $fab = '';
+            $fab= "'-'";
+
             }
 
             echo '<tr><td><input class="form-control col-lg-2"    value="'.$LOTE.'" readonly/></td>
-                <td><input class="form-control col-lg-2"  value="'.$FAB.'" readonly/></td>
-            
+                <td><input class="form-control col-lg-2"  value="'.$fab.'" readonly/></td>
                 <td><input class="form-control col-lg-2"  value="'.$venc.'" readonly/></td>
                 <td><input class="numb form-control col-lg-2"  value="'.number_format($STOCK_QTY,0, '.', ',').'" readonly/></td>
                 <td><input '.$color.' class="form-control col-lg-2"  value="'.$pendding_sale.'" readonly/></td>
