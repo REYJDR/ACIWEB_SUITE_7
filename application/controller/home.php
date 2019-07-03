@@ -140,17 +140,17 @@ public function config_sys(){
 
 public function GetPrintInfo(){
 
-$RES = $this->model->Query('Select * from  INV_PRINT_CONF');
+  $RES = $this->model->Query('Select * from  INV_PRINT_CONF');
 
 
-return $RES;
+  return $RES;
 }
 
 public function GetTerminoPago(){
   
-$RES = $this->model->Query('Select * from CUST_PAY_TERM where ID_compania="'.$this->model->id_compania.'";');
+  $RES = $this->model->Query('Select * from CUST_PAY_TERM where ID_compania="'.$this->model->id_compania.'";');
 
-return $RES;
+  return $RES;
 }
 
 public function del_tax($id){

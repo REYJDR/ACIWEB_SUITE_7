@@ -1,4 +1,9 @@
+<script>
 
+  var elements = document.getElementsByClassName('tablinks');
+  var requiredElement = elements[0].click();
+	
+</script>
 
 <!--ini aqui va el menu de acceso rapido-->
 <fieldset class="fieldsetDash">
