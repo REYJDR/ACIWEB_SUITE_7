@@ -12,14 +12,6 @@ $(window).load(function(){
 	
 	});
 
-	function settab(){
-
-
-		var elements = document.getElementsByClassName('tablinks');
-		var requiredElement = elements[0].click();
-	  
-
-	}
 
 
 	function foo(e) {
