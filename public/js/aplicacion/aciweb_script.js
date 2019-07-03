@@ -35,10 +35,19 @@ function settab(){
       
   
       var elements = document.getElementsByClassName('tablinks');
+      var name = elements[0].innerHTML;
+      var n = name.includes("Home");
 
-     // var requiredElement = elements[0].click();
-      
-      console.log(elements[0].innerHTML);
+   // var requiredElement = elements[0].click();
+
+   if( n ){
+    var requiredElement = elements[1].click();
+
+   }else{
+
+    var requiredElement = elements[0].click();
+   }
+
   
   }
   
