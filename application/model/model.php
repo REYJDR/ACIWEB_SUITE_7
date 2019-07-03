@@ -624,10 +624,9 @@ ITEMS_NO_LOTES.fecha_ven,
 ITEMS_NO_LOTES.fecha_fab,
 (select sum(qty) from STOCK_ITEMS_LOCATION 
 where STOCK_ITEMS_LOCATION.lote = ITEMS_NO_LOTES.no_lote 
-and ITEMS_NO_LOTES.ID_compania ="'.$this->id_compania.'" 
 and STOCK_ITEMS_LOCATION.ID_compania ="'.$this->id_compania.'") as lote_qty
 from ITEMS_NO_LOTES
-where ITEMS_NO_LOTES.ProductID ="'.$itemid.'" ;';
+where ITEMS_NO_LOTES.ProductID ="'.$itemid.'" and ITEMS_NO_LOTES.ID_compania ="'.$this->id_compania.'" ;';
 
 die($query);
 

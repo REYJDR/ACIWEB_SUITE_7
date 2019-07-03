@@ -420,10 +420,7 @@ public function getItemLoteSt(){
     
         $lote = "'".$value->{'no_lote'}."'";
         $lote_qty = "'".$value->{'lote_qty'}."'";
-    
-      //  <div class="col-lg-6"><i style="color:red;" class="fas fa-trash-alt" >&nbsp</i><span><a href="#">Modificar</a></span></div> 
-       // <div class="col-lg-6"><i style="color:blue;" class="fas fas fa-edit" >&nbsp</i><span><a href="#">Eliminar</a></span></div> 
-     
+
         if($value->{'no_lote'} == $this->ProductID.'0000' ){
         
         //$button = '<a href="#" disabled ><i style="color:red;" class="fas fa-trash-alt" ></i> Borrar </a>';
