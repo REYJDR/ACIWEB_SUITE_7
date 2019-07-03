@@ -667,11 +667,16 @@ return $list;
 
 
 public function lote_loc_by_itemID($itemid){
+    
     $this->verify_session();
+
+     
 $query ='SELECT * 
-FROM STOCK_ITEMS_LOCATION
-INNER JOIN ITEMS_NO_LOTES ON ITEMS_NO_LOTES.no_lote = STOCK_ITEMS_LOCATION.lote
-WHERE ITEMS_NO_LOTES.ProductID="'.$itemid.'" WHERE ITEMS_NO_LOTES.ID_compania = "'.$this->id_compania.'" GROUP BY STOCK_ITEMS_LOCATION.ID';
+            FROM STOCK_ITEMS_LOCATION
+            INNER JOIN ITEMS_NO_LOTES ON ITEMS_NO_LOTES.no_lote = STOCK_ITEMS_LOCATION.lote
+            WHERE ITEMS_NO_LOTES.ProductID="'.$itemid.'" and 
+            ITEMS_NO_LOTES.ID_compania = "'.$this->id_compania.'" 
+            GROUP BY STOCK_ITEMS_LOCATION.ID';
 
 $res = $this->Query($query);
 
