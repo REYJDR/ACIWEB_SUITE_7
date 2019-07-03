@@ -465,7 +465,7 @@ public function getItemLoteSt(){
             $fab = '';
         }
     
-         $table_lote.= '<tr>     
+        $table_lote.= '<tr>     
               <td><input class="form-control col-lg-2"  value="'.$value->{'no_lote'}.'" readonly/></td>
               <td><input class="form-control col-lg-2"  value="'. $fab.'" readonly/></td>
               <td><input class="form-control col-lg-2"  value="'. $venc.'" readonly/></td>
