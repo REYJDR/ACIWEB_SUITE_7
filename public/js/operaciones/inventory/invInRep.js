@@ -55,6 +55,8 @@ select_type_options: { width: "100%" }
 
 },
 {column_number : 1,
+column_data_type: "html",
+html_data_type: "text" ,
 select_type: "select2",
 select_type_options: { width: "100%" }
 
