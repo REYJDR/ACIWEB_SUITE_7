@@ -38,7 +38,7 @@ function settab(){
 
      // var requiredElement = elements[0].click();
       
-      console.log(elements[0]);
+      console.log(elements[0].innerHTML);
   
   }
   
