@@ -1298,7 +1298,9 @@ public function exeConsig(){
 public function set_Budget_Log($values,$type){
 
     $this->model->verify_session();
+
     switch ($type) {
+
         case '1':
 
                 $PurchaseNumber = $values['TransactionID']; 
@@ -1337,8 +1339,8 @@ public function set_Budget_Log($values,$type){
                 $error= json_decode($error) ;
                 echo 'ERROR: '.$error->{'E'}.' INV_EVENT_LOG ';
             
-                $this->model->delete('Purchase_Header_Imp',' Where TransactionID="'.$PurchaseNumber.'" and ID_Compania="'.$id_compania.'";');
-                $this->model->delete('Purchase_Detail_Imp',' Where TransactionID="'.$PurchaseNumber.'" and ID_Compania="'.$id_compania.'";');
+                  $this->model->delete('Purchase_Header_Imp',' Where TransactionID="'.$PurchaseNumber.'" and ID_Compania="'.$id_compania.'";');
+                  $this->model->delete('Purchase_Detail_Imp',' Where TransactionID="'.$PurchaseNumber.'" and ID_Compania="'.$id_compania.'";');
                 
                 die(); 
             

@@ -32,24 +32,22 @@ $(window).load(function(){
 
 function settab(){
   
-      
-  
-      var elements = document.getElementsByClassName('tablinks');
-      var name = elements[0].innerHTML;
-      var n = name.includes("Home");
-
-   // var requiredElement = elements[0].click();
+  var elements = document.getElementsByClassName('tablinks');
+  var name = elements[0].innerHTML;
+  var n = name.includes("Home");
 
    if( n ){
+
     var requiredElement = elements[1].click();
 
    }else{
 
     var requiredElement = elements[0].click();
+
    }
 
   
-  }
+}
   
 
 

@@ -36,10 +36,10 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						<fieldset>
 						<table class='table_form'>
 							<tbody>
-								<tr>
+								<!-- <tr>
 									<td><input type="checkbox" class='chkGrp' id="chk_lp" name="chk_lp" value="1" onclick="set_div(this.value)" /></td>					
 									<th><strong><?PHP echo $invIn1; ?></strong></th>
-								</tr>
+								</tr> -->
 								</tr>
 								<td><input type="checkbox" class='chkGrp' id="chk_lp" name="chk_lp" value="3" onclick="set_div(this.value)"  checked /></td>					
 									<th><strong><?PHP echo $invIn10; ?></strong></th>
