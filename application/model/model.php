@@ -628,7 +628,6 @@ and STOCK_ITEMS_LOCATION.ID_compania ="'.$this->id_compania.'") as lote_qty
 from ITEMS_NO_LOTES
 where ITEMS_NO_LOTES.ProductID ="'.$itemid.'" and ITEMS_NO_LOTES.ID_compania ="'.$this->id_compania.'" ;';
 
-die($query);
 
 $list = $this->Query($query);
 
