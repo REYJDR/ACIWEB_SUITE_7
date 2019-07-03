@@ -10,6 +10,7 @@ if ('serviceWorker' in navigator) {
 // ********************************************************
 $(window).load(function(){
 
+ 
 
   $('.loader').hide();
   document.getElementById("allDocument").style.visibility = "visible";
@@ -25,6 +26,7 @@ $(window).load(function(){
 
   });  
 
+ 
 
 });
 

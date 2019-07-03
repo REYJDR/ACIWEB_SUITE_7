@@ -4,18 +4,22 @@ $(window).load(function(){
 
 	var text = $('#code').text();
 	// $('#code2').text()+$('#code3').text();
-    eval(text);
 
-	
-	
-	  var elements = document.getElementsByClassName('tablinks');
-	  var requiredElement = elements[0].click();
-	
-	 
-	
+        eval(text);
+
+	    settab();
 
 	
 	});
+
+	function settab(){
+
+
+		var elements = document.getElementsByClassName('tablinks');
+		var requiredElement = elements[0].click();
+	  
+
+	}
 
 
 	function foo(e) {

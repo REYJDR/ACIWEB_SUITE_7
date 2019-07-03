@@ -101,7 +101,7 @@ foreach ($res as $value) {
   <a  class="navbar-brand" onClick="history.go(-1); return true;" ><i  class="fas fa-arrow-circle-left  fa-ms  icon-color-arrows" ></i></a>
   <a  class="navbar-brand" onClick="history.go(+1); return true;" ><i  class="fas fa-arrow-circle-right  fa-ms  icon-color-arrows" ></i></a>
   <a  class="navbar-brand" onClick="location.reload();" ><i  class="fas fa-sync  fa-ms   icon-color-arrows" ></i></a>
-  <a  class="navbar-brand"  data-toggle="modal" data-target="#SlideMenu" ><i  class="fas fa-bars fa-ms  icon-color-dash" ></i></a>
+  <a  class="navbar-brand"  data-toggle="modal" data-target="#SlideMenu" onclick="settab()" ><i  class="fas fa-bars fa-ms  icon-color-dash" ></i></a>
  <!--href="<?PHP ECHO URL; ?>index.php?url=home/index"-->
 </div>
 <!-- Icon Bar -->
