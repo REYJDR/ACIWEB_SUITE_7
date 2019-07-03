@@ -32,10 +32,13 @@ $(window).load(function(){
 
 function settab(){
   
+      
   
       var elements = document.getElementsByClassName('tablinks');
-      var requiredElement = elements[0].click();
+
+     // var requiredElement = elements[0].click();
       
+      console.log(elements[0].innerHTML());
   
   }
   
