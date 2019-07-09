@@ -141,14 +141,14 @@ public function ges_reporte_diario(){
 
 public function PrintSalesOrder($Type,$id){
 
-//$tax= $this->model->Query_value('sale_tax','rate','where id="1";');
-//$tax_sale = $tax/100;
+  //$tax= $this->model->Query_value('sale_tax','rate','where id="1";');
+  //$tax_sale = $tax/100;
 
- 
-//$id = trim(preg_replace('/000+/','',$id));
+  
+  //$id = trim(preg_replace('/000+/','',$id));
 
- $res = $this->model->verify_session();
- $id_compania = $this->model->id_compania;
+  $res = $this->model->verify_session();
+  $id_compania = $this->model->id_compania;
 
         if($res=='0'){
 
@@ -203,11 +203,9 @@ public function PrintSalesOrder($Type,$id){
            
 }
 
-
 public function ges_print_OrdEmpaque($id){
 
-
-//$id = trim(preg_replace('/000+/','',$id));
+ //$id = trim(preg_replace('/000+/','',$id));
 
  $res = $this->model->verify_session();
  $id_compania = $this->model->id_compania;
@@ -319,14 +317,13 @@ public function ges_pro_hist_ventas(){
   
 }
 
-
 public function ges_print_sales($id){
 
-$tax= $this->model->Query_value('sale_tax','rate','where id="1";');
-$tax_sale = $tax/100;
+  $tax= $this->model->Query_value('sale_tax','rate','where id="1";');
+  $tax_sale = $tax/100;
 
- 
-$id = trim(preg_replace('/000+/','',$id));
+  
+  $id = trim(preg_replace('/000+/','',$id));
 
  $res = $this->model->verify_session();
 
@@ -380,8 +377,6 @@ $id = trim(preg_replace('/000+/','',$id));
     
 }
 
-
-
 public function ges_hist_sal_merc(){
 
 
@@ -404,10 +399,9 @@ public function ges_hist_sal_merc(){
   
 }
 
-public function  ges_print_SalMerc($id){
+public function ges_print_SalMerc($id){
 
- 
-$id = trim(preg_replace('/000+/','',$id));
+ $id = trim(preg_replace('/000+/','',$id));
 
  $res = $this->model->verify_session();
 
@@ -454,7 +448,6 @@ $id = trim(preg_replace('/000+/','',$id));
           
 }
 
-
 public function GetPayTerm($ID=0){
 
   if($ID!=0){
@@ -467,40 +460,36 @@ public function GetPayTerm($ID=0){
 
     $DaysToPay = $this->model->Query_value('CUST_PAY_TERM','DaysToPay','WHERE TermID = "'.$TermID.'" AND ID_compania="'.$id_compania.'"'); 
  
- echo $DaysToPay;
+   echo $DaysToPay;
   }
 }
-
-
-
-
 
 public function getSalesOrderRep($sort,$limit,$clause){
 
 
-$this->model->verify_session();
+  $this->model->verify_session();
 
 
 
-if($this->model->active_user_role=='admin'){
+  if($this->model->active_user_role=='admin'){
 
-$query ='SELECT * FROM `SalesOrder_Header_Imp` 
-inner JOIN `SalesOrder_Detail_Imp` ON SalesOrder_Header_Imp.SalesOrderNumber = SalesOrder_Detail_Imp.SalesOrderNumber
-inner JOIN `SAX_USER` ON `SAX_USER`.`id` = SalesOrder_Header_Imp.user '.$clause.' GROUP BY SalesOrder_Header_Imp.SalesOrderNumber order by SalesOrder_Header_Imp.LAST_CHANGE '.$sort.' limit '.$limit ; }
+  $query ='SELECT * FROM `SalesOrder_Header_Imp` 
+  inner JOIN `SalesOrder_Detail_Imp` ON SalesOrder_Header_Imp.SalesOrderNumber = SalesOrder_Detail_Imp.SalesOrderNumber
+  inner JOIN `SAX_USER` ON `SAX_USER`.`id` = SalesOrder_Header_Imp.user '.$clause.' GROUP BY SalesOrder_Header_Imp.SalesOrderNumber order by SalesOrder_Header_Imp.LAST_CHANGE '.$sort.' limit '.$limit ; }
 
-if($this->model->active_user_role=='user'){
+  if($this->model->active_user_role=='user'){
 
-  if($clause!=''){ $clause.= 'and `SAX_USER`.`id`="'.$this->model->active_user_role_id.'"'; } else{ $clause.= ' Where `SAX_USER`.`id`="'.$this->active_user_role_id.'"'; }
+    if($clause!=''){ $clause.= 'and `SAX_USER`.`id`="'.$this->model->active_user_role_id.'"'; } else{ $clause.= ' Where `SAX_USER`.`id`="'.$this->active_user_role_id.'"'; }
 
-$query='SELECT * FROM `SalesOrder_Header_Imp`
-inner JOIN `SalesOrder_Detail_Imp` ON SalesOrder_Header_Imp.SalesOrderNumber = SalesOrder_Detail_Imp.SalesOrderNumber
-inner JOIN `SAX_USER` ON `SAX_USER`.`id` = SalesOrder_Header_Imp.user '.$clause.' GROUP BY SalesOrder_Header_Imp.SalesOrderNumber  order by SalesOrder_Header_Imp.LAST_CHANGE '.$sort.' limit '.$limit;
+  $query='SELECT * FROM `SalesOrder_Header_Imp`
+  inner JOIN `SalesOrder_Detail_Imp` ON SalesOrder_Header_Imp.SalesOrderNumber = SalesOrder_Detail_Imp.SalesOrderNumber
+  inner JOIN `SAX_USER` ON `SAX_USER`.`id` = SalesOrder_Header_Imp.user '.$clause.' GROUP BY SalesOrder_Header_Imp.SalesOrderNumber  order by SalesOrder_Header_Imp.LAST_CHANGE '.$sort.' limit '.$limit;
 
-}
+  }
 
 
 
-return $filter =  $this->model->Query($query);
+  return $filter =  $this->model->Query($query);
 
 
 }
@@ -1287,26 +1276,24 @@ public function CloseSelesOrder($id){
   $this->model->update($table,$columns,$clause);
   $this->CheckError();
 
-  // $table  = 'SalesOrder_Header_Imp';
+    // $table  = 'SalesOrder_Header_Imp';
 
-  // $clause = ' WHERE SalesOrderNumber = "'.$id.'" AND ID_compania =  "'.$this->model->id_compania.'"';
+    // $clause = ' WHERE SalesOrderNumber = "'.$id.'" AND ID_compania =  "'.$this->model->id_compania.'"';
 
-  //   $this->model->delete($table,$clause);
+    //   $this->model->delete($table,$clause);
 
-  //   $this->CheckError();
+    //   $this->CheckError();
 
-  // $table  = 'SalesOrder_Detail_Imp';
+    // $table  = 'SalesOrder_Detail_Imp';
 
-  // $clause = ' WHERE SalesOrderNumber = "'.$id.'" AND ID_compania =  "'.$this->model->id_compania.'"';
+    // $clause = ' WHERE SalesOrderNumber = "'.$id.'" AND ID_compania =  "'.$this->model->id_compania.'"';
 
 
-  //   $this->model->delete($table,$clause);
+    //   $this->model->delete($table,$clause);
 
-  //   $this->CheckError();
+    //   $this->CheckError();
 
- 
-
- echo 1;
+  echo 1;
 }
 
 

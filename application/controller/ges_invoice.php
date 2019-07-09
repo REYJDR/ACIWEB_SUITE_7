@@ -673,8 +673,6 @@ public function ReadInvoiceFile($id_compania){
   $logText = '';
   $bdres = '';
 
-
-
   $SQL = 'SELECT SalesOrderNumber , printer
             FROM 
             INVOICE_GEN_HEADER
@@ -713,6 +711,15 @@ public function ReadInvoiceFile($id_compania){
   }
   echo $logText.'<br>';
   file_put_contents('webhook_log.txt',  $logText, FILE_APPEND);
+
+
+
+
+
+
+
+
+
 
 }
 
@@ -902,12 +909,52 @@ public function InsertSalesInfo($id_compania,$ID){
                 'Taxable'=>$sales->{'Taxable'});
 
            $this->model->insert('Sales_Detail_Imp',$values1); //set item line
-       }
+
+           $reserv = $this->queryColumns('sale_pendding',['status_location_id','qty'],' WHERE SaleOrderId="'.$ID.'" and ProducID="'.$itemid.'" and ID_compania="'.$id_compania.'"');
+           
+           foreach ($reserv as  $value) {
+
+              $value = json_decode($value);
+
+              $value->{'status_location_id'};
+              $value->{'qty'};
+            
+              $this->UpdateItemsLocation($value->{'status_location_id'},$value->{'qty'});
+
+              $id_compania= $this->model->id_compania;
+              $user = $this->model->active_user_id;
+              
+              $event_values = array(  'ProductID' => $itemid,
+                                      'JobID' => '',
+                                      'JobPhaseID' => '',
+                                      'JobCostCodeID' => '',
+                                      'PurchaseNumber' => '',
+                                      'Qty'=> (-1)*$qty,
+                                      'unit_price' => $unit_price ,
+                                      'Total' => $Total,
+                                      'User' => $user,
+                                      'Type' => 'Factura de venta',
+                                      'Referencia' => $SalesOrderNumber,
+                                      'ID_compania' => $id_compania ,
+                                      'stockOrigID' => $value->{'status_location_id'} );
+              //set event Line              
+              $this->model->insert('INV_EVENT_LOG',$event_values); 
+
+           }
+        
+           
+
+    }
 
     //Inserto numero de factura generada por maquina fiscal
     $this->model->Query('UPDATE INVOICE_GEN_HEADER SET InvoiceNumber="'.$InvoiceNumber.'" WHERE SalesOrderNumber="'.$ID.'" and ID_compania="'.$id_compania.'"');
 
  }
+
+
+
+
+
 
  return $InvoiceNumber;
 }
