@@ -62,40 +62,37 @@ public function mob_orden_ventas(){
 
 public function SalesOrderReport(){
 
-
  $res = $this->model->verify_session();
 
-        if($res=='0'){
-        
+  if($res=='0'){
+  
+      // load views
+      require APP . 'view/_templates/header.php';
+      require APP . 'view/_templates/panel.php';
+      require APP . 'view/modules/sales/SalesOrderReport.php';
+      require APP . 'view/_templates/footer.php';
 
-            // load views
-            require APP . 'view/_templates/header.php';
-            require APP . 'view/_templates/panel.php';
-            require APP . 'view/modules/sales/SalesOrderReport.php';
-            require APP . 'view/_templates/footer.php';
-
-}
+  }
         	
 }
 
 
 public function SalesReport(){
   
+  $res = $this->model->verify_session();
   
-   $res = $this->model->verify_session();
+  if($res=='0'){
   
-          if($res=='0'){
-          
-  
-              // load views
-              require APP . 'view/_templates/header.php';
-              require APP . 'view/_templates/panel.php';
-              require APP . 'view/modules/sales/SalesReport.php';
-              require APP . 'view/_templates/footer.php';
-  
+
+      // load views
+      require APP . 'view/_templates/header.php';
+      require APP . 'view/_templates/panel.php';
+      require APP . 'view/modules/sales/SalesReport.php';
+      require APP . 'view/_templates/footer.php';
+
   }
             
-  }
+}
 
 public function ges_hist_sales(){
 
@@ -845,6 +842,7 @@ public function SetSOfromStock($SalesOrderNumber){
   list($desc,$remarks,$UnitMeasure,$itemid,$unit_price,$qty,$Price,$lote,$loc) = explode('@', $value );
   
   $OriQty = $qty;
+
     $venc = $this->model->Query_value('ITEMS_NO_LOTE','fecha_ven','where no_lote="'.$lote.'" and ID_compania="'.$this->model->id_compania .'"');
 
      if($venc!=''){
@@ -1055,28 +1053,40 @@ public function SetSOfromStock($SalesOrderNumber){
 
    }
 
-   $this->UpdateItemsLocation($loc,$OriQty);
 
-   //set event item 
-   $id_compania= $this->model->id_compania;
-   $user = $this->model->active_user_id;
-  
-   $event_values = array(  'ProductID' => $itemid,
-                           'JobID' => '',
-                           'JobPhaseID' => '',
-                           'JobCostCodeID' => '',
-                           'PurchaseNumber' => '',
-                           'Qty'=> (-1)*$qty,
-                           'unit_price' => $unit_price ,
-                           'Total' => $Price,
-                           'User' => $user,
-                           'Type' => 'Orden de venta',
-                           'Referencia' => $SalesOrderNumber,
-                           'ID_compania' => $id_compania ,
-                           'stockOrigID' => $loc );
-                   
-   $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
+   //**  reserva de items  */
 
+    $reserv = array(  'ProductID'           => $itemid,
+                      'SaleOrderId'         => $SalesOrderNumber,
+                      'qty'                 => $qty,
+                      'status_location_id'  => $loc ,
+                      'ID_compania'         => $id_compania );
+
+    $this->model->insert('sale_pendding',$reserv); 
+
+    // $this->UpdateItemsLocation($loc,$OriQty);
+
+    // //set event item 
+    // $id_compania= $this->model->id_compania;
+    // $user = $this->model->active_user_id;
+    
+    // $event_values = array(  'ProductID' => $itemid,
+    //                         'JobID' => '',
+    //                         'JobPhaseID' => '',
+    //                         'JobCostCodeID' => '',
+    //                         'PurchaseNumber' => '',
+    //                         'Qty'=> (-1)*$qty,
+    //                         'unit_price' => $unit_price ,
+    //                         'Total' => $Price,
+    //                         'User' => $user,
+    //                         'Type' => 'Orden de venta',
+    //                         'Referencia' => $SalesOrderNumber,
+    //                         'ID_compania' => $id_compania ,
+    //                         'stockOrigID' => $loc );
+    // //set event Line              
+    // $this->model->insert('INV_EVENT_LOG',$event_values); 
+
+   //**  reserva de items  */
    
   }
   echo '1';
