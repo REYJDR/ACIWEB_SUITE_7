@@ -306,9 +306,9 @@ public function read_db_error(){
 public function delete($table,$clause){
 
 
-$query= "DELETE FROM ".$table.' '.$clause.';';
+    $query= "DELETE FROM ".$table.' '.$clause.';';
 
-$res = $this->Query($query);
+    $res = $this->Query($query);
 
 
 }
@@ -1603,6 +1603,8 @@ public function getJob_avalaible_amnt($JobID,$PhaseID=0,$CCOID=0){
     // number_format($Total_available,2,',','.');
 
 }
+
+
 
 }
 ?>

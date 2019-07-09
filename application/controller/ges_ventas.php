@@ -1263,9 +1263,13 @@ echo '</tbody></table></fieldset>';
 
 public function CloseSelesOrder($id){
 
-$this->model->verify_session();
+  $this->model->verify_session();
 
-  $table = 'SalesOrder_Header_Imp';
+  $this->reverseItems($id);
+  $this->CheckError();
+
+
+  $table  = 'SalesOrder_Header_Imp';
 
   $clause = ' WHERE SalesOrderNumber = "'.$id.'" AND ID_compania =  "'.$this->model->id_compania.'"';
 
@@ -1273,7 +1277,7 @@ $this->model->verify_session();
 
     $this->CheckError();
 
-  $table = 'SalesOrder_Detail_Imp';
+  $table  = 'SalesOrder_Detail_Imp';
 
   $clause = ' WHERE SalesOrderNumber = "'.$id.'" AND ID_compania =  "'.$this->model->id_compania.'"';
 
@@ -1286,6 +1290,7 @@ $this->model->verify_session();
 
 echo 1;
 }
+
 
 public function reverseItems($aciId){
 
@@ -1300,334 +1305,374 @@ public function reverseItems($aciId){
   foreach ($items as $key => $value) {
    
       $value =  json_decode($value);
-      echo $value->{'ProductID'}.'-'.$value->{'stockOrigID'}.'-'.$value->{'Qty'};
-    
+
+      $qty = 1 * $value->{'Qty'};
+      $this->reverseItemTransaction($value->{'ProductID'},$value->{'stockOrigID'},$aciId,$qty );
 
   }
- 
 
+}
+
+public function reverseItemTransaction($item, $dest,$desc,$qty){  
+    
+    $CURRENT_QTY = $this->model->Query_value('STOCK_ITEMS_LOCATION','qty','where id="'.$dest.'";');
+
+    $NEWQTY = $CURRENT_QTY + $qty;
+  
+    //ACTUALIZA LA CANTIDAD RESTANTE EN LA UBICACION ACTUAL
+    $query= 'UPDATE STOCK_ITEMS_LOCATION SET qty="'.$NEWQTY.'" where id="'.$dest.'";';
+    $this->model->Query($query);
+
+    usleep(1000);
+    $error = $this->CheckError();
+    if($error){
+        $error= json_decode($error) ;
+            echo 'ERROR: '.$error->{'E'}.' STOCK_ITEMS_LOCATION';
+        die();
+        
+    }else{
+
+        $values = array (
+            'ItemID' => $item, 
+            'Reference' => 'REV-'.$desc, 
+            'Qty'  => $qty, 
+            'aci_ref' => 'REV-'.$desc, 
+            'stockOrigID' => 0,
+            'stockDestID' => $dest);
+    
+        $this->set_Budget_Log($values,'5');
+
+        $error = $this->CheckError();
+        if($error){
+            $error= json_decode($error) ;
+                echo 'ERROR: '.$error->{'E'}.' INV_EVENT_LOG';
+            die();
+        }
+
+
+    }
+      
 }
 
 public function GetDaylySales($date1,$date2,$pinter){
 
 
-$this->model->verify_session();
+ $this->model->verify_session();
 
 
-$clause='';
+  $clause='';
 
-$clause.= 'where Sales_Header_Imp.ID_compania="'.$this->model->id_compania.'" and Sales_Header_Imp.InvoiceNumber <> ""';
+  $clause.= 'where Sales_Header_Imp.ID_compania="'.$this->model->id_compania.'" and Sales_Header_Imp.InvoiceNumber <> ""';
 
 
 
-if($date1!=''){
+  if($date1!=''){
 
-  
-   if($date2!=''){
+    
+    if($date2!=''){
 
-      $clause.= ' and Sales_Header_Imp.date between "'.$date1.'%" and "'.$date2.'%" ';           
+        $clause.= ' and Sales_Header_Imp.date between "'.$date1.'%" and "'.$date2.'%" ';           
+      }
+    
+    if($date2==''){ 
+
+      $clause.= ' and Sales_Header_Imp.date like "'.$date1.'%"';
     }
-   
-   if($date2==''){ 
+      
+  }else{
 
-     $clause.= ' and Sales_Header_Imp.date like "'.$date1.'%"';
-   }
-     
-}else{
+    $clause.= ' and date like "'.date('Y-m-d').'%"';
 
-   $clause.= ' and date like "'.date('Y-m-d').'%"';
-
-}
+  }
 
 
 
-if($pinter!=''){ 
+  if($pinter!=''){ 
 
-   $clause.= ' and Sales_Header_Imp.InvoiceNumber like "'.$pinter.'-%" ';
+    $clause.= ' and Sales_Header_Imp.InvoiceNumber like "'.$pinter.'-%" ';
 
-}
+  }
 
 
 
-$query ='SELECT * FROM `Sales_Header_Imp` 
-inner JOIN `Sales_Detail_Imp` ON Sales_Header_Imp.InvoiceNumber = Sales_Detail_Imp.InvoiceNumber
-'.$clause.' 
-GROUP BY Sales_Header_Imp.InvoiceNumber order by LAST_CHANGE'; 
+  $query ='SELECT * FROM `Sales_Header_Imp` 
+  inner JOIN `Sales_Detail_Imp` ON Sales_Header_Imp.InvoiceNumber = Sales_Detail_Imp.InvoiceNumber
+  '.$clause.' 
+  GROUP BY Sales_Header_Imp.InvoiceNumber order by LAST_CHANGE'; 
 
-       
-$table.= '<script type="text/javascript">
- jQuery(document).ready(function($)
+        
+  $table.= '<script type="text/javascript">
+  jQuery(document).ready(function($)
 
-  {
+    {
 
-   var table = $("#table_report").dataTable({
+    var table = $("#table_report").dataTable({
 
-      paging: false,
-      responsive: false,
-      dom: "Blfrtip",
-      bSort: true,
-      bPaginate: true,
-      select:true,
+        paging: false,
+        responsive: false,
+        dom: "Blfrtip",
+        bSort: true,
+        bPaginate: true,
+        select:true,
 
-        buttons: [
+          buttons: [
 
-          {
+            {
 
-          extend: "excelHtml5",
-          footer: true ,
-          text: "Exportar",
-          title: "Reporte_Diario_ventas",
-           
-          exportOptions: {
+            extend: "excelHtml5",
+            footer: true ,
+            text: "Exportar",
+            title: "Reporte_Diario_ventas",
+            
+            exportOptions: {
 
-                columns: ":visible",
+                  columns: ":visible",
 
-               
+                
 
-                 format: {
- 
-                    header: function ( data ) {
+                  format: {
+  
+                      header: function ( data ) {
 
-                      var StrPos = data.indexOf("<div");
+                        var StrPos = data.indexOf("<div");
 
-                        if (StrPos<=0){
-                          
-                          var ExpDataHeader = data;
+                          if (StrPos<=0){
+                            
+                            var ExpDataHeader = data;
 
-                        }else{
-                       
-                          var ExpDataHeader = data.substr(0, StrPos); 
+                          }else{
+                        
+                            var ExpDataHeader = data.substr(0, StrPos); 
 
+                          }
+                        
+                        return ExpDataHeader;
                         }
-                       
-                      return ExpDataHeader;
                       }
-                    }
-                 
-                  }               
+                  
+                    }               
+
+            }
+
+          ],
+
+          drawCallback: function () {
+            var api = this.api();
+            var numFormat = $.fn.dataTable.render.number( "\,", ".", 2, "$" ).display;
+
+
+            $( api.column(5).footer() ).html(
+              numFormat(api.column( 5, {page:"current"} ).data().sum())
+            );
+            $( api.column(6).footer() ).html(
+              numFormat(api.column( 6, {page:"current"} ).data().sum())
+            );
+            $( api.column(7).footer() ).html(
+              numFormat(api.column( 7, {page:"current"} ).data().sum())
+            );
+            $( api.column(8).footer() ).html(
+              numFormat(api.column( 8, {page:"current"} ).data().sum())
+            );
 
           }
+    
 
-        ],
-
-        drawCallback: function () {
-          var api = this.api();
-          var numFormat = $.fn.dataTable.render.number( "\,", ".", 2, "$" ).display;
+      });
 
 
-          $( api.column(5).footer() ).html(
-            numFormat(api.column( 5, {page:"current"} ).data().sum())
-          );
-          $( api.column(6).footer() ).html(
-            numFormat(api.column( 6, {page:"current"} ).data().sum())
-          );
-          $( api.column(7).footer() ).html(
-            numFormat(api.column( 7, {page:"current"} ).data().sum())
-          );
-          $( api.column(8).footer() ).html(
-            numFormat(api.column( 8, {page:"current"} ).data().sum())
-          );
 
-        }
-   
-
+  table.yadcf([
+  {column_number : 0,
+  column_data_type: "html",
+  html_data_type: "text" ,
+  select_type: "select2",
+  select_type_options: { width: "100%" }},
+  {column_number : 1,
+  select_type: "select2",
+  select_type_options: { width: "100%" }},
+  {column_number : 2,
+  column_data_type: "html",
+  html_data_type: "text" ,
+  select_type: "select2",
+  select_type_options: { width: "100%" }},
+  {column_number : 3 ,
+  select_type: "select2",
+  select_type_options: { width: "100%" }},
+  {column_number : 4,
+  select_type: "select2",
+  select_type_options: { width: "100%" }}
+  ],
+  {cumulative_filtering: true, 
+  filter_reset_button_text: false});
+        
     });
+  </script>
+    <table id="table_report" class="display  table table-condensed table-striped table-bordered"  >
+      <thead>
+        <tr>
+          <th>DOCUMENTO FISCAL</th>
+          <th>PEDIDO</th>        
+          <th>CLIENTE</th>
+          <th>FECHA</th>
+          <th>NOMBRE</th>
+          <th>CREDITO</th>
+          <th>CONTADO</th>
+          <th>DEVOLUCION</th>
+          <th>ITBMS</th>
+        </tr>
+      </thead>';
 
 
 
-table.yadcf([
-{column_number : 0,
- column_data_type: "html",
- html_data_type: "text" ,
- select_type: "select2",
- select_type_options: { width: "100%" }},
-{column_number : 1,
- select_type: "select2",
- select_type_options: { width: "100%" }},
-{column_number : 2,
- column_data_type: "html",
- html_data_type: "text" ,
- select_type: "select2",
- select_type_options: { width: "100%" }},
-{column_number : 3 ,
- select_type: "select2",
- select_type_options: { width: "100%" }},
-{column_number : 4,
- select_type: "select2",
- select_type_options: { width: "100%" }}
-],
-{cumulative_filtering: true, 
-filter_reset_button_text: false});
-      
-  });
-</script>
-  <table id="table_report" class="display  table table-condensed table-striped table-bordered"  >
-    <thead>
-      <tr>
-        <th>DOCUMENTO FISCAL</th>
-        <th>PEDIDO</th>        
-        <th>CLIENTE</th>
-        <th>FECHA</th>
-        <th>NOMBRE</th>
-        <th>CREDITO</th>
-        <th>CONTADO</th>
-        <th>DEVOLUCION</th>
-        <th>ITBMS</th>
-      </tr>
-    </thead>';
+  $filter =  $this->model->Query($query);
 
 
+  foreach ($filter as $datos) {
 
-$filter =  $this->model->Query($query);
-
-
-foreach ($filter as $datos) {
-
- $filter = json_decode($datos);
-
- 
-
- $OrdPedi = $this->model->Query_value('INVOICE_GEN_HEADER','SalesOrderNumber','WHERE InvoiceNumber="'.$filter->{'InvoiceNumber'}.'"');
- $OrdPediID ="'".$OrdPedi."'"; 
-
- $NOTA = $this->model->Query_value('INVOICE_GEN_HEADER','NOTAS','WHERE InvoiceNumber="'.$filter->{'InvoiceNumber'}.'"');
-
- list($nota,$typago) = explode('-',$NOTA);
-
-
-$contado = '0.00';
-$credito = '0.00';
-$devolucion = '0.00';
-
-  if(trim($typago)=='CONTADO'){
-
-     $contado = number_format($filter->{'Net_due'},2,'.',',');
-
-  }else{
-   
-    if(trim($typago)==''){
-
-     $credito = number_format( $filter->{'Net_due'},2,'.',',');
-
-    }else{
-     $credito= number_format( $filter->{'Net_due'},2,'.',',');
-    }
-
-  }
-
-
-
-
-  if ($filter->{'OrderTax'}!=''){
-
-  $tax = number_format( $filter->{'OrderTax'},2,'.',',');
-
-  }else{
-
-  $tax = '0.00';
-
-  }
-
-
-
-$table.= '<tr>
-    <td ><strong>'.$filter->{'InvoiceNumber'}.'</strong></td>
-    <td ><strong>'.$OrdPedi."</strong></td>
-    <td class='numb' >".$filter->{'CustomerID'}."</td>
-    <td class='numb' >".date('d-m-Y',strtotime($filter->{'date'}))."</td>
-    <td >".$filter->{'CustomerName'}.'</td>
-    <td class="numb">'.$credito.'</td>
-    <td class="numb">'.$contado.'</td>
-    <td class="numb">'.$devolucion.'</td>
-    <td class="numb">'.$tax."</td>
-   </tr>";
-
-}
-
-
-
-$clause='';
-
-$clause.= 'where Customer_Credit_Memo_Header_Imp.ID_compania="'.$this->model->id_compania.'" and Customer_Credit_Memo_Header_Imp.CreditNumber <> ""';
-
-
-
-if($date1!=''){
+  $filter = json_decode($datos);
 
   
-   if($date2!=''){
 
-      $clause.= ' and Customer_Credit_Memo_Header_Imp.Date between "'.$date1.'%" and "'.$date2.'%" ';           
+  $OrdPedi = $this->model->Query_value('INVOICE_GEN_HEADER','SalesOrderNumber','WHERE InvoiceNumber="'.$filter->{'InvoiceNumber'}.'"');
+  $OrdPediID ="'".$OrdPedi."'"; 
+
+  $NOTA = $this->model->Query_value('INVOICE_GEN_HEADER','NOTAS','WHERE InvoiceNumber="'.$filter->{'InvoiceNumber'}.'"');
+
+  list($nota,$typago) = explode('-',$NOTA);
+
+
+  $contado = '0.00';
+  $credito = '0.00';
+  $devolucion = '0.00';
+
+    if(trim($typago)=='CONTADO'){
+
+      $contado = number_format($filter->{'Net_due'},2,'.',',');
+
+    }else{
+    
+      if(trim($typago)==''){
+
+      $credito = number_format( $filter->{'Net_due'},2,'.',',');
+
+      }else{
+      $credito= number_format( $filter->{'Net_due'},2,'.',',');
+      }
+
     }
-   
-   if($date2==''){ 
 
-     $clause.= ' and Customer_Credit_Memo_Header_Imp.Date like "'.$date1.'%"';
-   }
-     
-}else{
 
-   $clause.= ' and Customer_Credit_Memo_Header_Imp.Date like "'.date('Y-m-d').'%"';
+
+
+    if ($filter->{'OrderTax'}!=''){
+
+    $tax = number_format( $filter->{'OrderTax'},2,'.',',');
+
+    }else{
+
+    $tax = '0.00';
+
+    }
+
+
+
+  $table.= '<tr>
+      <td ><strong>'.$filter->{'InvoiceNumber'}.'</strong></td>
+      <td ><strong>'.$OrdPedi."</strong></td>
+      <td class='numb' >".$filter->{'CustomerID'}."</td>
+      <td class='numb' >".date('d-m-Y',strtotime($filter->{'date'}))."</td>
+      <td >".$filter->{'CustomerName'}.'</td>
+      <td class="numb">'.$credito.'</td>
+      <td class="numb">'.$contado.'</td>
+      <td class="numb">'.$devolucion.'</td>
+      <td class="numb">'.$tax."</td>
+    </tr>";
+
+  }
+
+
+
+  $clause='';
+
+  $clause.= 'where Customer_Credit_Memo_Header_Imp.ID_compania="'.$this->model->id_compania.'" and Customer_Credit_Memo_Header_Imp.CreditNumber <> ""';
+
+
+
+  if($date1!=''){
+
+    
+    if($date2!=''){
+
+        $clause.= ' and Customer_Credit_Memo_Header_Imp.Date between "'.$date1.'%" and "'.$date2.'%" ';           
+      }
+    
+    if($date2==''){ 
+
+      $clause.= ' and Customer_Credit_Memo_Header_Imp.Date like "'.$date1.'%"';
+    }
+      
+  }else{
+
+    $clause.= ' and Customer_Credit_Memo_Header_Imp.Date like "'.date('Y-m-d').'%"';
+
+  }
+
+
+  if($pinter!=''){ 
+
+    $clause.= ' and Customer_Credit_Memo_Header_Imp.CreditNumber  like "'.$pinter.'-%" ';
+
+  }
+
+
+  $query ='SELECT * FROM `Customer_Credit_Memo_Header_Imp` 
+  inner JOIN `Customer_Credit_Memo_Detail_Imp` ON Customer_Credit_Memo_Detail_Imp.TransactionID = Customer_Credit_Memo_Header_Imp.TransactionID
+  '.$clause.' 
+  GROUP BY Customer_Credit_Memo_Header_Imp.CreditNumber order by Customer_Credit_Memo_Header_Imp.TransactionID'; 
+
+
+  $filter =  $this->model->Query($query);
+
+  foreach ($filter as $datos) {
+
+  $filter = json_decode($datos);
+
+  $table.= '<tr>
+      <td ><strong>'.$filter->{'CreditNumber'}.'</strong></td>
+      <td ><strong>'.$filter->{'CreditNoteNumber'}."</strong></td>
+      <td class='numb' >".$filter->{'CustomerID'}."</td>
+      <td class='numb' >".date('d-m-Y',strtotime($filter->{'Date'}))."</td>
+      <td >".$filter->{'CustomerName'}.'</td>
+      <td class="numb">0.00</td>
+      <td class="numb">0.00</td>
+      <td class="numb">'.$filter->{'Net_Credit_due'}."</td>
+      <td class='numb'>0.00</td>
+    </tr>";
+
+
+
+  }
+
+
+  $table.= '<tfoot><tr>
+          <td class="numb" ></td>
+          <td class="numb" ></td>
+          <td class="numb" ></td>
+          <td class="numb" ></td>
+          <td ><strong>TOTAL</strong></td>
+          <td class="numb" ></td>
+          <td class="numb" ></td>
+          <td class="numb" ></td>
+          <td class="numb" ></td>
+          </tr>
+          </tfoot>
+          </table> ';
+
+
+
+  echo $table;
 
 }
-
-
-if($pinter!=''){ 
-
-   $clause.= ' and Customer_Credit_Memo_Header_Imp.CreditNumber  like "'.$pinter.'-%" ';
-
-}
-
-
-$query ='SELECT * FROM `Customer_Credit_Memo_Header_Imp` 
-inner JOIN `Customer_Credit_Memo_Detail_Imp` ON Customer_Credit_Memo_Detail_Imp.TransactionID = Customer_Credit_Memo_Header_Imp.TransactionID
-'.$clause.' 
-GROUP BY Customer_Credit_Memo_Header_Imp.CreditNumber order by Customer_Credit_Memo_Header_Imp.TransactionID'; 
-
-
-$filter =  $this->model->Query($query);
-
-foreach ($filter as $datos) {
-
- $filter = json_decode($datos);
-
-$table.= '<tr>
-    <td ><strong>'.$filter->{'CreditNumber'}.'</strong></td>
-    <td ><strong>'.$filter->{'CreditNoteNumber'}."</strong></td>
-    <td class='numb' >".$filter->{'CustomerID'}."</td>
-    <td class='numb' >".date('d-m-Y',strtotime($filter->{'Date'}))."</td>
-    <td >".$filter->{'CustomerName'}.'</td>
-    <td class="numb">0.00</td>
-    <td class="numb">0.00</td>
-    <td class="numb">'.$filter->{'Net_Credit_due'}."</td>
-    <td class='numb'>0.00</td>
-   </tr>";
-
-
-
-}
-
-
-$table.= '<tfoot><tr>
-         <td class="numb" ></td>
-         <td class="numb" ></td>
-         <td class="numb" ></td>
-         <td class="numb" ></td>
-         <td ><strong>TOTAL</strong></td>
-         <td class="numb" ></td>
-         <td class="numb" ></td>
-         <td class="numb" ></td>
-         <td class="numb" ></td>
-         </tr>
-         </tfoot>
-         </table> ';
-
-
-
-echo $table;
-
-}
-
 
 //LISTA DE IMPRESORA FISCAL 
 public function getPrinterList(){
@@ -1637,11 +1682,5 @@ public function getPrinterList(){
 }
 
 
-
-
-
-
-
 }
-
 ?>
