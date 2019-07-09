@@ -1314,6 +1314,12 @@ public function reverseItems($aciId){
 }
 
 public function reverseItemTransaction($item, $dest,$desc,$qty){  
+
+    require_once APP.'controller/ges_inventario.php';
+
+    $inv = new ges_inventario();
+
+
     
     $CURRENT_QTY = $this->model->Query_value('STOCK_ITEMS_LOCATION','qty','where id="'.$dest.'";');
 
@@ -1340,7 +1346,7 @@ public function reverseItemTransaction($item, $dest,$desc,$qty){
             'stockOrigID' => 0,
             'stockDestID' => $dest);
     
-        $this->set_Budget_Log($values,'5');
+            $inv->set_Budget_Log($values,'5');
 
         $error = $this->CheckError();
         if($error){
