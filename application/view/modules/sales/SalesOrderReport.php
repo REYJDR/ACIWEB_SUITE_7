@@ -71,7 +71,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 					$clause='';
 
-					$clause.= 'where SalesOrder_Header_Imp.ID_compania="'.$this->model->id_compania.'" ';
+					$clause.= 'where SalesOrder_Header_Imp.ID_compania="'.$this->model->id_compania.'" and canceled="0"';
 
 
 

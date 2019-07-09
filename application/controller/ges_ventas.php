@@ -1268,27 +1268,35 @@ public function CloseSelesOrder($id){
   $this->reverseItems($id);
   $this->CheckError();
 
-
   $table  = 'SalesOrder_Header_Imp';
 
-  $clause = ' WHERE SalesOrderNumber = "'.$id.'" AND ID_compania =  "'.$this->model->id_compania.'"';
+  $columns = array('canceled' => 1 );
 
-    $this->model->delete($table,$clause);
+  $clause =  ' WHERE SalesOrderNumber = "'.$id.'" AND ID_compania =  "'.$this->model->id_compania.'"';
 
-    $this->CheckError();
+  $this->model->update($table,$columns,$clause);
+  $this->CheckError();
 
-  $table  = 'SalesOrder_Detail_Imp';
+  // $table  = 'SalesOrder_Header_Imp';
 
-  $clause = ' WHERE SalesOrderNumber = "'.$id.'" AND ID_compania =  "'.$this->model->id_compania.'"';
+  // $clause = ' WHERE SalesOrderNumber = "'.$id.'" AND ID_compania =  "'.$this->model->id_compania.'"';
+
+  //   $this->model->delete($table,$clause);
+
+  //   $this->CheckError();
+
+  // $table  = 'SalesOrder_Detail_Imp';
+
+  // $clause = ' WHERE SalesOrderNumber = "'.$id.'" AND ID_compania =  "'.$this->model->id_compania.'"';
 
 
-    $this->model->delete($table,$clause);
+  //   $this->model->delete($table,$clause);
 
-    $this->CheckError();
+  //   $this->CheckError();
 
  
 
-echo 1;
+ echo 1;
 }
 
 
