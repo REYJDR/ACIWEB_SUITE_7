@@ -1297,7 +1297,13 @@ public function reverseItems($aciId){
 
   $items = $this->model->queryColumns('INV_EVENT_LOG',$columns, 'WHERE referencia="'.$aciId.'" and ID_compania="'.$this->model->id_compania.'"');
  
-  var_dump($items);
+  foreach ($items as $key => $value) {
+   
+echo $value.'-';
+
+
+  }
+ 
 
 }
 
