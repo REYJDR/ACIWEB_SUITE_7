@@ -163,7 +163,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					
 					 if($close_sales_ck == 1 && $apro != 'SI'){
 						
-					 $table .= "<td  style='color:red; font-style:bold;' ><i class='far fa-times-circle'></i><a href='#' onclick='javascript: closeSo(".$URL.",".$ID."); ' >Cancelar</a></td>";
+					 $table .= "<td  style='color:red; font-style:bold;' ><i class='far fa-times-circle'></i><a href='#' onclick='javascript: closeSo(".$URL.",".$ID."); ' >&nbspCancelar</a></td>";
 					
 					 } else{
 					

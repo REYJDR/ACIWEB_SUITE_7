@@ -1282,9 +1282,23 @@ $this->model->verify_session();
 
     $this->CheckError();
 
+ 
+
 echo 1;
 }
 
+public function reverseItems($aciId){
+
+  $this->model->verify_session();
+
+  $columns = array('stockOrigID', 
+                   'Qty');
+
+  $items = $this->model->queryColumns('INV_EVENT_LOG',$columns, 'WHERE referencia="'.$aciId.'"');
+ 
+  var_dump($items);
+
+}
 
 public function GetDaylySales($date1,$date2,$pinter){
 
