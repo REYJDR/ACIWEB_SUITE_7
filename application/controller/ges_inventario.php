@@ -1554,6 +1554,40 @@ public function set_Budget_Log($values,$type){
             }
           break;
 
+          case '7':
+
+                $ref = $values['Reference']; 
+                $Item  = $values['ItemID'];
+                $Qty   = $values['Qty'];
+                $aciref = $values['aci_ref'];
+                $stockOrigID =  $values['stockOrigID'];
+                $stockDestID =  $values['stockDestID'];
+            
+                $id_compania= $this->model->id_compania;
+                $user = $this->model->active_user_id;
+            
+                $event_values = array(  'ProductID' => $Item,
+                                        'Qty'=> $Qty,
+                                        'User' => $user,
+                                        'Type' => 'Reversa Orden de Venta',
+                                        'referencia' => $ref,
+                                        'ID_compania' => $id_compania ,
+                                        'aci_ref' => $aciref,
+                                        'stockOrigID'  => $stockOrigID ,
+                                        'stockDestID'  => $stockDestID );
+            
+                $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
+                
+                usleep(1000);
+                $error = $this->CheckError();
+                if($error){
+                $error= json_decode($error) ;
+                echo 'ERROR: '.$error->{'E'}.' Reversa Orden de Venta - INV_EVENT_LOG ';
+            
+          
+
+          break;
+
         }    
 
 

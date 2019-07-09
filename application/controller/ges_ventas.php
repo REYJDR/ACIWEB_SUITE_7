@@ -1346,7 +1346,7 @@ public function reverseItemTransaction($item, $dest,$desc,$qty){
             'stockOrigID' => 0,
             'stockDestID' => $dest);
     
-            $inv->set_Budget_Log($values,'5');
+            $inv->set_Budget_Log($values,'7');
 
         $error = $this->CheckError();
         if($error){
