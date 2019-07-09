@@ -1306,7 +1306,7 @@ public function reverseItems($aciId){
    
       $value =  json_decode($value);
 
-      $qty = 1 * $value->{'Qty'};
+      $qty = (- 1) * $value->{'Qty'};
       $this->reverseItemTransaction($value->{'ProductID'},$value->{'stockOrigID'},$aciId,$qty );
 
   }
