@@ -1584,11 +1584,11 @@ public function set_Budget_Log($values,$type){
                 $error= json_decode($error) ;
                 echo 'ERROR: '.$error->{'E'}.' Reversa Orden de Venta - INV_EVENT_LOG ';
             
-          
+                }
 
           break;
 
-        }    
+        } 
 
 
 }
