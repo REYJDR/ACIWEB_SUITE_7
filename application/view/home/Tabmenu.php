@@ -172,7 +172,7 @@
         </div>
     <?php } ?>
 
-    <?php if($mod_sales_CK== 'checked' ){?>
+    <?php if($mod_sales_CK== 'checked' || ($mod_invt_CK == 'checked' and $INF_INV==1 ) ){?>
         <div class='col-lg-3'>
         <button onclick="window.location='<?PHP ECHO URL; ?>index.php?url=ges_ventas/SalesOrderReport/'" class="dashBottom" ><?php echo $SUBMENU_rep1; ?></button>              
         </div>
