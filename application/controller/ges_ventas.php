@@ -1291,10 +1291,11 @@ public function reverseItems($aciId){
 
   $this->model->verify_session();
 
-  $columns = array('stockOrigID', 
+  $columns = array('ProductID',
+                   'stockOrigID', 
                    'Qty');
 
-  $items = $this->model->queryColumns('INV_EVENT_LOG',$columns, 'WHERE referencia="'.$aciId.'"');
+  $items = $this->model->queryColumns('INV_EVENT_LOG',$columns, 'WHERE referencia="'.$aciId.'" and ID_compania="'.$this->model->id_compania.'"');
  
   var_dump($items);
 
