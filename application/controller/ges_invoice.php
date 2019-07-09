@@ -910,6 +910,11 @@ public function InsertSalesInfo($id_compania,$ID){
 
            $this->model->insert('Sales_Detail_Imp',$values1); //set item line
 
+           //**LAST CHANGE 9/06/2019 */
+           require_once APP.'controller/ges_ventas.php';
+           
+           $ventas = new ges_ventas(); 
+
            $reserv = $this->queryColumns('sale_pendding',['status_location_id','qty'],' WHERE SaleOrderId="'.$ID.'" and ProducID="'.$itemid.'" and ID_compania="'.$id_compania.'"');
            
            foreach ($reserv as  $value) {
@@ -919,7 +924,7 @@ public function InsertSalesInfo($id_compania,$ID){
               $value->{'status_location_id'};
               $value->{'qty'};
             
-              $this->UpdateItemsLocation($value->{'status_location_id'},$value->{'qty'});
+              $ventas->UpdateItemsLocation($value->{'status_location_id'},$value->{'qty'});
 
               $id_compania= $this->model->id_compania;
               $user = $this->model->active_user_id;
@@ -940,6 +945,7 @@ public function InsertSalesInfo($id_compania,$ID){
               //set event Line              
               $this->model->insert('INV_EVENT_LOG',$event_values); 
 
+             //**LAST CHANGE 9/06/2019 */
            }
         
            
