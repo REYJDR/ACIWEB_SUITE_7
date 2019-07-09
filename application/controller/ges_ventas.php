@@ -1299,8 +1299,9 @@ public function reverseItems($aciId){
  
   foreach ($items as $key => $value) {
    
-echo $value.'-';
-
+      $value =  json_decode($value);
+      echo $value->{'ProductID'}.'-'.$value->{'stockOrigID'}.'-'.$value->{'Qty'};
+    
 
   }
  
