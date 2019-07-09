@@ -1067,24 +1067,24 @@ public function SetSOfromStock($SalesOrderNumber){
     // $this->UpdateItemsLocation($loc,$OriQty);
 
     // //set event item 
-    // $id_compania= $this->model->id_compania;
-    // $user = $this->model->active_user_id;
+    $id_compania= $this->model->id_compania;
+    $user = $this->model->active_user_id;
     
-    // $event_values = array(  'ProductID' => $itemid,
-    //                         'JobID' => '',
-    //                         'JobPhaseID' => '',
-    //                         'JobCostCodeID' => '',
-    //                         'PurchaseNumber' => '',
-    //                         'Qty'=> (-1)*$qty,
-    //                         'unit_price' => $unit_price ,
-    //                         'Total' => $Price,
-    //                         'User' => $user,
-    //                         'Type' => 'Orden de venta',
-    //                         'Referencia' => $SalesOrderNumber,
-    //                         'ID_compania' => $id_compania ,
-    //                         'stockOrigID' => $loc );
-    // //set event Line              
-    // $this->model->insert('INV_EVENT_LOG',$event_values); 
+    $event_values = array(  'ProductID' => $itemid,
+                            'JobID' => '',
+                            'JobPhaseID' => '',
+                            'JobCostCodeID' => '',
+                            'PurchaseNumber' => '',
+                            'Qty'=> $qty,
+                            'unit_price' => $unit_price ,
+                            'Total' => $Price,
+                            'User' => $user,
+                            'Type' => 'Reserva a Orden de venta',
+                            'Referencia' => $SalesOrderNumber,
+                            'ID_compania' => $id_compania ,
+                            'stockOrigID' => $loc );
+    //set event Line              
+    $this->model->insert('INV_EVENT_LOG',$event_values); 
 
    //**  reserva de items  */
    
