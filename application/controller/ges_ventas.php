@@ -272,6 +272,123 @@ public function ges_print_OrdEmpaque($id){
     
 }
 
+public function despachar($id){
+  
+   //$id = trim(preg_replace('/000+/','',$id));
+  
+   $res = $this->model->verify_session();
+   $id_compania = $this->model->id_compania;
+  
+          if($res=='0'){
+  
+          $ORDER = $this->model->Get_order_to_invoice($id);
+   
+   
+              foreach ($ORDER as  $value) {
+                 $value = json_decode($value);
+  
+                  $custid = $value->{'Customer_Bill_Name'};
+  
+                  $razonSocial = $this->model->Query_value('Customers_Exp','Custom_field3','where 
+                                                                                          CustomerID="'.$value->{'CustomerID'}.'" and 
+                                                                                          id_compania="'.$id_compania.'"');
+                
+                 $custname = '<font style="font-weight:bold;">'.$value->{'ShipToName'}.'</font> <br>'.$razonSocial.'<br>'.$value->{'AddressLine1'};
+       
+                 $saleorder = $value->{'SalesOrderNumber'};
+  
+                 $salesRep = $value->{'name'}.' '.$value->{'lastname'} ;
+  
+                 $saledate = $value->{'date'};
+  
+                 $fecha_entrega = $value->{'fecha_entrega'};
+  
+                 $clause = 'WHERE SalesOrderNumber="'.$id.'" and ID_compania="'.$id_compania.'"';  
+                 $created  = $this->model->Query_value('SalesOrder_Header_Imp','LAST_CHANGE',$clause);
+  
+  
+                 $PO =  $value->{'CustomerPO'};
+  
+                 $contact = $value->{'email'}.' / '.$value->{'Phone_Number'};
+  
+                 $tipo_lic = $value->{'tipo_licitacion'};
+                 $termino_pago =  $value->{'termino_pago'};
+                 $obser =  $value->{'observaciones'} ;
+                 $entrega =   $value->{'entrega'};
+  
+                 $lugar_despacho =  $value->{'lugar_despacho'} ;
+                
+  
+              }
+  
+              //UPDATE INDICATOR
+              $value = array('DispachPrinted' => '1' );
+  
+              $this->model->update('SalesOrder_Header_Imp',$value, ' SalesOrderNumber="'.$id.'" and ID_compania="'.$id_compania.'"');
+          
+
+              //descontar existencias
+              $this->setDispach($$id);
+  
+              // load views
+              require APP . 'view/_templates/header.php';
+              require APP . 'view/_templates/panel.php';
+              require APP . 'view/modules/sales/SalesOrderEmpaque.php';
+              require APP . 'view/_templates/footer.php';
+  
+  
+          }
+            
+  
+  
+      
+  }
+
+  function setDispach($ID){
+
+    $res = $this->model->verify_session();
+    $id_compania = $this->model->id_compania;
+
+  //**LAST CHANGE 9/06/2019 */
+  require_once APP.'controller/ges_ventas.php';
+  
+  $ventas = new ges_ventas(); 
+
+  $reserv = $this->queryColumns('sale_pendding',['ProductID','status_location_id','qty'],' WHERE SaleOrderId="'.$ID.'" and ID_compania="'.$id_compania.'"');
+  
+  foreach ($reserv as  $value) {
+
+     $value = json_decode($value);
+     $itemid =  $value->{'ProductID'};
+     $value->{'status_location_id'};
+     $value->{'qty'};
+   
+     $ventas->UpdateItemsLocation($value->{'status_location_id'},$value->{'qty'});
+
+     $id_compania= $this->model->id_compania;
+     $user = $this->model->active_user_id;
+     
+     $event_values = array(  'ProductID' => $itemid,
+                             'JobID' => '',
+                             'JobPhaseID' => '',
+                             'JobCostCodeID' => '',
+                             'PurchaseNumber' => '',
+                             'Qty'=> (-1)*$qty,
+                             'unit_price' => 0,
+                             'Total' => 0,
+                             'User' => $user,
+                             'Type' => 'Despacho por Orden de venta',
+                             'Referencia' => $ID,
+                             'ID_compania' => $id_compania ,
+                             'stockOrigID' => $value->{'status_location_id'} );
+     //set event Line              
+     $this->model->insert('INV_EVENT_LOG',$event_values); 
+
+    //**LAST CHANGE 9/06/2019 */
+
+  }
+
+}
 
 //******************************************************************************
 //FACTURAS DE VENTAS
