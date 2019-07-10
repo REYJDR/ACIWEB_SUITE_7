@@ -27,24 +27,29 @@ function removerUser(id){
         link = URL+"index.php";
         DATOS = "url=home/removerUser/"+id;
         
-        $.ajax({
-            type: "GET",
-            url: link,
-            data: DATOS,
+        function remove(){
+
+                return $.ajax({
+                    type: "GET",
+                    url: link,
+                    data: DATOS,
+
+                    success: function(res){
+
+                        alert('Usuario eliminado');
+
+
+                    } 
+                });
+
+        }
+
+        $.when(remove()).done(function(){ //ESPERA QUE TERMINE LA INSERCION DE CABECERA
         
-            success: function(res){
-        
-                 alert('Usuario eliminado');
 
-
-            } 
-        });
-
-
-        var elements = document.getElementsByClassName('tablinks');
-        var requiredElement = elements[6].click();
+            openCity(event, 'Config2');
       
-
+        });
 
     }
  
