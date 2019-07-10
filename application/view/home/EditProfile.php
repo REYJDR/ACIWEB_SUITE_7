@@ -185,7 +185,16 @@ if($id){
 							<tr><th><strong><?php echo $config_4_val3; ?></strong></th><td><input type="email" class="inputPage col-lg-12" iname="email2" id="email2"  value="<?php echo $email; ?>" readonly/></td></tr>
 							<tr><th><strong><?php echo $config_4_val4; ?></strong></th><td><input type="password" class="inputPage col-lg-12"  id="pass_12" name="pass_12"  value="<?php echo $pass; ?>" required></td></tr>
 							<tr><th><strong><?php echo $config_4_val5; ?></strong></th><td><input type="password" class="inputPage col-lg-12"  id="pass_22" name="pass_22" value="<?php echo $pass; ?>" required/></td></tr>
-							<tr><th><strong><?php echo $config_4_val6; ?></strong></th><td><input type="text" class="inputPage col-lg-12"  id="priv" name="priv" value="<?php echo $role; ?>" readonly/></td></tr>           
+							<tr><th><strong><?php echo $config_4_val6; ?></strong></th><td>
+							<?PHP if($this->model->active_user_role!='admin'){  ?>  
+							    <input type="text" class="inputPage col-lg-12"  id="priv" name="priv" value="<?php echo $role; ?>" readonly/>
+							<?PHP }else { ?> 
+								<select class="inputPage col-lg-12" id="priv" name="priv">
+									<option value="admin" <?php if($role=='admin') echo 'selected' ;?> ><?php echo $config_2_val7; ?></option>
+									<option value="user"  <?php if($role=='user') echo 'selected' ;?>><?php echo $config_2_val8; ?></option>
+								</select>
+							<?PHP } ?> 
+							</td></tr>           
 						</tbody>
 					</table>
 					</fieldset>
