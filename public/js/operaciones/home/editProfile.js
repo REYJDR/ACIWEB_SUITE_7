@@ -15,3 +15,9 @@ function avatar_trash(val){
     document.getElementById('trash_img').value = 1;
     
 }
+
+function removerUser(id){
+
+    alert('elimnar el user '+id);
+
+}
