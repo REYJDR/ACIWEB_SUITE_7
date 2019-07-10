@@ -384,6 +384,9 @@ public function despachar($id){
      //set event Line              
      $this->model->insert('INV_EVENT_LOG',$event_values); 
 
+     $this->model->update('SalesOrder_Header_Imp', ['EMITIDA' => "1" ] , ' where ID_compania = "'.$id_compania.'" and  SalesOrderNumber="'.$ID.'"' ); 
+ 
+
     //**LAST CHANGE 9/06/2019 */
 
   }
