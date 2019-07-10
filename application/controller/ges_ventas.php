@@ -354,7 +354,7 @@ public function despachar($id){
   
   $ventas = new ges_ventas(); 
 
-  $reserv = $this->model->queryColumns('sale_pendding',['ProductID','status_location_id','qty'],' WHERE reference="'.$ID.'" and ID_compania="'.$id_compania.'"');
+  $reserv = $this->model->queryColumns('sale_pendding',['ProductID','status_location_id','qty'],' WHERE referencia="'.$ID.'" and ID_compania="'.$id_compania.'"');
   var_dump($reserv);
   die()
   ;
