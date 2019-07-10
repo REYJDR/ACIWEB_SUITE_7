@@ -304,12 +304,12 @@ if($id){
 
 			</div>
 
-			<div class="col-lg-10"></div>
+			<div class="col-lg-6"></div>
 			<div class="col-lg-2">
 			<button   class="accept-form-btn" type="submit" >Actualizar</button>
 			</div>	
 			<div class="col-lg-2">
-			<button   class="cancel-form-btn" type="submit" >Eliminar</button>
+			<button   class="close-form-btn" type="submit" >Eliminar</button>
 			</div>	
 			<div class="separador col-lg-12"> </div>			
 			</fieldset >
