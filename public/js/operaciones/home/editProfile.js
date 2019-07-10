@@ -18,6 +18,27 @@ function avatar_trash(val){
 
 function removerUser(id){
 
-    alert('elimnar el user '+id);
+   var a =  confirm('Esta seguro de querer eliminar el perfil del usuario? ');
 
+    if(a==true){
+
+
+        URL = document.getElementById('URL').value;
+        link = URL+"index.php";
+        DATOS = "url=home/removerUser/"+id;
+        
+        $.ajax({
+            type: "GET",
+            url: link,
+            data: DATOS,
+        
+            success: function(res){
+        
+                 settab() ;     
+        
+            } 
+        });
+
+    }
+ 
 }

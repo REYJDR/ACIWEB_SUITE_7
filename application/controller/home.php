@@ -155,8 +155,7 @@ public function GetTerminoPago(){
 
 public function del_tax($id){
 
-
-$this->model->Query('delete from sale_tax Where id="'.$id.'";');
+    $this->model->Query('delete from sale_tax Where id="'.$id.'";');
 
 }
 
@@ -174,6 +173,13 @@ public function del_term($id){
   
   $this->model->Query('delete from CUST_PAY_TERM  Where TermID="'.$id.'" and ID_compania="'.$this->model->id_compania.'";');
   
+}
+
+public function removerUser($id){
+
+  $this->model->Query('delete from SAX_USER  Where id="'.$id.'"; ');
+  
+
 }
 
 public function GetBDLog(){
@@ -359,6 +365,8 @@ $alert = 'El correo de verificacion ha sido enviado';
 echo $alert;
 
 }
+
+
 
 
 }
