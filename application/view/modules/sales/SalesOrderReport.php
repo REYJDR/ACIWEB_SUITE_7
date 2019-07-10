@@ -142,9 +142,9 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					$user = $this->model->Get_User_Info($filter->{'user'}); 
 					
 					foreach ($user as $value) {
-					$value = json_decode($value);
-					$name= $value->{'name'};
-					$lastname = $value->{'lastname'};
+						$value = json_decode($value);
+						$name= $value->{'name'};
+						$lastname = $value->{'lastname'};
 					}
 					
 					
@@ -163,11 +163,11 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					
 					 if($close_sales_ck == 1 && $apro != 'SI'){
 						
-					 $table .= "<td  style='color:red; font-style:bold;' ><i class='far fa-times-circle'></i><a href='#' onclick='javascript: closeSo(".$URL.",".$ID."); ' >&nbspCancelar</a></td>";
+					   $table .= "<td  style='color:red; font-style:bold;' ><i class='far fa-times-circle'></i><a href='#' onclick='javascript: closeSo(".$URL.",".$ID."); ' >&nbspCancelar</a></td>";
 					
 					 } else{
 					
-					 $table .= "<td ></td>";
+					   $table .= "<td ></td>";
 					
 					 }
 					
