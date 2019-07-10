@@ -223,6 +223,12 @@ public function GetOrdrDetail($id){
     echo '</tbody></table></fieldset>
 
     <div class="separador class="col-lg-12" ></div>
+    <div style="float:right;" class="col-md-2">
+    <a href="'.URL.'index.php?url=ges_ventas/despachar/'.$id.'"  class="btn-bar">
+     <i class="fas fa-truck"></i>
+      <span> A despachar </span>
+    </a>
+    </div>
 
     <div style="float:right;" class="col-md-2">
     <a href="'.URL.'index.php?url=ges_ventas/ges_print_OrdEmpaque/'.$id.'"  class="btn-bar">
