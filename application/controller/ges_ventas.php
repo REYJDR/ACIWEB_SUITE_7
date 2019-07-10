@@ -479,11 +479,11 @@ public function getSalesOrderRep($sort,$limit,$clause){
 
   if($this->model->active_user_role=='user'){
 
-    if($clause!=''){ $clause.= 'and `SAX_USER`.`id`="'.$this->model->active_user_role_id.'"'; } else{ $clause.= ' Where `SAX_USER`.`id`="'.$this->active_user_role_id.'"'; }
+    if($clause!=''){ $clause.= 'and `SAX_USER`.`id`="'.$this->model->active_user_id.'"'; } else{ $clause.= ' Where `SAX_USER`.`id`="'.$this->model->active_user_id.'"'; }
 
   $query='SELECT * FROM `SalesOrder_Header_Imp`
-  inner JOIN `SalesOrder_Detail_Imp` ON SalesOrder_Header_Imp.SalesOrderNumber = SalesOrder_Detail_Imp.SalesOrderNumber
-  inner JOIN `SAX_USER` ON `SAX_USER`.`id` = SalesOrder_Header_Imp.user '.$clause.' GROUP BY SalesOrder_Header_Imp.SalesOrderNumber  order by SalesOrder_Header_Imp.LAST_CHANGE '.$sort.' limit '.$limit;
+          inner JOIN `SalesOrder_Detail_Imp` ON SalesOrder_Header_Imp.SalesOrderNumber = SalesOrder_Detail_Imp.SalesOrderNumber
+          inner JOIN `SAX_USER` ON `SAX_USER`.`id` = SalesOrder_Header_Imp.user '.$clause.' GROUP BY SalesOrder_Header_Imp.SalesOrderNumber  order by SalesOrder_Header_Imp.LAST_CHANGE '.$sort.' limit '.$limit;
 
   }
 
