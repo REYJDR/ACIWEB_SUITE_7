@@ -34,7 +34,11 @@ function removerUser(id){
         
             success: function(res){
         
-                 settab() ;     
+                 alert('Usuario eliminado');
+
+                 var elements = document.getElementsByClassName('tablinks');
+                 var requiredElement = elements[6].click();
+               
         
             } 
         });
