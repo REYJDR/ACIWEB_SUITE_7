@@ -36,12 +36,15 @@ function removerUser(id){
         
                  alert('Usuario eliminado');
 
-                 var elements = document.getElementsByClassName('tablinks');
-                 var requiredElement = elements[6].click();
-               
-        
+
             } 
         });
+
+
+        var elements = document.getElementsByClassName('tablinks');
+        var requiredElement = elements[6].click();
+      
+
 
     }
  
