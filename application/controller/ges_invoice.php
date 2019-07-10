@@ -920,8 +920,8 @@ public function InsertSalesInfo($id_compania,$ID){
            require_once APP.'controller/ges_ventas.php';
            
            $ventas = new ges_ventas(); 
-
-           $reserv = $this->model->queryColumns('sale_pendding',['status_location_id','qty'],' WHERE reference="'.$ID.'" and ProducID="'.$itemid.'" and ID_compania="'.$id_compania.'"');
+           
+           $reserv = $this->model->queryColumns('sale_pendding',['status_location_id','qty'],' WHERE SaleOrderId="'.$ID.'" and ProducID="'.$itemid.'" and ID_compania="'.$id_compania.'"');
            
            foreach ($reserv as  $value) {
 
