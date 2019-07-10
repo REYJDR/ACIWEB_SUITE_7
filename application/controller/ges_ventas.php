@@ -354,7 +354,7 @@ public function despachar($id){
   
   $ventas = new ges_ventas(); 
 
-  $reserv = $this->queryColumns('sale_pendding',['ProductID','status_location_id','qty'],' WHERE SaleOrderId="'.$ID.'" and ID_compania="'.$id_compania.'"');
+  $reserv = $this->model->queryColumns('sale_pendding',['ProductID','status_location_id','qty'],' WHERE SaleOrderId="'.$ID.'" and ID_compania="'.$id_compania.'"');
   
   foreach ($reserv as  $value) {
 
