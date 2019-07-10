@@ -344,7 +344,7 @@ public function despachar($id){
       
   }
 
-  function setDispach($reserv){
+  function setDispach($ID){
 
     $res = $this->model->verify_session();
     $id_compania = $this->model->id_compania;
@@ -355,7 +355,7 @@ public function despachar($id){
   $ventas = new ges_ventas(); 
 
   $reserv = $this->model->queryColumns('sale_pendding',['ProductID','status_location_id','qty'],' WHERE reference="'.$ID.'" and ID_compania="'.$id_compania.'"');
-  var_dump($ID);
+  var_dump($reserv);
   die()
   ;
   foreach ($reserv as  $value) {
