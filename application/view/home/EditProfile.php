@@ -205,8 +205,8 @@ if($id){
 				<table class="table_form">
 					<tbody>
 						<?PHP if ($mod_sales_CK == 'checked') { ?>
-						<tr><th><strong><?php echo $config_4_val7; ?></strong></th><td><input type="CHECKBOX" name="pri_chk" <?php echo $price_mod;  ?> /></td></tr>
-						<tr><th><strong><?php echo $config_4_val8; ?></strong></th><td><input type="CHECKBOX" name="clo_chk" <?php echo $closeSO;  ?> /></td></tr>
+						<tr><th><strong><?php echo $config_4_val7; ?></strong></th><td><input type="CHECKBOX" name="pri_chk"  <?php echo $price_mod;  ?> /></td></tr>
+						<tr><th><strong><?php echo $config_4_val8; ?></strong></th><td><input type="CHECKBOX" name="clo_chk"  <?php echo $closeSO;  ?> /></td></tr>
 						<tr><th><strong><?php echo $config_4_val9; ?></strong></th><td><input type="CHECKBOX" name="amnt_chk" <?php echo $amountSO;  ?> /></td></tr>
 						<?php } ?>
 						<?PHP if ($mod_invt_CK  == 'checked') { ?>    
@@ -307,6 +307,9 @@ if($id){
 			<div class="col-lg-10"></div>
 			<div class="col-lg-2">
 			<button   class="accept-form-btn" type="submit" >Actualizar</button>
+			</div>	
+			<div class="col-lg-2">
+			<button   class="cancel-form-btn" type="submit" >Eliminar</button>
 			</div>	
 			<div class="separador col-lg-12"> </div>			
 			</fieldset >
