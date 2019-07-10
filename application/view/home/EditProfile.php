@@ -304,7 +304,7 @@ if($id){
 
 			</div>
 
-			<div class="col-lg-6"></div>
+			<div class="col-lg-8"></div>
 			<div class="col-lg-2">
 			<button   class="accept-form-btn" type="submit" >Actualizar</button>
 			</div>	
