@@ -307,7 +307,9 @@ if($id){
 			<div class="col-lg-8"></div>
 			<div class="col-lg-2">
 			<button   class="accept-form-btn" type="submit" >Actualizar</button>
-			</div>	
+			</div>
+			
+			</form>		
 			<?PHP if($this->model->active_user_role='admin'){  ?>  
 				<div class="col-lg-2">
 				<button   class="close-form-btn" onclick='removerUser(<?php echo $id; ?>)' >Eliminar</button>
