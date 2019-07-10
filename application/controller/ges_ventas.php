@@ -361,7 +361,7 @@ public function despachar($id){
      $value = json_decode($value);
      $itemid =  $value->{'ProductID'};
      $value->{'status_location_id'};
-     $value->{'qty'};
+     $qty = $value->{'qty'};
    
      $ventas->UpdateItemsLocation($value->{'status_location_id'},$value->{'qty'});
 
