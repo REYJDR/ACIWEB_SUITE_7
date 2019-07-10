@@ -318,7 +318,7 @@ if($id){
 			<div class="separador col-lg-12"> </div>			
 			</fieldset >
 			<!--fin contenido-->
-			</form>	
+	
 			<div class="separador col-lg-12"> </div>
 			</div>
 		</div>
