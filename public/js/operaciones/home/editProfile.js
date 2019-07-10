@@ -47,6 +47,10 @@ function removerUser(id){
         $.when(remove()).done(function(){ //ESPERA QUE TERMINE LA INSERCION DE CABECERA
         
 
+           
+
+            window.open("index.php?url=home/config_sys","_self");
+
             openCity(event, 'Config2');
       
         });
