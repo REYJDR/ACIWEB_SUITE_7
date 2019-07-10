@@ -328,7 +328,7 @@ public function despachar($id){
           
 
               //descontar existencias
-              $this->setDispach($$id);
+              $this->setDispach($id);
   
               // load views
               require APP . 'view/_templates/header.php';
@@ -344,7 +344,7 @@ public function despachar($id){
       
   }
 
-  function setDispach($ID){
+  function setDispach($reserv){
 
     $res = $this->model->verify_session();
     $id_compania = $this->model->id_compania;
