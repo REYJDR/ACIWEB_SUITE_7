@@ -478,8 +478,6 @@ function builtTbl(chk){
 
         set_selectItemStyle(); 
 
-    set_selectWidth('selectPhase');
-    set_selectWidth('selectCost');
 
 
 }

@@ -102,8 +102,8 @@ function builtTbl(chk){
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)"  id="desc'+i+'"  ></td>'+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable2+' '+color2+' id="unit'+i+'"  ></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)"  contenteditable id="qty'+i+'"></td>'+
-                '<td width="15%" class="rowtable_req"       ><select class="selectItems" id="PHS'+i+'" ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
-                '<td width="15%" class="rowtable_req"       ><select class="selectItems" id="COST'+i+'"  ><option  value="-" selected>-</option>'+COST+'</select></td>'+
+                '<td width="15%" class="rowtable_req"       ><select class="selectItems col-lg-12" id="PHS'+i+'" ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
+                '<td width="15%" class="rowtable_req"       ><select class="selectItems col-lg-12" id="COST'+i+'"  ><option  value="-" selected>-</option>'+COST+'</select></td>'+
                
           
                 //     '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)" onfocusout="recalcular('+i+');" contenteditable id="qty'+i+'"></td>'+
@@ -116,7 +116,7 @@ function builtTbl(chk){
 
         set_selectItemStyle(); 
 
-       
+            
 
 }
 
