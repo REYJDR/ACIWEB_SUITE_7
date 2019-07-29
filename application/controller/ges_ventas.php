@@ -1065,53 +1065,55 @@ public function SetSOfromStock($SalesOrderNumber){
 
      }else{
 
+      $col = array( 'fecha_ven' , 'fecha_fab' );
       
+          $loteVenFab = $this->model->queryColumns('ITEMS_NO_LOTES',$col, 'where no_lote="'.$lote.'" and ID_compania="'.$this->model->id_compania .'"');
+          
+          foreach ($loteVenFab as $value) {
+          
+            $value = json_decode($value);
+      
+      
+            $venc =  $value->{'fecha_ven'};
+            $fab =  $value->{'fecha_fab'};
+            
+      
+              if ($venc!='0000-00-00 00:00:00' || $venc!='' ){
+                $venc = date('d/m/Y',strtotime($venc));
+                $caduc =   ' Venc: '.$venc.' ';
+              }else{
+                $caduc = '';
+              }
+      
+              if ($fab!='0000-00-00 00:00:00' || $fab!='' ){
+                $fab = date('d/m/Y',strtotime($fab));
+                $fabDate =   ' Fab: '.$fab.' ';
+              }else{
+                $fabDate = '';
+              }
+      
+          }
+      
+        if($fabDate != ''  ||  $caduc != ''){
+
+          $Description = substr($desc,0,136).$fabDate.$caduc;
+
+        }else{
+
+          $Description = $desc;
+        }
+      
+ 
       
       //IF ITEMS EXIST
-      $clause='where Item_id="'.$itemid.'" and SalesOrderNumber="'.$SalesOrderNumber.'" and ID_compania="'.$id_compania.'";';
+      $clause='where Item_id="'.$itemid.'" and Description="'.$Description.'" and SalesOrderNumber="'.$SalesOrderNumber.'" and ID_compania="'.$id_compania.'";';
 
       $ID = $this->model->Query_value('SalesOrder_Detail_Imp','ID',$clause);
   
   
       if ($ID==''){
 
-        $col = array( 'fecha_ven' , 'fecha_fab' );
-        
-            $loteVenFab = $this->model->queryColumns('ITEMS_NO_LOTES',$col, 'where no_lote="'.$lote.'" and ID_compania="'.$this->model->id_compania .'"');
-            
-            foreach ($loteVenFab as $value) {
-            
-              $value = json_decode($value);
-        
-        
-              $venc =  $value->{'fecha_ven'};
-              $fab =  $value->{'fecha_fab'};
-              
-        
-                if ($venc!='0000-00-00 00:00:00' || $venc!='' ){
-                  $venc = date('d/m/Y',strtotime($venc));
-                  $caduc =   ' Venc: '.$venc.' ';
-                }else{
-                  $caduc = '';
-                }
-        
-                if ($fab!='0000-00-00 00:00:00' || $fab!='' ){
-                  $fab = date('d/m/Y',strtotime($fab));
-                  $fabDate =   ' Fab: '.$fab.' ';
-                }else{
-                  $fabDate = '';
-                }
-        
-            }
-        
-          if($fabDate != ''  ||  $caduc != ''){
-
-            $Description = substr($desc,0,136).$fabDate.$caduc;
-
-          }else{
-
-            $Description = $desc;
-          }
+       
           //$Description = 'Lote :'.$lote.' '.$caduc.' Cant.:'.$qty;
           
   
