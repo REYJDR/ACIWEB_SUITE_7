@@ -153,6 +153,7 @@ foreach ($comp as $value) {
                                 <TR >
                                     <TH width="10%">Cantidad</TH>
                                     <TH width="10%">Código</TH>
+                                    <TH width="10%">Lote</TH>
                                     <TH width="30%">Descripción</TH>
                                     <TH width="10%">Precio Uni.</TH>
                                     <TH width="10%">Total</TH>
@@ -221,6 +222,8 @@ foreach ($comp as $value) {
                              
                                <td width="10%" style="padding-right:10px; text-align: right;">'.$value->{'Quantity'}.'</td>
                                <td width="10%" style="padding-right:10px; text-align: right;">'.$value->{'Item_id'}.'</td>
+                               <td width="10%" style="padding-right:10px; text-align: right;">'.$value->{'lote'}.'</td>
+                               
                                <td width="40%" ">'.$FinalDesc.'</td>
                                <td width="10%" style="padding-right:10px; text-align: right;">'.$value->{'Unit_Price'}.'</td>
                                <td width="10%" style="padding-right:10px; text-align: right;">'.number_format($value->{'Net_line'},2,'.',',').'</td>
