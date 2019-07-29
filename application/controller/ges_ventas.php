@@ -1107,6 +1107,7 @@ public function SetSOfromStock($SalesOrderNumber){
           if($fabDate != ''  ||  $caduc != ''){
 
             $Description = substr($desc,0,136).$fabDate.$caduc;
+            
           }else{
 
             $Description = $desc;
