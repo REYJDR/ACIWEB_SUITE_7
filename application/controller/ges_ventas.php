@@ -954,38 +954,8 @@ public function SetSOfromStock($SalesOrderNumber){
 
     // $venc = $this->model->Query_value('ITEMS_NO_LOTE','fecha_ven','where no_lote="'.$lote.'" and ID_compania="'.$this->model->id_compania .'"');
 
-    $col = array( 'fecha_ven' , 'fecha_fab' );
-
-    $loteVenFab = $this->model->queryColumns('ITEMS_NO_LOTE',$col, 'where no_lote="'.$lote.'" and ID_compania="'.$this->model->id_compania .'"');
-    
-    foreach ($loteVenFab as $value) {
-      $value = json_decode($value);
 
 
-      $venc =  $value->{'fecha_ven'};
-      $fab =  $value->{'fecha_fab'};
-      
-
-        if ($venc!=''){
-          $venc = date('d/m/Y',strtotime($venc));
-          $caduc =   ' Venc: '.$venc.' ';
-        }else{
-          $caduc = '';
-        }
-
-        if ($fab!=''){
-          $fab = date('d/m/Y',strtotime($fab));
-          $fabDate =   ' Fab: '.$fab.' ';
-        }else{
-          $fabDate = '';
-        }
-
-    }
-
-
-        
-  //$Description = 'Lote :'.$lote.' '.$caduc.' Cant.:'.$qty;
-  $Description = substr($desc,0,136).$fabDate.$venc;
 
   $no_cover_qty = $qty;
   $no_cover_uni = $UnitMeasure;
@@ -1010,6 +980,8 @@ public function SetSOfromStock($SalesOrderNumber){
   
   
       if ($ID==''){
+
+  
   
         //EN CASO QUE NO SE HAGA CONVERSION DE UNIDDES ESCRIBE EN LA TABLA DE SALES ORDER DETAIL SIN INDICAR EL ITEMID. 
         $values1 = array(
@@ -1096,6 +1068,8 @@ public function SetSOfromStock($SalesOrderNumber){
         }
 
      }else{
+
+      
       
       //IF ITEMS EXIST
       $clause='where Item_id="'.$itemid.'" and SalesOrderNumber="'.$SalesOrderNumber.'" and ID_compania="'.$id_compania.'";';
@@ -1104,6 +1078,39 @@ public function SetSOfromStock($SalesOrderNumber){
   
   
       if ($ID==''){
+
+        $col = array( 'fecha_ven' , 'fecha_fab' );
+        
+            $loteVenFab = $this->model->queryColumns('ITEMS_NO_LOTE',$col, 'where no_lote="'.$lote.'" and ID_compania="'.$this->model->id_compania .'"');
+            
+            foreach ($loteVenFab as $value) {
+            
+              $value = json_decode($value);
+        
+        
+              $venc =  $value->{'fecha_ven'};
+              $fab =  $value->{'fecha_fab'};
+              
+        
+                if ($venc!=''){
+                  $venc = date('d/m/Y',strtotime($venc));
+                  $caduc =   ' Venc: '.$venc.' ';
+                }else{
+                  $caduc = '';
+                }
+        
+                if ($fab!=''){
+                  $fab = date('d/m/Y',strtotime($fab));
+                  $fabDate =   ' Fab: '.$fab.' ';
+                }else{
+                  $fabDate = '';
+                }
+        
+            }
+        
+        
+          //$Description = 'Lote :'.$lote.' '.$caduc.' Cant.:'.$qty;
+          $Description = substr($desc,0,136).$fabDate.$venc;
   
         //EN CASO QUE NO SE HAGA CONVERSION DE UNIDDES ESCRIBE EN LA TABLA DE SALES ORDER DETAIL INDICANDO EL ITEMID. 
         $values1 = array(
