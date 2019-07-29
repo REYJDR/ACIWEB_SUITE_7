@@ -952,10 +952,6 @@ public function SetSOfromStock($SalesOrderNumber){
   
   $OriQty = $qty;
 
-    // $venc = $this->model->Query_value('ITEMS_NO_LOTE','fecha_ven','where no_lote="'.$lote.'" and ID_compania="'.$this->model->id_compania .'"');
-
-
-
 
   $no_cover_qty = $qty;
   $no_cover_uni = $UnitMeasure;
@@ -1110,7 +1106,7 @@ public function SetSOfromStock($SalesOrderNumber){
         
         
           //$Description = 'Lote :'.$lote.' '.$caduc.' Cant.:'.$qty;
-          $Description = substr($desc,0,136).$fabDate.$venc;
+          $Description = 'test'.substr($desc,0,136).$fabDate.$venc;
   
         //EN CASO QUE NO SE HAGA CONVERSION DE UNIDDES ESCRIBE EN LA TABLA DE SALES ORDER DETAIL INDICANDO EL ITEMID. 
         $values1 = array(
