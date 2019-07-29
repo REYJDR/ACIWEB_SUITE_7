@@ -1104,9 +1104,15 @@ public function SetSOfromStock($SalesOrderNumber){
         
             }
         
-        
+          if($fabDate != ''  ||  $caduc != ''){
+
+            $Description = substr($desc,0,136).$fabDate.$caduc;
+          }else{
+
+            $Description = $desc;
+          }
           //$Description = 'Lote :'.$lote.' '.$caduc.' Cant.:'.$qty;
-          $Description = $lote.substr($desc,0,136).$fabDate.$caduc;
+          
   
         //EN CASO QUE NO SE HAGA CONVERSION DE UNIDDES ESCRIBE EN LA TABLA DE SALES ORDER DETAIL INDICANDO EL ITEMID. 
         $values1 = array(
