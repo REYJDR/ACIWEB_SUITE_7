@@ -968,14 +968,14 @@ public function SetSOfromStock($SalesOrderNumber){
 
         if ($venc!=''){
           $venc = date('d/m/Y',strtotime($venc));
-          $caduc =   'Venc: '.$venc.' ';
+          $caduc =   ' Venc: '.$venc.' ';
         }else{
           $caduc = '';
         }
 
         if ($fab!=''){
           $fab = date('d/m/Y',strtotime($fab));
-          $fabDate =   'Fab: '.$fab.' ';
+          $fabDate =   ' Fab: '.$fab.' ';
         }else{
           $fabDate = '';
         }
@@ -985,7 +985,7 @@ public function SetSOfromStock($SalesOrderNumber){
 
         
   //$Description = 'Lote :'.$lote.' '.$caduc.' Cant.:'.$qty;
-  $Description = $desc.' '.$fabDate.' '.$venc;
+  $Description = substr($desc,0,136).$fabDate.$venc;
 
   $no_cover_qty = $qty;
   $no_cover_uni = $UnitMeasure;
