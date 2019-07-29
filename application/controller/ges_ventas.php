@@ -1088,14 +1088,14 @@ public function SetSOfromStock($SalesOrderNumber){
               $fab =  $value->{'fecha_fab'};
               
         
-                if ($venc!=''){
+                if ($venc!='0000-00-00 00:00:00' || $venc!='' ){
                   $venc = date('d/m/Y',strtotime($venc));
                   $caduc =   ' Venc: '.$venc.' ';
                 }else{
                   $caduc = '';
                 }
         
-                if ($fab!=''){
+                if ($fab!='0000-00-00 00:00:00' || $fab!='' ){
                   $fab = date('d/m/Y',strtotime($fab));
                   $fabDate =   ' Fab: '.$fab.' ';
                 }else{
@@ -1107,7 +1107,7 @@ public function SetSOfromStock($SalesOrderNumber){
           if($fabDate != ''  ||  $caduc != ''){
 
             $Description = substr($desc,0,136).$fabDate.$caduc;
-            
+
           }else{
 
             $Description = $desc;
