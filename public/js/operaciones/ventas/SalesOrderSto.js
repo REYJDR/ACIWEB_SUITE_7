@@ -90,10 +90,10 @@ while(i <= cantLineas){
                 '</td>';  
 
        }        
-
+      
       var line_table_req = '<tr>'+reglon+
-      "<td width='15%' class='rowtable_req' onkeypress='MSG_ERROR_RELEASE();' onkeyup='checkTblChar(this.id); checkLong(this.id,40);' contenteditable id='desc"+i+"'  ></td>"+
-      "<td width='15%' class='rowtable_req' onkeypress='MSG_ERROR_RELEASE();' onkeyup='checkTblChar(this.id); checkLong(this.id,10);' contenteditable id='nota"+i+"'  ></td>"+
+      "<td width='15%' class='rowtable_req' onkeypress='MSG_ERROR_RELEASE();' onkeyup='checkTblChar(this.id); checkLong(this.id,160);' contenteditable id='desc"+i+"'  ></td>"+
+    //  "<td width='15%' class='rowtable_req' onkeypress='MSG_ERROR_RELEASE();' onkeyup='checkTblChar(this.id); checkLong(this.id,10);' contenteditable id='nota"+i+"'  ></td>"+
       '<input type="hidden"   id="unit'+i+'" />'+
       '<td width="3%" style="'+displayStock+'"  class="rowtable_req numb" id="Tblote'+i+'"  ></td>'+
       '<input type="hidden"  id="taxable'+i+'" />'+
@@ -457,11 +457,11 @@ for(var i=1; i<theTbl.rows.length ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TA
 
             switch (j){
 
-                   case 8:
+                   case 7:
                    
                     if(document.getElementById(taxableID).value=='SI'){
 
-                    itbms_sum = ( Number(theTbl.rows[i].cells[j].innerHTML) * Number(theTbl.rows[i].cells[6].innerHTML) ) * Number(tax_value);
+                    itbms_sum = ( Number(theTbl.rows[i].cells[j].innerHTML) * Number(theTbl.rows[i].cells[5].innerHTML) ) * Number(tax_value);
                     itbms.push(itbms_sum);
 
                     }
@@ -811,12 +811,13 @@ while (i <= cantLineas){
                             
                             itemId      = document.getElementById(selid).value;
                             desc        = theTbl.rows[i].cells[1].innerHTML;
-                            nota        = theTbl.rows[i].cells[2].innerHTML;
+                           // nota        = theTbl.rows[i].cells[2].innerHTML;
+                            nota = '';
                             UnitMeasure = document.getElementById(unitid).value;
 
-                            qty       = theTbl.rows[i].cells[6].innerHTML;
-                            UnitPrice = theTbl.rows[i].cells[7].innerHTML;
-                            total     = theTbl.rows[i].cells[8].innerHTML;
+                            qty       = theTbl.rows[i].cells[5].innerHTML;
+                            UnitPrice = theTbl.rows[i].cells[6].innerHTML;
+                            total     = theTbl.rows[i].cells[7].innerHTML;
                            
                             if (STOCK_VIEW == 1){
                               lote  = document.getElementById(lote).value;

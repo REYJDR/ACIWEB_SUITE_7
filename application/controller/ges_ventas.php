@@ -952,20 +952,40 @@ public function SetSOfromStock($SalesOrderNumber){
   
   $OriQty = $qty;
 
-    $venc = $this->model->Query_value('ITEMS_NO_LOTE','fecha_ven','where no_lote="'.$lote.'" and ID_compania="'.$this->model->id_compania .'"');
+    // $venc = $this->model->Query_value('ITEMS_NO_LOTE','fecha_ven','where no_lote="'.$lote.'" and ID_compania="'.$this->model->id_compania .'"');
 
-     if($venc!=''){
-            $venc = date('Y-m-d',strtotime($venc));
-          }else{
-            $venc = '';       
-     }
-     if ($venc!=''){
-          $caduc =   'Vence :'.$venc.' ';
+    $col = array( 'fecha_ven' , 'fecha_fab' );
+
+    $loteVenFab = $this->model->queryColumns('ITEMS_NO_LOTE',$col, 'where no_lote="'.$lote.'" and ID_compania="'.$this->model->id_compania .'"');
+    
+    foreach ($loteVenFab as $value) {
+      $value = json_decode($value);
+
+
+      $venc =  $value->{'fecha_ven'};
+      $fab =  $value->{'fecha_fab'};
+      
+
+        if ($venc!=''){
+          $venc = date('d/m/Y',strtotime($venc));
+          $caduc =   'Venc: '.$venc.' ';
         }else{
           $caduc = '';
         }
-  $Description = 'Lote :'.$lote.' '.$caduc.' Cant.:'.$qty;
 
+        if ($fab!=''){
+          $fab = date('d/m/Y',strtotime($fab));
+          $fabDate =   'Fab: '.$fab.' ';
+        }else{
+          $fabDate = '';
+        }
+
+    }
+
+
+        
+  //$Description = 'Lote :'.$lote.' '.$caduc.' Cant.:'.$qty;
+  $Description = $desc.' '.$fabDate.' '.$venc;
 
   $no_cover_qty = $qty;
   $no_cover_uni = $UnitMeasure;
@@ -976,7 +996,7 @@ public function SetSOfromStock($SalesOrderNumber){
   $factor  = $this->model->Query_value('UNIT_MES_CONVRT','FACTOR','WHERE UNIT="'.$UnitMeasure.'" and UNIT_TO_CONVERT="'.$UNIT_TO_CONVERT.'" and ID_compania="'.$id_compania.'"');
   
   
-    if($factor!=''){
+  if($factor!=''){
      
       $unit_price =   $unit_price / $factor;
       $qty = $qty * $factor;
@@ -1079,6 +1099,7 @@ public function SetSOfromStock($SalesOrderNumber){
       
       //IF ITEMS EXIST
       $clause='where Item_id="'.$itemid.'" and SalesOrderNumber="'.$SalesOrderNumber.'" and ID_compania="'.$id_compania.'";';
+
       $ID = $this->model->Query_value('SalesOrder_Detail_Imp','ID',$clause);
   
   
@@ -1090,7 +1111,7 @@ public function SetSOfromStock($SalesOrderNumber){
             'ID_compania'=>$id_compania,
             'SalesOrderNumber'=>$SalesOrderNumber,
             'Item_id'=>$itemid,
-            'Description'=> '('.$UnitMeasure.') '.$desc.' '.$remarks,
+            'Description'=> $Description,
             'REMARK'=>$remarks,
             'Quantity'=>$qty,
             'Unit_Price'=>$unit_price,
@@ -1098,13 +1119,57 @@ public function SetSOfromStock($SalesOrderNumber){
             'Taxable'=>$this->model->Query_value('Products_Exp','TaxType','Where ProductID="'.$itemid.'" and ID_compania="'.$id_compania.'";') );
   
   
-        $this->model->insert('SalesOrder_Detail_Imp',$values1); //set item line
+           $this->model->insert('SalesOrder_Detail_Imp',$values1); //set item line
   
-          //SI TIENE MODULO DE UBICACIONES
-          if($mod_stoc_CK == 'checked' ){ 
-              //INIT SET LOTE 
-                $values2 = array(
-                  'ItemOrd' => $key+1,
+          // //SI TIENE MODULO DE UBICACIONES
+          // if($mod_stoc_CK == 'checked' ){ 
+
+          //     //INIT SET LOTE 
+          //     $values2 = array( 'ItemOrd' => $key+1,
+          //                       'ID_compania'=>$id_compania,
+          //                       'SalesOrderNumber'=>$SalesOrderNumber,
+          //                       'Item_id'=>'',
+          //                       'Description'=>$Description,
+          //                       'Quantity'=>'0',
+          //                       'Unit_Price'=>'0',
+          //                       'Net_line'=>'0',
+          //                       'Taxable'=>'1');
+                
+          //     $this->model->insert('SalesOrder_Detail_Imp',$values2);//set lote line
+
+
+
+          //     //END SET LOTE /////////////
+          //   }
+
+        }else{
+
+                //SI EL ITEM YA EXISTE EN LA ORDEN DE DEBE AGRUPAR 
+                $QUERY='SELECT Quantity, Unit_Price FROM SalesOrder_Detail_Imp where ID="'.$ID.'"';
+                $QTY_PRI = $this->model->Query($QUERY);
+
+                      foreach ($QTY_PRI  AS $QTY_PRI) {
+
+                      $QTY_PRI = json_decode($QTY_PRI);
+
+                      $now_qty = $QTY_PRI->{'Quantity'}+$qty;
+                      $net_line= $QTY_PRI->{'Unit_Price'} * $now_qty;
+
+                      }
+
+
+                $query= 'UPDATE SalesOrder_Detail_Imp SET 
+                                Quantity="'.$now_qty.'" , 
+                                Net_line="'.$net_line.'" 
+                                where ID="'.$ID.'";';
+
+                $this->model->Query($query);
+
+              //SI TIENE MODULO DE UBICACIONES
+              if($mod_stoc_CK == 'checked' ){ 
+
+                  $values2 = array(
+                  'ItemOrd' => $key,
                   'ID_compania'=>$id_compania,
                   'SalesOrderNumber'=>$SalesOrderNumber,
                   'Item_id'=>'',
@@ -1113,58 +1178,17 @@ public function SetSOfromStock($SalesOrderNumber){
                   'Unit_Price'=>'0',
                   'Net_line'=>'0',
                   'Taxable'=>'1');
-                
-              $this->model->insert('SalesOrder_Detail_Imp',$values2);//set lote line
-              //END SET LOTE /////////////
-            }
-        }else{
 
-            //SI EL ITEM YA EXISTE EN LA ORDEN DE DEBE AGRUPAR 
-            $QUERY='SELECT Quantity, Unit_Price FROM SalesOrder_Detail_Imp where ID="'.$ID.'"';
-            $QTY_PRI = $this->model->Query($QUERY);
 
-                  foreach ($QTY_PRI  AS $QTY_PRI) {
-
-                  $QTY_PRI = json_decode($QTY_PRI);
-
-                  $now_qty = $QTY_PRI->{'Quantity'}+$qty;
-                  $net_line= $QTY_PRI->{'Unit_Price'} * $now_qty;
-
+                  $this->model->insert('SalesOrder_Detail_Imp',$values2);//set lote line
                   }
-
-
-            $query= 'UPDATE SalesOrder_Detail_Imp SET 
-                            Quantity="'.$now_qty.'" , 
-                            Net_line="'.$net_line.'" 
-                            where ID="'.$ID.'";';
-
-            $this->model->Query($query);
-
-          //SI TIENE MODULO DE UBICACIONES
-          if($mod_stoc_CK == 'checked' ){ 
-
-              $values2 = array(
-              'ItemOrd' => $key,
-              'ID_compania'=>$id_compania,
-              'SalesOrderNumber'=>$SalesOrderNumber,
-              'Item_id'=>'',
-              'Description'=>$Description,
-              'Quantity'=>'0',
-              'Unit_Price'=>'0',
-              'Net_line'=>'0',
-              'Taxable'=>'1');
-
-
-              $this->model->insert('SalesOrder_Detail_Imp',$values2);//set lote line
-              }
+            }
         }
-     }
 
    }
 
 
    //**  reserva de items  */
-
     $reserv = array(  'ProductID'           => $itemid,
                       'SaleOrderId'         => $SalesOrderNumber,
                       'qty'                 => $qty,
@@ -1172,12 +1196,11 @@ public function SetSOfromStock($SalesOrderNumber){
                       'ID_compania'         => $id_compania );
 
     $this->model->insert('sale_pendding',$reserv); 
-
     // $this->UpdateItemsLocation($loc,$OriQty);
 
     // //set event item 
-    $id_compania= $this->model->id_compania;
-    $user = $this->model->active_user_id;
+    $id_compania = $this->model->id_compania;
+    $user        = $this->model->active_user_id;
     
     $event_values = array(  'ProductID' => $itemid,
                             'JobID' => '',
@@ -1189,7 +1212,7 @@ public function SetSOfromStock($SalesOrderNumber){
                             'Total' => $Price,
                             'User' => $user,
                             'Type' => 'Reserva a Orden de venta',
-                            'Referencia' => $SalesOrderNumber,
+                            'Referencia'  => $SalesOrderNumber,
                             'ID_compania' => $id_compania ,
                             'stockOrigID' => $loc );
     //set event Line              
@@ -1198,6 +1221,7 @@ public function SetSOfromStock($SalesOrderNumber){
    //**  reserva de items  */
    
   }
+
   echo '1';
 }
 
