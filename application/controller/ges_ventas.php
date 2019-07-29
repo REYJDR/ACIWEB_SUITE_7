@@ -1106,7 +1106,7 @@ public function SetSOfromStock($SalesOrderNumber){
  
       
       //IF ITEMS EXIST
-      $clause='where Item_id="'.$itemid.'" and Description="'.$Description.'" and SalesOrderNumber="'.$SalesOrderNumber.'" and ID_compania="'.$id_compania.'";';
+      $clause='where Item_id="'.$itemid.'" and lote="'.$lote.'" and SalesOrderNumber="'.$SalesOrderNumber.'" and ID_compania="'.$id_compania.'";';
 
       $ID = $this->model->Query_value('SalesOrder_Detail_Imp','ID',$clause);
   
@@ -1123,6 +1123,7 @@ public function SetSOfromStock($SalesOrderNumber){
             'ID_compania'=>$id_compania,
             'SalesOrderNumber'=>$SalesOrderNumber,
             'Item_id'=>$itemid,
+            'lote' => $lote,
             'Description'=> $Description,
             'REMARK'=>$remarks,
             'Quantity'=>$qty,
