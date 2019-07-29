@@ -265,7 +265,7 @@ public function queryColumns($table,$columns,$clause){
 
     $query = "SELECT  ".implode(',', $columns)." FROM ".$table." ".$clause." ;";
 
-    die($query);
+    file_put_contents("LOG_ERROR/test.log",$query ); 
     return $this->Query($query);
         
 }
