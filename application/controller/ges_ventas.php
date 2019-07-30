@@ -971,7 +971,7 @@ public function SetSOfromStock($SalesOrderNumber){
       $UnitMeasure = $this->model->Query_value('UNIT_MES_CONVRT','UNIT_NAME','WHERE UNIT="'.$UnitMeasure.'" AND UNIT_TO_CONVERT="'.$UNIT_TO_CONVERT.'" and ID_compania="'.$id_compania.'"');
   
       //IF ITEMS EXIST
-      $clause='where Item_id="'.$itemid.'" and SalesOrderNumber="'.$SalesOrderNumber.'" and ID_compania="'.$id_compania.'";';
+      $clause=' where Unit_Price="'.$unit_price.'" and Item_id="'.$itemid.'" and SalesOrderNumber="'.$SalesOrderNumber.'" and ID_compania="'.$id_compania.'";';
       $ID = $this->model->Query_value('SalesOrder_Detail_Imp','ID',$clause);
   
   
@@ -1065,6 +1065,8 @@ public function SetSOfromStock($SalesOrderNumber){
 
      }else{
 
+      if($no_lote != $itemid.'0000' ){
+        
           $col = array( 'fecha_ven' , 'fecha_fab' );
       
           $loteVenFab = $this->model->queryColumns('ITEMS_NO_LOTES',$col, 'where no_lote="'.$lote.'" and ID_compania="'.$this->model->id_compania .'"');
@@ -1093,7 +1095,8 @@ public function SetSOfromStock($SalesOrderNumber){
               }
       
           }
-      
+        }
+
         if($fabDate != ''  ||  $caduc != ''){
 
           $Description = substr($desc,0,136).$fabDate.$caduc;
