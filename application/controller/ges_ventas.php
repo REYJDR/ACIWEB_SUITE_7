@@ -1065,7 +1065,7 @@ public function SetSOfromStock($SalesOrderNumber){
 
      }else{
 
-      $col = array( 'fecha_ven' , 'fecha_fab' );
+          $col = array( 'fecha_ven' , 'fecha_fab' );
       
           $loteVenFab = $this->model->queryColumns('ITEMS_NO_LOTES',$col, 'where no_lote="'.$lote.'" and ID_compania="'.$this->model->id_compania .'"');
           
@@ -1106,7 +1106,7 @@ public function SetSOfromStock($SalesOrderNumber){
  
       
       //IF ITEMS EXIST
-      $clause='where Item_id="'.$itemid.'" and lote="'.$lote.'" and SalesOrderNumber="'.$SalesOrderNumber.'" and ID_compania="'.$id_compania.'";';
+      $clause=' where Item_id="'.$itemid.'" and lote="'.$lote.'" and SalesOrderNumber="'.$SalesOrderNumber.'" and ID_compania="'.$id_compania.'";';
 
       $ID = $this->model->Query_value('SalesOrder_Detail_Imp','ID',$clause);
   
