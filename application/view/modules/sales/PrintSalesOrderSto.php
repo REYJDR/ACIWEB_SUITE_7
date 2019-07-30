@@ -175,7 +175,7 @@ foreach ($comp as $value) {
                                
                             }else{
 
-                             /*
+                             
                              //CONVERSION A LIBRA 
                                 $libra = '';
                                 $libra  = $QTY;
@@ -214,7 +214,7 @@ foreach ($comp as $value) {
 
                                 $FinalDesc =  $value->{'Description'};
 
-                               } */
+                               }
 
    
 
