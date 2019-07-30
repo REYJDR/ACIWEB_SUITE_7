@@ -1081,8 +1081,6 @@ $id_compania = $this->id_compania;
 $ORDER= $this->Query('SELECT * FROM `SalesOrder_Header_Imp`
 inner JOIN `SalesOrder_Detail_Imp` ON SalesOrder_Header_Imp.SalesOrderNumber = SalesOrder_Detail_Imp.SalesOrderNumber
 inner JOIN `Customers_Exp` ON SalesOrder_Header_Imp.CustomerID = Customers_Exp.CustomerID
-LEFT JOIN sale_pendding on sale_pendding.SaleOrderId = SalesOrder_Header_Imp.SalesOrderNumber
-LEFT JOIN STOCK_ITEMS_LOCATION ON STOCK_ITEMS_LOCATION .id = sale_pendding.status_location_id
 
 inner JOIN `SAX_USER` ON `SAX_USER`.`id` = SalesOrder_Header_Imp.user where SalesOrder_Header_Imp.SalesOrderNumber="'.$id.'" and 
 SalesOrder_Detail_Imp.ID_compania="'.$id_compania.'" and SalesOrder_Header_Imp.ID_compania="'.$id_compania.'"
