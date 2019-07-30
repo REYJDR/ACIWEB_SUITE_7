@@ -1065,8 +1065,8 @@ public function SetSOfromStock($SalesOrderNumber){
 
      }else{
 
-      if($no_lote != $itemid.'0000' ){
-        
+      if($lote != $itemid.'0000' ){
+
           $col = array( 'fecha_ven' , 'fecha_fab' );
       
           $loteVenFab = $this->model->queryColumns('ITEMS_NO_LOTES',$col, 'where no_lote="'.$lote.'" and ID_compania="'.$this->model->id_compania .'"');
