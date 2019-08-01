@@ -852,6 +852,7 @@ public function ReadInvoiceFile($id_compania){
 
   $res = $this->model->Query($SQL);
 
+
   foreach ($res as $key => $value) {
    
       $value = json_decode($value);
@@ -859,6 +860,7 @@ public function ReadInvoiceFile($id_compania){
       $ID = $value->{'CreditNoteNumber'};
       $folder = $value->{'printer'};
        
+      echo 'Found in table :'.$ID."<br>\n";
 
         //NUEVO BLOQUE
         $PRINTER = $this->GetPrinterSeleccted($ID);
@@ -867,12 +869,16 @@ public function ReadInvoiceFile($id_compania){
         $filename = $DIR.'OUT_NCTI'.$ID.'.TXT';
 
         if (file_exists($filename)) {
-  
+          echo 'Found in file :'.$ID."<br>\n";
+          
           $InvNum  = $this->InsertCreditMemoInfo($id_compania, trim($ID));
           if( $InvNum!='-'){
             $logText .= date('Y-m-d H:i:s').' InvoiceNumber : '.$InvNum.' -  CreditMemoNumber:'.$ID.' File: '.$filename."<br>\n";
           }
 
+        }else{
+
+          echo 'Not Found in file :'.$ID."<br>\n";
         }
 
 
