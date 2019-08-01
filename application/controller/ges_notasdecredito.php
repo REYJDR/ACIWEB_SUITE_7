@@ -848,7 +848,7 @@ public function ReadInvoiceFile($id_compania){
             CREDITNOTE_HEADER
             Where 
             ID_compania = "'.$id_compania.'" 
-            AND GenCreditNumber IS NULL';
+            AND ( GenCreditNumber IS NULL or GenCreditNumber = "" ';
 
   $res = $this->model->Query($SQL);
 
@@ -870,7 +870,7 @@ public function ReadInvoiceFile($id_compania){
 
         if (file_exists($filename)) {
           echo 'Found in file :'.$ID."<br>\n";
-          
+
           $InvNum  = $this->InsertCreditMemoInfo($id_compania, trim($ID));
           if( $InvNum!='-'){
             $logText .= date('Y-m-d H:i:s').' InvoiceNumber : '.$InvNum.' -  CreditMemoNumber:'.$ID.' File: '.$filename."<br>\n";
