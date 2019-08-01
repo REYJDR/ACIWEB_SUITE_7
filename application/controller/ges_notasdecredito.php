@@ -878,7 +878,7 @@ public function ReadInvoiceFile($id_compania){
 
         }else{
 
-          echo 'Not Found in file :'.$ID."<br>\n";
+          echo 'Not Found in file :'.$filename."<br>\n";
         }
 
 
