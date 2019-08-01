@@ -848,7 +848,7 @@ public function ReadInvoiceFile($id_compania){
             CREDITNOTE_HEADER
             Where 
             ID_compania = "'.$id_compania.'" 
-            AND ( GenCreditNumber IS NULL or GenCreditNumber = "" ';
+            AND ( GenCreditNumber IS NULL or GenCreditNumber = "" )';
 
   $res = $this->model->Query($SQL);
 
