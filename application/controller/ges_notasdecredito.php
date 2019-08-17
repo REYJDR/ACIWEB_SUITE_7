@@ -869,13 +869,13 @@ public function ReadInvoiceFile($id_compania){
         $filename = $DIR.'OUT_NCTI'.$ID.'.TXT';
 
         if (file_exists($filename)) {
-          echo 'Found in file :'.$ID."<br>\n";
+          
 
           $InvNum  = $this->InsertCreditMemoInfo($id_compania, trim($ID));
           if( $InvNum!='-'){
             $logText .= date('Y-m-d H:i:s').' InvoiceNumber : '.$InvNum.' -  CreditMemoNumber:'.$ID.' File: '.$filename."<br>\n";
           }
-
+          echo 'Found in file :'.$ID."<br>\n".$logText."<br>\n";
         }else{
 
           echo 'Not Found in file :'.$filename."<br>\n";

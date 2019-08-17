@@ -921,7 +921,7 @@ public function InsertSalesInfo($id_compania,$ID){
            
            $ventas = new ges_ventas(); 
            
-           $reserv = $this->model->queryColumns('sale_pendding',['status_location_id','qty'],' WHERE SaleOrderId="'.$ID.'" and ProducID="'.$itemid.'" and ID_compania="'.$id_compania.'"');
+           $reserv = $this->model->queryColumns('sale_pendding',['status_location_id','qty'],' WHERE SaleOrderId="'.$ID.'" and ProductID="'.$itemid.'" and ID_compania="'.$id_compania.'"');
            
            foreach ($reserv as  $value) {
 
