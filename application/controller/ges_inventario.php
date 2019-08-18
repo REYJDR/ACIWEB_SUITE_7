@@ -1660,27 +1660,43 @@ public function setInventoryAdjustment(){
             
            $standalone = $this->model->Query_value('company_info','Sage_conn',' Where id="1"' );
             
-           $values = array (
-            'ItemID' => $Item_id, 
-            'JobID' => $JobID, 
-            'JobPhaseID' => $JobPhaseID, 
-            'JobCostCodeID' => $JobCostCodeID , 
-            'Reference' => $reference , 
-            'ReasonToAdjust' => 'Aciweb - Entrada de mercancia' , 
-            'Account' => $GL_Acct , 
-            'UnitCost' => $Unit_Price , 
-            'Quantity' => $Quantity, 
-            'Date' => $date , 
-            'USER' => $user , 
-            'ID_compania' =>  $id_compania );
+         
 
 
             if($standalone != 9 ){
+
+                $values = array (
+                    'ItemID' => $Item_id, 
+                    'JobID' => $JobID, 
+                    'JobPhaseID' => $JobPhaseID, 
+                    'JobCostCodeID' => $JobCostCodeID , 
+                    'Reference' => $reference , 
+                    'ReasonToAdjust' => 'Aciweb - Entrada de mercancia' , 
+                    'Account' => $GL_Acct , 
+                    'UnitCost' => $Unit_Price , 
+                    'Quantity' => $Quantity, 
+                    'Date' => $date , 
+                    'USER' => $user , 
+                    'ID_compania' =>  $id_compania );
 
     
                 $this->model->insert('InventoryAdjust_Imp',$values);
 
             }else{
+
+                $values = array (
+                    'ItemID' => $Item_id, 
+                    'JobID' => $JobID, 
+                    'JobPhaseID' => $JobPhaseID, 
+                    'JobCostCodeID' => $JobCostCodeID , 
+                    'Reference' => 'ADJ-'.$Item_id.date('dmy') , 
+                    'ReasonToAdjust' => 'Aciweb - Entrada de mercancia' , 
+                    'Account' => $GL_Acct , 
+                    'UnitCost' => $Unit_Price , 
+                    'Quantity' => $Quantity, 
+                    'Date' => $date , 
+                    'USER' => $user , 
+                    'ID_compania' =>  $id_compania );
 
 
                 $stockID = $this->model->Query_value('STOCK_ITEMS_LOCATION','id',' where lote = "'.$itemId.'0000"  and ID_company="'.$id_compania.'" order by id asc limit 1');
