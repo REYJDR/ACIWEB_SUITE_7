@@ -69,8 +69,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 								<fieldset class="fieldsetform">
 									<table class='table_form'>
 										<tbody>
-										<tr><th><strong><?PHP echo $invInfo1; ?></strong></th><td><input name="itemId"  class="inputPage col-lg-12"  value=""/></td></tr>
-										<tr><th><strong><?PHP echo $invInfo2; ?></strong></th><td><input name="itemDesc"  class="inputPage col-lg-12"  value=""/></td></tr>
+										<tr><th><strong><?PHP echo $invInfo1; ?></strong></th><td><input name="itemId"  class="inputPage col-lg-12"  value="" required/></td></tr>
+										<tr><th><strong><?PHP echo $invInfo2; ?></strong></th><td><input name="itemDesc"  class="inputPage col-lg-12"  value="" required/></td></tr>
 										<tr><td><strong><?PHP echo $invIn8; ?></strong></td>					
 										    <th><input type="checkbox" id="isActive" name="isActive" checked  /></th></tr>
 										 </tbody>
@@ -82,9 +82,9 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 								<fieldset class="fieldsetform">
 									<table class='table_form'>
 										<tbody>
-										<tr><th><strong><?PHP echo $invInfo4; ?></strong></th><td><input name="itemUnitPrice"  class="inputPage col-lg-12  numb"  value=""/></td>		</tr>
-										<tr><th><strong><?PHP echo $invInfo5; ?></strong></th><td><input name="itemUnitMeasure"  class="inputPage col-lg-12  numb"  value=""/></td>		</tr>
-										<tr><th><strong><?PHP echo $invInfo6; ?></strong></th><td><input name="itemQty"  class="inputPage col-lg-12  numb"  value=""/></td>		</tr>	
+										<tr><th><strong><?PHP echo $invInfo4; ?></strong></th><td><input name="itemUnitPrice"  class="inputPage col-lg-12  numb"  value="" required/></td>		</tr>
+										<tr><th><strong><?PHP echo $invInfo5; ?></strong></th><td><input name="itemUnitMeasure"  class="inputPage col-lg-12  numb"  value="" required/></td>		</tr>
+										<tr><th><strong><?PHP echo $invInfo6; ?></strong></th><td><input name="itemQty"  class="inputPage col-lg-12  numb"  value="" required /></td>		</tr>	
 										</tbody>
 									</table>
 									</fieldset>
@@ -94,8 +94,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 								<fieldset class="fieldsetform">
 									<table class='table_form'>
 										<tbody>
-										<tr><th><strong><?PHP echo $invIn7; ?></strong></th><td><input    name="itemTaxType" class="inputPage col-lg-12  numb"  value=""/></td></tr> 
-										<tr><th><strong><?PHP echo $invInfo8; ?></strong></th><td><input  name="itemGlAccnt"  class="inputPage col-lg-12  numb"  value=""/></td></tr>
+										<tr><th><strong><?PHP echo $invIn7; ?></strong></th><td><input    name="itemTaxType" class="inputPage col-lg-12  numb"  value="1" readonly/></td></tr> 
+										<tr><th><strong><?PHP echo $invInfo8; ?></strong></th><td><input  name="itemGlAccnt"  class="inputPage col-lg-12  numb"  value="" /></td></tr>
 										<tr><th><strong><?PHP echo $invInfo9; ?></strong></th><td><input  name="itemUpc"  class="inputPage col-lg-12  numb"  value=""/></td></tr>	
 										</tbody>
 									</table>
@@ -138,7 +138,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 								<div class='col-lg-10'></div>
 								<div class='col-lg-2'>
 									<div class="container-login100-form-btn">
-									<input name="proc_indv" id="proc_indv"  onclick="proceed(1);"  value="<?PHP echo $BTN_InvIN_Proc; ?>"  class="accept-form-btn"  value="<?PHP echo $BTN_Process; ?>" />			
+									<input name="proc_indv" id="proc_indv" type='submit' onclick="proceed(1);"  value="<?PHP echo $BTN_InvIN_Proc; ?>"  class="accept-form-btn"  value="<?PHP echo $BTN_Process; ?>" />			
 									</div>
 								</div>
 								<div class="separador col-lg-12"> </div>
