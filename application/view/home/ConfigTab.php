@@ -587,15 +587,16 @@ openCity(event, 'Config1');
     <div class='col-lg-12'>
     <!--INI MENU INVENTARIO-->
 	<fieldset class="fieldsetform"  >
-		<h4><?php echo $config_10_title; ?></h4> 
+		<h4><?php echo $config_27_title; ?></h4> 
 		<form action="" role="form" class="form-horizontal" enctype="multipart/form-data" method="POST">	
-
+		<input type="hidden"  name="inventory" value="1"  />
+		<div class="col-lg-6" >
 				<table class="table_form">
 					<tbody>
 					<tr><th><strong><?php echo $config_15_val1; ?></strong></th><td><input type="CHECKBOX" name="inv_discount" <?php echo  $inv_discount; ?> /></td></tr>
 					</tbody>
 				</table> 
-
+		</div>
 
 
 		<div class='col-lg-8'></div>					

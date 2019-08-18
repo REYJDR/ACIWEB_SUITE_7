@@ -116,6 +116,33 @@ echo '<script> alert("Se ha actualizado con exito"); window.open("'.URL.'index.p
 
 }
 
+//ACTUALIZA DATOS DE INVENTARIO
+if (isset($_REQUEST['INVENTORY'])) {
+	
+
+$exist = $this->model->Query_value('INV_CONF', 'ID' ,'where ID_compania="'.$this->model->id_compania.'"');
+
+if($exist != ''){
+
+	$value  = array('inv_discount' => $_POST['inv_discount'] );
+	$this->model->update('INV_CONF',$value,' ID_compania="'.$this->model->id_compania.'"');
+
+}else{
+	$value  = array('inv_discount' => $_POST['inv_discount'] ,
+					 'ID_compania' => $this->model->id_compania);
+					 
+	$this->model->insert('INV_CONF',$value);
+	
+}
+
+$this->CheckError();
+
+unset($_REQUEST);
+
+echo '<script> alert("Se ha actualizado con exito"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
+
+}
+
 //ACTUALIZA DATOS DE COMPAÑIA 
 if (isset($_REQUEST['comp'])) {
 
@@ -594,6 +621,23 @@ foreach ($smtp as $smtp_val) {
   $Auth       = $smtp_val->{'Auth'};
   $Secure     = $smtp_val->{'SMTPSecure'};
   $Debug      = $smtp_val->{'SMTPDebug'};
+
+
+}
+
+unset($_POST);
+$this->CheckError();
+
+
+//recupero datos de inventario
+$sql = 'SELECT * FROM INV_CONF WHERE  ID_compania="'.$this->model->id_compania.'"';
+
+$inv= $this->model->Query($sql);
+
+foreach ($inv as $inv_val) {
+  $inv_val= json_decode($inv_val);
+
+  $inv_discount     = $inv_val->{'inv_discount'};
 
 
 }
