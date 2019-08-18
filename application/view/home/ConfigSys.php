@@ -644,7 +644,7 @@ foreach ($inv as $inv_val) {
 
 }
 
-if($inv_discount == 1 ){$inv_discount ='on';}else{$inv_discount ='off';}
+if($inv_discount == 1 ){$inv_discount ='checked';}else{$inv_discount ='';}
 
 unset($_POST);
 $this->CheckError();
