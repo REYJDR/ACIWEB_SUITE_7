@@ -159,6 +159,29 @@ public function location(){
 ////////////////////////////////////////////////////////////////////////////////////
 //* OPERATION METHODS
 ////////////////////////////////////////////////////////////////////////////////////
+public function getStockListToSelect(){
+    
+        $this->model->verify_session();
+        $table = '';
+    
+    
+        $query="select * from STOCKS where onoff='1' and 
+        ID_compania='".$this->model->id_compania."' or
+        ID_compania='0' ;";
+    
+            $res = $this->model->Query($query);
+    
+            foreach ($res as $datos) {	
+
+            $datos = json_decode($datos);
+    
+            $id = '"'.$datos->{'id'}.'"';
+            $select .="<option value='".$datos->{'id'}."'>".$datos->{'name'}."</option>";
+
+        }
+    
+        echo $select ;
+}
 
 public function getStockList(){
 

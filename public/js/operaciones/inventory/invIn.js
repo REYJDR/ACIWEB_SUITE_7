@@ -1379,7 +1379,7 @@ function getOCitem(oc){
         }
 
     }
- );
+    });
 //set_selectWidth(cls=['.selectItems']);
 
 }
