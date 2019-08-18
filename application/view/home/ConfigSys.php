@@ -639,10 +639,12 @@ $inv= $this->model->Query($sql);
 foreach ($inv as $inv_val) {
   $inv_val= json_decode($inv_val);
 
-  $inv_discount     = $inv_val->{'inv_discount'};
+  $inv_discount = $inv_val->{'inv_discount'};
 
 
 }
+
+if($inv_discount == 1 ){$inv_discount ='on';}else{$inv_discount ='off';}
 
 unset($_POST);
 $this->CheckError();

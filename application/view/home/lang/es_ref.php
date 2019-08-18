@@ -238,6 +238,7 @@ $config_14_val17 = 'Descipcion';
 //INVENTARIO
 $config_27_title = 'Configuración de interfaz de inventario';
 $config_15_val1 = 'Descontar existencias sin facturar';
+$config_28_title = 'Opciones';
 //INVENTARIO
 
 ?>
