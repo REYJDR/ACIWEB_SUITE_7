@@ -813,7 +813,7 @@ function proceed(){
                 }else{
                    alert('Item added successfully');
 
-                   window.reload();
+                   location.reload(true);
             
                 }
 
