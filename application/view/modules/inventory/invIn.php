@@ -60,7 +60,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 						<!--ENTRADA INDIVIDUAL-->
 						<div  class="col-lg-12" id="prod_ind">
-						<form action="" id='prodInd'>
+						<form action="" id='prodInd' name='prodInd'>
 						
 						<!--ini  header-->
 						<div class="col-lg-8">
