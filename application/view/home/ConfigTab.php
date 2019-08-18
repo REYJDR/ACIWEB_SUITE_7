@@ -583,7 +583,7 @@ openCity(event, 'Config1');
    <!--END MENU LOGS-->
 </div>
 
-<div id="Config1" class="tabcontent">
+<div id="Config11" class="tabcontent">
     <div class='col-lg-12'>
     <!--INI MENU INVENTARIO-->
 	<fieldset class="fieldsetform"  >
