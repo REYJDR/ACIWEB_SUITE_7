@@ -1699,7 +1699,7 @@ public function setInventoryAdjustment(){
                     'ID_compania' =>  $id_compania );
 
 
-                $stockID = $this->model->Query_value('STOCK_ITEMS_LOCATION','id',' where lote = "'.$Item_id.'0000"  and ID_company="'.$id_compania.'" order by id asc limit 1');
+                $stockID = $this->model->Query_value('STOCK_ITEMS_LOCATION','id',' where lote = "'.$Item_id.'0000"  and ID_compania="'.$id_compania.'" order by id asc limit 1');
                         
         
                 $this->UpdateAddItemsLocation($stockID, $Quantity);
