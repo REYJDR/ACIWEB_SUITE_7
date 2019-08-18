@@ -102,17 +102,17 @@ public function InvOut(){
 //ENTRADA DE INVENTARIO
 public function invIn(){
        
-    $res = $this->model->verify_session();
+$res = $this->model->verify_session();
 
-            if($res=='0'){
+        if($res=='0'){
 
-                // load views
-                require APP . 'view/_templates/header.php';
-                require APP . 'view/_templates/panel.php';
-                require APP . 'view/modules/inventory/invIn.php';
-                require APP . 'view/_templates/footer.php';
+            // load views
+            require APP . 'view/_templates/header.php';
+            require APP . 'view/_templates/panel.php';
+            require APP . 'view/modules/inventory/invIn.php';
+            require APP . 'view/_templates/footer.php';
 
-            }
+        }
            
 }
 

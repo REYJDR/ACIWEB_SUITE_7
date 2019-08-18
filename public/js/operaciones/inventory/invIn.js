@@ -1296,9 +1296,9 @@ function getOC(vendor){
 //obtiene detalles del OC
 //******************************************************************************************
 
-function getOCitem(oc){
+function getOCitem(oc){ 
 
-if(oc != '-' || oc != '')
+    if(oc != '-' || oc != '')
     init(2);
     var theTbl = document.getElementById('table_ord_tb'); //objeto de la tabla que contiene los datos de items
     var jobSel   = '#JOBID2 option:selected';
@@ -1379,10 +1379,12 @@ if(oc != '-' || oc != '')
         }
 
     }
-});
+ );
 //set_selectWidth(cls=['.selectItems']);
 
 }
+
+
 //******************************************************************************************
 //obtiene detalles del OC
 //******************************************************************************************

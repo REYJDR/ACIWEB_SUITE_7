@@ -36,7 +36,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						<fieldset>
 						<table class='table_form'>
 							<tbody>
-								 <tr>
+								<tr>
 									<td><input type="checkbox" class='chkGrp' id="chk_lp" name="chk_lp" value="1" onclick="set_div(this.value)" /></td>					
 									<th><strong><?PHP echo $invIn1; ?></strong></th>
 								</tr> 
@@ -108,13 +108,17 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 									<div class="separador col-lg-12"> </div>
 									<table class='table_form'>
 										<tbody>
-										<tr><th><strong><?PHP echo $invIn4; ?></strong></th><td><select id="up_stock" class="form-control"  onchange="locat(this.value,0);"></select></td></tr>
+										<tr><th><strong><?PHP echo $invIn4; ?></strong></th><td>
+										
+										<?php  $this->getStockList();  ?>
+
+									    </td></tr>
 										<tr><th><strong><?PHP echo $invIn5; ?></strong></th><td><select id="up_route" class="form-control" ></select></td></tr>
 										</tbody>
 									</table>
 									</fieldset>
 								</div>
-								<div  class="col-lg-6">
+								<!-- <div  class="col-lg-6">
 								<fieldset class="fieldsetform">
 								<h4><?PHP echo $invIn11; ?></h4>
 									<div class="separador col-lg-12"> </div>
@@ -128,7 +132,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 										</tbody>
 									</table>
 									</fieldset>
-								</div>
+								</div> -->
 
 								<!--Button Process-->
 								<div class='col-lg-10'></div>
