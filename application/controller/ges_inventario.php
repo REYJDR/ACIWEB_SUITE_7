@@ -1884,7 +1884,16 @@ public function addItem(){
 
     $itemId   = $_GET['itemId'];
     $itemDesc = $_GET['itemDesc'];
+
     $isActive = $_GET['isActive'];
+
+    if($isActive=='on'){
+        $isActive = 1;
+    }else{
+        $isActive = 0;
+    }
+    
+
     $itemUnitPrice   = $_GET['itemUnitPrice'];
     $itemUnitMeasure =  $_GET['itemUnitMeasure'];
     $itemQty     =  $_GET['itemQty'];
