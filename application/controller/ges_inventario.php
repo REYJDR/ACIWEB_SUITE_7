@@ -1389,6 +1389,15 @@ public function set_Budget_Log($values,$type){
                 $id_compania= $this->model->id_compania;
                 $user = $this->model->active_user_id;
             
+                $stockDestID = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$Item.'0000" and location="1" and stock="1" and ID_compania ="'.$id_compania.'" ') ;
+
+                if($stockDestID == '' ){
+                   
+                    $stockDestID = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$Item.'0000" and ID_compania ="'.$id_compania.'" limit 1  ') ;
+
+                }
+
+                
                 $event_values = array(  'ProductID' => $Item,
                                         'JobID' => $job,
                                         'JobPhaseID' => $phase,
@@ -1401,8 +1410,7 @@ public function set_Budget_Log($values,$type){
                                         'Type' => 'Entrada por Adjuste',
                                         'Referencia' => $PurchaseNumber,
                                         'ID_compania' => $id_compania ,
-                                        'stockDestID' => $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$Item.'0000" and location="1" and stock="1" ') );
-
+                                        'stockDestID' => $stockDestID );
             
                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
                 
