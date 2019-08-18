@@ -1701,6 +1701,7 @@ public function setInventoryAdjustment(){
 
                 $stockID = $this->model->Query_value('STOCK_ITEMS_LOCATION','id',' where lote = "'.$itemId.'0000"  and ID_company="'.$id_compania.'" order by id asc limit 1');
                         
+                die('stock'. $stockID);
                 $this->UpdateAddItemsLocation($stockID, $Quantity);
 
                 $this->model->update('Products_Exp',['LastUnitCost' => $Unit_Price ],' ProductID="'.$Item_id.'" and ID_compania="'.$id_compania.'" ');
