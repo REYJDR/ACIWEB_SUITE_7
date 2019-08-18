@@ -124,7 +124,7 @@ $exist = $this->model->Query_value('INV_CONF', 'ID' ,'where ID_compania="'.$this
 
 if($exist != ''){
 
-	if($_POST['inv_discount'] ='on') { $inv_discount = 1 ;}else{ $inv_discount = 0 ;};
+	if($_POST['inv_discount'] == 'on') { $inv_discount = 1 ;}else{ $inv_discount = 0 ;};
 
 	$value  = array('inv_discount' => $inv_discount );
 	$this->model->update('INV_CONF',$value,' ID_compania="'.$this->model->id_compania.'"');
