@@ -1888,9 +1888,9 @@ public function addItem(){
     $isActive = $_GET['isActive'];
 
     if($isActive=='on'){
-        $isActive = 1;
+        $isActive = true;
     }else{
-        $isActive = 0;
+        $isActive = false;
     }
     
 
