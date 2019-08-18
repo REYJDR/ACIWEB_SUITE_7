@@ -1674,9 +1674,8 @@ public function setInventoryAdjustment(){
             'USER' => $user , 
             'ID_compania' =>  $id_compania );
 
-            
-            if($standalone != 9 ){
 
+            if($standalone != 9 ){
 
     
                 $this->model->insert('InventoryAdjust_Imp',$values);
@@ -1688,8 +1687,7 @@ public function setInventoryAdjustment(){
                         
                 $this->UpdateAddItemsLocation($stockID, $Quantity);
 
-                $this->model->update('Products_Exp',['LastUnitCost' => $Unit_Price ],' ProductID="'.$Item_id.'" and ID_company="'.$id_compania.'" ');
-
+                $this->model->update('Products_Exp',['LastUnitCost' => $Unit_Price ],' ProductID="'.$Item_id.'" and ID_compania="'.$id_compania.'" ');
 
             }
             
@@ -1698,7 +1696,7 @@ public function setInventoryAdjustment(){
             $error = $this->CheckError();
             if($error){
                 $error= json_decode($error) ;
-                    echo 'ERROR: '.$error->{'E'}.' InventoryAdjust_Imp - itemID '.$itemid.' Ref:'.$reference;
+                    echo 'ERROR: '.$error->{'E'}.' Inventory Adjustment - itemID '.$itemid.' Ref:'.$reference;
                 die();
                 
             }else{
