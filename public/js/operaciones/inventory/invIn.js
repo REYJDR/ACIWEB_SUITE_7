@@ -792,7 +792,7 @@ function proceed(){
 
        var data =  $("form").serialize()+'&url=ges_inventario/addItem';
 
-       console.log(data);
+       //console.log(data);
        $.ajax({
         type: "GET",
         url: link,

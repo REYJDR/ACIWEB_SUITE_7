@@ -113,7 +113,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 										<?php  $this->getStockListToSelect();  ?>
 
 										</select></td></tr>
-										<tr><th><strong><?PHP echo $invIn5; ?></strong></th><td><select id="up_route" ame="itemRoute"  class="form-control" ></select></td></tr>
+										<tr><th><strong><?PHP echo $invIn5; ?></strong></th><td><select id="up_route"  name="itemRoute"  class="form-control" ></select></td></tr>
 										</tbody>
 									</table>
 									</fieldset>
