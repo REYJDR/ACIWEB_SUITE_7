@@ -1685,6 +1685,9 @@ public function setInventoryAdjustment(){
                         
                 $this->UpdateAddItemsLocation($stockID, $Quantity);
 
+                $this->model->update('Products_Exp',['LastUnitCost' => $Unit_Price ],' ProductID="'.$Item_id.'" and ID_company="'.$id_compania.'" ');
+
+                
             }
             
             
