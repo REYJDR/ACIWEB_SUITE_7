@@ -109,10 +109,10 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 									<table class='table_form'>
 										<tbody>
 										<tr><th><strong><?PHP echo $invIn4; ?></strong></th><td>
-										
-										<?php  $this->getStockList();  ?>
+										<select id="up_stock" class="form-control"  onchange="locat(this.value,0);">
+										<?php  $this->getStockListToSelect();  ?>
 
-									    </td></tr>
+										</select></td></tr>
 										<tr><th><strong><?PHP echo $invIn5; ?></strong></th><td><select id="up_route" class="form-control" ></select></td></tr>
 										</tbody>
 									</table>
