@@ -1652,7 +1652,7 @@ public function setInventoryAdjustment(){
         list($null,$Item_id,$Description,$GL_Acct,$JobID,$JobPhaseID,$JobCostCodeID,$Quantity,$Unit_Price,$Net_line) = explode('@', $value );
         
 
-        if($value){
+        if($Item_id != ''){
             
             $date = strtotime($this->model->GetLocalTime(date("Y-m-d")));
             $date = date("Y-m-d",$date);
