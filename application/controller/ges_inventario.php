@@ -1660,21 +1660,24 @@ public function setInventoryAdjustment(){
             
            $standalone = $this->model->Query_value('company_info','Sage_conn',' Where id="1"' );
             
+           $values = array (
+            'ItemID' => $Item_id, 
+            'JobID' => $JobID, 
+            'JobPhaseID' => $JobPhaseID, 
+            'JobCostCodeID' => $JobCostCodeID , 
+            'Reference' => $reference , 
+            'ReasonToAdjust' => 'Aciweb - Entrada de mercancia' , 
+            'Account' => $GL_Acct , 
+            'UnitCost' => $Unit_Price , 
+            'Quantity' => $Quantity, 
+            'Date' => $date , 
+            'USER' => $user , 
+            'ID_compania' =>  $id_compania );
+
+            
             if($standalone != 9 ){
 
-                $values = array (
-                    'ItemID' => $Item_id, 
-                    'JobID' => $JobID, 
-                    'JobPhaseID' => $JobPhaseID, 
-                    'JobCostCodeID' => $JobCostCodeID , 
-                    'Reference' => $reference , 
-                    'ReasonToAdjust' => 'Aciweb - Entrada de mercancia' , 
-                    'Account' => $GL_Acct , 
-                    'UnitCost' => $Unit_Price , 
-                    'Quantity' => $Quantity, 
-                    'Date' => $date , 
-                    'USER' => $user , 
-                    'ID_compania' =>  $id_compania );
+
     
                 $this->model->insert('InventoryAdjust_Imp',$values);
 
@@ -1687,7 +1690,7 @@ public function setInventoryAdjustment(){
 
                 $this->model->update('Products_Exp',['LastUnitCost' => $Unit_Price ],' ProductID="'.$Item_id.'" and ID_company="'.$id_compania.'" ');
 
-                
+
             }
             
             
