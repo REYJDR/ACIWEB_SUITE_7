@@ -20,7 +20,7 @@ openCity(event, 'Config1');
         <tbody>
             <tr><th><button class="tablinks" onclick="openCity(event, 'Config1')" id="ConfigOpen"><i class="fas fa-building fa-2x icon-color-dash" > </i> &nbsp;&nbsp; <?php echo $config_menu_1; ?></button></th></tr>
             <tr><th><button class="tablinks" onclick="openCity(event, 'Config2')"><i class="fas fa-users fa-2x icon-color-dash" > </i> &nbsp;&nbsp;<?php echo $config_menu_2; ?></button></th></tr>
-            <tr><th><button class="tablinks" onclick="openCity(event, 'Config3')"><i class="fas fa-file-alt fa-2x icon-color-dash" > </i> &nbsp;&nbsp;<?php echo $config_menu_3; ?></button></th></tr>			
+            <tr><th><button class="tablinks" onclick="openCity(event, 'Config3')"><i class="fas fa-file-alt fa-2x icon-color-dash" > </i> &nbsp;&nbsp;<?php echo $config_12_val1; ?></button></th></tr>			
             <tr><th><button class="tablinks" onclick="openCity(event, 'Config4')"><i class="fas fa-server fa-2x icon-color-dash" > </i> &nbsp;&nbsp;<?php echo $config_menu_4; ?></button></th></tr>
             <tr><th><button class="tablinks" onclick="openCity(event, 'Config5')"><i class="fas fa-cubes fa-2x icon-color-dash" > </i> &nbsp;&nbsp;<?php echo $config_menu_5; ?></button></th></tr>
             <tr><th><button class="tablinks" onclick="openCity(event, 'Config6')"><i class="fas fa-balance-scale fa-2x icon-color-dash" > </i> &nbsp;&nbsp;<?php echo $config_menu_6; ?></button></th></tr>
