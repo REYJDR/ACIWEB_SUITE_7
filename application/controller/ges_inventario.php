@@ -1877,7 +1877,16 @@ public function getStocLockName($id){
 
 public function addItem(){
 
- var_dump($_GET);
+ foreach ($_GET as $key => $value) {
+    
+    $pos = strpos($key, 'item');
+
+    if($pos === TRUE ){
+
+        echo $value.'-';
+
+    }
+ }
 
 }
 
