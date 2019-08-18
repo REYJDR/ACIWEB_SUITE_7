@@ -48,8 +48,8 @@ foreach ($detail as $value) {
 					<fieldset class="fieldsetform">
 						<table class='table_form'>
 							<tbody>
-							<tr><th><strong><?PHP echo $invInfo1; ?></strong></th><td><input  class="inputPage col-lg-12"  value="<?php echo  $Prod_ID;  ?>"/></td>		</tr>
-							<tr><th><strong><?PHP echo $invInfo2; ?></strong></th><td><input  class="inputPage col-lg-12"  value="<?php echo  $desc;     ?>"/></td>		</tr></tbody>
+							<tr><th><strong><?PHP echo $invInfo1; ?></strong></th><td><input  class="inputPage col-lg-12"  value="<?php echo  $Prod_ID;  ?>" readonly/></td>		</tr>
+							<tr><th><strong><?PHP echo $invInfo2; ?></strong></th><td><input  class="inputPage col-lg-12"  value="<?php echo  $desc;     ?>" readonly/></td>		</tr></tbody>
 						</table>
 						</fieldset>
 					</div>
@@ -58,9 +58,9 @@ foreach ($detail as $value) {
 					<fieldset class="fieldsetform">
 						<table class='table_form'>
 							<tbody>
-							<tr><th><strong><?PHP echo $invInfo4; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value="<?php echo  $PRICE; ?>"/></td>		</tr>
-							<tr><th><strong><?PHP echo $invInfo5; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value="<?php echo  $MEASURE; ?>"/></td>		</tr>
-							<tr><th><strong><?PHP echo $invInfo6; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value="<?php echo  number_format($QTY,0, '.', ','); ?>"/></td>		</tr>	
+							<tr><th><strong><?PHP echo $invInfo4; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value="<?php echo  $PRICE; ?>" readonly/></td>		</tr>
+							<tr><th><strong><?PHP echo $invInfo5; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value="<?php echo  $MEASURE; ?>" readonly/></td>		</tr>
+							<tr><th><strong><?PHP echo $invInfo6; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value="<?php echo  number_format($QTY,0, '.', ','); ?>" readonly/></td>		</tr>	
 							</tbody>
 						</table>
 						</fieldset>
@@ -70,9 +70,9 @@ foreach ($detail as $value) {
 					<fieldset class="fieldsetform">
 						<table class='table_form'>
 							<tbody>
-							<tr><th><strong><?PHP echo $invInfo7; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value="<?php echo  $LastUnitCost; ?>"/></td></tr>
-							<tr><th><strong><?PHP echo $invInfo8; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value="<?php echo  $GL_SALES_ACCT; ?>"/></td>		</tr>
-							<tr><th><strong><?PHP echo $invInfo9; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value="<?php echo  $UPCSKU; ?>"/></td>		</tr>	
+							<tr><th><strong><?PHP echo $invInfo7; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value="<?php echo  $LastUnitCost; ?>" readonly/></td></tr>
+							<tr><th><strong><?PHP echo $invInfo8; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value="<?php echo  $GL_SALES_ACCT; ?>" readonly/></td>		</tr>
+							<tr><th><strong><?PHP echo $invInfo9; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value="<?php echo  $UPCSKU; ?>" readonly/></td>		</tr>	
 							</tbody>
 						</table>
 						</fieldset>
