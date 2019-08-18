@@ -60,6 +60,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 						<!--ENTRADA INDIVIDUAL-->
 						<div  class="col-lg-12" id="prod_ind">
+						<form action="" id='prodInd'>
+						
 						<!--ini  header-->
 						<div class="col-lg-8">
 						 <fieldset  class="fieldsetform"> 		
@@ -138,7 +140,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 								<div class='col-lg-10'></div>
 								<div class='col-lg-2'>
 									<div class="container-login100-form-btn">
-									<input name="proc_indv" type="submit"  value="<?PHP echo $BTN_InvIN_Proc; ?>"  class="accept-form-btn" name="submit"  value="<?PHP echo $BTN_Process; ?>" />			
+									<input name="proc_indv" id="proc_indv"  onclick="proceed(1);"  value="<?PHP echo $BTN_InvIN_Proc; ?>"  class="accept-form-btn"  value="<?PHP echo $BTN_Process; ?>" />			
 									</div>
 								</div>
 								<div class="separador col-lg-12"> </div>
@@ -146,7 +148,10 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 							</fieldset>
 							</div>
-							<!--fin  header-->			
+							<!--fin  header-->
+						
+						</form>
+									
 						</div>
 						<!--ENTRADA INDIVIDUAL-->
 
