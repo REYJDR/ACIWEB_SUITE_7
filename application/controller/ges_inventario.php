@@ -1877,16 +1877,83 @@ public function getStocLockName($id){
 
 public function addItem(){
 
- foreach ($_GET as $key => $value) {
+    $this->model->verify_session();
+    $id_compania= $this->model->id_compania;
+    $user = $this->model->active_user_id;
+
+
+    $itemId   = $_GET['itemId'];
+    $itemDesc = $_GET['itemDesc'];
+    $isActive = $_GET['isActive'];
+    $itemUnitPrice   = $_GET['itemUnitPrice'];
+    $itemUnitMeasure =  $_GET['itemUnitMeasure'];
+    $itemQty     =  $_GET['itemQty'];
+    $itemTaxType = $_GET['itemTaxType']; 
+    $itemGlAccnt = $_GET['itemGlAccnt']; 
+    $itemUpc     = $_GET['itemUpc']; 
+    $itemStock   = $_GET['itemStock']; 
+    $itemRoute   = $_GET['itemRoute']; 
+
+   $exist =  $this->model->Query_value('Products_Exp','ProductID',' where ProductID="'.$itemId.'" where ID_company="'.$id_compania.'"');
     
-    $pos = strpos($key, 'item');
+   if( $exist == ''){
 
-    if($pos === TRUE ){
+     echo 0;
 
-        echo $value.'-';
+   }else{
 
-    }
- }
+            $columns = array('ProductID' =>  $itemId,
+                            'Description' => $itemDesc,
+                            'QtyOnHand' => $itemQty ,
+                            'Price1' =>  $itemUnitPrice,
+                            'TaxType' => $itemTaxType,
+                            'UnitMeasure' => $itemUnitMeasure,
+                            'IsActive' => $isActive,
+                            'id_compania' => $id_compania,
+                            'UPC_SKU' => $itemUpc ,
+                            'GL_Sales_Acct' => $itemGlAccnt ,
+                            'LastUnitCost' =>  $itemUnitPrice );
+
+            $this->model->insert('Products_Exp',$columns); 
+            $error = $this->CheckError();
+            if($error){
+                $error= json_decode($error) ;
+                    echo 'ERROR: '.$error->{'E'}.' Products';
+                die();
+                
+            }else{
+               
+
+                    echo 1;
+
+
+
+
+            }
+
+            // // //set event item 
+            // $id_compania = $this->model->id_compania;
+            // $user        = $this->model->active_user_id;
+            
+            // $event_values = array(  'ProductID' => $itemid,
+            //                         'JobID' => '',
+            //                         'JobPhaseID' => '',
+            //                         'JobCostCodeID' => '',
+            //                         'PurchaseNumber' => '',
+            //                         'Qty'=> $qty,
+            //                         'unit_price' => $unit_price ,
+            //                         'Total' => $Price,
+            //                         'User' => $user,
+            //                         'Type' => 'Reserva a Orden de venta',
+            //                         'Referencia'  => $SalesOrderNumber,
+            //                         'ID_compania' => $id_compania ,
+            //                         'stockOrigID' => $loc );
+            // //set event Line              
+            // $this->model->insert('INV_EVENT_LOG',$event_values); 
+
+
+   }
+   
 
 }
 

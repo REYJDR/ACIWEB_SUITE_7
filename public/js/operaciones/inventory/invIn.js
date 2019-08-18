@@ -787,7 +787,8 @@ function proceed(){
     // ******************************************************************************************
     function individual(){ 
 
-
+        MSG_ERROR_RELEASE();
+        $('#ERROR').hide();
 
        var data =  $("form").serialize()+'&url=ges_inventario/addItem';
 
@@ -799,7 +800,23 @@ function proceed(){
         data: data,
         success: function(res){
 
-             console.log(res);
+             if(res == 0){
+
+                MSG_ERROR('Item already exist, please try another ID',0);
+
+             }else{
+
+                if(res.indexOf('ERROR') != -1){
+                    
+                    MSG_ERROR(res,0);
+                    
+                }else{
+
+                   console.log(res);
+            
+                }
+
+             }
         }
         });
 
