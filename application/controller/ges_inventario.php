@@ -1885,14 +1885,6 @@ public function addItem(){
     $itemId   = $_GET['itemId'];
     $itemDesc = $_GET['itemDesc'];
 
-    $isActive = $_GET['isActive'];
-
-    if($isActive=='on'){
-        $isActive = true;
-    }else{
-        $isActive = false;
-    }
-    
 
     $itemUnitPrice   = $_GET['itemUnitPrice'];
     $itemUnitMeasure =  $_GET['itemUnitMeasure'];
@@ -1911,34 +1903,32 @@ public function addItem(){
 
    }else{
 
-            $columns = array('ProductID' =>  $itemId,
-                            'Description' => $itemDesc,
-                            'QtyOnHand' => $itemQty ,
-                            'Price1' =>  $itemUnitPrice,
-                            'TaxType' => $itemTaxType,
-                            'UnitMeasure' => $itemUnitMeasure,
-                            'IsActive' => $isActive,
-                            'id_compania' => $id_compania,
-                            'UPC_SKU' => $itemUpc ,
-                            'GL_Sales_Acct' => $itemGlAccnt ,
-                            'LastUnitCost' =>  $itemUnitPrice );
+        $columns = array('ProductID' =>  $itemId,
+                        'Description' => $itemDesc,
+                        'QtyOnHand' => $itemQty ,
+                        'Price1' =>  $itemUnitPrice,
+                        'TaxType' => $itemTaxType,
+                        'UnitMeasure' => $itemUnitMeasure,
+                      
+                        'id_compania' => $id_compania,
+                        'UPC_SKU' => $itemUpc ,
+                        'GL_Sales_Acct' => $itemGlAccnt ,
+                        'LastUnitCost' =>  $itemUnitPrice );
 
-            $this->model->insert('Products_Exp',$columns); 
-            $error = $this->CheckError();
-            if($error){
-                $error= json_decode($error) ;
-                    echo 'ERROR: '.$error->{'E'}.' Products';
-                die();
-                
-            }else{
-               
+        $this->model->insert('Products_Exp',$columns); 
 
-                    echo 1;
+        $error = $this->CheckError();
+        if($error){
+            $error= json_decode($error) ;
+                echo 'ERROR: '.$error->{'E'}.' Products';
+            die();
+            
+        }else{
+            
 
+                echo 1;
 
-
-
-            }
+        }
 
             // // //set event item 
             // $id_compania = $this->model->id_compania;

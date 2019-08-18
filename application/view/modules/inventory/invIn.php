@@ -71,8 +71,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 										<tbody>
 										<tr><th><strong><?PHP echo $invInfo1; ?></strong></th><td><input name="itemId"  class="inputPage col-lg-12"  value="" required/></td></tr>
 										<tr><th><strong><?PHP echo $invInfo2; ?></strong></th><td><input name="itemDesc"  class="inputPage col-lg-12"  value="" required/></td></tr>
-										<tr><td><strong><?PHP echo $invIn8; ?></strong></td>					
-										    <th><input type="checkbox" id="isActive" name="isActive" checked  /></th></tr>
+										<!-- <tr><td><strong><?PHP echo $invIn8; ?></strong></td>					
+										    <th><input type="checkbox" id="isActive" name="isActive" checked  /></th></tr> -->
 										 </tbody>
 									</table>
 									</fieldset>
