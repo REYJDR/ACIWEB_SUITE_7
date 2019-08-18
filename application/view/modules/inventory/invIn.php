@@ -15,7 +15,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 <div class="limiter">
 		<div class="container-page100">
 			<div class="wrap-page100">
-			<form method="POST"  action="" class="login100-form validate-form p-l-25 p-r-25 p-t-60" >
+			<form method="POST" id='form' action="" class="login100-form validate-form p-l-25 p-r-25 p-t-60" >
 
 			<span class="page100-form-title">
 						<?PHP echo $Title_invIn; ?>
@@ -60,8 +60,6 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 						<!--ENTRADA INDIVIDUAL-->
 						<div  class="col-lg-12" id="prod_ind">
-						<form action="" id='prodInd' name='prodInd'>
-						
 						<!--ini  header-->
 						<div class="col-lg-8">
 						 <fieldset  class="fieldsetform"> 		
@@ -150,8 +148,6 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 							</div>
 							<!--fin  header-->
 						
-						</form>
-									
 						</div>
 						<!--ENTRADA INDIVIDUAL-->
 
