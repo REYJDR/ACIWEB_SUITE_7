@@ -57,7 +57,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 
 					<div class="separador col-lg-12"> </div>
-					<form method="POST" id='form2' action=""  >
+					
 					<!--ENTRADA INDIVIDUAL-->
 						<div  class="col-lg-12" id="prod_ind">
 						<!--ini  header-->
@@ -150,7 +150,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						
 						</div>
 					<!--ENTRADA INDIVIDUAL-->
-					</form>
+				
 						<!--ENTRADA MASIVA-->
 						<div  class="col-lg-12" id="prod_masive">
 						<fieldset class="fieldsetform">				
