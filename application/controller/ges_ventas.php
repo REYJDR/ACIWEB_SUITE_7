@@ -1206,7 +1206,7 @@ public function SetSOfromStock($SalesOrderNumber){
 
 
 //descuento o reserva del material con base a una orden de venta o perdido de despacho
-   $inv= $this->model->Query_value('INV_CONF','inv_discount', 'WHERE  ID_compania="'.$id_compania.'"');
+   $inv= $this->model->Query_value('INV_CONF','inv_discount', 'WHERE ID_compania="'.$id_compania.'"');
    
    if($inv == 0){
 
