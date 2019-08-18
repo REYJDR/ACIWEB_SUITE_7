@@ -1658,21 +1658,35 @@ public function setInventoryAdjustment(){
             $date = date("Y-m-d",$date);
             $reference = $this->model->Get_Ref_No();
             
-            $values = array (
-                'ItemID' => $Item_id, 
-                'JobID' => $JobID, 
-                'JobPhaseID' => $JobPhaseID, 
-                'JobCostCodeID' => $JobCostCodeID , 
-                'Reference' => $reference , 
-                'ReasonToAdjust' => 'Aciweb - Entrada de mercancia' , 
-                'Account' => $GL_Acct , 
-                'UnitCost' => $Unit_Price , 
-                'Quantity' => $Quantity, 
-                'Date' => $date , 
-                'USER' => $user , 
-                'ID_compania' =>  $id_compania );
+           $standalone = $this->model->Query_value('company_info','Sage_conn',' Where id="1"' );
+            
+            if($standalone != 9 ){
 
-            $this->model->insert('InventoryAdjust_Imp',$values);
+                $values = array (
+                    'ItemID' => $Item_id, 
+                    'JobID' => $JobID, 
+                    'JobPhaseID' => $JobPhaseID, 
+                    'JobCostCodeID' => $JobCostCodeID , 
+                    'Reference' => $reference , 
+                    'ReasonToAdjust' => 'Aciweb - Entrada de mercancia' , 
+                    'Account' => $GL_Acct , 
+                    'UnitCost' => $Unit_Price , 
+                    'Quantity' => $Quantity, 
+                    'Date' => $date , 
+                    'USER' => $user , 
+                    'ID_compania' =>  $id_compania );
+    
+                $this->model->insert('InventoryAdjust_Imp',$values);
+
+            }else{
+
+
+                $stockID = $this->model->Query_value('STOCK_ITEMS_LOCATION','id',' where lote = "'.$itemId.'0000"  and ID_company="'.$id_compania.'" order by id asc limit 1');
+                        
+                $this->UpdateAddItemsLocation($stockID, $Quantity);
+
+            }
+            
             
             usleep(1000);
             $error = $this->CheckError();
@@ -1686,6 +1700,9 @@ public function setInventoryAdjustment(){
                 $this->set_Budget_Log($values,'2');
                 $ref .= 'Item:'.$itemid.'Ref: '.$reference."\n";
             }
+
+
+
         }
     }
     if(!$error){
@@ -1969,6 +1986,57 @@ public function addItem(){
    }
    
 
+}
+
+
+
+public function UpdateItemsLocation($Idruta,$qty){
+    
+      $this->model->verify_session();
+    
+      //UBICO LA CANTIDAD ACTUAL EN STATUS_LOCATION
+      $CURRENT_QTY = $this->getLoteQty($Idruta);
+      
+      //ACTUALIZO LA CANTIDAD EN LA UBICCION DEFAULT
+      $QTY_TO_SET = $CURRENT_QTY - $qty;
+      
+    
+      $query= 'UPDATE STOCK_ITEMS_LOCATION SET qty="'.$QTY_TO_SET.'" WHERE id="'.$Idruta.'" and ID_compania="'.$this->model->id_compania.'"';
+      $res = $this->model->Query($query);
+      
+      $this->CheckError();
+    
+    
+}
+
+
+public function UpdateAddItemsLocation($Idruta,$qty){
+    
+      $this->model->verify_session();
+    
+      //UBICO LA CANTIDAD ACTUAL EN STATUS_LOCATION
+      $CURRENT_QTY = $this->getLoteQty($Idruta);
+      
+      //ACTUALIZO LA CANTIDAD EN LA UBICCION DEFAULT
+      $QTY_TO_SET = $CURRENT_QTY + $qty;
+      
+    
+      $query= 'UPDATE STOCK_ITEMS_LOCATION SET qty="'.$QTY_TO_SET.'" WHERE id="'.$Idruta.'" and ID_compania="'.$this->model->id_compania.'"';
+      $res = $this->model->Query($query);
+      
+      $this->CheckError();
+    
+    
+}
+
+public function getLoteQty($idLoc=''){
+    
+    $this->model->verify_session();
+
+    $res = $this->model->Query_value('STOCK_ITEMS_LOCATION','Floor(qty)','where id="'.$idLoc.'" and ID_compania ="'.$this->model->id_compania.'";');
+
+
+return $res;
 }
 
 }//CIERRE DE CLASE
