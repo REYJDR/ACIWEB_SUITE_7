@@ -1895,8 +1895,8 @@ public function addItem(){
     $itemStock   = $_GET['itemStock']; 
     $itemRoute   = $_GET['itemRoute']; 
 
-   $exist =  $this->model->Query_value('Products_Exp','ProductID',' where ProductID="'.$itemId.'" and ID_company="'.$id_compania.'"');
-    
+   $exist =  $this->model->Query_value('Products_Exp','ProductID',' where ProductID="'.$itemId.'" and ID_compania="'.$id_compania.'" ');
+
    if( $exist != ''){
 
      echo 0;
@@ -1927,7 +1927,7 @@ public function addItem(){
             $columns = array( 'stock'    =>  $itemStock , 
                               'location' =>  $itemRoute  );
 
-            $this->model->update('STOCK_ITEMS_LOCATION', $columns, ' lote = "'.$itemId.'0000"  and ID_company="'.$id_compania.'" ');
+            $this->model->update('STOCK_ITEMS_LOCATION', $columns, ' lote = "'.$itemId.'0000"  and ID_compania="'.$id_compania.'" ');
 
             $stockID = $this->model->Query_value('STOCK_ITEMS_LOCATION','id',' where lote = "'.$itemId.'0000"  and ID_company="'.$id_compania.'"');
             
