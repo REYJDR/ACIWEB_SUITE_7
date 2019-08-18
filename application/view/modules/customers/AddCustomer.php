@@ -93,9 +93,9 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						</tr>
 						<tr>
 							<th><strong><?PHP echo $InputCust_11; ?></strong></th>
-							<td><input type="number" class="inputPage" id="cus_bal" name="cus_bal" /></td>		
+							<td><input type="number" class="inputPage" id="cus_bal" name="cus_bal" value="0" /></td>		
 							<th><strong><?PHP echo $InputCust_12; ?></strong></th>
-							<td><input type="number" class="inputPage" id="cus_creditlimit" name="cus_creditlimit" /></td>				
+							<td><input type="number" class="inputPage" id="cus_creditlimit" name="cus_creditlimit"  value="0"/></td>				
 						</tr>
 						<tr>
 							<th><strong><?PHP echo $InputCust_13; ?></strong></th>
@@ -197,7 +197,6 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 									    'SalesRepName'=> $_POST['cus_SalesName'],
 									    'AddressLine1'=> $_POST['cus_addres1'],
 									    'AddressLine2'=> $_POST['cus_addres2'],
-									    'IsActive'=> 1,
 									    'ID_compania' => $this->model->id_compania);
 
 
