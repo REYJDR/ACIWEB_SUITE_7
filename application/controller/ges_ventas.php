@@ -1206,9 +1206,9 @@ public function SetSOfromStock($SalesOrderNumber){
 
 
 //descuento o reserva del material con base a una orden de venta o perdido de despacho
-   $inv= $this->model->Query_value('INV_CONF','inv_discount', 'WHERE  ID_compania="'.$this->model->id_compania.'"');
+   $inv= $this->model->Query_value('INV_CONF','inv_discount', 'WHERE  ID_compania="'.$id_compania.'"');
    
-   if($inv == 1){
+   if($inv == 0){
 
         //**  reserva de items  */
         $reserv = array(  'ProductID'           => $itemid,
@@ -1235,6 +1235,7 @@ public function SetSOfromStock($SalesOrderNumber){
                                 'User' => $user,
                                 'Type' => 'Reserva a Orden de venta',
                                 'Referencia'  => $SalesOrderNumber,
+                                'aci_ref' => $SalesOrderNumber,
                                 'ID_compania' => $id_compania ,
                                 'stockOrigID' => $loc );
         //set event Line              
@@ -1262,6 +1263,7 @@ public function SetSOfromStock($SalesOrderNumber){
                                 'User' => $user,
                                 'Type' => 'Despacho por Pedido / Orden de venta',
                                 'Referencia'  => $SalesOrderNumber,
+                                'aci_ref' => $SalesOrderNumber,
                                 'ID_compania' => $id_compania ,
                                 'stockOrigID' => $loc );
         //set event Line              
