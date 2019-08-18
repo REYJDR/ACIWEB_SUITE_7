@@ -1895,7 +1895,7 @@ public function addItem(){
     $itemStock   = $_GET['itemStock']; 
     $itemRoute   = $_GET['itemRoute']; 
 
-   $exist =  $this->model->Query_value('Products_Exp','ProductID',' where ProductID="'.$itemId.'" where ID_company="'.$id_compania.'"');
+   $exist =  $this->model->Query_value('Products_Exp','ProductID',' where ProductID="'.$itemId.'" and ID_company="'.$id_compania.'"');
     
    if( $exist != ''){
 
@@ -1909,7 +1909,6 @@ public function addItem(){
                         'Price1' =>  $itemUnitPrice,
                         'TaxType' => $itemTaxType,
                         'UnitMeasure' => $itemUnitMeasure,
-                      
                         'id_compania' => $id_compania,
                         'UPC_SKU' => $itemUpc ,
                         'GL_Sales_Acct' => $itemGlAccnt ,
@@ -1924,31 +1923,41 @@ public function addItem(){
             die();
             
         }else{
+
+            $columns = array( 'stock'    =>  $itemStock , 
+                              'location' =>  $itemRoute  );
+
+            $this->model->update('STOCK_ITEMS_LOCATION', $columns, ' lote = "'.$itemId.'0000"  and ID_company="'.$id_compania.'" ');
+
+            $stockID = $this->model->Query_value('STOCK_ITEMS_LOCATION','id',' where lote = "'.$itemId.'0000"  and ID_company="'.$id_compania.'"');
             
 
-                echo 1;
+            $user        = $this->model->active_user_id;
+            
+            $event_values = array(  'ProductID' => $itemId,
+                                    'JobID' => '',
+                                    'JobPhaseID' => '',
+                                    'JobCostCodeID' => '',
+                                    'PurchaseNumber' => '',
+                                    'Qty'=> $itemQty,
+                                    'unit_price' => $itemUnitPrice ,
+                                    'Total' => $itemQty * $itemUnitPrice,
+                                    'User' => $user,
+                                    'Type' => 'Entrada de mercancia',
+                                    'Referencia'  => 'IN_'.$itemId,
+                                    'ID_compania' => $id_compania,
+                                    'stockOrigID' => $stockID);
+            //set event Line              
+            $this->model->insert('INV_EVENT_LOG',$event_values); 
+
+
+
+
+            echo 1;
 
         }
 
-            // // //set event item 
-            // $id_compania = $this->model->id_compania;
-            // $user        = $this->model->active_user_id;
-            
-            // $event_values = array(  'ProductID' => $itemid,
-            //                         'JobID' => '',
-            //                         'JobPhaseID' => '',
-            //                         'JobCostCodeID' => '',
-            //                         'PurchaseNumber' => '',
-            //                         'Qty'=> $qty,
-            //                         'unit_price' => $unit_price ,
-            //                         'Total' => $Price,
-            //                         'User' => $user,
-            //                         'Type' => 'Reserva a Orden de venta',
-            //                         'Referencia'  => $SalesOrderNumber,
-            //                         'ID_compania' => $id_compania ,
-            //                         'stockOrigID' => $loc );
-            // //set event Line              
-            // $this->model->insert('INV_EVENT_LOG',$event_values); 
+          
 
 
    }

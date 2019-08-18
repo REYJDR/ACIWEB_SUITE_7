@@ -811,8 +811,9 @@ function proceed(){
                     MSG_ERROR(res,0);
                     
                 }else{
+                   alert('Item added successfully');
 
-                   console.log(res);
+                   window.reload();
             
                 }
 
