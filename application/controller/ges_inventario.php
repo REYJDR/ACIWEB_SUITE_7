@@ -165,7 +165,7 @@ public function getStockListToSelect(){
         $table = '';
     
     
-        $query="select * from STOCKS where onoff='1' and 
+        $query="select * from STOCKS where  
         ID_compania='".$this->model->id_compania."' or
         ID_compania='0' ;";
     
