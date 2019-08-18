@@ -1877,9 +1877,7 @@ public function getStocLockName($id){
 
 public function addItem(){
 
-    foreach ($_GET AS $value) {
-        ECHO $value;
-    }
+ var_dump($_GET);
 
 }
 
