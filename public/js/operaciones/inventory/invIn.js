@@ -789,21 +789,21 @@ function proceed(){
 
 
 
-       console.log( $("form").serialize() );
+       var data =  $("form").serialize()+'url=ges_inventario/addItem';
 
 
+       $.ajax({
+        type: "GET",
+        url: link,
+        async: false,
+        data: data,
+        success: function(res){
 
+             console.log(res);
+        }
+        });
 
-       
-
-
-
-
-
-
-
-
-    }
+}
     // ******************************************************************************************
     // ENVIO INDIVIDUAL
     // ******************************************************************************************
