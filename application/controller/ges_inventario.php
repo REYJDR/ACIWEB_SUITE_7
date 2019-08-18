@@ -1684,12 +1684,13 @@ public function setInventoryAdjustment(){
 
             }else{
 
+                $reference = 'ADJ-'.$Item_id.date('dmy') ;
                 $values = array (
                     'ItemID' => $Item_id, 
                     'JobID' => $JobID, 
                     'JobPhaseID' => $JobPhaseID, 
                     'JobCostCodeID' => $JobCostCodeID , 
-                    'Reference' => 'ADJ-'.$Item_id.date('dmy') , 
+                    'Reference' => $reference, 
                     'ReasonToAdjust' => 'Aciweb - Entrada de mercancia' , 
                     'Account' => $GL_Acct , 
                     'UnitCost' => $Unit_Price , 
@@ -1699,10 +1700,12 @@ public function setInventoryAdjustment(){
                     'ID_compania' =>  $id_compania );
 
 
-                $stockID = $this->model->Query_value('STOCK_ITEMS_LOCATION','id',' where lote = "'.$Item_id.'0000"  and ID_compania="'.$id_compania.'" order by id asc limit 1');
+                $stockID = $this->model->Query_value('STOCK_ITEMS_LOCATION','id',' where lote="'.$Item_id.'0000"  and ID_compania="'.$id_compania.'" order by id asc limit 1');
                         
         
                 $this->UpdateAddItemsLocation($stockID, $Quantity);
+
+                $ref .= 'stock:'.$stockID.',qty:'.$Quantity;
 
                 $this->model->update('Products_Exp',['LastUnitCost' => $Unit_Price ],' ProductID="'.$Item_id.'" and ID_compania="'.$id_compania.'" ');
 
