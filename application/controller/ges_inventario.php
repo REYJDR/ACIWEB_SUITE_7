@@ -1896,7 +1896,7 @@ public function addItem(){
 
    $exist =  $this->model->Query_value('Products_Exp','ProductID',' where ProductID="'.$itemId.'" where ID_company="'.$id_compania.'"');
     
-   if( $exist == ''){
+   if( $exist != ''){
 
      echo 0;
 
