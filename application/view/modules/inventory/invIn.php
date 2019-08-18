@@ -69,8 +69,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 								<fieldset class="fieldsetform">
 									<table class='table_form'>
 										<tbody>
-										<tr><th><strong><?PHP echo $invInfo1; ?></strong></th><td><input  class="inputPage col-lg-12"  value=""/></td>		</tr>
-										<tr><th><strong><?PHP echo $invInfo2; ?></strong></th><td><input  class="inputPage col-lg-12"  value=""/></td> 	</tr>
+										<tr><th><strong><?PHP echo $invInfo1; ?></strong></th><td><input name="itemId"  class="inputPage col-lg-12"  value=""/></td></tr>
+										<tr><th><strong><?PHP echo $invInfo2; ?></strong></th><td><input name="itemDesc"  class="inputPage col-lg-12"  value=""/></td></tr>
 										<tr><td><strong><?PHP echo $invIn8; ?></strong></td>					
 										    <th><input type="checkbox" id="isActive" name="isActive" checked  /></th></tr>
 										 </tbody>
@@ -82,9 +82,9 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 								<fieldset class="fieldsetform">
 									<table class='table_form'>
 										<tbody>
-										<tr><th><strong><?PHP echo $invInfo4; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value=""/></td>		</tr>
-										<tr><th><strong><?PHP echo $invInfo5; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value=""/></td>		</tr>
-										<tr><th><strong><?PHP echo $invInfo6; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value=""/></td>		</tr>	
+										<tr><th><strong><?PHP echo $invInfo4; ?></strong></th><td><input name="itemUnitPrice"  class="inputPage col-lg-12  numb"  value=""/></td>		</tr>
+										<tr><th><strong><?PHP echo $invInfo5; ?></strong></th><td><input name="itemUnitMeasure"  class="inputPage col-lg-12  numb"  value=""/></td>		</tr>
+										<tr><th><strong><?PHP echo $invInfo6; ?></strong></th><td><input name="itemQty"  class="inputPage col-lg-12  numb"  value=""/></td>		</tr>	
 										</tbody>
 									</table>
 									</fieldset>
@@ -94,9 +94,9 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 								<fieldset class="fieldsetform">
 									<table class='table_form'>
 										<tbody>
-										<tr><th><strong><?PHP echo $invIn7; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value=""/></td></tr> 
-										<tr><th><strong><?PHP echo $invInfo8; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value=""/></td></tr>
-										<tr><th><strong><?PHP echo $invInfo9; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value=""/></td></tr>	
+										<tr><th><strong><?PHP echo $invIn7; ?></strong></th><td><input    name="itemTaxType" class="inputPage col-lg-12  numb"  value=""/></td></tr> 
+										<tr><th><strong><?PHP echo $invInfo8; ?></strong></th><td><input  name="itemGlAccnt"  class="inputPage col-lg-12  numb"  value=""/></td></tr>
+										<tr><th><strong><?PHP echo $invInfo9; ?></strong></th><td><input  name="itemUpc"  class="inputPage col-lg-12  numb"  value=""/></td></tr>	
 										</tbody>
 									</table>
 									</fieldset>
@@ -109,11 +109,11 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 									<table class='table_form'>
 										<tbody>
 										<tr><th><strong><?PHP echo $invIn4; ?></strong></th><td>
-										<select id="up_stock" class="form-control"  onchange="locat(this.value,0);">
+										<select id="up_stock"  name="itemStock"  class="form-control"  onchange="locat(this.value,0);">
 										<?php  $this->getStockListToSelect();  ?>
 
 										</select></td></tr>
-										<tr><th><strong><?PHP echo $invIn5; ?></strong></th><td><select id="up_route" class="form-control" ></select></td></tr>
+										<tr><th><strong><?PHP echo $invIn5; ?></strong></th><td><select id="up_route" ame="itemRoute"  class="form-control" ></select></td></tr>
 										</tbody>
 									</table>
 									</fieldset>
