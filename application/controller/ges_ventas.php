@@ -839,7 +839,7 @@ public function set_sales_order_header(){
   'ShipToAddressLine1' => $custinfo->{'AddressLine1'},
   'ShipToAddressLine2' => $custinfo->{'AddressLine2'},
   'ShipToCity' => $custinfo->{'City'},
-  'ShipToState' => substr($custinfo->{'State'}, 2 ),
+  'ShipToState' => substr($custinfo->{'State'}, 0, 2 ),
   'ShipToZip' => $custinfo->{'Zip'},
   'ShipToCountry' => $custinfo->{'Country'},
   'fecha_entrega' => $fecha_entrega,
