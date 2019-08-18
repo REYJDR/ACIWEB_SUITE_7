@@ -586,9 +586,24 @@ openCity(event, 'Config1');
 <div id="Config1" class="tabcontent">
     <div class='col-lg-12'>
     <!--INI MENU INVENTARIO-->
+	<fieldset class="fieldsetform"  >
+		<h4><?php echo $config_10_title; ?></h4> 
+		<form action="" role="form" class="form-horizontal" enctype="multipart/form-data" method="POST">	
+
+				<table class="table_form">
+					<tbody>
+					<tr><th><strong><?php echo $config_15_val1; ?></strong></th><td><input type="CHECKBOX" name="inv_discount" <?php echo  $inv_discount; ?> /></td></tr>
+					</tbody>
+				</table> 
 
 
 
+		<div class='col-lg-8'></div>					
+		<div class="form-group col-lg-3">
+			<input type="submit" name="" class="accept-form-btn" value="Guardar">
+		</div>
+		</form>
+	</fieldset>
     <!--END MENU INVENTARIO-->	
 	</div>
 </div>
