@@ -117,7 +117,7 @@ echo '<script> alert("Se ha actualizado con exito"); window.open("'.URL.'index.p
 }
 
 //ACTUALIZA DATOS DE INVENTARIO
-if (isset($_REQUEST['INVENTORY'])) {
+if (isset($_REQUEST['inventory'])) {
 	
 
 $exist = $this->model->Query_value('INV_CONF', 'ID' ,'where ID_compania="'.$this->model->id_compania.'"');
