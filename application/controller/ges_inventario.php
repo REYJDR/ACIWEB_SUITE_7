@@ -169,6 +169,8 @@ public function getStockListToSelect(){
         ID_compania='".$this->model->id_compania."' or
         ID_compania='0' ;";
     
+        $select .="<option value='#'>-</option>";
+
             $res = $this->model->Query($query);
     
             foreach ($res as $datos) {	
@@ -747,12 +749,13 @@ public function get_routes_by_almacenid($almacen){
                 WHERE stock="'.$almacen.'" and onoff="1"';
     
         $res = $this->model->Query($query);
-    
+        $option = '<option value="#">-</option>';
         $select = '';
         foreach ($res as $value) {
         $value = json_decode($value);
-        echo '<option value="'.$value->{'id'}.'">'.$value->{'location'}.'</option>';
+        $option .= '<option value="'.$value->{'id'}.'">'.$value->{'location'}.'</option>';
         }
+        echo $option;
 }
         
 public function get_lote_qty($lote,$itemid){
