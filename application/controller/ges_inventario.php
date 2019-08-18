@@ -1951,8 +1951,6 @@ public function addItem(){
             $this->model->insert('INV_EVENT_LOG',$event_values); 
 
 
-
-
             echo 1;
 
         }
