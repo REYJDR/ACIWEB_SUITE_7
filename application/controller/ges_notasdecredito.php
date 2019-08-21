@@ -860,7 +860,7 @@ public function ReadInvoiceFile($id_compania){
       $ID = $value->{'CreditNoteNumber'};
       $folder = $value->{'printer'};
        
-      echo 'Found in table :'.$ID."<br>\n";
+       //echo 'Found in table :'.$ID."<br>\n";
 
         //NUEVO BLOQUE
         $PRINTER = $this->GetPrinterSeleccted($ID);
@@ -875,15 +875,19 @@ public function ReadInvoiceFile($id_compania){
           if( $InvNum!='-'){
             $logText .= date('Y-m-d H:i:s').' InvoiceNumber : '.$InvNum.' -  CreditMemoNumber:'.$ID.' File: '.$filename."<br>\n";
           }
-          echo 'Found in file :'.$ID."<br>\n".$logText."<br>\n";
+          
         }else{
 
-          echo 'Not Found in file :'.$filename."<br>\n";
+         // echo 'Not Found in file :'.$filename."<br>\n";
         }
 
 
   }
-
+  echo $logText.'<br>';
+  if($logText == ''){
+    echo 'No info processed';
+  }
+  
   file_put_contents('webhook_log.txt',  $logText, FILE_APPEND);
 
 }
