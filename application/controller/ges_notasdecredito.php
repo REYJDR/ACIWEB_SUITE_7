@@ -884,6 +884,7 @@ public function ReadInvoiceFile($id_compania){
 
   }
   echo $logText.'<br>';
+  
   if($logText == ''){
     echo 'No info processed';
   }
