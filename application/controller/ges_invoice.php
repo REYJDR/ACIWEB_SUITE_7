@@ -676,7 +676,7 @@ public function GetDropboxConfig(){
 public function ReadInvoiceFile($id_compania){
 
 
-  $logText = '';
+  $logText = 'Facturas <br>';
   $bdres = '';
 
   $SQL = 'SELECT SalesOrderNumber , printer

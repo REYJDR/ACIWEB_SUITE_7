@@ -839,7 +839,7 @@ private function CreateDetailFile($id){
 public function ReadInvoiceFile($id_compania){
 
 
-  $logText = '';
+  $logText = 'Notas de Credito <br>';
   $bdres = '';
 
 
@@ -884,7 +884,7 @@ public function ReadInvoiceFile($id_compania){
 
   }
   echo $logText.'<br>';
-  
+
   if($logText == ''){
     echo 'No info processed';
   }
