@@ -676,7 +676,7 @@ public function GetDropboxConfig(){
 public function ReadInvoiceFile($id_compania){
 
 
-  $logText = 'Facturas <br>';
+  $logText = '';
   $bdres = '';
 
   $SQL = 'SELECT SalesOrderNumber , printer
@@ -717,7 +717,7 @@ public function ReadInvoiceFile($id_compania){
   }
   echo $logText.'<br>';
   if($logText == ''){
-    echo 'No info processed';
+    echo 'Facturas : No info processed';
   }
   file_put_contents('webhook_log.txt',  $logText, FILE_APPEND);
 

@@ -839,7 +839,7 @@ private function CreateDetailFile($id){
 public function ReadInvoiceFile($id_compania){
 
 
-  $logText = 'Notas de Credito <br>';
+  $logText = '';
   $bdres = '';
 
 
@@ -886,7 +886,7 @@ public function ReadInvoiceFile($id_compania){
   echo $logText.'<br>';
 
   if($logText == ''){
-    echo 'No info processed';
+    echo 'Notas de credito : No info processed';
   }
   
   file_put_contents('webhook_log.txt',  $logText, FILE_APPEND);
