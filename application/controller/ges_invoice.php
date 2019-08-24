@@ -685,7 +685,7 @@ public function ReadInvoiceFile($id_compania){
             Where 
             ID_compania = "'.$id_compania.'" 
             AND InvoiceNumber IS NULL or InvoiceNumber = ""';
-
+echo $SQL.'<BR>'; 
   $res = $this->model->Query($SQL);
 
   foreach ($res as $key => $value) {
@@ -700,6 +700,7 @@ public function ReadInvoiceFile($id_compania){
 
         $DIR = "FISCAL/".$PRINTER."/OUT/";
         $filename = $DIR.'OUT_FACTI'.$ID.'.TXT';
+       echo $filename.'<BR>'; 
 
         if (file_exists($filename)) {
   
