@@ -685,7 +685,7 @@ public function ReadInvoiceFile($id_compania){
             Where 
             ID_compania = "'.$id_compania.'" 
             AND InvoiceNumber IS NULL or InvoiceNumber = ""';
-echo $SQL.'<BR>'; 
+
   $res = $this->model->Query($SQL);
 
   foreach ($res as $key => $value) {
@@ -700,12 +700,14 @@ echo $SQL.'<BR>';
 
         $DIR = "FISCAL/".$PRINTER."/OUT/";
         $filename = $DIR.'OUT_FACTI'.$ID.'.TXT';
-       echo $filename.'<BR>'; 
+       
+       
 
         if (file_exists($filename)) {
   
          $InvNum  = $this->InsertSalesInfo($id_compania,trim($ID));
-          
+         echo 'Invoice No:'.$InvNum.'<br>';
+         
           if( $InvNum!='-'){
 
              $logText .= $this->model->GetLocalTime(date('Y-m-d H:i:s')).' InvoiceNumber : '.$InvNum.' -  SalesOrderNumber:'.$ID.' File: '.$filename."<br>\n";
@@ -716,7 +718,9 @@ echo $SQL.'<BR>';
         
 
   }
+     
   echo $logText.'<br>';
+     
   if($logText == ''){
     echo 'Facturas : No info processed';
   }
