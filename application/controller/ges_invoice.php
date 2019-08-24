@@ -706,7 +706,6 @@ public function ReadInvoiceFile($id_compania){
         if (file_exists($filename)) {
   
          $InvNum  = $this->InsertSalesInfo($id_compania,trim($ID));
-         echo 'Invoice No:'.$InvNum.'<br>';
          
           if( $InvNum!='-'){
 
@@ -754,7 +753,7 @@ public function GetInvoiceNumber($ID){
 
   $noInv = substr($FACTNO,-5);
 
-  echo $noInv.'-'.$conse;
+  //echo $noInv.'-'.$conse;
  return $noInv.'-'.$conse;
 }
 
