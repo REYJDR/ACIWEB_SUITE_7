@@ -748,10 +748,14 @@ public function GetInvoiceNumber($ID){
   $line = file_get_contents($filename);
 
   list(,,,,,,$FACTNO,$conse) = explode(chr(9), $line);
-
   
-
   $noInv = substr($FACTNO,-5);
+     
+  if($noInv == ''){ 
+       list(,,,,,,$FACTNO,$conse) = explode('|', $line);
+
+       $noInv = substr($FACTNO,-5);
+  }
 
   //echo $noInv.'-'.$conse;
  return $noInv.'-'.$conse;
