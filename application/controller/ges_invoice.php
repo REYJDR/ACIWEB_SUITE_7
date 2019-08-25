@@ -765,7 +765,7 @@ public function GetInvoiceNumber($ID){
 //inserto informacion de SO en Sales par acontabilizacion en PT
 public function InsertSalesInfo($id_compania,$ID){
 
- //$this->model->verify_session();
+ $this->model->verify_session();
  //$id_compania = $this->model->id_compania;
 
 
