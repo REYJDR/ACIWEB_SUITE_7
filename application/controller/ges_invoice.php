@@ -814,7 +814,8 @@ public function InsertSalesInfo($id_compania,$ID){
     'user'=>'00',
     'date'=>$InvDate,
     'DueDate'=>$InvDate,
-    'saletax'=> $TaxID
+    'saletax'=> $TaxID,
+    'ApplyToSO'=> $ID,
     );
 
 
