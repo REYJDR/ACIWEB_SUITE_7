@@ -952,7 +952,7 @@ public function InsertSalesInfo($id_compania,$ID){
                                       'JobCostCodeID' => '',
                                       'PurchaseNumber' => '',
                                       'Qty'=> (-1)*$qty,
-                                      'unit_price' => $unit_price ,
+                                      'unit_price' => $unitPrice ,
                                       'Total' => $Total,
                                       'User' => $user,
                                       'Type' => 'Factura de venta',
