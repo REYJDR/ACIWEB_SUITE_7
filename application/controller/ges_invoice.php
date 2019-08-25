@@ -700,11 +700,13 @@ public function ReadInvoiceFile($id_compania){
 
         $DIR = "FISCAL/".$PRINTER."/OUT/";
         $filename = $DIR.'OUT_FACTI'.$ID.'.TXT';
+       
+       
 
         if (file_exists($filename)) {
   
          $InvNum  = $this->InsertSalesInfo($id_compania,trim($ID));
-          
+         
           if( $InvNum!='-'){
 
              $logText .= $this->model->GetLocalTime(date('Y-m-d H:i:s')).' InvoiceNumber : '.$InvNum.' -  SalesOrderNumber:'.$ID.' File: '.$filename."<br>\n";
@@ -715,7 +717,9 @@ public function ReadInvoiceFile($id_compania){
         
 
   }
+     
   echo $logText.'<br>';
+     
   if($logText == ''){
     echo 'Facturas : No info processed';
   }
@@ -744,12 +748,16 @@ public function GetInvoiceNumber($ID){
   $line = file_get_contents($filename);
 
   list(,,,,,,$FACTNO,$conse) = explode(chr(9), $line);
-
   
-
   $noInv = substr($FACTNO,-5);
+     
+  if($noInv == ''){ 
+       list(,,,,,,$FACTNO,$conse) = explode('|', $line);
 
-  echo $noInv.'-'.$conse;
+       $noInv = substr($FACTNO,-5);
+  }
+
+  //echo $noInv.'-'.$conse;
  return $noInv.'-'.$conse;
 }
 
@@ -757,7 +765,7 @@ public function GetInvoiceNumber($ID){
 //inserto informacion de SO en Sales par acontabilizacion en PT
 public function InsertSalesInfo($id_compania,$ID){
 
- //$this->model->verify_session();
+ $this->model->verify_session();
  //$id_compania = $this->model->id_compania;
 
 
@@ -945,7 +953,7 @@ public function InsertSalesInfo($id_compania,$ID){
                                       'JobCostCodeID' => '',
                                       'PurchaseNumber' => '',
                                       'Qty'=> (-1)*$qty,
-                                      'unit_price' => $unit_price ,
+                                      'unit_price' => $unitPrice ,
                                       'Total' => $Total,
                                       'User' => $user,
                                       'Type' => 'Factura de venta',
