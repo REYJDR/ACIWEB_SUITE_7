@@ -412,8 +412,8 @@ for(var i=1; i<theTbl.rows.length ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TA
 
                     if(document.getElementById(taxableID).value=='SI'){
 
-                    itbms_sum = ( Number(theTbl.rows[i].cells[j].innerHTML) * Number(theTbl.rows[i].cells[5].innerHTML) ) * Number(tax_value);
-
+                    itbms_sum = Number(theTbl.rows[i].cells[7].innerHTML)  * Number(tax_value);
+                    
                     itbms.push(itbms_sum);
 
                     }
