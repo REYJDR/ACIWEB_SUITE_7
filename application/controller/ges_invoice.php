@@ -559,6 +559,7 @@ if (!file_exists($DIR)) {
 
 }
 
+
 $filename = $DIR."FACTI".$id.'.txt';
 
 file_put_contents($filename , $DATA);

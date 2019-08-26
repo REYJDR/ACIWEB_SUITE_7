@@ -907,6 +907,14 @@ public function GetNCNumber($ID){
   
   $noNc = substr($NCNO, -5);
 
+
+  if($noNc == ''){ 
+       list(,,,,,,$NCNO,$conse) = explode('|', $line);
+       
+       $noNc = substr($NCNO,-5);
+  }
+
+
   
   return $noNc.'-N'.$conse;
 }
