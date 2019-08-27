@@ -782,6 +782,7 @@ public function InsertSalesInfo($id_compania,$ID){
 
      $CustomerID = $value->{'CustomerID'};
      $CustomerName = $value->{'CustomerName'};
+
     }
 
 
@@ -844,7 +845,7 @@ public function InsertSalesInfo($id_compania,$ID){
       
           $sales = json_decode($sales);
 
-
+          $ItemOrd = $sales->{'ItemOrd'};
           $InvoiceDetail = $this->model->Query('SELECT 
                                                 Despachado,
                                                 TotalLinea,
@@ -856,11 +857,11 @@ public function InsertSalesInfo($id_compania,$ID){
 
           foreach ($InvoiceDetail as $key => $value) {
             
-           $value = json_decode($value);
+              $value = json_decode($value);
 
-           $qty = $value->{'Despachado'};
-           $unitPrice    = $value->{'UnitPrice'};
-           $Total    = $value->{'TotalLinea'};
+              $qty = $value->{'Despachado'};
+              $unitPrice    = $value->{'UnitPrice'};
+              $Total    = $value->{'TotalLinea'};
 
           }
 
@@ -918,6 +919,7 @@ public function InsertSalesInfo($id_compania,$ID){
       
           //SET DETAIL
           $values1 = array(
+                'ItemOrd' =>$ItemOrd,
                 'ID_compania'=>$id_compania,
                 'invoiceNumber'=>$InvoiceNumber,
                 'Item_id'=>$itemid,
