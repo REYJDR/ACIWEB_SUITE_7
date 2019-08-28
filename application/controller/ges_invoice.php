@@ -703,9 +703,9 @@ public function ReadInvoiceFile($id_compania){
         $filename = $DIR.'OUT_FACTI'.$ID.'.TXT';
        
        
-
+/*
         if (file_exists($filename)) {
-  
+         
          $InvNum  = $this->InsertSalesInfo($id_compania,trim($ID));
          
           if( $InvNum!='-'){
@@ -714,7 +714,7 @@ public function ReadInvoiceFile($id_compania){
           
           }
 
-        }
+        }*/
         
 
   }
