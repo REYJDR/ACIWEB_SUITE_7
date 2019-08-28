@@ -706,7 +706,7 @@ public function ReadInvoiceFile($id_compania){
 
         if (file_exists($filename)) {
          
-      //   $InvNum  = $this->InsertSalesInfo($id_compania,trim($ID));
+         $InvNum  = $this->InsertSalesInfo($id_compania,trim($ID));
          
           if( $InvNum!='-'){
 
@@ -766,7 +766,7 @@ public function GetInvoiceNumber($ID){
 //inserto informacion de SO en Sales par acontabilizacion en PT
 public function InsertSalesInfo($id_compania,$ID){
 
- $this->model->verify_session();
+ //$this->model->verify_session();
  //$id_compania = $this->model->id_compania;
 
 
@@ -947,8 +947,7 @@ public function InsertSalesInfo($id_compania,$ID){
             
               $ventas->UpdateItemsLocation($value->{'status_location_id'},$value->{'qty'});
 
-              $id_compania= $this->model->id_compania;
-              $user = $this->model->active_user_id;
+ 
               
               $event_values = array(  'ProductID' => $itemid,
                                       'JobID' => '',
@@ -958,7 +957,7 @@ public function InsertSalesInfo($id_compania,$ID){
                                       'Qty'=> (-1)*$qty,
                                       'unit_price' => $unitPrice ,
                                       'Total' => $Total,
-                                      'User' => $user,
+                                      'User' => '00',
                                       'Type' => 'Factura de venta',
                                       'Referencia' => $SalesOrderNumber,
                                       'ID_compania' => $id_compania ,
