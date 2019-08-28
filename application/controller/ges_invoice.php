@@ -766,7 +766,7 @@ public function GetInvoiceNumber($ID){
 //inserto informacion de SO en Sales par acontabilizacion en PT
 public function InsertSalesInfo($id_compania,$ID){
 
- $this->model->verify_session();
+ //$this->model->verify_session();
  //$id_compania = $this->model->id_compania;
 
 
@@ -774,7 +774,7 @@ public function InsertSalesInfo($id_compania,$ID){
                                           *
                                         FROM  SalesOrder_Header_Imp 
                                        WHERE  ID_compania = "'.$id_compania.'" 
-                                         AND SalesOrderNumber = "'.$ID.'"');
+                                         AND  SalesOrderNumber = "'.$ID.'"');
 
     foreach ($SalesOrder as $key => $value) {
       
@@ -812,24 +812,24 @@ public function InsertSalesInfo($id_compania,$ID){
 
     if ($InvoiceNumber != '-'){ 
 
-    //SET HEADER
-   $values = array(
-    'ID_compania'=>$id_compania,  
-    'InvoiceNumber'=>$InvoiceNumber,
-    'CustomerID'  => $CustomerID,
-    'CustomerName'=> $CustomerName,
-    'Subtotal'=> $Subtotal,
-    'TaxID'=>    $this->model->Query_value('sale_tax','taxid','Where rate="'.$TaxID.'";'),
-    'Net_due'=>  $Total,
-    'user'=>'00',
-    'date'=>$InvDate,
-    'DueDate'=>$InvDate,
-    'saletax'=> $TaxID,
-    'ApplyToSO'=> $ID,
-    );
+            //SET HEADER
+          $values = array(
+            'ID_compania'=>$id_compania,  
+            'InvoiceNumber'=>$InvoiceNumber,
+            'CustomerID'  => $CustomerID,
+            'CustomerName'=> $CustomerName,
+            'Subtotal'=> $Subtotal,
+            'TaxID'=>    $this->model->Query_value('sale_tax','taxid','Where rate="'.$TaxID.'";'),
+            'Net_due'=>  $Total,
+            'user'=>'00',
+            'date'=>$InvDate,
+            'DueDate'=>$InvDate,
+            'saletax'=> $TaxID,
+            'ApplyToSO'=> $ID,
+            );
 
 
-   $this->model->insert('Sales_Header_Imp',$values);
+          $this->model->insert('Sales_Header_Imp',$values);
 
 
 
