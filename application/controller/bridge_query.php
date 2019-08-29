@@ -1414,6 +1414,8 @@ if($itemFilter){
      FROM Products_Exp 
      WHERE   id_compania="'.$this->model->id_compania.'" '.$clause;    
 
+echo $sql;
+
 $Codigos = $this->model->Query($sql);
 
 foreach ($Codigos as $value) {
