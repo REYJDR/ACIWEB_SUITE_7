@@ -826,6 +826,7 @@ public function InsertSalesInfo($id_compania,$ID){
             'DueDate'=>$InvDate,
             'saletax'=> $TaxID,
             'ApplyToSO'=> $ID,
+            'SalesRepID' => $this->model->Query_value('Customers_Exp','SalesRepID','Where CustomerID="'.$CustomerID.'";'), 
             );
 
 
