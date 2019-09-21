@@ -512,7 +512,7 @@ public function getItemLoteSt(){
         echo $table_lote;
 }
 
-public function SET_NO_LOTE($item,$no_lote,$qty,$fecha = '' ,$fechaFab = ''){
+public function SET_NO_LOTE($item,$no_lote,$qty,$fecha = '0000-00-00 00:00:00' ,$fechaFab = '0000-00-00 00:00:00'){
     
     
         $this->model->verify_session();
