@@ -154,8 +154,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					
 					 list($nota,$typago) = explode('-',$NOTA);
 
-					 $SO_USER = $this->model->Query_value('SalesOrder_Header_Exp','user','WHERE SalesOrderNumber="'.$soNo.'" and ID_compania="'.$this->model->id_compania.'" ');
-					 
+					 $SO_USER = $this->model->Query_value('SalesOrder_Header_Imp','user','WHERE SalesOrderNumber="'.$soNo.'" and ID_compania="'.$this->model->id_compania.'" ');	 
 					 $SO_USER = $this->model->Get_User_Info($SO_USER); 
 					 
 					 foreach ($SO_USER as $value) {
