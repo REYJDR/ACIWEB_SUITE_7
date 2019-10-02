@@ -153,13 +153,23 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					 $NOTA = $this->model->Query_value('INVOICE_GEN_HEADER','NOTAS','WHERE InvoiceNumber="'.$filter->{'InvoiceNumber'}.'"');
 					
 					 list($nota,$typago) = explode('-',$NOTA);
-					
+
+					 $SO_USER = $this->model->Query_value('SalesOrder_Header_Exp','user','WHERE SalesOrderNumber="'.$soNo.'" and ID_compania="'.$this->model->id_compania.'" ');
+					 
+					 $SO_USER = $this->model->Get_User_Info($SO_USER); 
+					 
+					 foreach ($SO_USER as $value) {
+					 $value = json_decode($value);
+					 $SOname= $value->{'name'};
+					 $SOlastname = $value->{'lastname'};
+					 }
+					 
 					$table.= '<tr>
 						<td ><a href="#"  onclick="javascript: show_invoice('.$URL.','.$ID.');"  ><strong>'.$filter->{'InvoiceNumber'}.'</strong></a></td>
 						<td ><a href="#"  onclick="javascript: show_sales('.$URL.','.$OrdPediID.');"  ><strong>'.$OrdPedi."</strong></a></td>
 						<td class='numb' >".$filter->{'date'}."</td>
 						<td >".$filter->{'CustomerName'}.'</td>
-						<td ></td>
+						<td >'.$SOname.'-'.$SOlastname.'</td>
 						<td >'.$typago.'</td>
 						<td width="15%" class="numb" >'.number_format($filter->{'Net_due'},2,'.',',').'</td>
 						<td >'.$name.' '.$lastname.'</td>
