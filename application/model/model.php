@@ -1606,6 +1606,16 @@ public function getJob_avalaible_amnt($JobID,$PhaseID=0,$CCOID=0){
 }
 
 
+public function CheckIsActive(){
+
+
+  $isactive = $this->Query_value('LICENCE_STATUS','status','');
+
+  if($isactive==1){   return true; }else{ return false;}
+
+}
+
+
 
 }
 ?>

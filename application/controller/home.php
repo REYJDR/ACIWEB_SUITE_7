@@ -68,7 +68,7 @@ class home extends Controller
 
 
      public function accounts()
-    {    
+  {    
         $res = $this->model->verify_session();
 
         if($res=='0'){

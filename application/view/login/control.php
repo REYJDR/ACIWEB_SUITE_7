@@ -1,27 +1,46 @@
 <?php
 if(isset($_POST['flag']))
 {
-	//inicio variables de session
-	$user = $_POST['user'];
-	$pass = md5($_POST['pass']);
 
-	$isStandalone = $this->model->CheckStandalone();
-	
-	if(!$isStandalone){ 
+	$isActive = $this->model->CheckIsActive();
 
-	  $company = $_POST['company']; 
+	if($isActive){ 
 
-    }else{
+		//inicio variables de session
+		$user = $_POST['user'];
+		$pass = md5($_POST['pass']);
 
-	  $company = '0'; 
-	  
+		$isStandalone = $this->model->CheckStandalone();
+		
+		if(!$isStandalone){ 
+
+		$company = $_POST['company']; 
+
+		}else{
+
+		$company = '0'; 
+		
+		}
+		$login = $this->model->login_in($user,$pass,'',$company); 
+
+	}else{
+
+		echo "<script> MSG_ERROR_RELEASE();  MSG_ERROR('Instancia inactiva, por favor contacte a su administrador de cuenta',0); </script>";
+		
+
 	}
-	
-	$login = $this->model->login_in($user,$pass,'',$company); 
+
 }
+
+	
+	
 ?>
 
 	<div class="limiter">
+		<!--INI DIV ERRO-->
+		<div id="ERROR" class="alert"></div>
+			<!--INI DIV ERROR-->
+			
 		<div class="container-login100">
 			<div class="wrap-login100">
 		
