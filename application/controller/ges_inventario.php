@@ -365,7 +365,7 @@ public function getLocByItem($lote='',$line=''){
     
       $this->model->verify_session();
 
-      $count = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'count(*)' , ' where  lote="'.$lote.'" and  Qty > 0 and ID_compania ="'.$this->model->id_compania.'"'); 
+       $count = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'count(*)' , ' where  lote="'.$lote.'" and  Qty > 0 and ID_compania ="'.$this->model->id_compania.'"'); 
       
         if($count == 1){ 
             $selected = 'selected'; 
@@ -375,30 +375,35 @@ public function getLocByItem($lote='',$line=''){
             $disabled = ''; 
         }
       
+        if($count > 0 ){ 
+
+            $query = 'SELECT 
+            A.id as ID,
+            B.name AS Stock,
+            C.location as Location,
+            A.qty as Qty
+            FROM STOCK_ITEMS_LOCATION as A
+            INNER JOIN STOCKS B ON B.id = A.stock 
+            INNER JOIN STOCK_LOCATION C ON C.id = A.location
+            where  A.lote="'.$lote.'" and  A.Qty > 0 and A.ID_compania ="'.$this->model->id_compania.'"';
+            
+            
+            $res = $this->model->Query($query); 
         
-     echo $query = 'SELECT 
-        A.id as ID,
-        B.name AS Stock,
-        C.location as Location,
-        A.qty as Qty
-        FROM STOCK_ITEMS_LOCATION as A
-        INNER JOIN STOCKS B ON B.id = A.stock 
-        INNER JOIN STOCK_LOCATION C ON C.id = A.location
-        where  A.lote="'.$lote.'" and  A.Qty > 0 and A.ID_compania ="'.$this->model->id_compania.'"';
+            echo '<select class="selectLoc'.$line.' col-lg-12" id="loc'.$line.'" onchange="SetMaxQty(this.value,'.$line.')"  '.$disabled.' >
+            <option selected></option>';
         
+            foreach ( $res as $data){
+            $value = json_decode($data);
         
-        $res = $this->model->Query($query); 
-    
-        echo '<select class="selectLoc'.$line.' col-lg-12" id="loc'.$line.'" onchange="SetMaxQty(this.value,'.$line.')"  '.$disabled.' >
-        <option selected></option>';
-    
-        foreach ( $res as $data){
-        $value = json_decode($data);
-    
-        echo '<option value="'.$value->{'ID'}.'" '.$selected.'>'.$value->{'Stock'}.' ( '.$value->{'Location'}.') - ( Qty:  '.$value->{'Qty'}.') </option>';
-    
+            echo '<option value="'.$value->{'ID'}.'" '.$selected.'>'.$value->{'Stock'}.' ( '.$value->{'Location'}.') - ( Qty:  '.$value->{'Qty'}.') </option>';
+        
+            }
+            echo '</select>';
+
+        }else{
+            echo 'Sin existencias';
         }
-        echo '</select>';
 }
 
 public function getStockByItemID(){
