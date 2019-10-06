@@ -347,7 +347,7 @@ public function getLotesByItem($itemid='',$line=''){
 }
 
 public function isOnlyOneLote($itemid){
-    
+
     $this->model->verify_session();
 
     $count = $this->model->Query_value('ITEMS_NO_LOTES', 'count(*)' , 'where ProductID="'.$itemid.'" and ID_compania ="'.$this->model->id_compania.'"'); 
@@ -365,7 +365,7 @@ public function getLocByItem($lote='',$line=''){
     
       $this->model->verify_session();
 
-      $count = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'count(*)' , ' where  A.lote="'.$lote.'" and  A.Qty > 0 and A.ID_compania ="'.$this->model->id_compania.'"'); 
+      $count = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'count(*)' , ' where  lote="'.$lote.'" and  Qty > 0 and ID_compania ="'.$this->model->id_compania.'"'); 
       
         if($count == 1){ 
             $selected = 'selected'; 
