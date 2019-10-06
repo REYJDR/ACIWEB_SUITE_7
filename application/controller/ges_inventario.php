@@ -345,7 +345,7 @@ public function getLotesByItem($itemid='',$line=''){
     echo '</select>';
 
     if($count == 1){ 
-        getLocByItem($loteId,$line);
+        $this->getLocByItem($loteId,$line);
     }
 }
 
