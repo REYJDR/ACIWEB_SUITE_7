@@ -330,8 +330,6 @@ public function getLotesByItem($itemid='',$line=''){
 
             $itemOptions = '';
 
-            echo '<select class="selectLote'.$line.' col-lg-12" id="lote'.$line.'" onchange="SetLocation(this.value,'.$line.')" '.$disabled.'>
-                <option selected></option>';
 
 
             foreach ( $res as $data){
@@ -351,7 +349,7 @@ public function getLotesByItem($itemid='',$line=''){
             if($itemOptions != ''){
 
                 echo '<select class="selectLote'.$line.' col-lg-12" id="lote'.$line.'" onchange="SetLocation(this.value,'.$line.')" '.$disabled.'>
-                     <option selected></option>';
+                      <option selected></option>';
                 echo $itemOptions;
                 echo '</select>';
 
