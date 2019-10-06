@@ -376,7 +376,7 @@ public function getLocByItem($lote='',$line=''){
         }
       
         
-      $query = 'SELECT 
+     echo $query = 'SELECT 
         A.id as ID,
         B.name AS Stock,
         C.location as Location,
