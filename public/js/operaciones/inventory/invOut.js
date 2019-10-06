@@ -39,7 +39,7 @@ $(window).load(function(){
 // ******************************************************************************************
 function init(){
     
-   
+
        $('#items').html('loading...');
    
 
@@ -102,6 +102,8 @@ function builtTbl(chk){
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)"  id="desc'+i+'"  ></td>'+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable2+' '+color2+' id="unit'+i+'"  ></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)"  contenteditable id="qty'+i+'"></td>'+
+                '<td width="3%"  class="rowtable_req numb" id="Tblote'+i+'"  ></td>'+
+                '<td width="3%"  class="rowtable_req numb" id="Tbloc'+i+'"   ></td>'+
                 '<td width="15%" class="rowtable_req"       ><select class="selectItems col-lg-12" id="PHS'+i+'" ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
                 '<td width="15%" class="rowtable_req"       ><select class="selectItems col-lg-12" id="COST'+i+'"  ><option  value="-" selected>-</option>'+COST+'</select></td>'+
                
@@ -130,7 +132,13 @@ function SetDesc(itemId, line){
     var id_price_field = 'unitprice'+line;
     var id_taxable_field = 'tax'+line;
     var id_qty_field = 'qty'+line;
+    var id_lote = 'Tblote'+line;
+    var id_loc = 'Tbloc'+line;
 
+    var listID =  document.getElementById('listID').value;
+
+    document.getElementById(id_loc).innerHTML  = '';
+    document.getElementById(id_lote).innerHTML  = '';
 
        if(itemId == ''){
 
@@ -200,9 +208,37 @@ function SetDesc(itemId, line){
         });
        }  
     
+       getLotes(itemId,line);
  
 }
 
+
+
+
+function getLotes(itemId,line){
+    
+    var datos= "url=ges_inventario/getLotesByItem/"+itemId+"/"+line;
+    var id_lote = 'Tblote'+line;
+    
+    $.ajax({
+        
+              type: "GET",
+              url: link,
+              data: datos,
+              success: function(res){ 
+            
+                document.getElementById(id_lote).innerHTML  = res;
+    
+               
+                  set_selectLoteStyle(line);
+                
+                
+              }
+            });
+      
+    }
+
+    
 // ******************************************************************************************
 // *CALCULOS DE TOTALES
 // ******************************************************************************************
