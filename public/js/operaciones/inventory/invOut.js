@@ -251,9 +251,9 @@ function isOnlyOneLote(itemId){
         url: link,
         data: datos,
         success: function(res){ 
-
-            return res;  
             console.log('lote:'+res);
+            return res;  
+           
         }
     });
         
