@@ -306,23 +306,30 @@ public function getItemList($location,$stock){
 
 public function getLotesByItem($itemid='',$line=''){
 
-    $this->model->verify_session();
+   $this->model->verify_session();
     
+
+   $count = $this->model->Query_value('ITEMS_NO_LOTES', 'count(*)' , 'where ProductID="'.$itemid.'" and ID_compania ="'.$this->model->id_compania.'"'); 
+
+   if($count == 1){ $selected = 'selected'; $readonly = 'readonly'; }else{ $selected = ''; $readonly = '';  }
+
+
    $query = 'SELECT 
-    no_lote 
-    FROM ITEMS_NO_LOTES
-    where ProductID="'.$itemid.'" and ID_compania ="'.$this->model->id_compania.'"';
-    
+            no_lote 
+            FROM ITEMS_NO_LOTES
+            where ProductID="'.$itemid.'" and ID_compania ="'.$this->model->id_compania.'"';
     
     $res = $this->model->Query($query); 
 
-    echo '<select class="selectLote'.$line.' col-lg-12" id="lote'.$line.'" onchange="SetLocation(this.value,'.$line.')" >
+    
+
+    echo '<select class="selectLote'.$line.' col-lg-12" id="lote'.$line.'" onchange="SetLocation(this.value,'.$line.')" '.$readonly.'>
     <option selected></option>';
 
     foreach ( $res as $data){
     $value = json_decode($data);
 
-    echo '<option value="'.$value->{'no_lote'}.'">'.$value->{'no_lote'}.'</option>';
+    echo '<option value="'.$value->{'no_lote'}.'" '.$selected.'>'.$value->{'no_lote'}.'</option>';
 
     }
     echo '</select>';
