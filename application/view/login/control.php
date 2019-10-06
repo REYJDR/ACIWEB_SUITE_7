@@ -25,7 +25,7 @@ if(isset($_POST['flag']))
 
 	}else{
 
-		echo "<script> MSG_ERROR_RELEASE();  MSG_ERROR('Instancia inactiva, por favor contacte a su administrador de cuenta',0); </script>";
+		echo "<script>  MSG_ERROR('Instancia inactiva, por favor contacte a su administrador de cuenta',0); </script>";
 		
 
 	}
@@ -40,7 +40,7 @@ if(isset($_POST['flag']))
 		<!--INI DIV ERRO-->
 		<div id="ERROR" class="alert"></div>
 			<!--INI DIV ERROR-->
-			
+
 		<div class="container-login100">
 			<div class="wrap-login100">
 		
