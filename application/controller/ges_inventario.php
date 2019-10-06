@@ -319,30 +319,41 @@ public function getLotesByItem($itemid='',$line=''){
         $disabled = ''; 
      }
 
+     if($count > 0){
 
-   $query = 'SELECT 
-            no_lote 
-            FROM ITEMS_NO_LOTES
-            where ProductID="'.$itemid.'" and ID_compania ="'.$this->model->id_compania.'"';
-    
-    $res = $this->model->Query($query); 
+        $query = 'SELECT 
+        no_lote 
+        FROM ITEMS_NO_LOTES
+        where ProductID="'.$itemid.'" and ID_compania ="'.$this->model->id_compania.'"';
 
-    
+            $res = $this->model->Query($query); 
 
-    echo '<select class="selectLote'.$line.' col-lg-12" id="lote'.$line.'" onchange="SetLocation(this.value,'.$line.')" '.$disabled.'>
-          <option selected></option>';
 
-    foreach ( $res as $data){
-    $value = json_decode($data);
+            echo '<select class="selectLote'.$line.' col-lg-12" id="lote'.$line.'" onchange="SetLocation(this.value,'.$line.')" '.$disabled.'>
+                <option selected></option>';
 
-    $loteId =$value->{'no_lote'};
+            foreach ( $res as $data){
+            $value = json_decode($data);
 
-    echo '<option value="'.$value->{'no_lote'}.'" '.$selected.'>'.$value->{'no_lote'}.'</option>';
-   
-   
-    }
+            $loteId =$value->{'no_lote'}; 
+            
+            if($this->hasItems($loteId) > 0 ){
+               
+                echo '<option value="'.$value->{'no_lote'}.'" '.$selected.'>'.$value->{'no_lote'}.'</option>';
 
-    echo '</select>';
+            }
+
+            
+
+
+            }
+
+            echo '</select>';
+     }else{
+         
+     }
+
+
 
 }
 
@@ -361,6 +372,13 @@ public function isOnlyOneLote($itemid){
 
 }
 
+public function hasItems($lote){
+    $this->model->verify_session();
+
+    $count = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'count(*)' , ' where  lote="'.$lote.'" and  Qty > 0 and ID_compania ="'.$this->model->id_compania.'"'); 
+    
+    return  $count;
+}
 public function getLocByItem($lote='',$line=''){
     
       $this->model->verify_session();

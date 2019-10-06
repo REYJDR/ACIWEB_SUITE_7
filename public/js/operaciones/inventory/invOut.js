@@ -213,8 +213,6 @@ function SetDesc(itemId, line){
 }
 
 
-
-
 function getLotes(itemId,line){
 
     var datos= "url=ges_inventario/getLotesByItem/"+itemId+"/"+line;
@@ -258,7 +256,6 @@ function isOnlyOneLote(itemId){
     });
         
 }
-
 
 function SetLocation(lote='',line=''){
     
