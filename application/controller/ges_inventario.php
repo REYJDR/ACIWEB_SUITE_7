@@ -335,15 +335,18 @@ public function getLotesByItem($itemid='',$line=''){
     foreach ( $res as $data){
     $value = json_decode($data);
 
-    
+    $loteId =$value->{'no_lote'};
 
     echo '<option value="'.$value->{'no_lote'}.'" '.$selected.'>'.$value->{'no_lote'}.'</option>';
    
-    if($count == 1){ 
-        getLocByItem($value->{'no_lote'},$line);
-       }
+   
     }
+
     echo '</select>';
+
+    if($count == 1){ 
+        getLocByItem($loteId,$line);
+    }
 }
 
 public function getLocByItem($lote='',$line=''){
