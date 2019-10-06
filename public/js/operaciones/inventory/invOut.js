@@ -258,7 +258,7 @@ function isOnlyOneLote(itemId){
 }
 
 
-function SetLocation(SetLocation){
+function SetLocation(lote='',line=''){
     
     var datos= "url=ges_inventario/getLocByItem/"+lote+"/"+line;
     var id_loc = 'Tbloc'+line;
