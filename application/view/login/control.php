@@ -1,3 +1,13 @@
+<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+
+			<!--INI DIV ERRO-->
+			<div id="ERROR" class="alert"></div>
+			<!--INI DIV ERROR-->
+
+
+
 <?php
 if(isset($_POST['flag']))
 {
@@ -31,18 +41,11 @@ if(isset($_POST['flag']))
 	}
 
 }
-
-	
 	
 ?>
 
-	<div class="limiter">
-		<!--INI DIV ERRO-->
-		<div id="ERROR" class="alert"></div>
-			<!--INI DIV ERROR-->
 
-		<div class="container-login100">
-			<div class="wrap-login100">
+					
 		
 				<form method="POST"  action="" class="login100-form validate-form p-l-55 p-r-55 p-t-178" id="login" autocomplete="on" >
 
