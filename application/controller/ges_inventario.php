@@ -353,6 +353,9 @@ public function getLotesByItem($itemid='',$line=''){
                 echo $itemOptions;
                 echo '</select>';
 
+            }else{
+
+                echo  'Sin existencias';
             }
 
             
