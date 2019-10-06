@@ -216,29 +216,51 @@ function SetDesc(itemId, line){
 
 
 function getLotes(itemId,line){
+
+var datos= "url=ges_inventario/getLotesByItem/"+itemId+"/"+line;
+var id_lote = 'Tblote'+line;
+
+$.ajax({
     
-    var datos= "url=ges_inventario/getLotesByItem/"+itemId+"/"+line;
-    var id_lote = 'Tblote'+line;
-    
-    $.ajax({
+            type: "GET",
+            url: link,
+            data: datos,
+            success: function(res){ 
         
-              type: "GET",
-              url: link,
-              data: datos,
-              success: function(res){ 
+            document.getElementById(id_lote).innerHTML  = res;
+
             
-                document.getElementById(id_lote).innerHTML  = res;
+                set_selectLoteStyle(line);
+            
+            
+            }
+        });
     
-               
-                  set_selectLoteStyle(line);
+}
+
+function SetLocation(lote,line){
+    
+        var datos= "url=ges_inventario/getLocByItem/"+lote+"/"+line;
+        
+        var id_loc = 'Tbloc'+line;
+        
+        $.ajax({
+            
+                type: "GET",
+                url: link,
+                data: datos,
+                success: function(res){ 
+                    //console.log(res);
+                    document.getElementById(id_loc).innerHTML  = res;
+    
                 
+                    set_selectLocStyle(line);
                 
-              }
-            });
-      
+                }
+                });
+        
     }
 
-    
 // ******************************************************************************************
 // *CALCULOS DE TOTALES
 // ******************************************************************************************
