@@ -148,7 +148,8 @@ function SetDesc(itemId, line){
       //  document.getElementById(id_price_field).innerHTML  = '';
       //  document.getElementById(id_taxable_field).innerHTML  = '';
 
-
+      document.getElementById(id_loc).innerHTML  = '';
+      document.getElementById(id_lote).innerHTML  = '';
 
        }  else{
 

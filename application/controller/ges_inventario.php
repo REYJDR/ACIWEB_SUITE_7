@@ -328,29 +328,36 @@ public function getLotesByItem($itemid='',$line=''){
 
             $res = $this->model->Query($query); 
 
+            $itemOptions = '';
 
             echo '<select class="selectLote'.$line.' col-lg-12" id="lote'.$line.'" onchange="SetLocation(this.value,'.$line.')" '.$disabled.'>
                 <option selected></option>';
 
+
             foreach ( $res as $data){
-            $value = json_decode($data);
+                $value = json_decode($data);
 
-            $loteId =$value->{'no_lote'}; 
+                $loteId =$value->{'no_lote'}; 
+                
+                if($this->hasItems($loteId) > 0 ){
+                
+                    $itemOptions .=  '<option value="'.$value->{'no_lote'}.'" '.$selected.'>'.$value->{'no_lote'}.'</option>';
+
+                }
             
-            if($this->hasItems($loteId) > 0 ){
-               
-                echo '<option value="'.$value->{'no_lote'}.'" '.$selected.'>'.$value->{'no_lote'}.'</option>';
+
+            }
+
+            if($itemOptions != ''){
+
+                echo '<select class="selectLote'.$line.' col-lg-12" id="lote'.$line.'" onchange="SetLocation(this.value,'.$line.')" '.$disabled.'>
+                     <option selected></option>';
+                echo $itemOptions;
+                echo '</select>';
 
             }
 
             
-
-
-            }
-
-            echo '</select>';
-     }else{
-         
      }
 
 
