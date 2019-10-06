@@ -345,6 +345,8 @@ public function getLotesByItem($itemid='',$line=''){
     echo '</select>';
 
 
+   echo '<script> SetLocation('.$loteId.','.$line.'); </script>';
+
 }
 
 public function getLocByItem($lote='',$line=''){

@@ -109,8 +109,6 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 						<th width="10%" ><?php echo $TblItem;?></th>
 						<th width="15%" class="text-center"><?php echo $TblDes;?></th>
 				<!--		<th width="15%" class="text-center"><?php echo $TblNote;?></th>-->
-				<!--		<th width="5%"  class="text-center"><?php echo $TblLote?></th> -->
-				<!--		<th width="5%"  class="text-center"><?php echo $TblLoc;?></th> -->
 			        	<th width="5%"  class="text-center"><?php echo $TblUnitMeasure;?></th>
 						<th width="5%"  class="text-center"><?php echo $Inv_REP_TblHdr5;?></th>
 				<!--		<th width="5%"  class="text-center"><?php echo $TblUnitP;?></th>-->
