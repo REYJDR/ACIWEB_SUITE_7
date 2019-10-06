@@ -344,8 +344,20 @@ public function getLotesByItem($itemid='',$line=''){
 
     echo '</select>';
 
+}
 
-   echo '<script> SetLocation("'.$loteId.'","'.$line.'"); </script>';
+public function isOnlyOneLote($itemid){
+    
+    $this->model->verify_session();
+
+    $count = $this->model->Query_value('ITEMS_NO_LOTES', 'count(*)' , 'where ProductID="'.$itemid.'" and ID_compania ="'.$this->model->id_compania.'"'); 
+    
+    if($count == 1){ 
+        echo $this->model->Query_value('ITEMS_NO_LOTES', 'no_lote' , 'where ProductID="'.$itemid.'" and ID_compania ="'.$this->model->id_compania.'"'); 
+        
+    }else{ 
+        echo '';
+    }
 
 }
 

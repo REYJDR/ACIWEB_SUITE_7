@@ -232,9 +232,33 @@ function getLotes(itemId,line){
         }
     });
     
+    var onlyOne = isOnlyOneLote(itemId);
+    if(onlyOne != ''){
+
+        SetLocation(onlyOne,line );
+    }
+
 }
 
-function SetLocation(lote,line){
+function isOnlyOneLote(itemId){
+    
+    var datos= "url=ges_inventario/isOnlyOneLote/"+itemId;
+
+    
+    $.ajax({
+        type: "GET",
+        url: link,
+        data: datos,
+        success: function(res){ 
+
+            return res;  
+        }
+    });
+        
+}
+
+
+function SetLocation(SetLocation){
     
     var datos= "url=ges_inventario/getLocByItem/"+lote+"/"+line;
     var id_loc = 'Tbloc'+line;
@@ -244,7 +268,7 @@ function SetLocation(lote,line){
         url: link,
         data: datos,
         success: function(res){ 
-            
+
             document.getElementById(id_loc).innerHTML  = res;
             set_selectLocStyle(line);
         
