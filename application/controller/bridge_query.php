@@ -1408,7 +1408,7 @@ if($itemFilter){
           FROM Products_Exp 
           WHERE   id_compania="'.$this->model->id_compania.'" '.$clause;*/
 
-   $sql = 'SELECT ProductID , 
+  echo $sql = 'SELECT ProductID , 
           Description ,
           QtyOnHand
      FROM Products_Exp 
