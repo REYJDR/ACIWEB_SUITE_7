@@ -233,9 +233,10 @@ function getLotes(itemId,line){
     });
     
     var onlyOne = isOnlyOneLote(itemId);
+    
     if(onlyOne != ''){
 
-        SetLocation(onlyOne,line );
+        SetLocation(onlyOne,line);
     }
 
 }
@@ -252,6 +253,7 @@ function isOnlyOneLote(itemId){
         success: function(res){ 
 
             return res;  
+            console.log(res);
         }
     });
         
