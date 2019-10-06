@@ -112,10 +112,10 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 				<!--		<th width="5%"  class="text-center"><?php echo $TblLote?></th> -->
 				<!--		<th width="5%"  class="text-center"><?php echo $TblLoc;?></th> -->
 			        	<th width="5%"  class="text-center"><?php echo $TblUnitMeasure;?></th>
-						<th width="5%"  class="text-center"><?php echo $TblQty;?></th>
+						<th width="5%"  class="text-center"><?php echo $Inv_REP_TblHdr5;?></th>
 				<!--		<th width="5%"  class="text-center"><?php echo $TblUnitP;?></th>-->
 				<!--		<th width="5%"  style="<?php echo $display;?>" class="text-center"><?php echo $TblTotal;?></th>-->
-						<th width="5%"  class="text-center"><?php echo $Inv_REP_TblHdr9;?></th>
+						<th width="5%"  class="text-center"><?php echo $Inv_REP_TblHdr11;?></th>
 						<th width="5%"  class="text-center"><?php echo $Inv_REP_TblHdr10;?></th>
 						
 						</tr>

@@ -1961,6 +1961,7 @@ public function addItem(){
                         'id_compania' => $id_compania,
                         'UPC_SKU' => $itemUpc ,
                         'GL_Sales_Acct' => $itemGlAccnt ,
+                        'isActive' => 1,
                         'LastUnitCost' =>  $itemUnitPrice );
 
         $this->model->insert('Products_Exp',$columns); 
