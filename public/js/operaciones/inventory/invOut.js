@@ -253,7 +253,7 @@ function isOnlyOneLote(itemId){
         success: function(res){ 
 
             return res;  
-            console.log(res);
+            console.log('lote:'+res);
         }
     });
         
