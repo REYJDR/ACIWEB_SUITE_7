@@ -313,10 +313,10 @@ public function getLotesByItem($itemid='',$line=''){
 
    if($count == 1){ 
         $selected = 'selected'; 
-        $desabled = 'disabled'; 
+        $disabled = 'disabled'; 
     }else{ 
         $selected = ''; 
-        $readonly = ''; 
+        $disabled = ''; 
      }
 
 
@@ -329,7 +329,7 @@ public function getLotesByItem($itemid='',$line=''){
 
     
 
-    echo '<select class="selectLote'.$line.' col-lg-12" id="lote'.$line.'" onchange="SetLocation(this.value,'.$line.')" '.$desabled.'>
+    echo '<select class="selectLote'.$line.' col-lg-12" id="lote'.$line.'" onchange="SetLocation(this.value,'.$line.')" '.$disabled.'>
           <option selected></option>';
 
     foreach ( $res as $data){
@@ -344,14 +344,23 @@ public function getLotesByItem($itemid='',$line=''){
 
     echo '</select>';
 
-    if($count == 1){ 
-        $this->getLocByItem($loteId,$line);
-    }
+
 }
 
 public function getLocByItem($lote='',$line=''){
     
       $this->model->verify_session();
+
+      $count = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'count(*)' , ' where  A.lote="'.$lote.'" and  A.Qty > 0 and A.ID_compania ="'.$this->model->id_compania.'"'); 
+      
+        if($count == 1){ 
+            $selected = 'selected'; 
+            $disabled = 'disabled'; 
+        }else{ 
+            $selected = ''; 
+            $disabled = ''; 
+        }
+      
         
       $query = 'SELECT 
         A.id as ID,
@@ -366,13 +375,13 @@ public function getLocByItem($lote='',$line=''){
         
         $res = $this->model->Query($query); 
     
-        echo '<select class="selectLoc'.$line.' col-lg-12" id="loc'.$line.'" onchange="SetMaxQty(this.value,'.$line.')"   >
+        echo '<select class="selectLoc'.$line.' col-lg-12" id="loc'.$line.'" onchange="SetMaxQty(this.value,'.$line.')"  '.$disabled.' >
         <option selected></option>';
     
         foreach ( $res as $data){
         $value = json_decode($data);
     
-        echo '<option value="'.$value->{'ID'}.'">'.$value->{'Stock'}.' ( '.$value->{'Location'}.') - ( Qty:  '.$value->{'Qty'}.') </option>';
+        echo '<option value="'.$value->{'ID'}.'" '.$selected.'>'.$value->{'Stock'}.' ( '.$value->{'Location'}.') - ( Qty:  '.$value->{'Qty'}.') </option>';
     
         }
         echo '</select>';
