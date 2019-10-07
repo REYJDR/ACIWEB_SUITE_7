@@ -102,8 +102,9 @@ function builtTbl(chk){
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)"  id="desc'+i+'"  ></td>'+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable2+' '+color2+' id="unit'+i+'"  ></td>'+     
                 '<td width="3%"  class="rowtable_req numb" id="Tblote'+i+'"  ></td>'+
-                '<td width="3%"  class="rowtable_req numb" id="Tbloc'+i+'"   ></td>'+
-                '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)"  contenteditable id="qty'+i+'"></td>'+
+                '<td width="3%"  class="rowtable_req numb" id="Tbloc'+i+'"   ></td>'+   
+                '<input type="hidden"  id="stock'+i+'" />'+
+                '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id);"  onfocusout="checkMax('+i+');"    contenteditable id="qty'+i+'"></td>'+
                 '<td width="15%" class="rowtable_req"       ><select class="selectItems col-lg-12" id="PHS'+i+'" ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
                 '<td width="15%" class="rowtable_req"       ><select class="selectItems col-lg-12" id="COST'+i+'"  ><option  value="-" selected>-</option>'+COST+'</select></td>'+
                
@@ -202,7 +203,7 @@ function SetDesc(itemId, line){
                         
                 document.getElementById(id_desc_field).innerHTML  = json.Description;
                 document.getElementById(id_unit_field).innerHTML   = json.UnitMeasure;
-               // document.getElementById(id_qty_field).innerHTML  = json.QtyOnHand;
+                //document.getElementById(id_qty_field).innerHTML  = json.QtyOnHand;
                // document.getElementById(id_price_field).innerHTML  = json.Price1;
                getLotes(itemId,line);
     
@@ -269,14 +270,70 @@ function SetLocation(lote='',line=''){
         data: datos,
         success: function(res){ 
 
+
             document.getElementById(id_loc).innerHTML  = res;
+           // document.getElementById(id_qty_field).innerHTML  = json.QtyOnHand;
             set_selectLocStyle(line);
         
         }
     });
         
     }
+    
+function checkMax(line){
+        
+        $('#ERROR').hide();
+    
+        var id_stockMax = 'stock'+line;
+        var id_qty = 'qty'+line;
+        
+        var max =  document.getElementById(id_stockMax).value ;
+        var value =  document.getElementById(id_qty).innerHTML ;
+    
+        var curVal = Number(value);
+        var maxVal = Number(max);
+        
+        //console.log(curVal +'-'+maxVal);
+    
+    
+    
+        if(curVal <= maxVal){
+    
+         recalcular(line);
+    
+        }else{
+    
+          MSG_ERROR('La cantidad maxima ha sido excedida',0);
+        
+        }
+        
+    
+    
+}
 
+function SetMaxQty(id,line){
+    
+    var datos= "url=ges_inventario/get_any_lote_qty/"+id;
+    
+    var id_qty= 'qty'+line;
+    var id_stockMax= 'stock'+line;
+    
+    $.ajax({
+        
+              type: "GET",
+              url: link,
+              data: datos,
+              success: function(res){ 
+                                
+                  document.getElementById(id_qty).innerHTML  = res;
+                  document.getElementById(id_stockMax).value  = res;
+                  recalcular(line);
+              }
+            });
+        
+    }
+
+        
 // ******************************************************************************************
 // *CALCULOS DE TOTALES
 // ******************************************************************************************
