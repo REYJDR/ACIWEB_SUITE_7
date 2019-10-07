@@ -137,7 +137,7 @@ function SetDesc(itemId, line){
 
     var listID =  document.getElementById('listID').value;
 
-    document.getElementById(id_loc).innerHTML  = '';
+    document.getElementById(id_loc).innerHTML  = ''; 
     document.getElementById(id_lote).innerHTML  = '';
 
        if(itemId == ''){
@@ -204,12 +204,12 @@ function SetDesc(itemId, line){
                 document.getElementById(id_unit_field).innerHTML   = json.UnitMeasure;
                // document.getElementById(id_qty_field).innerHTML  = json.QtyOnHand;
                // document.getElementById(id_price_field).innerHTML  = json.Price1;
-                
+               getLotes(itemId,line);
     
         });
        }  
     
-       getLotes(itemId,line);
+       
  
 }
 
