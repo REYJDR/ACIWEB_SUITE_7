@@ -387,6 +387,7 @@ public function hasItems($lote){
     
     return  $count;
 }
+
 public function getLocByItem($lote='',$line=''){
     
       $this->model->verify_session();
