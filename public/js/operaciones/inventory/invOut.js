@@ -308,6 +308,7 @@ function checkMax(line){
 function SetMaxQty(id,line){
     
     var datos= "url=ges_inventario/get_any_lote_qty/"+id;
+
     
     var id_qty= 'qty'+line;
     var id_stockMax= 'stock'+line;
@@ -318,6 +319,9 @@ function SetMaxQty(id,line){
               url: link,
               data: datos,
               success: function(res){ 
+
+                console.log('qty:'+res);
+
                                 
                   document.getElementById(id_qty).innerHTML  = res;
                   document.getElementById(id_stockMax).value  = res;
