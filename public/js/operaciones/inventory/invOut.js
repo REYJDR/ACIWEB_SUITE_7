@@ -22,8 +22,6 @@ var link=  $('#URL').val()+"index.php";
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
-
 // ********************************************************
 // * Aciones cuando la pagina ya esta cargada
 // ********************************************************
@@ -76,7 +74,6 @@ function init(){
 }
    
 
-
 // ******************************************************************************************
 // * CREA TABLA 
 // ******************************************************************************************
@@ -91,12 +88,12 @@ function builtTbl(chk){
     while(i <= cantLineas){
         
 
-        reglon = '<td width="10%" >'+
-                    '<select class="selectItems col-lg-12" id="sel'+i+'" onchange="SetDesc(this.value,'+i+')" >'+
-                        '<option selected></option>'
-                        +listitem+
-                    '</select>'+
-                '</td>';  
+            reglon = '<td width="10%" >'+
+                        '<select class="selectItems col-lg-12" id="sel'+i+'" onchange="SetDesc(this.value,'+i+')" >'+
+                            '<option selected></option>'
+                            +listitem+
+                        '</select>'+
+                    '</td>';  
 
             var line_table_req = '<tr>'+reglon+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)"  id="desc'+i+'"  ></td>'+
@@ -105,8 +102,8 @@ function builtTbl(chk){
                 '<td width="3%"  class="rowtable_req numb" id="Tbloc'+i+'"   ></td>'+   
                 '<input type="hidden"  id="stock'+i+'" />'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id);"  onfocusout="checkMax('+i+');"    contenteditable id="qty'+i+'"></td>'+
-                '<td width="15%" class="rowtable_req"       ><select class="selectItems col-lg-12" id="PHS'+i+'" ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
-                '<td width="15%" class="rowtable_req"       ><select class="selectItems col-lg-12" id="COST'+i+'"  ><option  value="-" selected>-</option>'+COST+'</select></td>'+
+                '<td width="15%" class="rowtable_req" ><select class="selectItems col-lg-12" id="PHS'+i+'" ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
+                '<td width="15%" class="rowtable_req" ><select class="selectItems col-lg-12" id="COST'+i+'"><option  value="-" selected>-</option>'+COST+'</select></td>'+
                
           
                 //     '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)" onfocusout="recalcular('+i+');" contenteditable id="qty'+i+'"></td>'+
@@ -214,7 +211,6 @@ function SetDesc(itemId, line){
  
 }
 
-
 function getLotes(itemId,line){
 
     var datos= "url=ges_inventario/getLotesByItem/"+itemId+"/"+line;
@@ -237,6 +233,7 @@ function getLotes(itemId,line){
     if(onlyOne != ''){
 
         SetLocation(onlyOne,line);
+        SetMaxQty(onlyOne,line);
     }
 
 }
@@ -252,7 +249,7 @@ function isOnlyOneLote(itemId){
         data: datos,
         success: function(res){ 
            // console.log('lote:'+res);
-            return res;  
+           return res;  
            
         }
     });
@@ -261,7 +258,7 @@ function isOnlyOneLote(itemId){
 
 function SetLocation(lote='',line=''){
     
-    var datos= "url=ges_inventario/getLocByItem/"+lote+"/"+line;
+    var datos  = "url=ges_inventario/getLocByItem/"+lote+"/"+line;
     var id_loc = 'Tbloc'+line;
     
     $.ajax({
@@ -270,42 +267,39 @@ function SetLocation(lote='',line=''){
         data: datos,
         success: function(res){ 
 
-
             document.getElementById(id_loc).innerHTML  = res;
-           // document.getElementById(id_qty_field).innerHTML  = json.QtyOnHand;
+          //document.getElementById(id_qty_field).innerHTML  = json.QtyOnHand;
             set_selectLocStyle(line);
         
         }
     });
         
-    }
+}
     
 function checkMax(line){
         
-        $('#ERROR').hide();
+    $('#ERROR').hide();
+
+    var id_stockMax = 'stock'+line;
+    var id_qty      = 'qty'+line;
     
-        var id_stockMax = 'stock'+line;
-        var id_qty = 'qty'+line;
-        
-        var max =  document.getElementById(id_stockMax).value ;
-        var value =  document.getElementById(id_qty).innerHTML ;
+    var max   =  document.getElementById(id_stockMax).value ;
+    var value =  document.getElementById(id_qty).innerHTML ;
+
+    var curVal = Number(value);
+    var maxVal = Number(max);
     
-        var curVal = Number(value);
-        var maxVal = Number(max);
-        
-        //console.log(curVal +'-'+maxVal);
+    //console.log(curVal +'-'+maxVal);
+
+    if(curVal <= maxVal){
+
+        recalcular(line);
+
+    }else{
+
+        MSG_ERROR('La cantidad maxima ha sido excedida',0);
     
-    
-    
-        if(curVal <= maxVal){
-    
-         recalcular(line);
-    
-        }else{
-    
-          MSG_ERROR('La cantidad maxima ha sido excedida',0);
-        
-        }
+    }
         
     
     

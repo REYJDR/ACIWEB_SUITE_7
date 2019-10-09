@@ -321,18 +321,15 @@ public function getLotesByItem($itemid='',$line=''){
 
      if($count > 0){
 
-        $query = 'SELECT 
-        no_lote 
-        FROM ITEMS_NO_LOTES
-        where ProductID="'.$itemid.'" and ID_compania ="'.$this->model->id_compania.'"';
+            $query = 'SELECT no_lote FROM ITEMS_NO_LOTES where ProductID="'.$itemid.'" and ID_compania ="'.$this->model->id_compania.'"';
 
             $res = $this->model->Query($query); 
 
             $itemOptions = '';
 
 
-
             foreach ( $res as $data){
+
                 $value = json_decode($data);
 
                 $loteId =$value->{'no_lote'}; 
