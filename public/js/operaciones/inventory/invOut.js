@@ -293,7 +293,7 @@ function checkMax(line){
 
     if(curVal <= maxVal){
 
-        recalcular(line);
+       // recalcular(line);
 
     }else{
 
@@ -321,7 +321,7 @@ function SetMaxQty(id,line){
                                 
                   document.getElementById(id_qty).innerHTML  = res;
                   document.getElementById(id_stockMax).value  = res;
-                  recalcular(line);
+                //  recalcular(line);
               }
             });
         

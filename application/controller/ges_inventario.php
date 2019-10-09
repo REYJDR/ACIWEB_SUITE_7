@@ -319,6 +319,7 @@ public function getLotesByItem($itemid='',$line=''){
         $disabled = ''; 
      }
 
+     
      if($count > 0){
 
             $query = 'SELECT no_lote FROM ITEMS_NO_LOTES where ProductID="'.$itemid.'" and ID_compania ="'.$this->model->id_compania.'"';
