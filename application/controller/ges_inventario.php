@@ -423,10 +423,10 @@ public function getLocByItem($lote='',$line=''){
 
             $list['select'] =  $result;
 
-
-            foreach ($list as  $value) {
-                echo str_replace("'","",$value);
-            }
+            echo json_encode($list['select']);
+            // foreach ($list as  $value) {
+            //     echo str_replace("'","",$value);
+            // }
 
 
         }else{
