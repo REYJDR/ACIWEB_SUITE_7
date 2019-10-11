@@ -410,22 +410,18 @@ public function getLocByItem($lote='',$line=''){
             
             $res = $this->model->Query($query); 
         
-            echo '<select class="selectLoc'.$line.' col-lg-12" id="loc'.$line.'" onchange="SetMaxQty(this.value,'.$line.')"  '.$disabled.' >
-                   <option selected></option>';
+            $result =  '<select class="selectLoc'.$line.' col-lg-12" id="loc'.$line.'" onchange="SetMaxQty(this.value,'.$line.')"  '.$disabled.' >
+                        <option selected></option>';
         
             foreach ( $res as $data){
             $value = json_decode($data);
         
-            echo '<option value="'.$value->{'ID'}.'" '.$selected.'>'.$value->{'Stock'}.' ( '.$value->{'Location'}.') - ( Qty:  '.$value->{'Qty'}.') </option>';
+            $result .= '<option value="'.$value->{'ID'}.'" '.$selected.'>'.$value->{'Stock'}.' ( '.$value->{'Location'}.') - ( Qty:  '.$value->{'Qty'}.') </option>';
         
             }
-            echo '</select>';
+            $result .=  '</select>';
 
-            if($count == 1){ 
-                echo '<script>SetMaxQty("'.$value->{'ID'}.'",'.$line.');</script>';
-                
-            }
-
+            $list['select'] =  $result;
 
         }else{
             echo '';
