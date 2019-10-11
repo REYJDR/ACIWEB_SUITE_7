@@ -319,7 +319,7 @@ public function getLotesByItem($itemid='',$line=''){
         $disabled = ''; 
      }
 
-     
+
      if($count > 0){
 
             $query = 'SELECT no_lote FROM ITEMS_NO_LOTES where ProductID="'.$itemid.'" and ID_compania ="'.$this->model->id_compania.'"';
@@ -351,9 +351,6 @@ public function getLotesByItem($itemid='',$line=''){
                 echo $itemOptions;
                 echo '</select>';
 
-            }else{
-
-                echo  'Sin existencias';
             }
 
             
@@ -372,8 +369,6 @@ public function isOnlyOneLote($itemid){
     if($count == 1){ 
         echo $this->model->Query_value('ITEMS_NO_LOTES', 'no_lote' , 'where ProductID="'.$itemid.'" and ID_compania ="'.$this->model->id_compania.'"'); 
         
-    }else{ 
-        echo '';
     }
 
 }
@@ -400,7 +395,7 @@ public function getLocByItem($lote='',$line=''){
             $disabled = ''; 
         }
       
-        if($count > 0 ){ 
+       if($count > 0 ){ 
 
             $query = 'SELECT 
             A.id as ID,
@@ -416,7 +411,7 @@ public function getLocByItem($lote='',$line=''){
             $res = $this->model->Query($query); 
         
             echo '<select class="selectLoc'.$line.' col-lg-12" id="loc'.$line.'" onchange="SetMaxQty(this.value,'.$line.')"  '.$disabled.' >
-            <option selected></option>';
+                   <option selected></option>';
         
             foreach ( $res as $data){
             $value = json_decode($data);
@@ -426,9 +421,17 @@ public function getLocByItem($lote='',$line=''){
             }
             echo '</select>';
 
+            if($count == 1){ 
+                echo '<script>SetMaxQty("'.$value->{'ID'}.'",'.$line.');</script>';
+                
+            }
+
+
         }else{
-            echo 'Sin existencias';
+            echo '';
         }
+
+
 }
 
 public function getStockByItemID(){
@@ -853,6 +856,7 @@ public function getItemQtyOnHand($itemid){
 }
 
 public function get_any_lote_qty($idLoc=''){
+
 
     $this->model->verify_session();
 

@@ -143,39 +143,14 @@ function SetDesc(itemId, line){
         document.getElementById(id_desc_field).innerHTML  = '';
         document.getElementById(id_unit_field).innerHTML   = '';
         document.getElementById(id_qty_field).innerHTML  = '';
-      //  document.getElementById(id_price_field).innerHTML  = '';
-      //  document.getElementById(id_taxable_field).innerHTML  = '';
-
-      document.getElementById(id_loc).innerHTML  = '';
-      document.getElementById(id_lote).innerHTML  = '';
+        document.getElementById(id_loc).innerHTML  = '';
+        document.getElementById(id_lote).innerHTML  = '';
 
        }  else{
 
 
         document.getElementById(id_desc_field).innerHTML = 'Loading...';
         
-          /*  function GetStockbItem(){
-    
-                var url= "ges_inventario/getStockByItemID/";
-                var link=  $('#URL').val()+"index.php";
-            
-            
-                return $.ajax({
-                        type: "GET",
-                        url: link,
-                        data: {url : url, itemID: itemId },
-                        success: function(res){
-    
-                            console.log(res);
-                
-                            $("#SelStock"+line).html(res);
-                    
-                            }
-                    });
-    
-            }
-        
-            $.when(GetStockbItem()).done(function(res){ //ESPERA QUE TERMINE el query de items*/
                 
             function getItems(){
                 
@@ -200,8 +175,7 @@ function SetDesc(itemId, line){
                         
                 document.getElementById(id_desc_field).innerHTML  = json.Description;
                 document.getElementById(id_unit_field).innerHTML   = json.UnitMeasure;
-                //document.getElementById(id_qty_field).innerHTML  = json.QtyOnHand;
-               // document.getElementById(id_price_field).innerHTML  = json.Price1;
+
                getLotes(itemId,line);
     
         });
@@ -233,7 +207,7 @@ function getLotes(itemId,line){
     if(onlyOne != ''){
 
         SetLocation(onlyOne,line);
-        SetMaxQty(onlyOne,line);
+        
     }
 
 }
@@ -302,34 +276,30 @@ function checkMax(line){
     }
         
     
-    
 }
 
 function SetMaxQty(id,line){
     
     var datos= "url=ges_inventario/get_any_lote_qty/"+id;
-
-    
     var id_qty= 'qty'+line;
     var id_stockMax= 'stock'+line;
     
-    $.ajax({
-        
-              type: "GET",
-              url: link,
-              data: datos,
-              success: function(res){ 
+    $.ajax({ 
+        type: "GET",
+        url: link,
+        data: datos,
+        success: function(res){ 
 
-                console.log('qty:'+res);
+        console.log('qty:'+res);
 
-                                
-                  document.getElementById(id_qty).innerHTML  = res;
-                  document.getElementById(id_stockMax).value  = res;
-                //  recalcular(line);
-              }
-            });
+                        
+            document.getElementById(id_qty).innerHTML  = res;
+            document.getElementById(id_stockMax).value  = res;
+        //  recalcular(line);
+        }
+    });
         
-    }
+}
 
         
 // ******************************************************************************************
