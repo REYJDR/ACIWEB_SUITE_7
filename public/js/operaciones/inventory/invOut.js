@@ -239,6 +239,7 @@ function SetLocation(lote='',line=''){
         url: link,
         data: datos,
         success: function(res){ 
+            
             jsonRes = JSON.parse(res);
 
             document.getElementById(id_loc).innerHTML  = jsonRes.select;
