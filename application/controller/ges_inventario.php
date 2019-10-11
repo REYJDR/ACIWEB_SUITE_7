@@ -421,11 +421,11 @@ public function getLocByItem($lote='',$line=''){
             }
             $result .=  '</select>';
 
-            $list['select'] =  $result;
+            $list['select'] = json_encode($result);
 
           
 
-            foreach (json_encode($list['select']) as  $value) {
+            foreach ($list as  $value) {
                 echo str_replace("'","",$value);
             }
 
