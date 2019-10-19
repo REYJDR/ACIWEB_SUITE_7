@@ -315,19 +315,6 @@ public function getLotesByItem($itemid='',$line=''){
    $this->model->verify_session();
     
 
-   $count = $this->model->Query_value('ITEMS_NO_LOTES', 'count(*)' , 'where ProductID="'.$itemid.'" and ID_compania ="'.$this->model->id_compania.'"'); 
-
-   if($count == 1){ 
-        $selected = 'selected'; 
-        $disabled = 'disabled'; 
-    }else{ 
-        $selected = ''; 
-        $disabled = ''; 
-     }
-
-
-     if($count > 0){
-
             $query = 'SELECT no_lote FROM ITEMS_NO_LOTES where ProductID="'.$itemid.'" and ID_compania ="'.$this->model->id_compania.'"';
 
             $res = $this->model->Query($query); 
@@ -348,7 +335,7 @@ public function getLotesByItem($itemid='',$line=''){
                 }
             
 
-            }
+            
 
             if($itemOptions != ''){
 
