@@ -302,29 +302,39 @@ function setTableStyle(){
 function removeStock(id) {
 
     MSG_ERROR_RELEASE();
+
+    var confirmation = confirm('¿Esta seguro de querer eliminar el almacen seleccionado?'); 
+
+    if(confirmation){
+
         link = document.getElementById('URL').value;
-
-        method = 'ges_inventario/removeStock';
         
-        $.ajax({
-            type: "GET",
-            url: link,
-            data: {url:method, stock: id},
-            success: function(res){
-        
-             if(res == 0){
-
-        
-                MSG_CORRECT('Se ha eliminado el almacen correctamente',0);
-
-             }else{
-        
-                MSG_ERROR(res,0);
+                method = 'ges_inventario/removeStock';
                 
-             }
-            
-            } 
-        });
+                $.ajax({
+                    type: "GET",
+                    url: link,
+                    data: {url:method, stock: id},
+                    success: function(res){
+                
+                    if(res == 0){
+        
+                
+                        MSG_CORRECT('Se ha eliminado el almacen correctamente',0);
+        
+                    }else{
+                
+                        MSG_ERROR(res,0);
+                        
+                    }
+                    
+                    } 
+                });
+
+
+
+    }
+
   
 }
 
@@ -332,29 +342,34 @@ function removeLoc(id) {
     
     MSG_ERROR_RELEASE();
 
-    link = document.getElementById('URL').value;
+    var confirmation = confirm('¿Esta seguro de querer eliminar la ubicación seleccionada?'); 
     
-    method = 'ges_inventario/removeLoc';
-    
-    $.ajax({
-        type: "GET",
-        url: link,
-        data: {url:method, loc: id},
-        success: function(res){
-    
-            if(res == 0){
+    if(confirmation){
 
-    
-            MSG_CORRECT('Se ha eliminado la ubicación correctamente',0);
-
-            }else{
-    
-            MSG_ERROR(res,0);
-            
-            }
+        link = document.getElementById('URL').value;
         
-        } 
-    });
+        method = 'ges_inventario/removeLoc';
+        
+        $.ajax({
+            type: "GET",
+            url: link,
+            data: {url:method, loc: id},
+            success: function(res){
+        
+                if(res == 0){
+
+        
+                MSG_CORRECT('Se ha eliminado la ubicación correctamente',0);
+
+                }else{
+        
+                MSG_ERROR(res,0);
+                
+                }
+            
+            } 
+        });
+    }
       
 }
 
