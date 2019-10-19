@@ -258,7 +258,7 @@ public function getLocationList($stock){
 
         $id = '"'.$datos->{'id'}.'"';
         $IDstock = '"'.$stock.'"';
-        $locName = '"'.$datos->{'location'}.'"';
+        $locName = "'".$datos->{'location'}."'";
         echo '<tr><td>
         <a  href="#" onclick="removeLoc('.$datos->{'id'}.')" ><i style="color:red;"  class="fas fa-trash-alt" >&nbsp</i></a>
         <a  href="#" onclick="getItemList('.$datos->{'id'}.','.$stock.','.$locName.');" >'.$datos->{'location'}."&nbsp&nbsp<i style='float:right;' class='fas fa-angle-right'></i></a>
