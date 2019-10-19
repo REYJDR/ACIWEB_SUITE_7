@@ -295,10 +295,11 @@ function setTableStyle(){
 
 function removeStock(id) {
 
+    alert('remove'+id);
+}
 
-
-
-
+function removeLoc(id) {
+    
     alert('remove'+id);
 }
 

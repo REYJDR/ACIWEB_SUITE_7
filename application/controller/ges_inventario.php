@@ -232,8 +232,7 @@ public function getStockInfo($id){
     $table .= '</tbody>
                 </table>
             <div class="col-lg-6">
-             <a href="#" onclick="removeStock('.$datos->{'id'}.')" ><i style="color:red;"  class="fas fa-trash-alt" >&nbsp</i>Eliminar </a>
-             
+             <a href="#" onclick="removeStock('.$datos->{'id'}.')" ><i style="color:red;"  class="fas fa-trash-alt" >&nbsp</i>Eliminar </a>            
             </div> 
            <!-- <div class="col-lg-6"><i style="color:blue;" onclick=""  class="fas fas fa-edit"  >&nbsp</i><span><a href="#">Modificar</a></span></div> -->
             </fieldset>';
@@ -260,7 +259,8 @@ public function getLocationList($stock){
         $id = '"'.$datos->{'id'}.'"';
         $IDstock = '"'.$stock.'"';
         $locName = '"'.$datos->{'location'}.'"';
-        echo "<tr><td><a  href='#' onclick='getItemList(".$id.",".$IDstock.",".$locName.");' >".$datos->{'location'}."&nbsp&nbsp<i style='float:right;' class='fas fa-angle-right'></i></a></td></tr>";
+        echo '<tr><td><a href="#" onclick="removeLoc('.$datos->{'id'}.')" ><i style="color:red;"  class="fas fa-trash-alt" >&nbsp</i>Eliminar </a>
+        </td><td><a  href="#" onclick="getItemList('.$id.','.$IDstock.','.$locName.');" >'.$datos->{'location'}."&nbsp&nbsp<i style='float:right;' class='fas fa-angle-right'></i></a></td></tr>";
     }
 
 }
