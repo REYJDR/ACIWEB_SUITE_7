@@ -806,11 +806,12 @@ public function getLocationByItem(){
 }
 
 public function get_almacen_selectlist(){
+    $this->model->verify_session();
     
    $query_almacen= 'SELECT STOCKS.id, STOCKS.name  
                         FROM STOCKS
                         inner join STOCK_LOCATION on STOCK_LOCATION.stock = STOCKS.id
-                        where STOCKS.onoff="1" GROUP BY STOCKS.name ';
+                        where STOCKS.onoff="1"  AND STOCKS.ID_compania = "'.$this->model->id_compania.'" BY STOCKS.name ';
     
     $select = '';
     $res = $this->model->Query($query_almacen);
