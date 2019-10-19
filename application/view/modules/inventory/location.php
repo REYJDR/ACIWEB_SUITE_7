@@ -46,9 +46,9 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					<div  class="col-lg-4"id="loc" >
 					<fieldset class="fieldsetform">
 						<table class='table' >
-									<thead><tr><th></th><th>location</th></tr></thead>
-									<tbody id="location">
-									</tbody>
+							<thead><tr><th>location</th></tr></thead>
+							<tbody id="location">
+							</tbody>
 						</table>	
 					</fieldset >
 					</div>			
