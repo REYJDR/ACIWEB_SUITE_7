@@ -391,17 +391,7 @@ public function getLocByItem($lote='',$line=''){
     
       $this->model->verify_session();
 
-       $count = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'count(*)' , ' where  lote="'.$lote.'" and  Qty > 0 and ID_compania ="'.$this->model->id_compania.'"'); 
-      
-        if($count == 1){ 
-            $selected = 'selected'; 
-            $disabled = 'disabled'; 
-        }else{ 
-            $selected = ''; 
-            $disabled = ''; 
-        }
-      
-       if($count > 0 ){ 
+
 
             $query = 'SELECT 
             A.id as ID,
@@ -427,18 +417,6 @@ public function getLocByItem($lote='',$line=''){
             }
             $result .=  '</select>';
 
-            $list['select'] = json_encode($result);
-
-          
-
-            foreach ($list as  $value) {
-                echo str_replace("'","",$value);
-            }
-
-
-        }else{
-            echo '';
-        }
 
 
 }
