@@ -232,7 +232,7 @@ public function getStockInfo($id){
     $table .= '</tbody>
                 </table>
             <div class="col-lg-6">
-             <buttom onclick="removeStock('.$id.')" ><i style="color:red;"  class="fas fa-trash-alt" >&nbsp</i>Eliminar </buttom>
+             <buttom onclick="removeStock('.$datos->{'id'}.')" ><i style="color:red;"  class="fas fa-trash-alt" >&nbsp</i>Eliminar </buttom>
              
             </div> 
            <!-- <div class="col-lg-6"><i style="color:blue;" onclick=""  class="fas fas fa-edit"  >&nbsp</i><span><a href="#">Modificar</a></span></div> -->
