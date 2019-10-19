@@ -301,7 +301,7 @@ function setTableStyle(){
 
 function removeStock(id) {
 
-    
+    MSG_ERROR_RELEASE();
         link = document.getElementById('URL').value;
 
         method = 'ges_inventario/removeStock';
@@ -330,7 +330,8 @@ function removeStock(id) {
 
 function removeLoc(id) {
     
-    
+    MSG_ERROR_RELEASE();
+
     link = document.getElementById('URL').value;
     
     method = 'ges_inventario/removeLoc';
