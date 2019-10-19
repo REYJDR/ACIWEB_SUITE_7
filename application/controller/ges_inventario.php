@@ -806,6 +806,7 @@ public function getLocationByItem(){
 }
 
 public function get_almacen_selectlist(){
+    
     $this->model->verify_session();
     
    $query_almacen= 'SELECT STOCKS.id, STOCKS.name  

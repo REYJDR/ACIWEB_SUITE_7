@@ -320,6 +320,7 @@ function removeStock(id) {
                         MSG_CORRECT('Se ha eliminado el almacen correctamente',0);
                         clearItemTable();
                         getStocks();
+                        
                     }else{
                 
                         MSG_ERROR(res,0);
@@ -356,8 +357,6 @@ function removeLoc(id) {
 
         
                 MSG_CORRECT('Se ha eliminado la ubicación correctamente',0);
-
-
                 clearItemTable();
 
                 getLocation(document.getElementById('idStock').value );

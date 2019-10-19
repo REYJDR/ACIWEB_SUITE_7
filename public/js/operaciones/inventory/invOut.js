@@ -201,13 +201,13 @@ function getLotes(itemId,line){
         }
     });
     
-    var onlyOne = isOnlyOneLote(itemId);
+ /*   var onlyOne = isOnlyOneLote(itemId);
     
     if(onlyOne != ''){
 
         SetLocation(onlyOne,line);
         
-    }
+    }*/
 
 }
 
