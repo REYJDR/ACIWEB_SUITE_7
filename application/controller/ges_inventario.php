@@ -2159,26 +2159,33 @@ public function removeStock(){
   $this->model->verify_session();
  
   $idStock = $_GET['stock'];
-  
-  $qtyInStock = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'count(*)' , ' where  stock="'.$idStock.'" and  Qty > 0 and ID_compania ="'.$this->model->id_compania.'"'); 
- 
-  if($qtyInStock > 0 ){
 
-    echo 'No es posible eliminar el almacen. Existen items con existencias asignados a sus ubicaciones.';
-    
-  }else{
+   if($idStock != 1 ){
+        $qtyInStock = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'count(*)' , ' where  stock="'.$idStock.'" and  Qty > 0 and ID_compania ="'.$this->model->id_compania.'"'); 
+        
+        if($qtyInStock > 0 ){
 
-   //actualiza ubicación a default de todos los items asignados 
-    $this->model->update('STOCK_ITEMS_LOCATION', ['stock' => 1 , 'location' => 1 ] , ' where  stock="'.$idStock.'" and ID_compania = "'.$this->model->id_compania.'"'); 
-    $this->CheckError();
-    //Elimina stocks y location asociados
-    $this->model->delete('STOCKS', 'where  id="'.$idStock.'" and ID_compania = "'.$this->model->id_compania.'"' );
-    $this->CheckError();
-    $this->model->delete('STOCK_LOCATION', 'where  stock="'.$idStock.'" and ID_compania = "'.$this->model->id_compania.'"' );
-    $this->CheckError();
+            echo 'No es posible eliminar el almacen. Existen items con existencias asignados a sus ubicaciones.';
+            
+        }else{
 
-    echo 0;
-  }
+        //actualiza ubicación a default de todos los items asignados 
+            $this->model->delete('STOCK_ITEMS_LOCATION',  ' where  stock="'.$idStock.'" and ID_compania = "'.$this->model->id_compania.'"'); 
+            $this->CheckError();
+            //Elimina stocks y location asociados
+            $this->model->delete('STOCKS', 'where  id="'.$idStock.'" and ID_compania = "'.$this->model->id_compania.'"' );
+            $this->CheckError();
+
+            $this->model->delete('STOCK_LOCATION', 'where  stock="'.$idStock.'" and ID_compania = "'.$this->model->id_compania.'"' );
+            $this->CheckError();
+
+            echo 0;
+        }
+    }else{
+       
+        echo 'El almacen principal no puede ser eliminado';
+        
+    }
   
 
 }
@@ -2191,25 +2198,30 @@ public function removeLoc(){
     
     $qtyInStock = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'count(*)' , ' where  location="'.$idLoc.'" and  Qty > 0 and ID_compania ="'.$this->model->id_compania.'"'); 
    
-    if($qtyInStock > 0 ){
-  
-      echo 'No es posible eliminar la ubicación. Existen items con existencias asignados.';
-      
+    if($idLoc != 1 ){
+
+        if($qtyInStock > 0 ){
+    
+        echo 'No es posible eliminar la ubicación. Existen items con existencias asignados.';
+        
+        }else{
+        
+        //elimina ubicación a default de todos los items asignados 
+        $this->model->delete('STOCK_ITEMS_LOCATION', ' where  location="'.$idLoc.'" and ID_compania = "'.$this->model->id_compania.'"'); 
+        $this->CheckError();
+
+        //Elimina location 
+        $this->model->delete('STOCK_LOCATION', 'where  id="'.$idLoc.'" and ID_compania = "'.$this->model->id_compania.'"' );
+        $this->CheckError();
+
+        echo 0;
+        }
+    
     }else{
-      
-    //actualiza ubicación a default de todos los items asignados 
-     $this->model->update('STOCK_ITEMS_LOCATION', ['stock' => 1 , 'location' => 1 ] , ' where  location="'.$idLoc.'" and ID_compania = "'.$this->model->id_compania.'"'); 
-    
-     $this->CheckError();
-
-     //Elimina location 
-     $this->model->delete('STOCK_LOCATION', 'where  id="'.$idLoc.'" and ID_compania = "'.$this->model->id_compania.'"' );
-     
-     $this->CheckError();
-
-     echo 0;
+        
+        echo 'La ubicación default del almacen principal no puede ser eliminado';
+        
     }
-    
   
   }
 

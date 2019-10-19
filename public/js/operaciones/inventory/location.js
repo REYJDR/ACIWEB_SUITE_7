@@ -176,9 +176,7 @@ function  getItemList(location,stock,locName){
     $.when(getItems()).done(function(res){ 
 
         if(res == 0){
-            printTbl = $('#listItemByStock').DataTable();
-            printTbl.clear()
-                 .draw();
+            clearItemTable();
 
             MSG_ERROR_RELEASE();
             MSG_ERROR("There's no Items to List",0);
@@ -357,6 +355,10 @@ function removeLoc(id) {
 
         
                 MSG_CORRECT('Se ha eliminado la ubicación correctamente',0);
+
+
+                clearItemTable();
+
                 getLocation(document.getElementById('idStock').value );
 
                 }else{
@@ -369,6 +371,15 @@ function removeLoc(id) {
         });
     }
       
+}
+
+function clearItemTable(){
+
+
+    printTbl = $('#listItemByStock').DataTable();
+    printTbl.clear()
+         .draw();
+
 }
 
 /* jQuery(document).ready(function($)
