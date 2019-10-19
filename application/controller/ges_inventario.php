@@ -2155,10 +2155,14 @@ return $res;
 
 
 public function removeStock(){
+  $this->model->verify_session();
+ 
+  $idStock = $_GET['stock'];
+  
+  $qtyInStock = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'count(*)' , ' where  stock="'.$lote.'" and  Qty > 0 and ID_compania ="'.$this->model->id_compania.'"'); 
+ 
 
- $idStock = $_GET['stock'];
-
- echo 'borrar el alamacen:'. $idStock ;
+ echo 'borrar el alamacen:'. $qtyInStock ;
 
 }
 
