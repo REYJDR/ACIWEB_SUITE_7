@@ -231,7 +231,7 @@ public function getStockInfo($id){
     $id = '"'.$datos->{'id'}.'"';
     $table .= '</tbody>
                 </table>
-            <div class="col-lg-6"><i style="color:red;"  onclick="removeStock('.$id.')"  class="fas fa-trash-alt" >&nbsp</i><span><a href="#">Eliminar</a></span></div> 
+            <div class="col-lg-6"><i style="color:red;"  onclick="removeStock('.$id.')"  class="fas fa-trash-alt" >&nbspEliminar</i></div> 
            <!-- <div class="col-lg-6"><i style="color:blue;" onclick=""  class="fas fas fa-edit"  >&nbsp</i><span><a href="#">Modificar</a></span></div> -->
             </fieldset>';
 
@@ -242,6 +242,7 @@ public function getStockInfo($id){
 }
 
 public function getLocationList($stock){
+
     $this->model->verify_session();
 
     echo $query="select * from STOCK_LOCATION where onoff='1' and stock='".$stock."'";

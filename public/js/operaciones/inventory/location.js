@@ -294,7 +294,12 @@ function setTableStyle(){
 }
 
 function removeStock(id) {
-    alert('remove');
+
+
+
+
+
+    alert('remove'+id);
 }
 
 /* jQuery(document).ready(function($)
