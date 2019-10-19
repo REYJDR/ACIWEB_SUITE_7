@@ -2155,6 +2155,7 @@ return $res;
 
 
 public function removeStock(){
+    
   $this->model->verify_session();
  
   $idStock = $_GET['stock'];
@@ -2172,6 +2173,26 @@ public function removeStock(){
   
 
 }
+
+public function removeLoc(){
+
+    $this->model->verify_session();
+   
+    $idLoc = $_GET['loc'];
+    
+    $qtyInStock = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'count(*)' , ' where  location="'.$idLoc.'" and  Qty > 0 and ID_compania ="'.$this->model->id_compania.'"'); 
+   
+    if($qtyInStock > 0 ){
+  
+      echo 'No es posible eliminar la ubicación. Existen items con existencias asignados.';
+      
+    }else{
+  
+      echo 0;
+    }
+    
+  
+  }
 
 }//CIERRE DE CLASE
 

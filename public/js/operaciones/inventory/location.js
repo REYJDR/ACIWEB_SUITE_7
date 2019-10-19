@@ -324,7 +324,31 @@ function removeStock(id) {
 
 function removeLoc(id) {
     
-    alert('remove'+id);
+    
+    link = document.getElementById('URL').value;
+    
+    method = 'ges_inventario/removeLoc';
+    
+    $.ajax({
+        type: "GET",
+        url: link,
+        data: {url:method, loc: id},
+        success: function(res){
+    
+            if(res == 0){
+
+    
+            MSG_CORRECT('Se ha eliminado la ubicación correctamente',0);
+
+            }else{
+    
+            MSG_ERROR(res,0);
+            
+            }
+        
+        } 
+    });
+      
 }
 
 /* jQuery(document).ready(function($)
