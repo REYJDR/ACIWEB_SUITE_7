@@ -197,17 +197,15 @@ function getLotes(itemId,line){
     
             document.getElementById(id_lote).innerHTML  = res;
             set_selectLoteStyle(line);
+            SetLocation(id_lote,line);
         
         }
     });
     
- /*   var onlyOne = isOnlyOneLote(itemId);
-    
-    if(onlyOne != ''){
 
-        SetLocation(onlyOne,line);
+    
         
-    }*/
+    
 
 }
 
