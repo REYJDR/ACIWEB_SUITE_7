@@ -261,7 +261,7 @@ public function getLocationList($stock){
         $locName = '"'.$datos->{'location'}.'"';
         echo '<tr><td>
         <a  href="#" onclick="removeLoc('.$datos->{'id'}.')" ><i style="color:red;"  class="fas fa-trash-alt" >&nbsp</i></a>
-        <a  href="#" onclick="getItemList('.$id.','.$IDstock.','.$locName.');" >'.$datos->{'location'}."&nbsp&nbsp<i style='float:right;' class='fas fa-angle-right'></i></a>
+        <a  href="#" onclick="getItemList('.$datos->{'id'}.','.$stock.','.$locName.');" >'.$datos->{'location'}."&nbsp&nbsp<i style='float:right;' class='fas fa-angle-right'></i></a>
         </td></tr>";
     }
 
@@ -2159,7 +2159,7 @@ public function removeStock(){
  
   $idStock = $_GET['stock'];
   
-  $qtyInStock = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'count(*)' , ' where  stock="'.$lote.'" and  Qty > 0 and ID_compania ="'.$this->model->id_compania.'"'); 
+  $qtyInStock = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'count(*)' , ' where  stock="'.$idStock.'" and  Qty > 0 and ID_compania ="'.$this->model->id_compania.'"'); 
  
 
  echo 'borrar el alamacen:'. $qtyInStock ;
