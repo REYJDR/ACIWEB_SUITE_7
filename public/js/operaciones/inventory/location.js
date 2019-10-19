@@ -318,7 +318,6 @@ function removeStock(id) {
                     success: function(res){
                 
                     if(res == 0){
-        
                 
                         MSG_CORRECT('Se ha eliminado el almacen correctamente',0);
         
@@ -330,8 +329,6 @@ function removeStock(id) {
                     
                     } 
                 });
-
-
 
     }
 
