@@ -824,7 +824,7 @@ public function get_almacen_selectlist(){
       }
     
     $select.='</select>';
-    echo $select;
+    echo $query_almacen;
     
     return $select;
 }
