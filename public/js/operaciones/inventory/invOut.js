@@ -240,9 +240,9 @@ function SetLocation(lote='',line=''){
         data: datos,
         success: function(res){ 
             
-            jsonRes = JSON.parse(res);
 
-            document.getElementById(id_loc).innerHTML  = jsonRes.select;
+
+            document.getElementById(id_loc).innerHTML  = res;
           //document.getElementById(id_qty_field).innerHTML  = json.QtyOnHand;
             set_selectLocStyle(line);
         
