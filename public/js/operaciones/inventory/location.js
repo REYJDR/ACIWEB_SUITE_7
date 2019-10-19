@@ -295,7 +295,31 @@ function setTableStyle(){
 
 function removeStock(id) {
 
-    alert('remove'+id);
+    
+        link = document.getElementById('URL').value;
+
+        method = 'ges_inventario/removeStock';
+        
+        $.ajax({
+            type: "GET",
+            url: link,
+            data: {url:method, stock: id},
+            success: function(res){
+        
+             if(res == 0){
+
+        
+                MSG_CORRECT('Se ha eliminado el almacen correctamente',0);
+
+             }else{
+        
+                MSG_ERROR(res,0);
+                
+             }
+            
+            } 
+        });
+  
 }
 
 function removeLoc(id) {

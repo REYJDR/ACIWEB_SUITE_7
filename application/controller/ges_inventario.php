@@ -259,8 +259,10 @@ public function getLocationList($stock){
         $id = '"'.$datos->{'id'}.'"';
         $IDstock = '"'.$stock.'"';
         $locName = '"'.$datos->{'location'}.'"';
-        echo '<tr>
-        <td><a href="#" onclick="removeLoc('.$datos->{'id'}.')" ><i style="color:red;"  class="fas fa-trash-alt" ></i></a><a  href="#" onclick="getItemList('.$id.','.$IDstock.','.$locName.');" >'.$datos->{'location'}."&nbsp&nbsp<i style='float:right;' class='fas fa-angle-right'></i></a></td></tr>";
+        echo '<tr><td>
+        <a  href="#" onclick="removeLoc('.$datos->{'id'}.')" ><i style="color:red;"  class="fas fa-trash-alt" >&nbsp</i></a>
+        <a  href="#" onclick="getItemList('.$id.','.$IDstock.','.$locName.');" >'.$datos->{'location'}."&nbsp&nbsp<i style='float:right;' class='fas fa-angle-right'></i></a>
+        </td></tr>";
     }
 
 }
@@ -2147,6 +2149,17 @@ public function getLoteQty($idLoc=''){
 
 
 return $res;
+}
+
+
+
+
+public function removeStock(){
+
+ $idStock = $_GET['stock'];
+
+ echo 'borrar el alamacen:'. $idStock ;
+
 }
 
 }//CIERRE DE CLASE
