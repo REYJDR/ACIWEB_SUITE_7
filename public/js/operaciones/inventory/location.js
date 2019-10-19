@@ -176,9 +176,8 @@ function  getItemList(location,stock,locName){
     $.when(getItems()).done(function(res){ 
 
         if(res == 0){
-            printTbl = $('#listItemByStock').DataTable();
-            
-            printTbl.clear();
+            $('#item').hide();
+
             MSG_ERROR_RELEASE();
             MSG_ERROR("There's no Items to List",0);
             
