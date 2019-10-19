@@ -2172,9 +2172,9 @@ public function removeStock(){
     $this->model->update('STOCK_ITEMS_LOCATION', ['stock' => 1 , 'location' => 1 ] , ' where  stock="'.$idStock.'" and ID_compania = "'.$this->model->id_compania.'"'); 
     $this->CheckError();
     //Elimina stocks y location asociados
-    $this->delete('STOCKS', 'where  id="'.$idStock.'" and ID_compania = "'.$this->model->id_compania.'"' );
+    $this->model->delete('STOCKS', 'where  id="'.$idStock.'" and ID_compania = "'.$this->model->id_compania.'"' );
     $this->CheckError();
-    $this->delete('STOCK_LOCATION', 'where  stock="'.$idStock.'" and ID_compania = "'.$this->model->id_compania.'"' );
+    $this->model->delete('STOCK_LOCATION', 'where  stock="'.$idStock.'" and ID_compania = "'.$this->model->id_compania.'"' );
     $this->CheckError();
 
     echo 0;
@@ -2203,7 +2203,7 @@ public function removeLoc(){
      $this->CheckError();
 
      //Elimina location 
-     $this->delete('STOCK_LOCATION', 'where  id="'.$idLoc.'" and ID_compania = "'.$this->model->id_compania.'"' );
+     $this->model->delete('STOCK_LOCATION', 'where  id="'.$idLoc.'" and ID_compania = "'.$this->model->id_compania.'"' );
      
      $this->CheckError();
 
