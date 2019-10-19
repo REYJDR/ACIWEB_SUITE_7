@@ -357,6 +357,7 @@ function removeLoc(id) {
 
         
                 MSG_CORRECT('Se ha eliminado la ubicación correctamente',0);
+                getLocation(document.getElementById('idStock').value );
 
                 }else{
         
