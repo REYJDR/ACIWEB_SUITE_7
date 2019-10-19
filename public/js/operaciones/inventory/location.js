@@ -318,7 +318,8 @@ function removeStock(id) {
                     if(res == 0){
                 
                         MSG_CORRECT('Se ha eliminado el almacen correctamente',0);
-        
+                        clearItemTable();
+                        getStocks();
                     }else{
                 
                         MSG_ERROR(res,0);
