@@ -231,7 +231,10 @@ public function getStockInfo($id){
     $id = '"'.$datos->{'id'}.'"';
     $table .= '</tbody>
                 </table>
-            <div class="col-lg-6"><i style="color:red;"  onclick="removeStock('.$id.')"  class="fas fa-trash-alt" >&nbspEliminar</i></div> 
+            <div class="col-lg-6">
+             <buttom onclick="removeStock('.$id.')" ><i style="color:red;"  class="fas fa-trash-alt" >&nbsp</i>Eliminar </buttom>
+             
+            </div> 
            <!-- <div class="col-lg-6"><i style="color:blue;" onclick=""  class="fas fas fa-edit"  >&nbsp</i><span><a href="#">Modificar</a></span></div> -->
             </fieldset>';
 
