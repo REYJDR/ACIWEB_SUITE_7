@@ -27,7 +27,7 @@ table = $("#listItemByStock").DataTable({
 
         {data:"ProductID"},
         {data:"lote"},
-        {data:"QtyOnHand",className: "numb"}    ]}    
+        {data:"Qty",className: "numb"}    ]}    
     );
 
 
