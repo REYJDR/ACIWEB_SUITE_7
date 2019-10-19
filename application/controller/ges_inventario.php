@@ -276,7 +276,7 @@ public function getItemList($location,$stock){
 
         $columns =  array( 
                     '`ProductID`',
-                    '`QtyOnHand`',
+                    '`Qty`',
                     '`lote`');
 
         $clause = "INNER JOIN Products_Exp as B ON B.ProductID = A.itemID and A.ID_compania='".$this->model->id_compania."'
