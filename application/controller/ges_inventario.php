@@ -812,7 +812,7 @@ public function get_almacen_selectlist(){
                         FROM STOCKS
                         inner join STOCK_LOCATION on STOCK_LOCATION.stock = STOCKS.id
                         where STOCKS.onoff="1" AND ( STOCKS.id = "1" OR STOCKS.ID_compania = "'.$this->model->id_compania.'" ) BY STOCKS.name ';
-   die($query_almacen);
+
     $select = '';
     $res = $this->model->Query($query_almacen);
     
