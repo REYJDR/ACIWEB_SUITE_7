@@ -2161,8 +2161,15 @@ public function removeStock(){
   
   $qtyInStock = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'count(*)' , ' where  stock="'.$idStock.'" and  Qty > 0 and ID_compania ="'.$this->model->id_compania.'"'); 
  
+  if($qtyInStock > 0 ){
 
- echo 'borrar el alamacen:'. $qtyInStock ;
+    echo 'No es posible eliminar el almacen. Existen items con existencias asignados a sus ubicaciones.';
+    
+  }else{
+
+    echo 0;
+  }
+  
 
 }
 
