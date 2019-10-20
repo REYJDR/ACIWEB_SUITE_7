@@ -292,7 +292,7 @@ function checkMax(line){
     
     //console.log(curVal +'-'+maxVal);
 
-    if(curVal => maxVal){
+    if(curVal >= maxVal){
 
    
         MSG_ERROR('La cantidad maxima ha sido excedida. Max:'+maxVal,0);
