@@ -546,8 +546,8 @@ function proceed(){
                 var selid = "sel"+i;
                 var phsid = "PHS"+i;
                 var costid = "COST"+i;
-                var lote = "lote"+i;
-                var loc = "loc"+i;
+                var idlote = "lote"+i;
+                var idloc = "loc"+i;
                 
                 if(document.getElementById(selid).value !=''){ 
         
@@ -562,8 +562,8 @@ function proceed(){
                                     itemId    = document.getElementById(selid).value;
                                     ctamg     =  document.getElementById('ctamg').value;
 
-                                    lote  = document.getElementById(lote).value;
-                                    loc   = document.getElementById(loc).value;
+                                    var itemlote  = document.getElementById(idlote).value;
+                                    var location   = document.getElementById(idloc).value;
                          
                                                                 
                                     note      = document.getElementById('observaciones').value;
@@ -585,8 +585,8 @@ function proceed(){
                                             '@'+phase+
                                             '@'+cost+
                                             '@'+ref+
-                                            '@'+lote+
-                                            '@'+loc; 
+                                            '@'+itemlote+
+                                            '@'+location; 
 
                                             
                               
