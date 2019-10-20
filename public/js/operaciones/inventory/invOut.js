@@ -546,14 +546,14 @@ function proceed(){
                 var selid = "sel"+i;
                 var phsid = "PHS"+i;
                 var costid = "COST"+i;
-                var lote = 'lote'+i;
-                var loc = 'loc'+i;
+                var lote = "lote"+i;
+                var loc = "loc"+i;
                 
                 if(document.getElementById(selid).value !=''){ 
         
                         switch (j){
             
-                                case 0:
+                                case 5:
                                     job       = document.getElementById('JOBID2').value;
                                     phase     = document.getElementById(phsid).value;
                                     cost      = document.getElementById(costid).value;
