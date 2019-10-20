@@ -188,7 +188,7 @@ function SetDesc(itemId, line){
 function getLotes(itemId,line){
 
     var datos= "url=ges_inventario/getLotesByItem/"+itemId+"/"+line;
-    var id_lote = 'Tblote'+line;
+    var id_lote = 'lote'+line;
 
     $.ajax({
         type: "GET",
@@ -233,7 +233,7 @@ function isOnlyOneLote(itemId){
 function SetLocation(lote='',line=''){
     
     var datos  = "url=ges_inventario/getLocByItem/"+lote+"/"+line;
-    var id_loc = 'Tbloc'+line;
+    var id_loc = 'loc'+line;
     
     $.ajax({
         type: "GET",
