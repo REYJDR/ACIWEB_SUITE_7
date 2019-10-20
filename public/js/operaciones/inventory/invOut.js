@@ -737,7 +737,7 @@ function jobs(){
     JOBS = res;
 
     $('#JOBID2').append(JOBS);
-                
+    init();
     }
     });
     /*JOBS*/
@@ -791,11 +791,11 @@ function phase(){
      
              COST = res;
     
-             if(res){
+           /*  if(res){
                
                init();
              
-             }                   
+             }   */                
               
             }
         });
