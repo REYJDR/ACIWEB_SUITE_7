@@ -113,6 +113,7 @@ $TblBig   = 'Grande';
 $TblLote  = 'Lote';
 $Tblfecha   = 'Fecha Ven.';
 $Tblstock   = 'Almacen';
+$TblStockQty = 'Cant. Alamacen'; 
 $Tblloc     = 'Ubicacion';
 $TblQtyOrd = 'Cant. Ord.';
 $TblQty   = 'Cant. Rec.';
