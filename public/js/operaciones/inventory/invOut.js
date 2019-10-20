@@ -130,8 +130,8 @@ function SetDesc(itemId, line){
     var id_price_field = 'unitprice'+line;
     var id_taxable_field = 'tax'+line;
     var id_qty_field = 'qty'+line;
-    var id_lote = 'Tblote'+line;
-    var id_loc = 'Tbloc'+line;
+    var id_lote = 'lote'+line;
+    var id_loc = 'loc'+line;
 
     var listID =  document.getElementById('listID').value;
 
@@ -657,10 +657,10 @@ function validacion(){
         MSG_ERROR('Se debe agregar una nota en observaciones',0);
         CHK_VALIDATION = true;
     }
-    if (document.getElementById('ctamg').value == ''){
+   /* if (document.getElementById('ctamg').value == ''){
         MSG_ERROR('Se debe indicar la cuenta de mayor',0);
         CHK_VALIDATION = true;
-    }
+    }*/
 
     
   
