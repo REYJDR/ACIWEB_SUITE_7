@@ -98,8 +98,8 @@ function builtTbl(chk){
             var line_table_req = '<tr>'+reglon+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)"  id="desc'+i+'"  ></td>'+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable2+' '+color2+' id="unit'+i+'"  ></td>'+     
-                '<td width="3%"  class="rowtable_req numb" id="Tblote'+i+'"  ></td>'+
-                '<td width="3%"  class="rowtable_req numb" id="Tbloc'+i+'"   ></td>'+   
+                '<td width="3%"  class="rowtable_req numb" id="lote'+i+'"  ></td>'+
+                '<td width="3%"  class="rowtable_req numb" id="loc'+i+'"   ></td>'+   
                 '<input type="hidden"  id="stock'+i+'"/>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id);"  onfocusout="checkMax('+i+');"    contenteditable id="qty'+i+'"></td>'+
                 '<td width="15%" class="rowtable_req" ><select class="selectItems col-lg-12" id="PHS'+i+'" ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
@@ -474,7 +474,6 @@ function proceed(){
         
             if (r == true) { 
             
-
                     //REGISTROS DE ITEMS 
                     $.ajax({
                         type: "GET",
@@ -547,6 +546,8 @@ function proceed(){
                 var selid = "sel"+i;
                 var phsid = "PHS"+i;
                 var costid = "COST"+i;
+                var lote = 'lote'+i;
+                var loc = 'loc'+i;
                 
                 if(document.getElementById(selid).value !=''){ 
         
@@ -560,21 +561,19 @@ function proceed(){
                        
                                     itemId    = document.getElementById(selid).value;
                                     ctamg     =  document.getElementById('ctamg').value;
-                               /*   stockId   = document.getElementById(selid).value;
-                                    locId     = document.getElementById(selid).value;*/ 
+
+                                    lote  = document.getElementById(lote).value;
+                                    loc   = document.getElementById(loc).value;
+                         
                                                                 
                                     note      = document.getElementById('observaciones').value;
                                     ref       = document.getElementById('referencia').value;
                                     qty       = theTbl.rows[i].cells[3].innerHTML;
-                                   // UnitPrice = theTbl.rows[i].cells[4].innerHTML;
-                                   // total     = theTbl.rows[i].cells[5].innerHTML;
+
                                     UnitPrice = '0.00';
                                     total     = '0.00';
 
-                               /*   lote      = theTbl.rows[i].cells[7].innerHTML;
-                                    fechaVen  = theTbl.rows[i].cells[7].innerHTML;*/
-                                    
-                                    
+                 
                                     //agrego el registo de las demas columnas
                                     cell += '@'+itemId+
                                             '@'+UnitPrice+
@@ -585,10 +584,12 @@ function proceed(){
                                             '@'+job+
                                             '@'+phase+
                                             '@'+cost+
-                                            '@'+ref ;
+                                            '@'+ref+
+                                            '@'+lote+
+                                            '@'+loc; 
 
                                             
-                                 
+                              
 
                                     break;
     
@@ -638,6 +639,7 @@ function proceed(){
             flag = 2; //Alguna linea no tiene descripcion
         
         }
+        console.log(cell);
         return flag;
     }
     // ******************************************************************************************
