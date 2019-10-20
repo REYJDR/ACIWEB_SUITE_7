@@ -601,11 +601,11 @@ function proceed(){
                                             FaltaArray[j] = i ;
                                             }
         
-                                    if(lote==''){                              
+                                    if(itemlote==''){                              
                                             FaltaArray[j] = i ;
                                         }
                                     
-                                    if(loc==''){                              
+                                    if(location==''){                              
                                             FaltaArray[j] = i ;
                                         }
 
