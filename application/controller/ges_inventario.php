@@ -374,9 +374,7 @@ public function getLocByItem($lote='',$line=''){
     
       $this->model->verify_session();
 
-
-
-        echo    $query = 'SELECT 
+        $query = 'SELECT 
             A.id as ID,
             B.name AS Stock,
             C.location as Location,
