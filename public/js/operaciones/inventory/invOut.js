@@ -657,10 +657,10 @@ function validacion(){
         MSG_ERROR('Se debe agregar una nota en observaciones',0);
         CHK_VALIDATION = true;
     }
-   /* if (document.getElementById('ctamg').value == ''){
+    if (document.getElementById('ctamg').value == ''){
         MSG_ERROR('Se debe indicar la cuenta de mayor',0);
         CHK_VALIDATION = true;
-    }*/
+    }
 
     
   
