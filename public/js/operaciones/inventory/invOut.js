@@ -562,8 +562,8 @@ function proceed(){
                                     itemId    = document.getElementById(selid).value;
                                     ctamg     =  document.getElementById('ctamg').value;
 
-                                    var itemlote  = document.getElementById(idlote).value;
-                                    var location   = document.getElementById(idloc).value;
+                                    itemlote  = document.getElementById(idlote).value;
+                                    location   = document.getElementById(idloc).value;
                          
                                                                 
                                     note      = document.getElementById('observaciones').value;
