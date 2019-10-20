@@ -639,7 +639,7 @@ function proceed(){
             flag = 2; //Alguna linea no tiene descripcion
         
         }
-        console.log(cell);
+        console.log('Line'+cell);
         return flag;
     }
     // ******************************************************************************************
