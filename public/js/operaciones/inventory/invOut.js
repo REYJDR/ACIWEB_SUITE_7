@@ -568,7 +568,7 @@ function proceed(){
                                                                 
                                     note      = document.getElementById('observaciones').value;
                                     ref       = document.getElementById('referencia').value;
-                                    qty       = theTbl.rows[i].cells[3].innerHTML;
+                                    qty       = theTbl.rows[i].cells[5].innerHTML;
 
                                     UnitPrice = '0.00';
                                     total     = '0.00';
@@ -595,14 +595,21 @@ function proceed(){
     
                                     default: 
 
-                                        if (j!= 2){
-                                            
-                                            val= theTbl.rows[i].cells[j].innerHTML;
-                                            
-                                            if(val==''){                              
-                                                FaltaArray[j] = i ;
+                                     val   = theTbl.rows[i].cells[0].innerHTML;
+                                    
+                                    if(val==''){                              
+                                            FaltaArray[j] = i ;
                                             }
+        
+                                    if(lote==''){                              
+                                            FaltaArray[j] = i ;
                                         }
+                                    
+                                    if(loc==''){                              
+                                            FaltaArray[j] = i ;
+                                        }
+
+                                    
 
                                     break;
                                 }
