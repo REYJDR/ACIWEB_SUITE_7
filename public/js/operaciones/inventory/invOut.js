@@ -98,8 +98,8 @@ function builtTbl(chk){
             var line_table_req = '<tr>'+reglon+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)"  id="desc'+i+'"  ></td>'+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable2+' '+color2+' id="unit'+i+'"  ></td>'+     
-                '<td width="3%"  class="rowtable_req numb" id="lote'+i+'"  ></td>'+
-                '<td width="3%"  class="rowtable_req numb" id="loc'+i+'"   ></td>'+   
+                '<td width="3%"  class="rowtable_req numb" ></td>'+
+                '<td width="3%"  class="rowtable_req numb" ></td>'+   
                 '<input type="hidden"  id="stock'+i+'"/>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id);"  onfocusout="checkMax('+i+');"    contenteditable id="qty'+i+'"></td>'+
                 '<td width="15%" class="rowtable_req" ><select class="selectItems col-lg-12" id="PHS'+i+'" ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
@@ -547,7 +547,7 @@ function proceed(){
                 var phsid = "PHS"+i;
                 var costid = "COST"+i;
                 var idlote = "lote"+i;
-                var idloc = "loc"+i;
+                var idloc  = "loc"+i;
                 
                 if(document.getElementById(selid).value !=''){ 
         
