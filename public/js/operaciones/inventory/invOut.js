@@ -278,25 +278,6 @@ function SetMaxQty(id,line){
 function checkMax(line){
         
 
-    var datos= "url=ges_inventario/get_any_lote_qty/"+id;
-    var id_qty= 'qty'+line;
-    var id_stockMax= 'stock'+line;
-    
-    $.ajax({ 
-        type: "GET",
-        url: link,
-        data: datos,
-        success: function(res){ 
-                        
-            document.getElementById(id_qty).innerHTML  = res;
-            document.getElementById(id_stockMax).value  = res;
-
-        }
-    });
-
-
-
-
 
     $('#ERROR').hide();
 
@@ -311,12 +292,9 @@ function checkMax(line){
     
     //console.log(curVal +'-'+maxVal);
 
-    if(curVal <= maxVal){
+    if(curVal => maxVal){
 
-       // recalcular(line);
-
-    }else{
-
+   
         MSG_ERROR('La cantidad maxima ha sido excedida',0);
     
     }
