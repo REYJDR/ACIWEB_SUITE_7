@@ -549,6 +549,9 @@ function proceed(){
                 var idlote = "idlote"+i;
                 var idloc  = "idloc"+i;
                 
+                var itemlote  = document.getElementById(idlote).value;
+                var location   = document.getElementById(idloc).value;
+
                 if(document.getElementById(selid).value !=''){ 
         
                         switch (j){
@@ -562,8 +565,7 @@ function proceed(){
                                     itemId    = document.getElementById(selid).value;
                                     ctamg     =  document.getElementById('ctamg').value;
 
-                                    itemlote  = document.getElementById(idlote).value;
-                                    location   = document.getElementById(idloc).value;
+                                    
                          
                                                                 
                                     note      = document.getElementById('observaciones').value;
