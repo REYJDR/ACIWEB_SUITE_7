@@ -279,7 +279,7 @@ function checkMax(line){
         
 
 
-    $('#ERROR').hide();
+    MSG_ERROR_RELEASE();
 
     var id_stockMax = 'stock'+line;
     var id_qty      = 'qty'+line;
@@ -295,7 +295,7 @@ function checkMax(line){
     if(curVal => maxVal){
 
    
-        MSG_ERROR('La cantidad maxima ha sido excedida',0);
+        MSG_ERROR('La cantidad maxima ha sido excedida. Max:'+maxVal,0);
     
     }
         
