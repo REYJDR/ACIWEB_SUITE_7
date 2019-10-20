@@ -278,7 +278,6 @@ function SetMaxQty(id,line){
 function checkMax(line){
         
 
-
     MSG_ERROR_RELEASE();
 
     var id_stockMax = 'stock'+line;
@@ -292,12 +291,17 @@ function checkMax(line){
     
     //console.log(curVal +'-'+maxVal);
 
-    if(curVal >= maxVal){
+    if(curVal != 0 && maxVal != 0  ){
 
-   
-        MSG_ERROR('La cantidad maxima ha sido excedida. Max:'+maxVal,0);
-    
+        if(curVal >= maxVal){
+            
+        
+            MSG_ERROR('La cantidad maxima ha sido excedida. Max:'+maxVal,0);
+        
+        }
+
     }
+   
         
     
 }
