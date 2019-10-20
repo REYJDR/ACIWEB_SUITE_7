@@ -398,7 +398,7 @@ public function getLocByItem($lote='',$line=''){
             }
             $result .=  '</select>';
 
-            echo $resul;
+            echo $result;
 
 }
 
