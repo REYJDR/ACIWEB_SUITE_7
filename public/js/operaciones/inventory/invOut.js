@@ -725,7 +725,7 @@ function msg(link,id){
 function jobs(){   
     
     /*JOBS*/
-    var datos= "url=ges_requisiciones/";
+    var datos= "url=ges_requisiciones/get_JobList";
 
 
   $.ajax({
