@@ -338,7 +338,7 @@ public function getLotesByItem($itemid='',$line=''){
 
             if($itemOptions != ''){
                 
-                echo '<select class="selectLote'.$line.' col-lg-12" id="lote'.$line.'" onchange="SetLocation(this.value,'.$line.')" '.$disabled.'>
+                echo '<select class="selectLote'.$line.' col-lg-12" id="idlote'.$line.'" onchange="SetLocation(this.value,'.$line.')" '.$disabled.'>
                         <option selected></option>';
                 echo $itemOptions;
                 echo '</select>';
@@ -387,7 +387,7 @@ $query = 'SELECT
     
     $res = $this->model->Query($query); 
 
-    $result =  '<select class="selectLoc'.$line.' col-lg-12" id="loc'.$line.'" onchange="SetMaxQty(this.value,'.$line.')"  '.$disabled.' >
+    $result =  '<select class="selectLoc'.$line.' col-lg-12" id="idloc'.$line.'" onchange="SetMaxQty(this.value,'.$line.')"  '.$disabled.' >
                 <option selected></option>';
 
     foreach ( $res as $data){
