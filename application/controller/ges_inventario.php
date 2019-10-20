@@ -1369,7 +1369,7 @@ public function exeConsig(){
 }
   
 
-public function set_Budget_Log($values,$type){
+public function set_Budget_Log($values,$type,$idloc =''){
 
     $this->model->verify_session();
 
@@ -1504,7 +1504,7 @@ public function set_Budget_Log($values,$type){
                                         'Referencia' => $PurchaseNumber,
                                         'ID_compania' => $id_compania ,
                                         'aci_ref' => $aciref ,
-                                        'stockOrigID' => $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$Item.'0000" and location="1" and stock="1" ') );
+                                        'stockOrigID' => $idloc );
                              
             
                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
@@ -1795,7 +1795,7 @@ public function setInventoryAdjustmentOUT(){
 
     foreach ($data as $key => $value) {
 
-        list($null,$itemid,$unitprice,$qty,$total,$note,$ctamg,$job,$phs,$cost,$ref) = explode('@', $value );
+        list($null,$itemid,$unitprice,$qty,$total,$note,$ctamg,$job,$phs,$cost,$ref,$idLote,$idLoc) = explode('@', $value );
 
         
         if($value){
@@ -1820,6 +1820,9 @@ public function setInventoryAdjustmentOUT(){
                 'aci_ref' => $ref);
 
             $this->model->insert('InventoryAdjust_Imp',$values);
+
+            $this->UpdateItemsLocation($idLoc,$qty);
+            
             
             usleep(1000);
             $error = $this->CheckError();
@@ -1830,7 +1833,8 @@ public function setInventoryAdjustmentOUT(){
                 
             }else{
             
-                $this->set_Budget_Log($values,'3');
+                
+                $this->set_Budget_Log($values,'3',$idLoc);
                 $ref .= 'Item:'.$itemid.'Ref: '.$reference."\n";
             }
         }
@@ -2185,6 +2189,8 @@ public function removeLoc(){
     }
   
   }
+
+
 
 }//CIERRE DE CLASE
 

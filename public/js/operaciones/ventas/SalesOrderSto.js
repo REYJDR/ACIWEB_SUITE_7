@@ -630,15 +630,6 @@ function validacion(){
   
   }
 	
-  
-
-
-
-
-
-
-
-
 
 }
 
