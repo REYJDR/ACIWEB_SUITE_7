@@ -725,7 +725,7 @@ function msg(link,id){
 function jobs(){   
     
     /*JOBS*/
-    var datos= "url=ges_requisiciones/get_JobList";
+    var datos= "url=ges_requisiciones/";
 
 
   $.ajax({
@@ -738,6 +738,7 @@ function jobs(){
 
     $('#JOBID2').append(JOBS);
     init();
+
     }
     });
     /*JOBS*/
@@ -791,11 +792,11 @@ function phase(){
      
              COST = res;
     
-           /*  if(res){
+             if(res){
                
                init();
              
-             }   */                
+             }                   
               
             }
         });
