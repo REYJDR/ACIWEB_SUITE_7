@@ -196,7 +196,9 @@ function getLotes(itemId,line){
         success: function(res){ 
     
             document.getElementById(id_lote).innerHTML  = res;
+            
             set_selectLoteStyle(line);
+            
             SetLocation(id_lote,line);
         
         }
@@ -237,7 +239,6 @@ function SetLocation(lote='',line=''){
         url: link,
         data: datos,
         success: function(res){ 
-            
 
 
             document.getElementById(id_loc).innerHTML  = res;

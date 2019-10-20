@@ -328,11 +328,11 @@ public function getLotesByItem($itemid='',$line=''){
 
                 $loteId =$value->{'no_lote'}; 
                 
-                if($this->hasItems($loteId) > 0 ){
+               // if($this->hasItems($loteId) > 0 ){
                 
                     $itemOptions .=  '<option value="'.$value->{'no_lote'}.'" '.$selected.'>'.$value->{'no_lote'}.'</option>';
 
-                }
+              //  }
 
      }
 
