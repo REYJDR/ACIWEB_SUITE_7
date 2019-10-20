@@ -100,7 +100,7 @@ function builtTbl(chk){
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable2+' '+color2+' id="unit'+i+'"  ></td>'+     
                 '<td width="3%"  class="rowtable_req numb" id="Tblote'+i+'"  ></td>'+
                 '<td width="3%"  class="rowtable_req numb" id="Tbloc'+i+'"   ></td>'+   
-                '<td width="5%"  class="rowtable_req  numb"  id="stock'+i+'"></td>'+  
+                '<input type="hidden"  id="stock'+i+'"/>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id);"  onfocusout="checkMax('+i+');"    contenteditable id="qty'+i+'"></td>'+
                 '<td width="15%" class="rowtable_req" ><select class="selectItems col-lg-12" id="PHS'+i+'" ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
                 '<td width="15%" class="rowtable_req" ><select class="selectItems col-lg-12" id="COST'+i+'"><option  value="-" selected>-</option>'+COST+'</select></td>'+
@@ -268,7 +268,7 @@ function SetMaxQty(id,line){
                                 
                     document.getElementById(id_qty).innerHTML  = res;
                     document.getElementById(id_stockMax).value  = res;
-                    recalcular(line);
+                    //recalcular(line);
                 }
             });
     

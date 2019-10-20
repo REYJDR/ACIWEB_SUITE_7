@@ -372,33 +372,33 @@ public function hasItems($lote){
 
 public function getLocByItem($lote='',$line=''){
     
-      $this->model->verify_session();
+$this->model->verify_session();
 
-        $query = 'SELECT 
-            A.id as ID,
-            B.name AS Stock,
-            C.location as Location,
-            A.qty as Qty
-            FROM STOCK_ITEMS_LOCATION as A
-            INNER JOIN STOCKS B ON B.id = A.stock 
-            INNER JOIN STOCK_LOCATION C ON C.id = A.location
-            where  A.lote="'.$lote.'" and  A.Qty > 0 and A.ID_compania ="'.$this->model->id_compania.'"';
-            
-            
-            $res = $this->model->Query($query); 
-        
-            $result =  '<select class="selectLoc'.$line.' col-lg-12" id="loc'.$line.'" onchange="SetMaxQty(this.value,'.$line.')"  '.$disabled.' >
-                        <option selected></option>';
-        
-            foreach ( $res as $data){
-            $value = json_decode($data);
-        
-            $result .= '<option value="'.$value->{'ID'}.'" '.$selected.'>'.$value->{'Stock'}.' ( '.$value->{'Location'}.') - ( Qty:  '.$value->{'Qty'}.') </option>';
-        
-            }
-            $result .=  '</select>';
+$query = 'SELECT 
+    A.id as ID,
+    B.name AS Stock,
+    C.location as Location,
+    A.qty as Qty
+    FROM STOCK_ITEMS_LOCATION as A
+    INNER JOIN STOCKS B ON B.id = A.stock 
+    INNER JOIN STOCK_LOCATION C ON C.id = A.location
+    where  A.lote="'.$lote.'" and  A.Qty > 0 and A.ID_compania ="'.$this->model->id_compania.'"';
+    
+    
+    $res = $this->model->Query($query); 
 
-            echo $result;
+    $result =  '<select class="selectLoc'.$line.' col-lg-12" id="loc'.$line.'" onchange="SetMaxQty(this.value,'.$line.')"  '.$disabled.' >
+                <option selected></option>';
+
+    foreach ( $res as $data){
+    $value = json_decode($data);
+
+    $result .= '<option value="'.$value->{'ID'}.'" '.$selected.'>'.$value->{'Stock'}.' ( '.$value->{'Location'}.') - ( Qty:  '.$value->{'Qty'}.') </option>';
+
+    }
+    $result .=  '</select>';
+
+    echo $result;
 
 }
 
