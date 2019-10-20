@@ -293,7 +293,7 @@ function checkMax(line){
 
     if(curVal != 0 && maxVal != 0  ){
 
-        if(curVal >= maxVal){
+        if(curVal > maxVal){
             
         
             MSG_ERROR('La cantidad maxima ha sido excedida. Max:'+maxVal,0);
