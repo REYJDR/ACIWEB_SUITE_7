@@ -334,16 +334,16 @@ public function getLotesByItem($itemid='',$line=''){
 
               //  }
 
-     }
+           }
 
-     if($itemOptions != ''){
-        
-        echo '<select class="selectLote'.$line.' col-lg-12" id="lote'.$line.'" onchange="SetLocation(this.value,'.$line.')" '.$disabled.'>
-                <option selected></option>';
-        echo $itemOptions;
-        echo '</select>';
+            if($itemOptions != ''){
+                
+                echo '<select class="selectLote'.$line.' col-lg-12" id="lote'.$line.'" onchange="SetLocation(this.value,'.$line.')" '.$disabled.'>
+                        <option selected></option>';
+                echo $itemOptions;
+                echo '</select>';
 
-    }
+            }
 
 
 
@@ -400,7 +400,7 @@ public function getLocByItem($lote='',$line=''){
             }
             $result .=  '</select>';
 
-
+            echo $resul;
 
 }
 
