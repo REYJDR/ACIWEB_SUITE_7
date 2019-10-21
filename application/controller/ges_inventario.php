@@ -507,7 +507,7 @@ public function getItemLoteSt(){
     }
         
     $sumqty = $this->model->Query_value('STOCK_ITEMS_LOCATION','sum(qty)','where itemID="'.$this->ProductID.'" and lote="'.$value->{'no_lote'}.'" and ID_compania="'.$this->model->id_compania.'"');
-    $qtypend = $this->model->Query_value('sale_pendding','sum(qty)','where ProductID="'.$this->ProductID.'" and no_lote="'.$value->{'no_lote'}.'" and status_pendding="1" and ID_compania="'.$this->model->id_compania.'"');
+    $qtypend = $this->model->Query_value('sale_pendding','sum(qty)','where ProductID="'.$this->ProductID.'" and no_lote="'.$value->{'no_lote'}.'" and status_pendding <> "1" and ID_compania="'.$this->model->id_compania.'"');
     
     $qty = $sumqty + $qtypend;
     $total_qty = $total_qty+$qty;
@@ -707,6 +707,7 @@ public function getLocationByItem(){
             $qty="'".$STATUS_LOC->{'qty'}."'";
             $url="'".URL."'";
 
+            $qtypend = $this->model->Query_value('sale_pendding','sum(qty)','where ProductID="'.$this->ProductID.'" and no_lote="'.$value->{'no_lote'}.'" and status_pendding <> "1" and status_location_id="'.$ID_STATUS.'" and ID_compania="'.$this->model->id_compania.'"');
             
         
             //  if($pendding_sale>0 || $STOCK_QTY>0 ){
@@ -753,7 +754,7 @@ public function getLocationByItem(){
                 <td><input class="form-control col-lg-2"  value="'.$fab.'" readonly/></td>
                 <td><input class="form-control col-lg-2"  value="'.$venc.'" readonly/></td>
                 <td><input class="numb form-control col-lg-2"  value="'.number_format($STOCK_QTY,0, '.', ',').'" readonly/></td>
-                <td><input '.$color.' class="form-control col-lg-2"  value="'.$pendding_sale.'" readonly/></td>
+                <td><input '.$color.' class="form-control col-lg-2"  value="'.$qtypend.'" readonly/></td>
                 <td><input class="form-control col-lg-2"  value="'.$STOCK_NAME.'"  readonly/></td>
                 <td><input class="form-control col-lg-2"  value="'.$STOCK_ROUTE.'"  readonly/></td>
                 <td><button onclick="update_location('.$STOCK_ROUTE_SRC.','.$STOCK_NAME_SRC.','.$url.','.$status_location_id.','.$lote.','.$venc2.','.$qty.');"  class="btn btn-primary  btn-block text-left" type="submit" '.$disabled.' >Reubicar</button></td></tr>';
