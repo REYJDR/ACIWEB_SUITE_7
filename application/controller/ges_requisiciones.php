@@ -275,6 +275,7 @@ public function req_pago(){
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //LISTA DE JOBS, FASES Y CENTRO DE COSTOS
 public function get_JobList(){
+  
 $this->model->verify_session();
 
 $jobs = $this->model->get_JobList(); 

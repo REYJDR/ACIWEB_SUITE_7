@@ -791,8 +791,8 @@ while (i <= cantLineas){
         var selid = "sel"+i;
         var unitid = 'unit'+i;
 
-        var lote = 'lote'+i;
-        var loc = 'loc'+i;
+        var idlote = 'idlote'+i;
+        var idloc = 'idloc'+i;
 
         if(document.getElementById(selid).value !=''){
 
@@ -812,8 +812,8 @@ while (i <= cantLineas){
                             total     = theTbl.rows[i].cells[7].innerHTML;
                            
                             if (STOCK_VIEW == 1){
-                              lote  = document.getElementById(lote).value;
-                              loc   = document.getElementById(loc).value;
+                              lote  = document.getElementById(idlote).value;
+                              loc   = document.getElementById(idloc).value;
                             }
                             
                             var line = desc+'@'+nota+'@'+UnitMeasure+'@'+itemId+'@'+UnitPrice+'@'+qty+'@'+total+'@'+lote+'@'+loc;
