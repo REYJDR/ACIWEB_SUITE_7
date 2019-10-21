@@ -385,9 +385,10 @@ public function despachar($id){
      $this->model->insert('INV_EVENT_LOG',$event_values); 
 
      $this->model->update('SalesOrder_Header_Imp', ['EMITIDA' => "1" ] , ' where ID_compania = "'.$id_compania.'" and  SalesOrderNumber="'.$ID.'"' ); 
- 
+    
+     $this->model->update('sale_pendding' , ['status_pendding' => '1'] ,  'WHERE SaleOrderId="'.$ID.'" and ID_compania="'.$id_compania.'"');
 
-    //**LAST CHANGE 9/06/2019 */
+
 
   }
 

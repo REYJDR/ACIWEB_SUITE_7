@@ -755,7 +755,7 @@ public function getLocationByItem(){
                 <td><input class="form-control col-lg-2"  value="'.$venc.'" readonly/></td>
                 <td><input class="numb form-control col-lg-2"  value="'.number_format($STOCK_QTY,0, '.', ',').'" readonly/></td>
                 <td><input '.$color.' class="form-control col-lg-2"  value="'.$qtypend.'" readonly/></td>
-                <td><input class="form-control col-lg-2"  value="'.$STOCK_NAME.'"  readonly/></td>
+                <td><input class="form-control col-lg-2"  value="'.$STOCK_NAME.'"   readonly/></td>
                 <td><input class="form-control col-lg-2"  value="'.$STOCK_ROUTE.'"  readonly/></td>
                 <td><button onclick="update_location('.$STOCK_ROUTE_SRC.','.$STOCK_NAME_SRC.','.$url.','.$status_location_id.','.$lote.','.$venc2.','.$qty.');"  class="btn btn-primary  btn-block text-left" type="submit" '.$disabled.' >Reubicar</button></td></tr>';
 
