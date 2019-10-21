@@ -386,7 +386,7 @@ public function despachar($id){
 
      $this->model->update('SalesOrder_Header_Imp', ['EMITIDA' => "1" ] , ' where ID_compania = "'.$id_compania.'" and  SalesOrderNumber="'.$ID.'"' ); 
     
-     $this->model->update('sale_pendding' , ['status_pendding' => '1'] ,  'WHERE SaleOrderId="'.$ID.'" and ID_compania="'.$id_compania.'"');
+     $this->model->update('sale_pendding' , ['status_pendding' => '0'] ,  'WHERE SaleOrderId="'.$ID.'" and ID_compania="'.$id_compania.'"');
 
 
 
@@ -1213,10 +1213,11 @@ public function SetSOfromStock($SalesOrderNumber){
 
         //**  reserva de items  */
         $reserv = array(  'ProductID'           => $itemid,
-        'SaleOrderId'         => $SalesOrderNumber,
-        'qty'                 => $qty,
-        'status_location_id'  => $loc ,
-        'ID_compania'         => $id_compania );
+                          'SaleOrderId'         => $SalesOrderNumber,
+                          'qty'                 => $qty,
+                          'status_location_id'  => $loc ,
+                          'status_pennding'     => 1 ,
+                          'ID_compania'         => $id_compania );
 
         $this->model->insert('sale_pendding',$reserv); 
         // $this->UpdateItemsLocation($loc,$OriQty);
