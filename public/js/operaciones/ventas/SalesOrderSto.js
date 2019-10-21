@@ -824,8 +824,8 @@ while (i <= cantLineas){
                        default: 
                       
                        if (STOCK_VIEW == 1){
-                        lote  = document.getElementById(lote).value;
-                        loc   = document.getElementById(loc).value;
+                        lote  = document.getElementById(idlote).value;
+                        loc   = document.getElementById(idloc).value;
                       }
                        val   = theTbl.rows[i].cells[0].innerHTML;
 
