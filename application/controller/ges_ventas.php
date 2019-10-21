@@ -1216,7 +1216,7 @@ public function SetSOfromStock($SalesOrderNumber){
                           'SaleOrderId'         => $SalesOrderNumber,
                           'qty'                 => $qty,
                           'status_location_id'  => $loc ,
-                          'status_pennding'     => 1 ,
+                          'status_pendding'     => 1 ,
                           'ID_compania'         => $id_compania );
 
         $this->model->insert('sale_pendding',$reserv); 
