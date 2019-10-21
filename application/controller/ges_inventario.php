@@ -707,7 +707,7 @@ public function getLocationByItem(){
             $qty="'".$STATUS_LOC->{'qty'}."'";
             $url="'".URL."'";
 
-            $qtypend = $this->model->Query_value('sale_pendding','sum(qty)','where ProductID="'.$this->ProductID.'" and no_lote="'.$value->{'no_lote'}.'" and status_pendding <> "1" and status_location_id="'.$ID_STATUS.'" and ID_compania="'.$this->model->id_compania.'"');
+            $qtypend = $this->model->Query_value('sale_pendding','sum(qty)','where ProductID="'.$this->ProductID.'" and status_pendding <> "1" and status_location_id="'.$ID_STATUS.'" and ID_compania="'.$this->model->id_compania.'"');
             
         
             //  if($pendding_sale>0 || $STOCK_QTY>0 ){
