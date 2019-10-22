@@ -1478,7 +1478,7 @@ public function CloseSelesOrder($id){
 
 
   $this->model->update('sale_pendding' , ['status_pendding' => '0'] ,  'WHERE SaleOrderId="'.$id.'" and ID_compania="'.$this->model->id_compania.'"');
-  
+  $this->CheckError();
     // $table  = 'SalesOrder_Header_Imp';
 
     // $clause = ' WHERE SalesOrderNumber = "'.$id.'" AND ID_compania =  "'.$this->model->id_compania.'"';
@@ -1514,8 +1514,10 @@ public function reverseItems($aciId){
    
       $value =  json_decode($value);
 
-      $qty = (- 1) * $value->{'Qty'};
-      $this->reverseItemTransaction($value->{'ProductID'},$value->{'stockOrigID'},$aciId,$qty );
+    //  $qty = (- 1) * $value->{'Qty'};
+
+
+      $this->reverseItemTransaction($value->{'ProductID'},$value->{'stockOrigID'},$aciId,$value->{'Qty'});
 
   }
 
