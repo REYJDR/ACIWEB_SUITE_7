@@ -1235,7 +1235,7 @@ public function SetSOfromStock($SalesOrderNumber){
                                 'unit_price' => $unit_price ,
                                 'Total' => $Price,
                                 'User' => $user,
-                                'Type' => 'Cancelación Orden de venta',
+                                'Type' => 'Reserva por Orden de venta',
                                 'Referencia'  => $SalesOrderNumber,
                                 'aci_ref' => $SalesOrderNumber,
                                 'ID_compania' => $id_compania ,

@@ -1652,7 +1652,7 @@ public function set_Budget_Log($values,$type,$idloc =''){
                 $event_values = array(  'ProductID' => $Item,
                                         'Qty'=> $Qty,
                                         'User' => $user,
-                                        'Type' => 'Reversa Orden de Venta',
+                                        'Type' => 'Cancelación Orden de Venta',
                                         'referencia' => $ref,
                                         'ID_compania' => $id_compania ,
                                         'aci_ref' => $aciref,
@@ -1665,7 +1665,7 @@ public function set_Budget_Log($values,$type,$idloc =''){
                 $error = $this->CheckError();
                 if($error){
                 $error= json_decode($error) ;
-                echo 'ERROR: '.$error->{'E'}.' Reversa Orden de Venta - INV_EVENT_LOG ';
+                echo 'ERROR: '.$error->{'E'}.' Cancelación  Orden de Venta - INV_EVENT_LOG ';
             
                 }
 
