@@ -354,7 +354,7 @@ public function despachar($id){
   
   $ventas = new ges_ventas(); 
 
-  $reserv = $this->model->queryColumns('sale_pendding',['ProductID','status_location_id','qty'],' WHERE SaleOrderId="'.$ID.'" and ID_compania="'.$id_compania.'"');
+  $reserv = $this->model->queryColumns('sale_pendding',['ProductID','status_location_id','qty'],' WHERE status_pendding = "1" and SaleOrderId="'.$ID.'" and ID_compania="'.$id_compania.'"');
 
   foreach ($reserv as  $value) {
 
@@ -1476,6 +1476,9 @@ public function CloseSelesOrder($id){
   $this->model->update($table,$columns,$clause);
   $this->CheckError();
 
+
+  $this->model->update('sale_pendding' , ['status_pendding' => '0'] ,  'WHERE SaleOrderId="'.$id.'" and ID_compania="'.$this->model->id_compania.'"');
+  
     // $table  = 'SalesOrder_Header_Imp';
 
     // $clause = ' WHERE SalesOrderNumber = "'.$id.'" AND ID_compania =  "'.$this->model->id_compania.'"';
