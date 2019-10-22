@@ -1464,7 +1464,7 @@ public function CloseSelesOrder($id){
 
   $this->model->verify_session();
 
-  $this->reverseItems($id);
+ // $this->reverseItems($id);
   $this->CheckError();
 
   $table  = 'SalesOrder_Header_Imp';
