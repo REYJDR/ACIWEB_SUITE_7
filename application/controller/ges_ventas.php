@@ -1329,10 +1329,9 @@ $this->model->verify_session();
     
   $query ='SELECT * FROM `Sales_Header_Imp` 
             inner JOIN `Sales_Detail_Imp` ON Sales_Header_Imp.InvoiceNumber = Sales_Detail_Imp.InvoiceNumber
-            inner JOIN `SAX_USER` ON `SAX_USER`.`id` = Sales_Header_Imp.user '.$clause.' GROUP BY Sales_Header_Imp.InvoiceNumber 
+            '.$clause.' GROUP BY Sales_Header_Imp.InvoiceNumber 
             order by LAST_CHANGE '.$sort.' limit '.$limit ; 
 
-          die($query);
    }
 
    if($this->model->active_user_role=='user'){
