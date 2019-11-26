@@ -130,6 +130,7 @@ if ($Sage_Conn == 9) {
 <!--ADD JS FILE-->
 <script  src="<?php echo URL; ?>js/operaciones/home/dashboard.js" ></script>
 
+<script type="text/javascript" > window.ZohoHCAsap=window.ZohoHCAsap||function(a,b){ZohoHCAsap[a]=b;};(function(){var d=document; var s=d.createElement("script");s.type="text/javascript";s.defer=true; s.src="https://desk.zoho.com/portal/api/web/inapp/457361000000145033?orgId=701297469"; d.getElementsByTagName("head")[0].appendChild(s); })(); </script>
 
 <div class="limiter">
 		<div class="container-dashboard100">
