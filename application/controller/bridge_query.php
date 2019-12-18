@@ -1424,7 +1424,7 @@ foreach ($Codigos as $value) {
 
   $value = json_decode($value);
    
-  $codes .= '<option value="'.$value->{'ProductID'}.'">'.$value->{'ProductID'}.'(Inv: '.$value->{'StockQty'}.')</option>';
+  $codes .= '<option value="'.$value->{'ProductID'}.'">'.$value->{'ProductID'}.'-'.$value->{'Description'}.'</option>';
 
  } 
 
