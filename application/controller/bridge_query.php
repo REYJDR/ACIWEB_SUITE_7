@@ -1408,14 +1408,13 @@ if($itemFilter){
           FROM Products_Exp 
           WHERE   id_compania="'.$this->model->id_compania.'" '.$clause;*/
 
-   echo $sql =  'SELECT A.ProductID , 
+    $sql =  'SELECT A.ProductID , 
                     A.Description ,
                     A.QtyOnHand,
                     B.StockQty 
               FROM  Products_Exp 
               INNER JOIN (SELECT SUM(QTY) AS StockQty, itemID 
-                            FROM STOCK_ITEMS_LOCATION 
-                           WHERE itemID = A.ProductID 
+                            FROM STOCK_ITEMS_LOCATION  
                        GROUP BY itemID ) as B on B.itemID = A.ProductID
               WHERE id_compania="'.$this->model->id_compania.'" '.$clause;    
 
