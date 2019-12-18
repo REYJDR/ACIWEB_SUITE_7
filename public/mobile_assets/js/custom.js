@@ -119,7 +119,7 @@ function addItemList(){
 
 function SetDesc(itemId){
 
-  console.log(itemId);
+
 var listID =  document.getElementById('listID').value;
 var datos= "bridge_query/get_ProductsInfo/";
 
