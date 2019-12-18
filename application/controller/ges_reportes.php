@@ -49,7 +49,7 @@ public function rep_so(){
 }
 
 
-public function get_mob_report($date1,$date2){
+public function get_mob_report( $date1 = 00-00-0000 ,$date2 = 00-00-0000 ) {
 
  $this->model->verify_session();
 
@@ -58,14 +58,14 @@ public function get_mob_report($date1,$date2){
                 $clause.= 'where SalesOrder_Header_Imp.ID_compania="'.$this->model->id_compania.'" 
                            and SalesOrder_Header_Imp.user ="'.$this->model->active_user_id.'"';
 
-                if($date1!=''){
+                if($date1!= 00-00-0000 ){
 
-                   if($date2!=''){
+                   if($date2!= 00-00-0000){
 
                       $clause.= '  and  date between "'.$date1.'" and "'.$date2.'" ';           
                     }
                    
-                   if($date2==''){ 
+                   if($date2== 00-00-0000){ 
 
                      $clause.= ' and date="'.$date1.'"';
                    }
