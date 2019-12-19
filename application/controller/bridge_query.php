@@ -1469,7 +1469,7 @@ public function get_ProductsCodeMobile(){
   
     $value = json_decode($value);
      
-    $codes .= '<option value="'.$value->{'ProductID'}.'">'.$value->{'ProductID'}.'-(Inv: '.number_format($value->{'QtyStock'}, 2, '.', '').')</option>';
+    $codes .= '<option value="'.$value->{'ProductID'}.'">'.$value->{'ProductID'}.' - (Inv: '.number_format($value->{'QtyStock'}, 2, '.', '').')</option>';
   
    } 
   
