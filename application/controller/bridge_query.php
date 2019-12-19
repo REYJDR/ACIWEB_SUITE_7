@@ -1455,10 +1455,10 @@ public function get_ProductsCodeMobile(){
   
       $sql =  'SELECT ProductID , 
                       Description ,
-                      QtyOnHand
-                      
+                      QtyOnHand, 
+                      (SELECT SUM(QTY) from STOCK_ITEMS_LOCATION WHERE itemId = ProductID ) as QtyStock
                 FROM  Products_Exp 
-        
+                
                 WHERE id_compania="'.$this->model->id_compania.'" '.$clause;    
   
   
@@ -1469,7 +1469,7 @@ public function get_ProductsCodeMobile(){
   
     $value = json_decode($value);
      
-    $codes .= '<option value="'.$value->{'ProductID'}.'">'.$value->{'ProductID'}.'-(Inv: '.number_format($value->{'QtyOnHand'}, 2, '.', '').')</option>';
+    $codes .= '<option value="'.$value->{'ProductID'}.'">'.$value->{'ProductID'}.'-(Inv: '.number_format($value->{'QtyStock'}, 2, '.', '').')</option>';
   
    } 
   
