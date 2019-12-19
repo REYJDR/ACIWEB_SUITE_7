@@ -32,7 +32,7 @@ function logout(URL){
 
 }
 
-function set_listprice(ID){
+function set_listprice(ID,mobile=''){
 
   URL = document.getElementById('URL').value;
   
@@ -68,7 +68,7 @@ function set_listprice(ID){
   
    // init(2); 
    
-   addItemList();
+   addItemList(mobile);
 
    var e = document.getElementById("taxid");
    var Taxval = e.options[e.selectedIndex].value;
@@ -81,17 +81,25 @@ function set_listprice(ID){
   
 }
 
-function addItemList(){
+
+
+
+function addItemList(mobile=''){
 
 
 
   URL = document.getElementById('URL').value;
   link = URL+"index.php";
 
+if(mobile='X'){
+  var datos= "url=bridge_query/get_ProductsCodeMobile/";
 
-  var datos= "url=bridge_query/get_ProductsCode/";
+}else{
+  var datos= "url=bridge_query/get_ProductsCode/";  
 
+}
 
+  //get_ProductsCodeMobile
   $.ajax({
     
           type: "GET",

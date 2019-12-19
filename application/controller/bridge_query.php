@@ -1432,6 +1432,51 @@ echo $codes;
 
 }
 
+public function get_ProductsCodeMobile(){
+  
+  $this->SESSION();
+  
+  $itemFilter = $this->model->Query_value('FAC_DET_CONF','ITEMS_FILTER','WHERE ID_compania="'.$this->model->id_compania.'"');
+  
+  if($itemFilter){
+  
+    $clause= ' and '.$itemFilter;
+  
+  }else{
+  
+    $clause= '';
+  }
+  
+  /*$sql = 'SELECT ProductID , 
+                 Description ,
+                (SELECT SUM(qty) FROM STOCK_ITEMS_LOCATION WHERE itemID = ProductID and ID_compania="'.$this->id_compania.'") AS QtyOnHand,
+            FROM Products_Exp 
+            WHERE   id_compania="'.$this->model->id_compania.'" '.$clause;*/
+  
+      $sql =  'SELECT ProductID , 
+                      Description ,
+                      QtyOnHand
+                      
+                FROM  Products_Exp 
+        
+                WHERE id_compania="'.$this->model->id_compania.'" '.$clause;    
+  
+  
+  
+  $Codigos = $this->model->Query($sql);
+  
+  foreach ($Codigos as $value) {
+  
+    $value = json_decode($value);
+     
+    $codes .= '<option value="'.$value->{'ProductID'}.'">'.$value->{'ProductID'}.'-(Inv: '.$value->{'QtyOnHand'}.')</option>';
+  
+   } 
+  
+  echo $codes;
+  
+  }
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // PARA PROCESO DE SO CON ITEMS EN INVENTARIO Y UBICACIONES
 
