@@ -332,15 +332,15 @@ function sumar_total(){
 
     ITEM_ID = '';
   
-      for(var j=1;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
+      for(var j=0;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
   
           {       
   
               switch (j){
   
-                     case 4:
+                     case 5:
 
-                     taxableID = theTbl.rows[i].cells[8].innerHTML;
+                     taxableID = theTbl.rows[i].cells[9].innerHTML;
 
                      console.log('TAXABLE:'+taxableID);
 
