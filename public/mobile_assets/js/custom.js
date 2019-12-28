@@ -259,7 +259,6 @@ if(CHK_VALIDATION == true){ CHK_VALIDATION = false;  return;  }
                   '<td class="table_section_qty table_section_small" >'+qty_field+'</td>'+
                   '<td class="table_section_qty table_section_small" >'+price_field+'</td>'+
                   '<td class="table_section_qty table_section_small" >'+(price_field*qty_field)+'</td>'+
-                  
                   '<td class="table_section_qty dplynone" >'+chico+'</td>'+
                   '<td class="table_section_qty dplynone" >'+grande+'</td>'+
                   '<td class="table_section_qty dplynone" >'+unit_val+'</td>'+
@@ -326,7 +325,6 @@ function sumar_total(){
   total_field =    document.getElementById('total');
   
   for(var i=1; i<theTbl.rows.length ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theTbl
-  
   {
   
     l = 1 + l; //contador de registros
@@ -334,7 +332,7 @@ function sumar_total(){
 
     ITEM_ID = '';
   
-      for(var j=0;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
+      for(var j=1;j<theTbl.rows[i].cells.length; j++) //BLUCLE PARA LEER CELDA POR CELDA DE CADA LINEA
   
           {       
   
