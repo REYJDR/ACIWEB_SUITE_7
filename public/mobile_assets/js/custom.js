@@ -129,7 +129,7 @@ function SetDesc(itemId){
 
 
 var listID =  document.getElementById('listID').value;
-var datos= "bridge_query/get_ProductsInfo/";
+var datos= "bridge_query/get_ProductsInfoMob/";
 
 
 stock_val='';
