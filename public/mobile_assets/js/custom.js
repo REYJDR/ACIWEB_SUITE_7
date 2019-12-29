@@ -638,14 +638,16 @@ function set_items(){
                               Id          = itemId ;
                               desc        = theTbl.rows[i].cells[1].innerHTML;
                               nota        = theTbl.rows[i].cells[2].innerHTML;
-                              UnitMeasure = theTbl.rows[i].cells[7].innerHTML;;
+                              UnitMeasure = theTbl.rows[i].cells[8].innerHTML;
   
                               qty       = theTbl.rows[i].cells[3].innerHTML;
                               UnitPrice = Number(theTbl.rows[i].cells[4].innerHTML) / Number(theTbl.rows[i].cells[3].innerHTML);
                               total     = Number(theTbl.rows[i].cells[5].innerHTML) ;
   
-                              chic  = theTbl.rows[i].cells[5].innerHTML;
-                              gran  = theTbl.rows[i].cells[6].innerHTML;
+                              // chic  = theTbl.rows[i].cells[5].innerHTML;
+                              // gran  = theTbl.rows[i].cells[6].innerHTML; 
+                              chic=0;
+                              gran=0;
   
                               cell += desc+'@'+nota+'@'+UnitMeasure+'@'+Id+'@'+UnitPrice+'@'+qty+'@'+total+'@'+chic+'@'+gran;//agrego el registo de las demas columnas
   
