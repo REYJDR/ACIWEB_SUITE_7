@@ -844,7 +844,8 @@ public function set_sales_order_header(){
   'ShipToZip' => $custinfo->{'Zip'},
   'ShipToCountry' => $custinfo->{'Country'},
   'fecha_entrega' => $fecha_entrega,
-  'lugar_despacho' => $lugDesp);
+  'lugar_despacho' => $lugDesp,
+  'SalesRepID' =>  $custinfo->{'SalesRepID'} );
   
   $this->model->insert('SalesOrder_Header_Imp',$values);
   
