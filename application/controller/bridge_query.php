@@ -1450,7 +1450,7 @@ public function get_ProductsCodeMobile(){
   
   
       $sql =  'SELECT ProductID , 
-                      Description ,
+                      SalesDescription ,
                       QtyOnHand, 
                       (SELECT SUM(QTY) from STOCK_ITEMS_LOCATION WHERE itemId = ProductID ) as QtyStock
                 FROM  Products_Exp 
