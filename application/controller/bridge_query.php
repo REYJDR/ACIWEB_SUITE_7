@@ -91,7 +91,7 @@ $ITEM = $_REQUEST['item'];
 
 $sql= 'SELECT 
 A.ProductID,
-A.SalesDescription as Description,
+A.Description,
 A.UnitMeasure,
 (SELECT SUM(qty) FROM STOCK_ITEMS_LOCATION WHERE itemID = ProductID and ID_compania="'.$this->model->id_compania.'") AS QtyOnHand,
 A.Price1,
