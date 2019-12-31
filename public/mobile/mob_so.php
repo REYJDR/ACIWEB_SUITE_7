@@ -354,16 +354,16 @@ if ($amnt_view_ck==0){
                             data-check-on-init="true">
                             <thead>
                               <tr>
-                              <th class="table_section_small" >Item ID</th>
-                              <th class="table_section">Descripción</th>
-                              <th class="table_section">Nota</th>
-                              <th class="table_section_qty" >Cant.</th>
-                              <th class="table_section_qty" >Precio</th>
-                              <th class="table_section_qty dplynone" >Chico</th>
-                              <th class="table_section_qty dplynone" >Grande</th>
-                              <th class="table_section_qty dplynone" >Unidad</th>
-                              <th class="table_section_qty dplynone" >Taxable</th>
-                              <th class="table_section_qty dplynone" >stock</th>
+                              <th >Item ID</th>
+                              <th >Descripción</th>
+                              <th >Nota</th>
+                              <th >Cant.</th>
+                              <th >Precio</th>
+                              <th >Chico</th>
+                              <th >Grande</th>
+                              <th >Unidad</th>
+                              <th >Taxable</th>
+                              <th >stock</th>
                               </tr>
                             </thead>
                           </table>
