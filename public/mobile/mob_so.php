@@ -338,58 +338,20 @@ if ($amnt_view_ck==0){
                                   <!--init list item -->
                                   <div class="cartcontainer" >            
 
-
-
-                                  <link href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css" rel="stylesheet">
-
-                         <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
-                         <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/extensions/mobile/bootstrap-table-mobile.min.js"></script>
-
-                         <table
-                            id="ItemAdded" 
-                            data-show-columns="true"
-                            data-search="true"
-                            
-                            data-mobile-responsive="true"
-                            data-check-on-init="true">
-                            <thead>
-                              <tr>
-                              <th >Item ID</th>
-                              <th >Descripción</th>
-                              <th >Nota</th>
-                              <th >Cant.</th>
-                              <th >Precio</th>
-                              <th >Chico</th>
-                              <th >Grande</th>
-                              <th >Unidad</th>
-                              <th >Taxable</th>
-                              <th >stock</th>
-                              </tr>
-                            </thead>
-                          </table>
-
-                          <script>
-                            $(function() {
-                              $('#ItemAdded').bootstrapTable()
-                            })
-                          </script>
-
-
-                                    
-                                    <!-- <table  class="responsive_table" id="ItemAdded" >
+                                    <table  class="responsive_table" id="ItemAdded" >
                                       <tr class="table_row" >
-                                      <th class="table_section_small" >Item ID</td>
-                                      <th class="table_section">Descripción</td>
-                                      <th class="table_section">Nota</td>
-                                      <th class="table_section_qty" >Cant.</td>
-                                      <th class="table_section_qty" >Precio</td>
-                                      <th class="table_section_qty dplynone" >Chico</td>
-                                      <th class="table_section_qty dplynone" >Grande</td>
-                                      <th class="table_section_qty dplynone" >Unidad</td>
-                                      <th class="table_section_qty dplynone" >Taxable</td>
-                                      <th class="table_section_qty dplynone" >stock</td>
+                                      <th class="table_section_small" >Item ID</th>
+                                      <th class="table_section">Desc.</th>
+                                      <th class="table_section">Nota</th>
+                                      <th class="table_section_qty" >Cant.</th>
+                                      <th class="table_section_qty" >Precio</th>
+                                      <th class="table_section_qty dplynone" >Chico</th>
+                                      <th class="table_section_qty dplynone" >Grande</th>
+                                      <th class="table_section_qty dplynone" >Unidad</th>
+                                      <th class="table_section_qty dplynone" >Taxable</th>
+                                      <th class="table_section_qty dplynone" >stock</th>
                                      </tr>
-                                    </table> -->
+                                    </table> 
 
                                      <div class="carttotal">
                                         <div class="carttotal_row">
