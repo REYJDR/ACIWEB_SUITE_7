@@ -304,10 +304,11 @@ if ($amnt_view_ck==0){
                                       <td class="table_section">Nota</td>
                                       
                     
-                                      
-                                      <td class="table_section_qty table_section_small" >Total</td>
-                                      <td class="table_section_qty table_section_small" >P.U.</td>
                                       <td class="table_section_qty table_section_small" >Cant.</td>
+                                      <td class="table_section_qty table_section_small" >P.U.</td>
+                                      <td class="table_section_qty table_section_small" >Total</td>
+                                      
+                                      
                                       
 
                                       <td class="table_section_qty dplynone" >Chico</td>
