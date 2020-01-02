@@ -640,9 +640,9 @@ function set_items(){
                               nota        = theTbl.rows[i].cells[2].innerHTML;
                               UnitMeasure = theTbl.rows[i].cells[8].innerHTML;
   
-                              qty       = theTbl.rows[i].cells[3].innerHTML;
-                              UnitPrice = Number(theTbl.rows[i].cells[4].innerHTML) / Number(theTbl.rows[i].cells[3].innerHTML);
-                              total     = Number(theTbl.rows[i].cells[5].innerHTML) ;
+                              qty       = theTbl.rows[i].cells[4].innerHTML;
+                              UnitPrice = Number(theTbl.rows[i].cells[5].innerHTML) ;
+                              total     = Number(theTbl.rows[i].cells[6].innerHTML) ;
   
                               // chic  = theTbl.rows[i].cells[5].innerHTML;
                               // gran  = theTbl.rows[i].cells[6].innerHTML; 

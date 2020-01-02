@@ -295,32 +295,7 @@ if ($amnt_view_ck==0){
 
                                   <!--init list item -->
                                   <div class="cartcontainer" >            
-                                  <link href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css" rel="stylesheet">
 
-                                  <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
-                                  <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/extensions/mobile/bootstrap-table-mobile.min.js"></script>
-
-                                  <table
-                                    id="table"
-                                    data-show-columns="true"
-                                    data-search="true"
-                                    data-url="json/data1.json"
-                                    data-mobile-responsive="true"
-                                    data-check-on-init="true">
-                                    <thead>
-                                      <tr>
-                                        <th data-field="id" data-sortable="true">ID</th>
-                                        <th data-field="name" data-sortable="true">Item Name</th>
-                                        <th data-field="price" data-sortable="true">Item Price</th>
-                                      </tr>
-                                    </thead>
-                                  </table>
-
-                                  <script>
-                                    $(function() {
-                                      $('#table').bootstrapTable()
-                                    })
-                                  </script>
                                                                       
                                     <table  class="responsive_table" id="ItemAdded" >
                                       <tr class="table_row" >
