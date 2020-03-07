@@ -831,7 +831,7 @@ public function set_sales_order_header(){
   'user'=>$this->model->active_user_id,
   'date'=>$date,
   'saletax'=>'0',
-  'CustomerPO' => $nopo,
+  'CustomerPO' => substr($observaciones, 0, 20 ),
   'tipo_licitacion' => $licitacion,
   'entrega' => $entrega,
   'termino_pago' => $pago,
