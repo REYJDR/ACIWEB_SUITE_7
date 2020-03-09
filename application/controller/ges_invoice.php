@@ -782,6 +782,8 @@ public function InsertSalesInfo($id_compania,$ID){
 
      $CustomerID = $value->{'CustomerID'};
      $CustomerName = $value->{'CustomerName'};
+     $CustomerPO   = $value->{'CustomerPO'};
+     
 
     }
 
@@ -826,6 +828,8 @@ public function InsertSalesInfo($id_compania,$ID){
             'DueDate'=>$InvDate,
             'saletax'=> $TaxID,
             'ApplyToSO'=> $ID,
+            'CustomerPO'=> $CustomerPO,
+            
             'SalesRepID' => $this->model->Query_value('Customers_Exp','SalesRepID','Where CustomerID="'.$CustomerID.'";') 
             );
 
