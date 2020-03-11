@@ -157,7 +157,7 @@ public function GetOrdrToInvoice(){
    $sql = 'SELECT * 
               FROM SalesOrder_Header_Imp
               WHERE EMITIDA = "0" 
-                AND ID_compania = "'.$this->model->id_compania.'" and date => "'.$date.'"
+                AND ID_compania = "'.$this->model->id_compania.'" and date >= "'.$date.'"
               ORDER BY LAST_CHANGE desc ';
 
     $INVOICES = $this->model->Query($sql);
