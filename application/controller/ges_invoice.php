@@ -154,7 +154,7 @@ public function GetOrdrToInvoice(){
 
     $date = date("Y-m-d", strtotime("-5 days")); 
 
-   echo  $sql = 'SELECT * 
+   $sql = 'SELECT * 
               FROM SalesOrder_Header_Imp
               WHERE EMITIDA = "0" 
                 AND ID_compania = "'.$this->model->id_compania.'" and date => "'.$date.'"
