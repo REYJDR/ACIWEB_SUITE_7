@@ -152,7 +152,7 @@ return $printer;
 /*Devuelve pedidos no facturados*/
 public function GetOrdrToInvoice(){
 
-    $date = date('Y-m-d') - 5; 
+    $date = date('Y-m-d'); 
 
    echo  $sql = 'SELECT * 
               FROM SalesOrder_Header_Imp
