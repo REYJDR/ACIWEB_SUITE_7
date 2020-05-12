@@ -55,7 +55,6 @@ if (isset($_SERVER['HTTPS'])){
 }
 
 
-define('ACIWEB_FOLDER_NAME',);
 
 list($customer_dir, $aciweb_dir) = explode('/',str_replace(URL_PUBLIC_FOLDER, '', dirname($_SERVER['SCRIPT_NAME'])));
 
