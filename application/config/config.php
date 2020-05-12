@@ -56,10 +56,9 @@ if (isset($_SERVER['HTTPS'])){
 
 
 
-list($customer_dir, $aciweb_dir) = explode('/',str_replace(URL_PUBLIC_FOLDER, '', dirname($_SERVER['SCRIPT_NAME'])));
+list($customer_dir, $aciweb_dir) = explode('/',str_replace(URL_PUBLIC_FOLDER, '', dirname($_SERVER['SCRIPT_NAME']) ) ) ;
 
-define('CUSTOMER_FOLDER_NAME',str_replace(URL_PUBLIC_FOLDER, '', dirname($_SERVER['SCRIPT_NAME'])));
-
+die($customer_dir );
 define('URL_DOMAIN', $_SERVER['HTTP_HOST']);
 define('URL_SUB_FOLDER', );
 define('URL', str_replace('\\', '/', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER));
