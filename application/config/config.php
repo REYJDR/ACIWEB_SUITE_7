@@ -55,13 +55,17 @@ if (isset($_SERVER['HTTPS'])){
 }
 
 
+define('ACIWEB_FOLDER_NAME',);
 
+list($customer_dir, $aciweb_dir) = explode('/',str_replace(URL_PUBLIC_FOLDER, '', dirname($_SERVER['SCRIPT_NAME'])));
 
+define('CUSTOMER_FOLDER_NAME',str_replace(URL_PUBLIC_FOLDER, '', dirname($_SERVER['SCRIPT_NAME'])));
 
 define('URL_DOMAIN', $_SERVER['HTTP_HOST']);
-define('URL_SUB_FOLDER', str_replace(URL_PUBLIC_FOLDER, '', dirname($_SERVER['SCRIPT_NAME'])));
+define('URL_SUB_FOLDER', );
 define('URL', str_replace('\\', '/', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER));
-define('URL_CUSTOMER', str_replace('\\', '/', URL_PROTOCOL . URL_DOMAIN . dirname($_SERVER['SCRIPT_NAME'])));
+
+define('URL_STORE', str_replace('\\', '/', URL_PROTOCOL . URL_DOMAIN . $customer_dir .'/ACIWEB-opencart/upload'));
 
 
 define('VER','v3.0.2.0');
