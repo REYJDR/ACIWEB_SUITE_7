@@ -56,14 +56,12 @@ if (isset($_SERVER['HTTPS'])){
 
 
 
-//list($customer_dir, $aciweb_dir) = explode('/',str_replace(URL_PUBLIC_FOLDER, '', dirname($_SERVER['SCRIPT_NAME']) ) ) ;
-$customer_dir = "/lersa/";
 
 define('URL_DOMAIN', $_SERVER['HTTP_HOST']);
 define('URL_SUB_FOLDER', );
 define('URL', str_replace('\\', '/', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER));
 
-define('URL_STORE', str_replace('\\', '/', URL_PROTOCOL . URL_DOMAIN . $customer_dir .'/ACIWEB-opencart/upload'));
+define('URL_STORE', str_replace('\\', '/', URL_PROTOCOL . URL_DOMAIN ));
 
 
 define('VER','v3.0.2.0');
