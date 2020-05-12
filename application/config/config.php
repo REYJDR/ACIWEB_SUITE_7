@@ -63,7 +63,8 @@ define('URL_SUB_FOLDER', str_replace(URL_PUBLIC_FOLDER, '', dirname($_SERVER['SC
 define('URL', str_replace('\\', '/', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER));
 
 list($cusomer_dir,$repository) = explode('\/',URL_SUB_FOLDER);
-
+var_dump($repository);
+die();
 define('URL_STORE', str_replace('\\', '/', URL_PROTOCOL . URL_DOMAIN . $cusomer_dir));
 
 
