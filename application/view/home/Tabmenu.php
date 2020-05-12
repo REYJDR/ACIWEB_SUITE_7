@@ -41,6 +41,10 @@
 
             if($this->model->active_user_role=='admin'){?>
             <tr><th><button class="tablinks" onclick="openCity(event, 'menu6')"><i class="fas fa-wrench fa-2x icon-color-dash" > </i>&nbsp&nbsp<?php echo $dash_menu_6; ?></button></th></tr>
+            
+            <tr><th><a href="" class="tablinks" ><i class="fab fa-opencart icon-color-dash" > </i>&nbsp&nbsp<?php echo $dash_menu_9; ?></a></th></tr>
+           
+           
             <?php } ?>
           
             <tr><th><button class="tablinks" onclick="goOut();"><i class="fas fa-sign-out-alt fa-2x icon-color-out" > </i>&nbsp&nbsp<?php echo $dash_menu_7; ?></button></th></tr>					
@@ -199,7 +203,15 @@
     
 </div>
 <!--END MENU REPORTES-->	
+<!--INI OPENCART-->	
+<div id="menu7" class="tabcontent">
 
+   <div class='col-lg-12'>
+ 
+    </div>
+    
+</div>
+<!--END OPENCART-->	
 
 <div id="menu6" class="tabcontent">
     <!--INI MENU CONFIG-->

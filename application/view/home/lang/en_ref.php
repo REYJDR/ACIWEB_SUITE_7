@@ -15,6 +15,7 @@ $dash_menu_5 = 'Reportes';
 $dash_menu_6 = 'Configuracion';
 $dash_menu_7 = 'Salir';
 $dash_menu_8 = 'Home';
+$dash_menu_9 = 'Store';
 
 //INI MENU
 $SUBMENU_sales1  = ' Orden de Venta ';
