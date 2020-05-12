@@ -42,7 +42,7 @@
             if($this->model->active_user_role=='admin'){?>
             <tr><th><button class="tablinks" onclick="openCity(event, 'menu6')"><i class="fas fa-wrench fa-2x icon-color-dash" > </i>&nbsp&nbsp<?php echo $dash_menu_6; ?></button></th></tr>
             
-            <tr><th><button class="tablinks" onclick="javascript: window.location.href = '<?php echo URL_STORE; ?>/admin';"><i class="fab fa-opencart fa-2x icon-color-dash" > </i>&nbsp&nbsp<?php echo $dash_menu_9; ?></a></th></tr>
+            <tr><th><button class="tablinks" onclick="javascript: window.location.href = '/admin';"><i class="fab fa-opencart fa-2x icon-color-dash" > </i>&nbsp&nbsp<?php echo $dash_menu_9; ?></a></th></tr>
            
            
             <?php } ?>
