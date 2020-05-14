@@ -665,7 +665,7 @@ $this->CheckError();
 $sql = 'SELECT * FROM API_OPENCART_KEYS WHERE id="1"';
 
 $oc = $this->model->Query($sql);
-
+$oc = json_decode($oc);
 $oc_url = $oc['url'] ;
 $oc_key = $oc['apikey'] ;
 
