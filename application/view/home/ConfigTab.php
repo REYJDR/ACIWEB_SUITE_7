@@ -659,7 +659,7 @@ openCity(event, 'Config1');
 		</div>
 		</form>
 	</fieldset>
-    <<!--INI MENU OPENCART-->	
+    <!--INI MENU OPENCART-->	
 	</div>
 </div>
 
