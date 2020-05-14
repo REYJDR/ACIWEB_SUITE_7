@@ -641,36 +641,20 @@ unset($_POST);
 $this->CheckError();
 
 
-//recupero datos de inventario
-$sql = 'SELECT * FROM INV_CONF WHERE  ID_compania="'.$this->model->id_compania.'"';
-
-$inv= $this->model->Query($sql);
-
-foreach ($inv as $inv_val) {
-  $inv_val= json_decode($inv_val);
-
-  $inv_discount = $inv_val->{'inv_discount'};
-
-
-}
-
-if($inv_discount == 1 ){$inv_discount ='checked';}else{$inv_discount ='';}
-
-unset($_POST);
-$this->CheckError();
-
 
 
 //recupero info de opencart
 $sql = 'SELECT * FROM API_OPENCART_KEYS WHERE id="1"';
 
 $oc = $this->model->Query($sql);
-$oc = json_decode($oc);
 
-//var_dump($oc);die();
+foreach ($oc as $oc_val) {
+	$oc_val= json_decode($oc_val);
 
-$oc_url = $oc['url'] ;
-$oc_key = $oc['apikey'] ;
+	$oc_url = $oc_val->{'url'} ;
+	$oc_key = $oc_val->{'apikey'} ;
+  }
+
 
 if( $oc_url != '' && $oc_key != ''){
 
@@ -696,10 +680,27 @@ if( $oc_url != '' && $oc_key != ''){
 	}
 
 }
+//recupero datos de inventario
+$sql = 'SELECT * FROM INV_CONF WHERE  ID_compania="'.$this->model->id_compania.'"';
 
+$inv= $this->model->Query($sql);
+
+foreach ($inv as $inv_val) {
+  $inv_val= json_decode($inv_val);
+
+  $inv_discount = $inv_val->{'inv_discount'};
+
+
+}
+
+if($inv_discount == 1 ){$inv_discount ='checked';}else{$inv_discount ='';}
 
 unset($_POST);
 $this->CheckError();
+
+
+
+
 ?>	
 
 <!--ADD JS FILE-->
