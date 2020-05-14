@@ -483,6 +483,16 @@ echo '<script> MSG_ERROR("El correo indicado ya existe","0"); </script>';
 
 } 
 
+if(isset($_POST['oc_info'])){
+
+	$this->model->Query("INSERT INTO oc_info (id,url,key) values ('1','".$_POST['url']."','".$_POST['key']."')");
+
+	$this->CheckError();
+
+	echo '<script> alert("Se ha agregado la configuración con exito","ok"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
+
+
+}
 
 
 //////LLAMADAS DE DATOS
@@ -648,6 +658,17 @@ if($inv_discount == 1 ){$inv_discount ='checked';}else{$inv_discount ='';}
 
 unset($_POST);
 $this->CheckError();
+
+
+
+//recupero info de opencart
+$sql = 'SELECT * FROM API_OPENCART_KEYS WHERE id="1"';
+
+$oc = $this->model->Query($sql);
+
+$oc_url = $oc['url'] ;
+$oc_key = $oc['key'] ;
+
 
 ?>	
 
