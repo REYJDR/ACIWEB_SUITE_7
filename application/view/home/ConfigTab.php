@@ -626,8 +626,8 @@ openCity(event, 'Config1');
 			<h4><?php echo  $config_28_title; ?></h4> 
 				<table class="table_form">
 				<tbody>
-				<tr><th><strong>URL</strong></th><td><input type="text" class="inputPage col-lg-12"  id="url" name="url" value="<?php echo oc_url; ?>" /></td></tr>
-				<tr><th><strong>KEY</strong></th><td><input type="text" class="inputPage col-lg-12"  id="key" name="key" value="<?php echo oc_key; ?>" /></td></tr>
+				<tr><th><strong>URL</strong></th><td><input type="text" class="inputPage col-lg-12"  id="url" name="url" value="<?php echo $oc_url; ?>" /></td></tr>
+				<tr><th><strong>KEY</strong></th><td><input type="text" class="inputPage col-lg-12"  id="key" name="key" value="<?php echo $oc_key; ?>" /></td></tr>
 			</table> 
 			</fieldset > 
 			</div>
