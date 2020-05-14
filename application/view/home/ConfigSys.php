@@ -485,7 +485,7 @@ echo '<script> MSG_ERROR("El correo indicado ya existe","0"); </script>';
 
 if(isset($_POST['oc_info'])){
 
-	$this->model->Query("INSERT INTO oc_info (id,url,key) values ('1','".$_POST['url']."','".$_POST['key']."')");
+	$this->model->Query("INSERT INTO API_OPENCART_KEYS (id,url,key) values ('1','".$_POST['url']."','".$_POST['key']."')");
 
 	$this->CheckError();
 
@@ -669,6 +669,25 @@ $oc = $this->model->Query($sql);
 $oc_url = $oc['url'] ;
 $oc_key = $oc['key'] ;
 
+$sql = 'SELECT * FROM API_OPENCART_ENDPOINTS where flag=true';
+
+$oc_end = $this->model->Query($sql);
+
+foreach ($oc_end as $api) {
+	$api_endp = json_decode($api);
+	
+	$id =  $api_endp->{'id'};
+	$name =  $api_endp->{'name'};
+	$route =  $api_endp->{'route'};
+	$description = $api_endp->{'description'};
+
+	
+		$table .= "<tr>
+					<th><strong>{$name}</strong></th><td>{$description}</td><td><input type='button' onclick='exce_oc_api('{$name}','{$route}','{$oc_url}','{$oc_key}');'  value='Ejecutar' class='btn btn-primary btn-sm btn-icon icon-left'  /></td>
+				   </tr>";
+
+
+}
 
 ?>	
 

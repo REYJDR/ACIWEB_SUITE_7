@@ -646,7 +646,7 @@ openCity(event, 'Config1');
 			<h4><?php echo $config_28_title; ?></h4> 
 					<table class="table_form">
 					  <tbody>
-						
+						<?php echo $endpoints; ?>
 					  </tbody>
 					</table> 
 			</fieldset>
