@@ -27,7 +27,9 @@ openCity(event, 'Config1');
             <tr><th><button class="tablinks" onclick="openCity(event, 'Config8')"><i class="fas fa-desktop fa-2x icon-color-dash" > </i> &nbsp;&nbsp;<?php echo $config_menu_8; ?></button></th></tr>					
             <tr><th><button class="tablinks" onclick="openCity(event, 'Config9')"><i class="fas fa-database fa-2x icon-color-dash" > </i> &nbsp;&nbsp;<?php echo $config_menu_9; ?></button></th></tr>
             <tr><th><button class="tablinks" onclick="openCity(event, 'Config10')"><i class="fas fa-chart-line fa-2x icon-color-dash" > </i> &nbsp;&nbsp;<?php echo $config_menu_10; ?></button></th></tr>					  											  			
-        </tbody>
+            <tr><th><button class="tablinks" onclick="openCity(event, 'Config12')"><i class="fab fa-opencart  fa-2x icon-color-dash" > </i> &nbsp;&nbsp;<?php echo $config_menu_11; ?></button></th></tr>					  											  			
+        
+		</tbody>
     </table>
 </fieldset>
 
@@ -136,13 +138,10 @@ openCity(event, 'Config1');
 </div>	
 
 
-
-
-
 <div id="Config3" class="tabcontent">		
-<!--CONFIGURACION DE DETALLES FACTURAS RECIBOS -->
-<div class="col-lg-12" >
-<fieldset>
+<!--CONFIGURACION DE DETALLES FACTURAS RECIBOS --> 
+ <div class="col-lg-12" >
+ <fieldset>
 	<legend><?php echo $config_23_title; ?></legend> 
 
 	<!-- General -->
@@ -612,6 +611,57 @@ openCity(event, 'Config1');
 	</div>
 </div>
 	
+<div id="Config12" class="tabcontent">
+    <div class='col-lg-12'>
+    <!--INI MENU OPENCART-->
+	<fieldset class="fieldsetform"  >
+		
+	  <legend><?php echo $config_28_title; ?></legend> 
+
+	   <form action="" role="form" class="form-horizontal" enctype="multipart/form-data" method="POST">	
+	   <input type="hidden"  name="oc_info" value="1"  />
+
+			<div class="col-lg-6" >
+			<fieldset class="fieldsetform"  >
+			<h4><?php echo  $config_28_title; ?></h4> 
+				<table class="table_form">
+				<tbody>
+				<tr><th><strong>URL</strong></th><td><input type="text" class="inputPage col-lg-12"  id="url" name="url" value="<?php echo oc_url; ?>" /></td></tr>
+				<tr><th><strong>KEY</strong></th><td><input type="text" class="inputPage col-lg-12"  id="key" name="key" value="<?php echo oc_key; ?>" /></td></tr>
+			</table> 
+			</fieldset > 
+			</div>
+			<div class='col-lg-8'></div>					
+			<div class="form-group col-lg-3">
+				<input type="submit" name="" class="accept-form-btn" value="Guardar">
+			</div>
+		</form>
+
+
+		<form action="" role="form" class="form-horizontal" enctype="multipart/form-data" method="POST">	
+		<input type="hidden"  name="oc_endpoint" value="1"  />
+		 
+		 <div class="col-lg-6" >
+			<fieldset  >
+			<h4><?php echo $config_28_title; ?></h4> 
+					<table class="table_form">
+					  <tbody>
+						
+					  </tbody>
+					</table> 
+			</fieldset>
+		 </div>
+
+
+		<div class='col-lg-8'></div>					
+		<div class="form-group col-lg-3">
+			<input type="submit" name="" class="accept-form-btn" value="Guardar">
+		</div>
+		</form>
+	</fieldset>
+    <<!--INI MENU OPENCART-->	
+	</div>
+</div>
 
 
 </fieldset>

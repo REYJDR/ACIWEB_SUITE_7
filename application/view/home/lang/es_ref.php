@@ -72,6 +72,7 @@ $config_menu_7 = 'Impresoras Fiscal';
 $config_menu_8 = 'Logs';
 $config_menu_9 = 'Conexión BD';
 $config_menu_10 = 'SAGE 50';
+$config_menu_11 = 'Opencart';
 
 $config_1_title = 'Datos generales';
 $config_1_val1 = 'Nombre de compañia';
@@ -241,5 +242,12 @@ $config_27_title = 'Configuración de interfaz de inventario';
 $config_15_val1 = 'Descontar existencias sin facturar';
 $config_28_title = 'Opciones';
 //INVENTARIO
+
+
+//OPENCART
+$config_27_title = 'Conexiones con API de Opencart';
+//$config_15_val1 = 'Descontar existencias sin facturar';
+//$config_28_title = 'Opciones';
+//OPENCART
 
 ?>

@@ -71,6 +71,7 @@ $config_menu_7 = 'Impresoras Fiscal';
 $config_menu_8 = 'Logs';
 $config_menu_9 = 'Conexión BD';
 $config_menu_10 = 'SAGE 50';
+$config_menu_11 = 'Opencart';
 
 $config_1_title = 'Datos generales';
 $config_1_val1 = 'Nombre de compañia';
