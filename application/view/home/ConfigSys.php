@@ -485,7 +485,7 @@ echo '<script> MSG_ERROR("El correo indicado ya existe","0"); </script>';
 
 if(isset($_POST['oc_info'])){
 
-	$this->model->Query("INSERT INTO API_OPENCART_KEYS (id,url,key) values ('1','{$_POST['url']}','{$_POST['key']}')");
+	$this->model->Query("INSERT INTO API_OPENCART_KEYS (id,url,apikey) values ('1','{$_POST['url']}','{$_POST['key']}')");
 
 	$this->CheckError();
 
@@ -667,7 +667,7 @@ $sql = 'SELECT * FROM API_OPENCART_KEYS WHERE id="1"';
 $oc = $this->model->Query($sql);
 
 $oc_url = $oc['url'] ;
-$oc_key = $oc['key'] ;
+$oc_key = $oc['apikey'] ;
 
 if( $oc_url != '' && $oc_key != ''){
 
