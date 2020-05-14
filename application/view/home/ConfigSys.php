@@ -669,26 +669,34 @@ $oc = $this->model->Query($sql);
 $oc_url = $oc['url'] ;
 $oc_key = $oc['key'] ;
 
-$sql = 'SELECT * FROM API_OPENCART_ENDPOINTS where flag=1';
+if( $oc_url != '' && $oc_key != ''){
 
-$oc_end = $this->model->Query($sql);
-$endpoints = '';
-foreach ($oc_end as $api) {
-	$api_endp = json_decode($api);
+	$sql = 'SELECT * FROM API_OPENCART_ENDPOINTS where flag=1';
 	
-	$id =  $api_endp->{'id'};
-	$name =  $api_endp->{'name'};
-	$route =  $api_endp->{'route'};
-	$description = $api_endp->{'description'};
-
+	$oc_end = $this->model->Query($sql);
+	$endpoints = '';
 	
-	$endpoints .= "<tr>
-					<th><strong>{$name}</strong></th><td>{$description}</td><td><input type='button' onclick='exce_oc_api('{$name}','{$route}','{$oc_url}','{$oc_key}');'  value='Ejecutar' class='btn btn-primary btn-sm btn-icon icon-left'  /></td>
-				   </tr>";
-
+	foreach ($oc_end as $api) {
+		$api_endp = json_decode($api);
+		
+		$id =  $api_endp->{'id'};
+		$name =  $api_endp->{'name'};
+		$route =  $api_endp->{'route'};
+		$description = $api_endp->{'description'};
+	
+		
+		$endpoints .= "<tr>
+						<th><strong>{$name}</strong></th><td>{$description}</td><td><input type='button' onclick='exce_oc_api('{$name}','{$route}','{$oc_url}','{$oc_key}');'  value='Ejecutar' class='btn btn-primary btn-sm btn-icon icon-left'  /></td>
+					   </tr>";
+	
+	
+	}
 
 }
 
+
+unset($_POST);
+$this->CheckError();
 ?>	
 
 <!--ADD JS FILE-->
