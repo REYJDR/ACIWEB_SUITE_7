@@ -658,7 +658,7 @@ foreach ($oc as $oc_val) {
 
 if( $oc_url != '' && $oc_key != ''){
 
-	$sql = 'SELECT * FROM API_OPENCART_ENDPOINTS where flag=1';
+	$sql = 'SELECT * FROM API_OPENCART_ENDPOINT where flag=1';
 	
 	$oc_end = $this->model->Query($sql);
 	$endpoints = '';

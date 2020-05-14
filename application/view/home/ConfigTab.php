@@ -623,7 +623,7 @@ openCity(event, 'Config1');
 
 			<div class="col-lg-6" >
 			<fieldset class="fieldsetform"  >
-			<h4><?php echo  $config_28_title; ?></h4> 
+			<h4>Datos de instancia API</h4> 
 				<table class="table_form">
 				<tbody>
 				<tr><th><strong>URL</strong></th><td><input type="text" class="inputPage col-lg-12"  id="url" name="url" value="<?php echo $oc_url; ?>" /></td></tr>
@@ -637,13 +637,9 @@ openCity(event, 'Config1');
 			</div>
 		</form>
 
-
-		<form action="" role="form" class="form-horizontal" enctype="multipart/form-data" method="POST">	
-		<input type="hidden"  name="oc_endpoint" value="1"  />
-		 
 		 <div class="col-lg-6" >
 			<fieldset  >
-			<h4><?php echo $config_28_title; ?></h4> 
+			<h4>Recursos disponibles</h4> 
 					<table class="table_form">
 					  <tbody>
 						<?php echo $endpoints; ?>
@@ -652,13 +648,7 @@ openCity(event, 'Config1');
 			</fieldset>
 		 </div>
 
-
-		<div class='col-lg-8'></div>					
-		<div class="form-group col-lg-3">
-			<input type="submit" name="" class="accept-form-btn" value="Guardar">
-		</div>
-		</form>
-	</fieldset>
+	< /fieldset>
     <!--INI MENU OPENCART-->	
 	</div>
 </div>
