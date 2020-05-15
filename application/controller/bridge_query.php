@@ -2524,7 +2524,7 @@ public function oc_setItems() {
   // "product_reward" : [],
   // "points":"",
   // "product_layout" : []
-
+  echo json_encode( $json); die();
  }
 
 //Execute curl
