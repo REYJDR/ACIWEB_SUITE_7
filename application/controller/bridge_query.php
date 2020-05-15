@@ -84,6 +84,39 @@ $res = $this->model->Query($sql);
 }
 
 
+public function get_ProductsList(){
+  $this->SESSION();
+  
+  //$ITEM = $_REQUEST['item'];
+  
+  $sql= 'SELECT 
+  A.ProductID,
+  A.Description,
+  A.UnitMeasure,
+  (SELECT SUM(qty) FROM STOCK_ITEMS_LOCATION WHERE itemID = ProductID and ID_compania="'.$this->model->id_compania.'") AS QtyOnHand,
+  A.Price1,
+  A.LastUnitCost,
+  A.TaxType,
+  A.UPC_SKU,
+  A.GL_Sales_Acct
+  FROM Products_Exp as A
+  WHERE 
+  A.IsActive="1"
+  AND  A.id_compania="'.$this->model->id_compania.'" ';
+ // AND  A.ProductID ="'.$ITEM.'"';
+  
+  
+  $res = $this->model->Query($sql);
+  
+  
+    foreach ($res as  $value) {
+        echo str_replace("'","",$value);
+    }
+  
+  
+  
+  }
+
 public function get_ProductsInfo(){
 $this->SESSION();
 
@@ -2425,7 +2458,7 @@ public function get_lang(){
 public function oc_setItems() {
 
 //get info 
- $products = $this->get_ProductsInfo();
+ $products = $this->get_ProductsList();
 
  echo $products;
  var_dump($products); die();
