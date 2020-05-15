@@ -2472,8 +2472,16 @@ public function oc_setItems() {
   $json[$key]['master_id'] = 0;
   $json[$key]['model'] = $item->{'ProductID'};
   $json[$key]['sku'] = $item->{'UPC_SKU'};
-  $json[$key]['upc'] = '0';
-  
+  $json[$key]['upc'] = '';
+  $json[$key]['ean'] = '';
+  $json[$key]['jan'] = '';
+  $json[$key]['isbn'] = '';
+  $json[$key]['mpn'] = '';
+  $json[$key]['location'] = '';
+  $json[$key]['tax_class_id'] = '0';
+  $json[$key]['stock_status_id'] = '6';
+  $json[$key]['date_available'] = date('Y-m-d');
+  $json[$key]['shipping'] = '1';
   $json[$key]['price'] = $item->{'Price1'}; 
   $json[$key]['quantity'] = $item->{'QtyOnHand'};
   $json[$key]['minimum'] = 1;
@@ -2483,7 +2491,35 @@ public function oc_setItems() {
   $json[$key]['height'] = 1;
   $json[$key]['status'] = 0;//not enable
   $json[$key]['product_store'] = ["Default"];//not enable
+  $json[$key]['product_reward'] = [];//not enable
+  $json[$key]['product_layout'] = [];//not enable
+  
 
+
+
+
+ 
+  // "length":"" ,
+  // "width":"" ,
+  // "height":"" ,
+  // "length_class_id":"1" ,
+  // "weight":"" ,
+  // "weight_class_id":"1" ,
+  // "status":"0" ,
+  // "sort_order":"1" ,
+  // "manufacturer":"" ,
+  // "manufacturer_id":"0" ,
+  // "category":"" ,
+  // "filter":"" ,
+  // "product_store" : ["Default"],
+  // "download":"" ,
+  // "related":"" ,
+  // "option":"" ,
+  // "image":"" ,
+  // "points":"" ,
+  // "product_reward" : [],
+  // "points":"",
+  // "product_layout" : []
 
  }
 
