@@ -89,9 +89,11 @@ public function get_ProductsList(){
   
   //$ITEM = $_REQUEST['item'];
   
+
   $sql= 'SELECT 
   A.ProductID,
   A.Description,
+  A.SalesDescription,
   A.UnitMeasure,
   (SELECT SUM(qty) FROM STOCK_ITEMS_LOCATION WHERE itemID = ProductID and ID_compania="'.$this->model->id_compania.'") AS QtyOnHand,
   A.Price1,
@@ -113,8 +115,7 @@ public function get_ProductsList(){
         echo str_replace("'","",$value);
     }
   
-  
-  
+  return $res;
   }
 
 public function get_ProductsInfo(){
@@ -2460,8 +2461,37 @@ public function oc_setItems() {
 //get info 
  $products = $this->get_ProductsList();
 
- echo $products;
- var_dump($products); die();
+ foreach ($products as $key => $value) {
+  
+  $item =  json_decode($value);
+
+   
+  $json[$key]['product_description'][1]['name'] =  $item->{'Description'}.'('.$item->{'ProductID'}.')';
+  $json[$key]['product_description'][1]['description'] = $item->{'SalesDescription'};
+  $json[$key]['product_description'][1]['meta_title'] = $item->{'Description'}.'('.$item->{'ProductID'}.')';
+  $json[$key]['product_description'][1]['meta_description'] = "";
+  $json[$key]['product_description'][1]['meta_keyword'] = "";
+  $json[$key]['product_description'][1]['tag'] = "";
+  $json[$key]['master_id'] = 0;
+  $json[$key]['model'] = $item->{'ProductID'};
+  $json[$key]['sku'] = $item->{'UPC_SKU'};
+  $json[$key]['price'] = $item->{'Price1'}; 
+  $json[$key]['quantity'] = $item->{'QtyOnHand'};
+  $json[$key]['minimum'] = 1;
+  $json[$key]['subtract'] = 1;
+  $json[$key]['length'] = 1;
+  $json[$key]['width'] = 1;
+  $json[$key]['height'] = 1;
+  $json[$key]['status'] = 0;//not enable
+  $json[$key]['product_store'] = ["Default"];//not enable
+
+
+ }
+
+
+
+ echo $json;
+die();
 
 //Execute curl
  //$this->do_curl_request($url, $params=array());
