@@ -2503,34 +2503,6 @@ public function oc_setItems() {
   $json[$i]['manufacturer_id'] = "0";//not enable
 
   $i = $i + 1;
- 
- 
-  // "length_class_id":"1" ,
-  // "weight":"" ,
-  // "weight_class_id":"1" ,
-
- 
-  // "length":"" ,
-  // "width":"" ,
-  // "height":"" ,
-  // "length_class_id":"1" ,
-  // "weight":"" ,
-  // "weight_class_id":"1" ,
-  // "status":"0" ,
-  // "sort_order":"1" ,
-  // "manufacturer":"" ,
-  // "manufacturer_id":"0" ,
-  // "category":"" ,
-  // "filter":"" ,
-  // "product_store" : ["Default"],
-  // "download":"" ,
-  // "related":"" ,
-  // "option":"" ,
-  // "image":"" ,
-  // "points":"" ,
-  // "product_reward" : [],
-  // "points":"",
-  // "product_layout" : []
 
  }
  
@@ -2610,6 +2582,13 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
     foreach($response as $key => $value){
 
       echo '['.$key.']['.$value.']<br>';
+     if(is_array($value){
+      foreach($value as $keymsg => $msg){
+        echo '['.$keymsg.']['.$msg.']<br>';
+
+      }
+
+     }
 
     }
 
