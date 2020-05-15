@@ -2500,7 +2500,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
   $url = $api_url.'/index.php?api_token='.$api_token.'&route=api/login';
 
   
-  $data = array('key' => $api_token ,'username' => $api_user ),
+  $data = array('key' => $api_token ,'username' => $api_user );
   $postData = "";
   foreach( $data as $key => $val ) {
      $postData .=$key."=".$val."&";
