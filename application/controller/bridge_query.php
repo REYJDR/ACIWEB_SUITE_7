@@ -2490,7 +2490,7 @@ $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_
 
 }
 
-public function get_token($api_token,$api_user){
+public function get_token($api_url,$api_token,$api_user){
 
   $url = $api_url.'/index.php?route=api/login&api_token='.$api_token;
   
@@ -2520,7 +2520,7 @@ public function get_token($api_token,$api_user){
     curl_close($ch);
    
     $response = json_decode($response);
-  die(var_dump($response));
+ 
     if($response->{'error'}){
   
       foreach($response->{'error'} as $key => $value){
@@ -2540,7 +2540,7 @@ public function get_token($api_token,$api_user){
 public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) {
 
   //get token
-  $token = $this->get_token($api_token ,$api_user);
+  $token = $this->get_token($api_url, $api_token ,$api_user);
  
 
   $url = $api_url.'/index.php?route='.$api_route.'&api_token='.$token;
