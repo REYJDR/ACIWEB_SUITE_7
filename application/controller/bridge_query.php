@@ -2490,6 +2490,7 @@ public function oc_setItems() {
   $json[$key]['width'] = 1;
   $json[$key]['height'] = 1;
   $json[$key]['status'] = 0;//not enable
+  $json[$key]['points'] = "";
   $json[$key]['product_store'] = ["Default"];//not enable
   $json[$key]['product_reward'] = [];//not enable
   $json[$key]['product_layout'] = [];//not enable
