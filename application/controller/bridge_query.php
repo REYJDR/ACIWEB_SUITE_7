@@ -2486,12 +2486,12 @@ public function oc_setItems() {
  }
 
 //Execute curl
-$this->do_curl_request($_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json));
+$this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json));
 
 }
 
 
-public function do_curl_request($api_user='Default', $api_url,$api_token,$api_route,$data) {
+public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) {
 
   //get token
   $curl = curl_init();
