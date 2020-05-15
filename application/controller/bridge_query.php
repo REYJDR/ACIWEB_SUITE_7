@@ -2458,46 +2458,47 @@ public function oc_setItems() {
 
 //get info 
  $products = $this->get_ProductsList();
-
+ $i = 1;
  foreach ($products as $key => $value) {
   
   $item =  json_decode($value);
    
-  $json[$key]['product_description'][1]['name'] =  $item->{'Description'}.'('.$item->{'ProductID'}.')';
-  $json[$key]['product_description'][1]['description'] = $item->{'SalesDescription'};
-  $json[$key]['product_description'][1]['meta_title'] = $item->{'Description'}.'('.$item->{'ProductID'}.')';
-  $json[$key]['product_description'][1]['meta_description'] = "";
-  $json[$key]['product_description'][1]['meta_keyword'] = "";
-  $json[$key]['product_description'][1]['tag'] = "";
-  $json[$key]['master_id'] = "0";
-  $json[$key]['model'] = $item->{'ProductID'};
-  $json[$key]['sku'] = $item->{'UPC_SKU'};
-  $json[$key]['upc'] = "";
-  $json[$key]['ean'] = "";
-  $json[$key]['jan'] = "";
-  $json[$key]['isbn'] = "";
-  $json[$key]['mpn'] = "";
-  $json[$key]['location'] = "";
-  $json[$key]['tax_class_id'] = "0";
-  $json[$key]['stock_status_id'] = "0";
-  $json[$key]['date_available'] = date('Y-m-d');
-  $json[$key]['shipping'] = "0";
-  $json[$key]['price'] = $item->{'Price1'}; 
-  $json[$key]['quantity'] = $item->{'QtyOnHand'};
-  $json[$key]['minimum'] = "1";
-  $json[$key]['subtract'] = "1";
-  $json[$key]['length'] = "0";
-  $json[$key]['width'] = "0";
-  $json[$key]['height'] = "0";
-  $json[$key]['weight'] = "0";
+  $json[$i]['product_description'][1]['name'] =  $item->{'Description'}.'('.$item->{'ProductID'}.')';
+  $json[$i]['product_description'][1]['description'] = $item->{'SalesDescription'};
+  $json[$i]['product_description'][1]['meta_title'] = $item->{'Description'}.'('.$item->{'ProductID'}.')';
+  $json[$i]['product_description'][1]['meta_description'] = "";
+  $json[$i]['product_description'][1]['meta_keyword'] = "";
+  $json[$i]['product_description'][1]['tag'] = "";
+  $json[$i]['master_id'] = "0";
+  $json[$i]['model'] = $item->{'ProductID'};
+  $json[$i]['sku'] = $item->{'UPC_SKU'};
+  $json[$i]['upc'] = "";
+  $json[$i]['ean'] = "";
+  $json[$i]['jan'] = "";
+  $json[$i]['isbn'] = "";
+  $json[$i]['mpn'] = "";
+  $json[$i]['location'] = "";
+  $json[$i]['tax_class_id'] = "0";
+  $json[$i]['stock_status_id'] = "0";
+  $json[$i]['date_available'] = date('Y-m-d');
+  $json[$i]['shipping'] = "0";
+  $json[$i]['price'] = $item->{'Price1'}; 
+  $json[$i]['quantity'] = $item->{'QtyOnHand'};
+  $json[$i]['minimum'] = "1";
+  $json[$i]['subtract'] = "1";
+  $json[$i]['length'] = "0";
+  $json[$i]['width'] = "0";
+  $json[$i]['height'] = "0";
+  $json[$i]['weight'] = "0";
   
-  $json[$key]['status'] = "0";//not enable
-  $json[$key]['points'] = "";
-  $json[$key]['product_store'] = ["Default"];//not enable
-  $json[$key]['product_reward'] = [];//not enable
-  $json[$key]['product_layout'] = [];//not enable
-  $json[$key]['manufacturer_id'] = "0";//not enable
+  $json[$i]['status'] = "0";//not enable
+  $json[$i]['points'] = "";
+  $json[$i]['product_store'] = ["Default"];//not enable
+  $json[$i]['product_reward'] = [];//not enable
+  $json[$i]['product_layout'] = [];//not enable
+  $json[$i]['manufacturer_id'] = "0";//not enable
   
+  $i = $i + 1;
  // "length_class_id":"1" ,
   // "weight":"" ,
   // "weight_class_id":"1" ,
@@ -2616,3 +2617,4 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
 
 ?>
 
+$i
