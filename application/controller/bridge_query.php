@@ -2508,18 +2508,17 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
     CURLOPT_TIMEOUT => 0,
     CURLOPT_FOLLOWLOCATION => true,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => "POST",
-    CURLOPT_POSTFIELDS =>   array('username' => 'default', 'key' => $api_token) ,
-      CURLOPT_HTTPHEADER => array(
+  //  CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_POSTFIELDS => array('key' => $api_token ,'username' => $api_user ); 
+    CURLOPT_HTTPHEADER => array(
       "Content-Type: application/json",
-      "Content-Type: text/plain"
+      "username: test"
     ),
   ));
-  
-  $response = curl_exec($curl);
-  
-  curl_close($curl);
 
+  $response = curl_exec($curl);
+  curl_close($curl);
+ 
   var_dump($response);
 
   // $curl = curl_init();
