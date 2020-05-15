@@ -2495,7 +2495,8 @@ public function do_curl_request($api_url,$api_token,$api_route,$data) {
 
   //get token
   $curl = curl_init();
-  
+
+
   $url = $api_url+'/index.php?api_token='+$api_token+'&route=api/login';
 
   curl_setopt_array($curl, array(
@@ -2507,7 +2508,7 @@ public function do_curl_request($api_url,$api_token,$api_route,$data) {
     CURLOPT_FOLLOWLOCATION => true,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "POST",
-    CURLOPT_POSTFIELDS => $data,
+    CURLOPT_POSTFIELDS =>   array('key' => $api_token) ,
       CURLOPT_HTTPHEADER => array(
       "Content-Type: application/json",
       "Content-Type: text/plain"
