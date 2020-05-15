@@ -2427,10 +2427,11 @@ public function oc_setItems() {
 //get info 
  $products = $this->get_ProductsInfo();
 
+ echo $products;
  var_dump($products); die();
 
 //Execute curl
- $this->do_curl_request($url, $params=array());
+ //$this->do_curl_request($url, $params=array());
 
 }
 
