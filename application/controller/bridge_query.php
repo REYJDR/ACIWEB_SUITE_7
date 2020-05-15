@@ -2494,8 +2494,6 @@ $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_
 public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) {
 
   //get token
-  $curl = curl_init();
-
 
   $url = $api_url.'/index.php?route=api/login';
 
@@ -2523,8 +2521,8 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
     curl_setopt($ch,CURLOPT_POSTFIELDS, $params_string);
   }
  
-  $response = curl_exec($curl);
-  curl_close($curl);
+  $response = curl_exec($ch);
+  curl_close($ch);
  
   var_dump($response);die();
 
