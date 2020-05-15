@@ -2525,14 +2525,13 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
     CURLOPT_POSTFIELDS => $postData,
     CURLOPT_HTTPHEADER => array(
       "Content-Type: application/json",
-      "username: test"
     ),
   ));
 
   $response = curl_exec($curl);
   curl_close($curl);
  
-  var_dump($response);
+  var_dump($response);die();
 
   // $curl = curl_init();
   
