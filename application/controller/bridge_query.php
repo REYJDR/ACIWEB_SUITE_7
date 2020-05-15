@@ -2457,6 +2457,7 @@ public function oc_setItems() {
 
 //get info 
  $products = $this->get_ProductsList();
+ 
  $i = 1;
 
  foreach ($products as $key => $value) {
@@ -2490,7 +2491,7 @@ public function oc_setItems() {
   $json[$i]['width'] = "0";
   $json[$i]['height'] = "0";
   $json[$i]['weight'] = "0";
-  
+  $json[$i]['weight_class_id'] = "1";
   $json[$i]['status'] = "0";//not enable
   $json[$i]['points'] = "";
   $json[$i]['product_store'] = ["Default"];//not enable
@@ -2499,7 +2500,9 @@ public function oc_setItems() {
   $json[$i]['manufacturer_id'] = "0";//not enable
   
   $i = $i + 1;
- // "length_class_id":"1" ,
+ 
+ 
+  // "length_class_id":"1" ,
   // "weight":"" ,
   // "weight_class_id":"1" ,
 
@@ -2525,11 +2528,11 @@ public function oc_setItems() {
   // "product_reward" : [],
   // "points":"",
   // "product_layout" : []
-  
+  echo json_encode( $json , JSON_PRETTY_PRINT); die();
  }
  echo json_encode( $json , JSON_PRETTY_PRINT); die();
 //Execute curl
-$this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json));
+$this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
 
 }
 
@@ -2616,5 +2619,3 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
 }
 
 ?>
-
-$i
