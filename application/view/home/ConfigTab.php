@@ -630,8 +630,8 @@ openCity(event, 'Config1');
 				<tr><th><strong>KEY</strong></th><td><input type="text" class="inputPage col-lg-12"  id="key" name="key" value="<?php echo $oc_key; ?>" /></td></tr>
 				</tbody>
 			   </table> 
-			   <div class='col-lg-4'></div>					
-			   <div class="form-group col-lg-3">
+			   <div class='col-lg-2'></div>					
+			   <div class="form-group col-lg-2">
 				<input type="submit" name="" class="accept-form-btn" value="Guardar">
 			   </div>
 			</fieldset>
