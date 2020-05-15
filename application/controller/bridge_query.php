@@ -2520,7 +2520,7 @@ public function get_token($api_token,$api_user){
     curl_close($ch);
    
     $response = json_decode($response);
-  
+  die(var_dump($response));
     if($response->{'error'}){
   
       foreach($response->{'error'} as $key => $value){
