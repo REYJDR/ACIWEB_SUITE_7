@@ -2495,13 +2495,11 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
 
   //get token
 
-  $url = $api_url.'/index.php?route=api/login';
+  $url = $api_url.'/index.php?route=api/login&api_token='.$api_token;
 
   
   $params = array('key' => $api_token ,
-                  'username' => $api_user,
-                  'api_token' => $api_token
-                 );
+                  'username' => $api_user );
 
 
   $ch = curl_init();
