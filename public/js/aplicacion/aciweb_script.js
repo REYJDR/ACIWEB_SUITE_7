@@ -974,6 +974,8 @@ function replaceNbsps(str) {
 // ********************************************************
 function exce_oc_api(name,route,oc_url,oc_key){
   
+    document.getElementById('api_res').innerHTML = "Ejecutando...";
+    
     var URL = document.getElementById('URL').value;
     
     if(name == 'setItems') var url = "bridge_query/oc_setItems";
