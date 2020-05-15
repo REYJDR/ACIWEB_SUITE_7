@@ -2450,7 +2450,37 @@ public function get_lang(){
 
 }
 
+public function oc_getOrders(){
 
+
+
+//Execute curl
+$this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
+
+
+$response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
+
+
+  foreach($response as $key => $value){
+    
+    if(is_object($value)){
+    
+    foreach($value as $keymsg => $msg){
+
+        echo '['.$keymsg.']['.$msg.']<br>'
+    }
+
+    }else{
+        echo '['.$key.']['.$value.']<br>';
+    }
+
+  }
+
+
+die();
+
+
+}
 
 public function oc_setItems() {
 
@@ -2507,7 +2537,25 @@ public function oc_setItems() {
  }
  
 //Execute curl
-$this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
+$response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
+
+
+  foreach($response as $key => $value){
+    
+    if(is_object($value)){
+    
+    foreach($value as $keymsg => $msg){
+
+        echo '['.$keymsg.']['.$msg.']<br>'
+    }
+
+    }else{
+        echo '['.$key.']['.$value.']<br>';
+    }
+
+  }
+
+  die();
 
 }
 
@@ -2579,28 +2627,9 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
   
   $response = json_decode($response);
 
-    foreach($response as $key => $value){
+  return $response;
 
 
-     if(is_object($value)){
-      
-      foreach($value as $keymsg => $msg){
-
-
-
-          echo '['.$keymsg.']['.$msg.']<br>';
-    
-
-      }
-
-     }else{
-      echo '['.$key.']['.$value.']<br>';
-     }
-
-    }
-
-    die();
- 
 
 }
 
