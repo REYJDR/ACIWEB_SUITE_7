@@ -2472,6 +2472,8 @@ public function oc_setItems() {
   $json[$key]['master_id'] = 0;
   $json[$key]['model'] = $item->{'ProductID'};
   $json[$key]['sku'] = $item->{'UPC_SKU'};
+  $json[$key]['upc'] = '0';
+  
   $json[$key]['price'] = $item->{'Price1'}; 
   $json[$key]['quantity'] = $item->{'QtyOnHand'};
   $json[$key]['minimum'] = 1;
