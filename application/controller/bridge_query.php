@@ -2454,13 +2454,14 @@ public function get_lang(){
 
 public function oc_setItems() {
 
+  
+
 //get info 
  $products = $this->get_ProductsList();
 
  foreach ($products as $key => $value) {
   
   $item =  json_decode($value);
-
    
   $json[$key]['product_description'][1]['name'] =  $item->{'Description'}.'('.$item->{'ProductID'}.')';
   $json[$key]['product_description'][1]['description'] = $item->{'SalesDescription'};
@@ -2484,43 +2485,66 @@ public function oc_setItems() {
 
  }
 
-
-
- var_dump($json);
-die();
-
 //Execute curl
- //$this->do_curl_request($url, $params=array());
+$this->do_curl_request($_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json));
 
 }
 
 
-public function do_curl_request($url, $params=array()) {
+public function do_curl_request($api_url,$api_token,$api_route,$data) {
 
-  $ch = curl_init();
-  curl_setopt($ch,CURLOPT_URL, $url);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-  curl_setopt($ch, CURLOPT_COOKIEJAR, '/tmp/apicookie.txt');
-  curl_setopt($ch, CURLOPT_COOKIEFILE, '/tmp/apicookie.txt');
- 
-  $params_string = '';
-  if (is_array($params) && count($params)) {
-    foreach($params as $key=>$value) {
-      $params_string .= $key.'='.$value.'&';
-    }
-    rtrim($params_string, '&');
- 
-    curl_setopt($ch,CURLOPT_POST, count($params));
-    curl_setopt($ch,CURLOPT_POSTFIELDS, $params_string);
-  }
- 
-  //execute post
-  $result = curl_exec($ch);
- 
-  //close connection
-  curl_close($ch);
- 
-  return $result;
+  //get token
+  $curl = curl_init();
+  
+  $url = $api_url+'/index.php?api_token='+$api_token+'&route=api/login';
+
+  curl_setopt_array($curl, array(
+    CURLOPT_URL => $url,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 0,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_POSTFIELDS => $data,
+      CURLOPT_HTTPHEADER => array(
+      "Content-Type: application/json",
+      "Content-Type: text/plain"
+    ),
+  ));
+  
+  $response = curl_exec($curl);
+  
+  curl_close($curl);
+
+  var_dump($response);
+
+  // $curl = curl_init();
+  
+  // $url = $api_url+'/index.php?api_token='+$token+'&route='+$api_route;
+
+  // curl_setopt_array($curl, array(
+  //   CURLOPT_URL => $url,
+  //   CURLOPT_RETURNTRANSFER => true,
+  //   CURLOPT_ENCODING => "",
+  //   CURLOPT_MAXREDIRS => 10,
+  //   CURLOPT_TIMEOUT => 0,
+  //   CURLOPT_FOLLOWLOCATION => true,
+  //   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  //   CURLOPT_CUSTOMREQUEST => "POST",
+  //   CURLOPT_POSTFIELDS => $json,
+  //     CURLOPT_HTTPHEADER => array(
+  //     "Content-Type: application/json",
+  //     "Content-Type: text/plain"
+  //   ),
+  // ));
+  
+  // $response = curl_exec($curl);
+  
+  // curl_close($curl);
+  // echo $response;
+
 }
 
 // -WARNING- la llave debajo de este comentario es la que cierra la clase. NO BORRAR NI MODIFICAR.
