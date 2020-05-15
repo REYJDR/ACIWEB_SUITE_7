@@ -2497,37 +2497,32 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
   $curl = curl_init();
 
 
-  $url = $api_url.'/index.php';
+  $url = $api_url.'/index.php?route=api/login';
 
   
-  $data = array('key' => $api_token ,
-                'username' => $api_user,
-                'route' => 'api/login',
-                'api_token' => $api_token
-               );
+  $params = array('key' => $api_token ,
+                  'username' => $api_user,
+                  'api_token' => $api_token
+                 );
 
-  $postData = "";
-  foreach( $data as $key => $val ) {
-     $postData .=$key."=".$val."&";
+
+  $ch = curl_init();
+  curl_setopt($ch,CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($ch, CURLOPT_COOKIEJAR, '/tmp/apicookie.txt');
+  curl_setopt($ch, CURLOPT_COOKIEFILE, '/tmp/apicookie.txt');
+ 
+  $params_string = '';
+  if (is_array($params) && count($params)) {
+    foreach($params as $key=>$value) {
+      $params_string .= $key.'='.$value.'&';
+    }
+    rtrim($params_string, '&');
+ 
+    curl_setopt($ch,CURLOPT_POST, count($params));
+    curl_setopt($ch,CURLOPT_POSTFIELDS, $params_string);
   }
-  $postData = rtrim($postData, "&");
-
-
-  curl_setopt_array($curl, array(
-    CURLOPT_URL => $url,
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => "",
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 0,
-    CURLOPT_FOLLOWLOCATION => true,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => "POST",
-    CURLOPT_POSTFIELDS => $postData,
-    CURLOPT_HTTPHEADER => array(
-      "Content-Type: application/json",
-    ),
-  ));
-
+ 
   $response = curl_exec($curl);
   curl_close($curl);
  
