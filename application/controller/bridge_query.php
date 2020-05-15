@@ -2500,6 +2500,15 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
   $url = $api_url.'/index.php?api_token='.$api_token.'&route=api/login';
 
   
+  $data = array('key' => $api_token ,'username' => $api_user ),
+  $postData = "";
+  foreach( $data as $key => $val ) {
+     $postData .=$key."=".$val."&";
+  }
+  $postData = rtrim($postData, "&");
+
+  die($postData);
+
   curl_setopt_array($curl, array(
     CURLOPT_URL => $url,
     CURLOPT_RETURNTRANSFER => true,
@@ -2508,8 +2517,8 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
     CURLOPT_TIMEOUT => 0,
     CURLOPT_FOLLOWLOCATION => true,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  //  CURLOPT_CUSTOMREQUEST => "POST",
-    CURLOPT_POSTFIELDS => array('key' => $api_token ,'username' => $api_user ),
+    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_POSTFIELDS => $postData,
     CURLOPT_HTTPHEADER => array(
       "Content-Type: application/json",
       "username: test"
