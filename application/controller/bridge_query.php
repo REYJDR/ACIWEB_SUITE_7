@@ -2535,7 +2535,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
     die();
   }
 
-  die($response->{'key'});
+ var_dump($response );
 
   // $curl = curl_init();
   
