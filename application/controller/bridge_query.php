@@ -2469,34 +2469,34 @@ public function oc_setItems() {
   $json[$key]['product_description'][1]['meta_description'] = "";
   $json[$key]['product_description'][1]['meta_keyword'] = "";
   $json[$key]['product_description'][1]['tag'] = "";
-  $json[$key]['master_id'] = 0;
+  $json[$key]['master_id'] = "0";
   $json[$key]['model'] = $item->{'ProductID'};
   $json[$key]['sku'] = $item->{'UPC_SKU'};
-  $json[$key]['upc'] = '';
-  $json[$key]['ean'] = '';
-  $json[$key]['jan'] = '';
-  $json[$key]['isbn'] = '';
-  $json[$key]['mpn'] = '';
-  $json[$key]['location'] = '';
-  $json[$key]['tax_class_id'] = '0';
-  $json[$key]['stock_status_id'] = '6';
+  $json[$key]['upc'] = "";
+  $json[$key]['ean'] = "";
+  $json[$key]['jan'] = "";
+  $json[$key]['isbn'] = "";
+  $json[$key]['mpn'] = "";
+  $json[$key]['location'] = "";
+  $json[$key]['tax_class_id'] = "0";
+  $json[$key]['stock_status_id'] = "0";
   $json[$key]['date_available'] = date('Y-m-d');
-  $json[$key]['shipping'] = '1';
+  $json[$key]['shipping'] = "0";
   $json[$key]['price'] = $item->{'Price1'}; 
   $json[$key]['quantity'] = $item->{'QtyOnHand'};
-  $json[$key]['minimum'] = 1;
-  $json[$key]['subtract'] = 1;
-  $json[$key]['length'] = 0;
-  $json[$key]['width'] = 0;
-  $json[$key]['height'] = 0;
-  $json[$key]['weight'] = 0;
+  $json[$key]['minimum'] = "1";
+  $json[$key]['subtract'] = "1";
+  $json[$key]['length'] = "0";
+  $json[$key]['width'] = "0";
+  $json[$key]['height'] = "0";
+  $json[$key]['weight'] = "0";
   
-  $json[$key]['status'] = 0;//not enable
+  $json[$key]['status'] = "0";//not enable
   $json[$key]['points'] = "";
   $json[$key]['product_store'] = ["Default"];//not enable
   $json[$key]['product_reward'] = [];//not enable
   $json[$key]['product_layout'] = [];//not enable
-  $json[$key]['manufacturer_id'] = '0';//not enable
+  $json[$key]['manufacturer_id'] = "0";//not enable
   
  // "length_class_id":"1" ,
   // "weight":"" ,
@@ -2524,9 +2524,9 @@ public function oc_setItems() {
   // "product_reward" : [],
   // "points":"",
   // "product_layout" : []
-  echo json_encode( $json); die();
+  
  }
-
+ echo json_encode( $json , JSON_PRETTY_PRINT); die();
 //Execute curl
 $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json));
 
