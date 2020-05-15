@@ -2454,6 +2454,7 @@ public function oc_getOrders(){
 
   $json['filter_order_id']= "";
   $json['filter_status']= '5'; //estatus completado
+  $json['filter_has_invoices']= 'true'; //estatus completado
   $json['start']= "0";
   $json['limit']= "0";
 
@@ -2495,12 +2496,12 @@ public function oc_setItems() {
   
   $item =  json_decode($value);
    
-  $json[$i]['product_description'][1]['name'] =  $item->{'Description'}.'('.$item->{'ProductID'}.')';
-  $json[$i]['product_description'][1]['description'] = $item->{'SalesDescription'};
-  $json[$i]['product_description'][1]['meta_title'] = $item->{'Description'}.'('.$item->{'ProductID'}.')';
-  $json[$i]['product_description'][1]['meta_description'] = "";
-  $json[$i]['product_description'][1]['meta_keyword'] = "";
-  $json[$i]['product_description'][1]['tag'] = "";
+  $json[$i]['product_description'][2]['name'] =  $item->{'Description'}.'('.$item->{'ProductID'}.')';
+  $json[$i]['product_description'][2]['description'] = $item->{'SalesDescription'};
+  $json[$i]['product_description'][2]['meta_title'] = $item->{'Description'}.'('.$item->{'ProductID'}.')';
+  $json[$i]['product_description'][2]['meta_description'] = "";
+  $json[$i]['product_description'][2]['meta_keyword'] = "";
+  $json[$i]['product_description'][2]['tag'] = "";
   $json[$i]['master_id'] = "0";
   $json[$i]['model'] = $item->{'ProductID'};
   $json[$i]['sku'] = $item->{'UPC_SKU'};
