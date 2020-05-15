@@ -2535,7 +2535,10 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
     die();
   }
 
- var_dump($response );
+
+
+
+  echo $response->{'api_token'} ;
 
   // $curl = curl_init();
   
