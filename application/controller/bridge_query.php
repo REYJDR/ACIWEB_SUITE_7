@@ -2490,7 +2490,7 @@ public function oc_setItems() {
 
 
 
- echo $json;
+ var_dump($json);
 die();
 
 //Execute curl
