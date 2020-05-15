@@ -616,25 +616,27 @@ openCity(event, 'Config1');
     <!--INI MENU OPENCART-->
 	<fieldset class="fieldsetform"  >
 		
-	  <legend><?php echo $config_28_title; ?></legend> 
+	  <legend>Interfaz con Opencart</legend> 
 
 	   <form action="" role="form" class="form-horizontal" enctype="multipart/form-data" method="POST">	
 	   <input type="hidden"  name="oc_info" value="1"  />
 
-			<div class="col-lg-6" >
-			<fieldset class="fieldsetform"  >
+			<div class="col-lg-8">
+			<fieldset class="fieldsetform">
 			<h4>Datos de instancia API</h4> 
 				<table class="table_form">
 				<tbody>
-				<tr><th><strong>URL</strong></th><td><input type="text" class="inputPage col-lg-12"  id="url" name="url" value="<?php echo $oc_url; ?>" /></td></tr>
+				<tr><th><strong>URL</strong></th><td><input type="text" class="inputPage col-lg-8"  id="url" name="url" value="<?php echo $oc_url; ?>" /></td></tr>
 				<tr><th><strong>KEY</strong></th><td><input type="text" class="inputPage col-lg-12"  id="key" name="key" value="<?php echo $oc_key; ?>" /></td></tr>
-			</table> 
-			</fieldset > 
-			</div>
-			<div class='col-lg-8'></div>					
-			<div class="form-group col-lg-3">
+				</tbody>
+			   </table> 
+			   <div class='col-lg-4'></div>					
+			   <div class="form-group col-lg-3">
 				<input type="submit" name="" class="accept-form-btn" value="Guardar">
+			   </div>
+			</fieldset>
 			</div>
+
 		</form>
 
 		 <div class="col-lg-6" >
@@ -648,7 +650,13 @@ openCity(event, 'Config1');
 			</fieldset>
 		 </div>
 
-	< /fieldset>
+		 <div class="col-lg-12" >
+			<fieldset >
+			 <div id="api_res" ></div>
+			</fieldset>
+		 </div>
+		
+
     <!--INI MENU OPENCART-->	
 	</div>
 </div>

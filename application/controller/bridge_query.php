@@ -2420,6 +2420,49 @@ public function get_lang(){
 
 }
 
+
+
+public function oc_setItems() {
+
+//get info 
+ $products = $this->get_ProductsInfo();
+
+ var_dump($products); die();
+
+//Execute curl
+ $this->do_curl_request($url, $params=array());
+
+}
+
+
+public function do_curl_request($url, $params=array()) {
+
+  $ch = curl_init();
+  curl_setopt($ch,CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($ch, CURLOPT_COOKIEJAR, '/tmp/apicookie.txt');
+  curl_setopt($ch, CURLOPT_COOKIEFILE, '/tmp/apicookie.txt');
+ 
+  $params_string = '';
+  if (is_array($params) && count($params)) {
+    foreach($params as $key=>$value) {
+      $params_string .= $key.'='.$value.'&';
+    }
+    rtrim($params_string, '&');
+ 
+    curl_setopt($ch,CURLOPT_POST, count($params));
+    curl_setopt($ch,CURLOPT_POSTFIELDS, $params_string);
+  }
+ 
+  //execute post
+  $result = curl_exec($ch);
+ 
+  //close connection
+  curl_close($ch);
+ 
+  return $result;
+}
+
 // -WARNING- la llave debajo de este comentario es la que cierra la clase. NO BORRAR NI MODIFICAR.
 }
 
