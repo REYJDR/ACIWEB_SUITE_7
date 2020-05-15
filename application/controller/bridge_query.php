@@ -2542,7 +2542,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
   //get token
   $token = $this->get_token($api_user,$api_token );
 
-
+die($token);
   $url = $api_url.'/index.php?route='.$api_route.'&api_token='.$token;
 
 
