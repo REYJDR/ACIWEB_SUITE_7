@@ -2497,9 +2497,9 @@ public function do_curl_request($api_url,$api_token,$api_route,$data) {
   $curl = curl_init();
 
 
-  $url = $api_url+'/index.php?api_token='+$api_token+'&route=api/login';
+  $url = $api_url.'/index.php?api_token='.$api_token.'&route=api/login';
 
-  die($url);
+  
   curl_setopt_array($curl, array(
     CURLOPT_URL => $url,
     CURLOPT_RETURNTRANSFER => true,
