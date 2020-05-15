@@ -2497,17 +2497,21 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
   $curl = curl_init();
 
 
-  $url = $api_url.'/index.php?api_token='.$api_token.'&route=api/login';
+  $url = $api_url.'/index.php';
 
   
-  $data = array('key' => $api_token ,'username' => $api_user );
+  $data = array('key' => $api_token ,
+                'username' => $api_user,
+                'route' => 'api/login',
+                'api_token' => $api_token
+               );
+
   $postData = "";
   foreach( $data as $key => $val ) {
      $postData .=$key."=".$val."&";
   }
   $postData = rtrim($postData, "&");
 
-  die($postData);
 
   curl_setopt_array($curl, array(
     CURLOPT_URL => $url,
