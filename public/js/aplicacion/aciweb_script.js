@@ -980,7 +980,7 @@ function exce_oc_api(name,route,oc_url,oc_key){
     $.ajax({
       
             type: "GET",
-            url: link,
+            url: URL,
             data: {url:url, api_url: oc_url , api_route:route, api_key:oc_key },
             success: function(res){
             console.log(res);
