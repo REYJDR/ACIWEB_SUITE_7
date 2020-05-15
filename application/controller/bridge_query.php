@@ -2451,6 +2451,11 @@ public function get_lang(){
 }
 
 public function oc_getOrders(){
+  
+  $json['filter_order_id']= "";
+  $json['filter_status']= '5'; //estatus completado
+  $json['start']= "0";
+  $json['limit']= "0";
 
 
 
