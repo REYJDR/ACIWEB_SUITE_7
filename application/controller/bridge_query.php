@@ -2509,7 +2509,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
     CURLOPT_FOLLOWLOCATION => true,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   //  CURLOPT_CUSTOMREQUEST => "POST",
-    CURLOPT_POSTFIELDS => array('key' => $api_token ,'username' => $api_user ); 
+    CURLOPT_POSTFIELDS => array('key' => $api_token ,'username' => $api_user ),
     CURLOPT_HTTPHEADER => array(
       "Content-Type: application/json",
       "username: test"
