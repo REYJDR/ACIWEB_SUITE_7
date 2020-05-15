@@ -205,31 +205,6 @@ function findprice(itemId, listID, id_price_field){
 }
 
 
-function exce_oc_api(name,route,oc_url,oc_key){
-
-  if(name == 'setItems') var url = "bridge_query/oc_setItems";
-
-
-  $.ajax({
-    
-          type: "GET",
-          url: link,
-          data: {url:url, api_url: oc_url , api_route:route, api_key:oc_key },
-          success: function(res){
-          console.log(res);
-    
-          
-    
-           document.getElementById('api_res').value  = res;
-    
-         
-    
-         }
-    
-    });
-
-
-}
 
 
 
