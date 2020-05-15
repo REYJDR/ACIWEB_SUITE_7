@@ -2454,11 +2454,11 @@ public function get_lang(){
 
 public function oc_setItems() {
 
-  
 
 //get info 
  $products = $this->get_ProductsList();
  $i = 1;
+
  foreach ($products as $key => $value) {
   
   $item =  json_decode($value);
