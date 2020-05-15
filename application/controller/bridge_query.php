@@ -2493,9 +2493,8 @@ public function oc_setItems() {
   $json[$key]['product_store'] = ["Default"];//not enable
   $json[$key]['product_reward'] = [];//not enable
   $json[$key]['product_layout'] = [];//not enable
+  $json[$key]['manufacturer_id'] = '0';//not enable
   
-
-
 
 
  
