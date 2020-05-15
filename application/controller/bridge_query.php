@@ -2522,7 +2522,18 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
   $response = curl_exec($ch);
   curl_close($ch);
  
-  var_dump($response);die();
+  $response = json_decode($response);
+
+  if($response->{'error'}){
+
+    foreach($response->{'error'} as $key => $value){
+
+      echo $key.'-'.$value.'<br>';
+
+    }
+
+    die();
+  }
 
   // $curl = curl_init();
   
