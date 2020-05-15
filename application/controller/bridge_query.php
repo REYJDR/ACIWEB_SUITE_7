@@ -110,11 +110,7 @@ public function get_ProductsList(){
   
   $res = $this->model->Query($sql);
   
-  
-    foreach ($res as  $value) {
-        echo str_replace("'","",$value);
-    }
-  
+
   return $res;
   }
 
