@@ -989,7 +989,7 @@ function exce_oc_api(name,route,oc_url,oc_key){
       
             
       
-             document.getElementById('api_res').value  = res;
+             document.getElementById('api_res').innerHTML = res;
       
            
       
