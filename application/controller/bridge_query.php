@@ -2501,7 +2501,7 @@ public function oc_setItems() {
   $json[$i]['product_reward'] = [];//not enable
   $json[$i]['product_layout'] = [];//not enable
   $json[$i]['manufacturer_id'] = "0";//not enable
-  length_class_id
+
   $i = $i + 1;
  
  
