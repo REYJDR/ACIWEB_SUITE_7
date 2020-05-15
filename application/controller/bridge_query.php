@@ -2582,7 +2582,8 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
     foreach($response as $key => $value){
 
       echo '['.$key.']['.$value.']<br>';
-     if(is_array($value){
+
+     if(is_array($value)){
       foreach($value as $keymsg => $msg){
         echo '['.$keymsg.']['.$msg.']<br>';
 
