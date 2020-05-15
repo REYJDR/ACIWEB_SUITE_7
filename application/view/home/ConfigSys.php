@@ -670,10 +670,15 @@ if( $oc_url != '' && $oc_key != ''){
 		$name =  $api_endp->{'name'};
 		$route =  $api_endp->{'route'};
 		$description = $api_endp->{'description'};
-	
+		$name_f = '"'.$name.'"';
+		$route_f = '"'.$route.'"';
+		$oc_url_f = '"'.$oc_url.'"';
+		$oc_key_f = '"'.$oc_key.'"';
+		
+
 		
 		$endpoints .= '<tr>
-						<th><strong>'.$name.'</strong></th><td>'.$description.'</td><td><input type="button" onclick="exce_oc_api('.$name.','.$route.','.$oc_url.','.$oc_key.');"  value="Ejecutar" class="btn btn-primary btn-sm btn-icon icon-left"  /></td>
+						<th><strong>'.$name.'</strong></th><td>'.$description.'</td><td><input type="button" onclick="exce_oc_api('.$name_f.','.$route_f.','.$oc_url_f.','.$oc_key_f.');"  value="Ejecutar" class="btn btn-primary btn-sm btn-icon icon-left"  /></td>
 					   </tr>';
 	
 	
