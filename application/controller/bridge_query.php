@@ -2492,13 +2492,16 @@ public function oc_setItems() {
   $json[$i]['height'] = "0";
   $json[$i]['weight'] = "0";
   $json[$i]['weight_class_id'] = "1";
+  $json[$i]['length_class_id'] = "1";
+  $json[$i]['image'] = "";
+  $json[$i]['sort_order'] = $i; 
   $json[$i]['status'] = "0";//not enable
   $json[$i]['points'] = "";
   $json[$i]['product_store'] = ["Default"];//not enable
   $json[$i]['product_reward'] = [];//not enable
   $json[$i]['product_layout'] = [];//not enable
   $json[$i]['manufacturer_id'] = "0";//not enable
-  
+  length_class_id
   $i = $i + 1;
  
  
@@ -2528,9 +2531,9 @@ public function oc_setItems() {
   // "product_reward" : [],
   // "points":"",
   // "product_layout" : []
-  echo json_encode( $json , JSON_PRETTY_PRINT); die();
+
  }
- echo json_encode( $json , JSON_PRETTY_PRINT); die();
+ 
 //Execute curl
 $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
 
