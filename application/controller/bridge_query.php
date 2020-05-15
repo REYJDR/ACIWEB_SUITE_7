@@ -2486,9 +2486,11 @@ public function oc_setItems() {
   $json[$key]['quantity'] = $item->{'QtyOnHand'};
   $json[$key]['minimum'] = 1;
   $json[$key]['subtract'] = 1;
-  $json[$key]['length'] = 1;
-  $json[$key]['width'] = 1;
-  $json[$key]['height'] = 1;
+  $json[$key]['length'] = 0;
+  $json[$key]['width'] = 0;
+  $json[$key]['height'] = 0;
+  $json[$key]['weight'] = 0;
+  
   $json[$key]['status'] = 0;//not enable
   $json[$key]['points'] = "";
   $json[$key]['product_store'] = ["Default"];//not enable
@@ -2496,7 +2498,9 @@ public function oc_setItems() {
   $json[$key]['product_layout'] = [];//not enable
   $json[$key]['manufacturer_id'] = '0';//not enable
   
-
+ // "length_class_id":"1" ,
+  // "weight":"" ,
+  // "weight_class_id":"1" ,
 
  
   // "length":"" ,
