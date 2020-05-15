@@ -2467,7 +2467,7 @@ $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] 
     
     foreach($value as $keymsg => $msg){
 
-        echo '['.$keymsg.']['.$msg.']<br>'
+        echo '['.$keymsg.']['.$msg.']<br>';
     }
 
     }else{
@@ -2546,7 +2546,7 @@ $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] 
     
     foreach($value as $keymsg => $msg){
 
-        echo '['.$keymsg.']['.$msg.']<br>'
+        echo '['.$keymsg.']['.$msg.']<br>';
     }
 
     }else{
