@@ -2454,7 +2454,7 @@ public function oc_getOrders(){
 
   $json['filter_order_id']= "";
   $json['filter_status']= '5'; //estatus completado
-  $json['filter_has_invoices']= 'true'; //estatus completado
+  $json['filter_has_invoices']= "1"; //factura asignada
   $json['start']= "0";
   $json['limit']= "0";
 
@@ -2495,7 +2495,9 @@ public function oc_setItems() {
  foreach ($products as $key => $value) {
   
   $item =  json_decode($value);
-   
+  
+    //el key [2] denota el idioma español configurado en opencart, mantener como estandar
+
   $json[$i]['product_description'][2]['name'] =  $item->{'Description'}.'('.$item->{'ProductID'}.')';
   $json[$i]['product_description'][2]['description'] = $item->{'SalesDescription'};
   $json[$i]['product_description'][2]['meta_title'] = $item->{'Description'}.'('.$item->{'ProductID'}.')';
