@@ -2451,19 +2451,15 @@ public function get_lang(){
 }
 
 public function oc_getOrders(){
-  
+
   $json['filter_order_id']= "";
   $json['filter_status']= '5'; //estatus completado
   $json['start']= "0";
   $json['limit']= "0";
 
+  
 
-
-//Execute curl
-$this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
-
-
-$response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
+  $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
 
 
   foreach($response as $key => $value){
