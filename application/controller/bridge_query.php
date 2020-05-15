@@ -2578,17 +2578,19 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
   curl_close($ch);
   
   $response = json_decode($response);
-var_dump($response );
+
     foreach($response as $key => $value){
 
-      echo '['.$key.']['.$value.']<br>';
 
      if(is_array($value)){
+      
       foreach($value as $keymsg => $msg){
         echo '['.$keymsg.']['.$msg.']<br>';
 
       }
 
+     }else{
+      echo '['.$key.']['.$value.']<br>';
      }
 
     }
