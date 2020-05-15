@@ -2528,12 +2528,14 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
 
     foreach($response->{'error'} as $key => $value){
 
-      echo $key.'-'.$value.'<br>';
+      echo '['.$key.']['.$value.']<br>';
 
     }
 
     die();
   }
+
+  die($response->{'key'});
 
   // $curl = curl_init();
   
