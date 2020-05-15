@@ -2491,7 +2491,7 @@ $this->do_curl_request($_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],js
 }
 
 
-public function do_curl_request($api_url,$api_token,$api_route,$data) {
+public function do_curl_request($api_user='Default', $api_url,$api_token,$api_route,$data) {
 
   //get token
   $curl = curl_init();
@@ -2509,7 +2509,7 @@ public function do_curl_request($api_url,$api_token,$api_route,$data) {
     CURLOPT_FOLLOWLOCATION => true,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "POST",
-    CURLOPT_POSTFIELDS =>   array('key' => $api_token) ,
+    CURLOPT_POSTFIELDS =>   array('username'=> $api_user, 'key' => $api_token) ,
       CURLOPT_HTTPHEADER => array(
       "Content-Type: application/json",
       "Content-Type: text/plain"
