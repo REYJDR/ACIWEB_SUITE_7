@@ -632,7 +632,7 @@ openCity(event, 'Config1');
 			   </table> 
 			   <div class='col-lg-2'></div>					
 			   <div class="form-group col-lg-2">
-				<input type="submit" name="" class="accept-form-btn" value="Guardar">
+				<input type="submit" name="" class="btn btn-primary btn-sm btn-icon" value="Guardar">
 			   </div>
 			</fieldset>
 			</div>
