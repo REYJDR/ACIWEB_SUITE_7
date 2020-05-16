@@ -2461,23 +2461,10 @@ public function oc_getOrders(){
 
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
   
-  foreach ((array)$response as $key => $value) {
+  foreach ((array)$response->message as $key => $value) {
     
-
-    if(is_array($value)){
-
-
-      foreach ((array)$value as $key2 => $value2) {
-        
-          var_dump($value2->header);
-          var_dump($value2->detail);
-          
-      }
-
-
-    }else{
-      echo '['.$key.']['.$value.']<br>';
-    }
+    var_dump($value->header);
+    var_dump($value->detail);
 
   }
  
