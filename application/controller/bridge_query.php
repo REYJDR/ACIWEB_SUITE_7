@@ -2472,10 +2472,10 @@ public function oc_getStores(){
   foreach($response as $key => $value){
     
     if(is_array($value)){
-    var_dump($value);
-    foreach($value as $keymsg => $msg){
+   
+    foreach($value as $store){
 
-        echo '['.$keymsg.']['.$msg.']<br>';
+        echo '['.$store->store_id.']['.$store->value.']<br>';
     }
 
     }else{
