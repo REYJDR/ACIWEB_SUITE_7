@@ -2481,7 +2481,7 @@ public function oc_getOrders(){
     
 
     ////CHECK IF NOT EXIST
-    if($this->checkSalesOrderExist($order_id)){
+    if(!$this->checkSalesOrderExist($order_id)){
 
 
 
