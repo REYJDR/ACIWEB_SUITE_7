@@ -2468,7 +2468,9 @@ public function oc_getOrders(){
 
 
       foreach ((array)$value as $key2 => $value2) {
-        echo '['.$key2.']['.$value2.']<br>';
+        
+          var_dump($value2);
+
       }
 
 
