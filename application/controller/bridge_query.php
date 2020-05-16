@@ -2450,7 +2450,7 @@ public function get_lang(){
 
 }
 
-public function  checkSalesOrderExist($order_id){
+public function checkSalesOrderExist($order_id){
 
   $this->SESSION();
 
