@@ -2467,10 +2467,7 @@ public function oc_getOrders(){
     $order =  json_decode($response);
 
 
-    var_dump($order);
-
-
-
+    var_dump($order); die();
 
 
 
