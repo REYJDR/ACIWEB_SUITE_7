@@ -2470,7 +2470,8 @@ public function oc_getOrders(){
       foreach ((array)$value as $key2 => $value2) {
         
           var_dump($value2->header);
-
+          var_dump($value2->detail);
+          
       }
 
 
