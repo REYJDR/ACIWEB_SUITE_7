@@ -2465,16 +2465,16 @@ public function oc_getOrders(){
 
     foreach($response as $key => $value){
       
-      if(is_object($value)){
+        if(is_array($value)){
       
-      foreach($value as $keymsg => $msg){
-  
-          echo '['.$keymsg.']['.$msg.']<br>';
-      }
-  
-      }else{
-          echo '['.$key.']['.$value.']<br>';
-      }
+        foreach($value as $keymsg => $msg){
+    
+            echo '['.$keymsg.']['.$msg.']<br>';
+        }
+    
+        }else{
+            echo '['.$key.']['.$value.']<br>';
+        }
   
     }
  die();
