@@ -2461,7 +2461,7 @@ public function oc_getOrders(){
 
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
   
- 
+  var_dump($response[0]['message']);die();
 
     foreach($response as $key => $value){
       
@@ -2473,7 +2473,6 @@ public function oc_getOrders(){
 
 
               foreach($msg as $keymsg2 => $msg2){
-
 
 
                 echo '['.$keymsg2.']['.$msg2.']<br>';
