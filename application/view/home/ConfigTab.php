@@ -634,13 +634,17 @@ openCity(event, 'Config1');
 
 			   </div>
 			   <div class='col-lg-12'></div>					
-			   <div class="form-group col-lg-3">
+			   <div class="col-lg-3">
 				<input type="submit" name="" class="col-lg-3 btn btn-primary btn-sm btn-icon icon-left" value="Guardar">
 			   </div>
 			</fieldset>
 			</div>
 
 		</form>
+
+		<div class="col-lg-12" ></div>
+
+
 		<div class="col-lg-6" >
 		   <fieldset  >
 			<h4>Tiendas</h4> 
@@ -648,6 +652,9 @@ openCity(event, 'Config1');
 			</select>
 			</fieldset>
 		 </div>
+
+		 <div class="col-lg-12" ></div>
+
 		 <div class="col-lg-6" >
 			<fieldset  >
 			<h4>Recursos disponibles</h4> 
