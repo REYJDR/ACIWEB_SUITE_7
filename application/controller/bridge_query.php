@@ -2463,6 +2463,21 @@ public function  checkSalesOrderExist($order_id){
   return $res;
 }
 
+public function oc_getStores(){
+
+
+  $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
+
+
+  foreach($response as $key => $value){
+    
+
+     echo '['.$key.']['.$value.']<br>';
+   
+
+  }
+  die();
+}
 
 public function oc_getOrders(){
 
@@ -2478,7 +2493,8 @@ public function oc_getOrders(){
   foreach ((array)$response->message as $key => $value) {
     
      $order_id = 'OC-'.$value->header->order_id; 
-    
+     $store_id = $value->header->store_id;
+     $store_name = $value->header->store_name;
 
     ////CHECK IF NOT EXIST
     if(!$this->checkSalesOrderExist($order_id)){
@@ -2575,86 +2591,86 @@ public function oc_getOrders(){
 
 
 
-die();
+ die();
 
 
 }
 
 public function oc_setItems() {
 
-//get info 
- $products = $this->get_ProductsList();
- 
- $i = 1;
-
- foreach ($products as $key => $value) {
+  //get info 
+  $products = $this->get_ProductsList();
   
-  $item =  json_decode($value);
-  
-    //el key [2] denota el idioma español configurado en opencart, mantener como estandar
+  $i = 1;
 
-  $json[$i]['product_description'][2]['name'] =  $item->{'Description'}.'('.$item->{'ProductID'}.')';
-  $json[$i]['product_description'][2]['description'] = $item->{'SalesDescription'};
-  $json[$i]['product_description'][2]['meta_title'] = $item->{'Description'}.'('.$item->{'ProductID'}.')';
-  $json[$i]['product_description'][2]['meta_description'] = "";
-  $json[$i]['product_description'][2]['meta_keyword'] = "";
-  $json[$i]['product_description'][2]['tag'] = "";
-  $json[$i]['master_id'] = "0";
-  $json[$i]['model'] = $item->{'ProductID'};
-  $json[$i]['sku'] = $item->{'UPC_SKU'};
-  $json[$i]['upc'] = "";
-  $json[$i]['ean'] = "";
-  $json[$i]['jan'] = "";
-  $json[$i]['isbn'] = "";
-  $json[$i]['mpn'] = "";
-  $json[$i]['location'] = "";
-  $json[$i]['tax_class_id'] = "0";
-  $json[$i]['stock_status_id'] = "0";
-  $json[$i]['date_available'] = date('Y-m-d');
-  $json[$i]['shipping'] = "0";
-  $json[$i]['price'] = $item->{'Price1'}; 
-  $json[$i]['quantity'] = $item->{'QtyOnHand'};
-  $json[$i]['minimum'] = "1";
-  $json[$i]['subtract'] = "1";
-  $json[$i]['length'] = "0";
-  $json[$i]['width'] = "0";
-  $json[$i]['height'] = "0";
-  $json[$i]['weight'] = "0";
-  $json[$i]['weight_class_id'] = "1";
-  $json[$i]['length_class_id'] = "1";
-  $json[$i]['image'] = "";
-  $json[$i]['sort_order'] = $i; 
-  $json[$i]['status'] = "0";//not enable
-  $json[$i]['points'] = "";
-  $json[$i]['product_store'] = ["Default"];//not enable
-  $json[$i]['product_reward'] = [];//not enable
-  $json[$i]['product_layout'] = [];//not enable
-  $json[$i]['manufacturer_id'] = "0";//not enable
-
-  $i = $i + 1;
-
- }
- 
-//Execute curl
-$response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
-
-
-  foreach($response as $key => $value){
+  foreach ($products as $key => $value) {
     
-    if(is_object($value)){
+    $item =  json_decode($value);
     
-    foreach($value as $keymsg => $msg){
+      //el key [2] denota el idioma español configurado en opencart, mantener como estandar
 
-        echo '['.$keymsg.']['.$msg.']<br>';
-    }
+    $json[$i]['product_description'][2]['name'] =  $item->{'Description'}.'('.$item->{'ProductID'}.')';
+    $json[$i]['product_description'][2]['description'] = $item->{'SalesDescription'};
+    $json[$i]['product_description'][2]['meta_title'] = $item->{'Description'}.'('.$item->{'ProductID'}.')';
+    $json[$i]['product_description'][2]['meta_description'] = "";
+    $json[$i]['product_description'][2]['meta_keyword'] = "";
+    $json[$i]['product_description'][2]['tag'] = "";
+    $json[$i]['master_id'] = "0";
+    $json[$i]['model'] = $item->{'ProductID'};
+    $json[$i]['sku'] = $item->{'UPC_SKU'};
+    $json[$i]['upc'] = "";
+    $json[$i]['ean'] = "";
+    $json[$i]['jan'] = "";
+    $json[$i]['isbn'] = "";
+    $json[$i]['mpn'] = "";
+    $json[$i]['location'] = "";
+    $json[$i]['tax_class_id'] = "0";
+    $json[$i]['stock_status_id'] = "0";
+    $json[$i]['date_available'] = date('Y-m-d');
+    $json[$i]['shipping'] = "0";
+    $json[$i]['price'] = $item->{'Price1'}; 
+    $json[$i]['quantity'] = $item->{'QtyOnHand'};
+    $json[$i]['minimum'] = "1";
+    $json[$i]['subtract'] = "1";
+    $json[$i]['length'] = "0";
+    $json[$i]['width'] = "0";
+    $json[$i]['height'] = "0";
+    $json[$i]['weight'] = "0";
+    $json[$i]['weight_class_id'] = "1";
+    $json[$i]['length_class_id'] = "1";
+    $json[$i]['image'] = "";
+    $json[$i]['sort_order'] = $i; 
+    $json[$i]['status'] = "0";//not enable
+    $json[$i]['points'] = "";
+    $json[$i]['store_id'] = "0";
+    $json[$i]['product_reward'] = [];//not enable
+    $json[$i]['product_layout'] = [];//not enable
+    $json[$i]['manufacturer_id'] = "0";//not enable
 
-    }else{
-        echo '['.$key.']['.$value.']<br>';
-    }
+    $i = $i + 1;
 
   }
+  
+  //Execute curl
+  $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
 
-  die();
+
+    foreach($response as $key => $value){
+      
+      if(is_object($value)){
+      
+      foreach($value as $keymsg => $msg){
+
+          echo '['.$keymsg.']['.$msg.']<br>';
+      }
+
+      }else{
+          echo '['.$key.']['.$value.']<br>';
+      }
+
+    }
+
+    die();
 
 }
 
