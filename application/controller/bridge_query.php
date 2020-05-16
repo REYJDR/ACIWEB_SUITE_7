@@ -2450,6 +2450,20 @@ public function get_lang(){
 
 }
 
+public function  checkSalesOrderExist($order_id){
+
+  $this->SESSION();
+
+  $where = " where SalesOrderNumber='{$order_id}' and ID_compania='{$this->model->id_compania}' ;";
+ 
+  $res = $this->model->query_value('SalesOrderNumber','SalesOrder_Header_Imp',$where);
+  
+  $res != '' ? $res = true : $res = false ;
+
+  return $res;
+}
+
+
 public function oc_getOrders(){
 
   $json['filter_order_id']= "";
@@ -2463,11 +2477,44 @@ public function oc_getOrders(){
   
   foreach ((array)$response->message as $key => $value) {
     
-    echo $value->header->order_id; 
+     $order_id = $value->header->order_id; 
     
-  
+
+    ////CHECK IF NOT EXIST
+    if($this->checkSalesOrderExist($order_id)){
+
+
+
+
+
+
+      $res[$order_id] = "Sales Order {$order_id} not  exist on aciweb.";
+
+
+
+
+
+
+
+    }else{
+
+      $res[$order_id] = "Sales Order {$order_id} already exist on aciweb.";
+
+
+    }
+
   }
  
+
+  foreach($res as $key => $value){
+    
+
+     echo '[order: '.$key.']['.$value.']<br>';
+   
+
+  }
+
+
  die();
 
   //CHECK IF NOT EXIST
@@ -2682,8 +2729,6 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
   $response = json_decode($response);
 
   return $response;
-
-
 
 }
 
