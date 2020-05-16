@@ -2463,9 +2463,9 @@ public function oc_getOrders(){
   
   foreach ((array)$response->message as $key => $value) {
     
-    var_dump($value->header);
-    var_dump($value->detail);
-
+    echo $value->header->order_id; 
+    
+  
   }
  
  die();
