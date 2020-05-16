@@ -2471,8 +2471,8 @@ public function oc_getStores(){
 
   foreach($response as $key => $value){
     
-    if(is_object($value)){
-    
+    if(is_array($value)){
+    var_dump($value);
     foreach($value as $keymsg => $msg){
 
         echo '['.$keymsg.']['.$msg.']<br>';
