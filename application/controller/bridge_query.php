@@ -2461,37 +2461,12 @@ public function oc_getOrders(){
 
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
   
-  var_dump($response->message);die();
 
-    foreach($response as $key => $value){
-      
-        if(is_object($value)){
-      
-        foreach($value as $keymsg => $msg){
-            
-            if(is_array($msg)){
-
-
-              foreach($msg as $keymsg2 => $msg2){
-
-
-                echo '['.$keymsg2.']['.$msg2.']<br>';
-
-              }
-
-
-            }else{
-
-              echo '['.$keymsg.']['.$msg.']<br>';
-            }
-            
-        }
-    
-        }else{
-            echo '['.$key.']['.$value.']<br>';
-        }
   
-    }
+  foreach ($response->message as $key => $value) {
+    echo '['.$key.']['.$value.']<br>';
+  }
+ 
  die();
 
   //CHECK IF NOT EXIST
