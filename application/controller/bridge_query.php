@@ -2477,18 +2477,16 @@ public function oc_getOrders(){
   
   foreach ((array)$response->message as $key => $value) {
     
-     $order_id = $value->header->order_id; 
+     $order_id = 'OC-'.$value->header->order_id; 
     
 
     ////CHECK IF NOT EXIST
-    if($this->checkSalesOrderExist('OC-'_$order_id)){
+    if($this->checkSalesOrderExist($order_id)){
 
 
 
 
-
-
-      $res[$order_id] = "Sales Order OC-{$order_id} not  exist on aciweb.";
+      $res[$order_id] = "Sales Order {$order_id} not  exist on aciweb.";
 
 
 
@@ -2498,7 +2496,7 @@ public function oc_getOrders(){
 
     }else{
 
-      $res[$order_id] = "Sales Order OC-{$order_id} already exist on aciweb.";
+      $res[$order_id] = "Sales Order {$order_id} already exist on aciweb.";
 
 
     }
