@@ -2761,7 +2761,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
   //get token
   $token = $this->get_token($api_url, $api_token ,$api_user);
  
-  if(count($data) == 0 ) echo '[no data to send]<br>'; die();
+  if(count($data) == 0 ) return json_decode('[no data to send]'); 
   
  // die('test:'.var_dump($data));
 
