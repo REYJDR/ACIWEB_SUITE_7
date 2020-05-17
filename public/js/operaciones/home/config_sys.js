@@ -263,33 +263,45 @@ function send_test(){
 // *API DE OPENCART
 // ********************************************************
 function exce_oc_api(name,route,oc_url,oc_key){
+
+    store_id = $("#stores option:selected").val();
+
+      if(  store_id !=  "" ){
+
+        document.getElementById('api_res').innerHTML = "Ejecutando...";
+        
+        var URL = document.getElementById('URL').value;
+        
+        if(name == 'setItems') var url = "bridge_query/oc_setItems";
+        if(name == 'getOrders') var url = "bridge_query/oc_getOrders";
+        if(name == 'getStores') var url = "bridge_query/oc_getStores";
     
-      document.getElementById('api_res').innerHTML = "Ejecutando...";
-      
-      var URL = document.getElementById('URL').value;
-      
-      if(name == 'setItems') var url = "bridge_query/oc_setItems";
-      if(name == 'getOrders') var url = "bridge_query/oc_getOrders";
-      if(name == 'getStores') var url = "bridge_query/oc_getStores";
-  
-  
-      $.ajax({
-        
-              type: "GET",
-              url: URL,
-              data: {url:url, api_url: oc_url , api_route:route, api_key:oc_key },
-              success: function(res){
-              console.log(res);
-        
-              
-        
-               document.getElementById('api_res').innerHTML = res;
-        
-             
-        
-             }
-        
-        });
+    
+        $.ajax({
+          
+                type: "GET",
+                url: URL,
+                data: {url:url, api_url: oc_url , api_route:route, api_key:oc_key , store_id: store_id},
+                success: function(res){
+                console.log(res);
+          
+                
+          
+                 document.getElementById('api_res').innerHTML = res;
+          
+               
+          
+               }
+          
+          });
+
+
+      }else{
+
+        alert("Se debe seleccionar un ID de tienda");
+      }
+    
+
     
     
 }

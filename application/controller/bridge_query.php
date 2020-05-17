@@ -2513,6 +2513,8 @@ public function oc_getOrders(){
   $json['filter_order_id']= "";
   $json['filter_status']= '5'; //estatus completado
   $json['filter_has_invoices']= "1"; //factura asignada
+  $json['filter_stored_id']= $_GET['store_id']; //tienda
+  
   $json['start']= "0";
   $json['limit']= "0";
 
@@ -2671,7 +2673,7 @@ public function oc_setItems() {
     $json[$i]['sort_order'] = $i; 
     $json[$i]['status'] = "0";//not enable
     $json[$i]['points'] = "";
-    $json[$i]['store_id'] = "0";
+    $json[$i]['store_id'] = $_GET['store_id']; //tienda;
     $json[$i]['product_reward'] = [];//not enable
     $json[$i]['product_layout'] = [];//not enable
     $json[$i]['manufacturer_id'] = "0";//not enable
