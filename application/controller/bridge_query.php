@@ -2631,7 +2631,7 @@ public function oc_setItems() {
 
   //get info 
   $products = $this->get_ProductsList();
-  die('test:'.var_dump($products));
+
   if(count($products) == 0 ) echo '[No se encontraron productos que exportar]<br>'; die();
 
   $i = 1;
@@ -2684,7 +2684,7 @@ public function oc_setItems() {
 
   }
  
-  die(var_dump($json));
+  die('test:'.var_dump($json));
 
   //Execute curl
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
