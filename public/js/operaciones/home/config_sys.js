@@ -5,6 +5,14 @@ $(window).load(function(){
 
 $('#ERROR').hide();
 
+
+var api_url = $("#api_url").val();
+var api_key = $("#api_key").val();
+var api_store_route = $("#api_store_route").val();
+
+store_oc_api( api_store_route,api_url, api_key );
+
+
 });
 	
 $(document).ready(function() {
@@ -247,4 +255,76 @@ function send_test(){
 		 console.log = function(message) {$('#notificacion').append('<p>' + message + '</p>');};
 
 }
+
+
+
+
+// ********************************************************
+// *API DE OPENCART
+// ********************************************************
+function exce_oc_api(name,route,oc_url,oc_key){
+    
+      document.getElementById('api_res').innerHTML = "Ejecutando...";
+      
+      var URL = document.getElementById('URL').value;
+      
+      if(name == 'setItems') var url = "bridge_query/oc_setItems";
+      if(name == 'getOrders') var url = "bridge_query/oc_getOrders";
+      if(name == 'getStores') var url = "bridge_query/oc_getStores";
+  
+  
+      $.ajax({
+        
+              type: "GET",
+              url: URL,
+              data: {url:url, api_url: oc_url , api_route:route, api_key:oc_key },
+              success: function(res){
+              console.log(res);
+        
+              
+        
+               document.getElementById('api_res').innerHTML = res;
+        
+             
+        
+             }
+        
+        });
+    
+    
+}
+
+
+function store_oc_api(route,oc_url,oc_key){
+    
+      var URL = document.getElementById('URL').value;
+      document.getElementById('stores').innerHTML = '';
+      var url = "bridge_query/oc_getStoresList";
+  
+      $.ajax({
+        
+              type: "GET",
+              url: URL,
+              data: {url:url, api_url: oc_url , api_route:route, api_key:oc_key },
+              success: function(res){
+             
+        
+               document.getElementById('stores').innerHTML = res;
+        
+             
+        
+             }
+        
+        });
+    
+    
+}
+
+// ********************************************************
+// *API DE OPENCART
+// ********************************************************
+
+  
+
+
 

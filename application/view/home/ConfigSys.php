@@ -676,6 +676,9 @@ if( $oc_url != '' && $oc_key != ''){
 		$oc_key_f = "'".$oc_key."'";
 		
 
+		if($name=='getStores'){
+            echo  '<input type="hidden" id="api_store_route" value="'.$route.'" />';
+		}
 		
 		$endpoints .= '<tr>
 						<th><strong>'.$name.'</strong></th><td>'.$description.'</td><td><input type="button" onclick="exce_oc_api('.$name_f.','.$route_f.','.$oc_url_f.','.$oc_key_f.');"  value="Ejecutar" class="btn btn-primary btn-sm btn-icon icon-left"  /></td>
@@ -685,6 +688,11 @@ if( $oc_url != '' && $oc_key != ''){
 	}
 
 }
+
+echo     '<input type="hidden" id="api_url" value="'.$oc_url.'" />';
+echo     '<input type="hidden" id="api_key" value="'.$oc_key.'" />';
+
+
 //recupero datos de inventario
 $sql = 'SELECT * FROM INV_CONF WHERE  ID_compania="'.$this->model->id_compania.'"';
 
@@ -702,8 +710,6 @@ if($inv_discount == 1 ){$inv_discount ='checked';}else{$inv_discount ='';}
 
 unset($_POST);
 $this->CheckError();
-
-
 
 
 ?>	
