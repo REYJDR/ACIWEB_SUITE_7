@@ -2467,13 +2467,15 @@ public function oc_getStoresList(){
   
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],null);
 
+  echo '<option value="" selected>Selecciona tienda</option>';
+
   foreach($response as $key => $value){
     
     if(is_array($value)){
     
     foreach($value as $store){
 
-        echo '<option value="'.$store->store_id.'" >['.$store->store_id.']'.$store->value.'</option>';
+        echo '<option value="'.$store->store_id.'" >['.$store->store_id.']-'.$store->value.'</option>';
     }
 
     }
