@@ -2687,6 +2687,7 @@ public function oc_setItems() {
   //Execute curl
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
 
+die(var_dump($response));
 
     foreach($response as $key => $value){
       
@@ -2775,7 +2776,6 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
   
   $response = json_decode($response);
 
-  echo  'res:'.$response; die();
 
   return $response;
 
