@@ -2463,7 +2463,25 @@ public function checkSalesOrderExist($order_id){
   return $res;
 }
 
+public function oc_getStoresList(){
+  
+  $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],null);
 
+  foreach($response as $key => $value){
+    
+    if(is_array($value)){
+    
+    foreach($value as $store){
+
+        echo '<option value="'.$store->store_id.'" >['.$store->store_id.']'.$store->value.'</option>';
+    }
+
+    }
+
+  }
+  
+  die();
+}
 
 public function oc_getStores(){
 
