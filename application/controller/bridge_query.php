@@ -2457,9 +2457,9 @@ public function checkSalesOrderExist($order_id){
   $where = " where SalesOrderNumber='{$order_id}' and ID_compania='{$this->model->id_compania}' ;";
  
   $res = $this->model->query_value('SalesOrder_Header_Imp','SalesOrderNumber',$where);
-  die($res);
+  
   if($res != '' ) $res = true ;  $res = false ;
-
+  die($res);
   return $res;
 }
 
