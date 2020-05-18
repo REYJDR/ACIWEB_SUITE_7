@@ -91,7 +91,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 					if($soNo!=''){
 						
-						$clause.= ' and SalesOrder_Header_Imp.SalesOrderNumber="'.$soNo.'" ';
+						$clause.= ' and SalesOrder_Header_Imp.SalesOrderNumber like "%'.$soNo.'%" ';
 					}
 
 					$limit = '1000';
