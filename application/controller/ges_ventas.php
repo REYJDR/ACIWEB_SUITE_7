@@ -611,7 +611,8 @@ public function getSalesOrderRep($sort,$limit,$clause){
 
   }
 
-  echo $query;
+  
+///echo $query;
 
 
   return $filter =  $this->model->Query($query);
