@@ -2747,7 +2747,7 @@ public function oc_getCustomers(){
         $Values = array( 
           'CustomerID' =>  $customer_id,
           'Customer_Bill_Name'  =>  $value->firstname.' '.$value->lastname,
-          'Phone_Number'=> $value->telephone,
+          'Telephone1'=> $value->telephone,
           'Contact'  => '',
           'Country'=> '',
           'State'=> '',
@@ -2773,7 +2773,7 @@ public function oc_getCustomers(){
           
         }else{
 
-          $res[$customer_id] = '[customer: '.$customer_id.'-'.$customer_email.'][Successfully imported]';
+           $res[$customer_id] = '[customer: '.$customer_id.'-'.$customer_email.'][Successfully imported]';
           
         }
 
