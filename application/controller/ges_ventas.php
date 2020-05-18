@@ -596,7 +596,10 @@ public function getSalesOrderRep($sort,$limit,$clause){
 
   $query ='SELECT * FROM `SalesOrder_Header_Imp` 
   inner JOIN `SalesOrder_Detail_Imp` ON SalesOrder_Header_Imp.SalesOrderNumber = SalesOrder_Detail_Imp.SalesOrderNumber
-   '.$clause.' GROUP BY SalesOrder_Header_Imp.SalesOrderNumber order by SalesOrder_Header_Imp.LAST_CHANGE '.$sort.' limit '.$limit ; }
+  inner JOIN `SAX_USER` ON `SAX_USER`.`id` = SalesOrder_Header_Imp.user '.$clause.' GROUP BY SalesOrder_Header_Imp.SalesOrderNumber order by SalesOrder_Header_Imp.LAST_CHANGE '.$sort.' limit '.$limit ;
+   }
+
+
 
   if($this->model->active_user_role=='user'){
 
@@ -608,6 +611,7 @@ public function getSalesOrderRep($sort,$limit,$clause){
 
   }
 
+  echo $query;
 
 
   return $filter =  $this->model->Query($query);
