@@ -2738,7 +2738,7 @@ public function oc_getCustomers(){
        $customer_id = 'OC-'.$value->customer_id; 
        $customer_email = $value->email;
 
-     
+   
  
       ////CHECK IF NOT EXIST
       if(!$this->checkCustomerExist($customer_id,$customer_email)){
@@ -2760,7 +2760,7 @@ public function oc_getCustomers(){
 
 
   
-        $res = $this->model->insert('Customers_Imp',$Values);
+        $this->model->insert('Customers_Imp',$Values);
         if($this->CheckError()){
 
 
@@ -2771,9 +2771,6 @@ public function oc_getCustomers(){
            $res[$key] = '[customer: '.$customer_id.'-'.$customer_email.'][Successfully imported]';
           // echo $key.'[customer: '.$customer_id.'-'.$customer_email.'][Successfully imported]';
         }
-
- 
-
       
 
       }else{
