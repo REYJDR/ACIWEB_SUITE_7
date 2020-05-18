@@ -2567,10 +2567,7 @@ public function oc_getOrders(){
         'lugar_despacho' =>'',
         'SalesRepID' =>  '');
         
-     // $this->model->insert('SalesOrder_Header_Imp',$values);
-        
-
-     $res[$order_id] =  $values;
+     $this->model->insert('SalesOrder_Header_Imp',$values);
 
     
      foreach ((array) $value->detail as $key => $detailRow) {
@@ -2587,32 +2584,27 @@ public function oc_getOrders(){
           'Unit_Price'=>$detailRow->price,
           'Net_line'=>$detailRow->total,
           'Taxable'=> $detailRow->tax == 0 ? 1 : 0);
-
-
-
+        
+        
+          $this->model->insert('SalesOrder_Detail_Imp',$row);
 
 
      }
-
-
-     var_dump($row); die();
-  // //GRAB DETAIL
-
-    // $values1 = array(
-    //   'ItemOrd' => $key ,
-    //   'ID_compania'=>$id_compania,
-    //   'SalesOrderNumber'=>$SalesOrderNumber,
-    //   'Item_id'=> $itemid,
-    //   'Description'=> '('.$UnitMeasure.') '.$desc.' '.$remarks,
-    //   'REMARK'=>$remarks,
-    //   'Quantity'=>$qty,
-    //   'Unit_Price'=>$unit_price,
-    //   'Net_line'=>$Price,
-    //   'Taxable'=>$this->model->Query_value('Products_Exp','TaxType','Where ProductID="'.$itemid.'" and ID_compania="'.$id_compania.'";') );
-
-    //  $this->model->insert('SalesOrder_Detail_Imp',$values1); //set item line
-
-
+    
+  
+      switch ($this->checkSOIns($order_id)) {
+        case 1:
+          $res[$order_id] = "[Error insertando informacion de cabecera]";
+          die();
+          break;
+        case 2:
+          $res[$order_id] = "[Error insertando informacion de detalle]";
+          die();
+          break;
+          
+      }
+   
+      $res[$order_id] = "[Orden importada correctamente]";
 
 
     }else{
@@ -2841,11 +2833,6 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
 
   //get token
   $token = $this->get_token($api_url, $api_token ,$api_user);
- 
-  //if(count($data) == 0 ) return json_decode('[no data to send]'); 
-  
-  
-  //exit(json_encode(array('Warning' => $data)));
 
   $url = $api_url.'/index.php?route='.$api_route.'&api_token='.$token;
 
