@@ -2866,10 +2866,10 @@ public function checkCustomerExist($customer_id,$customer_email){
 
   $where = " WHERE CostumerID='{$customer_id}' or Email='{$customer_email}';";
 
-  $exist = $this->query_value('Customers_Imp','CustomerID',$where);
+  $exist = $this->model->query_value('Customers_Imp','CustomerID',$where);
   if($exist != ''){ return true ; }
  
-  $exist = $this->query_value('Customers_Exp','CustomerID',$where);
+  $exist = $this->model->query_value('Customers_Exp','CustomerID',$where);
   if($exist != ''){ return true ; }
 
   return false;
