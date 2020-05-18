@@ -2733,28 +2733,33 @@ public function oc_getCustomers(){
     $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
     
     
-    // foreach ((array)$response->message as $key => $value) {
+    foreach ((array)$response->message as $key => $value) {
       
-    //    $order_id = 'OC-'.$value->header->order_id; 
-    //    $store_id = $value->header->store_id;
+       $customer_id = 'OC-'.$value->customer_id; 
+       $customer_email = $value->customer_email;
 
   
-    //   // ////CHECK IF NOT EXIST
-    //   // if(!$this->checkCustomerExist($customer_id,$customer_email)){
+      ////CHECK IF NOT EXIST
+      if(!$this->checkCustomerExist($customer_id,$customer_email)
+      // $this->SESSION(); 
   
-  
-    //   //   $this->SESSION();
-  
-    //   //   //ADD CUSTOMERS
-  
-    //   //  }
+
+        $res[$customer_id] = '[customer: '.$customer_id.'][Not imported]';;
+      
+
+      }else{
+
+        $res[$customer_id] = '[customer: '.$customer_id.'][Is already imported]';
+        
+
+      }
       
 
   
-    // }
+    }
    
   
-    foreach($response as $key => $value){
+    foreach($res as $key => $value){
       
       if( is_array($value)){
   
@@ -2855,7 +2860,30 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
 
 }
 
+
+
+public function checkCustomerExist($customer_id,$customer_email){
+
+  $where = " WHERE CostumerID='{$customer_id}' or Email='{$customer_email}';";
+
+  $exist = $this->query_value('Customers_Imp','CustomerID',$where);
+  if($exist != ''){ return true ; }
+ 
+  $exist = $this->query_value('Customers_Exp','CustomerID',$where);
+  if($exist != ''){ return true ; }
+
+  return false;
+
+
+
+}
+
+
 // -WARNING- la llave debajo de este comentario es la que cierra la clase. NO BORRAR NI MODIFICAR.
 }
+
+
+
+
 
 ?>
