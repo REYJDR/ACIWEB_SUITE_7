@@ -594,9 +594,9 @@ public function getSalesOrderRep($sort,$limit,$clause){
 
   if($this->model->active_user_role=='admin'){
 
- echo  $query ='SELECT * FROM `SalesOrder_Header_Imp` 
+  $query ='SELECT * FROM `SalesOrder_Header_Imp` 
   inner JOIN `SalesOrder_Detail_Imp` ON SalesOrder_Header_Imp.SalesOrderNumber = SalesOrder_Detail_Imp.SalesOrderNumber
-  inner JOIN `SAX_USER` ON `SAX_USER`.`id` = SalesOrder_Header_Imp.user '.$clause.' GROUP BY SalesOrder_Header_Imp.SalesOrderNumber order by SalesOrder_Header_Imp.LAST_CHANGE '.$sort.' limit '.$limit ; }
+   '.$clause.' GROUP BY SalesOrder_Header_Imp.SalesOrderNumber order by SalesOrder_Header_Imp.LAST_CHANGE '.$sort.' limit '.$limit ; }
 
   if($this->model->active_user_role=='user'){
 
