@@ -2581,12 +2581,12 @@ public function oc_getOrders(){
           'ID_compania'=>$this->model->id_compania,
           'SalesOrderNumber'=>$order_id,
           'Item_id'=> $detailRow->product_id,
-          'Description'=> $detailRow->description,
+          'Description'=> $detailRow->name,
           'REMARK'=>'',
           'Quantity'=>$detailRow->quantity,
           'Unit_Price'=>$detailRow->price,
           'Net_line'=>$detailRow->total,
-          'Taxable'=> $detailRow->tax);
+          'Taxable'=> $detailRow->tax == 0 ? 1 : 0);
 
 
 
