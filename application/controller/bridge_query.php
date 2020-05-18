@@ -2769,7 +2769,7 @@ public function oc_getCustomers(){
         }else{
 
            $res[$key] = '[customer: '.$customer_id.'-'.$customer_email.'][Successfully imported]';
-           echo $key.'[customer: '.$customer_id.'-'.$customer_email.'][Successfully imported]';
+          // echo $key.'[customer: '.$customer_id.'-'.$customer_email.'][Successfully imported]';
         }
 
  
@@ -2787,7 +2787,7 @@ public function oc_getCustomers(){
   
     }
    
-  
+    var_dump($res);
     foreach($res as $key => $value){
       
       // if( is_array($value)){
