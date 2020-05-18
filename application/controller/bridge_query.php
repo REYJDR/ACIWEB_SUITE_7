@@ -2893,9 +2893,10 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
 
 public function checkCustomerExist($customer_id,$customer_email){
 
-  $where = " WHERE CostumerID='{$customer_id}' or Email='{$customer_email}';";
+  $where = " WHERE CostumerID='{$customer_id}' or Email='{$customer_email}' ;";
 
   $exist = $this->model->query_value('Customers_Imp','CustomerID',$where);
+die($exist);
   if($exist != ''){ return true ; }
  
   $exist = $this->model->query_value('Customers_Exp','CustomerID',$where);
