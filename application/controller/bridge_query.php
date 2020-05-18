@@ -2532,12 +2532,45 @@ public function oc_getOrders(){
     if(!$this->checkSalesOrderExist($order_id)){
 
 
-
+      $this->SESSION();
 
       $res[$order_id] = "Sales Order {$order_id} not  exist on aciweb.";
 
+      //GRAB HEADER
 
+      $values = array(
 
+        'ID_compania'=>$this->model->id_compania,
+        'SalesOrderNumber'=> $order_id,
+        'CustomerID'=>   $value->header->CustomerID,
+        'CustomerName'=> $value->header->firstname.'-'.$value->header->lastname,
+        'Subtotal'=> $value->header->subtotal ,
+        'TaxID'=> '',
+        'OrderTax' => $value->header->tax,
+        'Net_due'  =>$value->header->total,
+        'user'     => $this->model->active_user_id,
+        'date'     =>$value->header->date_added,
+        'saletax'=>'0', //validar que dato va a ir aqui 
+        'CustomerPO' => '',
+        'tipo_licitacion' => '',
+        'entrega' => '',
+        'termino_pago' => $value->header->payment_method,
+        'observaciones' => '',
+        'ShipToName' =>  $value->header->shipping_firstname.'-'.$value->header->shipping_lastname,
+        'ShipToAddressLine1' => $value->header->shipping_address_1,
+        'ShipToAddressLine2' => $value->header->shipping_address_2,
+        'ShipToCity' => $value->header->shipping_city,
+        'ShipToState' => '',
+        'ShipToZip' =>  $value->header->shipping_postcode,
+        'ShipToCountry' =>  $value->header->shipping_country,
+        'fecha_entrega' => '',
+        'lugar_despacho' =>'',
+        'SalesRepID' =>  '');
+        
+     // $this->model->insert('SalesOrder_Header_Imp',$values);
+        
+
+     $res[$order_id] =  $values;
 
 
 
@@ -2554,8 +2587,16 @@ public function oc_getOrders(){
 
   foreach($res as $key => $value){
     
+    if( is_array($value)){
 
-     echo '[order: '.$key.']['.$value.']<br>';
+      
+      echo '[order: '.$key.']'.var_dump($value);
+
+
+    }else{
+      echo '[order: '.$key.']['.$value.']<br>';
+    }
+     
    
 
   }
