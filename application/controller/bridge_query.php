@@ -2777,12 +2777,12 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
   $response = curl_exec($ch);
   curl_close($ch);
 
-  if($response == '' || !is_object($response)){
-     exit(json_encode(array('Warning' => $response)));
-  }
-
+ 
   $response = json_decode($response);
    
+  if($response == ''){
+    exit(json_encode(array('Warning' => $response)));
+ }
 
  
 
