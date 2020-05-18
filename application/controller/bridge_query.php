@@ -2549,7 +2549,7 @@ public function oc_getOrders(){
         'OrderTax' => $value->header->tax,
         'Net_due'  =>$value->header->total,
         'user'     => $this->model->active_user_id,
-        'date'     =>$value->header->date_added,
+        'date'     =>date('Y-m-d',strtotime($value->header->date_added)),
         'saletax'=>'0', //validar que dato va a ir aqui 
         'CustomerPO' => '',
         'tipo_licitacion' => '',
