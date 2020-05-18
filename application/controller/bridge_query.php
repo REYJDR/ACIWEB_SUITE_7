@@ -2770,12 +2770,15 @@ public function oc_getCustomers(){
 
 
            $res[$customer_id] = '[customer: '.$customer_id.'-'.$customer_email.'][DB error was ocurred]';
-        
+          
+        }else{
+
+          $res[$customer_id] = '[customer: '.$customer_id.'-'.$customer_email.'][Successfully imported]';
+          
         }
 
  
 
-        $res[$customer_id] = '[customer: '.$customer_id.'-'.$customer_email.'][Successfully imported]';
       
 
       }else{
