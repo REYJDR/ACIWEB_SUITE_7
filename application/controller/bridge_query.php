@@ -2577,7 +2577,7 @@ public function oc_getOrders(){
           'ItemOrd' => $detailRow->order_product_id ,
           'ID_compania'=>$this->model->id_compania,
           'SalesOrderNumber'=>$order_id,
-          'Item_id'=> $detailRow->product_id,
+          'Item_id'=> $detailRow->model,
           'Description'=> $detailRow->name,
           'REMARK'=>'',
           'Quantity'=>$detailRow->quantity,
