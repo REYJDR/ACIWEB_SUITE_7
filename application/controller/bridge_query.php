@@ -2763,11 +2763,11 @@ public function oc_getCustomers(){
         if($this->CheckError()){
 
 
-           $res[$customer_id] = '[customer: '.$customer_id.'-'.$customer_email.'][DB error was ocurred]';
+           $res[$key] = '[customer: '.$customer_id.'-'.$customer_email.'][DB error was ocurred]';
           
         }else{
 
-           $res[$customer_id] = '[customer: '.$customer_id.'-'.$customer_email.'][Successfully imported]';
+           $res[$key] = '[customer: '.$customer_id.'-'.$customer_email.'][Successfully imported]';
           
         }
 
@@ -2777,7 +2777,7 @@ public function oc_getCustomers(){
 
       }else{
 
-        $res[$customer_id] = '[customer: '.$customer_id.'-'.$customer_email.'][Is already imported]';
+        $res[$key] = '[customer: '.$customer_id.'-'.$customer_email.'][Is already imported]';
         
 
       }
