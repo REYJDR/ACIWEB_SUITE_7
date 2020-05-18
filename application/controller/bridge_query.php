@@ -2684,7 +2684,7 @@ public function oc_setItems() {
 
   }
  
-
+  die('test:'.var_dump($json));
   //Execute curl
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
 
