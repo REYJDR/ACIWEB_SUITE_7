@@ -2636,68 +2636,6 @@ public function oc_getOrders(){
 
  die();
 
-  //CHECK IF NOT EXIST
-
-
-
-  //GRAB HEADER
-
-  // $values = array(
-  //   'ID_compania'=>$this->model->id_compania,
-  //   'SalesOrderNumber'=> $SalesOrderNumber,
-  //   'CustomerID'=>   $custinfo->{'CustomerID'},
-  //   'CustomerName'=> $custinfo->{'Customer_Bill_Name'},
-  //   'Subtotal'=>$Subtotal,
-  //   'TaxID'=>$TaxID,
-  //   'OrderTax' => $ordertax,
-  //   'Net_due'=>$Net_due,
-  //   'user'=>$this->model->active_user_id,
-  //   'date'=>$date,
-  //   'saletax'=>'0',
-  //   'CustomerPO' => substr($observaciones, 0, 20 ),
-  //   'tipo_licitacion' => $licitacion,
-  //   'entrega' => $entrega,
-  //   'termino_pago' => $pago,
-  //   'observaciones' => $observaciones,
-  //   'ShipToName' =>  $custinfo->{'CustomerID'}.'-'.$custinfo->{'Customer_Bill_Name'},
-  //   'ShipToAddressLine1' => $custinfo->{'AddressLine1'},
-  //   'ShipToAddressLine2' => $custinfo->{'AddressLine2'},
-  //   'ShipToCity' => $custinfo->{'City'},
-  //   'ShipToState' => substr($custinfo->{'State'}, 0, 2 ),
-  //   'ShipToZip' => $custinfo->{'Zip'},
-  //   'ShipToCountry' => $custinfo->{'Country'},
-  //   'fecha_entrega' => $fecha_entrega,
-  //   'lugar_despacho' => $lugDesp,
-  //   'SalesRepID' =>  $custinfo->{'SalesRepID'} );
-    
-  // $this->model->insert('SalesOrder_Header_Imp',$values);
-    
-
-
-  // //GRAB DETAIL
-
-
-  // $values1 = array(
-  //   'ItemOrd' => $key ,
-  //   'ID_compania'=>$id_compania,
-  //   'SalesOrderNumber'=>$SalesOrderNumber,
-  //   'Item_id'=> $itemid,
-  //   'Description'=> '('.$UnitMeasure.') '.$desc.' '.$remarks,
-  //   'REMARK'=>$remarks,
-  //   'Quantity'=>$qty,
-  //   'Unit_Price'=>$unit_price,
-  //   'Net_line'=>$Price,
-  //   'Taxable'=>$this->model->Query_value('Products_Exp','TaxType','Where ProductID="'.$itemid.'" and ID_compania="'.$id_compania.'";') );
-
-  //  $this->model->insert('SalesOrder_Detail_Imp',$values1); //set item line
-
-
-
-
-
-
- die();
-
 
 }
 
@@ -2781,6 +2719,64 @@ public function oc_setItems() {
     die();
 
 }
+
+
+
+public function oc_getCustomers(){
+  
+    $json['filter_email']= "";
+    $json['filter_store_id']= $_GET['store_id']; //tienda
+    
+    $json['start']= "0";
+    $json['limit']= "0";
+
+    $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
+    
+    
+    // foreach ((array)$response->message as $key => $value) {
+      
+    //    $order_id = 'OC-'.$value->header->order_id; 
+    //    $store_id = $value->header->store_id;
+
+  
+    //   // ////CHECK IF NOT EXIST
+    //   // if(!$this->checkCustomerExist($customer_id,$customer_email)){
+  
+  
+    //   //   $this->SESSION();
+  
+    //   //   //ADD CUSTOMERS
+  
+    //   //  }
+      
+
+  
+    // }
+   
+  
+    foreach($response as $key => $value){
+      
+      if( is_array($value)){
+  
+        
+        echo '[customer: '.$key.']'.var_dump($value);
+  
+  
+      }else{
+        echo '[customer: '.$key.']['.$value.']<br>';
+      }
+       
+     
+  
+    }
+  
+  
+   die();
+
+  
+  }
+
+
 
 public function get_token($api_url,$api_token,$api_user){
 
