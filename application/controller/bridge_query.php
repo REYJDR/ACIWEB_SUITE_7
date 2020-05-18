@@ -2766,9 +2766,14 @@ public function oc_getCustomers(){
 
   
         $res = $this->model->insert('Customers_Imp',$Values);
-        $this->CheckError();
+        if($this->CheckError()){
 
 
+           $res[$customer_id] = '[customer: '.$customer_id.'-'.$customer_email.'][DB error was ocurred]';
+        
+        }
+
+ 
 
         $res[$customer_id] = '[customer: '.$customer_id.'-'.$customer_email.'][Successfully imported]';
       
@@ -2913,11 +2918,7 @@ public function CheckError(){
   
     if ($CHK_ERROR!=''){ 
   
-     die("<script>$(window).load(  
-          function(){   
-            MSG_ERROR('".$CHK_ERROR."',0);
-           }
-         );</script>"); 
+     return true; 
   
     }
   
