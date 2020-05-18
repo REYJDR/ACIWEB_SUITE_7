@@ -2631,9 +2631,9 @@ public function oc_setItems() {
 
   //get info 
   $products = $this->get_ProductsList();
-
-  if(count($products) == 0 ) echo '[No se encontraron productos que exportar]<br>'; die();
   die('test:'.var_dump($products));
+  if(count($products) == 0 ) echo '[No se encontraron productos que exportar]<br>'; die();
+  
   $i = 1;
 
   foreach ($products as $key => $value) {
