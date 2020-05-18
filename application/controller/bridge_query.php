@@ -2762,7 +2762,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
  
   //if(count($data) == 0 ) return json_decode('[no data to send]'); 
   
- 
+  exit(json_encode(array('Warning' => $data)));
 
   $url = $api_url.'/index.php?route='.$api_route.'&api_token='.$token;
 
@@ -2782,7 +2782,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
    
   if($response == ''){
     exit(json_encode(array('Warning' => $response)));
- }
+  }
 
  
 
