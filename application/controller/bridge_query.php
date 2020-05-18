@@ -2792,7 +2792,7 @@ public function oc_getCustomers(){
       if( is_array($value)){
   
         
-        echo valuevar_dump($value);
+        echo var_dump($value);
   
   
       }else{

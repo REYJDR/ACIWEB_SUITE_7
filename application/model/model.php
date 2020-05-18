@@ -832,7 +832,7 @@ public function Get_SO_NoDes(){
 
     //$this->model->verify_session();
 
-    $order = $this->Query_value('SalesOrder_Header_Imp','SalesOrderNumber','where ID_compania="'.$this->id_compania.'" ORDER BY ID DESC LIMIT 1');
+    $order = $this->Query_value('SalesOrder_Header_Imp','SalesOrderNumber','where ID_compania="'.$this->id_compania.'" and SalesOrderNumber like "ACI-%" ORDER BY ID DESC LIMIT 1');
     
 
     $count = substr_count($order, '-');
@@ -863,7 +863,7 @@ return $NO_ORDER;
 
 public function Get_SO_No(){
 
-    $order = $this->Query_value('SalesOrder_Header_Imp','SalesOrderNumber','where ID_compania="'.$this->id_compania.'" ORDER BY ID DESC LIMIT 1');
+    $order = $this->Query_value('SalesOrder_Header_Imp','SalesOrderNumber','where ID_compania="'.$this->id_compania.'"  and SalesOrderNumber like "ACI-%" ORDER BY ID DESC LIMIT 1');
 
     list($ACI , $NO_ORDER) = explode('-', $order);
 
