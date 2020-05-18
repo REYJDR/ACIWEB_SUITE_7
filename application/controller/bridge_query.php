@@ -2760,7 +2760,7 @@ public function oc_getCustomers(){
 
   
         // $res = $this->model->insert('Customers_Imp',$Values);
-        if($this->CheckError() = true){
+        if($this->CheckError()){
 
 
            $res[$key] = '[customer: '.$customer_id.'-'.$customer_email.'][DB error was ocurred]';
