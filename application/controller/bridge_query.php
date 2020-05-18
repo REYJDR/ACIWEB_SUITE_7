@@ -2751,7 +2751,7 @@ public function oc_getCustomers(){
           'Contact'  => '',
           'Country'=> '',
           'State'=> '',
-          'City'=> ''],
+          'City'=> '',
           'Zip'=> '',
           'Email'=> $customer_email,
           'PriceLevel'=> '',
