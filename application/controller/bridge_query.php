@@ -2572,6 +2572,46 @@ public function oc_getOrders(){
 
      $res[$order_id] =  $values;
 
+    
+     foreach ((array) $value->detail as $key => $detailRow) {
+
+
+      $row = array(
+          'ItemOrd' => $detailRow->order_product_id ,
+          'ID_compania'=>$this->model->id_compania,
+          'SalesOrderNumber'=>$order_id,
+          'Item_id'=> $detailRow->product_id,
+          'Description'=> $detailRow->description,
+          'REMARK'=>'',
+          'Quantity'=>$detailRow->quantity,
+          'Unit_Price'=>$detailRow->price,
+          'Net_line'=>$detailRow->total,
+          'Taxable'=> $detailRow->tax);
+
+
+
+
+
+     }
+
+
+     var_dump($row); die();
+  // //GRAB DETAIL
+
+    // $values1 = array(
+    //   'ItemOrd' => $key ,
+    //   'ID_compania'=>$id_compania,
+    //   'SalesOrderNumber'=>$SalesOrderNumber,
+    //   'Item_id'=> $itemid,
+    //   'Description'=> '('.$UnitMeasure.') '.$desc.' '.$remarks,
+    //   'REMARK'=>$remarks,
+    //   'Quantity'=>$qty,
+    //   'Unit_Price'=>$unit_price,
+    //   'Net_line'=>$Price,
+    //   'Taxable'=>$this->model->Query_value('Products_Exp','TaxType','Where ProductID="'.$itemid.'" and ID_compania="'.$id_compania.'";') );
+
+    //  $this->model->insert('SalesOrder_Detail_Imp',$values1); //set item line
+
 
 
 
