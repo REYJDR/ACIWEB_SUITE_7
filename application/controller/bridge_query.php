@@ -2529,7 +2529,6 @@ public function oc_getOrders(){
      $store_name = $value->header->store_name;
 
     ////CHECK IF NOT EXIST
-    echo $this->checkSalesOrderExist($order_id); die();
     if(!$this->checkSalesOrderExist($order_id)){
 
 
