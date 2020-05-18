@@ -2632,9 +2632,7 @@ public function oc_setItems() {
   //get info 
   $products = $this->get_ProductsList();
   
-     
-  die('next empty:'.count($products));
-  //if()) exit('[No se encontraron productos que exportar]<br>');
+  if(count($products) < 1)) exit(json_encode(array('Warning' => '[No se encontraron productos que exportar]')));
  
   $i = 1;
 
