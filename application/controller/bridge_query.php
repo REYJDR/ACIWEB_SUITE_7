@@ -2775,7 +2775,7 @@ public function oc_getCustomers(){
 
       }else{
 
-        $res[$customer_id] = '[customer: '.$customer_id.'-'.$customer_email'][Is already imported]';
+        $res[$customer_id] = '[customer: '.$customer_id.'-'.$customer_email.'][Is already imported]';
         
 
       }
