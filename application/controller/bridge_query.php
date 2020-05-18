@@ -2741,10 +2741,36 @@ public function oc_getCustomers(){
   
       ////CHECK IF NOT EXIST
       if(!$this->checkCustomerExist($customer_id,$customer_email)){
-      // $this->SESSION(); 
+        $this->SESSION(); 
   
 
-        $res[$customer_id] = '[customer: '.$customer_id.'][Not imported]';
+        $Values = array( 
+          'CustomerID' =>  $customer_id,
+          'Customer_Bill_Name'  =>  $value->firstname.' '.$value->lastname,
+          'Phone_Number'=> $value->telephone,
+          'Contact'  => '',
+          'Country'=> '',
+          'State'=> '',
+          'City'=> ''],
+          'Zip'=> '',
+          'Email'=> $customer_email,
+          'PriceLevel'=> '',
+          'Balance'=> '',
+          'CreditLimit'=> '',
+          'SalesRepID'=> '',
+          'SalesRepName'=> '',
+          'AddressLine1'=> '',
+          'AddressLine2'=> '',
+          'ID_compania' => $this->model->id_compania);
+
+
+  
+        $res = $this->model->insert('Customers_Imp',$Values);
+        $this->CheckError();
+
+
+
+        $res[$customer_id] = '[customer: '.$customer_id.'][Successfully imported]';
       
 
       }else{
@@ -2764,11 +2790,11 @@ public function oc_getCustomers(){
       if( is_array($value)){
   
         
-        echo '[customer: '.$key.']'.var_dump($value);
+        echo valuevar_dump($value);
   
   
       }else{
-        echo '[customer: '.$key.']['.$value.']<br>';
+        echo $value.'<br>';
       }
        
      
@@ -2878,6 +2904,27 @@ public function checkCustomerExist($customer_id,$customer_email){
 
 }
 
+
+public function CheckError(){
+  
+  
+    $CHK_ERROR =  $this->model->read_db_error();
+    
+  
+    if ($CHK_ERROR!=''){ 
+  
+     die("<script>$(window).load(  
+          function(){   
+            MSG_ERROR('".$CHK_ERROR."',0);
+           }
+         );</script>"); 
+  
+    }
+  
+  }
+
+  
+  
 
 // -WARNING- la llave debajo de este comentario es la que cierra la clase. NO BORRAR NI MODIFICAR.
 }
