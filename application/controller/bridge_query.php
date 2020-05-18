@@ -2736,7 +2736,7 @@ public function oc_getCustomers(){
     foreach ((array)$response->message as $key => $value) {
       
        $customer_id = 'OC-'.$value->customer_id; 
-       $customer_email = $value->customer_email;
+       $customer_email = $value->email;
 
   
       ////CHECK IF NOT EXIST
