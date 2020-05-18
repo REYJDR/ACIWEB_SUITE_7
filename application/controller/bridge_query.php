@@ -2744,22 +2744,22 @@ public function oc_getCustomers(){
         $this->SESSION(); 
   
 
-        // $Values = array( 
-        //   'CustomerID' =>  $customer_id,
-        //   'Customer_Bill_Name'  =>  $value->firstname.' '.$value->lastname,
-        //   'Telephone1'=> $value->telephone,
-        //   'Country'=> '',
-        //   'State'=> '',
-        //   'City'=> '',
-        //   'Zip'=> '',
-        //   'Email'=> $customer_email,
-        //   'AddressLine1'=> '',
-        //   'AddressLine2'=> '',
-        //   'ID_compania' => $this->model->id_compania);
+        $Values = array( 
+          'CustomerID' =>  $customer_id,
+          'Customer_Bill_Name'  =>  $value->firstname.' '.$value->lastname,
+          'Telephone1'=> $value->telephone,
+          'Country'=> '',
+          'State'=> '',
+          'City'=> '',
+          'Zip'=> '',
+          'Email'=> $customer_email,
+          'AddressLine1'=> '',
+          'AddressLine2'=> '',
+          'ID_compania' => $this->model->id_compania);
 
 
   
-        // $res = $this->model->insert('Customers_Imp',$Values);
+        $res = $this->model->insert('Customers_Imp',$Values);
         if($this->CheckError()){
 
 
