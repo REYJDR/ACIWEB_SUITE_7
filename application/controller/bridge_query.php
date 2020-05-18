@@ -2689,7 +2689,6 @@ public function oc_setItems() {
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
 
 
-
     foreach($response as $key => $value){
       
       if(is_object($value)){
@@ -2763,7 +2762,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
  
   //if(count($data) == 0 ) return json_decode('[no data to send]'); 
   
- // die('test:'.var_dump($data));
+  die('test:'.var_dump($data));
 
   $url = $api_url.'/index.php?route='.$api_route.'&api_token='.$token;
 
