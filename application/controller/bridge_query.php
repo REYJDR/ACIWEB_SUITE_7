@@ -2789,15 +2789,15 @@ public function oc_getCustomers(){
   
     foreach($res as $key => $value){
       
-      if( is_array($value)){
+      // if( is_array($value)){
   
         
-        echo var_dump($value);
+      //   echo var_dump($value);
   
   
-      }else{
+      // }else{
         echo $value.'<br>';
-      }
+      // }
        
      
   
