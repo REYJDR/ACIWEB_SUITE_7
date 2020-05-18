@@ -2529,6 +2529,7 @@ public function oc_getOrders(){
      $store_name = $value->header->store_name;
 
     ////CHECK IF NOT EXIST
+    die($this->checkSalesOrderExist($order_id));
     if(!$this->checkSalesOrderExist($order_id)){
 
 
@@ -2543,7 +2544,7 @@ public function oc_getOrders(){
         'ID_compania'=>$this->model->id_compania,
         'SalesOrderNumber'=> $order_id,
         'CustomerID'=>   $value->header->customer_id,
-        'CustomerName'=> $value->header->firstname.'-'.$value->header->lastname,
+        'CustomerName'=> $value->header->firstname.' '.$value->header->lastname,
         'Subtotal'=> $value->header->subtotal ,
         'TaxID'=> '',
         'OrderTax' => $value->header->tax,
@@ -2556,7 +2557,7 @@ public function oc_getOrders(){
         'entrega' => '',
         'termino_pago' => $value->header->payment_method,
         'observaciones' => '',
-        'ShipToName' =>  $value->header->shipping_firstname.'-'.$value->header->shipping_lastname,
+        'ShipToName' =>  $value->header->shipping_firstname.' '.$value->header->shipping_lastname,
         'ShipToAddressLine1' => $value->header->shipping_address_1,
         'ShipToAddressLine2' => $value->header->shipping_address_2,
         'ShipToCity' => $value->header->shipping_city,
