@@ -2784,7 +2784,7 @@ public function oc_getCustomers(){
   
     }
    
-    var_dump($res);
+   
     foreach($res as $key => $value){
       
       // if( is_array($value)){
