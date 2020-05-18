@@ -2769,7 +2769,7 @@ public function oc_getCustomers(){
         }else{
 
            $res[$key] = '[customer: '.$customer_id.'-'.$customer_email.'][Successfully imported]';
-          
+           echo '[customer: '.$customer_id.'-'.$customer_email.'][Successfully imported]';
         }
 
  
