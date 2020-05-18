@@ -2740,7 +2740,7 @@ public function oc_getCustomers(){
 
   
       ////CHECK IF NOT EXIST
-      if(!$this->checkCustomerExist($customer_id,$customer_email){
+      if(!$this->checkCustomerExist($customer_id,$customer_email)){
       // $this->SESSION(); 
   
 
