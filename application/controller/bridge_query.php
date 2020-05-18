@@ -2738,8 +2738,8 @@ public function oc_getCustomers(){
        $customer_id = 'OC-'.$value->customer_id; 
        $customer_email = $value->email;
 
-      $exist = $this->checkCustomerExist($customer_id,$customer_email);
-      die($exist);
+     
+ 
       ////CHECK IF NOT EXIST
       if(!$this->checkCustomerExist($customer_id,$customer_email)){
         $this->SESSION(); 
