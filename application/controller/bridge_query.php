@@ -2521,6 +2521,7 @@ public function oc_getOrders(){
 
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
   
+  
   foreach ((array)$response->message as $key => $value) {
     
      $order_id = 'OC-'.$value->header->order_id; 
@@ -2778,10 +2779,9 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
   $response = curl_exec($ch);
   curl_close($ch);
 
-  exit(json_encode(array('Warning' => $response)));
   $response = json_decode($response);
    
-  if($response == ''){
+  if($response == ''|| $response->code >= '400'){
     exit(json_encode(array('Warning' => $response)));
   }
 
