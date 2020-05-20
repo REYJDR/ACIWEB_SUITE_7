@@ -46,11 +46,11 @@ openCity(event, 'Config1');
 			<fieldset class="fieldsetform">
 			<table class="table_form">
 				<tbody>
-					<tr><th><strong><?php echo $config_1_val1; ?></strong></th><td><input type="text"  class="inputPage col-lg-12"  id="company" name="company"  value="<?php echo $name; ?>" /></td></tr>
-					<tr><th><strong><?php echo $config_1_val2; ?></strong></th><td><input type="text"  class="inputPage col-lg-12" id="address" name="address" value="<?php echo $address; ?>"  /></td></tr>
-					<tr><th><strong><?php echo $config_1_val3; ?></strong></th><td><input type="email" class="inputPage col-lg-12" id="email_contact" name="email_contact" value="<?php echo $email; ?>" /></td></tr>
-					<tr><th><strong><?php echo $config_1_val4; ?></strong></th><td><input type="text"  class="inputPage col-lg-12" id="tel1" name="tel1" value="<?php echo $tel; ?>"></td></tr>
-					<tr><th><strong><?php echo $config_1_val5; ?></strong></th><td><input type="text"  class="inputPage col-lg-12" id="tel2" name="tel2" value="<?php echo $fax; ?>"></td></tr>
+					<tr><th><strong><?php echo $config_1_val1; ?></strong></th><td><input type="text"  autocomplete="false" class="inputPage col-lg-12"  id="company" name="company"  value="<?php echo $name; ?>" /></td></tr>
+					<tr><th><strong><?php echo $config_1_val2; ?></strong></th><td><input type="text"  autocomplete="false" class="inputPage col-lg-12" id="address" name="address" value="<?php echo $address; ?>"  /></td></tr>
+					<tr><th><strong><?php echo $config_1_val3; ?></strong></th><td><input type="email" autocomplete="false" class="inputPage col-lg-12" id="email_contact" name="email_contact" value="<?php echo $email; ?>" /></td></tr>
+					<tr><th><strong><?php echo $config_1_val4; ?></strong></th><td><input type="text"  autocomplete="false" class="inputPage col-lg-12" id="tel1" name="tel1" value="<?php echo $tel; ?>"></td></tr>
+					<tr><th><strong><?php echo $config_1_val5; ?></strong></th><td><input type="text"  autocomplete="false" class="inputPage col-lg-12" id="tel2" name="tel2" value="<?php echo $fax; ?>"></td></tr>
 					<tr><th><strong><?php echo $config_1_val6; ?></strong></th>
 					<td>
 					<select  id="lang" name="lang" class="select col-lg-12">
