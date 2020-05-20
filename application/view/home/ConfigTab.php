@@ -88,11 +88,11 @@ openCity(event, 'Config1');
 			<fieldset class="fieldsetform" >	
 			<table class="table_form">
 			<tbody>
-				<tr><th><strong><?php echo $config_2_val1; ?></strong></th><td><input type="text"  class="inputPage col-lg-12"  id="name" name="name"  required /></td></tr>
-				<tr><th><strong><?php echo $config_2_val2; ?></strong></th><td><input type="text" class="inputPage col-lg-12"  id="lastname" name="lastname"  required//></td></tr>
-				<tr><th><strong><?php echo $config_2_val3; ?></strong></th><td><input type="email" class="inputPage col-lg-12" id="mail"   name="mail"  required /></td></tr>
-				<tr><th><strong><?php echo $config_2_val4; ?></strong></th><td><input type="password" class="inputPage col-lg-12"  id="pass_1" name="pass_1" required></td></tr>
-				<tr><th><strong><?php echo $config_2_val5; ?></strong></th><td><input type="password" class="inputPage col-lg-12"  id="pass_2" name="pass_2" required/></td></tr>
+				<tr><th><strong><?php echo $config_2_val1; ?></strong></th><td><input autocomplete="false" type="text"  class="inputPage col-lg-12"  id="name" name="name"  required /></td></tr>
+				<tr><th><strong><?php echo $config_2_val2; ?></strong></th><td><input autocomplete="false" type="text" class="inputPage col-lg-12"  id="lastname" name="lastname"  required//></td></tr>
+				<tr><th><strong><?php echo $config_2_val3; ?></strong></th><td><input autocomplete="false" type="email" class="inputPage col-lg-12" id="mail"   name="mail"  required /></td></tr>
+				<tr><th><strong><?php echo $config_2_val4; ?></strong></th><td><input autocomplete="false"  type="password" class="inputPage col-lg-12"  id="pass_1" name="pass_1" required></td></tr>
+				<tr><th><strong><?php echo $config_2_val5; ?></strong></th><td><input autocomplete="false" type="password" class="inputPage col-lg-12"  id="pass_2" name="pass_2" required/></td></tr>
 				<tr><th><strong><?php echo $config_2_val6; ?></strong></th><td>
 					<select class="inputPage col-lg-12" id="role" name="role">
 						<option value="admin" ><?php echo $config_2_val7; ?></option>
