@@ -484,6 +484,7 @@ echo '<script> MSG_ERROR("El correo indicado ya existe","0"); </script>';
 } 
 
 if(isset($_POST['oc_info'])){
+	$this->model->delete('API_OPENCART_KEYS','where id=1');
 
 	$this->model->Query("INSERT INTO API_OPENCART_KEYS (id,url,apikey) values ('1','{$_POST['url']}','{$_POST['key']}')");
 
@@ -667,7 +668,7 @@ if( $oc_url != '' && $oc_key != ''){
 		$api_endp = json_decode($api);
 		
 		$id =  $api_endp->{'id'};
-		$name =  $api_endp->{'name'};
+		$name_api =  $api_endp->{'name'};
 		$route =  $api_endp->{'route'};
 		$description = $api_endp->{'description'};
 		$name_f = "'".$name."'";
@@ -681,7 +682,7 @@ if( $oc_url != '' && $oc_key != ''){
 		}
 		
 		$endpoints .= '<tr>
-						<th><strong>'.$name.'</strong></th><td>'.$description.'</td><td><input type="button" onclick="exce_oc_api('.$name_f.','.$route_f.','.$oc_url_f.','.$oc_key_f.');"  value="Ejecutar" class="btn btn-primary btn-sm btn-icon icon-left"  /></td>
+						<th><strong>'.$name_api.'</strong></th><td>'.$description.'</td><td><input type="button" onclick="exce_oc_api('.$name_f.','.$route_f.','.$oc_url_f.','.$oc_key_f.');"  value="Ejecutar" class="btn btn-primary btn-sm btn-icon icon-left"  /></td>
 					   </tr>';
 	
 	
