@@ -90,7 +90,7 @@ openCity(event, 'Config1');
 			<tbody>
 				<tr><th><strong><?php echo $config_2_val1; ?></strong></th><td><input autocomplete="false" type="text"  class="inputPage col-lg-12"  id="name" name="name"  required /></td></tr>
 				<tr><th><strong><?php echo $config_2_val2; ?></strong></th><td><input autocomplete="false" type="text" class="inputPage col-lg-12"  id="lastname" name="lastname"  required//></td></tr>
-				<tr><th><strong><?php echo $config_2_val3; ?></strong></th><td><input autocomplete="false" type="email" class="inputPage col-lg-12" id="mail"   name="mail"  required /></td></tr>
+				<tr><th><strong><?php echo $config_2_val3; ?></strong></th><td><input autocomplete="false"   autofocus="false" type="email" class="inputPage col-lg-12"  id="mail"   name="mail"  required /></td></tr>
 				<tr><th><strong><?php echo $config_2_val4; ?></strong></th><td><input autocomplete="false"  type="password" class="inputPage col-lg-12"  id="pass_1" name="pass_1" required></td></tr>
 				<tr><th><strong><?php echo $config_2_val5; ?></strong></th><td><input autocomplete="false" type="password" class="inputPage col-lg-12"  id="pass_2" name="pass_2" required/></td></tr>
 				<tr><th><strong><?php echo $config_2_val6; ?></strong></th><td>
