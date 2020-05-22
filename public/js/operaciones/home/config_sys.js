@@ -5,6 +5,7 @@ $(window).load(function(){
 
 $('#ERROR').hide();
 
+document.getElementById("name").focus();
 
 var api_url = $("#api_url").val();
 var api_key = $("#api_key").val();
