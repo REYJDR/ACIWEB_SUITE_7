@@ -435,11 +435,11 @@ $(document).ready(function(){
   });
 
   //Valido si la sintaxis de la direccion de correo es valido
-  $('#mail').focusout(function(){
-      if (!ValidateEmail($("#mail").val())) {
-        MSG_ERROR("La direccion de correo no es correcta.",0);
-        }
-    });
+  // $('#mail').focusout(function(){
+  //     if (!ValidateEmail($("#mail").val())) {
+  //       MSG_ERROR("La direccion de correo no es correcta.",0);
+  //       }
+  //   });
 });
 
 

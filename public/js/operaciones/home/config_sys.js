@@ -5,7 +5,7 @@ $(window).load(function(){
 
 $('#ERROR').hide();
 
-document.getElementById("name").focus();
+
 
 var api_url = $("#api_url").val();
 var api_key = $("#api_key").val();
@@ -23,6 +23,15 @@ $(document).ready(function() {
     $(document.body).on("click", "a[data-toggle]", function(event) {
         location.hash = this.getAttribute("href");
     });
+
+    $(document.body).on("click", "#save_user", function(event) {
+        if (!ValidateEmail($("#mail").val())) {
+            MSG_ERROR("La direccion de correo no es correcta.",0);
+        }
+        
+    });
+
+   
 });
 
 $(window).on("myTab", function() {
