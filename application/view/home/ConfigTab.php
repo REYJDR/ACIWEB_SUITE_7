@@ -612,14 +612,6 @@ openCity(event, 'Config1');
 </div>
 	
 <div id="Config12" class="tabcontent">
-    <fieldset class="fieldsetform"  >
-		
-	  <legend>Administrar tienda</legend> 
- 
-	  <a class="tablinks" href="<?php echo $oc_url; ?>/admin" ><i class="fab fa-opencart fa-2x icon-color-dash" > </i>&nbsp&nbsp<?php echo $dash_menu_9; ?></a>
-           
-
-	</fieldset>
 
     <div class='col-lg-12'>
     <!--INI MENU OPENCART-->
@@ -627,7 +619,10 @@ openCity(event, 'Config1');
 		
 	  <legend>Administrar tienda</legend> 
  
-	  <a class="tablinks" href="<?php echo $oc_url; ?>/admin" ><i class="fab fa-opencart fa-2x icon-color-dash" > </i>&nbsp&nbsp<?php echo $dash_menu_9; ?></a>
+	  <div class='col-lg-3'>
+            <button onclick="window.location='<?php echo $oc_url; ?>/SalesOrder'" class="dashBottom fab fa-opencart fa-2x icon-color-dash" >Administrar tienda</button>
+	  </div>
+	  <!-- <a class="tablinks" href="<?php echo $oc_url; ?>/admin" ><i class="fab fa-opencart fa-2x icon-color-dash" > </i>&nbsp&nbsp<?php echo $dash_menu_9; ?></a> -->
            
 
 	</fieldset>
