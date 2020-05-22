@@ -649,6 +649,8 @@ $sql = 'SELECT * FROM API_OPENCART_KEYS WHERE id="1"';
 
 $oc = $this->model->Query($sql);
 
+
+
 foreach ($oc as $oc_val) {
 	$oc_val= json_decode($oc_val);
 

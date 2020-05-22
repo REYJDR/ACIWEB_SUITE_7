@@ -648,7 +648,7 @@ openCity(event, 'Config1');
 		<div class="col-lg-8" >
 		   <fieldset  >
 			<h4>Tiendas</h4> 
-			<select name=s"store" id="stores">
+			<select name="store" id="stores">
 			</select>
 			</fieldset>
 		 </div>
