@@ -42,7 +42,7 @@
             if($this->model->active_user_role=='admin'){?>
             <tr><th><button class="tablinks" onclick="openCity(event, 'menu6')"><i class="fas fa-wrench fa-2x icon-color-dash" > </i>&nbsp&nbsp<?php echo $dash_menu_6; ?></button></th></tr>
             
-            <tr><th><button class="tablinks" onclick="javascript: window.location.replace('<?php echo $this->model->query_value('API_OPENCART_KEYS','url', 'where id=1'); ?>/admin');"><i class="fab fa-opencart fa-2x icon-color-dash" > </i>&nbsp&nbsp<?php echo $dash_menu_9; ?></a></th></tr>
+            <tr><th><button class="tablinks" onclick="javascript: window.open('<?php echo $this->model->query_value('API_OPENCART_KEYS','url', 'where id=1'); ?>/admin');"><i class="fab fa-opencart fa-2x icon-color-dash" > </i>&nbsp&nbsp<?php echo $dash_menu_9; ?></a></th></tr>
            
            
             <?php } ?>
