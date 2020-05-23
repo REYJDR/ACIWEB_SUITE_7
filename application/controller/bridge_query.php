@@ -2809,7 +2809,8 @@ public function oc_getCustomers(){
 
 
 
-public function get_token($api_url,$api_token,$api_user){
+public function get_token($api_url,$api_token){
+
   $url = $api_url.'/index.php?route=api/login';
 
     $curl = curl_init();
@@ -2834,6 +2835,7 @@ public function get_token($api_url,$api_token,$api_user){
     
     curl_close($curl);
 
+    echo $response; die();
     $response = json_decode($response);
     
        if($response->{'error'}){
