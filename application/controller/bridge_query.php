@@ -2828,7 +2828,6 @@ public function get_token($api_url,$api_token,$api_user){
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header );
   
-
   /*  $params_string = '';
     if (is_array($params) && count($params)) {
       foreach($params as $key=>$value) {
@@ -2840,6 +2839,7 @@ public function get_token($api_url,$api_token,$api_user){
       curl_setopt($ch,CURLOPT_POSTFIELDS, $params_string);
     }*/
    
+
     $response = curl_exec($ch);
     curl_close($ch);
    
