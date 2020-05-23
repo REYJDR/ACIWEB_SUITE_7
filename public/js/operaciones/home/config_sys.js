@@ -275,8 +275,8 @@ function send_test(){
 function exce_oc_api(name,route,oc_url,oc_key){
 
     store_id = $("#stores option:selected").val();
-
-      if(  store_id !=  "" ){
+    console.log(store_id);
+      if(  store_id !=  "" || !store_id ){
 
         document.getElementById('api_res').innerHTML = "Ejecutando...";
         
@@ -287,14 +287,14 @@ function exce_oc_api(name,route,oc_url,oc_key){
         if(name == 'getStores') var url = "bridge_query/oc_getStores";
         if(name == 'getCustomers') var url = "bridge_query/oc_getCustomers";
         
-     console.log( 'storee:'. store_id);
+
         $.ajax({
           
                 type: "GET",
                 url: URL,
                 data: {url:url, api_url: oc_url , api_route:route, api_key:oc_key , store_id: store_id},
                 success: function(res){
-                console.log(res);
+               
           
                 
           
