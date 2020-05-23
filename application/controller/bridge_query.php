@@ -2843,7 +2843,8 @@ public function get_token($api_url,$api_token,$api_user){
     $response = curl_exec($ch);
     curl_close($ch);
    
-    return $response; 
+   
+    die(var_dump($response));
     
     $response = json_decode($response);
  
@@ -2867,7 +2868,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
 
   //get token
   $token = $this->get_token($api_url, $api_token ,$api_user);
-  die();
+ 
   $url = $api_url.'/index.php?route='.$api_route.'&api_token='.$token;
 
 
