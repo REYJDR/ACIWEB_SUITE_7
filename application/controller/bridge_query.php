@@ -2824,7 +2824,6 @@ public function get_token($api_url,$api_token,$api_user){
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_COOKIEJAR, '/tmp/apicookie.txt');
     curl_setopt($ch, CURLOPT_COOKIEFILE, '/tmp/apicookie.txt');
-    curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header );
   
@@ -2845,7 +2844,7 @@ public function get_token($api_url,$api_token,$api_user){
    
    
     die(var_dump($response));
-    
+
     $response = json_decode($response);
  
     if($response->{'error'}){
