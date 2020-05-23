@@ -2815,7 +2815,7 @@ public function get_token($api_url,$api_token){
 
     $curl = curl_init();
     
-    curl_setopt_array($curl, array(
+    $options =  array(
       CURLOPT_URL => $url,
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => "",
@@ -2828,14 +2828,15 @@ public function get_token($api_url,$api_token){
         "Content-Type: application/json",
         "x-api-key: {$api_token}",
 
-      ),
-    ));
+      );
+
+    curl_setopt_array($curl, $options);
     
     $response = curl_exec($curl);
     
     curl_close($curl);
 
-    echo $response; die();
+    echo var_dump([$options,$response]); die();
     $response = json_decode($response);
     
        if($response->{'error'}){
