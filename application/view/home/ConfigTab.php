@@ -662,7 +662,7 @@ openCity(event, 'Config1');
 		   <fieldset  >
 			<h4>Tiendas</h4> 
 			<select name="stores" id="stores">
-			</select>qqq
+			</select>
 			</fieldset>
 		 </div>
 
