@@ -287,7 +287,7 @@ function exce_oc_api(name,route,oc_url,oc_key){
         if(name == 'getStores') var url = "bridge_query/oc_getStores";
         if(name == 'getCustomers') var url = "bridge_query/oc_getCustomers";
         
-    
+     console.log(URL);
         $.ajax({
           
                 type: "GET",
