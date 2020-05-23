@@ -2887,29 +2887,6 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
   
   return $response;
 
-/*  $ch = curl_init();
-  curl_setopt($ch, CURLOPT_URL, $url);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-  curl_setopt($ch, CURLOPT_COOKIEJAR, '/tmp/apicookie.txt');
-  curl_setopt($ch, CURLOPT_COOKIEFILE,'/tmp/apicookie.txt');
-  curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-
-  $response = curl_exec($ch);
-  curl_close($ch);
-  
-  
-  
-  $response = json_decode($response);
-
-  
-  if($response == ''|| $response->code >= '400'){
-    exit(json_encode(array('error' => $response)));
-  }
-
-  
-  
-
-  return $response; */
 
 }
 
