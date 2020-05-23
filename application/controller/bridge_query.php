@@ -2859,7 +2859,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
 
   $url = $api_url.'/index.php?route='.$api_route.'&api_token='.$token;
 
-  die($url);
+ 
   $curl = curl_init();
 
   $options =  array(
@@ -2883,7 +2883,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
 
   $response = json_decode($response);
   
-    
+  die(json_decode($response));
     if($response == ''|| $response->code >= '400'){
       exit(json_encode(array('error' => $response)));
     }
