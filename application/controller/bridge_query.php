@@ -2827,8 +2827,8 @@ public function get_token($api_url,$api_token){
       CURLOPT_HTTPHEADER => array(
         "Content-Type: application/json",
         "x-api-key: {$api_token}",
-
-      );
+     )
+    );
 
     curl_setopt_array($curl, $options);
     
