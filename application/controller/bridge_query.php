@@ -2843,6 +2843,8 @@ public function get_token($api_url,$api_token,$api_user){
     $response = curl_exec($ch);
     curl_close($ch);
    
+    return $response; 
+    
     $response = json_decode($response);
  
     if($response->{'error'}){
@@ -2865,7 +2867,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
 
   //get token
   $token = $this->get_token($api_url, $api_token ,$api_user);
-
+  die();
   $url = $api_url.'/index.php?route='.$api_route.'&api_token='.$token;
 
 
@@ -2882,8 +2884,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
   
   
   $response = json_decode($response);
-  return $response;
-  
+
   
   if($response == ''|| $response->code >= '400'){
     exit(json_encode(array('error' => $response)));
