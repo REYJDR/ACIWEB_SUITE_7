@@ -275,7 +275,7 @@ function send_test(){
 function exce_oc_api(name,route,oc_url,oc_key){
 
     store_id = $("#stores option:selected").val();
-    console.log(store_id);
+
       if(  store_id !=  "" || !store_id ){
 
         document.getElementById('api_res').innerHTML = "Ejecutando...";

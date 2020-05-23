@@ -673,7 +673,7 @@ if( $oc_url != '' && $oc_key != ''){
 		$name_api =  $api_endp->{'name'};
 		$route =  $api_endp->{'route'};
 		$description = $api_endp->{'description'};
-		$name_f = "'".$name."'";
+		$name_f = "'".$name_api."'";
 		$route_f = "'".$route."'";
 		$oc_url_f = "'".$oc_url."'";
 		$oc_key_f = "'".$oc_key."'";
