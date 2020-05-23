@@ -2878,12 +2878,12 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
   
   
   $response = curl_exec($curl);
-  
+  die(json_decode($response));
   curl_close($curl);
 
   $response = json_decode($response);
   
-  die(json_decode($response));
+  
     if($response == ''|| $response->code >= '400'){
       exit(json_encode(array('error' => $response)));
     }
