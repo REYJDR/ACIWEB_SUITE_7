@@ -2811,7 +2811,7 @@ public function oc_getCustomers(){
 
 public function get_token($api_url,$api_token,$api_user){
 
-  $url = $api_url.'/index.php?route=api/login';
+ /* $url = $api_url.'/index.php?route=api/login';
   
     
     $header = array(
@@ -2827,16 +2827,7 @@ public function get_token($api_url,$api_token,$api_user){
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header );
   
-  /*  $params_string = '';
-    if (is_array($params) && count($params)) {
-      foreach($params as $key=>$value) {
-        $params_string .= $key.'='.$value.'&';
-      }
-      rtrim($params_string, '&');
-   
-      curl_setopt($ch,CURLOPT_POST, count($params));
-      curl_setopt($ch,CURLOPT_POSTFIELDS, $params_string);
-    }*/
+
    
 
     $response = curl_exec($ch);
@@ -2859,7 +2850,30 @@ public function get_token($api_url,$api_token,$api_user){
     }
   
 
-    return $response->{'api_token'} ;
+    return $response->{'api_token'} ; */
+
+    $curl = curl_init();
+    
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => "storelersa.aciweb-pa.com/index.php?route=api/login",
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => "",
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 0,
+      CURLOPT_FOLLOWLOCATION => true,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => "GET",
+      CURLOPT_HTTPHEADER => array(
+        "Content-Type: application/json",
+        "x-api-key: Pjjaw7yqTVD76fibQajEx3wdz3CbWAAEL3c0mUGz4tnnQaItkuiGGB108WjMh6tZdpu8xvPfy8OSEnukvzesyGCOJswbR305nR3ygLkfFfKqe7b3BjoGOfL7pyNkEO3l4zPSlVGXX62Yu32taC2Z3P7SDjkSFsp8ftUfRdtzcu3kmrZRhhumYBXDWSLB9V23oMlEp9n1RQHoxdmXaSMVeghwaeo1XypkiryfU7K2h769vADua3f4EfkUeuWcUEzG",
+        "Cookie: PHPSESSID=dc2ed2863704b754d4848b92ffce728a; language=es-es; currency=USD"
+      ),
+    ));
+    
+    $response = curl_exec($curl);
+    
+    curl_close($curl);
+    die(var_dump($response));
 
 }
 
