@@ -2878,14 +2878,15 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
 
   $response = curl_exec($ch);
   curl_close($ch);
-     
+    return $response;
   $response = json_decode($response);
- 
+
   if($response == ''|| $response->code >= '400'){
     exit(json_encode(array('Warning' => $response)));
   }
 
- 
+  
+  
 
   return $response;
 
