@@ -2490,7 +2490,7 @@ public function oc_getStores(){
 
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
 
-
+  
   foreach($response as $key => $value){
     
     if(is_array($value)){
@@ -2885,7 +2885,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
       exit(json_encode(array('error' => $response)));
     }
   
-  return $response
+  return $response;
 
 /*  $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, $url);
