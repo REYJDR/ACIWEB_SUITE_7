@@ -2810,52 +2810,12 @@ public function oc_getCustomers(){
 
 
 public function get_token($api_url,$api_token,$api_user){
-
- /* $url = $api_url.'/index.php?route=api/login';
-  
-    
-    $header = array(
-      "Content-Type: application/json",
-      "x-api-key: {$api_token}" );
-
-
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_COOKIEJAR, '/tmp/apicookie.txt');
-    curl_setopt($ch, CURLOPT_COOKIEFILE, '/tmp/apicookie.txt');
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $header );
-  
-
-   
-
-    $response = curl_exec($ch);
-    curl_close($ch);
-   
-   
-    die(var_dump($response));
-
-    $response = json_decode($response);
- 
-    if($response->{'error'}){
-  
-      foreach($response->{'error'} as $key => $value){
-  
-        echo '['.$key.']['.$value.']<br>';
-  
-      }
-  
-      die();
-    }
-  
-
-    return $response->{'api_token'} ; */
+  $url = $api_url.'/index.php?route=api/login';
 
     $curl = curl_init();
     
     curl_setopt_array($curl, array(
-      CURLOPT_URL => "storelersa.aciweb-pa.com/index.php?route=api/login",
+      CURLOPT_URL => $url,
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => "",
       CURLOPT_MAXREDIRS => 10,
@@ -2865,16 +2825,28 @@ public function get_token($api_url,$api_token,$api_user){
       CURLOPT_CUSTOMREQUEST => "GET",
       CURLOPT_HTTPHEADER => array(
         "Content-Type: application/json",
-        "x-api-key: Pjjaw7yqTVD76fibQajEx3wdz3CbWAAEL3c0mUGz4tnnQaItkuiGGB108WjMh6tZdpu8xvPfy8OSEnukvzesyGCOJswbR305nR3ygLkfFfKqe7b3BjoGOfL7pyNkEO3l4zPSlVGXX62Yu32taC2Z3P7SDjkSFsp8ftUfRdtzcu3kmrZRhhumYBXDWSLB9V23oMlEp9n1RQHoxdmXaSMVeghwaeo1XypkiryfU7K2h769vADua3f4EfkUeuWcUEzG",
-        "Cookie: PHPSESSID=dc2ed2863704b754d4848b92ffce728a; language=es-es; currency=USD"
+        "x-api-key: {$api_token}",
+
       ),
     ));
     
     $response = curl_exec($curl);
     
     curl_close($curl);
-    die(var_dump($response));
 
+    $response = json_decode($response);
+    
+       if($response->{'error'}){
+     
+         foreach($response->{'error'} as $key => $value){
+     
+           echo '['.$key.']['.$value.']<br>';
+     
+         }
+     
+         die();
+       }
+     return $response->{'api_token'} ;
 }
 
 public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) {
