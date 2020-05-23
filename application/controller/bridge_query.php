@@ -2831,13 +2831,11 @@ public function get_token($api_url,$api_token){
     );
 
     curl_setopt_array($curl, $options);
-    
     $response = curl_exec($curl);
-    
     curl_close($curl);
-
+    
     $response = json_decode($response);
-    echo $response->{'api_token'}; die();
+
        if($response->{'error'}){
      
          foreach($response->{'error'} as $key => $value){
@@ -2859,7 +2857,37 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
   $url = $api_url.'/index.php?route='.$api_route.'&api_token='.$token;
 
 
-  $ch = curl_init();
+  $curl = curl_init();
+
+  $options =  array(
+    CURLOPT_URL => $url,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 0,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "GET",
+    CURLOPT_HTTPHEADER => array(
+      "Content-Type: application/json",
+   )
+  );
+  
+  
+  $response = curl_exec($curl);
+  
+  curl_close($curl);
+
+  $response = json_decode($response);
+  
+    
+    if($response == ''|| $response->code >= '400'){
+      exit(json_encode(array('error' => $response)));
+    }
+  
+  return $response
+
+/*  $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, $url);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   curl_setopt($ch, CURLOPT_COOKIEJAR, '/tmp/apicookie.txt');
@@ -2881,7 +2909,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
   
   
 
-  return $response;
+  return $response; */
 
 }
 
