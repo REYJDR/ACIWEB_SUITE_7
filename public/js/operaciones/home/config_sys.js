@@ -323,7 +323,7 @@ function store_oc_api(route,oc_url,oc_key){
       var URL = document.getElementById('URL').value;
       document.getElementById('stores').innerHTML = '';
       var url = "bridge_query/oc_getStoresList";
-  console.log([route,oc_url,oc_key]);
+ 
       $.ajax({
         
               type: "GET",

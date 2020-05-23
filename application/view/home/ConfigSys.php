@@ -679,7 +679,7 @@ if( $oc_url != '' && $oc_key != ''){
 		$oc_key_f = "'".$oc_key."'";
 		
 
-		if($name=='getStores'){
+		if($name_api=='getStores'){
             echo  '<input type="hidden" id="api_store_route" value="'.$route.'" />';
 		}
 		
