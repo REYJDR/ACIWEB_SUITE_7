@@ -620,7 +620,7 @@ openCity(event, 'Config1');
 	  <legend>Administrar tienda</legend> 
  
 	  <div class='col-lg-3'>
-            <button onclick="window.location='<?php echo $oc_url; ?>/SalesOrder'" class="dashBottom" ><i class=" fab fa-opencart fa-2x icon-color-dash" ></i>Administrar tienda</button>
+        <button onclick="window.location='<?php echo $oc_url; ?>/admin'" class="dashBottom" ><i class="fab fa-opencart fa-2x icon-color-dash" ></i><br>Administrar tienda</button>
 	  </div>
 	  <!-- <a class="tablinks" href="<?php echo $oc_url; ?>/admin" ><i class=" fab fa-opencart fa-2x icon-color-dash" > </i>&nbsp&nbsp<?php echo $dash_menu_9; ?></a> -->
            
