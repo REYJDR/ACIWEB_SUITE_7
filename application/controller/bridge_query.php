@@ -2811,20 +2811,25 @@ public function oc_getCustomers(){
 
 public function get_token($api_url,$api_token,$api_user){
 
-  $url = $api_url.'/index.php?route=api/login&api_token='.$api_token;
+  $url = $api_url.'/index.php?route=api/login';
   
     
-    $params = array('key' => $api_token ,
-                    'username' => $api_user );
-  
-  
+    $header = array(
+      "Content-Type: application/json",
+      "x-api-key: {$api_token}" );
+
+
     $ch = curl_init();
-    curl_setopt($ch,CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_COOKIEJAR, '/tmp/apicookie.txt');
     curl_setopt($ch, CURLOPT_COOKIEFILE, '/tmp/apicookie.txt');
-   
-    $params_string = '';
+    curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $header );
+  
+
+  /*  $params_string = '';
     if (is_array($params) && count($params)) {
       foreach($params as $key=>$value) {
         $params_string .= $key.'='.$value.'&';
@@ -2833,7 +2838,7 @@ public function get_token($api_url,$api_token,$api_user){
    
       curl_setopt($ch,CURLOPT_POST, count($params));
       curl_setopt($ch,CURLOPT_POSTFIELDS, $params_string);
-    }
+    }*/
    
     $response = curl_exec($ch);
     curl_close($ch);
