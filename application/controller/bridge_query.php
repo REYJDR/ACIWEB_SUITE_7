@@ -2465,8 +2465,9 @@ public function checkSalesOrderExist($order_id){
 
 public function oc_getStoresList(){
   
+  die([$_GET['api_url'],$_GET['api_key'],$_GET['api_route']]);
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],null);
-
+ 
   echo '<option value="" selected>Selecciona tienda</option>';
 
   foreach($response as $key => $value){
