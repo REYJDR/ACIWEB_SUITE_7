@@ -2837,7 +2837,7 @@ public function get_token($api_url,$api_token){
     curl_close($curl);
 
     $response = json_decode($response);
-    var_dump([$response]);die();
+    echo $response->{'api_token'}; die();
        if($response->{'error'}){
      
          foreach($response->{'error'} as $key => $value){
