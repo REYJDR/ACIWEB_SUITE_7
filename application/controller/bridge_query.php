@@ -2815,6 +2815,9 @@ public function get_token($api_url,$api_token){
 
   $url = $api_url.'/index.php?route=api/login';
 
+
+
+
     $curl = curl_init();
 
     $options =  array(
@@ -2826,11 +2829,10 @@ public function get_token($api_url,$api_token){
       CURLOPT_FOLLOWLOCATION => true,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_POST => true,
-      CURLOPT_POSTFIELDS =>  http_build_query(array("key" => $api_toke)),
+      CURLOPT_POSTFIELDS =>  http_build_query(array("key" => $api_token)),
       CURLOPT_HTTPHEADER => array(
         "Content-Type: application/json",
-        "Content-Type: application/x-www-form-urlencoded",
-        "Content-Type: multipart/form-data",
+        "Content-Type: application/x-www-form-urlencoded"
         
         
      )
