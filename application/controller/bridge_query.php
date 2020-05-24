@@ -2882,13 +2882,13 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
     CURLOPT_HTTPHEADER => array(
       "Content-Type: application/json",
     ),
-   CURLOPT_COOKIEJAR  => URL_SUB_FOLDER.'/cookies/oc_api_cookie.txt',
-   CURLOPT_COOKIEFILE => URL_SUB_FOLDER.'/cookies/oc_api_cookie.txt',
+   CURLOPT_COOKIEJAR  => URL_SUB_FOLDER.'public/cookies/oc_api_cookie.txt',
+   CURLOPT_COOKIEFILE => URL_SUB_FOLDER.'public/cookies/oc_api_cookie.txt',
   );
 
   if($method == 'POST'){  $options[CURLOPT_POSTFIELDS] = $data;  }
 
-  var_dump($options); die();
+
   curl_setopt_array($curl, $options);
   $response = curl_exec($curl);
 
