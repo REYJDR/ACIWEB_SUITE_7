@@ -2829,6 +2829,7 @@ public function get_token($api_url,$api_token){
       CURLOPT_POSTFIELDS => array("key" => $api_toke),
       CURLOPT_HTTPHEADER => array(
         "Content-Type: application/json",
+        'Content-Type: application/x-www-form-urlencoded'
      )
     );
 
