@@ -2858,7 +2858,14 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
 
   $url = $api_url.'/index.php?route='.$api_route.'&api_token='.$token;
 
- 
+  if($method == 'GET' && count($data) > 0){
+    
+    foreach ($data as $key => $value) {
+      $url .=  $url."&".$key."=".$value;
+    }
+    
+  }
+  
 
   $curl = curl_init();
 
@@ -2878,7 +2885,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
 
   if($method == 'POST'){  $options[CURLOPT_POSTFIELDS] = $data;  }
 
-
+  
   
   curl_setopt_array($curl, $options);
   $response = curl_exec($curl);
