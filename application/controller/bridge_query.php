@@ -2730,7 +2730,7 @@ public function oc_getCustomers(){
     $json['start']= "0";
     $json['limit']= "0";
 
-    $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
+    $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT), 'GET');
     
     
     foreach ((array)$response->message as $key => $value) {
@@ -2858,14 +2858,16 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
 
   $url = $api_url.'/index.php?route='.$api_route.'&api_token='.$token;
 
-  if($method == 'GET' && count($data) > 0){
+  if($method == 'GET' && $data != ""){
+
+    $data =  json_decode($data);
     
     foreach ($data as $key => $value) {
       $url .=  $url."&".$key."=".$value;
     }
     
   }
-  
+  die( $url);
 
   $curl = curl_init();
 
@@ -2891,6 +2893,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
   $response = curl_exec($curl);
 
   curl_close($curl);
+
 
   $response = json_decode($response);
   
