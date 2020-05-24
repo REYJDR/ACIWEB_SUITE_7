@@ -2890,7 +2890,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
 
   curl_setopt_array($curl, $options);
   $response = curl_exec($curl);
-  $info = curl_getinfo($curl);
+  $info = curl_getinfo($curl,CURLINFO_HTTP_CODE);
   curl_close($curl);
 
 
