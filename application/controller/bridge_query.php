@@ -2894,7 +2894,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
 
   
 
-  curl_close($curl);
+ 
 
 
   $response = json_decode($response);
@@ -2904,6 +2904,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
       exit(json_encode(curl_getinfo($curl)));
     }
   
+    curl_close($curl);
   return $response;
 
 
