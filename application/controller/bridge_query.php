@@ -2881,6 +2881,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
     CURLOPT_CUSTOMREQUEST => $method,
     CURLOPT_HTTPHEADER => array(
       "Content-Type: application/json",
+      "Content-Type: text/xml"
     ),
    CURLOPT_COOKIEJAR  => '/tmp/oc_api_cookie.txt',
    CURLOPT_COOKIEFILE => '/tmp/oc_api_cookie.txt',
@@ -2890,7 +2891,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
 
   curl_setopt_array($curl, $options);
   $response = curl_exec($curl);
-  $info = curl_getinfo($curl,CURLINFO_HTTP_CODE);
+  $info = curl_getinfo($curl);
   curl_close($curl);
 
 
