@@ -2859,8 +2859,6 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
   $url = $api_url.'/index.php?route='.$api_route.'&api_token='.$token;
 
  
-if($method == 'POST'){ CURLOPT_POSTFIELDS => $data }
-
 
   $curl = curl_init();
 
@@ -2880,7 +2878,7 @@ if($method == 'POST'){ CURLOPT_POSTFIELDS => $data }
 
   if($method == 'POST'){ array_push($options, CURLOPT_POSTFIELDS => $data );  }
 
-  
+
   
   curl_setopt_array($curl, $options);
   $response = curl_exec($curl);
