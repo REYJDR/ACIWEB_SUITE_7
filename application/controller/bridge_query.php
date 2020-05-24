@@ -2824,10 +2824,10 @@ public function get_token($api_url,$api_token){
       CURLOPT_TIMEOUT => 0,
       CURLOPT_FOLLOWLOCATION => true,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-      CURLOPT_CUSTOMREQUEST => "GET",
+      CURLOPT_CUSTOMREQUEST => 'POST',
+      CURLOPT_POSTFIELDS => array('key' => $api_token ),
       CURLOPT_HTTPHEADER => array(
         "Content-Type: application/json",
-        "x-api-key: {$api_token}",
      )
     );
 
