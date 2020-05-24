@@ -2861,11 +2861,11 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
   if($method == 'GET' && $data != ""){
 
     $data =  json_decode($data);
-    
+    $params = '';
     foreach ($data as $key => $value) {
-      $url .=  $url."&".$key."=".$value;
+      $params .= "&".$key."=".$value;
     }
-    
+    $url = $url.$params;
   }
   die( $url);
 
