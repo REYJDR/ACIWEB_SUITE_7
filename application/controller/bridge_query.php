@@ -2521,7 +2521,7 @@ public function oc_getOrders(){
 
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT), 'GET');
   
-  var_dump((array)$response->message );die();
+
   
   foreach ((array)$response->message as $key => $value) {
     
