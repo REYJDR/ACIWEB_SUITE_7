@@ -2888,23 +2888,20 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
 
   if($method == 'POST'){  $options[CURLOPT_POSTFIELDS] = $data;  }
 
-
   curl_setopt_array($curl, $options);
   $response = curl_exec($curl);
-
   $info = curl_getinfo($curl);
   curl_close($curl);
- 
 
 
   $response = json_decode($response);
-  
-  
-    if($response == ''|| $response->code >= '400'){
-      
-      exit(json_encode( $info));
-    }
-  
+
+  if($response == ''|| $response->code >= '400'){
+    
+    exit($response->message.'<br>'.json_encode($info));
+
+  }
+
     
   return $response;
 
