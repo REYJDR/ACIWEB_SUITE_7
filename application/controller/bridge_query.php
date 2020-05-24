@@ -2876,7 +2876,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
    )
   );
 
-  if($method == 'POST'){ array_push($options, CURLOPT_POSTFIELDS => $data );  }
+  if($method == 'POST'){  $options[CURLOPT_POSTFIELDS] = $data;  }
 
 
   
