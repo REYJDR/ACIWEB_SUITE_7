@@ -2815,6 +2815,44 @@ public function get_token($api_url,$api_token){
 
   $url = $api_url.'/index.php?route=api/login';
 
+  $params = array("key" => $api_token)
+  $ch = curl_init();
+  curl_setopt($ch,CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($ch, CURLOPT_COOKIEJAR, '/tmp/apicookie.txt');
+  curl_setopt($ch, CURLOPT_COOKIEFILE, '/tmp/apicookie.txt');
+ 
+  $params_string = '';
+  if (is_array($params) && count($params)) {
+    foreach($params as $key=>$value) {
+      $params_string .= $key.'='.$value.'&';
+    }
+    rtrim($params_string, '&');
+ 
+    curl_setopt($ch,CURLOPT_POST, count($params));
+    curl_setopt($ch,CURLOPT_POSTFIELDS, $params_string);
+  }
+ 
+  //execute post
+  $response = curl_exec($ch);
+ 
+  //close connection
+  curl_close($ch);
+  $response = json_decode($response);
+  
+         if($response->{'error'}){
+       
+           foreach($response->{'error'} as $key => $value){
+       
+             echo '['.$key.']['.$value.']<br>';
+       
+           }
+       
+           die();
+         }
+    return $response->{'api_token'} ;
+
+
 
 
 
@@ -2841,7 +2879,7 @@ public function get_token($api_url,$api_token){
     curl_setopt_array($curl, $options);
     $response = curl_exec($curl);
     curl_close($curl);
-    die (var_dump($response) ) ;
+
     $response = json_decode($response);
 
        if($response->{'error'}){
