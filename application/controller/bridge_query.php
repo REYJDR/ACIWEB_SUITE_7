@@ -2888,7 +2888,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
 
   if($method == 'POST'){  $options[CURLOPT_POSTFIELDS] = $data;  }
 
-  
+  var_dump($options); die();
   curl_setopt_array($curl, $options);
   $response = curl_exec($curl);
 
