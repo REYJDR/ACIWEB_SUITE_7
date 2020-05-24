@@ -2892,7 +2892,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
   curl_setopt_array($curl, $options);
   $response = curl_exec($curl);
 
-  //var_dump(curl_getinfo($curl)); die();
+  var_dump(curl_getinfo($curl)); die();
 
   curl_close($curl);
 
