@@ -2892,8 +2892,8 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
   curl_setopt_array($curl, $options);
   $response = curl_exec($curl);
 
-  
-
+  $info = curl_getinfo($curl);
+  curl_close($curl);
  
 
 
@@ -2901,10 +2901,11 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
   
   
     if($response == ''|| $response->code >= '400'){
-      exit(json_encode(curl_getinfo($curl)));
+      
+      exit(json_encode( $info));
     }
   
-    curl_close($curl);
+    
   return $response;
 
 
