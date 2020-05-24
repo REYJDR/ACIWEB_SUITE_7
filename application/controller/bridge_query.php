@@ -2515,12 +2515,11 @@ public function oc_getOrders(){
   $json['filter_status']= '5'; //estatus completado
   $json['filter_has_invoices']= "1"; //factura asignada
   $json['filter_store_id']= $_GET['store_id']; //tienda
-  
   $json['start']= "0";
   $json['limit']= "0";
 
 
-  $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
+  $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT), 'GET');
   
   
   foreach ((array)$response->message as $key => $value) {
@@ -2699,7 +2698,7 @@ public function oc_setItems() {
  
   
   //Execute curl
-  $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
+  $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT),'POST');
 
 
     foreach($response as $key => $value){
@@ -2851,7 +2850,7 @@ public function get_token($api_url,$api_token){
 }
 
 
-public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) {
+public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, $method = 'GET'  ) {
 
   //get token
   $token = $this->get_token($api_url, $api_token ,$api_user);
@@ -2860,6 +2859,9 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
   $url = $api_url.'/index.php?route='.$api_route.'&api_token='.$token;
 
  
+if($method == 'POST'){ CURLOPT_POSTFIELDS => $data }
+
+
   $curl = curl_init();
 
   $options =  array(
@@ -2870,11 +2872,15 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data) 
     CURLOPT_TIMEOUT => 0,
     CURLOPT_FOLLOWLOCATION => true,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => "GET",
+    CURLOPT_CUSTOMREQUEST => $method,
     CURLOPT_HTTPHEADER => array(
       "Content-Type: application/json",
    )
   );
+
+  if($method == 'POST'){ array_push($options, CURLOPT_POSTFIELDS => $data );  }
+
+  
   
   curl_setopt_array($curl, $options);
   $response = curl_exec($curl);
