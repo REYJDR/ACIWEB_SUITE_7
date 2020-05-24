@@ -2882,8 +2882,8 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
     CURLOPT_HTTPHEADER => array(
       "Content-Type: application/json",
     ),
-   CURLOPT_COOKIEJAR  => realpath('public/cookies/oc_api_cookie.txt'),
-   CURLOPT_COOKIEFILE => realpath('public/cookies/oc_api_cookie.txt'),
+   CURLOPT_COOKIEJAR  => '/tmp/oc_api_cookie.txt',
+   CURLOPT_COOKIEFILE => '/tmp/oc_api_cookie.txt',
   );
 
   if($method == 'POST'){  $options[CURLOPT_POSTFIELDS] = $data;  }
