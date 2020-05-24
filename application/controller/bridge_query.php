@@ -2810,6 +2810,7 @@ public function oc_getCustomers(){
 
 
 
+
 public function get_token($api_url,$api_token){
 
   $url = $api_url.'/index.php';
@@ -2825,8 +2826,8 @@ public function get_token($api_url,$api_token){
       CURLOPT_FOLLOWLOCATION => true,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => 'POST',
-      CURLOPT_POST => 2,
-      CURLOPT_POSTFIELDS =>  "route=api/login&key={$api_toke}",,
+      CURLOPT_POSTFIELDS => array('route'=>'api/login',
+                                    'key'=>$api_toke),
       CURLOPT_HTTPHEADER => array(
         "Content-Type: application/json",
      )
@@ -2835,7 +2836,7 @@ public function get_token($api_url,$api_token){
     curl_setopt_array($curl, $options);
     $response = curl_exec($curl);
     curl_close($curl);
-    
+    die (var_dump($response) ) ;
     $response = json_decode($response);
 
        if($response->{'error'}){
