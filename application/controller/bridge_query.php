@@ -2904,7 +2904,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
 
   if($response == ''|| $response->code >= '400'){
     
-    exit($response->message.'<br>'.json_encode($info));
+    exit("[{$response->code}][{$response->message}]");
 
   }
 
