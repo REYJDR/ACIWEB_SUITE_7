@@ -2813,7 +2813,7 @@ public function oc_getTblCol(){
   
   $json = ['product','product_description'];
 
-  $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
+  $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT),"POST");
 
  var_dump($response);
   foreach($response as $key => $value){
