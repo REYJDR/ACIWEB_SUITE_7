@@ -2833,13 +2833,13 @@ public function oc_getTblCol(){
   }
 
 
+$noMappinCol = [   ];
 
-
-  $sql = "SHOW COLUMNS FROM Products_Imp";
+  $sql = "SHOW COLUMNS FROM Products_Exp";
   $columns = $this->model->Query($sql);
 
 
-  $tblProducts = '<table class="table table-striped responsive table-bordered dataTable" cellspacing="0" role="grid" style="margin-left: 0px; width: 1699px;"><tr><th>ACIWEB</th><th>Opencart</th></tr>';
+  $tblProducts = '<table id="mappingTable" class="table table-striped responsive table-bordered dataTable" cellspacing="0" role="grid" style="margin-left: 0px; width: 1699px;"><tr><th>ACIWEB</th><th>Opencart</th></tr>';
   
     foreach ($columns as $key => $value) {
 
