@@ -2844,9 +2844,9 @@ public function oc_getTblCol(){
     foreach ($columns as $key => $value) {
 
       $value = json_decode($value);
-      $tblProducts .= "<tr><td>{$value->Field}<td>";
+      $tblProducts .= "<tr><td>{$value->Field}</td><td>";
       
-       "<select name='{$value->Field}' id='{$value->Field}'>{$options}</select><td></td></tr>";
+       "<select name='{$value->Field}' id='{$value->Field}'>{$options}</select></td></tr>";
 
     }
     
