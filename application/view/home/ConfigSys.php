@@ -687,7 +687,7 @@ if( $oc_url != '' && $oc_key != ''){
 		}
 		
 		if($name_api=='setItems'){
-            $button =  '<input type="button" onclick="columnMapping('.$name_f.','.$route_f.','.$oc_url_f.','.$oc_key_f.');"  value="Mapear" class="btn btn-success btn-sm btn-icon "  />';
+            $button =  '<input type="button" onclick="columnMapping("getTblCol","api/koddika/functionalities/gettblcol",'.$oc_url_f.','.$oc_key_f.');"  value="Mapear" class="btn btn-success btn-sm btn-icon "  />';
 		}
 
 
