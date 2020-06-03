@@ -2934,13 +2934,13 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
 
   
   if($method == 'POST'){  $options[CURLOPT_POSTFIELDS] = $data;  }
-  var_dump($options);
+
   curl_setopt_array($curl, $options);
   $response = curl_exec($curl);
   $info = curl_getinfo($curl);
   curl_close($curl);
 
-
+  var_dump($info );
   $response = json_decode($response);
 
   if($response == ''|| $response->code >= '400'){
