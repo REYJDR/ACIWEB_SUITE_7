@@ -2815,17 +2815,16 @@ public function oc_getTblCol(){
 
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT),"POST");
 
-  var_dump($response->message); die();
-  foreach($response as $key => $value){
+  foreach($response->message as $key => $value){
     
     if(is_array($value)){
+      var_dump($value ); die();
+      foreach($value as $store){
 
-      
-    
-    // foreach($value as $store){
 
-    //     echo '['.$store->store_id.']['.$store->value.']<br>';
-    // }
+
+          // echo '['.$store->store_id.']['.$store->value.']<br>';
+      }
 
     // }else{
     //     echo '['.$key.']['.$value.']<br>';
