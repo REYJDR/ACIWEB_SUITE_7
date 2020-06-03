@@ -692,7 +692,7 @@ if( $oc_url != '' && $oc_key != ''){
 
 
 		$endpoints .= '<tr>
-						<th><strong>'.$name_api.'</strong></th><td>'.$description.'</td><td>'.$button.'<input type="button" onclick="exce_oc_api('.$name_f.','.$route_f.','.$oc_url_f.','.$oc_key_f.');"  value="Ejecutar" class="btn btn-primary btn-sm btn-icon icon-left"  /></td>
+						<th><strong>'.$name_api.'</strong></th><td>'.$description.'</td><td>'.$button.'</td><td><input type="button" onclick="exce_oc_api('.$name_f.','.$route_f.','.$oc_url_f.','.$oc_key_f.');"  value="Ejecutar" class="btn btn-primary btn-sm btn-icon icon-left"  /></td>
 					   </tr>';
 	
 	
