@@ -2225,7 +2225,6 @@ public function login_to_auth($user,$pass){
 
 $pass = md5($pass);
 
-$ID= $this->model->Query_value("SAX_USER","id" ,"WHERE email='".$user."' AND pass='".$pass."' AND onoff='1' and mod_price='1';");
 
 if($ID==''){ echo "0"; }else{ echo "1"; }
 
@@ -2809,6 +2808,19 @@ public function oc_getCustomers(){
 }
 
 public function oc_getTblCol(){
+
+  $sql = "SHOW COLUMNS FROM Products_Imp";
+  $columns = $this->model->Query($sql);
+
+  foreach ($columns as $key => $value) {
+
+    $value = json_decode($value);
+    echo $value['FIELD'];
+
+
+  }
+  
+
   
   
   $json['tables'] = array('product','product_description');
@@ -2825,9 +2837,7 @@ public function oc_getTblCol(){
            echo $key.'.'.$col.'<br>';
       }
 
-    // }else{
-    //     echo '['.$key.']['.$value.']<br>';
-    //
+    
    }
 
   }
