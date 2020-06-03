@@ -2815,7 +2815,25 @@ public function oc_getTblCol(){
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT),"POST");
 
 
-  
+  $options = '';
+
+  foreach($response->message as $key => $value){
+    
+    
+    if(is_array($value)){
+      
+      foreach($value as $col){
+
+           $options .= "<option value='{$key}.{$col}'>{$key}.{$col}</option>"; 
+      }
+
+    
+   }
+
+  }
+
+
+
 
   $sql = "SHOW COLUMNS FROM Products_Imp";
   $columns = $this->model->Query($sql);
@@ -2826,28 +2844,17 @@ public function oc_getTblCol(){
     foreach ($columns as $key => $value) {
 
       $value = json_decode($value);
-      $tblProducts .= "<tr><td>{$value->Field}<td><td></td></tr>";
+      $tblProducts .= "<tr><td>{$value->Field}<td>";
+      
+       "<select name='{$value->Field}' id='{$value->Field}'>{$options}</select><td></td></tr>";
 
-  
     }
     
   $tblProducts .=  '</table>';
   
   echo  $tblProducts ;
-  foreach($response->message as $key => $value){
-    
-    
-    if(is_array($value)){
-      
-      foreach($value as $col){
 
-           echo $key.'.'.$col.'<br>';
-      }
 
-    
-   }
-
-  }
   die();
 }
 
