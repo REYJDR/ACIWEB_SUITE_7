@@ -2404,38 +2404,38 @@ echo '<script>var table =  $("#products").dataTable({
 
 public function checkSOIns($SO_num){
 
-$this->SESSION();
+  $this->SESSION();
 
-$header = $this->model->Query_value('SalesOrder_Header_Imp','SalesOrderNumber','WHERE SalesOrderNumber = "'.$SO_num.'"  and ID_compania = "'.$this->model->id_compania.'" order by SalesOrderNumber asc limit 1');
+  $header = $this->model->Query_value('SalesOrder_Header_Imp','SalesOrderNumber','WHERE SalesOrderNumber = "'.$SO_num.'"  and ID_compania = "'.$this->model->id_compania.'" order by SalesOrderNumber asc limit 1');
 
-$detail = $this->model->Query_value('SalesOrder_Detail_Imp','SalesOrderNumber','WHERE SalesOrderNumber = "'.$SO_num.'" and ID_compania = "'.$this->model->id_compania.'" order by SalesOrderNumber asc limit 1');
-
-
-  if ($header == '') {
-    
-    $this->model->delete('SalesOrder_Detail_Imp',' WHERE SalesOrderNumber = "'.$SO_num.'"  and ID_compania = "'.$this->model->id_compania.'"');
-    $res = 1;
+  $detail = $this->model->Query_value('SalesOrder_Detail_Imp','SalesOrderNumber','WHERE SalesOrderNumber = "'.$SO_num.'" and ID_compania = "'.$this->model->id_compania.'" order by SalesOrderNumber asc limit 1');
 
 
-  }else{
+    if ($header == '') {
+      
+      $this->model->delete('SalesOrder_Detail_Imp',' WHERE SalesOrderNumber = "'.$SO_num.'"  and ID_compania = "'.$this->model->id_compania.'"');
+      $res = 1;
 
 
-      if ($detail == '' ) {
-        
-
-        $this->model->delete('SalesOrder_Header_Imp',' WHERE SalesOrderNumber = "'.$SO_num.'"  and ID_compania = "'.$this->model->id_compania.'"');
-        $res = 2;
-
-      }else {
-
-        $res = 0;
-
-      }
-
-  }
+    }else{
 
 
-  echo $res;
+        if ($detail == '' ) {
+          
+
+          $this->model->delete('SalesOrder_Header_Imp',' WHERE SalesOrderNumber = "'.$SO_num.'"  and ID_compania = "'.$this->model->id_compania.'"');
+          $res = 2;
+
+        }else {
+
+          $res = 0;
+
+        }
+
+    }
+
+
+    echo $res;
 
 }
 
@@ -2450,6 +2450,8 @@ public function get_lang(){
 
 }
 
+
+//INI  INTERFAZ CON OPENCART 
 public function checkSalesOrderExist($order_id){
 
   $this->SESSION();
@@ -2465,7 +2467,7 @@ public function checkSalesOrderExist($order_id){
 
 public function oc_getStoresList(){
   
-//  die(var_dump([$_GET['api_url'],$_GET['api_key'],$_GET['api_route']]);
+ //  die(var_dump([$_GET['api_url'],$_GET['api_key'],$_GET['api_route']]);
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],null);
  
   echo '<option value="" >Selecciona tienda</option>';
@@ -2721,8 +2723,6 @@ public function oc_setItems() {
 
 }
 
-
-
 public function oc_getCustomers(){
   
     $json['filter_email']= "";
@@ -2806,9 +2806,35 @@ public function oc_getCustomers(){
    die();
 
   
+}
+
+public function oc_getTblCol(){
+  
+  
+  $json = ['product','product_description'];
+
+  $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT));
+
+  
+  foreach($response as $key => $value){
+    
+    if(is_array($value)){
+
+      var_dump($value);
+    
+    // foreach($value as $store){
+
+    //     echo '['.$store->store_id.']['.$store->value.']<br>';
+    // }
+
+    // }else{
+    //     echo '['.$key.']['.$value.']<br>';
+    //
+   }
+
   }
-
-
+  die();
+}
 
 
 public function get_token($api_url,$api_token){
@@ -2855,6 +2881,20 @@ public function get_token($api_url,$api_token){
 
 }
 
+public function checkCustomerExist($customer_id,$customer_email){
+  
+    $where = " WHERE CustomerID='{$customer_id}' or Email='{$customer_email}' ;";
+  
+    $exist = $this->model->query_value('Customers_Imp','CustomerID',$where);
+  
+    if($exist != ''){ return true ; }
+   
+    $exist = $this->model->query_value('Customers_Exp','CustomerID',$where);
+    if($exist != ''){ return true ; }
+  
+    return false;
+  
+}
 
 public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, $method = 'GET'  ) {
 
@@ -2916,23 +2956,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
 
 
 
-public function checkCustomerExist($customer_id,$customer_email){
-
-  $where = " WHERE CustomerID='{$customer_id}' or Email='{$customer_email}' ;";
-
-  $exist = $this->model->query_value('Customers_Imp','CustomerID',$where);
-
-  if($exist != ''){ return true ; }
- 
-  $exist = $this->model->query_value('Customers_Exp','CustomerID',$where);
-  if($exist != ''){ return true ; }
-
-  return false;
-
-
-
-}
-
+//INI  INTERFAZ CON OPENCART 
 
 public function CheckError(){
   
