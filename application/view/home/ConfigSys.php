@@ -690,8 +690,8 @@ if( $oc_url != '' && $oc_key != ''){
 
 		if($name_api=='setItems'){
 			$getColroute = "'".$this->model->Query_value('API_OPENCART_ENDPOINT', 'route' , 'where name="getTblCol"')."'";
-
-            $button =  '<input type="button" onclick="columnMapping("getTblCol",'.$getColroute.','.$oc_url_f.','.$oc_key_f.');"  value="Mapear" class="btn btn-success btn-sm btn-icon "  />';
+			$getColName = "'getTblCol'";
+            $button =  '<input type="button" onclick="columnMapping('.$getColName.','.$getColroute.','.$oc_url_f.','.$oc_key_f.');"  value="Mapear" class="btn btn-success btn-sm btn-icon "  />';
 		}
 
 
