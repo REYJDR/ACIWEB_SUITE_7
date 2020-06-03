@@ -2815,7 +2815,7 @@ public function oc_getTblCol(){
 
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT),"POST");
 
-  var_dump($response);
+ 
   foreach($response as $key => $value){
     
     if(is_array($value)){
@@ -2934,7 +2934,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
 
   
   if($method == 'POST'){  $options[CURLOPT_POSTFIELDS] = $data;  }
-
+  var_dump($options);
   curl_setopt_array($curl, $options);
   $response = curl_exec($curl);
   $info = curl_getinfo($curl);
