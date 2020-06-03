@@ -2822,7 +2822,7 @@ public function oc_getTblCol(){
       
       foreach($value as $col){
 
-           echo '['.$key.']['.$col.']<br>';
+           echo $key.'.'.$col.'<br>';
       }
 
     // }else{
