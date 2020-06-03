@@ -2809,24 +2809,31 @@ public function oc_getCustomers(){
 
 public function oc_getTblCol(){
 
+   
+  $json['tables'] = array('product','product_description');
+    
+  $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT),"POST");
+
+
+  
+
   $sql = "SHOW COLUMNS FROM Products_Imp";
   $columns = $this->model->Query($sql);
 
-  foreach ($columns as $key => $value) {
 
-    $value = json_decode($value);
-    echo $value->Field;
-
-
-  }
+  $tblProducts = '<table><tr><th>ACIWEB</th><th>Opencart</th></tr>';
   
+    foreach ($columns as $key => $value) {
+
+      $value = json_decode($value);
+      $tblProducts .= "<td>"{$value->Field}"<td><td></td>";
 
   
+    }
+    
+  $tblProducts .=  '</table>';
   
-  $json['tables'] = array('product','product_description');
-
-  $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT),"POST");
-
+  echo  $tblProducts ;
   foreach($response->message as $key => $value){
     
     
