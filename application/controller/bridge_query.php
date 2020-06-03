@@ -2815,7 +2815,7 @@ public function oc_getTblCol(){
 
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT),"POST");
 
- 
+ var_dump($response); die();
   foreach($response as $key => $value){
     
     if(is_array($value)){
