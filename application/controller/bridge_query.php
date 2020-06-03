@@ -2940,10 +2940,16 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
   $info = curl_getinfo($curl);
   curl_close($curl);
 
-  var_dump($info );
+ 
   $response = json_decode($response);
 
-  if($response == ''|| $response->code >= '400'){
+  if($response == '' || $response->code >= '400'){
+
+   
+    if($response == ''){
+      $code = $info['http_code'];   
+      exit("[{$code}][{$url}]");
+    }
     
     exit("[{$response->code}][{$response->message}]");
 
