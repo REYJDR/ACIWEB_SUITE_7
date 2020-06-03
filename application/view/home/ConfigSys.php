@@ -669,6 +669,9 @@ if( $oc_url != '' && $oc_key != ''){
 	foreach ($oc_end as $api) {
 		$api_endp = json_decode($api);
 		
+		$button = '';
+
+
 		$id =  $api_endp->{'id'};
 		$name_api =  $api_endp->{'name'};
 		$route =  $api_endp->{'route'};
@@ -683,8 +686,13 @@ if( $oc_url != '' && $oc_key != ''){
             echo  '<input type="hidden" id="api_store_route" value="'.$route.'" />';
 		}
 		
+		if($name_api=='setItems'){
+            $button =  '<input type="button" onclick="columnMapping('.$name_f.','.$route_f.','.$oc_url_f.','.$oc_key_f.');"  value="Mapear columnas" class="btn btn-primary btn-sm btn-icon icon-left"  />';
+		}
+
+
 		$endpoints .= '<tr>
-						<th><strong>'.$name_api.'</strong></th><td>'.$description.'</td><td><input type="button" onclick="exce_oc_api('.$name_f.','.$route_f.','.$oc_url_f.','.$oc_key_f.');"  value="Ejecutar" class="btn btn-primary btn-sm btn-icon icon-left"  /></td>
+						<th><strong>'.$name_api.'</strong></th><td>'.$description.'</td><td>'.$button.'<input type="button" onclick="exce_oc_api('.$name_f.','.$route_f.','.$oc_url_f.','.$oc_key_f.');"  value="Ejecutar" class="btn btn-primary btn-sm btn-icon icon-left"  /></td>
 					   </tr>';
 	
 	

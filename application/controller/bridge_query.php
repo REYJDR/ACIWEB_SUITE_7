@@ -2958,10 +2958,22 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
 
 
 }
-
-
-
 //INI  INTERFAZ CON OPENCART 
+
+
+
+
+public function oc_itemColumnMapping(){
+
+
+
+
+
+
+
+}
+
+
 
 public function CheckError(){
   
