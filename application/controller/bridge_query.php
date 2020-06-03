@@ -2817,13 +2817,12 @@ public function oc_getTblCol(){
 
   foreach($response->message as $key => $value){
     
+    
     if(is_array($value)){
-      var_dump($value ); die();
-      foreach($value as $store){
+      
+      foreach($value as $col){
 
-
-
-          // echo '['.$store->store_id.']['.$store->value.']<br>';
+           echo '['.$key.']['.$col.']<br>';
       }
 
     // }else{
