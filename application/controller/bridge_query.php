@@ -2815,7 +2815,7 @@ public function oc_getTblCol(){
   foreach ($columns as $key => $value) {
 
     $value = json_decode($value);
-    echo $value['FIELD'];
+    echo $value->FIELD;
 
 
   }
