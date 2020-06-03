@@ -2940,9 +2940,9 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
   $info = curl_getinfo($curl);
   curl_close($curl);
 
-  var_dump($response); die();
+ 
   $response = json_decode($response);
-
+  var_dump($response); die();
   if($response == '' || $response->code >= '400'){
 
    
