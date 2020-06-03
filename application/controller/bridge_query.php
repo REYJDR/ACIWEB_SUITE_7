@@ -2815,7 +2815,7 @@ public function oc_getTblCol(){
 
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT),"POST");
 
-
+  var_dump($response->message); die();
   foreach($response as $key => $value){
     
     if(is_array($value)){
@@ -2942,7 +2942,7 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
 
  
   $response = json_decode($response);
-  var_dump($response); die();
+  
   if($response == '' || $response->code >= '400'){
 
    
