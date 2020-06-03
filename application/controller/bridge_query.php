@@ -2839,7 +2839,7 @@ public function oc_getTblCol(){
   $columns = $this->model->Query($sql);
 
 
-  $tblProducts = '<table class="table table-striped responsive table-bordered dataTable" cellspacing="0" role="grid" style="margin-left: 0px; width: 1699px;">><tr><th>ACIWEB</th><th>Opencart</th></tr>';
+  $tblProducts = '<table class="table table-striped responsive table-bordered dataTable" cellspacing="0" role="grid" style="margin-left: 0px; width: 1699px;"><tr><th>ACIWEB</th><th>Opencart</th></tr>';
   
     foreach ($columns as $key => $value) {
 
