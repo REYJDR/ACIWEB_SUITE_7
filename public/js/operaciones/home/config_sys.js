@@ -274,47 +274,52 @@ function send_test(){
 // ********************************************************
 function exce_oc_api(name,route,oc_url,oc_key){
 
-    store_id = $("#stores option:selected").val();
+    function exce(){
 
-      if(  store_id !=  "" || !store_id ){
+        store_id = $("#stores option:selected").val();
 
-        document.getElementById('api_res').innerHTML = "Ejecutando...";
-        
-        var URL = document.getElementById('URL').value;
-        
-        if(name == 'setItems') var url = "bridge_query/oc_setItems";
-        if(name == 'getOrders') var url = "bridge_query/oc_getOrders";
-        if(name == 'getStores') var url = "bridge_query/oc_getStores";
-        if(name == 'getCustomers') var url = "bridge_query/oc_getCustomers";
-        if(name == 'getTblCol') var url = "bridge_query/oc_getTblCol";
-        if(name == 'getAttributes') var url = "bridge_query/oc_getAttributes";
-        
+        if(  store_id !=  "" || !store_id ){
 
-        $.ajax({
-          
-                type: "GET",
-                url: URL,
-                data: {url:url, api_url: oc_url , api_route:route, api_key:oc_key , store_id: store_id},
-                success: function(res){
-               
-          
+            document.getElementById('api_res').innerHTML = "Ejecutando...";
+            
+            var URL = document.getElementById('URL').value;
+            
+            if(name == 'setItems') var url = "bridge_query/oc_setItems";
+            if(name == 'getOrders') var url = "bridge_query/oc_getOrders";
+            if(name == 'getStores') var url = "bridge_query/oc_getStores";
+            if(name == 'getCustomers') var url = "bridge_query/oc_getCustomers";
+            if(name == 'getTblCol') var url = "bridge_query/oc_getTblCol";
+            if(name == 'getAttributes') var url = "bridge_query/oc_getAttributes";
+            
+
+            $.ajax({
+            
+                    type: "GET",
+                    url: URL,
+                    data: {url:url, api_url: oc_url , api_route:route, api_key:oc_key , store_id: store_id},
+                    success: function(res){
                 
-          
-                 document.getElementById('api_res').innerHTML = res;
-          
-               
-          
-               }
-          
-          });
+            
+                    
+            
+                    document.getElementById('api_res').innerHTML = res;
+            
+                
+            
+                }
+            
+            });
 
 
-      }else{
+        }else{
 
-        alert("Se debe seleccionar un ID de tienda");
+            alert("Se debe seleccionar un ID de tienda");
+        }
+        
       }
-    
-
+      $.when(exce()).done(function(){
+        set_selectItemStyle();
+      });
     
     
 }
@@ -346,16 +351,12 @@ function store_oc_api(route,oc_url,oc_key){
 
 function columnMapping(name,route,oc_url,oc_key){
   
-  function exce(){
-
+  
     exce_oc_api(name,route,oc_url,oc_key);
-  }  
+  
   
       
 
-  $.when(exce()).done(function(){
-    set_selectItemStyle();
-  });
 }
 
 
