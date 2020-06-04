@@ -2839,7 +2839,8 @@ public function oc_getTblCol(){
   $sql = "SHOW COLUMNS FROM Products_Exp";
   $columns = $this->model->Query($sql);
 
-
+  $buttonSave =  '<input type="button" onclick="saveMapping();"  value="Guardar" class="btn btn-success btn-sm btn-icon "  />';
+  
   $tblProducts = '<table id="mappingTable" class="table table-striped responsive table-bordered dataTable" cellspacing="0" role="grid" style="margin-left: 0px; width: 1699px;"><tr><th>ACIWEB</th><th>Opencart</th></tr>';
   
     foreach ($columns as $key => $value) {
@@ -2858,12 +2859,11 @@ public function oc_getTblCol(){
     
   $tblProducts .=  '</table>';
   
-  echo  $tblProducts ;
+  echo  $buttonSave.'<br>'.$tblProducts ;
 
 
   die();
 }
-
 
 public function get_token($api_url,$api_token){
 
@@ -2989,20 +2989,6 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
 
 }
 //INI  INTERFAZ CON OPENCART 
-
-
-
-
-public function oc_itemColumnMapping(){
-
-
-
-
-
-
-
-}
-
 
 
 public function CheckError(){
