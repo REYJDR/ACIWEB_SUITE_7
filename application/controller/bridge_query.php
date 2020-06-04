@@ -2849,7 +2849,7 @@ public function oc_getTblCol(){
               $id = $key.'.'.$col;   
               
               
-              if(in_array($value->Field, $mapping) && $id == $mapping[$value->Field]){
+              if(isset($mapping[$value->Field]) && $id == $mapping[$value->Field]){
 
                 $selected = 'selected';
 
