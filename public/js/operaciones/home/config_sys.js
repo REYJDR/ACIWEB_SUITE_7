@@ -347,7 +347,7 @@ function store_oc_api(route,oc_url,oc_key){
 function columnMapping(name,route,oc_url,oc_key){
     
   exce_oc_api(name,route,oc_url,oc_key);
-       
+  set_selectItemStyle();     
 }
 
 

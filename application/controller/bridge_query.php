@@ -2839,7 +2839,7 @@ public function oc_getTblCol(){
 
       if(!in_array($value->Field, $noMappinCol)){
 
-        $tblProducts .= "<tr><td>{$value->Field}</td><td><select class='select' name='{$value->Field}' id='{$value->Field}'>";
+        $tblProducts .= "<tr><td>{$value->Field}</td><td><select class='selectItems' name='{$value->Field}' id='{$value->Field}'>";
         
         
         foreach($response->message as $key => $oc_columns){
