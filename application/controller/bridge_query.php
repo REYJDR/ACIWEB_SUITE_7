@@ -2874,7 +2874,6 @@ public function oc_getTblCol(){
   
   echo  "<div class='col-lg-2'>{$buttonSave}</div><br>{$tblProducts}";
 
-
   die();
 }
 

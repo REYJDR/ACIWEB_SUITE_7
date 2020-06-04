@@ -369,13 +369,10 @@ function saveMapping(){
         data: { url:url, filename:"itemsMappingOC",data: JSON.stringify(html_table_data) },
         success: function (res) { 
 
-            if(res == 0) { document.getElementById('api_res').innerHTML = 'Saved';  }else{  document.getElementById('api_res').innerHTML = 'Error'; }
+            if(res == 0) { MSG_CORRECT("Mapeo de columnas guardado con exito",'');  }else{  MSG_CORRECT("Error al guardar",'');  }
         }
     });
 
-
-
-    document.getElementById('api_res').innerHTML = html_table_data ;
 }
 
 // ********************************************************
