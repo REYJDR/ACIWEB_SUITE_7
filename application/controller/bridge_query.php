@@ -2993,12 +2993,18 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
 
 public function saveMapping(){
 
-
+  
+  if (!is_dir('Opencart/mapping/')) {
+    // dir doesn't exist, make it
+    mkdir('upload/promotions/');
+  }
+  
   $myFile = "Opencart/mapping/".$_GET['filename'].".json";
+
   if($file = file_put_contents( $myFile, $_GET["data"])){ 
     echo 0; 
   } else { 
-    echo $file; 
+    echo 1; 
   }
  
 
