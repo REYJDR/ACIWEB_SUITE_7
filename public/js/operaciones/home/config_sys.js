@@ -355,12 +355,12 @@ function saveMapping(){
     
    
         var html_table_data = "";  
-        var bRowStarted = true;  
         $('#mappingTable tbody>tr').each(function () {  
            
             console.log($('td', this)[0]);
 
-            html_table_data += " | " + $('td', this)[0];
+            html_table_data +=  $('td', this)[0].innerHTML;
+            html_table_data += "\n";  
             // $('td', this).each(function () {  
 
             //     if (html_table_data.length == 0 || bRowStarted == true) {  
@@ -370,8 +370,7 @@ function saveMapping(){
             //     else  
             //         html_table_data += " | " + $(this).text();  
             // });  
-            html_table_data += "\n";  
-            bRowStarted = true;  
+ 
         });  
 
 
