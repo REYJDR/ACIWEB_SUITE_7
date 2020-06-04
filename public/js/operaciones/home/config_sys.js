@@ -352,10 +352,26 @@ exce_oc_api(name,route,oc_url,oc_key);
 
 
 function saveMapping(){
+    
+   
+        var html_table_data = "";  
+        var bRowStarted = true;  
+        $('#mappingTable tbody>tr').each(function () {  
+            $('td', this).each(function () {  
+                if (html_table_data.length == 0 || bRowStarted == true) {  
+                    html_table_data += $(this).text();  
+                    bRowStarted = false;  
+                }  
+                else  
+                    html_table_data += " | " + $(this).text();  
+            });  
+            html_table_data += "\n";  
+            bRowStarted = true;  
+        });  
 
 
-    var table = $('#mappingTable').prop('outerHTML');
-    document.getElementById('api_res').innerHTML = table ;
+
+    document.getElementById('api_res').innerHTML = html_table_data ;
 }
 
 // ********************************************************
