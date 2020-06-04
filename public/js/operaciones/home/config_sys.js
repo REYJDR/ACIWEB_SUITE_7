@@ -360,8 +360,8 @@ function saveMapping(){
             var col = $(this).children();
             console.log( $(col[0]).html() );
 
-            html_table_data +=  $(col[0]).html();
-            html_table_data += "\n";  
+            html_table_data +=  $(col[0]).html() + "|" +$(col[1]).html() ;
+  
             // $('td', this).each(function () {  
 
             //     if (html_table_data.length == 0 || bRowStarted == true) {  
