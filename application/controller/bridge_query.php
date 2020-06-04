@@ -2814,6 +2814,7 @@ public function oc_getTblCol(){
   $file   = file_get_contents($myFile, true);
   $mapping = json_decode($file);
 
+  var_dump($mapping);
   //Extracting tables columns from Opencart to be mapping
   $json['tables'] = array('product','product_description');
     
@@ -2855,7 +2856,7 @@ public function oc_getTblCol(){
               }
 
 
-              $tblProducts .=  "<option value='{$id}'  {$selected }>{$id}</option>"; 
+              $tblProducts .=  "<option value='{$id}'  {$selected}>{$id}</option>"; 
           }
          
         }
