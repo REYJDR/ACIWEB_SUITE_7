@@ -1,8 +1,13 @@
 <script>
 
   var elements = document.getElementsByClassName('tablinks');
-  var requiredElement = elements[0].click();
-	
+
+  if(  elements[0].click() ){
+
+    var requiredElement = elements[0].click();
+
+   }
+
 </script>
 
 <!--ini aqui va el menu de acceso rapido-->

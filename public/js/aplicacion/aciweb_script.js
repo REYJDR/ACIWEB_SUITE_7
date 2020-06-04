@@ -36,16 +36,20 @@ function settab(){
   var name = elements[0].innerHTML;
   var n = name.includes("Home");
 
-   if( n ){
+  if(elements[0].click() || elements[1].click()){
+
+    if( n ){
 
     var requiredElement = elements[1].click();
 
-   }else{
+    }else{
 
     var requiredElement = elements[0].click();
 
-   }
+    }
 
+  }
+   
   
 }
   
