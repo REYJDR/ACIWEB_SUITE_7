@@ -2851,7 +2851,7 @@ public function oc_getTblCol(){
 
       if(!in_array($value->Field, $noMappinCol)){
 
-        $tblProducts .= "<tr><td>{$value->Field}</td><td><select class='select2' name='{$value->Field}' id='{$value->Field}'>{$options}</select></td></tr>";
+        $tblProducts .= "<tr><td>{$value->Field}</td><td><select  name='{$value->Field}' id='{$value->Field}'>{$options}</select></td></tr>";
         
       }
       
