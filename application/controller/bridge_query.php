@@ -2841,7 +2841,7 @@ public function oc_getTblCol(){
 
         $tblProducts .= "<tr><td>{$value->Field}</td><td><select class='selectItems' name='{$value->Field}' id='{$value->Field}'>";
         
-        
+        "<option value='unassigned'  >Ninguno</option>";
         foreach($response->message as $key => $oc_columns){
           
           foreach($oc_columns as $col){
