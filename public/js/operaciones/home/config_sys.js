@@ -356,10 +356,11 @@ function saveMapping(){
    
         var html_table_data = "";  
         $('#mappingTable tbody>tr').each(function () {  
-           
-            console.log($('td', this)[0]).html();
+            
+            var col = $(this).children();
+            console.log( $(col[0]).html() );
 
-            html_table_data +=  $('td', this)[0].html();
+            html_table_data +=  $(col[0]).html();
             html_table_data += "\n";  
             // $('td', this).each(function () {  
 
