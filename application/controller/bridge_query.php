@@ -2995,10 +2995,10 @@ public function saveMapping(){
 
 
   $myFile = "Opencart/mapping/".$_GET['filename'].".json";
-  if(file_put_contents( $myFile, $_GET["data"])){ 
+  if($file = file_put_contents( $myFile, $_GET["data"])){ 
     echo 0; 
   } else { 
-    echo 1; 
+    echo $file; 
   }
  
 
