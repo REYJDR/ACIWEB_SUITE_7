@@ -2809,7 +2809,15 @@ public function oc_getCustomers(){
 
 public function oc_getTblCol(){
 
-   
+  //READ INFO SAVED PREVIOUSLY 
+  $myFile = "Opencart/mapping/itemsMappingOC.json";
+  $file   = file_get_contents($myFile, true);
+ 
+  $mapping = json_decode($file);
+
+  var_dump($mapping); die();
+
+
   $json['tables'] = array('product','product_description');
     
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT),"POST");
@@ -2820,16 +2828,14 @@ public function oc_getTblCol(){
   foreach($response->message as $key => $value){
     
     
-    if(is_array($value)){
-      
-      foreach($value as $col){
+      if(is_array($value)){
+        
+        foreach($value as $col){
 
-           $options .= "<option value='{$key}.{$col}'>{$key}.{$col}</option>"; 
-      }
-
-    
-   }
-
+            $options .= "<option value='{$key}.{$col}'>{$key}.{$col}</option>"; 
+        }
+ 
+    }
   }
 
 
@@ -2996,7 +3002,6 @@ public function saveMapping(){
   try{
 
     if (!is_dir('Opencart/mapping/')) {
-      // dir doesn't exist, make it
       mkdir('Opencart/mapping/',0777,true);
     }
     
@@ -3008,13 +3013,9 @@ public function saveMapping(){
       echo 1; 
     }
    
-
   }catch( Exception $e){
-
-
      echo $e->getMessage();
   }
-
 
 }
 //INI  INTERFAZ CON OPENCART 
