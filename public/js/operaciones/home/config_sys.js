@@ -369,7 +369,11 @@ function saveMapping(){
     $('#mappingTable tbody>tr').each(function () {  
         
         var col = $(this).children();
-        html_table_data[ $(col[0]).html() ] = $(col[1]).children().val() ;  
+        
+        if($(col[0]).html() != 'Ninguno'){
+            html_table_data[ $(col[0]).html() ] = $(col[1]).children().val() ;  
+        }
+      
 
     });   
     $.ajax({
