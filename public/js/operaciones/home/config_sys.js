@@ -357,7 +357,7 @@ function saveMapping(){
     var url = "bridge_query/saveMapping";
 
 
-    var html_table_data = [];  
+    var html_table_data = {};  
 
     $('#mappingTable tbody>tr').each(function () {  
         
