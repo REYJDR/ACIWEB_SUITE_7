@@ -2833,7 +2833,8 @@ public function oc_getTblCol(){
   }
 
 
-$noMappinCol = [   ];
+  $noMappinCol = [ 'LAST_CHANGE','link_foto', 'id_location', 'id_compania', 'ID'  ];
+
 
   $sql = "SHOW COLUMNS FROM Products_Exp";
   $columns = $this->model->Query($sql);
@@ -2843,9 +2844,16 @@ $noMappinCol = [   ];
   
     foreach ($columns as $key => $value) {
 
+      
       $value = json_decode($value);
-      $tblProducts .= "<tr><td>{$value->Field}</td><td><select name='{$value->Field}' id='{$value->Field}'>{$options}</select></td></tr>";
 
+
+      if(!in_array($value->Field, $noMappinCol)){
+
+        $tblProducts .= "<tr><td>{$value->Field}</td><td><select name='{$value->Field}' id='{$value->Field}'>{$options}</select></td></tr>";
+        
+      }
+      
     }
     
   $tblProducts .=  '</table>';
