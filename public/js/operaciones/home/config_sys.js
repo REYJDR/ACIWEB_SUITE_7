@@ -355,34 +355,20 @@ function saveMapping(){
     
     var URL = document.getElementById('URL').value;
     var url = "bridge_query/saveMapping";
-
-
     var html_table_data = {};  
 
     $('#mappingTable tbody>tr').each(function () {  
         
         var col = $(this).children();
-        html_table_data[ $(col[0]).html() ] = $(col[1]).children().val() ;
+        html_table_data[ $(col[0]).html() ] = $(col[1]).children().val() ;  
 
-        // $('td', this).each(function () {  
-
-        //     if (html_table_data.length == 0 || bRowStarted == true) {  
-        //         html_table_data += $(this).text();  
-        //         bRowStarted = false;  
-        //     }  
-        //     else  
-        //         html_table_data += " | " + $(this).text();  
-        // });  
-
-    });  
-    console.log(JSON.stringify(html_table_data)); 
+    });   
     $.ajax({
         type: "GET",
-        dataType : 'json',
         url: URL,
-        data: { url:url, filename: "itemsMappingOC", data: JSON.stringify(html_table_data) },
+        data: { url:url, filename:"itemsMappingOC",data: JSON.stringify(html_table_data) },
         success: function (res) { 
-            console.log(res);
+
             if(res == 0) { document.getElementById('api_res').innerHTML = 'Saved';  }else{  document.getElementById('api_res').innerHTML = 'Error'; }
         }
     });
