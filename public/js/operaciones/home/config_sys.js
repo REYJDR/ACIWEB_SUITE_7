@@ -358,18 +358,18 @@ function saveMapping(){
         var bRowStarted = true;  
         $('#mappingTable tbody>tr').each(function () {  
            
-            console.log($('td', this)[0]);
+            console.log($('td', this)[0].text());
 
+            html_table_data += " | " + $('td', this)[0].text();
+            // $('td', this).each(function () {  
 
-            $('td', this).each(function () {  
-
-                if (html_table_data.length == 0 || bRowStarted == true) {  
-                    html_table_data += $(this).text();  
-                    bRowStarted = false;  
-                }  
-                else  
-                    html_table_data += " | " + $(this).text();  
-            });  
+            //     if (html_table_data.length == 0 || bRowStarted == true) {  
+            //         html_table_data += $(this).text();  
+            //         bRowStarted = false;  
+            //     }  
+            //     else  
+            //         html_table_data += " | " + $(this).text();  
+            // });  
             html_table_data += "\n";  
             bRowStarted = true;  
         });  
