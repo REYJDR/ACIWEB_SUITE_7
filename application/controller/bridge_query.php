@@ -2996,7 +2996,7 @@ public function saveMapping(){
   
   if (!is_dir('Opencart/mapping/')) {
     // dir doesn't exist, make it
-    mkdir('upload/promotions/');
+    mkdir('Opencart/mapping/');
   }
   
   $myFile = "Opencart/mapping/".$_GET['filename'].".json";
