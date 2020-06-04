@@ -2812,31 +2812,24 @@ public function oc_getTblCol(){
   //READ INFO SAVED PREVIOUSLY 
   $myFile = "Opencart/mapping/itemsMappingOC.json";
   $file   = file_get_contents($myFile, true);
- 
   $mapping = json_decode($file);
 
-  var_dump($mapping); die();
 
 
   $json['tables'] = array('product','product_description');
     
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT),"POST");
 
+  // $options = '';
 
-  $options = '';
-
-  foreach($response->message as $key => $value){
-    
-    
-      if(is_array($value)){
-        
-        foreach($value as $col){
-
-            $options .= "<option value='{$key}.{$col}'>{$key}.{$col}</option>"; 
-        }
+  // foreach($response->message as $key => $value){
  
-    }
-  }
+  //       foreach($value as $col){
+
+  //           "<option value='{$key}.{$col}'>{$key}.{$col}</option>"; 
+  //       }
+
+  // }
 
 
   $noMappinCol = [ 'LAST_CHANGE','link_foto', 'id_location', 'id_compania', 'ID'  ];
@@ -2857,7 +2850,29 @@ public function oc_getTblCol(){
 
       if(!in_array($value->Field, $noMappinCol)){
 
-        $tblProducts .= "<tr><td>{$value->Field}</td><td><select  name='{$value->Field}' id='{$value->Field}'>{$options}</select></td></tr>";
+        $tblProducts .= "<tr><td>{$value->Field}</td><td><select  name='{$value->Field}' id='{$value->Field}'>";
+        
+        
+        foreach($response->message as $key => $value){
+          
+          foreach($value as $col){
+              $selected = '';
+              $id = $key.'.'.$col;   
+              
+              
+              if(in_array($value->Field, $mapping) && $id == $mapping[$value->Field]){
+
+                $selected = 'selected';
+
+              }
+
+
+              $tblProducts .=  "<option value='{$id}'  {$selected }>{$id}</option>"; 
+          }
+         
+        }
+
+        $tblProducts .= "</select></td></tr>";
         
       }
       
