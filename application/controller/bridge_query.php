@@ -2860,7 +2860,7 @@ public function oc_getTblCol(){
   $tblProducts .=  '</table>';
   
  
-  echo  "<div class='col-lg-3'>{$buttonSave}</div><br>{$tblProducts}";
+  echo  "<div class='col-lg-2'>{$buttonSave}</div><br>{$tblProducts}";
 
 
   die();

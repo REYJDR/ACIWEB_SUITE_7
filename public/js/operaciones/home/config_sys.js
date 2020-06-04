@@ -351,6 +351,13 @@ exce_oc_api(name,route,oc_url,oc_key);
 }
 
 
+function saveMapping(){
+
+
+    var table = $('#mappingTable').prop('outerHTML');
+    document.getElementById('api_res').innerHTML = table ;
+}
+
 // ********************************************************
 // *API DE OPENCART
 // ********************************************************
