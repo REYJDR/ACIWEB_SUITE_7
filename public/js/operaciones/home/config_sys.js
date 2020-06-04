@@ -358,9 +358,7 @@ function saveMapping(){
         $('#mappingTable tbody>tr').each(function () {  
             
             var col = $(this).children();
-            console.log( $(col[0]).html() );
-
-            html_table_data +=  $(col[0]).html() + "|" +$(col[1]).html() ;
+            html_table_data +=  $(col[0]).html() + "|" +$(col[0]).val() ;
   
             // $('td', this).each(function () {  
 
