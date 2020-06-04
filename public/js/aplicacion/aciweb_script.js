@@ -36,7 +36,7 @@ function settab(){
   var name = elements[0].innerHTML;
   var n = name.includes("Home");
 
-  if(elements[0].click() || elements[1].click()){
+  if(elements[0] || elements[1]){
 
     if( n ){
 

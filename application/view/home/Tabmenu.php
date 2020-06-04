@@ -2,7 +2,7 @@
 
   var elements = document.getElementsByClassName('tablinks');
 
-  if(  elements[0].click() ){
+  if(  elements[0] ) {
 
     var requiredElement = elements[0].click();
 
