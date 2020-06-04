@@ -359,7 +359,7 @@ function saveMapping(){
            
             console.log($('td', this)[0]);
 
-            html_table_data +=  $('td', this)[0].innerHTML;
+            html_table_data +=  $('td', this)[0].innerHTML();
             html_table_data += "\n";  
             // $('td', this).each(function () {  
 
