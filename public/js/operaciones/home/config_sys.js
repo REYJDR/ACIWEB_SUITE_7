@@ -375,7 +375,7 @@ function saveMapping(){
         // });  
 
     });  
-    console.log(JSON.stringify(html_table_data)); 
+    console.log(html_table_data); 
     $.ajax({
         type: "GET",
         dataType : 'json',
