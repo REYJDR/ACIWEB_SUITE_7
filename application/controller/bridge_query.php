@@ -2812,8 +2812,8 @@ public function oc_getTblCol(){
   //READ INFO SAVED PREVIOUSLY 
   $myFile = "Opencart/mapping/itemsMappingOC.json";
   $file   = file_get_contents($myFile, true);
-  (array)$mapping = json_decode($file);
-
+  $mapping = json_decode($file);
+  $mapping = (array)$mapping;
 
   //Extracting tables columns from Opencart to be mapping
   $json['tables'] = array('product','product_description');
