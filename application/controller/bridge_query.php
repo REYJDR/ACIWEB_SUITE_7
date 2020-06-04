@@ -2814,32 +2814,20 @@ public function oc_getTblCol(){
   $file   = file_get_contents($myFile, true);
   $mapping = json_decode($file);
 
-
-
+  //Extracting tables columns from Opencart to be mapping
   $json['tables'] = array('product','product_description');
     
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT),"POST");
 
-  // $options = '';
 
-  // foreach($response->message as $key => $value){
- 
-  //       foreach($value as $col){
-
-  //           "<option value='{$key}.{$col}'>{$key}.{$col}</option>"; 
-  //       }
-
-  // }
-
-
-  $noMappinCol = [ 'LAST_CHANGE','link_foto', 'id_location', 'id_compania', 'ID'  ];
-
-
+  //Get tables columns from Aciweb to be mapping
   $sql = "SHOW COLUMNS FROM Products_Exp";
   $columns = $this->model->Query($sql);
 
-  $buttonSave =  '<input type="button" onclick="saveMapping();"  value="Guardar" class="btn btn-success btn-sm btn-icon "  />';
+  $noMappinCol = [ 'LAST_CHANGE','link_foto', 'id_location', 'id_compania', 'ID'  ];
   
+
+  //build table for mapping columns
   $tblProducts = '<table id="mappingTable" class="table table-striped responsive table-bordered dataTable" cellspacing="0" role="grid" style="margin-left: 0px; width: 1699px;"><tr><th>ACIWEB</th><th>Opencart</th></tr>';
   
     foreach ($columns as $key => $value) {
@@ -2853,9 +2841,9 @@ public function oc_getTblCol(){
         $tblProducts .= "<tr><td>{$value->Field}</td><td><select  name='{$value->Field}' id='{$value->Field}'>";
         
         
-        foreach($response->message as $key => $value){
+        foreach($response->message as $key => $oc_columns){
           
-          foreach($value as $col){
+          foreach($oc_columns as $col){
               $selected = '';
               $id = $key.'.'.$col;   
               
@@ -2881,6 +2869,8 @@ public function oc_getTblCol(){
   $tblProducts .=  '</table>';
   
  
+  $buttonSave =  '<input type="button" onclick="saveMapping();"  value="Guardar" class="btn btn-success btn-sm btn-icon "  />';
+  
   echo  "<div class='col-lg-2'>{$buttonSave}</div><br>{$tblProducts}";
 
 
