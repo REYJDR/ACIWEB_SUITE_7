@@ -358,7 +358,7 @@ function saveMapping(){
         var bRowStarted = true;  
         $('#mappingTable tbody>tr').each(function () {  
            
-            console.log($('td', this));
+            console.log($('td', this)[0]);
 
 
             $('td', this).each(function () {  
