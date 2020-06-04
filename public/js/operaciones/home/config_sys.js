@@ -354,8 +354,7 @@ exce_oc_api(name,route,oc_url,oc_key);
 function saveMapping(){
     
     var URL = document.getElementById('URL').value;
-    document.getElementById('stores').innerHTML = '';
-    var url = "bridge_query/oc_getStoresList";
+    var url = "bridge_query/saveMapping";
 
 
     var html_table_data = [];  
