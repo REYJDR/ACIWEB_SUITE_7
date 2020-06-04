@@ -2870,9 +2870,18 @@ public function oc_getTblCol(){
   $tblProducts .=  '</table>';
   
  
-  $buttonSave =  '<input type="button" onclick="saveMapping();"  value="Guardar" class="btn btn-success btn-sm btn-icon "  />';
+  $buttonSave    =  '<input type="button" onclick="saveMapping();"  value="Guardar" class="btn btn-success btn-sm btn-icon "  />';
+
+
+  $getColName  = "'getTblCol'";
+  $getColroute = "'".$_GET['api_route']."'";
+  $oc_url_f    = "'".$_GET['api_url']."'";
+  $oc_key_f    = "'".$_GET['api_key']."'";
   
-  echo  "<div class='col-lg-2'>{$buttonSave}</div><br>{$tblProducts}";
+  $buttonRefresh =  '<input type="button" onclick="columnMapping('.$getColName.','.$getColroute.','.$oc_url_f.','.$oc_key_f.');"   value="Refrescar" class="btn btn-primary btn-sm btn-icon "  />';
+
+
+  echo  "<div class='col-lg-1'>{$buttonSave}</div><div class='col-lg-1'>{$buttonRefresh}</div><br>{$tblProducts}";
 
   die();
 }
