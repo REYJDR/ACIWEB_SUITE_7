@@ -358,9 +358,9 @@ function saveMapping(){
         var bRowStarted = true;  
         $('#mappingTable tbody>tr').each(function () {  
            
-            console.log($('td', this)[0].text());
+            console.log($('td', this)[0]);
 
-            html_table_data += " | " + $('td', this)[0].text();
+            html_table_data += " | " + $('td', this)[0];
             // $('td', this).each(function () {  
 
             //     if (html_table_data.length == 0 || bRowStarted == true) {  
