@@ -357,7 +357,12 @@ function saveMapping(){
         var html_table_data = "";  
         var bRowStarted = true;  
         $('#mappingTable tbody>tr').each(function () {  
+           
+            console.log($('td', this));
+
+
             $('td', this).each(function () {  
+
                 if (html_table_data.length == 0 || bRowStarted == true) {  
                     html_table_data += $(this).text();  
                     bRowStarted = false;  
