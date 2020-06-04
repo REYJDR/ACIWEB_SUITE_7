@@ -382,6 +382,7 @@ function saveMapping(){
         url: URL,
         data: { url:url, filename: "itemsMappingOC", data: JSON.stringify(html_table_data) },
         success: function (res) { 
+            console.log(res);
             if(res == 0) { document.getElementById('api_res').innerHTML = 'Saved';  }else{  document.getElementById('api_res').innerHTML = 'Error'; }
         }
     });
