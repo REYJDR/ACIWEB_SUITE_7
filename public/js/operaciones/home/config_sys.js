@@ -353,24 +353,39 @@ exce_oc_api(name,route,oc_url,oc_key);
 
 function saveMapping(){
     
-   
-        var html_table_data = "";  
-        $('#mappingTable tbody>tr').each(function () {  
-            
-            var col = $(this).children();
-            html_table_data +=  $(col[0]).html() + "|" +$(col[1]).children().val() ;
-  
-            // $('td', this).each(function () {  
+    var URL = document.getElementById('URL').value;
+    document.getElementById('stores').innerHTML = '';
+    var url = "bridge_query/oc_getStoresList";
 
-            //     if (html_table_data.length == 0 || bRowStarted == true) {  
-            //         html_table_data += $(this).text();  
-            //         bRowStarted = false;  
-            //     }  
-            //     else  
-            //         html_table_data += " | " + $(this).text();  
-            // });  
- 
-        });  
+
+    var html_table_data = [];  
+
+    $('#mappingTable tbody>tr').each(function () {  
+        
+        var col = $(this).children();
+        html_table_data[ $(col[0]).html() ] = $(col[1]).children().val() ;
+
+        // $('td', this).each(function () {  
+
+        //     if (html_table_data.length == 0 || bRowStarted == true) {  
+        //         html_table_data += $(this).text();  
+        //         bRowStarted = false;  
+        //     }  
+        //     else  
+        //         html_table_data += " | " + $(this).text();  
+        // });  
+
+    });  
+
+    $.ajax({
+        type: "GET",
+        dataType : 'json',
+        url: URL,
+        data: { url:url, filename: "itemsMappingOC", data: JSON.stringify(html_table_data) },
+        success: function (res) { 
+            if(res == 0) { document.getElementById('api_res').innerHTML = 'Saved';  }else{  document.getElementById('api_res').innerHTML = 'Error'; }
+        }
+    });
 
 
 
