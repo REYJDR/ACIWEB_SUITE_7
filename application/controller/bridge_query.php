@@ -2825,7 +2825,7 @@ public function oc_getTblCol(){
   //Extracting tables columns from Opencart to be mapping
   $json['tables'] = array('product',
                           'product_description',
-                          'category'
+                          'category',
                           'category_description',
                           'manufacturer');
     
