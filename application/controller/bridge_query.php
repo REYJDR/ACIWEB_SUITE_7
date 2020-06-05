@@ -2825,7 +2825,6 @@ public function oc_getTblCol(){
   //Extracting tables columns from Opencart to be mapping
   $json['tables'] = array('product',
                           'product_description',
-                          'product_category',
                           'category_description');
     
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT),"POST");
