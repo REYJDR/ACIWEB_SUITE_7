@@ -2825,7 +2825,8 @@ public function oc_getTblCol(){
   //Extracting tables columns from Opencart to be mapping
   $json['tables'] = array('product',
                           'product_description',
-                          'category_description');
+                          'category_description',
+                          'manufacturer');
     
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT),"POST");
 
@@ -2848,17 +2849,17 @@ public function oc_getTblCol(){
                   'subtract', 
                   'stock_status_id', 
                   'date_available', 
-                  'manufacturer_id', 
+                // 'manufacturer_id', 
                   'shipping', 
                   'price', 
                   'points', 
                   'weight', 
-                  'weight_class_id', 
+                //'weight_class_id', 
                   'length', 
                   'width', 
                   'height', 
-                  'length_class_id', 
-                  'tax_class_id',
+                // 'length_class_id', 
+                // 'tax_class_id',
                   
                   'name',
                   'description',
