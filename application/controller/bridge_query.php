@@ -2663,13 +2663,13 @@ public function oc_setItems() {
     
       //el key [2] denota el idioma español configurado en opencart, mantener como estandar
 
-    $json[$i]['product_description'][2]['name']        =  $item->{'Description'}.'('.$item->{'ProductID'}.')';
+    $json[$i]['product_description'][2]['name']        = $item->{'Description'}.'('.$item->{'ProductID'}.')';
     $json[$i]['product_description'][2]['description'] = $item->{'SalesDescription'};
     $json[$i]['product_description'][2]['meta_title']  = $item->{'Description'}.'('.$item->{'ProductID'}.')';
-    $json[$i]['product_description'][2]['meta_description'] = "";
-    $json[$i]['product_description'][2]['meta_keyword']     = "";
-    $json[$i]['product_description'][2]['tag']              = "";
-    $json[$i]['master_id']                                  = "0";
+    // $json[$i]['product_description'][2]['meta_description'] = "";
+    // $json[$i]['product_description'][2]['meta_keyword']     = "";
+    // $json[$i]['product_description'][2]['tag']              = "";
+    // $json[$i]['master_id']= "0";
     $json[$i]['model'] = $item->{'ProductID'};
     $json[$i]['sku']   = $item->{'UPC_SKU'};
     $json[$i]['upc']   = "";
@@ -2695,11 +2695,11 @@ public function oc_setItems() {
     $json[$i]['image'] = "";
     $json[$i]['sort_order'] = $i; 
     $json[$i]['status'] = "0";//not enable
-    $json[$i]['points'] = "";
+ // $json[$i]['points'] = "";
     $json[$i]['store_id'] = $_GET['store_id']; //tienda;
-    $json[$i]['product_reward'] = [];//not enable
-    $json[$i]['product_layout'] = [];//not enable
-    $json[$i]['manufacturer_id'] = "0";//not enable
+    // $json[$i]['product_reward'] = [];//not enable
+    // $json[$i]['product_layout'] = [];//not enable
+    // $json[$i]['manufacturer_id'] = "0";//not enable
 
     $i = $i + 1;
 
@@ -2856,7 +2856,11 @@ public function oc_getTblCol(){
                   'width', 
                   'height', 
                   'length_class_id', 
-                  'tax_class_id'];
+                  'tax_class_id',
+                  
+                  'name',
+                  'description',
+                  'meta_title' ];
                 
 
   //build table for mapping columns
