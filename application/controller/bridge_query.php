@@ -2643,6 +2643,13 @@ public function oc_getOrders(){
 
 public function oc_setItems() {
 
+  $myFile = "Opencart/mapping/itemsMappingOC.json";
+  $file   = file_get_contents($myFile, true);
+  $mapping = json_decode($file);
+  $mapping = (array)$mapping;
+
+  if($file=='') die('No existe informacion de mapeo de campos');
+
   //get info 
   $products = $this->get_ProductsList();
   
@@ -2656,21 +2663,21 @@ public function oc_setItems() {
     
       //el key [2] denota el idioma español configurado en opencart, mantener como estandar
 
-    $json[$i]['product_description'][2]['name'] =  $item->{'Description'}.'('.$item->{'ProductID'}.')';
+    $json[$i]['product_description'][2]['name']        =  $item->{'Description'}.'('.$item->{'ProductID'}.')';
     $json[$i]['product_description'][2]['description'] = $item->{'SalesDescription'};
-    $json[$i]['product_description'][2]['meta_title'] = $item->{'Description'}.'('.$item->{'ProductID'}.')';
+    $json[$i]['product_description'][2]['meta_title']  = $item->{'Description'}.'('.$item->{'ProductID'}.')';
     $json[$i]['product_description'][2]['meta_description'] = "";
-    $json[$i]['product_description'][2]['meta_keyword'] = "";
-    $json[$i]['product_description'][2]['tag'] = "";
-    $json[$i]['master_id'] = "0";
+    $json[$i]['product_description'][2]['meta_keyword']     = "";
+    $json[$i]['product_description'][2]['tag']              = "";
+    $json[$i]['master_id']                                  = "0";
     $json[$i]['model'] = $item->{'ProductID'};
-    $json[$i]['sku'] = $item->{'UPC_SKU'};
-    $json[$i]['upc'] = "";
-    $json[$i]['ean'] = "";
-    $json[$i]['jan'] = "";
-    $json[$i]['isbn'] = "";
-    $json[$i]['mpn'] = "";
-    $json[$i]['location'] = "";
+    $json[$i]['sku']   = $item->{'UPC_SKU'};
+    $json[$i]['upc']   = "";
+    $json[$i]['ean']   = "";
+    $json[$i]['jan']   = "";
+    $json[$i]['isbn']  = "";
+    $json[$i]['mpn']   = "";
+    $json[$i]['location']     = "";
     $json[$i]['tax_class_id'] = "0";
     $json[$i]['stock_status_id'] = "0";
     $json[$i]['date_available'] = date('Y-m-d');
@@ -2825,8 +2832,32 @@ public function oc_getTblCol(){
   $sql = "SHOW COLUMNS FROM Products_Exp";
   $columns = $this->model->Query($sql);
 
-  $noMappinCol = [ 'LAST_CHANGE','link_foto', 'id_location', 'id_compania', 'ID'  ];
-  
+  $noMappinCol = [ 'LAST_CHANGE','link_foto', 'id_location', 'id_compania', 'ID', 'IsActive' , 'ItemClass' ];
+  $ocAllowCol = [ 'model', 
+                  'sku', 
+                  'upc', 
+                  'ean', 
+                  'jan', 
+                  'isbn', 
+                  'mpn', 
+                  'location',  
+                  'quantity', 
+                  'minimum', 
+                  'subtract', 
+                  'stock_status_id', 
+                  'date_available', 
+                  'manufacturer_id', 
+                  'shipping', 
+                  'price', 
+                  'points', 
+                  'weight', 
+                  'weight_class_id', 
+                  'length', 
+                  'width', 
+                  'height', 
+                  'length_class_id', 
+                  'tax_class_id'];
+                
 
   //build table for mapping columns
   $tblProducts = '<table id="mappingTable" class="table table-striped responsive table-bordered dataTable" cellspacing="0" role="grid" style="margin-left: 0px; width: 1699px;"><tr><th>ACIWEB</th><th>Opencart</th></tr>';
@@ -2845,10 +2876,11 @@ public function oc_getTblCol(){
         foreach($response->message as $key => $oc_columns){
           
           foreach($oc_columns as $col){
+
+            if(in_array($col, $ocAllowCol)){
               $selected = '';
+              
               $id = $key.'.'.$col;   
-              
-              
               if(isset($mapping[$value->Field]) && $id == $mapping[$value->Field]){
 
                 $selected = 'selected';
@@ -2857,6 +2889,10 @@ public function oc_getTblCol(){
 
 
               $tblProducts .=  "<option value='{$id}'  {$selected}>{$id}</option>"; 
+
+            }
+              
+
           }
          
         }
