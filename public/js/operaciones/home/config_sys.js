@@ -371,7 +371,7 @@ function saveMapping(){
         var col = $(this).children();
         
         if($(col[0]).html() != 'Ninguno'){
-            html_table_data[ $(col[0]).html() ] = $(col[1]).children().val() ;  
+            html_table_data[ $(col[1]).html() ] = $(col[0]).children().val() ;  
         }
       
 

@@ -2661,7 +2661,9 @@ public function oc_setItems() {
     
     $item =  json_decode($value);
     
-      //el key [2] denota el idioma español configurado en opencart, mantener como estandar
+    //el key [2] denota el idioma español configurado en opencart, mantener como estandar
+
+
 
     $json[$i]['product_description'][2]['name']        = $item->{'Description'}.'('.$item->{'ProductID'}.')';
     $json[$i]['product_description'][2]['description'] = $item->{'SalesDescription'};
@@ -2692,14 +2694,13 @@ public function oc_setItems() {
     $json[$i]['weight'] = "0";
     $json[$i]['weight_class_id'] = "1";
     $json[$i]['length_class_id'] = "1";
-    $json[$i]['image'] = "";
     $json[$i]['sort_order'] = $i; 
     $json[$i]['status'] = "0";//not enable
- // $json[$i]['points'] = "";
     $json[$i]['store_id'] = $_GET['store_id']; //tienda;
-    // $json[$i]['product_reward'] = [];//not enable
-    // $json[$i]['product_layout'] = [];//not enable
-    // $json[$i]['manufacturer_id'] = "0";//not enable
+    $json[$i]['manufacturer'] = "0";//CREATE A MANUFACTURE 
+    $json[$i]['category'] = "0";//not enable    
+    $json[$i]['sub_category'] = "0";//not enable
+    
 
     $i = $i + 1;
 
