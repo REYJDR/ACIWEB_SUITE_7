@@ -2662,9 +2662,6 @@ public function oc_setItems() {
     $item =  json_decode($value);
     
     //el key [2] denota el idioma español configurado en opencart, mantener como estandar
-
-
-
     $json[$i]['product_description'][2]['name']        = $item->{'Description'}.'('.$item->{'ProductID'}.')';
     $json[$i]['product_description'][2]['description'] = $item->{'SalesDescription'};
     $json[$i]['product_description'][2]['meta_title']  = $item->{'Description'}.'('.$item->{'ProductID'}.')';
@@ -2672,7 +2669,7 @@ public function oc_setItems() {
     // $json[$i]['product_description'][2]['meta_keyword']     = "";
     // $json[$i]['product_description'][2]['tag']              = "";
     // $json[$i]['master_id']= "0";
-    $json[$i]['model'] = $item->{'ProductID'};
+    $json[$i]['model'] = KeyStr('model', $mapping); //$item->{'ProductID'};
     $json[$i]['sku']   = $item->{'UPC_SKU'};
     $json[$i]['upc']   = "";
     $json[$i]['ean']   = "";
@@ -2701,7 +2698,7 @@ public function oc_setItems() {
     $json[$i]['category'] = "0";//not enable    
     $json[$i]['sub_category'] = "0";//not enable
     
-
+  var_dump($json); die();
     $i = $i + 1;
 
   }
@@ -3080,7 +3077,12 @@ public function saveMapping(){
 }
 //INI  INTERFAZ CON OPENCART 
 
+public function KeyStr($searchVal, $array){
 
+ return array_search($searchVal, $array);
+
+
+}
 public function CheckError(){
   
   
