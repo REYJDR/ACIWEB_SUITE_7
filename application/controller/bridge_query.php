@@ -2669,7 +2669,7 @@ public function oc_setItems() {
     // $json[$i]['product_description'][2]['meta_keyword']     = "";
     // $json[$i]['product_description'][2]['tag']              = "";
     // $json[$i]['master_id']= "0";
-    $json[$i]['model'] = $this->KeyStr('product.model', $mapping) ? $item->{$this->KeyStr('model', $mapping)}   :  $item->{'ProductID'};
+    $json[$i]['model'] = $this->KeyStr('product.model', $mapping) ; //? $item->{$this->KeyStr('model', $mapping)}   :  $item->{'ProductID'};
     $json[$i]['sku']   = $item->{'UPC_SKU'};
     $json[$i]['upc']   = "";
     $json[$i]['ean']   = "";
