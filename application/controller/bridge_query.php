@@ -2512,6 +2512,8 @@ public function oc_getStores(){
 
 public function oc_getOrders(){
 
+  if($_GET['store_id'] =='') exit(json_encode(array('Error' => '[Tienda no seleccionada]')));
+  
   $json['filter_order_id']= "";
   $json['filter_status']= '5'; //estatus completado
   $json['filter_has_invoices']= "1"; //factura asignada
@@ -2729,7 +2731,9 @@ public function oc_setItems() {
 }
 
 public function oc_getCustomers(){
-  
+   
+  if($_GET['store_id'] =='') exit(json_encode(array('Error' => '[Tienda no seleccionada]')));
+
     $json['filter_email']= "";
     $json['filter_store_id']= $_GET['store_id']; //tienda
     
@@ -3052,7 +3056,6 @@ public function do_curl_request($api_user,$api_url,$api_token,$api_route,$data, 
 
 
 }
-
 
 public function saveMapping(){
 
