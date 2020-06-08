@@ -2643,6 +2643,7 @@ public function oc_getOrders(){
 
 public function oc_setItems() {
 
+  if($_GET['store_id'] =='') exit(json_encode(array('Error' => '[Tienda no seleccionada]')));
   $myFile = "Opencart/mapping/itemsMappingOC.json";
   $file   = file_get_contents($myFile, true);
   $mapping = json_decode($file);
@@ -2664,11 +2665,11 @@ public function oc_setItems() {
     //el key [2] denota el idioma español configurado en opencart, mantener como estandar
     $json[$i]['product_description'][2]['name']        = $item->{$this->KeyStr('product_description.name', $mapping)};
     $json[$i]['product_description'][2]['description'] = $item->{$this->KeyStr('product_description.description', $mapping)};
-    $json[$i]['product_description'][2]['meta_title']  = $item->{$this->KeyStr('product_description.meta_title', $mapping)};
-    // $json[$i]['product_description'][2]['meta_description'] = "";
-    // $json[$i]['product_description'][2]['meta_keyword']     = "";
-    // $json[$i]['product_description'][2]['tag']              = "";
-    // $json[$i]['master_id']= "0";
+    $json[$i]['product_description'][2]['meta_title']  = $item->{$this->KeyStr('product_description.description', $mapping)};
+    $json[$i]['product_description'][2]['meta_description'] = "";
+    $json[$i]['product_description'][2]['meta_keyword']     = "";
+    $json[$i]['product_description'][2]['tag']              = "";
+    $json[$i]['master_id']= "0";
     $json[$i]['model'] = $item->{$this->KeyStr('product.model', $mapping)}; //? $item->{$this->KeyStr('model', $mapping)}   :  $item->{'ProductID'};
     $json[$i]['sku']   = $item->{$this->KeyStr('product.sku', $mapping)};  //$item->{'UPC_SKU'};
     $json[$i]['upc']   = $item->{$this->KeyStr('product.upc', $mapping)};
@@ -2834,7 +2835,7 @@ public function oc_getTblCol(){
   $sql = "SHOW COLUMNS FROM Products_Exp";
   $columns = $this->model->Query($sql);
 
-  $noMappinCol = [ 'LAST_CHANGE','link_foto', 'id_location', 'id_compania', 'ID', 'IsActive' , 'ItemClass' ];
+  $noMappinCol = [ 'LAST_CHANGE','link_foto', 'id_location', 'id_compania', 'ID', 'IsActive' , 'ItemClass', 'status' ];
   $ocAllowCol = [ 'model', 
                   'sku', 
                   'upc', 
@@ -2844,11 +2845,11 @@ public function oc_getTblCol(){
                   'mpn', 
                   'location',  
                   'quantity', 
-                  'minimum', 
-                  'subtract', 
+                //'minimum', 
+                //'subtract', 
                   'stock_status_id', 
                   'date_available', 
-                // 'manufacturer_id', 
+                //'manufacturer_id', 
                   'shipping', 
                   'price', 
                   'points', 
@@ -2857,9 +2858,8 @@ public function oc_getTblCol(){
                   'length', 
                   'width', 
                   'height', 
-                // 'length_class_id', 
-                // 'tax_class_id',
-                  
+                //'length_class_id', 
+                //'tax_class_id',
                   'name',
                   'description',
                   'meta_title' ,
