@@ -2646,6 +2646,7 @@ public function oc_getOrders(){
 public function oc_setItems() {
 
   if($_GET['store_id'] =='') exit(json_encode(array('Error' => '[Tienda no seleccionada]')));
+
   $myFile = "Opencart/mapping/itemsMappingOC.json";
   $file   = file_get_contents($myFile, true);
   $mapping = json_decode($file);
@@ -2701,7 +2702,7 @@ public function oc_setItems() {
     $json[$i]['category'] = $item->{$this->KeyStr('product.category', $mapping)}; //not enable    
     $json[$i]['sub_category'] = $item->{$this->KeyStr('product.sub_category', $mapping)}; //not enable
     
-  var_dump($json); die();
+  
     $i = $i + 1;
 
   }
