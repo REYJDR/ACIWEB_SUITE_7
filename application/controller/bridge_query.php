@@ -2571,6 +2571,8 @@ public function oc_getOrders(){
         'lugar_despacho' =>'',
         'SalesRepID' =>  '');
         
+        var_dump($values); die();
+
      $this->model->insert('SalesOrder_Header_Imp',$values);
 
     
