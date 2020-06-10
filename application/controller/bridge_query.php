@@ -2704,8 +2704,9 @@ public function oc_setItems() {
   // die(json_encode($json, JSON_PRETTY_PRINT)); 
   
     $i = $i + 1;
-
+    die($this->KeyStr('manufacturer.name', $mapping));
   }
+  
  die(json_encode($json[1], JSON_PRETTY_PRINT)); 
 
   //Execute curl
