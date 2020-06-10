@@ -2695,10 +2695,9 @@ public function oc_setItems() {
     $json[$i]['sort_order'] = $i; 
     $json[$i]['status'] = "0";//not enable
     $json[$i]['store_id'] = $_GET['store_id']; //tienda;
-    
-    $json[$i]['manufacturer'] = $item->{$this->KeyStr('product.manufacturer', $mapping)}; //CREATE A MANUFACTURE 
-    $json[$i]['category'] = $item->{$this->KeyStr('product.category', $mapping)}; //not enable    
-    $json[$i]['sub_category'] = $item->{$this->KeyStr('product.sub_category', $mapping)}; //not enable
+    $json[$i]['manufacturer'] = $item->{$this->KeyStr('manufacturer.name', $mapping)}; //CREATE A MANUFACTURE 
+    $json[$i]['category'] = $item->{$this->KeyStr('category.parent_id', $mapping)}; //not enable    
+    $json[$i]['sub_category'] = $item->{$this->KeyStr('category_description.name', $mapping)}; //not enable
     
   // die(json_encode($json, JSON_PRETTY_PRINT)); 
   
