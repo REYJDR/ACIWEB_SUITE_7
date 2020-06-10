@@ -2597,20 +2597,15 @@ public function oc_getOrders(){
 
      }
     
+
+    $check = $this->checkSOIns($order_id); 
+
+    if($check == 0)   $res[$order_id] = "[Orden importada correctamente]"; die();
   
-      switch ($this->checkSOIns($order_id)) {
-        case 1:
-          $res[$order_id] = "[Error insertando informacion de cabecera]";
-          die();
-          break;
-        case 2:
-          $res[$order_id] = "[Error insertando informacion de detalle]";
-          die();
-          break;
-          
-      }
-   
-      $res[$order_id] = "[Orden importada correctamente]";
+    if($check == 1)   $res[$order_id] = "[Error insertando informacion de cabecera]"; die();
+
+    if($check == 2)   $res[$order_id] = "[Error insertando informacion de cabecera]"; die();
+     
 
 
     }else{
