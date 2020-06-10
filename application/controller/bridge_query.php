@@ -2706,8 +2706,8 @@ public function oc_setItems() {
     $i = $i + 1;
 
   }
- die(json_encode($json, JSON_PRETTY_PRINT)); 
-  
+ die(json_encode($json[1], JSON_PRETTY_PRINT)); 
+
   //Execute curl
   $response = $this->do_curl_request('Default',$_GET['api_url'] ,$_GET['api_key'] ,$_GET['api_route'],json_encode($json, JSON_PRETTY_PRINT),'POST');
 
