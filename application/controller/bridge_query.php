@@ -2707,7 +2707,7 @@ public function oc_setItems() {
     $json[$i]['category'] = $item->{$this->KeyStr('category.parent_id', $mapping)}; //not enable    
     $json[$i]['sub_category'] = $item->{$this->KeyStr('category_description.name', $mapping)}; //not enable
     
-   die(json_encode($json, JSON_PRETTY_PRINT)); 
+  // die(json_encode($json, JSON_PRETTY_PRINT)); 
   
     $i = $i + 1;
     
