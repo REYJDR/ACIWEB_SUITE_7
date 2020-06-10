@@ -101,7 +101,13 @@ public function get_ProductsList(){
   A.LastUnitCost,
   A.TaxType,
   A.UPC_SKU,
-  A.GL_Sales_Acct
+  A.GL_Sales_Acct,
+  A.Custom_field1,
+  A.Custom_field2,
+  A.Custom_field3,
+  A.Custom_field4,
+  A.Custom_field5
+  
   FROM Products_Exp as A
   WHERE 
   A.IsActive="1"
@@ -2704,7 +2710,7 @@ public function oc_setItems() {
   // die(json_encode($json, JSON_PRETTY_PRINT)); 
   
     $i = $i + 1;
-    die($this->KeyStr('manufacturer.name', $mapping));
+    
   }
   
  die(json_encode($json[1], JSON_PRETTY_PRINT)); 
