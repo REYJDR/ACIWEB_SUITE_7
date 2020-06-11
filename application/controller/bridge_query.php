@@ -2443,6 +2443,7 @@ public function checkSOIns($SO_num){
 
 
     echo $res;
+    return $res;
 
 }
 
@@ -2618,9 +2619,7 @@ public function oc_getOrders(){
 
     }else{
 
-       die('test');
       $res[$order_id] = "Sales Order {$order_id} already exist on aciweb.";
-
 
     }
 
