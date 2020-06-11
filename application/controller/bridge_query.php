@@ -2524,7 +2524,7 @@ public function oc_getOrders(){
   
   $json['filter_order_id']= "";
   //$json['filter_status']= '5'; //estatus completado
-  $json['filter_has_invoices']= "1"; //factura asignada
+ // $json['filter_has_invoices']= "1"; //factura asignada
   $json['filter_store_id']= $_GET['store_id']; //tienda
   $json['start']= "0";
   $json['limit']= "0";
@@ -2554,7 +2554,7 @@ public function oc_getOrders(){
 
         'ID_compania'=>$this->model->id_compania,
         'SalesOrderNumber'=> $order_id,
-        'CustomerID'=>   $value->header->customer_id,
+        'CustomerID'=>   'OC-'$value->header->customer_id,
         'CustomerName'=> $value->header->firstname.' '.$value->header->lastname,
         'Subtotal'=> $value->header->subtotal ,
         'TaxID'=> '',
