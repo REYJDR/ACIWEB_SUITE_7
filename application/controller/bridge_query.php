@@ -2554,7 +2554,7 @@ public function oc_getOrders(){
 
         'ID_compania'=>$this->model->id_compania,
         'SalesOrderNumber'=> $order_id,
-        'CustomerID'=>   'OC-'$value->header->customer_id,
+        'CustomerID'=>   'OC-'.$value->header->customer_id,
         'CustomerName'=> $value->header->firstname.' '.$value->header->lastname,
         'Subtotal'=> $value->header->subtotal ,
         'TaxID'=> '',
