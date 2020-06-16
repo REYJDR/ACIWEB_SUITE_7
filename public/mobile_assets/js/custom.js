@@ -868,7 +868,7 @@ function checkNOTA(id){
 
     MSG_ERROR_RELEASE();
     
-    var x=document.getElementById(id).innerHTML;
+    var x=document.getElementById(id).value;
     
 
     if (!$.isNumeric(x)){
