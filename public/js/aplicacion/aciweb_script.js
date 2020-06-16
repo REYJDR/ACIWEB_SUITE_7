@@ -3,7 +3,7 @@
   navigator.serviceWorker
            .register('./service-worker.js')
            .then(function() { console.log('Service Worker Registered'); });
-} /*
+} */
 
 // ********************************************************
 // * Aciones cuando la pagina ya esta cargada
