@@ -1,21 +1,3 @@
-//SERVICE WORKER
-/*if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-             .register('./service-worker.js')
-             .then(function() { console.log('Service Worker Registered'); });
-  }
-  if ('serviceWorker' in navigator) {
-	navigator.serviceWorker.register('./service-worker.js', {scope: './'})
-	.then(function(reg) {
-	  // registration worked
-	  console.log('Registration succeeded. Scope is ' + reg.scope);
-	}).catch(function(error) {
-	  // registration failed
-	  console.log('Registration failed with ' + error);
-	});
-  }*/
-//
-
 
 
 
@@ -145,6 +127,7 @@ myApp.onPageInit('shop', function (page) {
 		});	
   
 })
+
 myApp.onPageInit('shopitem', function (page) {
 		$(".swipebox").swipebox();	
 		$('.qntyplusshop').click(function(e){
