@@ -271,7 +271,7 @@ if ($amnt_view_ck==0){
                                 </div>
                                 <!--existencias-->
 
-x
+
                                 <!--Cantidad-->
                                  <div class="form_row">
                                       <label>Cantidad</label>

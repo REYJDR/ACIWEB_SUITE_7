@@ -875,7 +875,7 @@ function checkNOTA(id){
     
         document.getElementById(id).innerHTML = x.slice(0,-1);
     
-        MSG_ERROR("Solo se permite caracteres especiales en este campo",0);
+        MSG_ERROR("Solo se permite carácteres númericos en este campo",0);
         
         
         return false;
