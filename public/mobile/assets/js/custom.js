@@ -184,7 +184,7 @@ function findprice(itemId, listID, id_price_field){
         url: link,
         data: datos,
         success: function(res){
-        console.log(res);
+       // console.log(res);
   
         if(res.trim()!=''){
   
@@ -192,7 +192,7 @@ function findprice(itemId, listID, id_price_field){
   
         }else{
   
-         console.log('yes');
+      //   console.log('yes');
          document.getElementById(id_price_field).value  = '';
          document.getElementById(id_price_field).setAttribute("contenteditable","");
   
@@ -476,7 +476,7 @@ var r = confirm('Desea procesar la orden?');
             url: link,
             data: datos,
             success: function(res){
-            console.log(res);
+            //console.log(res);
             OS_NO = res;
         }
 
@@ -549,7 +549,7 @@ function set_items(){
   
  if(cantLineas > 1){
 
-  console.log(cantLineas);
+//  console.log(cantLineas);
 
   while (i <= cantLineas-1){
   
@@ -613,7 +613,7 @@ function set_items(){
          if(itemId!=''){
   
           LineArray[i]=cell; 
-          console.log(cell);
+         // console.log(cell);
          }
   
   i++;       
