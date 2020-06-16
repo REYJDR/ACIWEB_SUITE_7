@@ -873,7 +873,7 @@ function checkNOTA(id){
 
     if (!$.isNumeric(x)){
     
-        document.getElementById(id).innerHTML = x.slice(0,-1);
+        document.getElementById(id).value = x.slice(0,-1);
     
         MSG_ERROR("Solo se permite carácteres númericos en este campo",0);
         
