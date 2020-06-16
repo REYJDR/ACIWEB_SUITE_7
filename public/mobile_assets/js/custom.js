@@ -75,7 +75,7 @@ function set_listprice(ID,mobile=''){
    var TaxID = e.options[e.selectedIndex].text;
 
 
-   console.log('TAX'+Taxval+'/'+TaxID);
+  
 
    set_taxid(Taxval,1);
   
@@ -142,7 +142,8 @@ $.ajax({
       data: {url:datos, item: itemId },
       success: function(res){
 
-        console.log(res);
+      
+        
 
        json = JSON.parse(res);
        document.getElementById(id_desc_field).value  = json.Description;
@@ -209,7 +210,7 @@ function findprice(itemId, listID, id_price_field){
         url: link,
         data: datos,
         success: function(res){
-        console.log(res);
+        //console.log(res);
   
         if(res.trim()!=''){
   
@@ -217,7 +218,7 @@ function findprice(itemId, listID, id_price_field){
   
         }else{
   
-         console.log('yes');
+         //console.log('yes');
          document.getElementById(id_price_field).value  = '';
          document.getElementById(id_price_field).setAttribute("contenteditable","");
   
@@ -342,15 +343,15 @@ function sumar_total(){
 
                      taxableID = theTbl.rows[i].cells[9].innerHTML;
 
-                     console.log('TAXABLE:'+taxableID);
+                     //console.log('TAXABLE:'+taxableID);
 
                       if( taxableID =='SI'){
                     
-                     console.log('TAX RATE:'+tax_value);
+                     //console.log('TAX RATE:'+tax_value);
 
                       itbms_sum = Number(theTbl.rows[i].cells[j].innerHTML) * Number(tax_value);
                     
-                    console.log('ITBMS:'+itbms_sum);
+                    //console.log('ITBMS:'+itbms_sum);
 
                       itbms.push(itbms_sum);
   
@@ -538,7 +539,7 @@ var r = confirm('Desea procesar la orden?');
                   url: link,
                   data: {url: 'ges_ventas/set_sales_order_header', Data : JSON.stringify(HeaderInfo)},
                   success: function(res){
-                  console.log(res);
+                  //console.log(res);
                   OS_NO = res;
                   }
                   });
@@ -611,7 +612,7 @@ function set_items(){
   
  if(cantLineas > 1){
 
-  console.log(cantLineas);
+  //console.log(cantLineas);
 
   while (i <= cantLineas-1){
   
@@ -677,7 +678,7 @@ function set_items(){
          if(itemId!=''){
   
           LineArray[i]=cell; 
-          console.log(cell);
+          //console.log(cell);
          }
   
   i++;       
@@ -722,7 +723,7 @@ function set_items(){
   
             alert("La orden se ha enviado con exito");
             location.reload();
-     //   console.log(link+'?url=ges_reportes/rep_so_detail/'+SalesOrderNumber);
+     //   //console.log(link+'?url=ges_reportes/rep_so_detail/'+SalesOrderNumber);
      //   window.open(link+'?url=ges_reportes/rep_so_detail/'+SalesOrderNumber,'_self');
   
   }
