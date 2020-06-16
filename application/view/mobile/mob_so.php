@@ -239,7 +239,7 @@ if ($amnt_view_ck==0){
                                 ?>
                                 <div class="form_row">
                                       <label>Precio Unitario</label>
-                                      <input type="text" class="form_input" id="unitprice"  name="unitprice" <?php echo $readonly;  ?> />
+                                      <input type="text" onkeyup="checkNumber(this.id);" class="form_input" id="unitprice"  name="unitprice" <?php echo $readonly;  ?> />
                                 </div>
                                  <!--UnitPrice item-->
 
@@ -271,7 +271,7 @@ if ($amnt_view_ck==0){
                                 </div>
                                 <!--existencias-->
 
-
+x
                                 <!--Cantidad-->
                                  <div class="form_row">
                                       <label>Cantidad</label>
