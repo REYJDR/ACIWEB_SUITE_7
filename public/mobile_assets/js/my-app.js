@@ -3,7 +3,7 @@
     navigator.serviceWorker
              .register('./service-worker.js')
              .then(function() { console.log('Service Worker Registered'); });
-  }*/
+  }
   if ('serviceWorker' in navigator) {
 	navigator.serviceWorker.register('./service-worker.js', {scope: './'})
 	.then(function(reg) {
@@ -13,7 +13,7 @@
 	  // registration failed
 	  console.log('Registration failed with ' + error);
 	});
-  }
+  }*/
 //
 
 

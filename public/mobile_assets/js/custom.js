@@ -860,4 +860,27 @@ function checkNOTA(id){
   
   }
   
+    // ********************************************************
+  // * checa si el valor introducido no es @
+  // ********************************************************
+  function checkNumber(id){
+
+    MSG_ERROR_RELEASE();
+    
+    var x=document.getElementById(id).innerHTML;
+    
+
+    if (!$.isNumeric(x)){
+    
+        document.getElementById(id).innerHTML = x.slice(0,-1);
+    
+        MSG_ERROR("Solo se permite caracteres especiales en este campo",0);
+        
+        
+        return false;
+
+      }
   
+  }
+  
+      
