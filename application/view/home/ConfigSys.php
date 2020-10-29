@@ -140,12 +140,12 @@ if (isset($_REQUEST['inventory'])) {
 		
 	}
 
-	// $reqConse = $this->model->Query_value('INV_CONF', 'req_conse' ,'where ID_compania="'.$this->model->id_compania.'"');
+	$reqConse = $this->model->Query_value('INV_CONF', 'req_conse' ,'where ID_compania="'.$this->model->id_compania.'"');
 
-	// if($reqConse != 0){ 
-	// 	$value  = array('req_conse' => $_POST['req_conse']);
-	// 	$this->model->update('INV_CONF',$value,' ID_compania="'.$this->model->id_compania.'"');
-	// }
+	if($reqConse != 0){ 
+		$value  = array('req_conse' => $_POST['req_conse']);
+		$this->model->update('INV_CONF',$value,' ID_compania="'.$this->model->id_compania.'"');
+	}
 
 
 	$this->CheckError();
@@ -728,7 +728,7 @@ foreach ($inv as $inv_val) {
   $inv_val= json_decode($inv_val);
 
   $inv_discount = $inv_val->{'inv_discount'};
-  $req_conse= = $inv_val->{'req_conse'};
+  $req_conse= $inv_val->{'req_conse'};
 
 }
 
