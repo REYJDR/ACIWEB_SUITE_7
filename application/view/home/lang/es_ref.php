@@ -239,14 +239,14 @@ $config_14_val17 = 'Descipcion';
 
 //INVENTARIO
 $config_27_title = 'Configuración de interfaz de inventario';
-$config_15_val1  = 'Descontar existencias sin facturar';
-$config_30 = 'Inicio de consecutivo de requsicines';
+$config_15_val1 = 'Descontar existencias sin facturar';
 $config_28_title = 'Opciones';
+$config_30 = 'Inicio de consecutivo de requsicines';
 //INVENTARIO
 
 
 //OPENCART
-$config_29_title = 'Conexiones con API de Opencart';
+$config_27_title = 'Conexiones con API de Opencart';
 //$config_15_val1 = 'Descontar existencias sin facturar';
 //$config_28_title = 'Opciones';
 //OPENCART
