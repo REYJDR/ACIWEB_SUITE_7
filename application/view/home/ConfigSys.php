@@ -123,7 +123,8 @@ if (isset($_REQUEST['sage50'])) {
 //ACTUALIZA DATOS DE INVENTARIO
 if (isset($_REQUEST['inventory'])) {
 	
-	$exist = $this->model->Query_value('INV_CONF', 'ID' ,'where ID_compania="'.$this->model->id_compania.'"');
+	//$exist = $this->model->Query_value('INV_CONF', 'ID' ,'where ID_compania="'.$this->model->id_compania.'"');
+	$exist = $this->model->Query_value('INV_CONF', 'ID' ,'where ID_compania="0"');
 
 	if($exist != ''){
 
