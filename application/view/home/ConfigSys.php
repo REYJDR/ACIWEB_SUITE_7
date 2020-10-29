@@ -123,29 +123,24 @@ if (isset($_REQUEST['sage50'])) {
 //ACTUALIZA DATOS DE INVENTARIO
 if (isset($_REQUEST['inventory'])) {
 	
-	//$exist = $this->model->Query_value('INV_CONF', 'ID' ,'where ID_compania="'.$this->model->id_compania.'"');
-	$exist = $this->model->Query_value('INV_CONF', 'ID' ,'where ID_compania="0"');
+	$exist = $this->model->Query_value('INV_CONF', 'ID' ,'where ID="1"');
+	//$exist = $this->model->Query_value('INV_CONF', 'ID' ,'where ID_compania="0"');
 
 	if($exist != ''){
 
 		if($_POST['inv_discount'] == 'on') { $inv_discount = 1 ;}else{ $inv_discount = 0 ;};
 
-		$value  = array('inv_discount' => $inv_discount );
-		$this->model->update('INV_CONF',$value,' ID_compania="'.$this->model->id_compania.'"');
+		$value  = array('inv_discount' => $inv_discount , 
+						'req_conse' => $_POST['req_conse'] ?? 0);
+						
+		$this->model->update('INV_CONF',$value,' ID="'.$exist.'"');
 
 	}else{
 		$value  = array('inv_discount' => $inv_discount ,
-						'ID_compania' => $this->model->id_compania);
+						'req_conse' => $_POST['req_conse'] ?? 0 );
 						
 		$this->model->insert('INV_CONF',$value);
 		
-	}
-
-	$reqConse = $this->model->Query_value('INV_CONF', 'req_conse' ," Where ID='{$exist}'");
-
-	if($reqConse != 0){ 
-		$value  = array('req_conse' => $_POST['req_conse']);
-		$this->model->update('INV_CONF',$value," ID='{$exist}'");
 	}
 
 
