@@ -1,8 +1,12 @@
 
 <?php
-require_once APP.'view/'.basename(__DIR__).'/lang/'.$this->model->lang.'_ref.php';
-?>
 
+
+error_reporting(0);
+require_once APP.'view/'.basename(__DIR__).'/lang/'.$this->model->lang.'_ref.php';
+
+
+?>
 
 
 
