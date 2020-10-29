@@ -986,8 +986,9 @@ $order = $this->Query_value('REQ_HEADER','NO_REQ','where ID_compania="'.$this->i
 
 list($ACI , $NO_ORDER) = explode('-', $order);
 
+$NO_ORDER = number_format($NO_ORDER, 0 , '', '')+1;
 
-$NO_ORDER = number_format((int)$NO_ORDER+1);
+//$NO_ORDER = number_format((int)$NO_ORDER+1);
 //$NO_ORDER = str_pad($NO_ORDER, 7 ,"0",STR_PAD_LEFT);
 
 $NO_ORDER = 'REQ-'.$NO_ORDER;
