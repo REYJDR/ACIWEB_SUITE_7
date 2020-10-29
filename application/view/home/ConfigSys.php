@@ -119,7 +119,6 @@ echo '<script> alert("Se ha actualizado con exito"); window.open("'.URL.'index.p
 //ACTUALIZA DATOS DE INVENTARIO
 if (isset($_REQUEST['inventory'])) {
 	
-
 $exist = $this->model->Query_value('INV_CONF', 'ID' ,'where ID_compania="'.$this->model->id_compania.'"');
 
 if($exist != ''){
@@ -136,6 +135,14 @@ if($exist != ''){
 	$this->model->insert('INV_CONF',$value);
 	
 }
+
+$reqConse = $this->model->Query_value('INV_CONF', 'req_conse' ,'where ID_compania="'.$this->model->id_compania.'"');
+
+if($reqConse != 0){ 
+	$value  = array('req_conse' => $_POST['req_conse');
+	$this->model->update('INV_CONF',$value,' ID_compania="'.$this->model->id_compania.'"');
+}
+
 
 $this->CheckError();
 

@@ -426,14 +426,14 @@ foreach ($data as $key => $value) {
    
 
   $value_to_set  = array( 
-    'ProductID' => $ITEMID, 
+    'ProductID'   => $ITEMID, 
     'DESCRIPCION' => $DESC,
-    'CANTIDAD' => $QTY,  
-    'UNIDAD' => $UNIT,  
-    'JOB' => $JOB_ID,  
-    'PHASE' => $PHASE_ID,
-    'CCOST' => $COST_ID,     
-    'NO_REQ' => $NO_REQ, 
+    'CANTIDAD'    => $QTY,  
+    'UNIDAD'      => $UNIT,  
+    'JOB'         => $JOB_ID,  
+    'PHASE'       => $PHASE_ID,
+    'CCOST'       => $COST_ID,     
+    'NO_REQ'      => $NO_REQ, 
     // 'ITEM_UNIQUE_NO' => $key.'@'.$ITEMID.'@'.$NO_REQ.'@'.$ITEMID.'@'.$this->model->id_compania.'@'.$PHASE_ID.'@'.$COST_ID,
     'ITEM_UNIQUE_NO' => $ITEMID.'@'.$NO_REQ.'@'.$ITEMID.'@'.$this->model->id_compania.'@'.$PHASE_ID.'@'.$COST_ID,
   
