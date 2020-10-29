@@ -105,74 +105,74 @@ echo '<script> alert("Se ha actualizado con exito"); window.open("'.URL.'index.p
 //ACTUALIZA DATOS DE COMPAÑIA 
 if (isset($_REQUEST['sage50'])) {
 	
-$value  = array('Sage_Conn' => $_POST['conn_sage'] );
+	$value  = array('Sage_Conn' => $_POST['conn_sage'] );
 
-$this->model->update('company_info',$value,' id="1" ');
-$this->CheckError();
+	$this->model->update('company_info',$value,' id="1" ');
+	$this->CheckError();
 
-unset($_REQUEST);
+	unset($_REQUEST);
 
-echo '<script> alert("Se ha actualizado con exito"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
+	echo '<script> alert("Se ha actualizado con exito"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
 
 }
 
 //ACTUALIZA DATOS DE INVENTARIO
 if (isset($_REQUEST['inventory'])) {
 	
-$exist = $this->model->Query_value('INV_CONF', 'ID' ,'where ID_compania="'.$this->model->id_compania.'"');
+	$exist = $this->model->Query_value('INV_CONF', 'ID' ,'where ID_compania="'.$this->model->id_compania.'"');
 
-if($exist != ''){
+	if($exist != ''){
 
-	if($_POST['inv_discount'] == 'on') { $inv_discount = 1 ;}else{ $inv_discount = 0 ;};
+		if($_POST['inv_discount'] == 'on') { $inv_discount = 1 ;}else{ $inv_discount = 0 ;};
 
-	$value  = array('inv_discount' => $inv_discount );
-	$this->model->update('INV_CONF',$value,' ID_compania="'.$this->model->id_compania.'"');
+		$value  = array('inv_discount' => $inv_discount );
+		$this->model->update('INV_CONF',$value,' ID_compania="'.$this->model->id_compania.'"');
 
-}else{
-	$value  = array('inv_discount' => $inv_discount ,
-					 'ID_compania' => $this->model->id_compania);
-					 
-	$this->model->insert('INV_CONF',$value);
-	
-}
+	}else{
+		$value  = array('inv_discount' => $inv_discount ,
+						'ID_compania' => $this->model->id_compania);
+						
+		$this->model->insert('INV_CONF',$value);
+		
+	}
 
-$reqConse = $this->model->Query_value('INV_CONF', 'req_conse' ,'where ID_compania="'.$this->model->id_compania.'"');
+	$reqConse = $this->model->Query_value('INV_CONF', 'req_conse' ,'where ID_compania="'.$this->model->id_compania.'"');
 
-if($reqConse != 0){ 
-	$value  = array('req_conse' => $_POST['req_conse');
-	$this->model->update('INV_CONF',$value,' ID_compania="'.$this->model->id_compania.'"');
-}
+	if($reqConse != 0){ 
+		$value  = array('req_conse' => $_POST['req_conse');
+		$this->model->update('INV_CONF',$value,' ID_compania="'.$this->model->id_compania.'"');
+	}
 
 
-$this->CheckError();
+	$this->CheckError();
 
-unset($_REQUEST);
+	unset($_REQUEST);
 
-echo '<script> alert("Se ha actualizado con exito"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
+	echo '<script> alert("Se ha actualizado con exito"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
 
 }
 
 //ACTUALIZA DATOS DE COMPAÑIA 
 if (isset($_REQUEST['comp'])) {
 
-$this->model->delete('company_info','');
+	$this->model->delete('company_info','');
 
-$value  = array(
-'id' => "1",
-'company_name' => $_POST['company'],
-'email' => $_POST['email_contact'],
-'address' => $_POST['address'],
-'Tel' => $_POST['tel1'],
-'Fax' => $_POST['tel2'],
-'lang' => $_POST['lang']);
+	$value  = array(
+	'id' => "1",
+	'company_name' => $_POST['company'],
+	'email' => $_POST['email_contact'],
+	'address' => $_POST['address'],
+	'Tel' => $_POST['tel1'],
+	'Fax' => $_POST['tel2'],
+	'lang' => $_POST['lang']);
 
 
-$this->model->insert('company_info',$value);
-$this->CheckError();
+	$this->model->insert('company_info',$value);
+	$this->CheckError();
 
-unset($_REQUEST);
+	unset($_REQUEST);
 
-echo '<script> alert("Se ha actualizado con exito"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
+	echo '<script> alert("Se ha actualizado con exito"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
 
 
 }
@@ -180,16 +180,16 @@ echo '<script> alert("Se ha actualizado con exito"); window.open("'.URL.'index.p
 //ACTUALIZA DATOS DE TAX 
 if (isset($_REQUEST['addTax'])) {
 	
-$value  = array(
-'taxid' => $_POST['idtax'],
-'rate' => $_POST['porc'],
- );
+	$value  = array(
+	'taxid' => $_POST['idtax'],
+	'rate' => $_POST['porc'],
+	);
 
 
-$this->model->INSERT('sale_tax',$value,'Where id="1";');
-$this->CheckError();
+	$this->model->INSERT('sale_tax',$value,'Where id="1";');
+	$this->CheckError();
 
-echo '<script> alert("El nuevo Tax se ha agregado con exito","ok"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
+	echo '<script> alert("El nuevo Tax se ha agregado con exito","ok"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
 
 
 }
@@ -197,18 +197,18 @@ echo '<script> alert("El nuevo Tax se ha agregado con exito","ok"); window.open(
 //ACTUALIZA terminos de pago 
 if (isset($_REQUEST['addTerm'])) {
 	
-$value  = array(
-'TermID' => $_POST['termId'],
-'DaysToPay' => $_POST['termDesc'],
-'TIPO' => $_POST['termType'],
-'ID_compania' => $this->model->id_compania 
- );
+	$value  = array(
+	'TermID' => $_POST['termId'],
+	'DaysToPay' => $_POST['termDesc'],
+	'TIPO' => $_POST['termType'],
+	'ID_compania' => $this->model->id_compania 
+	);
 
 
-$this->model->INSERT('CUST_PAY_TERM',$value);
-$this->CheckError();
+	$this->model->INSERT('CUST_PAY_TERM',$value);
+	$this->CheckError();
 
-echo '<script> alert("El nuevo termino de pago de agrego con exito","ok"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
+	echo '<script> alert("El nuevo termino de pago de agrego con exito","ok"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
 
 
 }
@@ -216,29 +216,29 @@ echo '<script> alert("El nuevo termino de pago de agrego con exito","ok"); windo
 //AGREGA DATOS DE IMPRESORA FISCAL
 if (isset($_REQUEST['addPrint'])) {
 
-$PRINTER = $_POST['serial'];
+	$PRINTER = $_POST['serial'];
 
-$value  = array(
-	'SERIAL' => $_POST['serial'],
-	'DESCRIPCION' => $_POST['printdesc']
- );
+	$value  = array(
+		'SERIAL' => $_POST['serial'],
+		'DESCRIPCION' => $_POST['printdesc']
+	);
 
- $DIR = "FISCAL/".$PRINTER."/IN/";
- $DIROUT = "FISCAL/".$PRINTER."/OUT/";
- $DIRERROR = "FISCAL/".$PRINTER."/ERROR/";
- 
- if (!file_exists($DIR)) {
- 
-	 mkdir($DIR, 0777, true);
-	 mkdir($DIROUT, 0777, true);
-	 mkdir($DIRERROR, 0777, true);
-	 
- }
- 
-$this->model->INSERT('INV_PRINT_CONF',$value);
-$this->CheckError();
+	$DIR = "FISCAL/".$PRINTER."/IN/";
+	$DIROUT = "FISCAL/".$PRINTER."/OUT/";
+	$DIRERROR = "FISCAL/".$PRINTER."/ERROR/";
+	
+	if (!file_exists($DIR)) {
+	
+		mkdir($DIR, 0777, true);
+		mkdir($DIROUT, 0777, true);
+		mkdir($DIRERROR, 0777, true);
+		
+	}
+	
+	$this->model->INSERT('INV_PRINT_CONF',$value);
+	$this->CheckError();
 
-echo '<script> alert("Se ha agredo con exito","ok"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
+	echo '<script> alert("Se ha agredo con exito","ok"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
 
 
 
@@ -334,24 +334,24 @@ if(isset($_REQUEST['mod'])){
 		}
 
 
-$value = array(
-	'mod_sales' => $mod_sales,
-	'mod_invo'  => $mod_invo,
-	'mod_fact'  => $mod_fact,
-	'mod_invt'  => $mod_invt,
-	'mod_rept'  => $mod_rept,
-	'mod_stock' => $mod_stock,
-	'mod_pro'   => $mod_pro,
-	'mod_req'   => $mod_req,
-    'mod_cust'  => $mod_cust);
+	$value = array(
+		'mod_sales' => $mod_sales,
+		'mod_invo'  => $mod_invo,
+		'mod_fact'  => $mod_fact,
+		'mod_invt'  => $mod_invt,
+		'mod_rept'  => $mod_rept,
+		'mod_stock' => $mod_stock,
+		'mod_pro'   => $mod_pro,
+		'mod_req'   => $mod_req,
+		'mod_cust'  => $mod_cust);
 
 
-$this->model->delete('MOD_MENU_CONF','');
-$this->model->insert('MOD_MENU_CONF',$value);
-$this->CheckError();
+	$this->model->delete('MOD_MENU_CONF','');
+	$this->model->insert('MOD_MENU_CONF',$value);
+	$this->CheckError();
 
 
-echo '<script> alert("Se ha actualizado los detalles con exito","ok"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
+	echo '<script> alert("Se ha actualizado los detalles con exito","ok"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
 
 }
 
@@ -360,34 +360,34 @@ echo '<script> alert("Se ha actualizado los detalles con exito","ok"); window.op
 //ACTUALIZO DATOS DE DETALLES DE FACTURACION
 if(isset($_POST['fact_detail_set'])){
 
-$fact_no_line = $_POST['fact_no_line'];
-$customField = $_POST['customField'];
-$ItemFilter= $_POST['filterField'];
+	$fact_no_line = $_POST['fact_no_line'];
+	$customField = $_POST['customField'];
+	$ItemFilter= $_POST['filterField'];
 
 
-$chk_cur_val =  $this->model->Query_value('FAC_DET_CONF','COUNT(*)','where ID_compania="'.$this->model->id_compania.'"');
+	$chk_cur_val =  $this->model->Query_value('FAC_DET_CONF','COUNT(*)','where ID_compania="'.$this->model->id_compania.'"');
 
-$values =  array( 
-'ID_compania' => $this->model->id_compania ,
-'CUSTOM_FIELD' => $customField, 
-'NO_LINES' => $fact_no_line ,
-'ITEMS_FILTER'  => $ItemFilter );
-
-
-
-if($chk_cur_val==1){
-	
-	
- $this->model->update('FAC_DET_CONF',$values, ' ID_compania="'.$this->model->id_compania .'"');
-
-}else{
- $this->model->insert('FAC_DET_CONF',$values);
-
-}
-$this->CheckError();
+	$values =  array( 
+	'ID_compania' => $this->model->id_compania ,
+	'CUSTOM_FIELD' => $customField, 
+	'NO_LINES' => $fact_no_line ,
+	'ITEMS_FILTER'  => $ItemFilter );
 
 
-echo '<script> alert("Se ha actualizado los detalles con exito","ok"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
+
+	if($chk_cur_val==1){
+		
+		
+	$this->model->update('FAC_DET_CONF',$values, ' ID_compania="'.$this->model->id_compania .'"');
+
+	}else{
+	$this->model->insert('FAC_DET_CONF',$values);
+
+	}
+	$this->CheckError();
+
+
+	echo '<script> alert("Se ha actualizado los detalles con exito","ok"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
 
 
 
@@ -396,36 +396,36 @@ echo '<script> alert("Se ha actualizado los detalles con exito","ok"); window.op
 //ACTUALIZO DATOS DE DETALLES DE CUENTAS GL
 if(isset($_POST['CTAS_GL'])){
 
-$cta_gl_cxp = $_POST['cta_gl_cxp'];
-$cta_gl_pur = $_POST['cta_gl_pur'];
-$cta_gl_tax = $_POST['cta_gl_tax'];
-$cta_gl_acct = $_POST['Glacct'];
-$cta_gl_aract = $_POST['ARACNT'];
-$cta_gl_devnc = $_POST['ctadev'];
-$cta_gl_reten = $_POST['GL_RETEN'];
+	$cta_gl_cxp = $_POST['cta_gl_cxp'];
+	$cta_gl_pur = $_POST['cta_gl_pur'];
+	$cta_gl_tax = $_POST['cta_gl_tax'];
+	$cta_gl_acct = $_POST['Glacct'];
+	$cta_gl_aract = $_POST['ARACNT'];
+	$cta_gl_devnc = $_POST['ctadev'];
+	$cta_gl_reten = $_POST['GL_RETEN'];
 
-$chk_cur_val =  $this->model->Query_value('CTA_GL_CONF','ID','where ID_compania="'.$this->model->id_compania .'"');
+	$chk_cur_val =  $this->model->Query_value('CTA_GL_CONF','ID','where ID_compania="'.$this->model->id_compania .'"');
 
-$values =  array( 'ID_compania' => $this->model->id_compania , 
-	              'CTA_CXP' => $cta_gl_cxp,
-	              'CTA_PUR' => $cta_gl_pur,
-	              'CTA_TAX' => $cta_gl_tax,
-	              'GLACCT' => $cta_gl_acct,
-	              'CTA_CXC' => $cta_gl_aract,
-				  'CTA_DEV' => $cta_gl_devnc,
-				  'GL_RETEN' => $cta_gl_reten
-	              );
+	$values =  array( 'ID_compania' => $this->model->id_compania , 
+					'CTA_CXP' => $cta_gl_cxp,
+					'CTA_PUR' => $cta_gl_pur,
+					'CTA_TAX' => $cta_gl_tax,
+					'GLACCT' => $cta_gl_acct,
+					'CTA_CXC' => $cta_gl_aract,
+					'CTA_DEV' => $cta_gl_devnc,
+					'GL_RETEN' => $cta_gl_reten
+					);
 
-if($chk_cur_val!=''){
- $this->model->update('CTA_GL_CONF',$values, 'where ID_compania="'.$this->model->id_compania .'"');
-}else{
- $this->model->insert('CTA_GL_CONF',$values);
-}
+	if($chk_cur_val!=''){
+	$this->model->update('CTA_GL_CONF',$values, 'where ID_compania="'.$this->model->id_compania .'"');
+	}else{
+	$this->model->insert('CTA_GL_CONF',$values);
+	}
 
-$this->CheckError();
+	$this->CheckError();
 
 
-echo '<script> alert("Se ha actualizado los detalles con exito","ok"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
+	echo '<script> alert("Se ha actualizado los detalles con exito","ok"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
 
 
 }
@@ -459,77 +459,77 @@ if(isset($_POST['saveDB'])){
 
 if (isset($_POST['Adduser'])){
 
-$mail=$_POST['mail'];
-$name=$_POST['name'];
-$lastname=$_POST['lastname'];
-$pass=$_POST['pass_1'];
-$role=$_POST['role'];
-//$cliente_name = $_POST['cliente_id'];
+	$mail=$_POST['mail'];
+	$name=$_POST['name'];
+	$lastname=$_POST['lastname'];
+	$pass=$_POST['pass_1'];
+	$role=$_POST['role'];
+	//$cliente_name = $_POST['cliente_id'];
 
-$mail_verify = $this->model->Query_value('SAX_USER','email',"where email='".$mail."' and onoff='1'");
+	$mail_verify = $this->model->Query_value('SAX_USER','email',"where email='".$mail."' and onoff='1'");
 
-//echo $mail_verify;
+	//echo $mail_verify;
 
-if (!$mail_verify){
+	if (!$mail_verify){
 
-$pass = md5($pass);
+	$pass = md5($pass);
 
-$this->model->Query("INSERT INTO SAX_USER (name,lastname,email,pass,role) values ('".$name."','".$lastname."','".$mail."','".$pass."','".$role."')");
-
-$this->CheckError();
-
-
-echo '<script> alert("Se ha agregado el usuario con exito","ok"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
-
-
-}else{ 
-	
-echo '<script> MSG_ERROR("El correo indicado ya existe","0"); </script>';
-	
-}
-
-} 
-
-if(isset($_POST['oc_info'])){
-	$this->model->delete('API_OPENCART_KEYS','where id=1');
-
-	$this->model->Query("INSERT INTO API_OPENCART_KEYS (id,url,apikey) values ('1','{$_POST['url']}','{$_POST['key']}')");
+	$this->model->Query("INSERT INTO SAX_USER (name,lastname,email,pass,role) values ('".$name."','".$lastname."','".$mail."','".$pass."','".$role."')");
 
 	$this->CheckError();
 
-	echo '<script> alert("Se ha agregado la configuración con exito","ok"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
+
+	echo '<script> alert("Se ha agregado el usuario con exito","ok"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
 
 
-}
+	}else{ 
+		
+	echo '<script> MSG_ERROR("El correo indicado ya existe","0"); </script>';
+		
+	}
+
+	} 
+
+	if(isset($_POST['oc_info'])){
+		$this->model->delete('API_OPENCART_KEYS','where id=1');
+
+		$this->model->Query("INSERT INTO API_OPENCART_KEYS (id,url,apikey) values ('1','{$_POST['url']}','{$_POST['key']}')");
+
+		$this->CheckError();
+
+		echo '<script> alert("Se ha agregado la configuración con exito","ok"); window.open("'.URL.'index.php?url=home/config_sys","_self");</script>';
 
 
-//////LLAMADAS DE DATOS
-//RECUPERO INFO DE CUENTAS GL
-$CTA_CXP = $this->model->Query_value('CTA_GL_CONF','CTA_CXP','WHERE ID_compania="'.$this->model->id_compania.'"');
-$CTA_PUR = $this->model->Query_value('CTA_GL_CONF','CTA_PUR','WHERE ID_compania="'.$this->model->id_compania.'"');
-$CTA_TAX = $this->model->Query_value('CTA_GL_CONF','CTA_TAX','WHERE ID_compania="'.$this->model->id_compania.'"');
-$CTA_GLACCT = $this->model->Query_value('CTA_GL_CONF','GLACCT','WHERE ID_compania="'.$this->model->id_compania.'"');
-$CTA_ARACNT = $this->model->Query_value('CTA_GL_CONF','CTA_CXC','WHERE ID_compania="'.$this->model->id_compania.'"');
-$CTA_DEV = $this->model->Query_value('CTA_GL_CONF','CTA_DEV','WHERE ID_compania="'.$this->model->id_compania.'"');
-$GL_RETEN = $this->model->Query_value('CTA_GL_CONF','GL_RETEN','WHERE ID_compania="'.$this->model->id_compania.'"');
+	}
 
-//RECUPERO INFO DE MODULOS
-$SQL = 'SELECT * FROM MOD_MENU_CONF';
 
-$MOD_MENU = $this->model->Query($SQL);
+	//////LLAMADAS DE DATOS
+	//RECUPERO INFO DE CUENTAS GL
+	$CTA_CXP = $this->model->Query_value('CTA_GL_CONF','CTA_CXP','WHERE ID_compania="'.$this->model->id_compania.'"');
+	$CTA_PUR = $this->model->Query_value('CTA_GL_CONF','CTA_PUR','WHERE ID_compania="'.$this->model->id_compania.'"');
+	$CTA_TAX = $this->model->Query_value('CTA_GL_CONF','CTA_TAX','WHERE ID_compania="'.$this->model->id_compania.'"');
+	$CTA_GLACCT = $this->model->Query_value('CTA_GL_CONF','GLACCT','WHERE ID_compania="'.$this->model->id_compania.'"');
+	$CTA_ARACNT = $this->model->Query_value('CTA_GL_CONF','CTA_CXC','WHERE ID_compania="'.$this->model->id_compania.'"');
+	$CTA_DEV = $this->model->Query_value('CTA_GL_CONF','CTA_DEV','WHERE ID_compania="'.$this->model->id_compania.'"');
+	$GL_RETEN = $this->model->Query_value('CTA_GL_CONF','GL_RETEN','WHERE ID_compania="'.$this->model->id_compania.'"');
 
-foreach ($MOD_MENU as $value) {
+	//RECUPERO INFO DE MODULOS
+	$SQL = 'SELECT * FROM MOD_MENU_CONF';
 
-$value = json_decode($value);
+	$MOD_MENU = $this->model->Query($SQL);
 
-if($value->{'mod_sales'}=='1'){ $mod_sales_CK = 'checked'; }else{ $mod_sales_CK = '';  }
-if($value->{'mod_invo'}=='1'){  $mod_invo_CK  = 'checked'; }else{ $mod_invo_CK = '';  } 
-if($value->{'mod_fact'}=='1'){ $mod_fact_CK  = 'checked'; }else{ $mod_fact_CK = '';  }
-if($value->{'mod_invt'}=='1'){ $mod_invt_CK = 'checked'; }else{ $mod_invt_CK  = '';  }
-if($value->{'mod_req'}=='1'){ $mod_req_CK = 'checked'; }else{ $mod_req_CK  = '';  }
-if($value->{'mod_rept'}=='1'){ $mod_rept_CK = 'checked'; }else{ $mod_rept_CK = '';  }
-if($value->{'mod_stock'}=='1'){$mod_stoc_CK = 'checked'; }else{ $mod_stoc_CK = '';  }
-if($value->{'mod_cust'}=='1'){  $mod_cust_CK  = 'checked'; }else{ $mod_cust_CK = '';  } 
+	foreach ($MOD_MENU as $value) {
+
+	$value = json_decode($value);
+
+	if($value->{'mod_sales'}=='1'){ $mod_sales_CK = 'checked'; }else{ $mod_sales_CK = '';  }
+	if($value->{'mod_invo'}=='1'){  $mod_invo_CK  = 'checked'; }else{ $mod_invo_CK = '';  } 
+	if($value->{'mod_fact'}=='1'){ $mod_fact_CK  = 'checked'; }else{ $mod_fact_CK = '';  }
+	if($value->{'mod_invt'}=='1'){ $mod_invt_CK = 'checked'; }else{ $mod_invt_CK  = '';  }
+	if($value->{'mod_req'}=='1'){ $mod_req_CK = 'checked'; }else{ $mod_req_CK  = '';  }
+	if($value->{'mod_rept'}=='1'){ $mod_rept_CK = 'checked'; }else{ $mod_rept_CK = '';  }
+	if($value->{'mod_stock'}=='1'){$mod_stoc_CK = 'checked'; }else{ $mod_stoc_CK = '';  }
+	if($value->{'mod_cust'}=='1'){  $mod_cust_CK  = 'checked'; }else{ $mod_cust_CK = '';  } 
 
 }
 
@@ -724,7 +724,7 @@ foreach ($inv as $inv_val) {
   $inv_val= json_decode($inv_val);
 
   $inv_discount = $inv_val->{'inv_discount'};
-
+  $req_conse= = $inv_val->{'req_conse'};
 
 }
 
