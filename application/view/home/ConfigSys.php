@@ -136,12 +136,12 @@ if (isset($_REQUEST['inventory'])) {
 		
 	}
 
-	$reqConse = $this->model->Query_value('INV_CONF', 'req_conse' ,'where ID_compania="'.$this->model->id_compania.'"');
+	// $reqConse = $this->model->Query_value('INV_CONF', 'req_conse' ,'where ID_compania="'.$this->model->id_compania.'"');
 
-	if($reqConse != 0){ 
-		$value  = array('req_conse' => $_POST['req_conse']);
-		$this->model->update('INV_CONF',$value,' ID_compania="'.$this->model->id_compania.'"');
-	}
+	// if($reqConse != 0){ 
+	// 	$value  = array('req_conse' => $_POST['req_conse']);
+	// 	$this->model->update('INV_CONF',$value,' ID_compania="'.$this->model->id_compania.'"');
+	// }
 
 
 	$this->CheckError();
