@@ -716,7 +716,7 @@ echo     '<input type="hidden" id="api_key" value="'.$oc_key.'" />';
 
 
 //recupero datos de inventario
-$sql = 'SELECT * FROM INV_CONF WHERE  ID_compania="'.$this->model->id_compania.'"';
+$sql = 'SELECT * FROM INV_CONF  WHERE  ID="1"';
 
 $inv= $this->model->Query($sql);
 
