@@ -595,8 +595,7 @@ openCity(event, 'Config1');
 					<table class="table_form">
 						<tbody>
 						<tr><th><strong><?php echo $config_15_val1; ?></strong></th><td><input type="CHECKBOX" name="inv_discount" <?php echo  $inv_discount; ?> /></td></tr>
-						<!-- <tr><th><strong><?php echo $config_30; ?></strong></th><td>REQ-<input type="number" name="req_conse" value="<?php echo  $req_conse; ?>"/></td></tr> -->
-
+					
 						</tbody>
 					</table> 
 			</fieldset>
