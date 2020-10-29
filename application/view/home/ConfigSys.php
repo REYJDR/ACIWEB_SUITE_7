@@ -1,9 +1,8 @@
 
 <?php
 
-// Same as error_reporting(E_ALL);
-ini_set('error_reporting', E_ALL);
-error_reporting(0);
+
+
 require_once APP.'view/'.basename(__DIR__).'/lang/'.$this->model->lang.'_ref.php';
 
 
