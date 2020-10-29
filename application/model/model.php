@@ -983,10 +983,9 @@ return $NO_ORDER;
 public function Get_Req_No(){
    
 
-$START_ON = $this->model->Query_value('INV_CONF', 'req_conse' ,'where ID="1"'); 
+$START_ON = $this->Query_value('INV_CONF', 'req_conse' ,' where ID="1"'); 
 
 $START_ON = number_format($START_ON, 0 , '', '');
-
 
 
 $order = $this->Query_value('REQ_HEADER','NO_REQ','where ID_compania="'.$this->id_compania.'" ORDER BY ID DESC LIMIT 1');
@@ -1003,11 +1002,9 @@ if($actual < 0 ){
     $NO_ORDER = number_format($NO_ORDER, 0 , '', '')+1;
 }
 
-
-
-
-
+$NO_ORDER = number_format($NO_ORDER, 0 , '', '')+1;
 $NO_ORDER = 'REQ-'.$NO_ORDER;
+
 
 if($NO_ORDER< '1'){
 
