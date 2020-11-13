@@ -82,7 +82,7 @@ public function get_ProductsCodeMobile($company){
   
   
       $sql =  'SELECT ProductID , 
-                      SalesDescription ,
+                      IFNULL(SalesDescription, "no description") as SalesDescription ,
                       QtyOnHand, 
                       (SELECT SUM(QTY) from STOCK_ITEMS_LOCATION WHERE itemId = ProductID ) as QtyStock
                 FROM  Products_Exp 
