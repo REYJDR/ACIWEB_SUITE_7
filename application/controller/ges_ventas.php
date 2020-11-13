@@ -47,11 +47,11 @@ public function mob_orden_ventas(){
   
   
    $res = $this->model->verify_session();
-  
+   $company = $this->model->id_compania;
 
           if($res=='0'){
             
-            $items = $this->get_ProductsCodeMobile();
+            $items = $this->get_ProductsCodeMobile($company);
             echo $items; die;
            // load views
             require APP . 'view/_templates/mob_header.php';  
@@ -63,10 +63,10 @@ public function mob_orden_ventas(){
             
    }
 
-public function get_ProductsCodeMobile(){
+public function get_ProductsCodeMobile($company){
 
   
-  $itemFilter = $this->model->Query_value('FAC_DET_CONF','ITEMS_FILTER','WHERE ID_compania="'.$this->model->id_compania.'"');
+  $itemFilter = $this->model->Query_value('FAC_DET_CONF','ITEMS_FILTER','WHERE ID_compania="'.$company.'"');
   
   if($itemFilter){
   
@@ -85,7 +85,7 @@ public function get_ProductsCodeMobile(){
                       (SELECT SUM(QTY) from STOCK_ITEMS_LOCATION WHERE itemId = ProductID ) as QtyStock
                 FROM  Products_Exp 
                 
-                WHERE id_compania="'.$this->model->id_compania.'" '.$clause;    
+                WHERE id_compania="'.$company.'" '.$clause;    
   
   
   
