@@ -66,7 +66,7 @@ public function mob_orden_ventas(){
 
 public function get_ProductsCodeMobile($company){
 
-  echo 'test';
+ 
   
   $itemFilter = $this->model->Query_value('FAC_DET_CONF','ITEMS_FILTER','WHERE ID_compania="'.$company.'"');
   
@@ -90,7 +90,7 @@ public function get_ProductsCodeMobile($company){
                 WHERE id_compania="'.$company.'" '.$clause;    
   
   
-  
+  echo $sql;
   $Codigos = $this->model->Query($sql);
   
   foreach ($Codigos as $value) {
