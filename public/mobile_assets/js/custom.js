@@ -13,11 +13,6 @@ var id_qtyonhand_field = 'qtyonhand';
 //variable globales
 
 window.addEventListener("load", function(){
-  var e = document.getElementById("taxid");
-  var Taxval = e.options[e.selectedIndex].value;
-  var TaxID = e.options[e.selectedIndex].text;
- 
-  set_taxid(Taxval,1);
 
 });
 
@@ -96,6 +91,11 @@ function set_listprice(ID,mobile=''){
   
   //    });
   
+  var e = document.getElementById("taxid");
+  var Taxval = e.options[e.selectedIndex].value;
+  var TaxID = e.options[e.selectedIndex].text;
+ 
+  set_taxid(Taxval,1);
 
 
   
