@@ -69,7 +69,7 @@ function set_listprice(ID,mobile=''){
   
   // var datos= "bridge_query/get_Cust_info";
   
-  // var link= URL+"index.php";
+  //  var link= URL+"index.php";
   
   //   $.ajax({
   
@@ -152,7 +152,7 @@ function addItemList(mobile=''){
 function SetDesc(itemId){
 
 
-  var listID =  document.getElementById('listID').value;
+  var listID =  '';
   var datos= "bridge_query/get_ProductsInfoMob/";
 
   var link = URL+"index.php";
@@ -173,8 +173,6 @@ function SetDesc(itemId){
         document.getElementById(id_desc_field).value  = json.Description;
         document.getElementById(id_unit_field).value  = json.UnitMeasure;  
         document.getElementById(id_price_field).value  = json.Price1;
-
-
         document.getElementById(id_qtyonhand_field).value  = json.QtyOnHand;
 
         stock_val = json.QtyOnHand;
@@ -195,31 +193,31 @@ function SetDesc(itemId){
   });
 
 
-  setTimeout(function(){
+  // setTimeout(function(){
 
-      if(listID!=''){
+  //     if(listID!=''){
 
-      findprice(itemId, listID, id_price_field);
+  //      findprice(itemId, listID, id_price_field);
 
-      }else{
+  //     }else{
 
-      //document.getElementById(id_price_field).value  = Price;
+  //     //document.getElementById(id_price_field).value  = Price;
 
-      }
+  //     }
 
-      if(itemId==''){
+  //     if(itemId==''){
 
-          document.getElementById(id_qty_field).value  = '';
-          unit_val  = '';
-          document.getElementById(id_desc_field).value  = '';
-          taxable_val = '';
-          document.getElementById(id_price_field).value  = '';
-          stock_val = '';
+  //         document.getElementById(id_qty_field).value  = '';
+  //         unit_val  = '';
+  //         document.getElementById(id_desc_field).value  = '';
+  //         taxable_val = '';
+  //         document.getElementById(id_price_field).value  = '';
+  //         stock_val = '';
 
-        document.getElementById(id_qtyonhand_field).value  = '';
-    }
+  //       document.getElementById(id_qtyonhand_field).value  = '';
+  //   }
 
-  },500);
+  // },500);
 
 }
 
