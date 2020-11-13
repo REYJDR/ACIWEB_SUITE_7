@@ -132,7 +132,7 @@ if ($amnt_view_ck==0){
                                     </div>
                                   </div>
                                   <select  id="taxid" name="taxid" class="select col-lg-12" onchange="set_taxid(this.value,2);" required>
-                                  <option selected disabled>Seleccionar tax id</option>
+                                  <!-- <option selected disabled>Seleccionar tax id</option> -->
 
                                   <?php  
 
