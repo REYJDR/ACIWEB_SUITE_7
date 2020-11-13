@@ -155,7 +155,7 @@ function SetDesc(itemId){
   var listID =  document.getElementById('listID').value;
   var datos= "bridge_query/get_ProductsInfoMob/";
 
-
+  var link = URL+"index.php";
   stock_val='';
 
 

@@ -81,7 +81,7 @@ public function get_ProductsCodeMobile($company){
   
   
   
-      $sql =  'SELECT ProductID , 
+  $sql =  'SELECT ProductID , 
                       IFNULL(SalesDescription, "no description") as SalesDescription ,
                       QtyOnHand, 
                       (SELECT SUM(QTY) from STOCK_ITEMS_LOCATION WHERE itemId = ProductID ) as QtyStock
@@ -94,7 +94,6 @@ public function get_ProductsCodeMobile($company){
            .'<option  val="0" selected disabled>Seleccionar item</option>';
   
                     
-  
                   
   $Codigos = $this->model->Query($sql);
   
