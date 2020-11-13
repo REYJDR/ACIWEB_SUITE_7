@@ -1,3 +1,6 @@
+<!-- CUSTOM  JS --> 
+<script type="text/javascript" src="<?php echo URL; ?>mobile_assets/js/so.js"></script>
+
 <?php $amnt_view_ck = $this->model->Query_value('SAX_USER','amountSO','where SAX_USER.onoff="1" and SAX_USER.id="'.$this->model->active_user_id.'"');
 
 echo '<input type="hidden" id="ANMT_VIEW" value="'.$amnt_view_ck.'" />'; 

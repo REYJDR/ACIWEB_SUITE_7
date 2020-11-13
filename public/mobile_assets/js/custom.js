@@ -13,20 +13,6 @@ var id_qtyonhand_field = 'qtyonhand';
 //variable globales
 
 
-window.addEventListener("load", function(){
-   spin_show();
-
-   addItemList('');
-
-   var e = document.getElementById("taxid");
-   var Taxval = e.options[e.selectedIndex].value;
-   var TaxID = e.options[e.selectedIndex].text;
-  
-   set_taxid(Taxval,1);
-
-   spin_hide();
-});
-
 
 //INI FUNCION DE SPIN MOSTRAR Y APAGAR
 function spin_show(){
