@@ -212,6 +212,8 @@ if ($amnt_view_ck==0){
                                     <div class="item-after">Seleccionar item</div>
                                     </div>
                                   </div>
+                                  <option selected disabled>Seleccionar tax id</option>
+
                                   <?php echo $items; ?>
                                      <!-- <div id="listSelect" ></div> -->
                                   </a>

@@ -90,7 +90,12 @@ public function get_ProductsCodeMobile($company){
                 WHERE id_compania="'.$company.'" '.$clause;    
   
   
-  echo $sql;
+  $codes .= '<select class="selectItems col-lg-12" id="selItem" onchange="SetDesc(this.value,1)" >'
+           .'<option  val="0" selected disabled>Seleccionar item</option>';
+  
+                    
+  
+                  
   $Codigos = $this->model->Query($sql);
   
   foreach ($Codigos as $value) {
@@ -100,6 +105,9 @@ public function get_ProductsCodeMobile($company){
     $codes .= '<option value="'.$value->{'ProductID'}.'">('.$value->{'ProductID'}.') - '.$value->{'SalesDescription'}.' / Inv: '.number_format($value->{'QtyStock'}, 2, '.', '').'</option>';
   
    } 
+   $codes .='</select>';
+
+
   
   return $codes;
   
