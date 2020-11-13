@@ -51,16 +51,10 @@ public function mob_orden_ventas(){
 
           if($res=='0'){
 
-            echo  '<script> alert("processing"); </script>';
-            require APP . 'view/_templates/mob_header.php'; 
-           
-
             $items = $this->get_ProductsCodeMobile($company);
-            
-            
-  
+           
            // load views
-             
+            require APP . 'view/_templates/mob_header.php'; 
             require APP . 'view/mobile/mob_so.php';  
           }else{
 
