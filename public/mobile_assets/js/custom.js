@@ -13,13 +13,12 @@ var id_qtyonhand_field = 'qtyonhand';
 //variable globales
 
 window.addEventListener("load", function(){
-  // spin_show();
+  var e = document.getElementById("taxid");
+  var Taxval = e.options[e.selectedIndex].value;
+  var TaxID = e.options[e.selectedIndex].text;
+ 
+  set_taxid(Taxval,1);
 
-  // addItemList('');
-
-
-
-  // spin_hide();
 });
 
 //INI FUNCION DE SPIN MOSTRAR Y APAGAR
@@ -98,15 +97,7 @@ function set_listprice(ID,mobile=''){
   //    });
   
 
-  var e = document.getElementById("taxid");
-  var Taxval = e.options[e.selectedIndex].value;
-  var TaxID = e.options[e.selectedIndex].text;
- 
-  set_taxid(Taxval,1);
 
-
-
-  // set_taxid(Taxval,1);
   
 }
 
@@ -157,7 +148,7 @@ function SetDesc(itemId){
 
   URL = document.getElementById('URL').value;
   link = URL+"index.php";
-  
+
   stock_val='';
 
 
