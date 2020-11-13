@@ -51,7 +51,7 @@ public function mob_orden_ventas(){
 
           if($res=='0'){
             require APP . 'view/_templates/mob_header.php'; 
-            echo = '<div class="modal fade" id="procesing" tabindex="-1" role="dialog" aria-labelledby="procesing" aria-hidden="true">
+            echo  '<div class="modal fade" id="procesing" tabindex="-1" role="dialog" aria-labelledby="procesing" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
            
