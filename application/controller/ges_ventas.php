@@ -52,6 +52,7 @@ public function mob_orden_ventas(){
           if($res=='0'){
             
             $items = $this->get_ProductsCodeMobile($company);
+            
             echo $items; die;
            // load views
             require APP . 'view/_templates/mob_header.php';  
@@ -65,6 +66,7 @@ public function mob_orden_ventas(){
 
 public function get_ProductsCodeMobile($company){
 
+  echo 'test';
   
   $itemFilter = $this->model->Query_value('FAC_DET_CONF','ITEMS_FILTER','WHERE ID_compania="'.$company.'"');
   
