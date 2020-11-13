@@ -50,9 +50,8 @@ public function mob_orden_ventas(){
    $company = $this->model->id_compania;
 
           if($res=='0'){
-
-            echo = '
-            <div class="modal fade" id="procesing" tabindex="-1" role="dialog" aria-labelledby="procesing" aria-hidden="true">
+            require APP . 'view/_templates/mob_header.php'; 
+            echo = '<div class="modal fade" id="procesing" tabindex="-1" role="dialog" aria-labelledby="procesing" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
            
@@ -76,7 +75,7 @@ public function mob_orden_ventas(){
             
   
            // load views
-            require APP . 'view/_templates/mob_header.php';  
+             
             require APP . 'view/mobile/mob_so.php';  
           }else{
 
