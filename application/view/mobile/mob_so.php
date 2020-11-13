@@ -14,7 +14,8 @@ if ($amnt_view_ck==0){
 
 ?>
 
-
+<div class="loader"></div>
+<div id="allDocument">
 <!-- contenido -->	
 
 <input type="hidden" id='URL' value="<?php ECHO URL; ?>" />
@@ -59,7 +60,9 @@ if ($amnt_view_ck==0){
                                     <div class="item-after">Seleccionar cliente</div>
                                     </div>
                                   </div>
-                                    <select  id="customer" name="selectors" class="select col-lg-8" onchange="set_listprice(this.value,1);" required>
+                                  <!-- onchange="set_listprice(this.value,1);" -->
+                                    <select  id="customer" name="selectors" class="select col-lg-8"  required>
+                                   
                                     <option selected disabled>Seleccionar cliente</option>
                                       <?php  
                                           $CUST = $this->model->get_ClientList(); 
@@ -81,7 +84,7 @@ if ($amnt_view_ck==0){
                                   
                                               }
                                       ?>
-                                  </select>  
+                                   </select>  
                                   </a>
                                 </div>
                               <!--cliente-->
@@ -342,6 +345,9 @@ if ($amnt_view_ck==0){
               </div>
             
 <!-- contenido -->
+</div>
+
+
     </div>
   </div>
 </div>

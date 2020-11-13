@@ -1,3 +1,4 @@
+
 //variables globales -->
 var id_desc_field = 'desc';
 var id_unit_field = 'unit';
@@ -11,6 +12,43 @@ var id_qtyonhand_field = 'qtyonhand';
 
 //variable globales
 
+
+window.addEventListener("load", function(){
+   spin_show();
+
+   addItemList('');
+
+   var e = document.getElementById("taxid");
+   var Taxval = e.options[e.selectedIndex].value;
+   var TaxID = e.options[e.selectedIndex].text;
+  
+   set_taxid(Taxval,1);
+
+   spin_hide();
+});
+
+
+//INI FUNCION DE SPIN MOSTRAR Y APAGAR
+function spin_show(){
+  
+      //TERMINA SPIN/////////////////////////////////////////////////////
+      document.getElementById("allDocument").style.visibility = "hidden";
+      $('.miniSpiner').show();
+      ////////////////////////////////////////////////////////////////////
+  
+  
+  }
+  
+function spin_hide(){
+  
+      //TERMINA SPIN/////////////////////////////////////////////////////
+      $('.miniSpiner').hide();
+      document.getElementById("allDocument").style.visibility = "visible";
+      ////////////////////////////////////////////////////////////////////
+  
+    
+  }
+  //FIN FUNCION DE SPIN MOSTRAR Y APAGAR
 
 
 
@@ -34,74 +72,63 @@ function logout(URL){
 
 function set_listprice(ID,mobile=''){
 
-  URL = document.getElementById('URL').value;
+  // URL = document.getElementById('URL').value;
   
-  var datos= "bridge_query/get_Cust_info";
+  // var datos= "bridge_query/get_Cust_info";
   
-  var link= URL+"index.php";
+  // var link= URL+"index.php";
   
-    $.ajax({
+  //   $.ajax({
   
-        type: "GET",
-        url: link,
-        data:{url:datos,id : ID},
-        success: function(res){
-          res = JSON.parse(res);
-          document.getElementById('listID').value = res.Custom_field4;
-          }
+  //       type: "GET",
+  //       url: link,
+  //       data:{url:datos,id : ID},
+  //       success: function(res){
+  //         res = JSON.parse(res);
+  //         document.getElementById('listID').value = res.Custom_field4;
+  //         }
   
-     });
+  //    });
   
   
-  var datos= "url=ges_ventas/GetPayTerm/"+ID;
+  // var datos= "url=ges_ventas/GetPayTerm/"+ID;
   
-      $.ajax({
-        type: "GET",
-        url: link,
-        data: datos,
-        success: function(res){
+  //     $.ajax({
+  //       type: "GET",
+  //       url: link,
+  //       data: datos,
+  //       success: function(res){
   
-          document.getElementById('termino_pago').value = res;
-          }
+  //         document.getElementById('termino_pago').value = res;
+  //         }
   
-     });
-  
-   // init(2); 
-   
-   addItemList(mobile);
-
-   var e = document.getElementById("taxid");
-   var Taxval = e.options[e.selectedIndex].value;
-   var TaxID = e.options[e.selectedIndex].text;
-
-
+  //    });
   
 
-   set_taxid(Taxval,1);
+
+
+
+
+  // set_taxid(Taxval,1);
   
 }
-
-
 
 
 function addItemList(mobile=''){
 
-
-
   URL = document.getElementById('URL').value;
   link = URL+"index.php";
 
-if(mobile='X'){
-  var datos= "url=bridge_query/get_ProductsCodeMobile/";
+  if(mobile='X'){
+    var datos= "url=bridge_query/get_ProductsCodeMobile/";
 
-}else{
-  var datos= "url=bridge_query/get_ProductsCode/";  
+  }else{
+    var datos= "url=bridge_query/get_ProductsCode/";  
 
-}
+  }
 
   //get_ProductsCodeMobile
   $.ajax({
-    
           type: "GET",
           url: link,
           data: datos,
@@ -128,74 +155,74 @@ if(mobile='X'){
 function SetDesc(itemId){
 
 
-var listID =  document.getElementById('listID').value;
-var datos= "bridge_query/get_ProductsInfoMob/";
+  var listID =  document.getElementById('listID').value;
+  var datos= "bridge_query/get_ProductsInfoMob/";
 
 
-stock_val='';
+  stock_val='';
 
 
-$.ajax({
+  $.ajax({
 
-      type: "GET",
-      url: link,
-      data: {url:datos, item: itemId },
-      success: function(res){
+        type: "GET",
+        url: link,
+        data: {url:datos, item: itemId },
+        success: function(res){
 
-      
         
+          
 
-       json = JSON.parse(res);
-       document.getElementById(id_desc_field).value  = json.Description;
-       document.getElementById(id_unit_field).value  = json.UnitMeasure;  
-       document.getElementById(id_price_field).value  = json.Price1;
-
-
-       document.getElementById(id_qtyonhand_field).value  = json.QtyOnHand;
-
-       stock_val = json.QtyOnHand;
+        json = JSON.parse(res);
+        document.getElementById(id_desc_field).value  = json.Description;
+        document.getElementById(id_unit_field).value  = json.UnitMeasure;  
+        document.getElementById(id_price_field).value  = json.Price1;
 
 
-       if(json.TaxType == 1){
+        document.getElementById(id_qtyonhand_field).value  = json.QtyOnHand;
 
-        taxable_val =  'SI';
-
-       }else{
-
-        taxable_val =  'NO';
-
-       }
-
-     }
-
- });
+        stock_val = json.QtyOnHand;
 
 
-setTimeout(function(){
+        if(json.TaxType == 1){
 
-    if(listID!=''){
+          taxable_val =  'SI';
 
-     findprice(itemId, listID, id_price_field);
+        }else{
 
-    }else{
+          taxable_val =  'NO';
 
-     //document.getElementById(id_price_field).value  = Price;
+        }
 
+      }
+
+  });
+
+
+  setTimeout(function(){
+
+      if(listID!=''){
+
+      findprice(itemId, listID, id_price_field);
+
+      }else{
+
+      //document.getElementById(id_price_field).value  = Price;
+
+      }
+
+      if(itemId==''){
+
+          document.getElementById(id_qty_field).value  = '';
+          unit_val  = '';
+          document.getElementById(id_desc_field).value  = '';
+          taxable_val = '';
+          document.getElementById(id_price_field).value  = '';
+          stock_val = '';
+
+        document.getElementById(id_qtyonhand_field).value  = '';
     }
 
-    if(itemId==''){
-
-         document.getElementById(id_qty_field).value  = '';
-         unit_val  = '';
-         document.getElementById(id_desc_field).value  = '';
-         taxable_val = '';
-         document.getElementById(id_price_field).value  = '';
-         stock_val = '';
-
-       document.getElementById(id_qtyonhand_field).value  = '';
-  }
-
-},500);
+  },500);
 
 }
 
@@ -232,10 +259,10 @@ function findprice(itemId, listID, id_price_field){
 
 function addItem(){
 
-//////////////////////////////
-validacion();
-if(CHK_VALIDATION == true){ CHK_VALIDATION = false;  return;  }
-/////////////////////////////
+  //////////////////////////////
+  validacion();
+  if(CHK_VALIDATION == true){ CHK_VALIDATION = false;  return;  }
+  /////////////////////////////
 
   URL = document.getElementById('URL').value;
 
@@ -268,26 +295,26 @@ if(CHK_VALIDATION == true){ CHK_VALIDATION = false;  return;  }
                   '</tr>';
 
 
-  $('#ItemAdded').append(itemLine);
-  
-  document.getElementById(id_price_field).value  = '';
-  document.getElementById(id_qty_field).value  = '';     
-  document.getElementById(id_unit_field ).value = '';
-  document.getElementById(id_desc_field).value  = '';
-  $('#selItem').val(0);
-  document.getElementById('nota').value  = '';
-  document.getElementById('chico').value  = '';
-  document.getElementById('grande').value  = '';
-  
-  sumar_total();
-  alert('Item '+IdItem+' agregado');
+    $('#ItemAdded').append(itemLine);
+    
+    document.getElementById(id_price_field).value  = '';
+    document.getElementById(id_qty_field).value  = '';     
+    document.getElementById(id_unit_field ).value = '';
+    document.getElementById(id_desc_field).value  = '';
+    $('#selItem').val(0);
+    document.getElementById('nota').value  = '';
+    document.getElementById('chico').value  = '';
+    document.getElementById('grande').value  = '';
+    
+    sumar_total();
+    alert('Item '+IdItem+' agregado');
 
 
-  }else{
+    }else{
 
-    alert('La cantidad debe ser mayor a 0');
-    return;
-  }
+      alert('La cantidad debe ser mayor a 0');
+      return;
+    }
   
 }
 
@@ -311,7 +338,7 @@ function set_taxid(rate,opt){
   
        }
     }
-  }
+}
 
 function sumar_total(){
   
