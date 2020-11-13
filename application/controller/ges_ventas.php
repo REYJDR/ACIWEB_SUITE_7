@@ -50,8 +50,10 @@ public function mob_orden_ventas(){
    $company = $this->model->id_compania;
 
           if($res=='0'){
-            require APP . 'view/_templates/mob_header.php'; 
+
             echo  '<script> alert("processing"); </script>';
+            require APP . 'view/_templates/mob_header.php'; 
+           
 
             $items = $this->get_ProductsCodeMobile($company);
             
