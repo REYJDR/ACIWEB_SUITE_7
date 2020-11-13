@@ -48,7 +48,10 @@ public function mob_orden_ventas(){
   
    $res = $this->model->verify_session();
   
+
           if($res=='0'){
+            
+            $items = $this->get_ProductsCodeMobile();
               // load views
             require APP . 'view/_templates/mob_header.php';  
             require APP . 'view/mobile/mob_so.php';  
@@ -58,6 +61,46 @@ public function mob_orden_ventas(){
           }
             
    }
+
+public function get_ProductsCodeMobile(){
+
+  
+  $itemFilter = $this->model->Query_value('FAC_DET_CONF','ITEMS_FILTER','WHERE ID_compania="'.$this->model->id_compania.'"');
+  
+  if($itemFilter){
+  
+    $clause= ' and '.$itemFilter;
+  
+  }else{
+  
+    $clause= '';
+  }
+  
+  
+  
+      $sql =  'SELECT ProductID , 
+                      SalesDescription ,
+                      QtyOnHand, 
+                      (SELECT SUM(QTY) from STOCK_ITEMS_LOCATION WHERE itemId = ProductID ) as QtyStock
+                FROM  Products_Exp 
+                
+                WHERE id_compania="'.$this->model->id_compania.'" '.$clause;    
+  
+  
+  
+  $Codigos = $this->model->Query($sql);
+  
+  foreach ($Codigos as $value) {
+  
+    $value = json_decode($value);
+     
+    $codes .= '<option value="'.$value->{'ProductID'}.'">('.$value->{'ProductID'}.') - '.$value->{'SalesDescription'}.' / Inv: '.number_format($value->{'QtyStock'}, 2, '.', '').'</option>';
+  
+   } 
+  
+  return $codes;
+  
+}
 
 
 public function SalesOrderReport(){

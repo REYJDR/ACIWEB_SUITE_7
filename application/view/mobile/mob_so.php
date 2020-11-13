@@ -17,8 +17,7 @@ if ($amnt_view_ck==0){
 
 ?>
 
-<div class="loader"></div>
-<div id="allDocument">
+
 <!-- contenido -->	
 
 <input type="hidden" id='URL' value="<?php ECHO URL; ?>" />
@@ -213,7 +212,8 @@ if ($amnt_view_ck==0){
                                     <div class="item-after">Seleccionar item</div>
                                     </div>
                                   </div>
-                                     <div id="listSelect" ></div>
+                                  <?php $items; ?>
+                                     <!-- <div id="listSelect" ></div> -->
                                   </a>
                                 </div>
                                 <!--fin list items-->
@@ -348,7 +348,7 @@ if ($amnt_view_ck==0){
               </div>
             
 <!-- contenido -->
-</div>
+
 
 
     </div>

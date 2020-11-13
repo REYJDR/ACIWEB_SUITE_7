@@ -13,9 +13,9 @@ var id_qtyonhand_field = 'qtyonhand';
 //variable globales
 
 window.addEventListener("load", function(){
-  spin_show();
+  // spin_show();
 
-  addItemList('');
+  // addItemList('');
 
   var e = document.getElementById("taxid");
   var Taxval = e.options[e.selectedIndex].value;
@@ -23,7 +23,7 @@ window.addEventListener("load", function(){
  
   set_taxid(Taxval,1);
 
-  spin_hide();
+  // spin_hide();
 });
 
 //INI FUNCION DE SPIN MOSTRAR Y APAGAR
