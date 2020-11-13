@@ -212,7 +212,7 @@ if ($amnt_view_ck==0){
                                     <div class="item-after">Seleccionar item</div>
                                     </div>
                                   </div>
-                                  <?php $items; ?>
+                                  <?php echo $items; ?>
                                      <!-- <div id="listSelect" ></div> -->
                                   </a>
                                 </div>

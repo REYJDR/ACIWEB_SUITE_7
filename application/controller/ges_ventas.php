@@ -52,8 +52,7 @@ public function mob_orden_ventas(){
           if($res=='0'){
             
             $items = $this->get_ProductsCodeMobile();
-echo $items;
-            die();
+
               // load views
             require APP . 'view/_templates/mob_header.php';  
             require APP . 'view/mobile/mob_so.php';  
