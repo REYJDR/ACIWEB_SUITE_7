@@ -17,11 +17,7 @@ window.addEventListener("load", function(){
 
   // addItemList('');
 
-  var e = document.getElementById("taxid");
-  var Taxval = e.options[e.selectedIndex].value;
-  var TaxID = e.options[e.selectedIndex].text;
- 
-  set_taxid(Taxval,1);
+
 
   // spin_hide();
 });
@@ -102,7 +98,11 @@ function set_listprice(ID,mobile=''){
   //    });
   
 
-
+  var e = document.getElementById("taxid");
+  var Taxval = e.options[e.selectedIndex].value;
+  var TaxID = e.options[e.selectedIndex].text;
+ 
+  set_taxid(Taxval,1);
 
 
 
