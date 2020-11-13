@@ -53,7 +53,7 @@ public function mob_orden_ventas(){
             
             $items = $this->get_ProductsCodeMobile($company);
             
-            echo $items; die;
+  
            // load views
             require APP . 'view/_templates/mob_header.php';  
             require APP . 'view/mobile/mob_so.php';  
