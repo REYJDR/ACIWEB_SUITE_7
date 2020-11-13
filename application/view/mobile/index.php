@@ -354,7 +354,7 @@
         <div class="content-block">
             <h4>LOGIN</h4>
             <div class="loginform">
-                <form id="LoginForm" method="post">
+             <form id="LoginForm" method="post">
                     <input type="text" name="Username" value="" class="form_input required" placeholder="username" />
                     <input type="password" name="Password" value="" class="form_input required" placeholder="password" />
                <!--     <div class="forgot_pass"><a href="#" data-popup=".popup-forgot" class="open-popup">Forgot Password?</a></div><! -->
