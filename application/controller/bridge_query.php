@@ -60,7 +60,7 @@ A.ProductID,
 A.SalesDescription as Description,
 A.UnitMeasure,
 A.QtyOnHand,
---(SELECT SUM(qty) FROM STOCK_ITEMS_LOCATION WHERE itemID = ProductID and ID_compania="'.$this->model->id_compania.'") AS QtyOnHand,
+
 A.Price1,
 A.LastUnitCost,
 A.TaxType,
@@ -70,7 +70,7 @@ FROM Products_Exp as A
 WHERE 
 A.IsActive="1"
 AND  A.id_compania="'.$this->model->id_compania.'" 
-AND  A.ProductID ="'.$ITEM.'"';
+AND  A.ProductID like "%'.$ITEM.'%"';
 
 
 $res = $this->model->Query($sql);
