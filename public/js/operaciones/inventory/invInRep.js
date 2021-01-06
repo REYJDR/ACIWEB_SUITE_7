@@ -8,9 +8,9 @@ jQuery(document).ready(function($)
 {
  var table = $("#table_report").dataTable({
     responsive: false,
-    pageLength: 10,
+    pageLength: 200,
     dom: "Brtip",
-    bSort: false,
+    bSort: true,
     select: false,
 
     info: false,
@@ -71,29 +71,29 @@ select_type: "select2",
 select_type_options: { width: "100%" }
 
 },
+{column_number : 5,
+select_type: "select2",
+select_type_options: { width: "100%" }
+},
+
+{column_number : 6,
+select_type: "select2",
+select_type_options: { width: "100%" }
+},
+
 {column_number : 7,
 select_type: "select2",
 select_type_options: { width: "100%" }
 },
-
 {column_number : 8,
-select_type: "select2",
-select_type_options: { width: "100%" }
-},
-
+    select_type: "select2",
+    select_type_options: { width: "100%" }
+    },
 {column_number : 9,
-select_type: "select2",
-select_type_options: { width: "100%" }
-},
-{column_number : 10,
     select_type: "select2",
     select_type_options: { width: "100%" }
     },
-{column_number : 11,
-    select_type: "select2",
-    select_type_options: { width: "100%" }
-    },
-{column_number : 12,
+{column_number : 19,
       select_type: "select2",
       select_type_options: { width: "100%" }
       }

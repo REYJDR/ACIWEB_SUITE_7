@@ -87,7 +87,7 @@ echo '<input type="hidden" id="FAC_NO_LINES" value="'.$NO_LINES .'" />';
 							<th><strong><?PHP echo $Inv_REP_TblHdr8; ?></strong></th>
 							<td>
 							<select class="select col-lg-12" onchange='phase();' id="JOBID2" >
-							<option value="-" selected>-</option>
+							<option value="" selected>-</option>
 							</select>
 							</td>
 						</tr>

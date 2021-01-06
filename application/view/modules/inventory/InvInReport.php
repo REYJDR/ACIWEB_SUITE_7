@@ -54,8 +54,6 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
                   <th width="5%"><?PHP echo $Inv_REP_TblHdr3; ?></th>
                   <th width="5%"><?PHP  echo $Inv_REP_TblHdr4; ?></th>
                   <th width="5%"><?PHP echo $Inv_REP_TblHdr5; ?></th>
-                  <th width="5%"><?PHP echo $Inv_REP_TblHdr6; ?></th>
-                  <th width="5%"><?PHP echo $Inv_REP_TblHdr7; ?></th>
                   <th width="5%"><?PHP echo $Inv_REP_TblHdr8; ?></th>
                   <th width="5%"><?PHP echo $Inv_REP_TblHdr9; ?></th>
                   <th width="5%"><?PHP echo $Inv_REP_TblHdr10; ?></th>
@@ -96,7 +94,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 					}
 
 
-					$limit = '1000';
+					$limit = '100000';
 					$sort = 'DESC';
 					$filter = $this->getInvInList($sort,$limit,$clause);
 
@@ -121,9 +119,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						<td ><strong>'.$filter->{'ProductID'}."</strong></a></td>
 						<td class='numb' >".$filter->{'Date'}."</td>
 						<td >".$name.' '.$lastname.'</td>
-						<td class="numb">'.number_format($filter->{'Qty'},4,'.',',').'</td>
-						<td class="numb">'.number_format($filter->{'unit_price'},4,'.',',').'</td>
-						<td class="numb">'.number_format($filter->{'Total'},4,'.',',')."</td>					
+						<td class="numb">'.number_format($filter->{'Qty'},4,'.',',')."</td>					
 						<td >".$filter->{'JobID'}.'</td>
 						<td >'.$filter->{'JobPhaseID'}.'</td>
 						<td >'.$filter->{'JobCostCodeID'}.'</td>
