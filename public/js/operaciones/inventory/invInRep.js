@@ -8,6 +8,7 @@ jQuery(document).ready(function($)
 {
 
   var table = $("#table_report").dataTable({
+    
     "footerCallback": function ( row, data, start, end, display ) {
       var api = this.api(), data;
 
@@ -37,7 +38,7 @@ jQuery(document).ready(function($)
 
       // Update footer
       $( api.column( 4 ).footer() ).html(
-        pageTotal +' ('+ total +' total)'
+        pageTotal.toLocaleString() +' ('+ total.toLocaleString() +' total)'
       );
     },
     buttons: [ {
