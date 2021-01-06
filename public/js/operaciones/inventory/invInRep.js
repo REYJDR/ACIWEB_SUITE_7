@@ -6,42 +6,44 @@ $(window).load(function(){
 
 jQuery(document).ready(function($)
 {
- var table = $("#table_report").dataTable({
-    responsive: false,
-    pageLength: 200,
-    dom: "Brtip",
-    bSort: true,
-    select: false,
 
-    info: false,
-      buttons: [
-        {
-        extend: "excelHtml5",
-        text: "Exportar a Excel",
-        title: "Entrada_mercancia",
+  var table = $("#table_report").dataTable();
+//  var table = $("#table_report").dataTable({
+//     responsive: false,
+//     pageLength: 200,
+//     dom: "Brtip",
+//     bSort: true,
+//     select: false,
+
+//     info: false,
+//       buttons: [
+//         {
+//         extend: "excelHtml5",
+//         text: "Exportar a Excel",
+//         title: "Entrada_mercancia",
          
-        exportOptions: {
-              columns: ":visible",
-               format: {
-                  header: function ( data ) {
-                    var StrPos = data.indexOf("<div");
-                      if (StrPos<=0){
+//         exportOptions: {
+//               columns: ":visible",
+//                format: {
+//                   header: function ( data ) {
+//                     var StrPos = data.indexOf("<div");
+//                       if (StrPos<=0){
                         
-                        var ExpDataHeader = data;
-                      }else{
+//                         var ExpDataHeader = data;
+//                       }else{
                      
-                        var ExpDataHeader = data.substr(0, StrPos); 
-                      }
+//                         var ExpDataHeader = data.substr(0, StrPos); 
+//                       }
                      
-                    return ExpDataHeader;
-                    }
-                  }
+//                     return ExpDataHeader;
+//                     }
+//                   }
                
-                }
+//                 }
               
-        }]
+//         }]
  
-  });
+  // });
 
 
 
