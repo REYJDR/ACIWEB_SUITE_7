@@ -135,10 +135,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 					$table.='<tfoot>
 						<tr>
-							<th></th>
-							<th></th>
-							<th></th>
-							<th></th>
+							
 							<th colspan="4" style="text-align:right">Total:</th>
 							<th></th>
 							<th></th>
