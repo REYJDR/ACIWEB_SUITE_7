@@ -58,7 +58,7 @@ table = $("#productos").DataTable({
 
             // Update footer
             $( api.column( 4 ).footer() ).html(
-            pageTotalPT.toLocaleString() +' ('+ total.toLocaleString() +' total)'
+            pageTotalPT.toLocaleString() +' ('+ totalPT.toLocaleString() +' total)'
             );
 
 
