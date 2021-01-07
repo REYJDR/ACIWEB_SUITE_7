@@ -683,7 +683,7 @@ public function erase_lote($no_lote,$qty){
         'stockOrigID' =>  0,
         'stockDestID' =>  $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$no_lote.'" and location="1" and stock="1" ') );
 
-    $this->set_Budget_Log($values,'6');
+    $this->set_Budget_Log($values,'8');
 
 }
 
