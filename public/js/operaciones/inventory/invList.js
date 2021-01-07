@@ -7,9 +7,63 @@ jQuery(document).ready(function($)
 $('#ERROR').hide();
 
 table = $("#productos").DataTable({
-    aLengthMenu: [
-        [10, 25,50,-1], [10, 25, 50,"All"]
-    ] ,
+    "footerCallback": function ( row, data, start, end, display ) {
+        var api = this.api(), data;
+  
+        // Remove the formatting to get integer data for summation
+        var intVal = function ( i ) {
+            return typeof i === 'string' ?
+                i.replace(/[\$,]/g, '')*1 :
+                typeof i === 'number' ?
+                    i : 0;
+        };
+  
+        // Total over all pages
+        total = api
+            .column( 4 )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+  
+        // Total over this page
+        pageTotal = api
+            .column( 3, { page: 'current'} )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+  
+        // Update footer
+        $( api.column( 3 ).footer() ).html(
+          pageTotal.toLocaleString() +' ('+ total.toLocaleString() +' total)'
+        );
+      },
+      buttons: [ {
+                extend: "excelHtml5",
+                text: "Exportar a Excel",
+                title: "Lista_productos",
+                 
+                exportOptions: {
+                      columns: ":visible",
+                       format: {
+                          header: function ( data ) {
+                            var StrPos = data.indexOf("<div");
+                              if (StrPos<=0){
+                                
+                                var ExpDataHeader = data;
+                              }else{
+                             
+                                var ExpDataHeader = data.substr(0, StrPos); 
+                              }
+                             
+                            return ExpDataHeader;
+                            }
+                          }
+                       
+                        }
+                      
+                }],
     columns:[
 
         {data:"Codigo"},
@@ -18,42 +72,11 @@ table = $("#productos").DataTable({
         {data:"Stock",className: "numb"},
         {data:"Costo_Uni",className: "numb"}],
 
-        responsive: false,
-        pageLength: 20,
-        dom: "Brtip",
-        bSort: false,
-        select: false,
-    
-        info: false,
-          buttons: [
-            {
-            extend: "excelHtml5",
-            text: "Exportar a Excel",
-            title: "Inventario_por_ubicacion",
-             
-            exportOptions: {
-                  columns: ":visible",
-                   format: {
-                      header: function ( data ) {
-                        var StrPos = data.indexOf("<div");
-                          if (StrPos<=0){
-                            
-                            var ExpDataHeader = data;
-                          }else{
-                         
-                            var ExpDataHeader = data.substr(0, StrPos); 
-                          }
-                         
-                        return ExpDataHeader;
-                        }
-                      }
-                   
-                    }
-                  
-            }]
     
     
     });
+
+    
 
    table2 = $("#itemXStock").DataTable({
         aLengthMenu: [
