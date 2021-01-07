@@ -1862,6 +1862,7 @@ public function getListItems(){
                 '`Description` as `'.$Tblcol2.'`',
                 '`UnitMeasure` as `'.$Tblcol3.'`',
                 '`stockQTY` as `'.$Tblcol4.'`',
+                '`QtyOnHand` as `'.$Tblcol11.'`',
                 '`LastUnitCost` as `'.$Tblcol8.'`');
 
    $clause = ' INNER JOIN ( SELECT SUM(qty) as stockQTY , 

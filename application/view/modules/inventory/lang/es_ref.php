@@ -4,12 +4,13 @@ $Title1 = 'Listado de inventario';
 $Tblcol1 = 'Codigo';
 $Tblcol2 = 'Descripcion';
 $Tblcol3 = 'Unidad';
-$Tblcol4 = 'Stock';
+$Tblcol4 = 'Stock ACIWEB';
 $Tblcol5 = 'Fecha Venc.';
 $Tblcol6 = 'Lote';
 $Tblcol7 = 'Compa&ntildeia';
 $Tblcol8 = 'Costo_Uni';
 $Tblcol9 = 'Detalle';
+$Tblcol10 = 'Stock PT';
 $InvListButtom = 'Listar Inventario';
 //  END INV lIST
 
@@ -23,6 +24,7 @@ $STblcol6 = 'Almacen';
 $STblcol7 = 'Descripcion_Almacen';
 $STblcol8 = 'Ubicacion';
 $STblcol9 = 'Modificado_el';
+
 
 
 
