@@ -707,20 +707,20 @@ public function erase_lote($no_lote,$qty){
         $lote= $lote_loc->{'lote'};
         $qty= $lote_loc->{'qty'};
 
-       if( $lote_loc->{'location'} != 1 && $lote_loc->{'stock'} != 1 ){
+       if( $lote_loc->{'stock'} != 1 ){
+            if( $lote_loc->{'location'} != 1 ){
+                $values = array (
+                    'ItemID' => $item , 
+                    'Reference' => 'MOV-'.date('dmyhms'), 
+                    'Qty'  => $qty, 
+                    'aci_ref' => $lote, 
+                    'stock_origen_id'=> $lote_loc->{'stock'} , 
+                    'loc_origen_id'  => $lote_loc->{'location'} , 
+                    'stock_dest_id'  => 1, 
+                    'loc_dest_id'    => 1); 
 
-            $values = array (
-                'ItemID' => $item , 
-                'Reference' => 'MOV-'.date('dmyhms'), 
-                'Qty'  => $qty, 
-                'aci_ref' => $lote, 
-                'stock_origen_id'=> $lote_loc->{'stock'} , 
-                'loc_origen_id'  => $lote_loc->{'location'} , 
-                'stock_dest_id'  => 1, 
-                'loc_dest_id'    => 1); 
-
-            $this->set_Budget_Log($values,'5');
-
+                $this->set_Budget_Log($values,'5');
+            }
         }
 
 
