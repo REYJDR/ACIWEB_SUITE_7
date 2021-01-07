@@ -2082,8 +2082,8 @@ public function getStocLockName($stock, $location){
         // $Item= $this->model->Query($SQL);
 
 
-        $stockName   = $this->model->Query_value('STOCKS','name',' where id="'.$stock.'"'), 
-        $locationName =$this->model->Query_value('STOCKS_LOCATION','location',' where id="'.$location.'"'), 
+        $stockName   = $this->model->Query_value('STOCKS','name',' where id="'.$stock.'"');
+        $locationName =$this->model->Query_value('STOCKS_LOCATION','location',' where id="'.$location.'"');
 
        return $stockName.'-('.$locationName.')';
  
