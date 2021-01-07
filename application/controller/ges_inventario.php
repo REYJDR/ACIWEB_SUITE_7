@@ -666,12 +666,25 @@ public function erase_lote($no_lote,$qty){
     $this->model->Query('DELETE FROM ITEMS_NO_LOTES WHERE no_lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
     $this->model->Query('DELETE FROM STOCK_ITEMS_LOCATION WHERE lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
 
+
+    
     if($this->CheckError()){
         
         echo $this->CheckError();
         die();
         
     } 
+
+    $values = array (
+        'ItemID' => $item , 
+        'Reference' => 'DELLOT-'.date('dmyhms'), 
+        'Qty'  => $qty, 
+        'aci_ref' => $no_lote, 
+        'stockOrigID' =>  0,
+        'stockDestID' =>  $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$no_lote.'" and location="1" and stock="1" ') );
+
+    $this->set_Budget_Log($values,'6');
+
 }
 
 public function getLocationByItem(){
@@ -1670,6 +1683,41 @@ public function set_Budget_Log($values,$type,$idloc =''){
                 }
 
           break;
+        
+        case '8':
+ 
+                 $ref = $values['Reference']; 
+                 $Item  = $values['ItemID'];
+                 $Qty   = $values['Qty'];
+                 $aciref = $values['aci_ref'];
+                 $stockOrigID =  $values['stockOrigID'];
+                 $stockDestID =  $values['stockDestID'];
+             
+                 $id_compania= $this->model->id_compania;
+                 $user = $this->model->active_user_id;
+             
+                 $event_values = array(  'ProductID' => $Item,
+                                         'Qty'=> $Qty,
+                                         'User' => $user,
+                                         'Type' => 'Lote borrado',
+                                         'referencia' => $ref,
+                                         'ID_compania' => $id_compania ,
+                                         'aci_ref' => $aciref,
+                                         'stockOrigID'  => $stockOrigID ,
+                                         'stockDestID'  => $stockDestID );
+             
+                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
+                 
+                 usleep(1000);
+                 $error = $this->CheckError();
+                 if($error){
+                 $error= json_decode($error) ;
+                 echo 'ERROR: '.$error->{'E'}.'Lote borrado - INV_EVENT_LOG ';
+                 
+                 die(); 
+             
+             }
+           break;
 
         } 
 
