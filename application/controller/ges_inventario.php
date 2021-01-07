@@ -626,7 +626,7 @@ public function SET_NO_LOTE($item,$no_lote,$qty,$fecha = '0000-00-00 00:00:00' ,
                 'ItemID' => $item , 
                 'Reference' => 'LOT-'.date('dmyhms'), 
                 'Qty'  => $qty, 
-                'aci_ref' => 'LOT-'.date('dmyhms'), 
+                'aci_ref' => $no_lote, 
                 'stockOrigID' =>  0,
                 'stockDestID' =>  $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$no_lote.'" and location="1" and stock="1" ') );
 
