@@ -655,8 +655,23 @@ public function erase_lote($no_lote,$qty){
     $loc_by_lote_str = 'SELECT id, qty, lote, stock, location from STOCK_ITEMS_LOCATION Where lote="'.$no_lote.'" and qty > 0 and ID_compania="'.$this->model->id_compania.'";';
     $loc_by_lote = $this->model->Query($loc_by_lote_str);
 
-    var_dump( $loc_by_lote );
-    
+       //notifica reubicacion a origen
+       foreach ($loc_by_lote as $lote_loc) { 
+        
+        $lote_loc= json_decode($lote_loc); 
+
+        $lote= $lote_loc->{'lote'};
+        $qty= $lote_loc->{'qty'};
+
+       if( ($lote_loc->{'stock'} != 1 && $lote_loc->{'location'} != 1 ) ){
+          
+            echo $lote_loc->{'lote'}."-".$lote_loc->{'qty'};
+        }
+
+
+    }
+
+  
 
     die();
     
@@ -711,8 +726,8 @@ public function erase_lote($no_lote,$qty){
         $lote= $lote_loc->{'lote'};
         $qty= $lote_loc->{'qty'};
 
-       if( $lote_loc->{'stock'} != 1 ){
-            if( $lote_loc->{'location'} != 1 ){
+       if( ($lote_loc->{'stock'} != 1 && $lote_loc->{'location'} != 1 ) ){
+          
                 $values = array (
                     'ItemID' => $item , 
                     'Reference' => 'MOV-'.date('dmyhms'), 
@@ -724,7 +739,7 @@ public function erase_lote($no_lote,$qty){
                     'loc_dest_id'    => 1); 
 
                 $this->set_Budget_Log($values,'5');
-            }
+        
         }
 
 
