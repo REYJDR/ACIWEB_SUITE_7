@@ -1626,7 +1626,7 @@ public function set_Budget_Log($values,$type,$idloc =''){
                 $user = $this->model->active_user_id;
             
                 $event_values = array(  'ProductID' => $Item,
-                                        'Qty'=> $Qty,
+                                        'Qty'=> 0,
                                         'User' => $user,
                                         'Type' => 'Nuevo Lote',
                                         'referencia' => $ref,
@@ -1697,7 +1697,7 @@ public function set_Budget_Log($values,$type,$idloc =''){
                  $user = $this->model->active_user_id;
              
                  $event_values = array(  'ProductID' => $Item,
-                                         'Qty'=> $Qty,
+                                         'Qty'=> 0,
                                          'User' => $user,
                                          'Type' => 'Lote borrado',
                                          'referencia' => $ref,
