@@ -20,7 +20,7 @@ table = $("#productos").DataTable({
   
         // Total over all pages
         total = api
-            .column( 4 )
+            .column( 3 )
             .data()
             .reduce( function (a, b) {
                 return intVal(a) + intVal(b);
@@ -38,6 +38,32 @@ table = $("#productos").DataTable({
         $( api.column( 3 ).footer() ).html(
           pageTotal.toLocaleString() +' ('+ total.toLocaleString() +' total)'
         );
+
+
+    // Total over all pages
+            totalPT = api
+            .column( 4 )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+
+            // Total over this page
+            pageTotalPT = api
+            .column( 4, { page: 'current'} )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+
+            // Update footer
+            $( api.column( 4 ).footer() ).html(
+            pageTotalPT.toLocaleString() +' ('+ total.toLocaleString() +' total)'
+            );
+
+
+
+
       },
       buttons: [ {
                 extend: "excelHtml5",
