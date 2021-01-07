@@ -992,7 +992,6 @@ public function set_lote_location($ruta_selected,$almacen_selected,$item_id,$lot
         'loc_origen_id'  => 1, 
         'stock_dest_id'  => $id_alma_reg , 
         'loc_dest_id'    => $id_route_reg); 
-    );
 
     $this->set_Budget_Log($values,'6');
  
