@@ -7,13 +7,13 @@ jQuery(document).ready(function($)
 $('#ERROR').hide();
 
 table = $("#productos").DataTable({
+
     "createdRow": function( row, data, dataIndex){
-        var api = this.api(), data;
-        if( api.column(3).data() !=  api.column(4).data()){
+        if( data[3] !=  data[4]){
             $(row).addClass('redClass');
         }
     },
-
+    
     "footerCallback": function ( row, data, start, end, display ) {
         var api = this.api(), data;
   
