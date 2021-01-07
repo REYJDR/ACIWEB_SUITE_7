@@ -9,7 +9,8 @@ $('#ERROR').hide();
 table = $("#productos").DataTable({
 
     "createdRow": function( row, data, dataIndex){
-        if( data[3] !=  data[4]){
+        var api = this.api(), data;
+        if(  api.column(3).data() !=  api.column(4).data()){
             $(row).addClass('redClass');
         }
     },
