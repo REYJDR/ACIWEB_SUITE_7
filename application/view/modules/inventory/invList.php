@@ -39,7 +39,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 				<th width="5%"  class="text-center"><?php echo $Tblcol3?></th>
 				<th width="5%"  class="text-center"><?php echo $Tblcol4;?></th>
 				<th width="5%" class="text-center"><?php echo $Tblcol10;?></th>
-				<th width="5%" class="text-center"><?php echo $Tblcol9;?></th>
+				<th width="5%" class="text-center"><?php echo $Tblcol8;?></th>
 				</tr>
 			</thead>
 				<tbody id='listItem'>
