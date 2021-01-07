@@ -17,7 +17,7 @@ foreach ($detail as $value) {
  $UPCSKU=  $value->{'UPC_SKU'};
  $LastUnitCost=  $value->{'LastUnitCost'};
  $GL_SALES_ACCT=  $value->{'GL_Sales_Acct'};
-
+ $QTY_PT = $value->{'QtyOnHand'};
 }
 
 ?>
@@ -60,7 +60,10 @@ foreach ($detail as $value) {
 							<tbody>
 							<tr><th><strong><?PHP echo $invInfo4; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value="<?php echo  $PRICE; ?>" readonly/></td>		</tr>
 							<tr><th><strong><?PHP echo $invInfo5; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value="<?php echo  $MEASURE; ?>" readonly/></td>		</tr>
-							<tr><th><strong><?PHP echo $invInfo6; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value="<?php echo  number_format($QTY,0, '.', ','); ?>" readonly/></td>		</tr>	
+								<tr>
+									<th><strong><?PHP echo $invInfo6; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value="<?php echo  number_format($QTY,0, '.', ','); ?>" readonly/></td>
+									<th><strong><?PHP echo $invInfo10; ?></strong></th><td><input  class="inputPage col-lg-12  numb"  value="<?php echo  number_format($QTY_PT,0, '.', ','); ?>" readonly/></td>	
+								</tr>	
 							</tbody>
 						</table>
 						</fieldset>

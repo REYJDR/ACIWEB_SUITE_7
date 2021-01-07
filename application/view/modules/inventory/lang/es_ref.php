@@ -33,11 +33,11 @@ $invInfo2 ="Descripcion";
 $invInfo3 ="Compa&ntildeia";
 $invInfo4 ="Precio Unit";
 $invInfo5 ="Unidad ";
-$invInfo6 ="Stock Qty";
+$invInfo6 ="Stock Aciweb";
 $invInfo7 ="Ult. Cost. Uni.";
 $invInfo8 ="Cta GL";
 $invInfo9 ="UPC SKU";
-
+$invInfo10 = "Stock PT";
 // END INV INFO
 
 // INI INV IN
