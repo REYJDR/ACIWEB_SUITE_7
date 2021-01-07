@@ -10,7 +10,7 @@ table = $("#productos").DataTable({
 
     "createdRow": function( row, data, dataIndex){
       
-        if( data[3] != data[4]){
+        if( data['Stock ACIWEB'] != data['Stock PT']){
             $(row).addClass('redClass');
         }
     },
