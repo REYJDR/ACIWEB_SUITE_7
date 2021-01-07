@@ -650,6 +650,11 @@ public function erase_lote($no_lote,$qty){
 
     $this->model->verify_session();
 
+    $loc_by_lote_str = 'SELECT id, qty, lote from STOCK_ITEMS_LOCATION Where lote="'.$no_lote.'" and qty > 0 and ID_compania="'.$this->model->id_compania.'";';
+    $loc_by_lote = $this->model->Query($loc_by_lote_str);
+
+    
+
 
     $item = $this->model->Query_value('ITEMS_NO_LOTES','ProductID','Where no_lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
 
@@ -659,15 +664,19 @@ public function erase_lote($no_lote,$qty){
 
     $qty_to_up = $now_qty + $qty;
 
+  
+
     $query= 'UPDATE STOCK_ITEMS_LOCATION SET qty="'.$qty_to_up.'" where lote="'.$item.'0000" and location="1" and stock="1" and ID_compania="'.$this->model->id_compania.'"';
     $res = $this->model->Query($query);
+
+
+   
 
 
     $this->model->Query('DELETE FROM ITEMS_NO_LOTES WHERE no_lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
     $this->model->Query('DELETE FROM STOCK_ITEMS_LOCATION WHERE lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
 
 
-    
     if($this->CheckError()){
         
         echo $this->CheckError();
@@ -675,6 +684,7 @@ public function erase_lote($no_lote,$qty){
         
     } 
 
+    //notifica borrado
     $values = array (
         'ItemID' => $item , 
         'Reference' => 'DELLOT-'.date('dmyhms'), 
@@ -684,6 +694,28 @@ public function erase_lote($no_lote,$qty){
         'stockDestID' =>  $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$no_lote.'" and location="1" and stock="1" ') );
 
     $this->set_Budget_Log($values,'8');
+
+    //notifica reubicacion a origen
+    foreach ($loc_by_lote as $lote_loc) { 
+        
+        $lote_loc= json_decode($lote_loc); 
+
+
+        $origen = $lote_loc->{'id'};
+        $lote= $lote_loc->{'lote'};
+        $qty= $lote_loc->{'lote'};
+       
+        $values = array (
+            'ItemID' => $item , 
+            'Reference' => 'MOV-'.date('dmyhms'), 
+            'Qty'  => $qty, 
+            'aci_ref' => $no_lote, 
+            'stockOrigID' =>  $origen,
+            'stockDestID' =>  $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$no_lote.'" and location="1" and stock="1" ') );
+    
+        $this->set_Budget_Log($values,'5');
+
+    }
 
 }
 
