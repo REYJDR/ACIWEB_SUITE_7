@@ -10,7 +10,7 @@ table = $("#productos").DataTable({
 
     "createdRow": function( row, data, dataIndex){
       
-        if( data[3] == data[4]){
+        if( data[3].toFixed(2) == data[4].toFixed(2) ){
             $(row).addClass('redClass');
         }
     },
