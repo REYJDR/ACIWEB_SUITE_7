@@ -69,14 +69,15 @@ table = $("#productos").DataTable({
         {data:"Codigo"},
         {data:"Descripcion"},
         {data:"Unidad",className: "numb"},
-        {data:"Stock",className: "numb"},
+        {data:"Stock ACIWEB",className: "numb"},
+        {data:"Stock PT",className: "numb"},
         {data:"Costo_Uni",className: "numb"}],
 
     
     
     });
 
-    
+
 
    table2 = $("#itemXStock").DataTable({
         aLengthMenu: [
