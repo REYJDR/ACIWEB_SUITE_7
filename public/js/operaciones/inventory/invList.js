@@ -7,6 +7,11 @@ jQuery(document).ready(function($)
 $('#ERROR').hide();
 
 table = $("#productos").DataTable({
+    "createdRow": function( row, data, dataIndex){
+        if( data[3] !=  data[4]){
+            $(row).addClass('redClass');
+        }
+    },
     "footerCallback": function ( row, data, start, end, display ) {
         var api = this.api(), data;
   
