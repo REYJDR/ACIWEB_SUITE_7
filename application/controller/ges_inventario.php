@@ -1456,7 +1456,7 @@ public function set_Budget_Log($values,$type,$idloc =''){
                                         'unit_price' => $UnitPrice ,
                                         'Total' => $total,
                                         'User' => $user,
-                                        'Type' => 'Entrada por Adjuste',
+                                        'Type' => 'Entrada por Ajuste',
                                         'Referencia' => $PurchaseNumber,
                                         'ID_compania' => $id_compania ,
                                         'stockDestID' => $stockDestID );
@@ -1818,7 +1818,8 @@ public function setInventoryAdjustmentOUT(){
                 'JobCostCodeID' => $cost, 
                 'JobID' => $job,
                 'ID_compania' =>  $id_compania,
-                'aci_ref' => $ref);
+                'aci_ref' => $ref,
+                'location_id' => $idLoc );
 
             $this->model->insert('InventoryAdjust_Imp',$values);
 
