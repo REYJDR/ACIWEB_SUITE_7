@@ -627,8 +627,10 @@ public function SET_NO_LOTE($item,$no_lote,$qty,$fecha = '0000-00-00 00:00:00' ,
                 'Reference' => 'LOT-'.date('dmyhms'), 
                 'Qty'  => $qty, 
                 'aci_ref' => $no_lote, 
-                'stockOrigID' =>  0,
-                'stockDestID' =>  $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$no_lote.'" and location="1" and stock="1" ') );
+                'stock_origen_id'=> 0 , 
+                'loc_origen_id'  => 0 , 
+                'stock_dest_id'  => 1 , 
+                'loc_dest_id'    => 1);
 
             $this->set_Budget_Log($values,'6');
 
@@ -650,7 +652,7 @@ public function erase_lote($no_lote,$qty){
 
     $this->model->verify_session();
 
-    $loc_by_lote_str = 'SELECT id, qty, lote from STOCK_ITEMS_LOCATION Where lote="'.$no_lote.'" and qty > 0 and ID_compania="'.$this->model->id_compania.'";';
+    $loc_by_lote_str = 'SELECT id, qty, lote, stock, location from STOCK_ITEMS_LOCATION Where lote="'.$no_lote.'" and qty > 0 and ID_compania="'.$this->model->id_compania.'";';
     $loc_by_lote = $this->model->Query($loc_by_lote_str);
 
     
@@ -690,8 +692,10 @@ public function erase_lote($no_lote,$qty){
         'Reference' => 'DELLOT-'.date('dmyhms'), 
         'Qty'  => $qty, 
         'aci_ref' => $no_lote, 
-        'stockOrigID' =>  0,
-        'stockDestID' =>  $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$no_lote.'" and location="1" and stock="1" ') );
+        'stock_origen_id'=> 0 , 
+        'loc_origen_id'  => 0 , 
+        'stock_dest_id'  => 1 , 
+        'loc_dest_id'    => 1);
 
     $this->set_Budget_Log($values,'8');
 
@@ -703,15 +707,17 @@ public function erase_lote($no_lote,$qty){
 
         $origen = $lote_loc->{'id'};
         $lote= $lote_loc->{'lote'};
-        $qty= $lote_loc->{'lote'};
+        $qty= $lote_loc->{'qty'};
        
         $values = array (
             'ItemID' => $item , 
             'Reference' => 'MOV-'.date('dmyhms'), 
             'Qty'  => $qty, 
-            'aci_ref' => $no_lote, 
-            'stockOrigID' =>  $origen,
-            'stockDestID' =>  $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$no_lote.'" and location="1" and stock="1" ') );
+            'aci_ref' => $lote, 
+            'stock_origen_id'=> $lote_loc->{'stock'} , 
+            'loc_origen_id'  => $lote_loc->{'location'} , 
+            'stock_dest_id'  => 1 , 
+            'loc_dest_id'    => 1); 
     
         $this->set_Budget_Log($values,'5');
 
@@ -980,8 +986,13 @@ public function set_lote_location($ruta_selected,$almacen_selected,$item_id,$lot
         'Reference' => 'LOT-'.date('dmyhms'), 
         'Qty'  => $qty, 
         'aci_ref' => $ConNo,
-        'stockOrigID' => $status_location_id,
-        'stockDestID' => $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$lote.'" and location="'.$ruta_selected.'" and stock="'.$almacen_selected.'" ') );
+        // 'stockOrigID' => $status_location_id,
+        // 'stockDestID' => $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$lote.'" and location="'.$ruta_selected.'" and stock="'.$almacen_selected.'" ') ,
+        'stock_origen_id'=> 1 , 
+        'loc_origen_id'  => 1, 
+        'stock_dest_id'  => $id_alma_reg , 
+        'loc_dest_id'    => $id_route_reg); 
+    );
 
     $this->set_Budget_Log($values,'6');
  
@@ -1077,8 +1088,10 @@ public function update_lote_location($OrigenROUTE,$OrigenALMACEN,$status_locatio
                 'Reference' => 'MOV-'.date('dmyhms'), 
                 'Qty'  => $qty, 
                 'aci_ref' => $ConNo,
-                'stockOrigID' => $status_location_id,
-                'stockDestID' => $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$lote.'" and location="'.$ruta.'" and stock="'.$almacen.'" ') );
+                'stock_origen_id'=> $almacen_src , 
+                'loc_origen_id'  => $ruta_src, 
+                'stock_dest_id'  => $almacen , 
+                'loc_dest_id'    => $ruta); 
 
             $this->set_Budget_Log($values,'5');
 
@@ -1393,10 +1406,10 @@ public function exeConsig(){
                     'locId' => $locId , 
                     'Qty'  => $qty, 
                     'aci_ref' => $ConNo,
-                    'stockOrigID' => $origenID,
-                    'stockDestID' => $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$lote.'" and location="'.$locId.'" and stock="'.$stockId.'" ') );
-
-                  
+                    'stock_origen_id'=> $stockId , 
+                    'loc_origen_id'  => $locId, 
+                    'stock_dest_id'  => $stockId , 
+                    'loc_dest_id'    => $locId); 
 
                     $this->set_Budget_Log($values,'4');
                     $ref .= 'Item:'.$itemid.'Ref: '.$ref."\n";
@@ -1449,7 +1462,10 @@ public function set_Budget_Log($values,$type,$idloc =''){
                                         'Referencia' => $PurchaseNumber,
                                         'ID_compania' => $id_compania ,
                                         'aci_ref' => $aciref ,
-                                        'stockDestID' => $this->model->Query_value('STOCK_ITEMS_LOCATION', 'id', 'where lote="'.$Item.'0000" and location="1" and stock="1" ') );
+                                        'stock_origen_id'=> $values['stock_origen_id'], 
+                                        'loc_origen_id'  => $values['loc_origen_id'],  
+                                        'stock_dest_id'  => $values['stock_dest_id'], 
+                                        'loc_dest_id'    => $values['loc_dest_id']) ;
                           
                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
                 
@@ -1625,9 +1641,11 @@ public function set_Budget_Log($values,$type,$idloc =''){
                                  'Type' => 'Reubicación',
                                  'referencia' => $ref,
                                  'ID_compania' => $id_compania ,
-                                 'aci_ref' => $aciref,
-                                 'stockOrigID'  => $stockOrigID ,
-                                 'stockDestID'  => $stockDestID );
+                                 'aci_ref' => $aciref, 
+                                 'stock_origen_id'=> $values['stock_origen_id'], 
+                                 'loc_origen_id'  => $values['loc_origen_id'],  
+                                 'stock_dest_id'  => $values['stock_dest_id'], 
+                                 'loc_dest_id'    => $values['loc_dest_id']);
      
          $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
          
@@ -1664,8 +1682,10 @@ public function set_Budget_Log($values,$type,$idloc =''){
                                         'referencia' => $ref,
                                         'ID_compania' => $id_compania ,
                                         'aci_ref' => $aciref,
-                                        'stockOrigID'  => $stockOrigID ,
-                                        'stockDestID'  => $stockDestID );
+                                        'stock_origen_id'=> $values['stock_origen_id'], 
+                                        'loc_origen_id'  => $values['loc_origen_id'],  
+                                        'stock_dest_id'  => $values['stock_dest_id'], 
+                                        'loc_dest_id'    => $values['loc_dest_id']);
             
                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
                 
@@ -1701,8 +1721,10 @@ public function set_Budget_Log($values,$type,$idloc =''){
                                         'referencia' => $ref,
                                         'ID_compania' => $id_compania ,
                                         'aci_ref' => $aciref,
-                                        'stockOrigID'  => $stockOrigID ,
-                                        'stockDestID'  => $stockDestID );
+                                        'stock_origen_id'=> $values['stock_origen_id'], 
+                                        'loc_origen_id'  => $values['loc_origen_id'],  
+                                        'stock_dest_id'  => $values['stock_dest_id'], 
+                                        'loc_dest_id'    => $values['loc_dest_id']);
             
                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
                 
@@ -1734,9 +1756,11 @@ public function set_Budget_Log($values,$type,$idloc =''){
                                          'Type' => 'Lote borrado',
                                          'referencia' => $ref,
                                          'ID_compania' => $id_compania ,
-                                         'aci_ref' => $aciref,
-                                         'stockOrigID'  => $stockOrigID ,
-                                         'stockDestID'  => $stockDestID );
+                                         'aci_ref' => $aciref, 
+                                         'stock_origen_id'=> $values['stock_origen_id'], 
+                                         'loc_origen_id'  => $values['loc_origen_id'],  
+                                         'stock_dest_id'  => $values['stock_dest_id'], 
+                                         'loc_dest_id'    => $values['loc_dest_id']);
              
                  $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
                  
@@ -1806,7 +1830,11 @@ public function setInventoryAdjustment(){
                     'Quantity' => $Quantity, 
                     'Date' => $date , 
                     'USER' => $user , 
-                    'ID_compania' =>  $id_compania );
+                    'ID_compania' =>  $id_compania ,
+                    'stock_origen_id'=> 0, 
+                    'loc_origen_id'  => 0, 
+                    'stock_dest_id'  => 1, 
+                    'loc_dest_id'    => 1);
 
     
                 $this->model->insert('InventoryAdjust_Imp',$values);
@@ -1826,7 +1854,12 @@ public function setInventoryAdjustment(){
                     'Quantity' => $Quantity, 
                     'Date' => $date , 
                     'USER' => $user , 
-                    'ID_compania' =>  $id_compania );
+                    'ID_compania' =>  $id_compania,
+                    'stock_origen_id'=> 0, 
+                    'loc_origen_id'  => 0, 
+                    'stock_dest_id'  => 1, 
+                    'loc_dest_id'    => 1
+                 );
 
 
                 $stockID = $this->model->Query_value('STOCK_ITEMS_LOCATION','id',' where lote="'.$Item_id.'0000"  and ID_compania="'.$id_compania.'" order by id asc limit 1');
@@ -1899,7 +1932,11 @@ public function setInventoryAdjustmentOUT(){
                 'JobID' => $job,
                 'ID_compania' =>  $id_compania,
                 'aci_ref' => $ref,
-                'location_id' => $idLoc );
+                'location_id' => $idLoc,
+                'stock_origen_id'=> $this->model->Query_value('STOCK_ITEMS_LOCATION','stock',' where id="'.$idLoc.'"  and ID_compania="'.$id_compania.'" order by id asc limit 1'), 
+                'loc_origen_id'  => $this->model->Query_value('STOCK_ITEMS_LOCATION','location',' where id="'.$idLoc.'"  and ID_compania="'.$id_compania.'" order by id asc limit 1'),  
+                'stock_dest_id'  => 0, 
+                'loc_dest_id'    => 0);
 
             $this->model->insert('InventoryAdjust_Imp',$values);
 
@@ -2029,32 +2066,28 @@ public function getItemsStocksList(){
     
 }
 
-public function getStocLockName($id){
+public function getStocLockName($stock, $location){
     
         $this->model->verify_session();
     
         
-       $SQL =  'SELECT B.location,
-                      C.name 
-                FROM STOCK_ITEMS_LOCATION as A
-                LEFT JOIN STOCK_LOCATION AS B ON  B.id = A.Location
-                LEFT JOIN STOCKS AS C on C.ID = A.stock 
-                WHERE A.id="'.$id.'"';
+    //    $SQL =  'SELECT B.location,
+    //                   C.name 
+    //             FROM STOCK_ITEMS_LOCATION as A
+    //             LEFT JOIN STOCK_LOCATION AS B ON  B.id = A.Location
+    //             LEFT JOIN STOCKS AS C on C.ID = A.stock 
+    //             WHERE A.id="'.$id.'"';
     
 
     
-        $Item= $this->model->Query($SQL);
+        // $Item= $this->model->Query($SQL);
 
-        if($Item){
-            $Item = json_decode($Item[0]);
 
-            if($Item->{'name'} != null || $Item->{'location'} != null )
-            return $Item->{'name'}.'-('.$Item->{'location'}.')';
-        }
+        $stockName   = $this->model->Query_value('STOCKS','name',' where id="'.$stock.'"'), 
+        $locationName =$this->model->Query_value('STOCKS_LOCATION','location',' where id="'.$location.'"'), 
 
-        
-
-      
+       return $stockName.'-('.$locationName.')';
+ 
 }
 
 

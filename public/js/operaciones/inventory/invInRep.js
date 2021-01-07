@@ -44,7 +44,7 @@ jQuery(document).ready(function($)
     buttons: [ {
               extend: "excelHtml5",
               text: "Exportar a Excel",
-              title: "Entrada_mercancia",
+              title: "movimientos_mercancia",
                
               exportOptions: {
                     columns: ":visible",
@@ -69,45 +69,6 @@ jQuery(document).ready(function($)
 
 
   });
-//  var table = $("#table_report").dataTable({
-//     responsive: false,
-//     pageLength: 200,
-//     dom: "Brtip",
-//     bSort: true,
-//     select: false,
-
-//     info: false,
-//       buttons: [
-//         {
-//         extend: "excelHtml5",
-//         text: "Exportar a Excel",
-//         title: "Entrada_mercancia",
-         
-//         exportOptions: {
-//               columns: ":visible",
-//                format: {
-//                   header: function ( data ) {
-//                     var StrPos = data.indexOf("<div");
-//                       if (StrPos<=0){
-                        
-//                         var ExpDataHeader = data;
-//                       }else{
-                     
-//                         var ExpDataHeader = data.substr(0, StrPos); 
-//                       }
-                     
-//                     return ExpDataHeader;
-//                     }
-//                   }
-               
-//                 }
-              
-//         }]
- 
-  // });
-
-
-
 
 table.yadcf([
 {column_number : 0,
