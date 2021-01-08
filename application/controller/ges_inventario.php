@@ -1982,7 +1982,12 @@ public function setInventoryAdjustmentOUT(){
                 $values = array (
                     'ItemID' => $itemid, 
                     'Reference' => 'ADJ-'.date('dmyhms'), 
-                    'Quantity'  => $qty*(-1), 
+                    'Quantity'  => $qty*(-1),
+                    'UnitCost' => $unitprice , 
+                    'JobPhaseID' => $phs,
+                    'JobCostCodeID' => $cost, 
+                    'JobID' => $job,
+                    'unit_price' => 0
                     'aci_ref' => $reference,
                     'stock_origen_id'=> $this->model->Query_value('STOCK_ITEMS_LOCATION','stock',' where id="'.$idLoc.'"  and ID_compania="'.$id_compania.'" order by id asc limit 1'), 
                     'loc_origen_id'  => $this->model->Query_value('STOCK_ITEMS_LOCATION','location',' where id="'.$idLoc.'"  and ID_compania="'.$id_compania.'" order by id asc limit 1'),  
