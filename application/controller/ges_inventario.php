@@ -686,10 +686,10 @@ public function erase_lote($no_lote,$qty){
 
     //notifica borrado
     $values = array (
-        'ItemID' => $item , 
+        'ItemID' => $item, 
         'Reference' => 'DEL-'.date('dmyhms'), 
         'Qty'  => $qty, 
-        'aci_ref' => $no_lote, 
+        'aci_ref' =>  "Lote_".$no_lote,  
         'stock_origen_id'=> 0 , 
         'loc_origen_id'  => 0 , 
         'stock_dest_id'  => 1 , 
@@ -709,15 +709,15 @@ public function erase_lote($no_lote,$qty){
           
                 $values = array (
                     'ItemID' => $item , 
-                    'Reference' => 'MOV-'.date('dmyhms'), 
+                    'Reference' => 'RET-'.date('dmyhms'), 
                     'Qty'  => $qty, 
-                    'aci_ref' => $lote, 
+                    'aci_ref' => 'RET-'.date('dmyhms'), 
                     'stock_origen_id'=> $lote_loc->{'stock'} , 
                     'loc_origen_id'  => $lote_loc->{'location'} , 
                     'stock_dest_id'  => 1, 
                     'loc_dest_id'    => 1); 
 
-                $this->set_Budget_Log($values,'5');
+                $this->set_Budget_Log($values,'9');
         
         }
 
@@ -1434,7 +1434,7 @@ public function set_Budget_Log($values,$type,$idloc =''){
 
     switch ($type) {
 
-        case '1':
+        case '1': //ENTRADA POR COMPRA
 
                 $PurchaseNumber = $values['TransactionID']; 
                 $Item  = $values['Item_id'];
@@ -1484,7 +1484,7 @@ public function set_Budget_Log($values,$type,$idloc =''){
             break;
 
 
-        case '2':
+        case '2': //ENTRADA POR AJUSTE
         
            
                 $PurchaseNumber = $values['Reference']; 
@@ -1537,7 +1537,7 @@ public function set_Budget_Log($values,$type,$idloc =''){
                 }
             break;
 
-        case '3':
+        case '3': //SALIDA POR AJUSTE
         
            
                 $PurchaseNumber = $values['Reference']; 
@@ -1584,9 +1584,8 @@ public function set_Budget_Log($values,$type,$idloc =''){
                 }
                 break;
 
-        case '4':
+        case '4': //TRASPASO ENTRE ALMACENES
             
-
             $ref = $values['Reference']; 
             $Item  = $values['ItemID'];
             $Qty   = $values['Qty'];
@@ -1623,7 +1622,7 @@ public function set_Budget_Log($values,$type,$idloc =''){
          break;
 
 
-        case '5':
+        case '5': //REUBICACION 
          
          $ref = $values['Reference']; 
          $Item  = $values['ItemID'];
@@ -1662,7 +1661,7 @@ public function set_Budget_Log($values,$type,$idloc =''){
          }
          break;
    
-        case '6':
+        case '6': //CREACION DE LOTE
          
 
                 $ref = $values['Reference']; 
@@ -1702,7 +1701,7 @@ public function set_Budget_Log($values,$type,$idloc =''){
             }
           break;
 
-        case '7':
+        case '7': //RETORNO POT CANCELACION DE SO
 
                 $ref = $values['Reference']; 
                 $Item  = $values['ItemID'];
@@ -1738,7 +1737,7 @@ public function set_Budget_Log($values,$type,$idloc =''){
 
           break;
         
-        case '8':
+        case '8': //BORRADO DE LOTE
  
                  $ref = $values['Reference']; 
                  $Item  = $values['ItemID'];
@@ -1775,6 +1774,48 @@ public function set_Budget_Log($values,$type,$idloc =''){
              }
            break;
 
+        case '9': //MOVIMIENTO POR RETORNO
+           
+            $ref = $values['Reference']; 
+            $Item  = $values['ItemID'];
+            $Qty   = $values['Qty'];
+            $aciref = $values['aci_ref'];
+            $stockOrigID =  $values['stockOrigID'];
+            $stockDestID =  $values['stockDestID'];
+        
+            $id_compania= $this->model->id_compania;
+            $user = $this->model->active_user_id;
+        
+            $event_values = array(  'ProductID' => $Item,
+                                    'Qty'=> $Qty,
+                                    'User' => $user,
+                                    'Type' => 'Retorno',
+                                    'referencia' => $ref,
+                                    'ID_compania' => $id_compania ,
+                                    'aci_ref' => $aciref, 
+                                    'stock_origen_id'=> $values['stock_origen_id'], 
+                                    'loc_origen_id'  => $values['loc_origen_id'],  
+                                    'stock_dest_id'  => $values['stock_dest_id'], 
+                                    'loc_dest_id'    => $values['loc_dest_id']);
+        
+            $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
+            
+            usleep(1000);
+            $error = $this->CheckError();
+            if($error){
+            $error= json_decode($error) ;
+            echo 'ERROR: '.$error->{'E'}.' INV_EVENT_LOG ';
+        
+                $this->model->delete('CON_HEADER',' Where Reference="'.$ref.'" and ID_Compania="'.$id_compania.'";');
+            
+            die(); 
+       
+           }
+           break;
+       
+       
+       
+       
         } 
 
 
