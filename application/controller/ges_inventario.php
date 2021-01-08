@@ -1987,7 +1987,7 @@ public function setInventoryAdjustmentOUT(){
                     'JobPhaseID' => $phs,
                     'JobCostCodeID' => $cost, 
                     'JobID' => $job,
-                    'unit_price' => 0
+                    'unit_price' => 0,
                     'aci_ref' => $reference,
                     'stock_origen_id'=> $this->model->Query_value('STOCK_ITEMS_LOCATION','stock',' where id="'.$idLoc.'"  and ID_compania="'.$id_compania.'" order by id asc limit 1'), 
                     'loc_origen_id'  => $this->model->Query_value('STOCK_ITEMS_LOCATION','location',' where id="'.$idLoc.'"  and ID_compania="'.$id_compania.'" order by id asc limit 1'),  
