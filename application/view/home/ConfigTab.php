@@ -591,11 +591,11 @@ openCity(event, 'Config1');
 		<input type="hidden"  name="inventory" value="1"  />
 		<div class="col-lg-6" >
 			<fieldset  >
-			<h4><?php echo $config_28_title; ?></h4> 
+			<h4>Configuracion de inventario</h4> 
 					<table class="table_form">
 						<tbody>
 						<tr><th><strong><?php echo $config_15_val1; ?></strong></th><td><input type="CHECKBOX" name="inv_discount" <?php echo  $inv_discount; ?> /></td></tr>
-						<tr><th><strong><?php echo $config_30; ?></strong></th><td>REQ-<input type="number" name="req_conse" value="<?php echo  $req_conse; ?>"/></td></tr>
+						<tr><th><strong>Inicio de consecutivos de requisiciones</strong></th><td>REQ-<input type="number" name="req_conse" value="<?php echo  $req_conse; ?>"/></td></tr>
 
 						</tbody>
 					</table> 
