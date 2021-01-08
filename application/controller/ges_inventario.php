@@ -655,27 +655,6 @@ public function erase_lote($no_lote,$qty){
     $loc_by_lote_str = 'SELECT id, qty, lote, stock, location from STOCK_ITEMS_LOCATION Where lote="'.$no_lote.'" and qty > 0 and ID_compania="'.$this->model->id_compania.'";';
     $loc_by_lote = $this->model->Query($loc_by_lote_str);
 
-       //notifica reubicacion a origen
-       foreach ($loc_by_lote as $lote_loc_val) { 
-        
-        $lote_loc= json_decode($lote_loc_val); 
-
-        $lote= $lote_loc->{'lote'};
-        $qty= $lote_loc->{'qty'};
-
-       if( ($lote_loc->{'stock'} + $lote_loc->{'location'} == 2 ) ){
-          
-            echo $lote_loc->{'lote'}."-".$lote_loc->{'qty'};
-        }
-
-
-    }
-
-  
-
-    die();
-    
-
 
     $item = $this->model->Query_value('ITEMS_NO_LOTES','ProductID','Where no_lote="'.$no_lote.'" and ID_compania="'.$this->model->id_compania.'"');
 
