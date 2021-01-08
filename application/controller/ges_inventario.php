@@ -1863,6 +1863,7 @@ public function setInventoryAdjustment(){
 
             if($standalone != 9 ){
                 $aciref = 'ADJ-'.$Item_id.date('dmyhms') ;
+
                 $values = array (
                     'ItemID' => $Item_id, 
                     'JobID' => $JobID, 
@@ -1880,6 +1881,7 @@ public function setInventoryAdjustment(){
 
     
                 $this->model->insert('InventoryAdjust_Imp',$values);
+
 
             }else{
 
@@ -1910,38 +1912,41 @@ public function setInventoryAdjustment(){
 
                 $this->model->update('Products_Exp',['LastUnitCost' => $Unit_Price ],' ProductID="'.$Item_id.'" and ID_compania="'.$id_compania.'" ');
 
-            }
-            
-            
-            usleep(1000);
-            $error = $this->CheckError();
-            if($error){
-                $error= json_decode($error) ;
-                    echo 'ERROR: '.$error->{'E'}.' Inventory Adjustment - itemID '.$itemid.' Ref:'.$reference;
-                die();
+
+                usleep(1000);
+                $error = $this->CheckError();
+                if($error){
+                    $error= json_decode($error) ;
+                        echo 'ERROR: '.$error->{'E'}.' Inventory Adjustment - itemID '.$itemid.' Ref:'.$reference;
+                    die();
+                    
+                }else{
+                               
+                    $values = array (
+                        'ItemID' => $Item_id, 
+                        'Reference' => 'ADJ-'.date('dmyhms'), 
+                        'Quantity'  => $Quantity,
+                        'UnitCost' => $unitprice , 
+                        'JobPhaseID' => $JobPhaseID,
+                        'JobCostCodeID' => $JobCostCodeID , 
+                        'JobID' => $JobID,
+                        'unit_price' => 0,
+                        'aci_ref' => $reference,
+                        'stock_origen_id'=> 0, 
+                        'loc_origen_id'  => 0,  
+                        'stock_dest_id'=> $this->model->Query_value('STOCK_ITEMS_LOCATION','stock',' where id="'.$stockID.'"  and ID_compania="'.$id_compania.'" order by id asc limit 1'), 
+                        'loc_dest_id'  => $this->model->Query_value('STOCK_ITEMS_LOCATION','location',' where id="'.$stockID.'"  and ID_compania="'.$id_compania.'" order by id asc limit 1') ); 
+                   
+    
+                    $this->set_Budget_Log($values,'2');
+                    $ref .= 'Item:'.$itemid.'Ref: '.$reference."\n";
+                }
+    
                 
-            }else{
-                           
-                $values = array (
-                    'ItemID' => $Item_id, 
-                    'Reference' => 'ADJ-'.date('dmyhms'), 
-                    'Quantity'  => $Quantity,
-                    'UnitCost' => $unitprice , 
-                    'JobPhaseID' => $JobPhaseID,
-                    'JobCostCodeID' => $JobCostCodeID , 
-                    'JobID' => $JobID,
-                    'unit_price' => 0,
-                    'aci_ref' => $reference,
-                    'stock_origen_id'=> 0, 
-                    'loc_origen_id'  => 0,  
-                    'stock_dest_id'=> $this->model->Query_value('STOCK_ITEMS_LOCATION','stock',' where id="'.$stockID.'"  and ID_compania="'.$id_compania.'" order by id asc limit 1'), 
-                    'loc_dest_id'  => $this->model->Query_value('STOCK_ITEMS_LOCATION','location',' where id="'.$stockID.'"  and ID_compania="'.$id_compania.'" order by id asc limit 1') ); 
-               
-
-                $this->set_Budget_Log($values,'2');
-                $ref .= 'Item:'.$itemid.'Ref: '.$reference."\n";
             }
-
+            
+            
+       
 
 
         }
