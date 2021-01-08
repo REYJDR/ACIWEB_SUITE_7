@@ -1583,7 +1583,7 @@ public function set_Budget_Log($values,$type,$idloc =''){
                 $error= json_decode($error) ;
                 echo 'ERROR: '.$error->{'E'}.' INV_EVENT_LOG ';
             
-                $this->model->delete('InventoryAdjust_Imp',' Where Reference="'.$PurchaseNumber.'" and ID_Compania="'.$id_compania.'";');
+                $this->model->delete('InventoryAdjust_Exp',' Where Reference="'.$PurchaseNumber.'" and ID_Compania="'.$id_compania.'";');
                
                 die(); 
             
@@ -1868,7 +1868,7 @@ public function setInventoryAdjustment(){
                     'JobPhaseID' => $JobPhaseID, 
                     'JobCostCodeID' => $JobCostCodeID , 
                     'Reference' => $reference , 
-                    'ReasonToAdjust' => 'Aciweb - Entrada de mercancia' , 
+                    'ReasonToAdjust' => 'Entrada de mercancia' , 
                     'Account' => $GL_Acct , 
                     'UnitCost' => $Unit_Price , 
                     'Quantity' => $Quantity, 
@@ -1888,7 +1888,7 @@ public function setInventoryAdjustment(){
                     'JobPhaseID' => $JobPhaseID, 
                     'JobCostCodeID' => $JobCostCodeID , 
                     'Reference' => $reference, 
-                    'ReasonToAdjust' => 'Aciweb - Entrada de mercancia' , 
+                    'ReasonToAdjust' => 'Entrada de mercancia' , 
                     'Account' => $GL_Acct , 
                     'UnitCost' => $Unit_Price , 
                     'Quantity' => $Quantity, 

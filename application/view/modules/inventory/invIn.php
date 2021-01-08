@@ -167,7 +167,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 									    <th><strong><?PHP echo $invIn11; ?></strong></th>
 									    <td>
 								        <select class="select col-lg-12"  id="JOBID2" >
-										<option value="-" selected>-</option>
+										<option value="" selected>-</option>
 										</select>
 										</td>
 									</tr>
