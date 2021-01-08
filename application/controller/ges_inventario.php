@@ -1520,7 +1520,10 @@ public function set_Budget_Log($values,$type,$idloc =''){
                                         'Type' => 'Entrada por Ajuste',
                                         'Referencia' => $PurchaseNumber,
                                         'ID_compania' => $id_compania ,
-                                        'stockDestID' => $stockDestID );
+                                        'stock_origen_id'=> $values['stock_origen_id'], 
+                                        'loc_origen_id'  => $values['loc_origen_id'],  
+                                        'stock_dest_id'  => $values['stock_dest_id'], 
+                                        'loc_dest_id'    => $values['loc_dest_id']);
             
                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
                 
@@ -1566,7 +1569,10 @@ public function set_Budget_Log($values,$type,$idloc =''){
                                         'Referencia' => $PurchaseNumber,
                                         'ID_compania' => $id_compania ,
                                         'aci_ref' => $aciref ,
-                                        'stockOrigID' => $idloc );
+                                        'stock_origen_id'=> $values['stock_origen_id'], 
+                                        'loc_origen_id'  => $values['loc_origen_id'],  
+                                        'stock_dest_id'  => $values['stock_dest_id'], 
+                                        'loc_dest_id'    => $values['loc_dest_id']);
                              
             
                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
