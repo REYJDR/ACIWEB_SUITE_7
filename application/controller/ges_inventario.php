@@ -1933,7 +1933,7 @@ public function setInventoryAdjustment(){
                     'stock_origen_id'=> 0, 
                     'loc_origen_id'  => 0,  
                     'stock_dest_id'=> $this->model->Query_value('STOCK_ITEMS_LOCATION','stock',' where id="'.$stockID.'"  and ID_compania="'.$id_compania.'" order by id asc limit 1'), 
-                    'loc_dest_id'  => $this->model->Query_value('STOCK_ITEMS_LOCATION','location',' where id="'.$stockID.'"  and ID_compania="'.$id_compania.'" order by id asc limit 1') ),  
+                    'loc_dest_id'  => $this->model->Query_value('STOCK_ITEMS_LOCATION','location',' where id="'.$stockID.'"  and ID_compania="'.$id_compania.'" order by id asc limit 1') ); 
                
 
                 $this->set_Budget_Log($values,'2');
