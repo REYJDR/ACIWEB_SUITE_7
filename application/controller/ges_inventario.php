@@ -726,7 +726,7 @@ public function erase_lote($no_lote,$qty){
         $lote= $lote_loc->{'lote'};
         $qty= $lote_loc->{'qty'};
 
-       if( ($lote_loc->{'stock'} != 1 && $lote_loc->{'location'} != 1 ) ){
+       if( ($lote_loc->{'stock'} + $lote_loc->{'location'} == 2) ){
           
                 $values = array (
                     'ItemID' => $item , 
