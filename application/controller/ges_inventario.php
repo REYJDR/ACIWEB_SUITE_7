@@ -656,14 +656,14 @@ public function erase_lote($no_lote,$qty){
     $loc_by_lote = $this->model->Query($loc_by_lote_str);
 
        //notifica reubicacion a origen
-       foreach ($loc_by_lote as $lote_loc) { 
+       foreach ($loc_by_lote as $lote_loc_val) { 
         
-        $lote_loc= json_decode($lote_loc); 
+        $lote_loc= json_decode($lote_loc_val); 
 
         $lote= $lote_loc->{'lote'};
         $qty= $lote_loc->{'qty'};
 
-       if( ($lote_loc->{'stock'} != 1 && $lote_loc->{'location'} != 1 ) ){
+       if( ($lote_loc->{'stock'} + $lote_loc->{'location'} == 2 ) ){
           
             echo $lote_loc->{'lote'}."-".$lote_loc->{'qty'};
         }
