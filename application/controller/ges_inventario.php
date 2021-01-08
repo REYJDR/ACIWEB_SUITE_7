@@ -1812,11 +1812,8 @@ public function set_Budget_Log($values,$type,$idloc =''){
        
            }
            break;
-       
-       
-       
-       
-        } 
+    
+    } 
 
 
 }
@@ -1871,11 +1868,7 @@ public function setInventoryAdjustment(){
                     'Quantity' => $Quantity, 
                     'Date' => $date , 
                     'USER' => $user , 
-                    'ID_compania' =>  $id_compania ,
-                    'stock_origen_id'=> 0, 
-                    'loc_origen_id'  => 0, 
-                    'stock_dest_id'  => 1, 
-                    'loc_dest_id'    => 1);
+                    'ID_compania' =>  $id_compania );
 
     
                 $this->model->insert('InventoryAdjust_Imp',$values);
@@ -1895,11 +1888,7 @@ public function setInventoryAdjustment(){
                     'Quantity' => $Quantity, 
                     'Date' => $date , 
                     'USER' => $user , 
-                    'ID_compania' =>  $id_compania,
-                    'stock_origen_id'=> 0, 
-                    'loc_origen_id'  => 0, 
-                    'stock_dest_id'  => 1, 
-                    'loc_dest_id'    => 1
+                    'ID_compania' =>  $id_compania
                  );
 
 
@@ -1974,10 +1963,7 @@ public function setInventoryAdjustmentOUT(){
                 'ID_compania' =>  $id_compania,
                 'aci_ref' => $ref,
                 'location_id' => $idLoc,
-                'stock_origen_id'=> $this->model->Query_value('STOCK_ITEMS_LOCATION','stock',' where id="'.$idLoc.'"  and ID_compania="'.$id_compania.'" order by id asc limit 1'), 
-                'loc_origen_id'  => $this->model->Query_value('STOCK_ITEMS_LOCATION','location',' where id="'.$idLoc.'"  and ID_compania="'.$id_compania.'" order by id asc limit 1'),  
-                'stock_dest_id'  => 0, 
-                'loc_dest_id'    => 0);
+               );
 
             $this->model->insert('InventoryAdjust_Imp',$values);
 
@@ -1993,7 +1979,16 @@ public function setInventoryAdjustmentOUT(){
                 
             }else{
             
-                
+                $values = array (
+                    'ItemID' => $itemid, 
+                    'Reference' => 'ADJ-'.date('dmyhms'), 
+                    'Qty'  => $qty*(-1), 
+                    'aci_ref' => $reference,
+                    'stock_origen_id'=> $this->model->Query_value('STOCK_ITEMS_LOCATION','stock',' where id="'.$idLoc.'"  and ID_compania="'.$id_compania.'" order by id asc limit 1'), 
+                    'loc_origen_id'  => $this->model->Query_value('STOCK_ITEMS_LOCATION','location',' where id="'.$idLoc.'"  and ID_compania="'.$id_compania.'" order by id asc limit 1'),  
+                    'stock_dest_id'  => 0, 
+                    'loc_dest_id'    => 0 ); 
+
                 $this->set_Budget_Log($values,'3',$idLoc);
                 $ref .= 'Item:'.$itemid.'Ref: '.$reference."\n";
             }
