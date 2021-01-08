@@ -1862,40 +1862,42 @@ public function setInventoryAdjustment(){
 
 
             if($standalone != 9 ){
-
+                $aciref = 'ADJ-'.$Item_id.date('dmyhms') ;
                 $values = array (
                     'ItemID' => $Item_id, 
                     'JobID' => $JobID, 
                     'JobPhaseID' => $JobPhaseID, 
                     'JobCostCodeID' => $JobCostCodeID , 
                     'Reference' => $reference , 
-                    'ReasonToAdjust' => 'Entrada de mercancia' , 
+                    'ReasonToAdjust' => 'ACIWEB - Entrada de mercancia' , 
                     'Account' => $GL_Acct , 
                     'UnitCost' => $Unit_Price , 
                     'Quantity' => $Quantity, 
                     'Date' => $date , 
                     'USER' => $user , 
-                    'ID_compania' =>  $id_compania );
+                    'ID_compania' =>  $id_compania,
+                    'aci_ref' =>  $aciref  );
 
     
                 $this->model->insert('InventoryAdjust_Imp',$values);
 
             }else{
 
-                $reference = 'ADJ-'.$Item_id.date('dmy') ;
+                $aciref = 'ADJ-'.$Item_id.date('dmyhms') ;
                 $values = array (
                     'ItemID' => $Item_id, 
                     'JobID' => $JobID, 
                     'JobPhaseID' => $JobPhaseID, 
                     'JobCostCodeID' => $JobCostCodeID , 
                     'Reference' => $reference, 
-                    'ReasonToAdjust' => 'Entrada de mercancia' , 
+                    'ReasonToAdjust' => 'ACIWEB - Entrada de mercancia' , 
                     'Account' => $GL_Acct , 
                     'UnitCost' => $Unit_Price , 
                     'Quantity' => $Quantity, 
                     'Date' => $date , 
                     'USER' => $user , 
-                    'ID_compania' =>  $id_compania
+                    'ID_compania' =>  $id_compania,
+                    'aci_ref' =>  $aciref 
                  );
 
 
