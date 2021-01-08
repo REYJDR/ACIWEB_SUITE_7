@@ -1519,6 +1519,7 @@ public function set_Budget_Log($values,$type,$idloc =''){
                                         'User' => $user,
                                         'Type' => 'Entrada por Ajuste',
                                         'Referencia' => $PurchaseNumber,
+                                        'aci_ref' => $aciref ,
                                         'ID_compania' => $id_compania ,
                                         'stock_origen_id'=> $values['stock_origen_id'], 
                                         'loc_origen_id'  => $values['loc_origen_id'],  
@@ -1918,7 +1919,23 @@ public function setInventoryAdjustment(){
                 die();
                 
             }else{
+                           
+                $values = array (
+                    'ItemID' => $Item_id, 
+                    'Reference' => 'ADJ-'.date('dmyhms'), 
+                    'Quantity'  => $Quantity,
+                    'UnitCost' => $unitprice , 
+                    'JobPhaseID' => $JobPhaseID,
+                    'JobCostCodeID' => $JobCostCodeID , 
+                    'JobID' => $JobID,
+                    'unit_price' => 0,
+                    'aci_ref' => $reference,
+                    'stock_origen_id'=> 0, 
+                    'loc_origen_id'  => 0,  
+                    'stock_dest_id'=> $this->model->Query_value('STOCK_ITEMS_LOCATION','stock',' where id="'.$stockID.'"  and ID_compania="'.$id_compania.'" order by id asc limit 1'), 
+                    'loc_dest_id'  => $this->model->Query_value('STOCK_ITEMS_LOCATION','location',' where id="'.$stockID.'"  and ID_compania="'.$id_compania.'" order by id asc limit 1') ),  
                
+
                 $this->set_Budget_Log($values,'2');
                 $ref .= 'Item:'.$itemid.'Ref: '.$reference."\n";
             }
