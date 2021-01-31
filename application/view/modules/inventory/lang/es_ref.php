@@ -151,6 +151,7 @@ $Inv_REP_TblHdr12 = 'Referencia';
 $Inv_REP_TblHdr13 = 'ACI Ref.';
 $Inv_REP_TblHdr14 = 'Origen';
 $Inv_REP_TblHdr15 = 'Destino';
+$Inv_REP_TblHdr16 = 'Lote';
 //END REPORTE
 
 

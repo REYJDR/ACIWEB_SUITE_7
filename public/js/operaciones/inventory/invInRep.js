@@ -95,6 +95,11 @@ select_type: "select2",
 select_type_options: { width: "100%" }
 
 },
+{column_number : 4,
+    select_type: "select2",
+    select_type_options: { width: "100%" }
+    
+},
 {column_number : 5,
 select_type: "select2",
 select_type_options: { width: "100%" }

@@ -51,6 +51,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
                   <th width="5%"><?PHP echo $Inv_REP_TblHdr1; ?></th>
                   <th width="5%"><?PHP echo $Inv_REP_TblHdr2; ?></th>
+				  <th width="5%"><?PHP echo $Inv_REP_TblHdr16; ?></th>
                   <th width="5%"><?PHP echo $Inv_REP_TblHdr3; ?></th>
                   <th width="5%"><?PHP  echo $Inv_REP_TblHdr4; ?></th>
                   <th width="5%"><?PHP echo $Inv_REP_TblHdr5; ?></th>
@@ -116,7 +117,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
 					$table.= '<tr>
 						<td ><strong>'.$filter->{'ID'}.'</strong></td>
-						<td ><strong>'.$filter->{'ProductID'}."</strong></a></td>
+						<td ><strong>'.$filter->{'ProductID'}.'</strong></a></td>
+						<td ><strong>'.$filter->{'Lote'}."</strong></a></td>
 						<td class='numb' >".$filter->{'Date'}."</td>
 						<td >".$name.' '.$lastname.'</td>
 						<td class="numb">'.number_format($filter->{'Qty'},4,'.',',')."</td>					
@@ -137,6 +139,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 						<tr>
 							
 							<th colspan="4" style="text-align:right">Total:</th>
+							<th></th>
 							<th></th>
 							<th></th>
 							<th></th>
