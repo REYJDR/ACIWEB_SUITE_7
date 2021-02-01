@@ -1335,7 +1335,7 @@ public function SetSOfromStock($SalesOrderNumber){
                                 'loc_dest_id'    => 0,
                                 'Lote' => $lote );
         //set event Line              
-        $this->model->insert('INV_EVENT_LOG',$event_values; 
+        $this->model->insert('INV_EVENT_LOG',$event_values); 
 
 
    }
