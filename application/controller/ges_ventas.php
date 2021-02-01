@@ -1183,15 +1183,13 @@ public function SetSOfromStock($SalesOrderNumber){
       //IF ITEMS EXIST
       $clause=' where Unit_Price="'.$unit_price.'" and Item_id="'.$itemid.'" and lote="'.$lote.'" and SalesOrderNumber="'.$SalesOrderNumber.'" and ID_compania="'.$id_compania.'";';
 
+
       $ID = $this->model->Query_value('SalesOrder_Detail_Imp','ID',$clause);
   
   
       if ($ID==''){
 
-       
-          //$Description = 'Lote :'.$lote.' '.$caduc.' Cant.:'.$qty;
-          
-  
+
         //EN CASO QUE NO SE HAGA CONVERSION DE UNIDDES ESCRIBE EN LA TABLA DE SALES ORDER DETAIL INDICANDO EL ITEMID. 
         $values1 = array(
             'ItemOrd' => $key ,
@@ -1206,29 +1204,9 @@ public function SetSOfromStock($SalesOrderNumber){
             'Net_line'=>$Price,
             'Taxable'=>$this->model->Query_value('Products_Exp','TaxType','Where ProductID="'.$itemid.'" and ID_compania="'.$id_compania.'";') );
   
-  
+die(  $values1 );
            $this->model->insert('SalesOrder_Detail_Imp',$values1); //set item line
   
-          // //SI TIENE MODULO DE UBICACIONES
-          // if($mod_stoc_CK == 'checked' ){ 
-
-          //     //INIT SET LOTE 
-          //     $values2 = array( 'ItemOrd' => $key+1,
-          //                       'ID_compania'=>$id_compania,
-          //                       'SalesOrderNumber'=>$SalesOrderNumber,
-          //                       'Item_id'=>'',
-          //                       'Description'=>$Description,
-          //                       'Quantity'=>'0',
-          //                       'Unit_Price'=>'0',
-          //                       'Net_line'=>'0',
-          //                       'Taxable'=>'1');
-                
-          //     $this->model->insert('SalesOrder_Detail_Imp',$values2);//set lote line
-
-
-
-          //     //END SET LOTE /////////////
-          //   }
 
         }else{
 
@@ -1342,7 +1320,7 @@ public function SetSOfromStock($SalesOrderNumber){
                                 'JobCostCodeID' => '',
                                 'PurchaseNumber' => '',
                                 'Qty'=> -1 * $qty,
-                                'unit_price' => $unit_price ,
+                                'unit_price' => 0,
                                 'Total' => $Price,
                                 'User' => $user,
                                 'Type' => 'Despacho por Pedido',
