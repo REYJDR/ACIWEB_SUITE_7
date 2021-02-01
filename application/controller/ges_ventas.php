@@ -1306,7 +1306,7 @@ public function SetSOfromStock($SalesOrderNumber){
                                 'JobCostCodeID' => '',
                                 'PurchaseNumber' => '',
                                 'Qty'=> $qty,
-                                'unit_price' => $unit_price ,
+                                'unit_price' => 0 ,
                                 'Total' => $Price,
                                 'User' => $user,
                                 'Type' => 'Reserva por Orden de venta',
