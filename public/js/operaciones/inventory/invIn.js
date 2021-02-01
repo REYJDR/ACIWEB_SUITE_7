@@ -459,7 +459,7 @@ function builtTbl(chk){
            
             var line_table_req = '<tr>'+reglon+
                 '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable+' '+color+' id="desc'+i+'"  ></td>'+     
-                '<td width="15%" class="rowtable_req" style="'+display+'" '+editable+' '+color+'   id="unit'+i+'"  ></td>'+             
+                '<td width="15%" class="rowtable_req" '+editable+' '+color+'   id="unit'+i+'"  ></td>'+             
              //   '<td width="15%" class="rowtable_req" onkeyup="checkTblChar(this.id)" '+editable+' '+color+' id="unit'+i+'"  ></td>'+
                 '<td width="5%"  class="rowtable_req  numb" style="'+display+'" onkeyup="checkTblnum(this.id)"  id="tax'+i+'" '+editable2+' '+color2+'></td>'+
                 '<td width="5%"  class="rowtable_req  numb" onkeyup="checkTblPositive(this.id)" onfocusout="recalcular('+i+');" '+editable2+' '+color2+' id="qtyord'+i+'"></td>'+ 
