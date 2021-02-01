@@ -695,7 +695,7 @@ public function erase_lote($no_lote,$qty){
         'stock_dest_id'  => 1 , 
         'loc_dest_id'    => 1);
 
-    $this->set_Budget_Log($values,'8');
+    $this->set_Budget_Log($values,'8',$no_lote);
 
     //notifica reubicacion a origen
     foreach ($loc_by_lote as $lote_loc) { 
@@ -717,7 +717,7 @@ public function erase_lote($no_lote,$qty){
                     'stock_dest_id'  => 1, 
                     'loc_dest_id'    => 1); 
 
-                $this->set_Budget_Log($values,'9');
+                $this->set_Budget_Log($values,'9',$lote );
         
         }
 
@@ -994,7 +994,7 @@ public function set_lote_location($ruta_selected,$almacen_selected,$item_id,$lot
         'stock_dest_id'  => $id_alma_reg , 
         'loc_dest_id'    => $id_route_reg); 
 
-    $this->set_Budget_Log($values,'6');
+    $this->set_Budget_Log($values,'6',$lote);
  
 
  //$this->clear_lotacion_register();
@@ -1093,7 +1093,7 @@ public function update_lote_location($OrigenROUTE,$OrigenALMACEN,$status_locatio
                 'stock_dest_id'  => $almacen , 
                 'loc_dest_id'    => $ruta); 
 
-            $this->set_Budget_Log($values,'5');
+            $this->set_Budget_Log($values,'5',$lote);
 
         }
        
@@ -1318,7 +1318,7 @@ public function set_Purchase_Detail($PurchaseID){
 
           }else{
 
-               $this->set_Budget_Log($Purchase_values,1);
+               $this->set_Budget_Log($Purchase_values,1,$Item_id.'0000');
 
           }
      }
@@ -1411,7 +1411,7 @@ public function exeConsig(){
                     'stock_dest_id'  => $stockId , 
                     'loc_dest_id'    => $locId); 
 
-                    $this->set_Budget_Log($values,'4');
+                    $this->set_Budget_Log($values,'4', $lote );
                     $ref .= 'Item:'.$itemid.'Ref: '.$ref."\n";
 
                    }
@@ -1428,7 +1428,7 @@ public function exeConsig(){
 }
   
 
-public function set_Budget_Log($values,$type,$idloc =''){
+public function set_Budget_Log($values,$type,$lote = '',$idloc =''){
 
     $this->model->verify_session();
 
@@ -1465,7 +1465,8 @@ public function set_Budget_Log($values,$type,$idloc =''){
                                         'stock_origen_id'=> $values['stock_origen_id'], 
                                         'loc_origen_id'  => $values['loc_origen_id'],  
                                         'stock_dest_id'  => $values['stock_dest_id'], 
-                                        'loc_dest_id'    => $values['loc_dest_id']) ;
+                                        'loc_dest_id'    => $values['loc_dest_id'],
+                                        'Lote' => $lote ) ;
                           
                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
                 
@@ -1524,7 +1525,8 @@ public function set_Budget_Log($values,$type,$idloc =''){
                                         'stock_origen_id'=> $values['stock_origen_id'], 
                                         'loc_origen_id'  => $values['loc_origen_id'],  
                                         'stock_dest_id'  => $values['stock_dest_id'], 
-                                        'loc_dest_id'    => $values['loc_dest_id']);
+                                        'loc_dest_id'    => $values['loc_dest_id'],
+                                        'Lote' => $lote);
             
                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
                 
@@ -1573,7 +1575,8 @@ public function set_Budget_Log($values,$type,$idloc =''){
                                         'stock_origen_id'=> $values['stock_origen_id'], 
                                         'loc_origen_id'  => $values['loc_origen_id'],  
                                         'stock_dest_id'  => $values['stock_dest_id'], 
-                                        'loc_dest_id'    => $values['loc_dest_id']);
+                                        'loc_dest_id'    => $values['loc_dest_id'],
+                                        'Lote' => $lote);
                              
             
                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
@@ -1610,8 +1613,12 @@ public function set_Budget_Log($values,$type,$idloc =''){
                                     'referencia' => $ref,
                                     'ID_compania' => $id_compania ,
                                     'aci_ref' => $aciref,
-                                    'stockOrigID'  => $stockOrigID ,
-                                    'stockDestID'  => $stockDestID );
+                                    'stock_origen_id'=> $values['stock_origen_id'], 
+                                    'loc_origen_id'  => $values['loc_origen_id'],  
+                                    'stock_dest_id'  => $values['stock_dest_id'], 
+                                    'loc_dest_id'    => $values['loc_dest_id'],
+                                    'Lote' => $lote
+                                );
         
             $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
             
@@ -1651,7 +1658,8 @@ public function set_Budget_Log($values,$type,$idloc =''){
                                  'stock_origen_id'=> $values['stock_origen_id'], 
                                  'loc_origen_id'  => $values['loc_origen_id'],  
                                  'stock_dest_id'  => $values['stock_dest_id'], 
-                                 'loc_dest_id'    => $values['loc_dest_id']);
+                                 'loc_dest_id'    => $values['loc_dest_id'],
+                                 'Lote' => $lote);
      
          $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
          
@@ -1691,7 +1699,8 @@ public function set_Budget_Log($values,$type,$idloc =''){
                                         'stock_origen_id'=> $values['stock_origen_id'], 
                                         'loc_origen_id'  => $values['loc_origen_id'],  
                                         'stock_dest_id'  => $values['stock_dest_id'], 
-                                        'loc_dest_id'    => $values['loc_dest_id']);
+                                        'loc_dest_id'    => $values['loc_dest_id'],
+                                        'Lote' => $lote);
             
                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
                 
@@ -1730,7 +1739,8 @@ public function set_Budget_Log($values,$type,$idloc =''){
                                         'stock_origen_id'=> $values['stock_origen_id'], 
                                         'loc_origen_id'  => $values['loc_origen_id'],  
                                         'stock_dest_id'  => $values['stock_dest_id'], 
-                                        'loc_dest_id'    => $values['loc_dest_id']);
+                                        'loc_dest_id'    => $values['loc_dest_id'],
+                                        'Lote' => $lote);
             
                 $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
                 
@@ -1766,7 +1776,8 @@ public function set_Budget_Log($values,$type,$idloc =''){
                                          'stock_origen_id'=> $values['stock_origen_id'], 
                                          'loc_origen_id'  => $values['loc_origen_id'],  
                                          'stock_dest_id'  => $values['stock_dest_id'], 
-                                         'loc_dest_id'    => $values['loc_dest_id']);
+                                         'loc_dest_id'    => $values['loc_dest_id'],
+                                         'Lote' => $lote);
              
                  $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
                  
@@ -1803,7 +1814,8 @@ public function set_Budget_Log($values,$type,$idloc =''){
                                     'stock_origen_id'=> $values['stock_origen_id'], 
                                     'loc_origen_id'  => $values['loc_origen_id'],  
                                     'stock_dest_id'  => $values['stock_dest_id'], 
-                                    'loc_dest_id'    => $values['loc_dest_id']);
+                                    'loc_dest_id'    => $values['loc_dest_id'],
+                                    'Lote' => $lote);
         
             $this->model->insert('INV_EVENT_LOG',$event_values); //set event Line
             
@@ -1938,7 +1950,7 @@ public function setInventoryAdjustment(){
                         'loc_dest_id'  => $this->model->Query_value('STOCK_ITEMS_LOCATION','location',' where id="'.$stockID.'"  and ID_compania="'.$id_compania.'" order by id asc limit 1') ); 
                    
     
-                    $this->set_Budget_Log($values,'2');
+                    $this->set_Budget_Log($values,'2',$Item_id.'0000');
                     $ref .= 'Item:'.$itemid.'Ref: '.$reference."\n";
                 }
     
@@ -2008,7 +2020,8 @@ public function setInventoryAdjustmentOUT(){
                 die();
                 
             }else{
-            
+               $lote = $this->model->Query_value('ITEMS_NO_LOTES','no_lote',' where id="'.$idLote.'"  and ID_compania="'.$id_compania.'"'),  
+                
                 $values = array (
                     'ItemID' => $itemid, 
                     'Reference' => 'ADJ-'.date('dmyhms'), 
@@ -2025,7 +2038,7 @@ public function setInventoryAdjustmentOUT(){
                     'loc_dest_id'    => 0 ); 
 
 
-                $this->set_Budget_Log($values,'3',$idLoc);
+                $this->set_Budget_Log($values,'3',$$lote );
                 $ref .= 'Item:'.$itemid.'Ref: '.$reference."\n";
             }
         }

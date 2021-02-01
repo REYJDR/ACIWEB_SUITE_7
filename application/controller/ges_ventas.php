@@ -1607,13 +1607,22 @@ public function reverseItemTransaction($item, $dest,$desc,$qty){
         
     }else{
 
+          //registro de traslado Default a una nueva ubicacion
+        $loc_dest_id = $this->model->Query_value('STOCK_LOCATION ','route','where id="'.$dest.'";');
+        $stock_dest_id  = $this->model->Query_value('STOCK_LOCATION','id_almacen','where id="'.$dest.'";');
+
+
         $values = array (
             'ItemID' => $item, 
             'Reference' => 'REV-'.$desc, 
             'Qty'  => $qty, 
             'aci_ref' => 'REV-'.$desc, 
             'stockOrigID' => 0,
-            'stockDestID' => $dest);
+            'stockDestID' => $dest,
+            'stock_origen_id'=> 0 , 
+            'loc_origen_id'  => 0, 
+            'stock_dest_id'  => $stock_dest_id , 
+            'loc_dest_id'    => $stock_dest_id);
     
             $inv->set_Budget_Log($values,'7');
 
