@@ -1294,9 +1294,11 @@ public function SetSOfromStock($SalesOrderNumber){
                                 'stock_origen_id'=> $stock_origen_id, 
                                 'loc_origen_id'  => $loc_origen_id,  
                                 'stock_dest_id'  => 0, 
-                                'loc_dest_id'    => 0);
+                                'loc_dest_id'    => 0,
+                              
+                                'Lote' => $lote);
         //set event Line              
-        $this->model->insert('INV_EVENT_LOG',$event_values,$lote); 
+        $this->model->insert('INV_EVENT_LOG',$event_values); 
 
         //**  reserva de items  */
 
@@ -1330,9 +1332,10 @@ public function SetSOfromStock($SalesOrderNumber){
                                 'stock_origen_id'=> $stock_origen_id, 
                                 'loc_origen_id'  => $loc_origen_id,  
                                 'stock_dest_id'  => 0, 
-                                'loc_dest_id'    => 0);
+                                'loc_dest_id'    => 0,
+                                'Lote' => $lote );
         //set event Line              
-        $this->model->insert('INV_EVENT_LOG',$event_values,$lote); 
+        $this->model->insert('INV_EVENT_LOG',$event_values; 
 
 
    }
