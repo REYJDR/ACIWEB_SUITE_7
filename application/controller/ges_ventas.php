@@ -1151,14 +1151,14 @@ public function SetSOfromStock($SalesOrderNumber){
       
               if ($venc!='0000-00-00 00:00:00' || $venc!='' ){
                 $venc = date('d/m/Y',strtotime($venc));
-                $caduc =   ' Venc: '.$venc.' ';
+                $caduc =   'Venc: '.$venc.'-';
               }else{
                 $caduc = '';
               }
       
               if ($fab!='0000-00-00 00:00:00' || $fab!='' ){
                 $fab = date('d/m/Y',strtotime($fab));
-                $fabDate =   ' Fab: '.$fab.' ';
+                $fabDate =   '-Fab:'.$fab.'-';
               }else{
                 $fabDate = '';
               }
@@ -1166,11 +1166,11 @@ public function SetSOfromStock($SalesOrderNumber){
           }
         }
 
-        $lote = ' Lote: '+$lote;
+        $lote = ' -Lot:'+$lote;
 
         if($fabDate != ''  ||  $caduc != ''){
 
-          $Description = substr($desc.$lote,0,136).$fabDate.$caduc;
+          $Description = substr($desc,0,111).$lote.$fabDate.$caduc;
 
         }else{
 
