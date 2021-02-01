@@ -1167,7 +1167,7 @@ public function SetSOfromStock($SalesOrderNumber){
           }
         }
 
-        $loteno = ' -Lot:'.$loteVenFab;
+        $loteno = ' -Lot:'.$lote;
 
         if($fabDate != ''  ||  $caduc != ''){
 
@@ -1196,7 +1196,7 @@ public function SetSOfromStock($SalesOrderNumber){
             'ID_compania'=>$id_compania,
             'SalesOrderNumber'=>$SalesOrderNumber,
             'Item_id'=>$itemid,
-            'lote' => $loteno,
+            'lote' => $lote,
             'Description'=> $Description,
             'REMARK'=>$remarks,
             'Quantity'=>$qty,
