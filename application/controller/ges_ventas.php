@@ -412,13 +412,19 @@ public function despachar($id){
 
      $value = json_decode($value);
      $itemid =  $value->{'ProductID'};
-     $value->{'status_location_id'};
+
      $qty = $value->{'qty'};
    
      $ventas->UpdateItemsLocation($value->{'status_location_id'},$value->{'qty'});
 
      $id_compania= $this->model->id_compania;
      $user = $this->model->active_user_id;
+     
+     //$value->{'status_location_id'}
+
+     $stock_origen_id = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'stock',    'where id="'.$value->{'status_location_id'}.'" and ID_compania ="'.$id_compania.'" ') ;
+     $loc_origen_id   = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'location', 'where id="'.$value->{'status_location_id'}.'" and ID_compania ="'.$id_compania.'" ') ;
+     $lote   = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'lote', 'where id="'.$value->{'status_location_id'}.'" and ID_compania ="'.$id_compania.'" ') ;
      
      $event_values = array(  'ProductID' => $itemid,
                              'JobID' => '',
@@ -432,9 +438,12 @@ public function despachar($id){
                              'Type' => 'Despacho por Orden de venta',
                              'Referencia' => $ID,
                              'ID_compania' => $id_compania ,
-                             'stockOrigID' => $value->{'status_location_id'} );
+                             'stock_origen_id'=> $stock_origen_id, 
+                             'loc_origen_id'  => $loc_origen_id,  
+                             'stock_dest_id'  => 0, 
+                             'loc_dest_id'    => 0);
      //set event Line              
-     $this->model->insert('INV_EVENT_LOG',$event_values); 
+     $this->model->insert('INV_EVENT_LOG',$event_values,$lote); 
 
      $this->model->update('SalesOrder_Header_Imp', ['EMITIDA' => "1" ] , ' where ID_compania = "'.$id_compania.'" and  SalesOrderNumber="'.$ID.'"' ); 
     
@@ -1284,6 +1293,10 @@ public function SetSOfromStock($SalesOrderNumber){
         $id_compania = $this->model->id_compania;
         $user        = $this->model->active_user_id;
 
+        $stock_origen_id = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'stock',    'where id="'.$loc.'" and ID_compania ="'.$id_compania.'" ') ;
+        $loc_origen_id   = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'location', 'where id="'.$loc.'" and ID_compania ="'.$id_compania.'" ') ;
+
+        
         $event_values = array(  'ProductID' => $itemid,
                                 'JobID' => '',
                                 'JobPhaseID' => '',
@@ -1297,12 +1310,14 @@ public function SetSOfromStock($SalesOrderNumber){
                                 'Referencia'  => $SalesOrderNumber,
                                 'aci_ref' => $SalesOrderNumber,
                                 'ID_compania' => $id_compania ,
-                                'stockOrigID' => $loc );
+                                'stock_origen_id'=> $stock_origen_id, 
+                                'loc_origen_id'  => $loc_origen_id,  
+                                'stock_dest_id'  => 0, 
+                                'loc_dest_id'    => 0);
         //set event Line              
-        $this->model->insert('INV_EVENT_LOG',$event_values); 
+        $this->model->insert('INV_EVENT_LOG',$event_values,$lote); 
 
         //**  reserva de items  */
-
 
    }else{
 
@@ -1311,6 +1326,11 @@ public function SetSOfromStock($SalesOrderNumber){
         // //set event item 
         $id_compania = $this->model->id_compania;
         $user        = $this->model->active_user_id;
+
+        $stock_origen_id = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'stock',    'where id="'.$loc.'" and ID_compania ="'.$id_compania.'" ') ;
+        $loc_origen_id   = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'location', 'where id="'.$loc.'" and ID_compania ="'.$id_compania.'" ') ;
+
+        
 
         $event_values = array(  'ProductID' => $itemid,
                                 'JobID' => '',
@@ -1325,9 +1345,12 @@ public function SetSOfromStock($SalesOrderNumber){
                                 'Referencia'  => $SalesOrderNumber,
                                 'aci_ref' => $SalesOrderNumber,
                                 'ID_compania' => $id_compania ,
-                                'stockOrigID' => $loc );
+                                'stock_origen_id'=> $stock_origen_id, 
+                                'loc_origen_id'  => $loc_origen_id,  
+                                'stock_dest_id'  => 0, 
+                                'loc_dest_id'    => 0);
         //set event Line              
-        $this->model->insert('INV_EVENT_LOG',$event_values); 
+        $this->model->insert('INV_EVENT_LOG',$event_values,$lote); 
 
 
    }
