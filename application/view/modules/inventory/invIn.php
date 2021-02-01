@@ -309,7 +309,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 									<tr>
 										<th width="10%" ><?php echo $TblItem;?></th>
 										<th width="15%" class="text-center"><?php echo $TblDes;?></th>
-							<!--		<th width="5%"  class="text-center"><?php echo $TblUnitMeasure;?></th> -->		
+							     		<th width="5%"  class="text-center"><?php echo $TblUnitMeasure;?></th> 	
 							<!--	    <th width="15%" class="text-center"><?php echo $TblUPCSKU;?></th>	 -->	
 							<!--	    <th width="5%"  class="text-center"><?php echo $TblGlAcct;?></th>-->
 										<th width="5%"  style='display:none;' class="text-center"><?php echo $TblTaxTyp;?></th>		
