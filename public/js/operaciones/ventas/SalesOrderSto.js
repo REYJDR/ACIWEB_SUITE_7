@@ -731,7 +731,7 @@ var r = confirm('Desea procesar la orden?');
          url:  link,
          data:  {url: 'ges_ventas/SetSOfromStock/'+OS_NO , Data : JSON.stringify(LineArray)}, 
          success: function(res){
-         //console.log(res);
+         console.log(res);
           if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
              checkSOIns(link,OS_NO);
           }
