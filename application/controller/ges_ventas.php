@@ -1204,7 +1204,7 @@ public function SetSOfromStock($SalesOrderNumber){
             'Net_line'=>$Price,
             'Taxable'=>$this->model->Query_value('Products_Exp','TaxType','Where ProductID="'.$itemid.'" and ID_compania="'.$id_compania.'";') );
   
-die(  $values1 );
+ var_dump($values1); die();
            $this->model->insert('SalesOrder_Detail_Imp',$values1); //set item line
   
 
