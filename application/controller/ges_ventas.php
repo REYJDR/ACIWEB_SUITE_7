@@ -1125,7 +1125,8 @@ public function SetSOfromStock($SalesOrderNumber){
                   'Quantity'=>'0',
                   'Unit_Price'=>'0',
                   'Net_line'=>'0',
-                  'Taxable'=>'1');
+                  'Taxable'=>'1',
+               );
 
 
                   $this->model->insert('SalesOrder_Detail_Imp',$values2);//set lote line
@@ -1166,15 +1167,15 @@ public function SetSOfromStock($SalesOrderNumber){
           }
         }
 
-        $lote = ' -Lot:'+$lote;
+        $loteno = ' -Lot:'+$loteVenFab;
 
         if($fabDate != ''  ||  $caduc != ''){
 
-          $Description = substr($desc,0,111).$lote.$fabDate.$caduc;
+          $Description = substr($desc,0,111).$loteno.$fabDate.$caduc;
 
         }else{
 
-          $Description = $desc.$lote;
+          $Description = $desc.$loteno;
         }
       
  
@@ -1197,7 +1198,7 @@ public function SetSOfromStock($SalesOrderNumber){
             'ID_compania'=>$id_compania,
             'SalesOrderNumber'=>$SalesOrderNumber,
             'Item_id'=>$itemid,
-            'lote' => $lote,
+            'lote' => $loteno,
             'Description'=> $Description,
             'REMARK'=>$remarks,
             'Quantity'=>$qty,
