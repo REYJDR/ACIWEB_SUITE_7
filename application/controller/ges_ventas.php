@@ -1329,7 +1329,8 @@ public function SetSOfromStock($SalesOrderNumber){
 
         $stock_origen_id = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'stock',    'where id="'.$loc.'" and ID_compania ="'.$id_compania.'" ') ;
         $loc_origen_id   = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'location', 'where id="'.$loc.'" and ID_compania ="'.$id_compania.'" ') ;
-
+        $lote   = $this->model->Query_value('STOCK_ITEMS_LOCATION', 'lote', 'where id="'.$loc.'" and ID_compania ="'.$id_compania.'" ') ;
+        
         
 
         $event_values = array(  'ProductID' => $itemid,
