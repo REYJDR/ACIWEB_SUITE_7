@@ -2020,7 +2020,7 @@ public function setInventoryAdjustmentOUT(){
                 die();
                 
             }else{
-               $lote = $this->model->Query_value('ITEMS_NO_LOTES','no_lote',' where id="'.$idLote.'"  and ID_compania="'.$id_compania.'"'),  
+               $lote = $this->model->Query_value('ITEMS_NO_LOTES','no_lote',' where id="'.$idLote.'"  and ID_compania="'.$id_compania.'"');
                 
                 $values = array (
                     'ItemID' => $itemid, 
