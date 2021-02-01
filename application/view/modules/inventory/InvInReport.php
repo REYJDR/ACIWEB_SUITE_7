@@ -148,7 +148,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 							<th></th>
 							<th></th>
 							<th></th>
-							<th></th>
+							
 						</tr>
 					</tfoot>';
 					
