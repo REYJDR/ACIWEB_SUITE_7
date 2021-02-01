@@ -1166,13 +1166,15 @@ public function SetSOfromStock($SalesOrderNumber){
           }
         }
 
+        $lote = ' Lote: '+$lote;
+
         if($fabDate != ''  ||  $caduc != ''){
 
-          $Description = substr($desc,0,136).$fabDate.$caduc;
+          $Description = substr($desc.$lote,0,136).$fabDate.$caduc;
 
         }else{
 
-          $Description = $desc;
+          $Description = $desc.$lote;
         }
       
  
