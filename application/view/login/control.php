@@ -70,7 +70,7 @@ if(isset($_POST['flag']))
 				<?php 
 
 				$isStandalone = $this->model->CheckStandalone();
-
+				echo $isStandalone;
 				if(!$isStandalone){ ?>
 
 					<div class="separador col-lg-12" ></div>
