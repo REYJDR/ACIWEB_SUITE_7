@@ -687,7 +687,7 @@ public function ReadInvoiceFile($id_compania){
             INVOICE_GEN_HEADER
             Where 
             ID_compania = "'.$id_compania.'" 
-            AND InvoiceNumber IS NULL or InvoiceNumber = ""';
+            AND ( InvoiceNumber IS NULL or InvoiceNumber = "" ) and date >= CURDATE() - 30';
 
   $res = $this->model->Query($SQL);
 
