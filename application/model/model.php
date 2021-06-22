@@ -36,7 +36,6 @@ class Model
 
          $this->sage_connected =   $this->ConexionSage();
 
-         
     }
     
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -690,7 +689,7 @@ public function get_Purchaseitem($itemid){
 
 $query ='SELECT * from Products_Exp
 inner join ITEMS_NO_LOTES on ITEMS_NO_LOTES.ProductID=Products_Exp.ProductID
-where  Products_Exp.ProductID="'.$itemid.'" ;';
+where  Products_Exp.ProductID="'.$itemid.'" and Products_Exp.id_compania="'.$this->id_compania.'" ;';
 
 
 
