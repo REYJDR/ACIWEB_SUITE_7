@@ -460,7 +460,7 @@ public function verify_session(){
 
         }else{
 
-           session_start();
+          //session_start();
          // session_destroy();
        
 
