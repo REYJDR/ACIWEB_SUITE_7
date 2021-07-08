@@ -367,18 +367,18 @@ $this->update('SAX_USER',$columns,'id='.$id);
 
 session_start();
 
-
-$_SESSION['ID_USER'] = $id;
-$_SESSION['NAME'] = $name;
-$_SESSION['LASTNAME'] = $lastname;
-$_SESSION['EMAIL'] = $email;
-$_SESSION['ROLE'] = $role;
-$_SESSION['PASS'] = $pass;
-//$_SESSION['ALMACEN'] = $almacen;
-$_SESSION['ROLE1'] = $rol_compras;
-$_SESSION['ROLE2'] = $rol_campo;
-$_SESSION['CANCLOSE'] = $can_close;
-$_SESSION['COMPANY'] = $company;
+$this->set_login_parameters();
+// $_SESSION['ID_USER'] = $id;
+// $_SESSION['NAME'] = $name;
+// $_SESSION['LASTNAME'] = $lastname;
+// $_SESSION['EMAIL'] = $email;
+// $_SESSION['ROLE'] = $role;
+// $_SESSION['PASS'] = $pass;
+// //$_SESSION['ALMACEN'] = $almacen;
+// $_SESSION['ROLE1'] = $rol_compras;
+// $_SESSION['ROLE2'] = $rol_campo;
+// $_SESSION['CANCLOSE'] = $can_close;
+// $_SESSION['COMPANY'] = $company;
 
 
 if($temp_url!=''){
@@ -482,7 +482,7 @@ public function verify_session(){
        
             $res = '0';
 
-            $this->set_login_parameters();
+            if(empty($_SESSION)) $this->set_login_parameters();
 
            }
 
