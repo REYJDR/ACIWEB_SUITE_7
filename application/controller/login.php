@@ -16,13 +16,13 @@ public function index($temp_url=''){
 public function login_out(){
 
 
-		session_start();
+		// session_start();
 
-		if($_SESSION['EMAIL']){
+		// if($_SESSION['EMAIL']){
 
 		session_destroy();
 			
-		}
+		// }
 
 		echo "<script>self.location='".URL."index.php?url=home/index';</script>";
 
