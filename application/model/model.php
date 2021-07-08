@@ -421,7 +421,7 @@ if($temp_url!=''){
                                                 </script>';
 
                                         }else{
-                                           die('here');
+                                            //die('here');
                                             echo '<script>console.log('.$conn.'); self.location="'.URL.'index.php?url=home/index";</script>';
                                      
                                         }
@@ -458,8 +458,8 @@ public function verify_session(){
 
         }else{
 
-            if(session_status() === PHP_SESSION_NONE) session_start();
-
+           // if(session_status() === PHP_SESSION_NONE) session_start();
+var_dump($_SESSION); die();
             if(!empty($_SESSION)){
 
                 $useragent=$_SERVER['HTTP_USER_AGENT'];
