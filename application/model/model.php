@@ -462,7 +462,7 @@ public function verify_session(){
 
            session_start();
          // session_destroy();
-         die($_SESSION);
+       
 
             if(!$_SESSION){
 
@@ -477,7 +477,7 @@ public function verify_session(){
 
                     // echo "<script>alert('Usuario no auntenticado');</script>";
               
-                    $res = '1';
+                    $res = '1';die($res  );
                     echo '<script>self.location ="index.php?url=login/index";</script>';
 
                     }
@@ -485,7 +485,7 @@ public function verify_session(){
             }else{
        
             $res = '0';
-
+die($res  );
             $this->set_login_parameters();
            }
 
