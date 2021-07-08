@@ -31,6 +31,7 @@ if(isset($_POST['flag']))
 		$company = '0'; 
 		
 		}
+		
 		$login = $this->model->login_in($user,$pass,'',$company); 
 
 	}else{
