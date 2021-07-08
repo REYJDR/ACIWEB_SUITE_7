@@ -462,7 +462,7 @@ public function verify_session(){
 
           //session_start();
           //session_destroy();
-
+dd(session_status());
             if(session_status() !== PHP_SESSION_ACTIVE){
 
                 $useragent=$_SERVER['HTTP_USER_AGENT'];
