@@ -493,7 +493,7 @@ public function verify_session(){
     }
 
 private function set_login_parameters(){
-
+die('test');
         $this->active_user_id = $_SESSION['ID_USER'];
         $this->active_user_name = $_SESSION['NAME'];
         $this->active_user_lastname = $_SESSION['LASTNAME'];
