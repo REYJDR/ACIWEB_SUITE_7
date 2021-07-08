@@ -461,7 +461,7 @@ public function verify_session(){
 
             session_start();
           
-
+            var_dump($_SESSION); die();
             if(empty($_SESSION)){
 
                 $useragent=$_SERVER['HTTP_USER_AGENT'];
