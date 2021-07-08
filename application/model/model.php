@@ -380,7 +380,8 @@ $_SESSION['ROLE2'] = $rol_campo;
 $_SESSION['CANCLOSE'] = $can_close;
 $_SESSION['COMPANY'] = $company;
 
-var_dump($_SESSION); die();
+die(session_status());
+
 if($temp_url!=''){
 
   $url = str_replace('@',  '/', $temp_url);
@@ -457,7 +458,7 @@ public function verify_session(){
 
 
         }else{
-
+            var_dump($_SESSION); die();
            // if(session_status() === PHP_SESSION_NONE) session_start();
 //var_dump( $_SESSION);
             if(session_status() == PHP_SESSION_NONE){
