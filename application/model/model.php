@@ -448,7 +448,7 @@ public function verify_session(){
         //echo $conexion.' '.$error;
 
         $msg = str_replace('/', '-', $msg);
-var_dump( $conexion );
+var_dump( $conexion ); die();
         if($error=='Error'){
           
 
