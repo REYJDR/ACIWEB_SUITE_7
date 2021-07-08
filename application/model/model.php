@@ -444,11 +444,11 @@ public function verify_session(){
         $conexion = $this->TestConexion();
 
         list($error,$msg) = explode(':', $conexion);
-
+  
         //echo $conexion.' '.$error;
 
         $msg = str_replace('/', '-', $msg);
-var_dump( $conexion ); die();
+
         if($error=='Error'){
           
 
