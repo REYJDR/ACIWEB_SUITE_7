@@ -459,7 +459,7 @@ public function verify_session(){
         }else{
 
            // if(session_status() === PHP_SESSION_NONE) session_start();
-
+var_dump( $_SESSION);
             if(session_status() == PHP_SESSION_NONE){
 die('session no'.session_status());
                 $useragent=$_SERVER['HTTP_USER_AGENT'];
