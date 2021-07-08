@@ -51,7 +51,7 @@ public function index()
     }else{
 
       
-    die($res);
+   
           if($res=='0'){
           
               // load views

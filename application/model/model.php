@@ -462,7 +462,7 @@ public function verify_session(){
 
            session_start();
          // session_destroy();
-
+         die($_SESSION);
 
             if(!$_SESSION){
 
