@@ -367,7 +367,6 @@ $this->update('SAX_USER',$columns,'id='.$id);
 
 session_start();
 
-
 $_SESSION['ID_USER'] = $id;
 $_SESSION['NAME'] = $name;
 $_SESSION['LASTNAME'] = $lastname;

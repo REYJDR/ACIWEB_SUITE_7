@@ -47,11 +47,7 @@ if(isset($_POST['flag']))
 ?>
 
 
-<?php
 
-//phpinfo();
-
-?>	
 		
 				<form method="POST"  action="" class="login100-form validate-form p-l-55 p-r-55 p-t-178" id="login" autocomplete="on" >
 
@@ -117,3 +113,9 @@ if(isset($_POST['flag']))
 					</div>
 			 </div>
 	</div>
+
+	<?php
+
+//phpinfo();
+
+?>	
