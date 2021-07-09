@@ -379,7 +379,7 @@ $_SESSION['CANCLOSE'] = $can_close;
 $_SESSION['COMPANY'] = $company;
 
 
-
+var_dump($_SESSION); die();
 if($temp_url!=''){
 
   $url = str_replace('@',  '/', $temp_url);
@@ -458,6 +458,7 @@ public function verify_session(){
 
 
         }else{
+           
             if(session_id() == '')
             {
                 session_start();
