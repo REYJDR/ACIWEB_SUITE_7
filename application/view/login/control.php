@@ -116,6 +116,6 @@ if(isset($_POST['flag']))
 
 <?php
 
-phpinfo();
+//phpinfo();
 
 ?>	
