@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 error_reporting(1); 
 
 
@@ -365,7 +365,7 @@ $columns= array('last_login' => $timestamp = date('Y-m-d G:i:s'));
 
 $this->update('SAX_USER',$columns,'id='.$id);
 
-session_start();
+//session_start();
 
 $_SESSION['ID_USER'] = $id;
 $_SESSION['NAME'] = $name;
@@ -379,7 +379,7 @@ $_SESSION['CANCLOSE'] = $can_close;
 $_SESSION['COMPANY'] = $company;
 
 
-var_dump($_SESSION); die();
+
 if($temp_url!=''){
 
   $url = str_replace('@',  '/', $temp_url);
@@ -458,11 +458,6 @@ public function verify_session(){
 
 
         }else{
-           
-            if(session_id() == '')
-            {
-                session_start();
-            }
            
             
              echo session_id().'/'.var_dump($_SESSION);
