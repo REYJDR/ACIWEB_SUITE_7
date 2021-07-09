@@ -378,7 +378,7 @@ $_SESSION['ROLE2'] = $rol_campo;
 $_SESSION['CANCLOSE'] = $can_close;
 $_SESSION['COMPANY'] = $company;
 
-echo SID; die();
+
 
 if($temp_url!=''){
 
