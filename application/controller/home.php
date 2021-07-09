@@ -37,7 +37,7 @@ class home extends Controller
   
 public function index()
 {
-  session_start()
+  session_start();
   die(SID);
     $res = $this->model->verify_session();
   
