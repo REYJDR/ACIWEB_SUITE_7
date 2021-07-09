@@ -379,7 +379,7 @@ $_SESSION['ROLE2'] = $rol_campo;
 $_SESSION['CANCLOSE'] = $can_close;
 $_SESSION['COMPANY'] = $company;
 
-die(session_id());
+
 
 if($temp_url!=''){
 
