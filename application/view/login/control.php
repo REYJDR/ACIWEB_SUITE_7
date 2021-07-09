@@ -47,9 +47,9 @@ if(isset($_POST['flag']))
 ?>
 
 
-				<?php
+<?php
 
-phpinfo();
+//phpinfo();
 
 ?>	
 		
