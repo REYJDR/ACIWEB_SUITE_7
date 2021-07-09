@@ -35,10 +35,10 @@ class home extends Controller
      * This method handles what happens when you move to http://yourproject/home/index (which is the default page btw)
      */
   
-public function index()
+public function index($SID=NULL)
 {
   session_start();
-  die(SID);
+  die($SID);
     $res = $this->model->verify_session();
   
     $useragent=$_SERVER['HTTP_USER_AGENT'];  
