@@ -378,7 +378,7 @@ $_SESSION['ROLE2'] = $rol_campo;
 $_SESSION['CANCLOSE'] = $can_close;
 $_SESSION['COMPANY'] = $company;
 
-
+exit();
 
 if($temp_url!=''){
 
@@ -394,7 +394,7 @@ if($temp_url!=''){
 
                     echo '<script>self.location="'.URL.'index.php?url=home/index";</script>';
 
-
+                    exit();
                 }else{
 
                             $res= $this->Get_company_Info();
@@ -414,17 +414,17 @@ if($temp_url!=''){
                                         if($conn==0){
 
                                             echo '<script>
-                                                console.log("url'.$url.'");
+                                                console.log("url:'.URL.'");
                                                 alert("Advertencia: El sistema se encuentra desconectado de SageConnect, Por favor verificar");
                                                 self.location="'.URL.'index.php?url=home/index";
                                                 </script>';
                                                 // self.location="'.URL.'index.php?url=home/index";
                                                // header('Location: '.URL.'index.php?url=home/index');
-
+                                               exit();
                                         }else{
                                             //die('here');
                                             echo '<script>console.log('.$conn.'); self.location="'.URL.'index.php?url=home/index";</script>';
-                                     
+                                            exit();
                                         }
 
                                 }else{
