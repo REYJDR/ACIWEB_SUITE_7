@@ -367,14 +367,12 @@ $this->update('SAX_USER',$columns,'id='.$id);
 
 session_start();
 
-
 $_SESSION['ID_USER'] = $id;
 $_SESSION['NAME'] = $name;
 $_SESSION['LASTNAME'] = $lastname;
 $_SESSION['EMAIL'] = $email;
 $_SESSION['ROLE'] = $role;
 $_SESSION['PASS'] = $pass;
-//$_SESSION['ALMACEN'] = $almacen;
 $_SESSION['ROLE1'] = $rol_compras;
 $_SESSION['ROLE2'] = $rol_campo;
 $_SESSION['CANCLOSE'] = $can_close;
@@ -459,9 +457,9 @@ public function verify_session(){
 
         }else{
 
-            session_start();
+            // session_start();
           
-            var_dump($_SESSION); die();
+            // var_dump($_SESSION); die();
             if(empty($_SESSION)){
 
                 $useragent=$_SERVER['HTTP_USER_AGENT'];
@@ -483,7 +481,7 @@ public function verify_session(){
             }else{
        
             $res = '0';
-            var_dump($_SESSION); die();
+            // var_dump($_SESSION); die();
             $this->set_login_parameters();
 
            }
