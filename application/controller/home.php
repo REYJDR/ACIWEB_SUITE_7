@@ -37,8 +37,8 @@ class home extends Controller
   
 public function index()
 {
-
-  die(session_start());
+  session_start()
+  die(SID);
     $res = $this->model->verify_session();
   
     $useragent=$_SERVER['HTTP_USER_AGENT'];  
