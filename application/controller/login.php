@@ -18,11 +18,11 @@ public function login_out(){
 
 		session_start();
 
-		if(!empty($_SESSION)){
+	//	if(!empty($_SESSION)){
 
 		 session_destroy();
 			
-		}
+	//	}
 
 		echo "<script>self.location='".URL."index.php?url=home/index';</script>";
 
