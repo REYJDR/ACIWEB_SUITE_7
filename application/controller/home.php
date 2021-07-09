@@ -40,7 +40,6 @@ public function index()
 
     $res = $this->model->verify_session();
 
-    var_dump($_SESSION);
   
     $useragent=$_SERVER['HTTP_USER_AGENT'];  
 
