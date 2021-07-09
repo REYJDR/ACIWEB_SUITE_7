@@ -51,7 +51,7 @@ if(isset($_POST['flag']))
 				<form method="POST"  action="" class="login100-form validate-form p-l-55 p-r-55 p-t-178" id="login" autocomplete="on" >
 
 				<input type="hidden" name='flag' value="1"/>
-				<p><?php phpversion(); ?></p>
+				<p><?php echo phpversion(); ?></p>
 				
 			       <span class="login100-form-title"> 
 				   <img width="50%" height="50%"  src="page_assets/images/ACIWEB-LOGO.png" />
