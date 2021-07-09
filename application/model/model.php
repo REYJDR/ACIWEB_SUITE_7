@@ -379,7 +379,9 @@ $_SESSION['ROLE2'] = $rol_campo;
 $_SESSION['CANCLOSE'] = $can_close;
 $_SESSION['COMPANY'] = $company;
 
-
+if (!is_writable(session_save_path())) {
+    echo 'Session path "'.session_save_path().'" is not writable for PHP!'; 
+}
 
 if($temp_url!=''){
 
@@ -461,7 +463,8 @@ public function verify_session(){
             session_start();
             
             echo session_id().'/'.var_dump($_SESSION);
-          die();
+            die();
+
             if(!$_SESSION){
 
                 $useragent=$_SERVER['HTTP_USER_AGENT'];
