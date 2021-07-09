@@ -460,8 +460,8 @@ public function verify_session(){
         }else{
            
             
-             echo session_id().'/'.var_dump($_SESSION);
-             die();
+            //  echo session_id().'/'.var_dump($_SESSION);
+            //  die();
 
             if(!$_SESSION){
 
