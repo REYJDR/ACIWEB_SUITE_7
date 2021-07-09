@@ -461,8 +461,8 @@ public function verify_session(){
 
             session_start();
             
-            echo session_id().'/'.var_dump($_SESSION['EMAIL']);
-            die();
+            // echo session_id().'/'.var_dump($_SESSION['EMAIL']);
+            // die();
 
             if(!$_SESSION){
 
