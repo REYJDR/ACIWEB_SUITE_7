@@ -365,7 +365,7 @@ $columns= array('last_login' => $timestamp = date('Y-m-d G:i:s'));
 
 $this->update('SAX_USER',$columns,'id='.$id);
 
-session_start();
+die(session_start());
 
 $_SESSION['ID_USER'] = $id;
 $_SESSION['NAME'] = $name;
