@@ -366,7 +366,7 @@ $columns= array('last_login' => $timestamp = date('Y-m-d G:i:s'));
 $this->update('SAX_USER',$columns,'id='.$id);
 
 session_start();
-die(session_id());
+
 
 $_SESSION['ID_USER'] = $id;
 $_SESSION['NAME'] = $name;
@@ -379,7 +379,7 @@ $_SESSION['ROLE2'] = $rol_campo;
 $_SESSION['CANCLOSE'] = $can_close;
 $_SESSION['COMPANY'] = $company;
 
-
+die(session_id());
 
 if($temp_url!=''){
 
