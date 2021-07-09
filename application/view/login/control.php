@@ -34,7 +34,7 @@ if(isset($_POST['flag']))
 
 		$login = $this->model->login_in($user,$pass,'',$company); 
 
-		
+
 	}else{
 
 		echo "<script>  MSG_ERROR('Instancia inactiva, por favor contacte a su administrador de cuenta',0); </script>";
@@ -47,7 +47,11 @@ if(isset($_POST['flag']))
 ?>
 
 
-					
+				<?php
+
+phpinfo();
+
+?>	
 		
 				<form method="POST"  action="" class="login100-form validate-form p-l-55 p-r-55 p-t-178" id="login" autocomplete="on" >
 
