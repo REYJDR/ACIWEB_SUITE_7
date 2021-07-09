@@ -34,6 +34,7 @@ if(isset($_POST['flag']))
 
 		$login = $this->model->login_in($user,$pass,'',$company); 
 
+		
 	}else{
 
 		echo "<script>  MSG_ERROR('Instancia inactiva, por favor contacte a su administrador de cuenta',0); </script>";

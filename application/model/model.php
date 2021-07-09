@@ -459,7 +459,9 @@ public function verify_session(){
         }else{
 
             session_start();
-          
+            
+            echo session_id().'/'.var_dump($_SESSION);
+          die();
             if(!$_SESSION){
 
                 $useragent=$_SERVER['HTTP_USER_AGENT'];
