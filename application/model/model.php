@@ -458,8 +458,11 @@ public function verify_session(){
 
 
         }else{
-
-            session_start();
+            if(session_id() == '')
+            {
+                session_start();
+            }
+           
             
             // echo session_id().'/'.var_dump($_SESSION['EMAIL']);
             // die();
