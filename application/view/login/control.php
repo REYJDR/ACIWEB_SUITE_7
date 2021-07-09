@@ -114,8 +114,8 @@ if(isset($_POST['flag']))
 			 </div>
 	</div>
 
-	<?php
+<?php
 
-//phpinfo();
+phpinfo();
 
 ?>	
