@@ -2075,6 +2075,7 @@ public function getListItems(){
 
    $Item= $this->model->queryColumns('Products_Exp', $columns,$clause);
 
+   var_dump($Item); die();
    if($Item != '' ){
     
   
