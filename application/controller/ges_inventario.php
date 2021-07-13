@@ -2069,7 +2069,7 @@ public function getListItems(){
 
    $clause = ' INNER JOIN ( SELECT SUM(qty) as stockQTY , 
                              itemID FROM STOCK_ITEMS_LOCATION  WHERE ID_compania="'.$id_compania.'"  GROUP BY  itemID ) AS STK ON STK.itemID = Products_Exp.ProductID
-                WHERE Products_Exp.id_compania="'.$id_compania.'" GROUP BY Products_Exp.ProductID, Products_Exp.Description, Products_Exp.UnitMeasure, Products_Exp.LastUnitCost , Products_Exp.QtyOnHand;';
+                WHERE Products_Exp.id_compania="'.$id_compania.'" GROUP BY Products_Exp.ProductID, Products_Exp.Description, Products_Exp.UnitMeasure, Products_Exp.LastUnitCost , Products_Exp.QtyOnHand ';
 
   
 
