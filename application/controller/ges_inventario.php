@@ -2071,6 +2071,8 @@ public function getListItems(){
                              itemID FROM STOCK_ITEMS_LOCATION  WHERE ID_compania="'.$id_compania.'"  GROUP BY  itemID ) AS STK ON STK.itemID = Products_Exp.ProductID
                 WHERE Products_Exp.id_compania="'.$id_compania.'" GROUP BY Products_Exp.ProductID';
 
+  
+
    $Item= $this->model->queryColumns('Products_Exp', $columns,$clause);
 
    if($Item != '' ){
