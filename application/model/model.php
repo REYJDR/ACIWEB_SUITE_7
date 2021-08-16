@@ -1094,8 +1094,8 @@ $ORDER= $this->Query('SELECT * FROM `SalesOrder_Header_Imp`
 inner JOIN `SalesOrder_Detail_Imp` ON SalesOrder_Header_Imp.SalesOrderNumber = SalesOrder_Detail_Imp.SalesOrderNumber
 inner JOIN `Customers_Exp` ON SalesOrder_Header_Imp.CustomerID = Customers_Exp.CustomerID
 inner JOIN `SAX_USER` ON `SAX_USER`.`id` = SalesOrder_Header_Imp.user where SalesOrder_Header_Imp.SalesOrderNumber="'.$id.'" and 
-SalesOrder_Detail_Imp.ID_compania="'.$id_compania.'" and SalesOrder_Header_Imp.ID_compania="'.$id_compania.'"
-group by SalesOrder_Detail_Imp.ID order by SalesOrder_Detail_Imp.ID;'); 
+SalesOrder_Detail_Imp.ID_compania="'.$id_compania.'" and SalesOrder_Header_Imp.ID_compania="'.$id_compania.'" 
+order by SalesOrder_Detail_Imp.ID;'); 
 
 return $ORDER;
 
@@ -1108,7 +1108,7 @@ inner JOIN `Sales_Detail_Imp` ON Sales_Header_Imp.InvoiceNumber = Sales_Detail_I
 inner JOIN `Customers_Exp` ON Sales_Header_Imp.CustomerID = Customers_Exp.CustomerID
 inner JOIN `SAX_USER` ON `SAX_USER`.`id` = Sales_Header_Imp.user where Sales_Header_Imp.InvoiceNumber="'.$id.'" 
 and  SalesOrder_Detail_Imp.ID_compania="'.$id_compania.'" and SalesOrder_Header_Imp.ID_compania="'.$id_compania.'"
-group by Sales_Detail_Imp.ID order by Sales_Detail_Imp.ID;'); 
+order by Sales_Detail_Imp.ID;'); 
 
 return $ORDER;
 
