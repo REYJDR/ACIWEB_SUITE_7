@@ -272,8 +272,13 @@ foreach ($comp as $value) {
                           </thead>
                           <tbody>
                             <tr>
-                              <td width="50%"  height="150px" ></td>
-                              <td width="50%"  height="150px" ></td>
+                              <td width="50%"  height="100px" >
+
+                              </td>
+                              <td width="50%"  height="100px" >
+
+
+                              </td>
                             </tr>                      
                           </tbody>
                       </table>
@@ -287,8 +292,8 @@ foreach ($comp as $value) {
                           </thead>
                           <tbody>
                             <tr>
-                              <td width="50%"  height="150px" ></td>
-                              <td width="50%"  height="150px" ></td>
+                              <td width="50%"  height="100px" ></td>
+                              <td width="50%"  height="100px" ></td>
                             </tr>                      
                           </tbody>
                       </table>
