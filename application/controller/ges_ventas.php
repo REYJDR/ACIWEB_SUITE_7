@@ -205,8 +205,7 @@ public function PrintSalesOrder($Type,$id){
         if($res=='0'){
 
         $ORDER = $this->model->Get_order_to_invoice($id);
- 
- 
+
             foreach ($ORDER as  $value) {
 
                $value = json_decode($value);
