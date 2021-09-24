@@ -721,7 +721,7 @@ var r = confirm('Desea procesar la orden?');
                     '@'+ShipToAddressLine2+ 
                     '@'+ShipToCity+ 
                     '@'+SalesRepID ;
-
+                    
 
       return  $.ajax({
             type: "GET",
