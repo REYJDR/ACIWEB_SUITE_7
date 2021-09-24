@@ -206,7 +206,7 @@ public function PrintSalesOrder($Type,$id){
 
         $ORDER = $this->model->Get_order_to_invoice($id);
  
- var_dump($ORDER);
+ 
             foreach ($ORDER as  $value) {
 
                $value = json_decode($value);
