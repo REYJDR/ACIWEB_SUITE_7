@@ -210,7 +210,21 @@ echo '<input type="hidden" id="STOCK_VIEW" value="1" />';
 						        <tr><th><strong>Direccion 1</strong></th><td><input class="inputPage  col-lg-12" id="ShipToAddressLine1" onkeyup="checkInpChar(this.id);" name="ShipToAddressLine1" /></td></tr>
 						        <tr><th><strong>Direccion 2</strong></th><td><input class="inputPage  col-lg-12" id="ShipToAddressLine2" onkeyup="checkInpChar(this.id);" name="ShipToAddressLine2" /></td></tr>
 						        <tr><th><strong>Cuidad</strong></th><td><input class="inputPage  col-lg-12" id="ShipToCity" onkeyup="checkInpChar(this.id);" name="ShipToCity" /></td></tr>
-						        <tr><th><strong>Vendedor</strong></th><td><input class="inputPage  col-lg-12" id="SalesRepID" onkeyup="checkInpChar(this.id);" name="SalesRepID" /></td></tr>
+						        <tr><th><strong>Vendedor</strong></th><td>
+
+								    <select  id="SalesRepID" name="SalesRepID" class="select col-lg-12"  required>
+										<option  selected disabled></option>
+										<?php 
+										$sql = 'SELECT * FROM Sales_Representative_Exp WHERE ID_compania="'.$this->model->id_compania.'"';
+										$rep = $this->model->Query($sql); 
+											foreach ($rep  as $datos) {
+												$datos  = json_decode($datos);
+												echo '<option value="'.$datos->{'SalesRepID'}.'">'.$datos->{'SalesRep_Name'}.'</option>';
+											}
+										?>
+									</select>
+									
+								</td></tr>
 								
 							</tbody>
 						</table>
