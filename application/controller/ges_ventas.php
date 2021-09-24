@@ -866,9 +866,9 @@ public function set_sales_order_header(){
   $value = $data[0];
   
   
-  list($CustomerID,$Subtotal,$TaxID,$Net_due,$nopo,$pago,$licitacion,$observaciones,$entrega,$ordertax,$fecha_entrega,$lugDesp) = explode('@', $value );
+  list($CustomerID,$Subtotal,$TaxID,$Net_due,$nopo,$pago,$licitacion,$observaciones,$entrega,$ordertax,$fecha_entrega,$lugDesp, $ShipToName , $ShipToAddressLine1, $ShipToAddressLine2, $ShipToCity, $SalesRepID) = explode('@', $value );
   
-  
+
   $custinfo = $this->model->get_Cust_info_int($CustomerID);
   $custinfo = json_decode($custinfo);
   
@@ -897,21 +897,32 @@ public function set_sales_order_header(){
   'user'=>$this->model->active_user_id,
   'date'=>$date,
   'saletax'=>'0',
-  'CustomerPO' => substr($observaciones, 0, 20 ),
+ //#127 TAGORE
+  //'CustomerPO' => substr($observaciones, 0, 20 ),
+  'CustomerPO' => substr($nopo, 0, 20 ),
+//#127 TAGORE
   'tipo_licitacion' => $licitacion,
   'entrega' => $entrega,
   'termino_pago' => $pago,
   'observaciones' => $observaciones,
-  'ShipToName' =>  $custinfo->{'CustomerID'}.'-'.$custinfo->{'Customer_Bill_Name'},
-  'ShipToAddressLine1' => $custinfo->{'AddressLine1'},
-  'ShipToAddressLine2' => $custinfo->{'AddressLine2'},
-  'ShipToCity' => $custinfo->{'City'},
+
+ //#127 TAGORE
+  'ShipToName' =>  $ShipToName != "" ? $ShipToName : $custinfo->{'CustomerID'}.'-'.$custinfo->{'Customer_Bill_Name'},
+  'ShipToAddressLine1' =>  $ShipToAddressLine1 != "" ? $ShipToAddressLine1 : $custinfo->{'AddressLine1'},
+  'ShipToAddressLine2' =>  $ShipToAddressLine2 != "" ? $ShipToAddressLine2 : $custinfo->{'AddressLine2'},
+  'ShipToCity' =>  $ShipToCity != "" ? $ShipToCity : $custinfo->{'City'},
+ //#127 TAGORE
+
   'ShipToState' => substr($custinfo->{'State'}, 0, 2 ),
   'ShipToZip' => $custinfo->{'Zip'},
   'ShipToCountry' => $custinfo->{'Country'},
   'fecha_entrega' => $fecha_entrega,
   'lugar_despacho' => $lugDesp,
-  'SalesRepID' =>  $custinfo->{'SalesRepID'} );
+
+  //#127 TAGORE
+  'SalesRepID' => $SalesRepID != "" ? $SalesRepID : $custinfo->{'SalesRepID'} 
+  //#127 TAGORE
+);
   
   $this->model->insert('SalesOrder_Header_Imp',$values);
   
@@ -1152,14 +1163,16 @@ public function SetSOfromStock($SalesOrderNumber){
       
               if ($venc!='0000-00-00 00:00:00' || $venc!='' ){
                 $venc = date('d/m/Y',strtotime($venc));
-                $caduc =   'Venc: '.$venc.'-';
+                $caduc =   ' - Venc: '.$venc;
               }else{
                 $caduc = '';
               }
-      
+
+              
+
               if ($fab!='0000-00-00 00:00:00' || $fab!='' ){
                 $fab = date('d/m/Y',strtotime($fab));
-                $fabDate =   '-Fab:'.$fab.'-';
+                $fabDate =   ' - Fab:'.$fab;
               }else{
                 $fabDate = '';
               }
@@ -1167,11 +1180,14 @@ public function SetSOfromStock($SalesOrderNumber){
           }
         }
 
-        $loteno = ' -Lot:'.$lote;
+        $loteno = ' - Lot:'.$lote;
 
         if($fabDate != ''  ||  $caduc != ''){
 
+          //#127 tagore   eliminar fecha de fabricacion del detalle de lotes
           $Description = substr($desc,0,111).$loteno.$fabDate.$caduc;
+
+          $Description = substr($desc,0,111).$loteno.$caduc;
 
         }else{
 

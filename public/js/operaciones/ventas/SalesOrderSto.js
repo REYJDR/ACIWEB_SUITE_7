@@ -692,6 +692,14 @@ var r = confirm('Desea procesar la orden?');
     var LugDesp = document.getElementById('lugar_despacho').value;
     //REGITRO DE CABECERA
 
+    //#127 tagore agregar campos de direccion de entrega
+    var ShipToName = document.getElementById('ShipToName').value;
+    var ShipToAddressLine1 = document.getElementById('ShipToAddressLine1').value;
+    var ShipToAddressLine2 = document.getElementById('ShipToAddressLine2').value;
+    var ShipToCity = document.getElementById('ShipToCity').value;
+    var SalesRepID = document.getElementById('SalesRepID').value;
+ //#127 tagore agregar campos de direccion de entrega
+
     function set_header(){
 
     //INI REGISTRO DE CABECERA
@@ -706,7 +714,13 @@ var r = confirm('Desea procesar la orden?');
                     '@'+entrega+
                     '@'+Ordertax+
                     '@'+fecha_entrega+
-                    '@'+LugDesp;
+                    '@'+LugDesp+ 
+
+                    '@'+ShipToName+ 
+                    '@'+ShipToAddressLine1+ 
+                    '@'+ShipToAddressLine2+ 
+                    '@'+ShipToCity+ 
+                    '@'+SalesRepID ;
 
 
       return  $.ajax({

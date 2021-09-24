@@ -202,6 +202,23 @@ echo '<input type="hidden" id="STOCK_VIEW" value="1" />';
 
 					<div  class="col-lg-12"></div>
 
+					<div  class="col-lg-6">
+					<fieldset class="fieldsetform">
+						<table class='table_form' >
+							<tbody>
+					        	<tr><th><strong>Nombre</strong></th><td><input  class="inputPage col-lg-12" id="ShipToName" onkeyup="checkInpChar(this.id);" name="ShipToName" /></td></tr>
+						        <tr><th><strong>Direccion 1</strong></th><td><input class="inputPage  col-lg-12" id="ShipToAddressLine1" onkeyup="checkInpChar(this.id);" name="ShipToAddressLine1" /></td></tr>
+						        <tr><th><strong>Direccion 2</strong></th><td><input class="inputPage  col-lg-12" id="ShipToAddressLine2" onkeyup="checkInpChar(this.id);" name="ShipToAddressLine2" /></td></tr>
+						        <tr><th><strong>Cuidad</strong></th><td><input class="inputPage  col-lg-12" id="ShipToCity" onkeyup="checkInpChar(this.id);" name="ShipToCity" /></td></tr>
+						        <tr><th><strong>Vendedor</strong></th><td><input class="inputPage  col-lg-12" id="SalesRepID" onkeyup="checkInpChar(this.id);" name="SalesRepID" /></td></tr>
+								
+							</tbody>
+						</table>
+					</fieldset>
+					</div>
+
+					<div  class="col-lg-12"></div>
+
 					<div  class="col-lg-12">
 					<fieldset class="fieldsetformb">
 					<table class='table_form note'>
