@@ -697,7 +697,7 @@ var r = confirm('Desea procesar la orden?');
     var ShipToAddressLine1 = document.getElementById('ShipToAddressLine1').value;
     var ShipToAddressLine2 = document.getElementById('ShipToAddressLine2').value;
     var ShipToCity = document.getElementById('ShipToCity').value;
-    var SalesRepID = =$("#SalesRepID option:selected").html();
+    var SalesRepID = $("#SalesRepID option:selected").html();
  //#127 tagore agregar campos de direccion de entrega
 
     function set_header(){
