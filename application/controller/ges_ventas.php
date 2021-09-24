@@ -232,7 +232,9 @@ public function PrintSalesOrder($Type,$id){
                $entrega =   $value->{'entrega'};
                $fecha_entrega =   $value->{'fecha_entrega'};
 
-               
+               $direccionEnvio = $value->{'ShipToAddressLine1'}.' '.$value->{'ShipToAddressLine2'}.' '.$value->{'ShipToCity'};
+               $recibe = $value->{'ShipToName'};;
+
 
             }
         

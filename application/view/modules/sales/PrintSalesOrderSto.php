@@ -123,8 +123,21 @@ foreach ($comp as $value) {
                         </tr>                      
                        </tbody>
                    </table>
-                
-
+                   <div class="separador col-xs-12"></div>
+                   <table  class='borderTable' width="100%" border='1'>  
+                       <thead>
+                        <tr>
+                           <th>Dirección de envio</th>
+                           <th>Recibe</th>
+                        </tr>
+                       </thead>
+                       <tbody>
+                        <tr>
+                           <td width="80%" ><?php echo  $direccionEnvio; ?></td>
+                           <td width="20%" ><?php echo  $recibe; ?></td>
+                        </tr>                      
+                       </tbody>
+                   </table>
                 <div class="separador col-xs-12"></div>
 
                 <?php if($obser!=''){ ?>
