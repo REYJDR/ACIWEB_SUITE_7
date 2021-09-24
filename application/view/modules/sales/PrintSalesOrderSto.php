@@ -272,12 +272,26 @@ foreach ($comp as $value) {
                           </thead>
                           <tbody>
                             <tr>
-                              <td width="50%"  height="200px" ></td>
-                              <td width="50%"  height="200px" ></td>
+                              <td width="50%"  height="150px" ></td>
+                              <td width="50%"  height="150px" ></td>
                             </tr>                      
                           </tbody>
                       </table>
-                        
+                      <div class="separador col-xs-12"></div>
+                        <table  class='borderTable' width="100%" border='1'>  
+                          <thead>
+                            <tr>
+                              <th width="50%" >Entregado por</th>
+                              <th width="50%" >Recibido  por</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td width="50%"  height="150px" ></td>
+                              <td width="50%"  height="150px" ></td>
+                            </tr>                      
+                          </tbody>
+                      </table>
                         </div>
 
 
