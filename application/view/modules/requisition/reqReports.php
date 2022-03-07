@@ -64,9 +64,9 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
               <tbody>
 
                 <?php
-                   die('test');
+                 
                 if(isset($_REQUEST['flag'])){
-
+                  die('test');
                 $this->model->verify_session();
                 $id_compania = $this->model->id_compania ;
 
