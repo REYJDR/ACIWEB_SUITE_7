@@ -43,6 +43,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
         </div>
       </div>  
     
+   
       <!--FIN BARRA BUSQUEDA REPORTES -->
 
       <div class="separador col-lg-12"> </div>
@@ -63,6 +64,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
               <tbody>
 
                 <?php
+                   die('test');
                 if(isset($_REQUEST['flag'])){
 
                 $this->model->verify_session();
@@ -95,7 +97,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
                 $sort = 'DESC';
                 $Item = $this->model->get_req_to_report($sort,$limit,$clause);
                 
-                
+
 
                 foreach ($Item as $datos) {
                   
