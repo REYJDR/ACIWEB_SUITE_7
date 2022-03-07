@@ -1228,7 +1228,7 @@ REQ_HEADER.ID,
 REQ_HEADER.desc_closed,
 REQ_HEADER.DATE order by ID '.$sort.' limit '.$limit.';';
 
-
+die($sql );
 $get_req = $this->Query($sql);
 
 
