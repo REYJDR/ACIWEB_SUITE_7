@@ -95,6 +95,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
                 $sort = 'DESC';
                 $Item = $this->model->get_req_to_report($sort,$limit,$clause);
                 
+                
 
                 foreach ($Item as $datos) {
                   
