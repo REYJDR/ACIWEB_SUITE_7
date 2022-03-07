@@ -66,7 +66,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
                 <?php
                  
                 if(isset($_REQUEST['flag'])){
-                  die('test');
+                
                 $this->model->verify_session();
                 $id_compania = $this->model->id_compania ;
 
@@ -95,6 +95,8 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
                 $limit = '1000';
                 $sort = 'DESC';
+
+                die($clause);
                 $Item = $this->model->get_req_to_report($sort,$limit,$clause);
                 
 
