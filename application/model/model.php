@@ -1188,9 +1188,11 @@ public function get_req_to_report($sort,$limit,$clause){
 
 $sql='SELECT * FROM `REQ_HEADER` 
 inner join REQ_DETAIL ON REQ_HEADER.NO_REQ = REQ_DETAIL.NO_REQ
-'.$clause.' group by REQ_HEADER.NO_REQ order by ID '.$sort.' limit '.$limit.';';
+'.$clause.'  order by ID '.$sort.' limit '.$limit.';';
 
-die($sql);
+// '.$clause.' group by REQ_HEADER.NO_REQ order by ID '.$sort.' limit '.$limit.';';
+
+
 $get_req = $this->Query($sql);
 
 
