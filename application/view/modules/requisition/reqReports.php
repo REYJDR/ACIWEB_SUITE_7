@@ -81,10 +81,10 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
 
                 if($date1!=''){
                   if($date2!=''){
-                      $clause.= ' and  DATE >= "'.$date1.'%" and DATE <= "'.$date2.'%" ';           
+                      $clause.= ' and  DATE >= "'.$date1.'" and DATE <= "'.$date2.'" ';           
                     }
                   if($date2==''){ 
-                    $clause.= ' and  DATE like "'.$date1.'%" ';
+                    $clause.= ' and  DATE like "'.$date1.'" ';
                   }
                 }
 
