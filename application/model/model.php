@@ -1186,7 +1186,10 @@ public function get_InvXStk($sort,$limit,$clause){
 
 public function get_req_to_report($sort,$limit,$clause){
 
-    $sql = "SELECT * FROM `REQ_HEADER`  where REQ_HEADER.ID_compania='5' order by ID {$sort} limit {$limit}";
+    $sql = "SELECT * FROM `REQ_HEADER`  
+            {$clause} order by ID {$sort} limit {$limit}";
+
+
 // $sql='SELECT 
 // REQ_DETAIL.CANTIDAD,
 // REQ_DETAIL.CCOST,
