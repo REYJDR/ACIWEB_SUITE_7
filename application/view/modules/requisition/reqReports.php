@@ -77,7 +77,7 @@ require_once APP.'view/modules/'.basename(__DIR__).'/lang/'.$this->model->lang.'
                 $table = '';
                 $clause='';
 
-                $clause.= 'where REQ_HEADER.ID_compania="'.$id_compania.'" and REQ_DETAIL.ID_compania="'.$id_compania.'" ';
+                $clause.= 'where REQ_HEADER.ID_compania="'.$id_compania.'" ';
 
                 if($date1!=''){
                   if($date2!=''){
