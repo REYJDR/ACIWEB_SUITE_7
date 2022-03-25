@@ -1181,7 +1181,7 @@ $this->model->verify_session();
 
 $id_compania = $this->model->id_compania;
 
-$ORDER_detail = $this->model->get_req_to_report('DESC','1','WHERE REQ_HEADER.ID_compania="'.$id_compania.'" AND  REQ_HEADER.ID_compania="'.$id_compania.'" and REQ_HEADER.NO_REQ="'.$id.'" and REQ_DETAIL.NO_REQ="'.$id.'"');
+$ORDER_detail = $this->model->get_req_detail('DESC','1','WHERE REQ_HEADER.ID_compania="'.$id_compania.'" AND  REQ_HEADER.ID_compania="'.$id_compania.'" and REQ_HEADER.NO_REQ="'.$id.'" and REQ_DETAIL.NO_REQ="'.$id.'"');
 
 var_dump($ORDER_detail); die();
 echo '<script>
