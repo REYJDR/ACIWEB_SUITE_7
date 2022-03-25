@@ -1183,6 +1183,7 @@ $id_compania = $this->model->id_compania;
 
 $ORDER_detail = $this->model->get_req_to_report('DESC','1','WHERE REQ_HEADER.ID_compania="'.$id_compania.'" AND  REQ_HEADER.ID_compania="'.$id_compania.'" and REQ_HEADER.NO_REQ="'.$id.'" and REQ_DETAIL.NO_REQ="'.$id.'"');
 
+var_dump($ORDER_detail); die();
 echo '<script>
 
 var table = $("#table_info").dataTable({
@@ -1216,13 +1217,13 @@ echo '<br/><br/>
     $ORDER_detail = json_decode($datos);
 
 
-$user = $this->model->Get_User_Info($ORDER_detail->{'USER'}); 
+    $user = $this->model->Get_User_Info($ORDER_detail->{'USER'}); 
 
-foreach ($user as $value) {
-$value = json_decode($value);
-$name= $value->{'name'};
-$lastname = $value->{'lastname'};
-}
+    foreach ($user as $value) {
+    $value = json_decode($value);
+    $name= $value->{'name'};
+    $lastname = $value->{'lastname'};
+    }
 
 
 //obtengo estatus de la requisicion
