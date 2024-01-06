@@ -489,7 +489,7 @@ private function CreateHeaderFile($id){
      $RUC = $this->model->Query_value('Customers_Exp','custom_field1','where CustomerID="'.$Cust->{'CustomerID'}.'" and ID_compania = "'.$id_compania.'"');
      $DV  = $this->model->Query_value('Customers_Exp','custom_field2','where CustomerID="'.$Cust->{'CustomerID'}.'" ID_compania = "'.$id_compania.'"');
     
-
+    $CustomerID = $Cust->{'CustomerID'};
     
 
      $Fact = 'SELECT 
@@ -542,7 +542,8 @@ private function CreateHeaderFile($id){
             '0.00|'.         //Nota de credito
             $OTROS.'|'.      //Otra forma de pago
             $DV.'|'.         //DV
-            $NOTAS;          //NOTAS
+            $NOTAS.'|'.        //NOTAS
+            $CustomerID; //Customer ID
                      
 
    // $filename = 'INVOICE/IN/FACTI'.$id.'.txt';

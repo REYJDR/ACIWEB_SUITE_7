@@ -714,7 +714,7 @@ private function CreateHeaderFile($id){
 
      }
     
-
+    $CustomerID = $Cust->{'CustomerID'}; //Customer ID
 
 
     $DATA = '1|'.            //TIPO NOTA DE CREDITO
@@ -730,7 +730,8 @@ private function CreateHeaderFile($id){
             $serprint.'|'.   //Serial de la impresora fiscal
             $NoInvoice.'|'.  //No. de factura fiscal
             $id.'|'.         //Referencia
-            $DV;             //DV
+            $DV.'|'.            //DV
+            $CustomerID; //Customer ID
                      
 
      //$filename = 'CREDITMEMO/IN/NCTI'.$ID.'.txt';
