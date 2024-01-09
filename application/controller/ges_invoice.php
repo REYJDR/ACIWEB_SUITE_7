@@ -630,7 +630,7 @@ private function CreateDetailFile($id){
              $DesFact.'|'.   //Nombre Articulo
              $Unit.'|'.      //Unidad de venta
              $QTY.'|'.       //Cantidad
-             $this->numberFormatPrecision($PRICE).'|'.     //Precio neto unitario
+             $this->numberFormatPrecision($PRICE,5).'|'.     //Precio neto unitario 5 dec
              $ITBMS."\n";    //Alicuota ITBMS
     }
 
