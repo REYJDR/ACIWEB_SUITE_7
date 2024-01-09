@@ -316,7 +316,7 @@ function calculate(line){
 
 	total = qty * UnitPrice;
 
-	document.getElementById(totalID).innerHTML = parseFloat(total).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]; 
+	document.getElementById(totalID).innerHTML = parseFloat(total).toString().match(/^-?\d+(?:\.\d{0,5})?/)[0]; 
 	document.getElementById(qtyID).innerHTML =   parseFloat(qty).toFixed(5);
 	//document.getElementById(PriceID).innerHTML = parseFloat(UnitPrice).toFixed(4);
 
@@ -387,9 +387,9 @@ function sumar_total(){
 
 	TOTAL = subtotal + TAX;
 
-	  subtotal_field.value = parseFloat(subtotal).toFixed(2);
-	  tax_field.value      = parseFloat(TAX).toFixed(2);
-	  total_field.value   =  parseFloat(TOTAL).toFixed(2);
+	  subtotal_field.value = parseFloat(subtotal).toFixed(5);
+	  tax_field.value      = parseFloat(TAX).toFixed(5);
+	  total_field.value   =  parseFloat(TOTAL).toFixed(5);
 
 }
 
