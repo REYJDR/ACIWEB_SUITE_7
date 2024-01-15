@@ -719,7 +719,10 @@ public function ReadInvoiceFile($id_compania){
           $exists = true;
         }
        
- 
+        if( $ID == 'ACI-V-208691'){
+          die($exists);
+      
+        }
        
         if ($exists) {
 
@@ -767,8 +770,6 @@ public function GetInvoiceNumber($ID){
     $exists = true;
   }
  
-
-
   if( $ID == 'ACI-V-208691'){
     die($filename);
 
