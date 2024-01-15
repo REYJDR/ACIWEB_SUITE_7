@@ -781,7 +781,8 @@ public function GetInvoiceNumber($ID){
   }
   //descomponer CUFE
   if( $ID == 'ACI-V-208691'){
-    var_dump(explode('|', $line));
+    $textRow = explode('|', $line);
+    var_dump($textRow[4]);
     die();
   }
 if (strpos($conse, 'FE') !== false) {
