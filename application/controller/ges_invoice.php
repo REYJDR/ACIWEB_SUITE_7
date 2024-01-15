@@ -716,9 +716,12 @@ public function ReadInvoiceFile($id_compania){
           $filename = "{$filename}{$extLow}";
       
         }
+        if( $ID == 'ACI-V-208691'){
+          die($filename);
 
+        }
  
-        die($filename);
+       
         if (file_exists("{$filename}{$extUp}") or file_exists("{$filename}{$extLow}") ) {
 
          $InvNum  = $this->InsertSalesInfo($id_compania,trim($ID));
