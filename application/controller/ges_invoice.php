@@ -931,7 +931,7 @@ public function InsertSalesInfo($id_compania,$ID){
                 'ItemID' => $itemid,
                 'ID_compania' => $id_compania,
                 'Reference' => $ID,
-                'ReasonToAdjust' => $InvoiceNumber,
+                'ReasonToAdjust' => $InvoiceNumber[0],
                 'Account' =>  $this->model->Query_value('CTA_GL_CONF','GLACCT','where ID_compania="'.$id_compania.'";'),
                 'Quantity' => $no_cover_qty ,
                 'USER' => '00',
@@ -956,7 +956,7 @@ public function InsertSalesInfo($id_compania,$ID){
           $values1 = array(
                 'ItemOrd' =>$ItemOrd,
                 'ID_compania'=>$id_compania,
-                'invoiceNumber'=>$InvoiceNumber,
+                'invoiceNumber'=>$InvoiceNumber[0],
                 'Item_id'=>$itemid,
                 'Description'=> $Description,
                 'Quantity'=>$qty,
@@ -1008,7 +1008,7 @@ public function InsertSalesInfo($id_compania,$ID){
     }
 
     //Inserto numero de factura generada por maquina fiscal
-    $this->model->Query('UPDATE INVOICE_GEN_HEADER SET InvoiceNumber="'.$InvoiceNumber.'" WHERE SalesOrderNumber="'.$ID.'" and ID_compania="'.$id_compania.'"');
+    $this->model->Query('UPDATE INVOICE_GEN_HEADER SET InvoiceNumber="'.$InvoiceNumber[0].'" WHERE SalesOrderNumber="'.$ID.'" and ID_compania="'.$id_compania.'"');
 
  }
 
