@@ -766,10 +766,7 @@ public function GetInvoiceNumber($ID){
     $exists = true;
   }
  
-  if( $ID == 'ACI-V-208691'){
-    die($filename);
-
-  }
+  
  
 
   $line = file_get_contents($filename);
@@ -789,7 +786,12 @@ if (strpos($conse, 'FE') !== false) {
   
     $docNo = str_sub($conse, 2 , 38);
     $ptoFact = str_sub($conse, 38 , 41);
-    die("{$ptoFact}-{$docNo}");
+
+    if( $ID == 'ACI-V-208691'){
+      die("{$ptoFact}-{$docNo}");
+    }
+
+    
     return "{$ptoFact}-{$docNo}";
   }
   
