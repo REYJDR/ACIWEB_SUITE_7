@@ -773,25 +773,24 @@ public function GetInvoiceNumber($ID){
   $noInv = substr($FACTNO,-5);
      
   if($noInv == ''){ 
+
        list($a,$b,$c,$d,$e,$f,$FACTNO,$conse) = explode('|', $line);
         //descomponer CUFE
-  if( $ID == 'ACI-V-208691'){
-    
-    // $textRow = explode('|', $line);
-    var_dump([$a,$b,$c,$d,$e,$f,$FACTNO,$conse]);
-    die($FACTNO);
-  }
-
        $noInv = substr($FACTNO,-5);
   }
-  
+
+ 
  
 
-  if (strpos($conse, 'FE') !== false) {
+  if (strpos($e, 'FE') !== false) {
   
-    $docNo   = str_sub($conse, 2 , 38);
-    $ptoFact = str_sub($conse, 38 , 41);
-
+    $docNo   = str_sub($e, 2 , 38);
+    $ptoFact = str_sub($e, 38 , 41);
+    if( $ID == 'ACI-V-208691'){
+    
+ 
+      die("{$ptoFact}-{$docNo}");
+    }
     return "{$ptoFact}-{$docNo}";
 
   }
