@@ -706,8 +706,19 @@ public function ReadInvoiceFile($id_compania){
         $filename = "{$DIR}'OUT_FACTI'{$ID}";
         $extUp = '.TXT';
         $extLow = '.txt';
+
+        if (file_exists("{$filename}{$extUp}")){
+
+          $filename = "{$filename}{$extUp}";
+      
+        }elseif (file_exists("{$filename}{$extLow}")) {
+         
+          $filename = "{$filename}{$extLow}";
+      
+        }
+
  
-        die(file_exists("{$filename}{$extUp}") or file_exists("{$filename}{$extLow}"));
+        die($filename);
         if (file_exists("{$filename}{$extUp}") or file_exists("{$filename}{$extLow}") ) {
 
          $InvNum  = $this->InsertSalesInfo($id_compania,trim($ID));
