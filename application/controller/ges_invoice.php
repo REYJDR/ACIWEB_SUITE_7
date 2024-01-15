@@ -781,7 +781,8 @@ public function GetInvoiceNumber($ID){
   }
   //descomponer CUFE
   if( $ID == 'ACI-V-208691'){
-    die($conse);
+    var_dump(explode('|', $line));
+    die();
   }
 if (strpos($conse, 'FE') !== false) {
     // haystack contains needle
