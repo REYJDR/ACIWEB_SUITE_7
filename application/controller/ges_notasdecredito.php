@@ -893,7 +893,7 @@ public function ReadInvoiceFile($id_compania){
 
           $InvNum  = $this->InsertCreditMemoInfo($id_compania, trim($ID));
           if( $InvNum!='-'){
-            $logText .= date('Y-m-d H:i:s').' DocNumber : '.$InvNum[0].' -  CreditMemoNumber:'.$ID.' File: '.$filename."<br>\n";
+            $logText .= date('Y-m-d H:i:s').' DocNumber : '.$InvNum.' -  CreditMemoNumber:'.$ID.' File: '.$filename."<br>\n";
           }
           
         }else{
