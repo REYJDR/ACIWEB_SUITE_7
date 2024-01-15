@@ -788,7 +788,7 @@ public function GetInvoiceNumber($ID){
 
   }
   
-  return ["{$noInv}'-'{$conse}", $e];
+  return ["{$noInv}'-'{$conse}", ''];
 
 }
 
