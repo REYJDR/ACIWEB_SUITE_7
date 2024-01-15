@@ -703,7 +703,7 @@ public function ReadInvoiceFile($id_compania){
         $PRINTER = $this->GetPrinterSeleccted($ID);
        
         $DIR = "FISCAL/".$PRINTER."/OUT/";
-        $filename = "{$DIR}'OUT_FACTI'{$ID}";
+        $filename = "{$DIR}OUT_FACTI{$ID}";
         $extUp = '.TXT';
         $extLow = '.txt';
 
@@ -719,10 +719,6 @@ public function ReadInvoiceFile($id_compania){
           $exists = true;
         }
        
-        if( $ID == 'ACI-V-208691'){
-          die($filename.'-'.$exists);
-      
-        }
        
         if ($exists) {
 
@@ -756,7 +752,7 @@ public function GetInvoiceNumber($ID){
   $DIR = "FISCAL/".$PRINTER."/OUT/";
   $extUp = '.TXT';
   $extLow = '.txt';
-  $filename = "{$DIR}'OUT_FACTI'{$ID}";
+  $filename = "{$DIR}OUT_FACTI{$ID}";
 
   $exists = false;
   if (file_exists("{$filename}{$extUp}")){
