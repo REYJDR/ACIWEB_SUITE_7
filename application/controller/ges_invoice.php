@@ -705,7 +705,7 @@ public function ReadInvoiceFile($id_compania){
         $DIR = "FISCAL/".$PRINTER."/OUT/";
         $filename = $DIR.'OUT_FACTI'.$ID.'.TXT';
        
-       
+        file_exists($filename)
 
         if (file_exists($filename)) {
          
@@ -745,6 +745,8 @@ public function ReadInvoiceFile($id_compania){
 public function GetInvoiceNumber($ID){
 
 
+
+
   $PRINTER = $this->GetPrinterSeleccted($ID);
   $DIR = "FISCAL/".$PRINTER."/OUT/";
 
@@ -757,12 +759,18 @@ public function GetInvoiceNumber($ID){
      
   if($noInv == ''){ 
        list(,,,,,,$FACTNO,$conse) = explode('|', $line);
-
        $noInv = substr($FACTNO,-5);
   }
+  //descomponer CUFE
+  if (str_contains($conse,'FE')){
+    $docNo = str_sub($conse, 2 , 38);
+    $ptoFact = str_sub($conse, 38 , 41);
+    die("{$ptoFact}-{$docNo}");
+    return "{$ptoFact}-{$docNo}";
+  }
+  
+  return $noInv.'-'.$conse;
 
-  //echo $noInv.'-'.$conse;
- return $noInv.'-'.$conse;
 }
 
 
