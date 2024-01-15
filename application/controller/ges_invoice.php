@@ -728,15 +728,6 @@ public function ReadInvoiceFile($id_compania){
   }
   file_put_contents('webhook_log.txt',  $logText, FILE_APPEND);
 
-
-
-
-
-
-
-
-
-
 }
 
 
@@ -761,6 +752,8 @@ public function GetInvoiceNumber($ID){
        $noInv = substr($FACTNO,-5);
   }
   //descomponer CUFE
+  var_dump(explode('|', $line));
+ 
   if (str_contains($conse,'FE')){
     $docNo = str_sub($conse, 2 , 38);
     $ptoFact = str_sub($conse, 38 , 41);
