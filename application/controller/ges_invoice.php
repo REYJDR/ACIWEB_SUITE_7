@@ -768,9 +768,7 @@ public function GetInvoiceNumber($ID){
   }
  
 
- 
-  if ($exists) {
-    
+
   if( $ID == 'ACI-V-208691'){
     die($filename);
 
