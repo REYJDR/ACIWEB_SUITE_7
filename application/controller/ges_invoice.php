@@ -780,16 +780,16 @@ public function GetInvoiceNumber($ID){
        $noInv = substr($FACTNO,-5);
   }
   //descomponer CUFE
- 
+  if( $ID == 'ACI-V-208691'){
+    die(strpos($conse, 'FE'));
+  }
 if (strpos($conse, 'FE') !== false) {
     // haystack contains needle
   
     $docNo = str_sub($conse, 2 , 38);
     $ptoFact = str_sub($conse, 38 , 41);
 
-    if( $ID == 'ACI-V-208691'){
-      die("{$ptoFact}-{$docNo}");
-    }
+  
 
     
     return "{$ptoFact}-{$docNo}";
