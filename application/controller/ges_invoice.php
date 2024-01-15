@@ -779,23 +779,21 @@ public function GetInvoiceNumber($ID){
        $noInv = substr($FACTNO,-5);
   }
 
- 
- 
-
   if (strpos($e, 'FE') !== false) {
   
     $docNo   = substr($e, 40, 10);
     $ptoFact = substr($e,50 , 3);
-    if( $ID == 'ACI-V-208691'){
     
- 
+    if( $ID == 'ACI-V-208691'){
+      var_dump(["{$ptoFact}-{$docNo}", $e]);
       die("{$ptoFact}-{$docNo}");
     }
-    return "{$ptoFact}-{$docNo}";
+
+    return ["{$ptoFact}-{$docNo}", $e];
 
   }
   
-  return $noInv.'-'.$conse;
+  return ["{$noInv}'-'{$conse}", $e];
 
 }
 
