@@ -705,8 +705,7 @@ public function ReadInvoiceFile($id_compania){
         $DIR = "FISCAL/".$PRINTER."/OUT/";
         $filename = $DIR.'OUT_FACTI'.$ID.'.TXT';
        
-        file_exists($filename)
-
+ 
         if (file_exists($filename)) {
          
          $InvNum  = $this->InsertSalesInfo($id_compania,trim($ID));
