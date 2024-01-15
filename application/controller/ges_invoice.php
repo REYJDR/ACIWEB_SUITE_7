@@ -691,7 +691,8 @@ public function ReadInvoiceFile($id_compania){
             AND ( InvoiceNumber IS NULL or InvoiceNumber = "" ) and date >= CURDATE() - 30';
 
   $res = $this->model->Query($SQL);
-
+  var_dump($res);
+  die();
   foreach ($res as $key => $value) {
    
       $value = json_decode($value);
@@ -734,9 +735,6 @@ public function ReadInvoiceFile($id_compania){
 //OBTENGO NUMERO DE SERIAL Y FACTURA
 public function GetInvoiceNumber($ID){
 
-
-
-
   $PRINTER = $this->GetPrinterSeleccted($ID);
   $DIR = "FISCAL/".$PRINTER."/OUT/";
 
@@ -753,7 +751,7 @@ public function GetInvoiceNumber($ID){
   }
   //descomponer CUFE
   var_dump(explode('|', $line));
- 
+  
   if (str_contains($conse,'FE')){
     $docNo = str_sub($conse, 2 , 38);
     $ptoFact = str_sub($conse, 38 , 41);
