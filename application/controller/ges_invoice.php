@@ -708,7 +708,6 @@ public function ReadInvoiceFile($id_compania){
         $extLow = '.txt';
  
 
-
         if (file_exists("{$filename}{$extUp}") or file_exists("{$filename}{$extLow}") ) {
 
          $InvNum  = $this->InsertSalesInfo($id_compania,trim($ID));
@@ -753,6 +752,7 @@ public function GetInvoiceNumber($ID){
 
   }
 
+  die($filename );
 
   $line = file_get_contents($filename);
 
@@ -765,8 +765,7 @@ public function GetInvoiceNumber($ID){
        $noInv = substr($FACTNO,-5);
   }
   //descomponer CUFE
-  var_dump(explode('|', $line));
-  die();
+ 
   if (str_contains($conse,'FE')){
     $docNo = str_sub($conse, 2 , 38);
     $ptoFact = str_sub($conse, 38 , 41);
