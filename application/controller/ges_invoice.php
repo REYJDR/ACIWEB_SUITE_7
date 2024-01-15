@@ -720,7 +720,7 @@ public function ReadInvoiceFile($id_compania){
         }
        
         if( $ID == 'ACI-V-208691'){
-          die($exists);
+          die($filename.'-'.$exists);
       
         }
        
