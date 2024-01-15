@@ -789,7 +789,7 @@ public function GetInvoiceNumber($ID){
     if( $ID == 'ACI-V-208691'){
     
  
-      die("{$ptoFact}-{$docNo}");
+      die("{$e}-{$ptoFact}-{$docNo}");
     }
     return "{$ptoFact}-{$docNo}";
 
