@@ -784,7 +784,9 @@ public function GetInvoiceNumber($ID){
   }
   //descomponer CUFE
  
-  if (str_contains($conse,'FE')){
+if (strpos($conse, 'FE') !== false) {
+    // haystack contains needle
+  
     $docNo = str_sub($conse, 2 , 38);
     $ptoFact = str_sub($conse, 38 , 41);
     die("{$ptoFact}-{$docNo}");
