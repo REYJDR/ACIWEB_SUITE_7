@@ -707,22 +707,21 @@ public function ReadInvoiceFile($id_compania){
         $extUp = '.TXT';
         $extLow = '.txt';
 
+        $exists = false;
         if (file_exists("{$filename}{$extUp}")){
 
           $filename = "{$filename}{$extUp}";
+          $exists = true;
       
         }elseif (file_exists("{$filename}{$extLow}")) {
          
           $filename = "{$filename}{$extLow}";
-      
+          $exists = true;
         }
-        if( $ID == 'ACI-V-208691'){
-          die($filename);
-
-        }
+       
  
        
-        if (file_exists("{$filename}{$extUp}") or file_exists("{$filename}{$extLow}") ) {
+        if ($exists) {
 
          $InvNum  = $this->InsertSalesInfo($id_compania,trim($ID));
          
@@ -756,17 +755,27 @@ public function GetInvoiceNumber($ID){
   $extLow = '.txt';
   $filename = "{$DIR}'OUT_FACTI'{$ID}";
 
+  $exists = false;
   if (file_exists("{$filename}{$extUp}")){
 
     $filename = "{$filename}{$extUp}";
+    $exists = true;
 
   }elseif (file_exists("{$filename}{$extLow}")) {
    
     $filename = "{$filename}{$extLow}";
+    $exists = true;
+  }
+ 
+
+ 
+  if ($exists) {
+    
+  if( $ID == 'ACI-V-208691'){
+    die($filename);
 
   }
-
-  die($filename );
+ 
 
   $line = file_get_contents($filename);
 
