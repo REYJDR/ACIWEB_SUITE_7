@@ -1017,7 +1017,7 @@ public function InsertSalesInfo($id_compania,$ID){
 
 
 
- return $InvoiceNumber;
+ return $InvoiceNumber[0];
 }
 
 //bloquea orden a factura 
