@@ -863,18 +863,37 @@ public function ReadInvoiceFile($id_compania){
        
        //echo 'Found in table :'.$ID."<br>\n";
 
-        //NUEVO BLOQUE
-        $PRINTER = $this->GetPrinterSeleccted($ID);
+        // //NUEVO BLOQUE
+        // $PRINTER = $this->GetPrinterSeleccted($ID);
 
-        $DIR = "FISCAL/".$PRINTER."/OUT/";
-        $filename = $DIR.'OUT_NCTI'.$ID.'.TXT';
+        // $DIR = "FISCAL/".$PRINTER."/OUT/";
+        // $filename = $DIR.'OUT_NCTI'.$ID.'.TXT';
 
-        if (file_exists($filename)) {
+        // if (file_exists($filename)) {
+          $DIR = "FISCAL/".$PRINTER."/OUT/";
+          $filename = "{$DIR}OUT_NCTI{$ID}";
+          $extUp = '.TXT';
+          $extLow = '.txt';
+  
+          $exists = false;
+          if (file_exists("{$filename}{$extUp}")){
+  
+            $filename = "{$filename}{$extUp}";
+            $exists = true;
+        
+          }elseif (file_exists("{$filename}{$extLow}")) {
+           
+            $filename = "{$filename}{$extLow}";
+            $exists = true;
+          }
+         
+         
+          if ($exists) {
           
 
           $InvNum  = $this->InsertCreditMemoInfo($id_compania, trim($ID));
           if( $InvNum!='-'){
-            $logText .= date('Y-m-d H:i:s').' InvoiceNumber : '.$InvNum.' -  CreditMemoNumber:'.$ID.' File: '.$filename."<br>\n";
+            $logText .= date('Y-m-d H:i:s').' DocNumber : '.$InvNum[0].' -  CreditMemoNumber:'.$ID.' File: '.$filename."<br>\n";
           }
           
         }else{
@@ -900,8 +919,24 @@ public function GetNCNumber($ID){
 
   $PRINTER = $this->GetPrinterSeleccted($ID);
   $DIR = "FISCAL/".$PRINTER."/OUT/";
+  $extUp = '.TXT';
+  $extLow = '.txt';
+  $filename = "{$DIR}OUT_NCTI{$ID}";
 
-  $filename = $DIR.'OUT_NCTI'.$ID.'.TXT';
+
+  // $filename = $DIR.'OUT_NCTI'.$ID.'.TXT';
+  $exists = false;
+  if (file_exists("{$filename}{$extUp}")){
+
+    $filename = "{$filename}{$extUp}";
+    $exists = true;
+
+  }elseif (file_exists("{$filename}{$extLow}")) {
+   
+    $filename = "{$filename}{$extLow}";
+    $exists = true;
+  }
+
   $line = file_get_contents($filename);
 
   list(,,,,,,$NCNO,$conse) = explode(chr(9), $line);
@@ -910,14 +945,23 @@ public function GetNCNumber($ID){
 
 
   if($noNc == ''){ 
-       list(,,,,,,$NCNO,$conse) = explode('|', $line);
+      list($a,$b,$c,$d,$e,$f,$FACTNO,$conse)= explode('|', $line);
        
        $noNc = substr($NCNO,-5);
   }
 
+  if (strpos($e, 'FE') !== false) {
+  
+    $docNo   = substr($e, 40, 10);
+    $ptoFact = substr($e,50 , 3);
+
+    return ["{$ptoFact}-N{$docNo}", $e];
+
+  }
+
 
   
-  return $noNc.'-N'.$conse;
+  return [$noNc.'-N'.$conse,''];
 }
 
 
@@ -947,7 +991,7 @@ public function InsertCreditMemoInfo($id_compania,$ID){
 
     $NCNumber = $this->GetNCNumber($ID);
 
-    if ( $NCNumber!='-'){
+    if ( $NCNumber[0] !='-'){
 
 
   
@@ -957,7 +1001,7 @@ public function InsertCreditMemoInfo($id_compania,$ID){
    $values = array(
     'CreditNoteNumber'=>$ID,  
     'ID_compania'=>$id_compania,  
-    'CreditNumber'=>$NCNumber,
+    'CreditNumber'=>$NCNumber[0] ,
     'CustomerID'  => $CustomerID,
     'CustomerName'=> $CustomerName,
     'Subtotal'=> $Subtotal,
@@ -965,6 +1009,7 @@ public function InsertCreditMemoInfo($id_compania,$ID){
     'Net_Credit_due'=>  $Total,
     'AR_Account'=>  $AR_Account,
     'user'=>'00',
+   // 'InvoiceNote' => $NCNumber[1],
     'date'=>$NCDate
     );
 
@@ -989,7 +1034,7 @@ public function InsertCreditMemoInfo($id_compania,$ID){
           $qty = $dato->{'Quantity'};
           $unitPrice = $dato->{'Unit_Price'};
           $Total = $dato->{'Net_line'};
-          $TXID =  $this->model->Query_value('Customer_Credit_Memo_Header_Imp','TransactionID','where CreditNumber="'.$NCNumber.'" and ID_compania="'.$id_compania.'"');
+          $TXID =  $this->model->Query_value('Customer_Credit_Memo_Header_Imp','TransactionID','where CreditNumber="'.$NCNumber[0].'" and ID_compania="'.$id_compania.'"');
   
           if($Unit=='KG'){
               
@@ -1006,8 +1051,8 @@ public function InsertCreditMemoInfo($id_compania,$ID){
                $valuesInvAd = array(
                 'ItemID' => $itemid,
                 'ID_compania' => $id_compania,
-                'Reference' => $NCNumber,
-                'ReasonToAdjust' => $NCNumber,
+                'Reference' => $NCNumber[0],
+                'ReasonToAdjust' => $NCNumber[0],
                 'Account' =>  $this->model->Query_value('CTA_GL_CONF','GLACCT','where ID_compania="'.$id_compania.'";'),
                 'Quantity' => $no_cover_qty ,
                 'USER' => '00',
@@ -1057,12 +1102,12 @@ public function InsertCreditMemoInfo($id_compania,$ID){
        }
 
     //Inserto numero de NC generada por maquina fiscal
-    $this->model->Query('UPDATE CREDITNOTE_HEADER SET GenCreditNumber="'.$NCNumber.'" WHERE CreditNoteNumber="'.$ID.'" and ID_compania="'.$id_compania.'"');
+    $this->model->Query('UPDATE CREDITNOTE_HEADER SET GenCreditNumber="'.$NCNumber[0].'" WHERE CreditNoteNumber="'.$ID.'" and ID_compania="'.$id_compania.'"');
 
  $this->CheckError();
 }
 
-return $NCNumber;
+return $NCNumber[0];
 }
 
 

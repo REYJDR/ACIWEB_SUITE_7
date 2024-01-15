@@ -726,7 +726,7 @@ public function ReadInvoiceFile($id_compania){
          
           if( $InvNum!='-'){
 
-             $logText .= $this->model->GetLocalTime(date('Y-m-d H:i:s')).' InvoiceNumber : '.$InvNum.' -  SalesOrderNumber:'.$ID.' File: '.$filename."<br>\n";
+             $logText .= $this->model->GetLocalTime(date('Y-m-d H:i:s')).' InvoiceNumber : '.$InvNum[0].' -  SalesOrderNumber:'.$ID.' File: '.$filename."<br>\n";
           
           }
 
