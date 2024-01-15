@@ -703,15 +703,14 @@ public function ReadInvoiceFile($id_compania){
         $PRINTER = $this->GetPrinterSeleccted($ID);
        
         $DIR = "FISCAL/".$PRINTER."/OUT/";
-        $filename = $DIR.'OUT_FACTI'.$ID.'.TXT';
-       
-        if($ID == 'ACI-V-208691'){
-          echo file_exists($filename);
-          die($filename);
-        }
+        $filename = "{$DIR}'OUT_FACTI'{$ID}";
+        $extUp = '.TXT';
+        $extLow = '.txt';
+ 
 
-        if (file_exists($filename)) {
-         
+
+        if (file_exists("{$filename}{$extUp}") or file_exists("{$filename}{$extLow}") ) {
+
          $InvNum  = $this->InsertSalesInfo($id_compania,trim($ID));
          
           if( $InvNum!='-'){
@@ -740,8 +739,21 @@ public function GetInvoiceNumber($ID){
 
   $PRINTER = $this->GetPrinterSeleccted($ID);
   $DIR = "FISCAL/".$PRINTER."/OUT/";
+  $extUp = '.TXT';
+  $extLow = '.txt';
+  $filename = "{$DIR}'OUT_FACTI'{$ID}";
 
-  $filename = $DIR.'OUT_FACTI'.$ID.'.TXT';
+  if (file_exists("{$filename}{$extUp}")){
+
+    $filename = "{$filename}{$extUp}";
+
+  }elseif (file_exists("{$filename}{$extLow}")) {
+   
+    $filename = "{$filename}{$extLow}";
+
+  }
+
+
   $line = file_get_contents($filename);
 
   list(,,,,,,$FACTNO,$conse) = explode(chr(9), $line);
@@ -754,7 +766,7 @@ public function GetInvoiceNumber($ID){
   }
   //descomponer CUFE
   var_dump(explode('|', $line));
-  
+  die();
   if (str_contains($conse,'FE')){
     $docNo = str_sub($conse, 2 , 38);
     $ptoFact = str_sub($conse, 38 , 41);
