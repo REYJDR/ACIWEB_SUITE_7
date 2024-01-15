@@ -783,11 +783,6 @@ public function GetInvoiceNumber($ID){
   
     $docNo   = substr($e, 40, 10);
     $ptoFact = substr($e,50 , 3);
-    
-    if( $ID == 'ACI-V-208691'){
-      var_dump(["{$ptoFact}-{$docNo}", $e]);
-      die("{$ptoFact}-{$docNo}");
-    }
 
     return ["{$ptoFact}-{$docNo}", $e];
 
@@ -847,12 +842,12 @@ public function InsertSalesInfo($id_compania,$ID){
     $InvoiceNumber = $this->GetInvoiceNumber($ID);
 
 
-    if ($InvoiceNumber != '-'){ 
+    if ($InvoiceNumber[0] != '-'){ 
 
             //SET HEADER
           $values = array(
             'ID_compania'=>$id_compania,  
-            'InvoiceNumber'=>$InvoiceNumber,
+            'InvoiceNumber'=>$InvoiceNumber[0],
             'CustomerID'  => $CustomerID,
             'CustomerName'=> $CustomerName,
             'Subtotal'=> $Subtotal,
@@ -864,7 +859,7 @@ public function InsertSalesInfo($id_compania,$ID){
             'saletax'=> $TaxID,
             'ApplyToSO'=> '',
             'CustomerPO'=> $CustomerPO,
-            
+            'InvoiceNote' => $InvoiceNumber[1],
             'SalesRepID' => $this->model->Query_value('Customers_Exp','SalesRepID','Where CustomerID="'.$CustomerID.'";') 
             );
 
