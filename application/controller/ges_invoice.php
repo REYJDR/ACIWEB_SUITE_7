@@ -706,7 +706,8 @@ public function ReadInvoiceFile($id_compania){
         $filename = $DIR.'OUT_FACTI'.$ID.'.TXT';
        
         if($ID == 'ACI-V-208691'){
-          die(file_exists($filename));
+          
+          die($filename);
         }
 
         if (file_exists($filename)) {
