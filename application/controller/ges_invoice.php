@@ -773,12 +773,12 @@ public function GetInvoiceNumber($ID){
   $noInv = substr($FACTNO,-5);
      
   if($noInv == ''){ 
-       list(,,,,,,$FACTNO,$conse) = explode('|', $line);
+       list($a,$b,$c,$d,$e,$f,$FACTNO,$conse) = explode('|', $line);
         //descomponer CUFE
   if( $ID == 'ACI-V-208691'){
     
     // $textRow = explode('|', $line);
-    // var_dump($textRow[4]);
+    var_dump([$a,$b,$c,$d,$e,$f,$FACTNO,$conse]);
     die($FACTNO);
   }
 
