@@ -784,7 +784,7 @@ public function GetInvoiceNumber($ID){
 
   if (strpos($e, 'FE') !== false) {
   
-    $docNo   = substr($e, 38, 48);
+    $docNo   = substr($e, 40, 50);
     $ptoFact = substr($e, 48 , 51);
     if( $ID == 'ACI-V-208691'){
     
