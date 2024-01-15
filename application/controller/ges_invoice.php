@@ -766,9 +766,6 @@ public function GetInvoiceNumber($ID){
     $exists = true;
   }
  
-  
- 
-
   $line = file_get_contents($filename);
 
   list(,,,,,,$FACTNO,$conse) = explode(chr(9), $line);
@@ -779,22 +776,22 @@ public function GetInvoiceNumber($ID){
        list(,,,,,,$FACTNO,$conse) = explode('|', $line);
        $noInv = substr($FACTNO,-5);
   }
+  
   //descomponer CUFE
   if( $ID == 'ACI-V-208691'){
-    $textRow = explode('|', $line);
-    var_dump($textRow[4]);
-    die();
+    
+    // $textRow = explode('|', $line);
+    // var_dump($textRow[4]);
+    die($noInv );
   }
-if (strpos($conse, 'FE') !== false) {
-    // haystack contains needle
+
+  if (strpos($conse, 'FE') !== false) {
   
-    $docNo = str_sub($conse, 2 , 38);
+    $docNo   = str_sub($conse, 2 , 38);
     $ptoFact = str_sub($conse, 38 , 41);
 
-  
-
-    
     return "{$ptoFact}-{$docNo}";
+
   }
   
   return $noInv.'-'.$conse;
