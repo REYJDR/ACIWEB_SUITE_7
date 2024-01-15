@@ -691,8 +691,7 @@ public function ReadInvoiceFile($id_compania){
             AND ( InvoiceNumber IS NULL or InvoiceNumber = "" ) and date >= CURDATE() - 30';
 
   $res = $this->model->Query($SQL);
-  var_dump($res);
-  die();
+
   foreach ($res as $key => $value) {
    
       $value = json_decode($value);
@@ -702,11 +701,14 @@ public function ReadInvoiceFile($id_compania){
 
         //NUEVO BLOQUE
         $PRINTER = $this->GetPrinterSeleccted($ID);
-
+       
         $DIR = "FISCAL/".$PRINTER."/OUT/";
         $filename = $DIR.'OUT_FACTI'.$ID.'.TXT';
        
- 
+        if($ID == 'ACI-V-208691'){
+          die(file_exists($filename));
+        }
+
         if (file_exists($filename)) {
          
          $InvNum  = $this->InsertSalesInfo($id_compania,trim($ID));
