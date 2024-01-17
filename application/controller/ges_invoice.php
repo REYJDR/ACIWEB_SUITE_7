@@ -782,13 +782,13 @@ public function GetInvoiceNumber($ID){
   if (strpos($e, 'FE') !== false) {
   
     $docNo   = substr($e, 40, 10);
-    $ptoFact = substr($e,50 , 3);
+    $ptoFact = substr($e, 50 , 3);
 
     return ["{$ptoFact}-{$docNo}", $e];
 
   }
   
-  return ["{$noInv}'-'{$conse}", ''];
+  return ["{$noInv}-{$conse}", ''];
 
 }
 
