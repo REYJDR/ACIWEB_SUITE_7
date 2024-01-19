@@ -859,7 +859,7 @@ public function ReadInvoiceFile($id_compania){
       $value = json_decode($value);
 
       $ID = $value->{'CreditNoteNumber'};
-      $folder = $value->{'printer'};
+      $PRINTER = $value->{'printer'};
        
        //echo 'Found in table :'.$ID."<br>\n";
 
@@ -886,11 +886,11 @@ public function ReadInvoiceFile($id_compania){
             $filename = "{$filename}{$extLow}";
             $exists = true;
           }
-          if($ID=='ACI-13585'){
-            var_dump($value);
-            echo $filename;
-            die();
-          }
+          // if($ID=='ACI-13585'){
+          //   var_dump($value);
+          //   echo $filename;
+          //   die();
+          // }
         
           if ($exists) {
           
