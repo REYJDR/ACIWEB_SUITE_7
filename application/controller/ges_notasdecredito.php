@@ -887,6 +887,7 @@ public function ReadInvoiceFile($id_compania){
             $exists = true;
           }
           if($ID=='ACI-13585'){
+            var_dump($value);
             echo $filename;
             die();
           }
