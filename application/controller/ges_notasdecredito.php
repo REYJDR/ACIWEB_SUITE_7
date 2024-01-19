@@ -886,8 +886,8 @@ public function ReadInvoiceFile($id_compania){
             $filename = "{$filename}{$extLow}";
             $exists = true;
           }
-         
-         
+         echo $filename;
+         die();
           if ($exists) {
           
 
@@ -943,7 +943,7 @@ public function GetNCNumber($ID){
   
   $noNc = substr($NCNO, -5);
 
-  die($line);
+
   if($noNc == ''){ 
       list($a,$b,$c,$d,$e,$f,$FACTNO,$conse)= explode('|', $line);
        
