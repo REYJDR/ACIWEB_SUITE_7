@@ -938,12 +938,12 @@ public function GetNCNumber($ID){
   }
 
   $line = file_get_contents($filename);
-
+  
   list(,,,,,,$NCNO,$conse) = explode(chr(9), $line);
   
   $noNc = substr($NCNO, -5);
 
-
+  die($line);
   if($noNc == ''){ 
       list($a,$b,$c,$d,$e,$f,$FACTNO,$conse)= explode('|', $line);
        
