@@ -886,7 +886,7 @@ public function ReadInvoiceFile($id_compania){
             $filename = "{$filename}{$extLow}";
             $exists = true;
           }
-          if($PRINTER=='FE_VAC_PTO01'){
+          if($ID=='ACI-13585'){
             echo $filename;
             die();
           }
