@@ -949,7 +949,7 @@ public function GetNCNumber($ID){
 
 
   if($noNc == ''){ 
-      list($a,$b,$c,$d,$e,$f,$FACTNO,$conse)= explode('|', $line);
+      list($a,$b,$c,$d,$e,$f,$NCNO,$conse)= explode('|', $line);
        
        $noNc = substr($NCNO,-5);
   }
@@ -963,8 +963,6 @@ public function GetNCNumber($ID){
 
   }
 
-
-  
   return [$noNc.'-N'.$conse,''];
 }
 
